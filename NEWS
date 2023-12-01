@@ -6,95 +6,179 @@
 Noteworthy changes in Version 3.2.0 (unreleased)
 ------------------------------------------------
 
+--- Highlights ---
+
+(en) Kleopatra: It is now possible to certify multiple certificates at once
+     using the group interface. [T6469]
+
+(de) Kleopatra: Es ist nun möglich mehrere Zertifikate gleichzeitig zu
+     beglaubigen. Die Funktion steht über die Gruppen-Verwaltung zur
+     Verfügung. [T6469]
+
+
 --- Features ---
 
+(en) Kleopatra: When exporting or publishing certificates the user
+     is now informed if there are uncertified certificates in the export.
+     This is especially useful when exporting groups. [T6766]
+
+(de) Kleopatra: Es wird nun eine Information angezeigt wenn Zertifikate
+     ohne Beglaubigung exportiert werden sollen. Dies ist besonders beim
+     exportieren von Gruppen hilfreich. [T6766]
+
 (en) GpgOL: Added support for RFC2231 encoded attachment filenames which
-     this increases the compatibility with Apple Mail. (T6604)
+     this increases the compatibility with Apple Mail. [T6604]
 
 (de) GpgOL: Unterstützung für Dateinamen von Anhängen, welche nach RFC2231
      kodiert waren wurde hinzugefügt. Dies betrifft die Kompatibilität mit
-     Apple Mail. (T6604)
+     Apple Mail. [T6604]
 
 (en) GpgOL: Draft encryption with S/MIME certificates now
-     skips CRL checks and is much faster and reliable. (T6827)
+     skips CRL checks and is much faster and reliable. [T6827]
 
 (de) GpgOL: Die Entwurfsverschlüsselung mit S/MIME Zertifikaten wurde massiv
      verbessert und funktioniert nun zuverlässig. So werden beispielsweise
-     keine CRL Prüfungen mehr durchgeführt. (T6827)
+     keine CRL Prüfungen mehr durchgeführt. [T6827]
 
 (en) GpgOL: The error handling was improved if a preference
      for S/MIME is set, signing selected but no signing
      certificate can be found.
-     See: https://gnupg.com/vsd/registry-settings.html (smimeNoCertSigErr)
+     See: https://gnupg.com/vsd/registry-settings.html (smimeNoCertSigErr]
      How to add a custom message for that case to instruct
-     users how to obtain a certificate in your organisation. (T6683)
+     users how to obtain a certificate in your organisation. [T6683]
 
 (de) GpgOL: Die Fehlerbehandlung wurde stark verbessert für den Fall
      das S/MIME aktiviert und bevozugt ist, signieren angewählt ist,
      aber kein Signaturzertifikat zur Verfügung steht.
-     Unter: https://gnupg.com/vsd/registry-settings.html (smimeNoCertSigErr)
+     Unter: https://gnupg.com/vsd/registry-settings.html (smimeNoCertSigErr]
      finden Sie eine Möglichkeit dort eine angepasste Nachricht zu
      hinterlegen um ihre Nutzenden zu istruieren wie diese in ihrer
-     Organisation an ein persönliches S/MIME Zertifikat kommen. (T6683)
+     Organisation an ein persönliches S/MIME Zertifikat kommen. [T6683]
 
-(en) GpgOL: Users are now shown a warning when encrypting to S/MIME certificates
+(en) GpgOL: It is now possible to encrypt to S/MIME certificates
      which are untrusted or can otherwise not be validated because of
-     CRL errors. This was previously impossible, now it is possible but
-     with a clear warning that this is not VS-NfD compliant. (T6701)
+     CRL errors. In this case a warning dialog is shown allowing
+     the user to override the errors.
+     This was previously impossible, now it is possible but
+     with a clear warning that this is not VS-NfD compliant. [T6701]
 
-(de) GpgOL: Nutzenden wird nun eine deutliche Warnung angezeigt wenn Sie an
-     S/MIME Zertifikate verschlüsseln welche nicht vertrauenswürdig sind. Weil
+(de) GpgOL: Es ist nun möglich an
+     S/MIME Zertifikate zu verschlüsseln welche nicht vertrauenswürdig sind. Weil
      Beispielsweise das Wurzelzertifikat noch nicht von der Administration als
      vertrauenswürdig markiert wurde oder CRL Prüfungen fehlgeschlagen sind.
      Dies war vorher unmöglich, nun wird es nach der Warnung gestattet. Dies
-     ist allerdings nicht VS-NfD konform. (T6701)
+     ist allerdings nicht VS-NfD konform. [T6701]
 
 (en) GpgOL: Mails without the correct MIME type but which still look like
      crypto mails are now decrypted. This improves the compatibility with
      Apple Mail and various mail gateways which modify the structure of
-     crypto mails in transit. (T6701)
+     crypto mails in transit. [T6701]
 
 (de) GpgOL: Mails ohne den korrekten MIME typ, welche aber dennoch so aussehen
      wie Krypto Mails werden nun auch entschlüsselt. Dies erhöht die
      Kompatibilität mit anderen Mail clients, insbesondere Apple
      Mail und verschiedenen Mail Gateways welche die Struktur von Krypto Mails
-     modifizieren. (T6701)
+     modifizieren. [T6701]
 
 (en) GpgOL: The internal attachments are now called "GpgOL_MIME_strucutre.mime"
      instead of "GpgOL_MIME_structure.txt" to make it easier to link them to
      Kleopatra. This is for example visible for users when using the Outlook
-     web interface. (T6656)
+     web interface. [T6656]
 
 (de) GpgOL: Die internen Anhänge werden nun "GpgOL_MIME_strucutre.mime" und
      nicht mehr "GpgOL_MIME_structure.txt" dies ermöglicht es eine
-     Dateiverknüpfung mit Kleopatra herzustellen. (T6656)
+     Dateiverknüpfung mit Kleopatra herzustellen. [T6656]
 
 (en) GpgOL: The initialization has been moved to avoid the wrong message that
      GpgOL is causing a slow start of Outlook. This message might still be
      shown since Outlook shows this sometimes regardless of actual timings but
-     the delay should be 0ms. (T6856)
+     the delay should be 0ms. [T6856]
 
 (de) GpgOL: Die initalisierung des Plugins passiert nun an anderer Stelle um
      die falsche Meldung von Outlook zu verhindern das GpgOL für den langsamen
      Start von Outlook verantwortlich ist. Diese Meldung kann immer noch
-     erscheinen, aber die Verzögerung sollte 0ms betragen. (T6856)
+     erscheinen, aber die Verzögerung sollte 0ms betragen. [T6856]
+
+(en) GpgOL: The security approval dialog has been improved to better show
+     problems with the available certificates in case a compliant encryption
+     is not possible. [T6742 T6743 T6744]
+
+(de) GpgOL: Der Sicherheitsbestätigungs-Dialog wurde verbessert damit Probleme
+     mit Zertifikaten leichter erkannt werden können, falls es nicht möglich
+     ist konform zu verschlüsseln. [T6742 T6743 T6744]
+
+(en) GpgOL: The security approval dialog now increases its size based on
+     the number of recipients. [T6837]
+
+(de) GpgOL: Der Sicherheitsbestätigungs-Dialog verändert nun seine Größe
+     basierend auf der Anzahl der Empfänger um Scrollbalken zu vermeiden.
+     [T6837]
 
 --- Bug Fixes ---
 
+(en) Kleopatra: When generating keys on a smartcard in compliance mode,
+     only compliant algorithms are offered. [T6750]
+
+(de) Kleopatra: Beim erstellen von Schlüsselmaterial auf Smartcards werden
+     im konformen Modus auch nur konforme Algorithmen angeboten. [T6750]
+
+
 (en) GpgOL: A crash has been fixed that happened reliably when sending crypto
      mails with attachments without a filename. This happened for some
-     signatures that included an image. (T6546)
+     signatures that included an image. [T6546]
 
 (de) GpgOL: Ein Absturz wurde behoben der zuverlässig auftrat wenn man Anhänge
      ohne Dateinamen verschickte. Dies trat bei einigen Signaturen auf, welche
-     ein Bild enthielten.  (T6546)
+     ein Bild enthielten.  [T6546]
+
+(en) GpgOL: The security approval dialog now correctly updates the compliance
+     status after switching protocols. [T6600]
+
+(de) GpgOL: Der Sicherheitsbestätigungs-Dialog aktualisiert nun korrekterweise
+     die Anzeige der Konformität wenn man zwischen Protokollen wechselt.
+     [T6600]
+
+(en) GpgOL: The security approval is now always shown and displays the
+     correct state for groups containing untrusted or otherwise non compliant
+     certificates. [T6401]
+
+(de) GpgOL: Der Sicherheitsbestätigungs-Dialog wird nun immer angezeigt
+     wenn an Gruppen Verschlüsselt wird, welche nicht beglaubigte oder
+     anderweitigig nicht konforme Zertifikate enthalten. [T6401]
+
+(en) Kleopatra: Several additional encoding problems when showing GnuPG
+     output have been fixed. [T5960]
+
+(de) Kleopatra: Verschiedene weitere Probleme bei der Darstellung von
+     Sonderzeichen aus GnuPG Ausgaben wurden behoben. [T5960]
+
+(en) Kleopatra: Fixed an issue where certificate tags would not be displayed
+     correctly after reloading certificates. [T6768]
+
+(de) Kleopatra: Ein Problem wurde behoben bei dem Tags, bzw. Anmerkungen
+     an Zertifikaten nicht korrekt angezeigt wurden, nachdem die Zertifikate
+     neu geladen wurden. [T6768]
 
 (en) GpgOL: Fixed an issue with S/MIME opaque signed mails
      where the contents of invalid signed mails would
-     not be shown. (T6624)
+     not be shown. [T6624]
 
 (de) GpgOL: Ein Problem wurde behoben bei dem S/MIME "opak" signiere Mails
-     mit ungültiger Signatur ohne Inhalt angezeigt wurden. (T6624)
+     mit ungültiger Signatur ohne Inhalt angezeigt wurden. [T6624]
+
+(en) GpgOL: When generating a key through the security approval dialog
+     the configured algorithms from GnuPG are now used. [T6805]
+
+(de) GpgOL: Beim erstellen von Schlüsseln über den
+     Sicherheitsbestätigungs-Dialog von GpgOL werden nun die Einstellungen
+     zur Schlüsselerstellung von GnuPG berücksichtigt. [T6805]
+
+(en) GpgOL: Generating keys through the security approval dialog now
+     works as intended. [T6813 T6823 T6566]
+
+(de) GpgOL: Das erstellen von Schlüsseln über den
+     Sicherheitsbestätigungs-Dialog funktioniert nun wie vorgesehen.
+     [T6813 T6823 T6566]
 
 ---
 
