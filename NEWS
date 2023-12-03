@@ -8,6 +8,40 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 
 --- Highlights ---
 
+(en) Okular (GnuPG Edition): GnuPG VS-Desktop has been extended with the
+     popular Okular PDF Viewer. This provides the ability to legally sign
+     and verify documents with the S/MIME certificates and smart cards GnuPG
+     supports.
+     The GnuPG Edition of Okular is optimized to be lightweight and to provide
+     as little attack surface as possible. It does not support any active
+     content like JavaScript or media files in PDF documents. It should
+     therefore be more suitable in high security environments than other
+     PDF readers.
+
+(de) Okular (GnuPG Edition): GnuPG VS-Desktop wurde um den beliebten Okular
+     PDF Reader ergänzt. noch nicht per default installiert, ermöglicht es aber
+     , Dokumente
+     rechtsverbindlich mit den in GnuPG unterstützten S/MIME Zertifikaten und
+     Smartcards zu unterschreiben bzw. zu prüfen.
+     Die GnuPG Edition von Okular ist zudem darauf optimiert, leichtgewichtig
+     zu sein und eine möglichst geringe Angriffsfläche zu bieten. So werden
+     beispielsweise keine aktiven Inhalte wie Mediendateien oder JavaScript
+     unterstützt. Sie sollte daher in Umgebungen mit hohen
+     Sicherheitsanforderungen geeigneter sein als andere PDF Reader.
+
+(en) Kleopatra: A new mail viewer mode has been added, allowing crypto
+     mails received by mail clients without PGP/MIME or S/MIME support
+     to be decrypted. This means that you can open an SMIME.p7m file or
+     openpgp-encrypted-message.asc attachment with Kleopatra, and it will be
+     displayed as a mail. [T6199]
+
+(de) Kleopatra: Ein neuer Mail-Anzeigemodus wurde hinzugefügt,
+     damit Krypto-Mails, die von Mail-Clients ohne PGP/MIME- oder
+     S/MIME-Unterstützung empfangen wurden, komfortabel entschlüsselt
+     werden können. Dies bedeutet, dass Sie eine SMIME.p7m-Datei oder eine
+     openpgp-encrypted-message.asc-Anlage mit Kleopatra öffnen können,
+     und sie wird als Mail angezeigt. [T6199]
+
 (en) GnuPG: Elliptic-curve cryptography (ECC) has been implemented
      for S/MIME, and the approval documentation has been adapted
      accordingly. Currently, only brainpool curves are VS-NfD compliant,
@@ -31,19 +65,6 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 
 (de) Kleopatra: Es ist nun möglich, mehrere Zertifikate gleichzeitig
      über die Gruppen-Verwaltung zu beglaubigen. [T6469]
-
-(en) Kleopatra: A new mail viewer mode has been added, allowing crypto
-     mails received by mail clients without PGP/MIME or S/MIME support
-     to be decrypted. This means that you can open an SMIME.p7m file or
-     openpgp-encrypted-message.asc attachment with Kleopatra, and it will be
-     displayed as a mail. [T6199]
-
-(de) Kleopatra: Ein neuer Mail-Anzeigemodus wurde hinzugefügt,
-     damit Krypto-Mails, die von Mail-Clients ohne PGP/MIME- oder
-     S/MIME-Unterstützung empfangen wurden, komfortabel entschlüsselt
-     werden können. Dies bedeutet, dass Sie eine SMIME.p7m-Datei oder eine
-     openpgp-encrypted-message.asc-Anlage mit Kleopatra öffnen können,
-     und sie wird als Mail angezeigt. [T6199]
 
 (en) Installer: The installer now properly terminates running background
      processes, eliminating the need to restart the computer after upgrading
@@ -89,6 +110,28 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 (de) GnuPG: Die Erkennung bereits komprimierter Daten wurde
      verbessert. Dies kann die Leistung bei der Verschlüsselung bereits
      komprimierter Daten erheblich verbessern. [T6332]
+
+(en) GnuPG: S/MIME certificate listings have been sped up on Windows.
+     [rG08ff55bd44]
+
+(de) GnuPG: S/MIME Zertifikatsabfragen wurden unter Windows beschleunigt.
+     [rG08ff55bd44]
+
+(en) GnuPG: A new option "ADSK" has been added to signal the intention that
+     messages should be encrypted to multiple subkeys.
+     [T6395, https://gnupg.org/blog/20230321-adsk.html]
+
+(de) GnuPG: Die neue Option "ADSK" wurde hinzugefügt, um zu signalisieren,
+     dass an mehrere Unterschlüssel gleichzeitig verschlüsselt werden sollte.
+     [T6395, https://gnupg.org/blog/20230321-adsk.html]
+
+(en) GnuPG: There are now more compressed formats detected for which GnuPG then
+     automatically disables its builtin compression. This can result in
+     significant speed ups. [T6332]
+
+(de) GnuPG: Es werden nun mehr Daten als bereits komprimiert erkannt, für welche
+     GnuPG dann die interne Kompression automatisch ausschaltet. Dies kann zu
+     signifikanten Leistungsverbesserungen führen. [T6332]
 
 (en) Kleopatra: The start time of Kleopatra has been drastically
      improved on throttled systems with third-party software installed, which
@@ -168,6 +211,95 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 
 (de) Kleopatra: Fortschrittsbalken werden nun auch korrekt für
      S/MIME-Dateioperationen angezeigt. [T6534]
+
+(en) Kleopatra: Folder encryption and decryption (gpgtar) has been completely
+     reworked so that it now has roughly the same performance as on the
+     command line. The new architecture also allows for further performance
+     improvements in the future and is much more robust.  And solves several
+     issues.  [T5478 T6488 T6499 et.al.]
+
+(de) Kleopatra: Das Ver- und Entschlüsseln von Dateiordnern wurde komplett
+     überarbeitet, so dass es nun in Kleopatra etwa genau so schnell ist
+     wie auf der Kommandozeile.  Die neue Architektur ist zudem deutlich
+     robuster und ermöglicht auch zukünftige Leistungsverbesserungen.
+     Auch wurden dadurch mehrere Probleme behoben.  [T5478 T6488 T6499 et.al.]
+
+(en) Kleopatra: The progress indicator now also works for very large data
+     files. [T6534]
+
+(de) Kleopatra: Die Fortschrittsanzeige funktioniert nun auch für sehr große
+     Dateien. [T6534]
+
+(en) Kleopatra: It is now possible to rename the output file, if a file
+     with the same name already exists, instead of just overwriting or
+     canceling. [T6372]
+
+(de) Kleopatra: Es ist nun möglich, die Ausgabedateien von Kleopatra
+     umzubenennen, wenn eine Datei mit dem gleichen Namen bereits existiert,
+     statt nur überschreiben oder abbrechen zu können. [T6372]
+
+(en) Kleopatra: It is now offered to delete the secret key on the computer
+     after it was successfully transferred to a smart card. [T5836]
+
+(de) Kleopatra: Es wird nun angeboten, den geheimen Schlüssel auf dem Computer
+     zu löschen, wenn er erfolgreich auf eine Smartcard verschoben wurde.
+     [T5836]
+
+(en) Kleopatra: Added warnings when your certificate or other certificates
+     in your keyring are about to expire.  The warnings are configurable
+     and should allow a smoother switch to a new or extended certificate.
+     [T6452]
+
+(de) Kleopatra: Es wird nun gemeldet, wenn das eigene Zertifikat oder
+     Zertifikate von Kommunikationspartnern bald ablaufen.
+     Dies ist konfigurierbar und soll helfen, einen Austausch von neuen
+     bzw. verlängerten Zertifikaten frühzeitig durchzuführen. [T6452]
+
+(en) Kleopatra: The Notepad now also uses the last chosen certificates for
+     signing and self-encryption as default.
+     The values are shared with file encryption.[T6415]
+
+(de) Kleopatra: Der Notizblock verwendet nun auch das letztgewählte
+     Signatur- sowie eigene Verschlüsselungs-Zertifikat als Standard.
+     Die Werte werden mit der Dateiverschlüsselung geteilt. [T6415]
+
+(en) Kleopatra: The startup time of Kleopatra has been greatly improved.
+     [T6259]
+
+(de) Kleopatra: Die Startzeit von Kleopatra wurde deutlich verbessert. [T6259]
+
+(en) Kleopatra: The certificate selection input and dropdown fields are now
+     alphabetically sorted. [T6492, T6514]
+
+(de) Kleopatra: Die vorgeschlagenen Zertifikate in den Eingabefeldern und in
+     der Dropdown Auswahl werden nun alphabetisch sortiert. [T6492, T6514]
+
+(en) Kleopatra: Backed up subkeys can now be restored through the UI even when
+     they were used from a smart card in between. [T3456, T3391]
+
+(de) Kleopatra: Gesicherte Unterschlüssel können nun über die
+     Benutzeroberfläche wiederhergestellt werden, auch wenn sie
+     zwischenzeitlich über eine Smartcard genutzt wurden. [T3456, T3391]
+
+(en) Kleopatra: For certifications of public keys it is now possible to
+     configure a default validity period. [T6452]
+
+(de) Kleopatra: Für Beglaubigungen von Zertifikaten kann nun eine Standard
+     Gültigkeitsdauer konfiguriert werden. [T6452]
+
+(en) Kleopatra: When extending the validity period of a certificate,
+     the default for new ones is now preset. [T6479]
+
+(de) Kleopatra: Beim Verlängern der Gültigkeitsdauer von Zertifikaten
+     wird nun der gleiche Zeitraum vorbelegt wie beim Erstellen von Neuen.
+     [T6479]
+
+(en) Kleopatra: The default validity of new certificates is now three years
+     instead of two. This can be changed through configuration. [T2701]
+
+(de) Kleopatra: Die Standard Gültigkeitsdauer für neue Zertifikate wurde
+     von zwei auf drei Jahre erhöht. Dies kann in den Einstellungen geändert
+     werden. [T2701]
 
 (en) GpgOL: Added support for RFC2231 encoded attachment filenames,
      which increases compatibility with Apple Mail. [T6604]
@@ -263,6 +395,80 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 (de) GnuPG: Der Parser für das PKCS#12 Dateiformat wurde erweitert,
      um mehr Formate zu unterstützen. Dies sollte Probleme beim Import von
      .p12 Dateien in Kleopatra beheben. [T6536]
+
+(en) GnuPG/Kleopatra: Error handling for permission and write errors has
+     been improved across the board. [T6528]
+
+(de) GnuPG/Kleopatra: Die Fehlerbehandlung von Dateiberechtigungs- und
+     Schreibfehlern wurde grundsätzlich verbessert. [T6528]
+
+(en) Kleopatra: An accidental timeout when creating checksum files has been
+     removed. This could result in empty or incomplete checksum files. [T6573]
+
+(de) Kleopatra: Ein unbeabsichtigter Timeout bei der Erstellung von
+     Prüfsummendateien wurde entfernt. Dieser konnte zu unvollständigen
+     oder leeren Prüfsummendateien führen. [T6573]
+
+(en) Kleopatra: The validity period of all subkeys is now extended
+     even if the primary key was already expired.
+     This fixes the case where seemingly extended keys were no
+     longer usable for encryption. [T6473]
+
+(de) Kleopatra: Die Gültigkeitsdauer von Unterschlüsseln wird nun auch
+     mit verlängert, wenn der Primärschlüssel bereits abgelaufen ist.  Dies
+     behebt das Problem, dass augenscheinlich verlängerte Schlüssel nicht mehr
+     zum Verschlüsseln verwendet werden konnten. [T6473]
+
+(en) Kleopatra: A rare occurrence, where encryption only keys would be offered
+     as signing keys, has been fixed. [T6456]
+
+(de) Kleopatra: Ein seltener Fall, bei dem Schlüssel ohne Signaturfunktion
+     zum Signieren angeboten wurden, wurde behoben. [T6456]
+
+(en) Kleopatra: Some obsolete configuration options have been removed.
+     [T6326 T6327]
+
+(de) Kleopatra: Einige überflüssige Konfigurationsoptionen wurden entfernt.
+     [T6326 T6327]
+
+(en) Kleopatra: The button "What's this" in the right upper corner has
+     been removed, since it was only used in very few places. [T6318]
+
+(de) Kleopatra: Der Knopf für kontextbasierte Hilfe in der oberen rechten
+     Fensterecke wurde entfernt, da er nahezu keine Funktion hatte. [T6318]
+
+(en) Kleopatra: Canceling file operations now reliably cancels the underlying
+     backend operations, too. [T6524]
+
+(de) Kleopatra: Das Abbrechen von Dateioperationen sorgt nun zuverlässig dafür,
+     dass auch die entsprechenden Hintergrund Operationen abgebrochen werden.
+     [T6524]
+
+(en) Kleopatra: A number of encoding problems when displaying output from the
+     backend have been solved. [T5960]
+
+(de) Kleopatra: Eine Reihe von Zeichensatzproblemen bei der Anzeige wurde
+     behoben, z.B. bei Umlauten aus der GnuPG Ausgabe. [T5960]
+
+(en) Kleopatra: A cause for longer loading time of the certificate list at
+     startup was fixed. [T6261]
+
+(de) Kleopatra: Eine Ursache für längere Ladedauer der Zertifikatsliste
+     beim Start wurde behoben. [T6261]
+
+(en) Kleopatra: Selecting cancel when exporting a secret subkey now properly
+     cancels instead of creating a file without the secret part. [T5755]
+
+(de) Kleopatra: Beim Exportieren eines geheimen Unterschlüssels wird nun bei
+     einem Abbruch korrekt abgebrochen und keine Datei ohne den geheimen
+     Anteil erstellt. [T5755]
+
+(en) Kleopatra: When importing secret keys you do not want to mark as your own,
+     it is no longer asked multiple times if it is your own key. [T6474]
+
+(de) Kleopatra: Beim Importieren geheimer Schlüssel, die nicht als eigene
+     markiert werden sollen, wird nun nicht mehr mehrfach nachgefragt, ob
+     es der eigene Schlüssel ist. [T6474]
 
 (en) Kleopatra: The state of Kleopatra is now properly stored in
      configuration files when Kleopatra is shut down on user log out.
@@ -360,209 +566,6 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 (de) GpgOL: Das Erstellen von Schlüsseln über den
      Sicherheitsbestätigungs-Dialog funktioniert nun wie vorgesehen.
      [T6813 T6823 T6566]
-
---------Changes in Gpg4win 4.2.0 ------------
-
-(en) Kleopatra: Folder encryption and decryption (gpgtar) has been completely
-     reworked so that it now has roughly the same performance as on the
-     command line. The new architecture also allows for further performance
-     improvements in the future and is much more robust.  And solves several
-     issues.  [T5478 T6488 T6499 et.al.]
-
-(de) Kleopatra: Das Ver- und Entschlüsseln von Dateiordnern wurde komplett
-     überarbeitet, so dass es nun in Kleopatra etwa genau so schnell ist
-     wie auf der Kommandozeile.  Die neue Architektur ist zudem deutlich
-     robuster und ermöglicht auch zukünftige Leistungsverbesserungen.
-     Auch wurden dadurch mehrere Probleme behoben.  [T5478 T6488 T6499 et.al.]
-
-(en) Kleopatra: The progress indicator now also works for very large data
-     files. [T6534]
-
-(de) Kleopatra: Die Fortschrittsanzeige funktioniert nun auch für sehr große
-     Dateien. [T6534]
-
-(en) Kleopatra: It is now possible to rename the output file, if a file
-     with the same name already exists, instead of just overwriting or
-     canceling. [T6372]
-
-(de) Kleopatra: Es ist nun möglich, die Ausgabedateien von Kleopatra
-     umzubenennen, wenn eine Datei mit dem gleichen Namen bereits existiert,
-     statt nur überschreiben oder abbrechen zu können. [T6372]
-
-(en) Kleopatra: It is now offered to delete the secret key on the computer
-     after it was successfully transferred to a smart card. [T5836]
-
-(de) Kleopatra: Es wird nun angeboten, den geheimen Schlüssel auf dem Computer
-     zu löschen, wenn er erfolgreich auf eine Smartcard verschoben wurde.
-     [T5836]
-
-(en) Kleopatra: Added warnings when your certificate or other certificates
-     in your keyring are about to expire.  The warnings are configurable
-     and should allow a smoother switch to a new or extended certificate.
-     [T6452]
-
-(de) Kleopatra: Es wird nun gemeldet, wenn das eigene Zertifikat oder
-     Zertifikate von Kommunikationspartnern bald ablaufen.
-     Dies ist konfigurierbar und soll helfen, einen Austausch von neuen
-     bzw. verlängerten Zertifikaten frühzeitig durchzuführen. [T6452]
-
-(en) Kleopatra: The Notepad now also uses the last chosen certificates for
-     signing and self-encryption as default.
-     The values are shared with file encryption.[T6415]
-
-(de) Kleopatra: Der Notizblock verwendet nun auch das letztgewählte
-     Signatur- sowie eigene Verschlüsselungs-Zertifikat als Standard.
-     Die Werte werden mit der Dateiverschlüsselung geteilt. [T6415]
-
-(en) Kleopatra: The startup time of Kleopatra has been greatly improved.
-     [T6259]
-
-(de) Kleopatra: Die Startzeit von Kleopatra wurde deutlich verbessert. [T6259]
-
-(en) Kleopatra: The certificate selection input and dropdown fields are now
-     alphabetically sorted. [T6492, T6514]
-
-(de) Kleopatra: Die vorgeschlagenen Zertifikate in den Eingabefeldern und in
-     der Dropdown Auswahl werden nun alphabetisch sortiert. [T6492, T6514]
-
-(en) Kleopatra: Backed up subkeys can now be restored through the UI even when
-     they were used from a smart card in between. [T3456, T3391]
-
-(de) Kleopatra: Gesicherte Unterschlüssel können nun über die
-     Benutzeroberfläche wiederhergestellt werden, auch wenn sie
-     zwischenzeitlich über eine Smartcard genutzt wurden. [T3456, T3391]
-
-(en) Kleopatra: For certifications of public keys it is now possible to
-     configure a default validity period. [T6452]
-
-(de) Kleopatra: Für Beglaubigungen von Zertifikaten kann nun eine Standard
-     Gültigkeitsdauer konfiguriert werden. [T6452]
-
-(en) Kleopatra: When extending the validity period of a certificate,
-     the default for new ones is now preset. [T6479]
-
-(de) Kleopatra: Beim Verlängern der Gültigkeitsdauer von Zertifikaten
-     wird nun der gleiche Zeitraum vorbelegt wie beim Erstellen von Neuen.
-     [T6479]
-
-(en) Kleopatra: The default validity of new certificates is now three years
-     instead of two. This can be changed through configuration. [T2701]
-
-(de) Kleopatra: Die Standard Gültigkeitsdauer für neue Zertifikate wurde
-     von zwei auf drei Jahre erhöht. Dies kann in den Einstellungen geändert
-     werden. [T2701]
-
-(en) GpgOL: Now offers to create a OpenPGP certificate, if none with
-     signing capability exists and only signing is requested. [T5869]
-
-(de) GpgOL: Es wird nun auch angeboten, ein OpenPGP Zertifikat zu erstellen,
-     falls keins mit dieser Eigenschaft vorhanden und nur Signieren
-     ausgewählt ist. [T5869]
-
-(en) GnuPG: The PKCS#12 (.p12 files) parser has been rewritten to increase
-     compatibility with other PKCS#12 implementations. [T6536]
-
-(de) GnuPG: Der PKCS#12 (.p12 Dateien) code wurde umgeschrieben, um die
-     Kompatibilität mit anderen PKCS#12 Implementationen zu verbessern.
-     [T6536]
-
-(en) GnuPG: S/MIME certificate listings have been sped up on Windows.
-     [rG08ff55bd44]
-
-(de) GnuPG: S/MIME Zertifikatsabfragen wurden unter Windows beschleunigt.
-     [rG08ff55bd44]
-
-(en) GnuPG: A new option "ADSK" has been added to signal the intention that
-     messages should be encrypted to multiple subkeys.
-     [T6395, https://gnupg.org/blog/20230321-adsk.html]
-
-(de) GnuPG: Die neue Option "ADSK" wurde hinzugefügt, um zu signalisieren,
-     dass an mehrere Unterschlüssel gleichzeitig verschlüsselt werden sollte.
-     [T6395, https://gnupg.org/blog/20230321-adsk.html]
-
-(en) GnuPG: There are now more compressed formats detected for which GnuPG then
-     automatically disables its builtin compression. This can result in
-     significant speed ups. [T6332]
-
-(de) GnuPG: Es werden nun mehr Daten als bereits komprimiert erkannt, für welche
-     GnuPG dann die interne Kompression automatisch ausschaltet. Dies kann zu
-     signifikanten Leistungsverbesserungen führen. [T6332]
-
---- Bug fixes ---
-
-(en) Kleopatra: An accidental timeout when creating checksum files has been
-     removed. This could result in empty or incomplete checksum files. [T6573]
-
-(de) Kleopatra: Ein unbeabsichtigter Timeout bei der Erstellung von
-     Prüfsummendateien wurde entfernt. Dieser konnte zu unvollständigen
-     oder leeren Prüfsummendateien führen. [T6573]
-
-(en) Kleopatra: The validity period of all subkeys is now extended
-     even if the primary key was already expired.
-     This fixes the case where seemingly extended keys were no
-     longer usable for encryption. [T6473]
-
-(de) Kleopatra: Die Gültigkeitsdauer von Unterschlüsseln wird nun auch
-     mit verlängert, wenn der Primärschlüssel bereits abgelaufen ist.  Dies
-     behebt das Problem, dass augenscheinlich verlängerte Schlüssel nicht mehr
-     zum Verschlüsseln verwendet werden konnten. [T6473]
-
-(en) Kleopatra: A rare occurrence, where encryption only keys would be offered
-     as signing keys, has been fixed. [T6456]
-
-(de) Kleopatra: Ein seltener Fall, bei dem Schlüssel ohne Signaturfunktion
-     zum Signieren angeboten wurden, wurde behoben. [T6456]
-
-(en) Kleopatra: Some obsolete configuration options have been removed.
-     [T6326 T6327]
-
-(de) Kleopatra: Einige überflüssige Konfigurationsoptionen wurden entfernt.
-     [T6326 T6327]
-
-(en) Kleopatra: The button "What's this" in the right upper corner has
-     been removed, since it was only used in very few places. [T6318]
-
-(de) Kleopatra: Der Knopf für kontextbasierte Hilfe in der oberen rechten
-     Fensterecke wurde entfernt, da er nahezu keine Funktion hatte. [T6318]
-
-(en) Kleopatra: Canceling file operations now reliably cancels the underlying
-     backend operations, too. [T6524]
-
-(de) Kleopatra: Das Abbrechen von Dateioperationen sorgt nun zuverlässig dafür,
-     dass auch die entsprechenden Hintergrund Operationen abgebrochen werden.
-     [T6524]
-
-(en) Kleopatra: A number of encoding problems when displaying output from the
-     backend have been solved. [T5960]
-
-(de) Kleopatra: Eine Reihe von Zeichensatzproblemen bei der Anzeige wurde
-     behoben, z.B. bei Umlauten aus der GnuPG Ausgabe. [T5960]
-
-(en) Kleopatra: A cause for longer loading time of the certificate list at
-     startup was fixed. [T6261]
-
-(de) Kleopatra: Eine Ursache für längere Ladedauer der Zertifikatsliste
-     beim Start wurde behoben. [T6261]
-
-(en) Kleopatra: Selecting cancel when exporting a secret subkey now properly
-     cancels instead of creating a file without the secret part. [T5755]
-
-(de) Kleopatra: Beim Exportieren eines geheimen Unterschlüssels wird nun bei
-     einem Abbruch korrekt abgebrochen und keine Datei ohne den geheimen
-     Anteil erstellt. [T5755]
-
-(en) Kleopatra: When importing secret keys you do not want to mark as your own,
-     it is no longer asked multiple times if it is your own key. [T6474]
-
-(de) Kleopatra: Beim Importieren geheimer Schlüssel, die nicht als eigene
-     markiert werden sollen, wird nun nicht mehr mehrfach nachgefragt, ob
-     es der eigene Schlüssel ist. [T6474]
-
-(en) GnuPG/Kleopatra: Error handling for permission and write errors has
-     been improved across the board. [T6528]
-
-(de) GnuPG/Kleopatra: Die Fehlerbehandlung von Dateiberechtigungs- und
-     Schreibfehlern wurde grundsätzlich verbessert. [T6528]
 
 (en) GpgOL: An issue has been fixed where crypto mails would show up empty
      if text/plain display was preferred. [T6357]
