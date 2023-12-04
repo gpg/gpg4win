@@ -16,18 +16,23 @@ Noteworthy changes in Version 3.2.0 (unreleased)
      as little attack surface as possible. It does not support any active
      content like JavaScript or media files in PDF documents. It should
      therefore be more suitable in high security environments than other
-     PDF readers.
+     PDF readers. Okular is not installed by default.
+     The feature can be selected in the advanced installer
+     dialog or bei setting "INST_OKULAR=true" when installing the package.
 
 (de) Okular (GnuPG Edition): GnuPG VS-Desktop wurde um den beliebten Okular
-     PDF Reader ergänzt. noch nicht per default installiert, ermöglicht es aber
-     , Dokumente
-     rechtsverbindlich mit den in GnuPG unterstützten S/MIME Zertifikaten und
-     Smartcards zu unterschreiben bzw. zu prüfen.
+     PDF Reader ergänzt. Dieser ermöglicht es Dokumente rechtsverbindlich mit
+     den in GnuPG unterstützten S/MIME Zertifikaten und Smartcards zu
+     unterschreiben bzw. zu prüfen.
      Die GnuPG Edition von Okular ist zudem darauf optimiert, leichtgewichtig
      zu sein und eine möglichst geringe Angriffsfläche zu bieten. So werden
      beispielsweise keine aktiven Inhalte wie Mediendateien oder JavaScript
      unterstützt. Sie sollte daher in Umgebungen mit hohen
      Sicherheitsanforderungen geeigneter sein als andere PDF Reader.
+     Okular wird noch nicht in der per Standard installiert.
+     Die Installation von Okular kann unter "Erweitert" im Installer
+     ausgewählt werden oder durch "INST_OKULAR=true" als Parameter
+     übergeben werden.
 
 (en) Kleopatra: A new mail viewer mode has been added, allowing crypto
      mails received by mail clients without PGP/MIME or S/MIME support
