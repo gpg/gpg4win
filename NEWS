@@ -71,6 +71,18 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 (de) Kleopatra: Es ist nun möglich, mehrere Zertifikate gleichzeitig
      über die Gruppen-Verwaltung zu beglaubigen. [T6469]
 
+(en) Kleopatra: Folder encryption and decryption (gpgtar) has been completely
+     reworked so that it now has roughly the same performance as on the
+     command line. The new architecture also allows for further performance
+     improvements in the future and is much more robust.  And solves several
+     issues.  [T5478 T6488 T6499 et.al.]
+
+(de) Kleopatra: Das Ver- und Entschlüsseln von Dateiordnern wurde komplett
+     überarbeitet, so dass es nun in Kleopatra etwa genau so schnell ist
+     wie auf der Kommandozeile.  Die neue Architektur ist zudem deutlich
+     robuster und ermöglicht auch zukünftige Leistungsverbesserungen.
+     Auch wurden dadurch mehrere Probleme behoben.  [T5478 T6488 T6499 et.al.]
+
 (en) Installer: The installer now properly terminates running background
      processes, eliminating the need to restart the computer after upgrading
      to a new GnuPG VS-Desktop version. [T6567]
@@ -216,18 +228,6 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 
 (de) Kleopatra: Fortschrittsbalken werden nun auch korrekt für
      S/MIME-Dateioperationen angezeigt. [T6534]
-
-(en) Kleopatra: Folder encryption and decryption (gpgtar) has been completely
-     reworked so that it now has roughly the same performance as on the
-     command line. The new architecture also allows for further performance
-     improvements in the future and is much more robust.  And solves several
-     issues.  [T5478 T6488 T6499 et.al.]
-
-(de) Kleopatra: Das Ver- und Entschlüsseln von Dateiordnern wurde komplett
-     überarbeitet, so dass es nun in Kleopatra etwa genau so schnell ist
-     wie auf der Kommandozeile.  Die neue Architektur ist zudem deutlich
-     robuster und ermöglicht auch zukünftige Leistungsverbesserungen.
-     Auch wurden dadurch mehrere Probleme behoben.  [T5478 T6488 T6499 et.al.]
 
 (en) Kleopatra: The progress indicator now also works for very large data
      files. [T6534]
