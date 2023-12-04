@@ -996,6 +996,7 @@ gnupg-vsd/$(1)/VERSION: gnupg-vsd/custom.mk $(stampdir)/stamp-betanum
 	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> gnupg-vsd/$(1)/VERSION
 	echo "bugAddress=$(VSD_BUG_REPORT)" >> gnupg-vsd/$(1)/VERSION
 	echo "homepage=$(VSD_HOMEPAGE)" >> gnupg-vsd/$(1)/VERSION
+	echo "displayName=$(OKULAR_DISPLAY_NAME)" >> gnupg-vsd/$(1)/VERSION
 
 gnupg-vsd/$(1)/announcement.txt: gnupg-vsd/custom.mk gnupg-vsd/announcement.de.in gnupg-vsd/announcement.en.in
 	cat gnupg-vsd/$(call GETVAR,msi_target_$(1)_announcement) | \
