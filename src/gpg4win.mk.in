@@ -1195,7 +1195,7 @@ $(stampdir)/stamp-all-upload: $(stampdir)/stamp-dist-self \
 	cat $(addsuffix -upload, $(addprefix $(stampdir)/stamp-,$(msi_targets)))
 	gpg --yes -o gnupg-vsd-$(VERSION).tar.xz.sig -bau $(msi_signkey) \
 		../gpg4win-$(VERSION).tar.xz
-	rsync -vP ../gpg4win-$(VERSION).tar.xz $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VSD_VERSION).tar.bz2
+	rsync -vP ../gpg4win-$(VERSION).tar.xz $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VSD_VERSION).tar.xz
 	rsync -vP gnupg-vsd-$(VERSION).tar.xz.sig $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VSD_VERSION).tar.xz.sig
 	echo "Source links:"
 	echo "https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.xz"
