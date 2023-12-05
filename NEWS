@@ -2,6 +2,18 @@
 #
 # The version numbers given are used by gpg4win and GnuPG [VS-]Desktop
 
+Noteworthy changes in Version 3.2.1 (unreleased)
+------------------------------------------------
+
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.42
+Kleopatra:      3.2.0
+GpgOL:          2.5.11
+GpgEX:          1.0.10
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
 
 Noteworthy changes in Version 3.2.0 (2023-12-04)
 ------------------------------------------------
