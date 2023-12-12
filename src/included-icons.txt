@@ -19,6 +19,7 @@ bookmark-new
 bookmark-remove
 bookmarks
 cell_edit
+change-date-symbolic
 checkmark
 collapse-all
 collapse
