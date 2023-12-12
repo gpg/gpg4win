@@ -31,6 +31,7 @@ ICONS=$(find /usr/share/icons/breeze -name \*.svg | \
 PACKAGES="kleopatra
     okular
     poppler
+    gpgpass
     mimetreeparser
     libkleo
     gpg4win-tools

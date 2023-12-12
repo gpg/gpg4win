@@ -300,3 +300,8 @@ insert-horizontal-rule
 insert-link
 preferences-desktop-text-to-speech
 tools-check-spelling
+applications-system
+password-show-on
+view-barcode
+view-barcode-qr
+x-office-address-book

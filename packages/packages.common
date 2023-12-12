@@ -73,6 +73,14 @@ chk  b44705dd71ca4538c86fb16248483ab4b48978524fb1da5097bd76aa2e0f0c33
 file PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.bz2
 chk  8d36cd8cb6ea2a4c2bb358ff6411b0c788633a2a45dabbf1aeb4b701d1b5e840
 
+# qrencode for prison
+# last-changed: 2023-11-30
+# by ah
+# verified: verification of checksum from multiple sources
+server https://fukuchi.org/works/qrencode/
+file qrencode-4.1.1.tar.gz
+chk da448ed4f52aba6bcb0cd48cac0dd51b8692bccc4cd127431402fca6f8171e8e
+
 #
 # GIMP stuff for W32
 #
@@ -497,6 +505,12 @@ chk 593ba654a8b5f61af95fec3fd0b269a8f5e89dbed54d62aafb41a0ce0146eeba
 file 5.109/kcalendarcore-5.109.0.tar.xz
 chk 8581e0e2ac540ce4c8ea76fb61c61234c85c3c908e70b8b5afd0b8ca244edad4
 
+# prison
+# last changed: 2023-11-30
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/prison-5.109.0.tar.xz
+chk 8109d7daada25735e4aa9c0f0b51640f34386aa51a9d03bb49b84a0359e8bcde
 
 ### END PASTE ###
 
@@ -533,6 +547,13 @@ server https://gnupg.org/ftp/gcrypt/snapshots
 # verified: Tarball created by aheinecke.
 file gpg4win-tools/gpg4win-tools-202311210840.tar.xz
 chk 312e90d9073e6409426db7d603e67b1430256131d9d652da15ac2a27ca5658d3
+
+# gpgpass
+# last changed: 2023-12-12
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file gpgpass/gpgpass-202312121150.tar.xz
+chk 6cc3eec7bec7ebe32860c86e97d541e8b53836d50150a392270ba2e05d30201a
 
 # mimetreeparser
 # last changed: 2023-12-03

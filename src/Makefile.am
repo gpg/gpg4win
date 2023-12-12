@@ -95,6 +95,9 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-mimetreeparser.nsi uninst-mimetreeparser.nsi \
         inst-kcalendarcore.nsi uninst-kcalendarcore.nsi \
         inst-libical.nsi uninst-libical.nsi \
+        inst-qrencode.nsi uninst-qrencode.nsi \
+        inst-prison.nsi uninst-prison.nsi \
+        inst-gpgpass.nsi uninst-gpgpass.nsi \
         inst-final.nsi index.theme \
         slideshow/slides.dat \
         slideshow/slide1-gpgol.png \
@@ -138,7 +141,7 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
 		gpa opencdk jpeg \
 		pinentry libassuan ntbtls pcre \
-		paperkey regex libiconv gettext scute
+		paperkey regex libiconv gettext scute qrencode
 
 gpg4win_qtpkgs = qtbase qttools qtwinextras qtsvg qttranslations
 
@@ -150,7 +153,7 @@ gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   gpg4win-tools kcrash kio kbookmarks kservice solid \
                   kjobwidgets poppler okular freetype threadweaver \
                   kparts tiff openjpeg sonnet ktextwidgets mimetreeparser \
-                  libical kcalendarcore kmbox pcre2
+                  libical kcalendarcore kmbox pcre2 prison gpgpass
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \

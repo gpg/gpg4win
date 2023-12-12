@@ -10,5 +10,6 @@ src/inst-gpgol.nsi
 src/inst-gpgme-browser.nsi
 src/inst-kleopatra.nsi
 src/inst-okular.nsi
+src/inst-gpgpass.nsi
 src/inst-compendium.nsi
 src/installer-finish.nsi
