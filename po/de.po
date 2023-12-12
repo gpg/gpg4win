@@ -512,6 +512,16 @@ msgstr ""
 "Starte das PDF Anzeigeprogramm Okular um Dokumente mit GnuPG zu signieren "
 "und zu verifizieren."
 
+msgctxt "DESC_SEC_gpgpass"
+msgid ""
+"A password manager which uses GnuPG to decrypt and encrypt your passwords."
+msgstr ""
+
+#, fuzzy
+msgctxt "DESC_Menu_gpgpass"
+msgid "Run the GnuPG Password Manager"
+msgstr "Die Schlüsselverwaltung aufrufen"
+
 #~ msgctxt "T_ShowReadme"
 #~ msgid "Show the README file"
 #~ msgstr "Die README Datei anzeigen"
@@ -568,10 +578,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Achtung: Für eine erfolgreiche Installation werden Administratorrechte "
 #~ "benötigt."
-
-#~ msgctxt "T_RunKeyManager"
-#~ msgid "Run the key manager"
-#~ msgstr "Die Schlüsselverwaltung aufrufen"
 
 #~ msgctxt "T_FoundExistingVersionB"
 #~ msgid ""

@@ -60,7 +60,8 @@ FRAMEWORKS="extra-cmake-modules
     kparts
     ktextwidgets
     sonnet
-    kcalendarcore"
+    kcalendarcore
+    prison"
 
 fullversion=$1
 case ${fullversion} in

@@ -449,6 +449,15 @@ msgctxt "DESC_Menu_okular"
 msgid "Run the Okular PDF viewer to sign and verify documents with GnuPG."
 msgstr ""
 
+msgctxt "DESC_SEC_gpgpass"
+msgid ""
+"A password manager which uses GnuPG to decrypt and encrypt your passwords."
+msgstr ""
+
+msgctxt "DESC_Menu_gpgpass"
+msgid "Run the GnuPG Password Manager"
+msgstr ""
+
 #~ msgctxt "T_ShowReadme"
 #~ msgid "Show the README file"
 #~ msgstr "Mostrar o ficheiro README"

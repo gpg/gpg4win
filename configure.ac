@@ -271,6 +271,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_SPKG([gettext], [libiconv])
     GPG4WIN_SPKG([libpng], [zlib])
     GPG4WIN_SPKG([jpeg])
+    GPG4WIN_SPKG([qrencode], [libpng libiconv])
 
     # Packages needed for gpgex
     GPG4WIN_SPKGEX([libgpg-error])
@@ -331,6 +332,8 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([libical])
     GPG4WIN_KDEPKG([kcalendarcore], [qtbase libical extra-cmake-modules])
     GPG4WIN_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmbox kmime kcodecs kcalendarcore])
+    GPG4WIN_KDEPKG([prison], [qtbase extra-cmake-modules qrencode])
+    GPG4WIN_KDEPKG([gpgpass], [prison kconfigwidgets kiconthemes ki18n gpgme])
 
     GPG4WIN_FINALIZE
 fi
@@ -414,6 +417,10 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([poppler], [gpgme kio qtbase freetype])
     APPIMAGE_KDEPKG([okular], [kparts gpgme kio poppler threadweaver qtsvg kactivities])
 
+    # Gpgpass
+    APPIMAGE_SPKG([qrencode], [libpng libiconv])
+    APPIMAGE_KDEPKG([prison], [qtbase extra-cmake-modules qrencode])
+    APPIMAGE_KDEPKG([gpgpass], [prison kconfigwidgets kiconthemes ki18n gpgme])
     APPIMAGE_FINALIZE
 fi
 

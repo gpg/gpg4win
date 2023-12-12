@@ -300,6 +300,18 @@
 !define gpg4win_pkg_mimetreeparser @gpg4win_pkg_mimetreeparser@
 !define gpg4win_pkg_mimetreeparser_version @gpg4win_pkg_mimetreeparser_version@
 
+@HAVE_PKG_QRENCODE@
+!define gpg4win_pkg_qrencode @gpg4win_pkg_qrencode@
+!define gpg4win_pkg_qrencode_version @gpg4win_pkg_qrencode_version@
+
+@HAVE_PKG_PRISON@
+!define gpg4win_pkg_prison @gpg4win_pkg_prison@
+!define gpg4win_pkg_prison_version @gpg4win_pkg_prison_version@
+
+@HAVE_PKG_GPGPASS@
+!define gpg4win_pkg_gpgpass @gpg4win_pkg_gpgpass@
+!define gpg4win_pkg_gpgpass_version @gpg4win_pkg_gpgpass_version@
+
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@
 

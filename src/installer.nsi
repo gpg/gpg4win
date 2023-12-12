@@ -410,6 +410,7 @@ Function KillOtherAppsOrWarn
    g4wihelp::KillProc "dirmngr.exe"
    g4wihelp::KillProc "gpgsm.exe"
    g4wihelp::KillProc "okular.exe"
+   g4wihelp::KillProc "gpgpass.exe"
 goto leave
 # TODO check for running outlook and offer to kill it.
    print_warning:
@@ -424,9 +425,13 @@ Function un.CloseApps
    g4wihelp::KillProc "overlayer.exe"
    g4wihelp::KillProc "gpg-agent.exe"
    g4wihelp::KillProc "gpg.exe"
+   g4wihelp::KillProc "keyboxd.exe"
+   g4wihelp::KillProc "scdaemon.exe" # should die with the agent
+   g4wihelp::KillProc "gpgolconfig.exe"
    g4wihelp::KillProc "dirmngr.exe"
    g4wihelp::KillProc "gpgsm.exe"
    g4wihelp::KillProc "okular.exe"
+   g4wihelp::KillProc "gpgpass.exe"
 FunctionEnd
 
 # Called right before installation
@@ -561,7 +566,7 @@ LangString T_FoundOldClaws ${LANG_ENGLISH} \
 LangString T_WinisDeprecated ${LANG_ENGLISH} \
    "Windows Versions before Windows 7 are no longer maintained by Gpg4win. \
     $\r$\nSupport for them may be removed in a future version.\
-    $\r$\n$\r$\nKleopatra and Okular are disabled."
+    $\r$\n$\r$\nKleopatra, Okular and GnuPG Password Manager are disabled."
 
 # From Function WelcomeFunction
 LangString T_UPDATE_STR ${LANG_ENGLISH} \
@@ -765,6 +770,9 @@ FunctionEnd
 !endif
 !ifdef HAVE_PKG_OKULAR
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_okular} $(DESC_SEC_okular)
+!endif
+!ifdef HAVE_PKG_GPGPASS
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgpass} $(DESC_SEC_gpgpass)
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_novice_en} $(DESC_SEC_man_novice_en)

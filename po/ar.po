@@ -420,6 +420,16 @@ msgctxt "DESC_Menu_okular"
 msgid "Run the Okular PDF viewer to sign and verify documents with GnuPG."
 msgstr ""
 
+msgctxt "DESC_SEC_gpgpass"
+msgid ""
+"A password manager which uses GnuPG to decrypt and encrypt your passwords."
+msgstr ""
+
+#, fuzzy
+msgctxt "DESC_Menu_gpgpass"
+msgid "Run the GnuPG Password Manager"
+msgstr "شغّل مدير المفاتيح"
+
 #~ msgctxt "T_ShowReadme"
 #~ msgid "Show the README file"
 #~ msgstr "طالع ملف README"
@@ -481,10 +491,6 @@ msgstr ""
 #~ msgid ""
 #~ "Warning: Administrator permissions required for a successful installation"
 #~ msgstr "تحذير: تحتاج إلى صلاحيات المدير لإتمام التثبيت"
-
-#~ msgctxt "T_RunKeyManager"
-#~ msgid "Run the key manager"
-#~ msgstr "شغّل مدير المفاتيح"
 
 #~ msgctxt "T_FoundExistingVersionB"
 #~ msgid ""

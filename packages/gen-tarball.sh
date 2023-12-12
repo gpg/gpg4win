@@ -58,7 +58,7 @@ case ${package} in
         is_gpg="yes"
         is_w32="yes"
         ;;
-    gpg4win-tools)
+    gpg4win-tools | gpgpass)
         repo=git://git.gnupg.org/${package}.git
         ;;
     mimetreeparser)

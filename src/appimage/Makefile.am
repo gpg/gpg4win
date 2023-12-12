@@ -30,7 +30,7 @@ stampdir := $(root)/stamps
 # Source packages for the AppImage (see also ../src/Makefile.am)
 appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
-		 freetype
+		 freetype qrencode
 
 
 appimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
@@ -47,7 +47,8 @@ appimage_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   kcrash kdbusaddons kio kbookmarks kservice solid \
 		   kjobwidgets libical kcalendarcore mimetreeparser \
 		   sonnet ktextwidgets kauth \
-		   threadweaver kparts poppler okular kactivities
+		   threadweaver kparts poppler okular kactivities \
+		   prison gpgpass
 
 # Binary packages for the AppImage
 # appimage_bpkgs =

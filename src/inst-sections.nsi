@@ -201,6 +201,15 @@
 !ifdef HAVE_PKG_LIBICAL
 !include "inst-libical.nsi"
 !endif
+!ifdef HAVE_PKG_QRENCODE
+!include "inst-qrencode.nsi"
+!endif
+!ifdef HAVE_PKG_PRISON
+!include "inst-prison.nsi"
+!endif
+!ifdef HAVE_PKG_GPGPASS
+!include "inst-gpgpass.nsi"
+!endif
 !ifdef HAVE_PKG_PAPERKEY
 !include "inst-paperkey.nsi"
 !endif
@@ -453,6 +462,15 @@
 !ifdef HAVE_PKG_MIMETREEPARSER
 !include "uninst-mimetreeparser.nsi"
 !endif
+!ifdef HAVE_PKG_QRENCODE
+!include "uninst-qrencode.nsi"
+!endif
+!ifdef HAVE_PKG_PRISON
+!include "uninst-prison.nsi"
+!endif
+!ifdef HAVE_PKG_GPGPASS
+!include "uninst-gpgpass.nsi"
+!endif
 !ifdef HAVE_PKG_SONNET
 !include "uninst-sonnet.nsi"
 !endif
@@ -489,6 +507,17 @@ calc_defaults_kleopatra_done:
   StrCmp $R0 "0" 0 calc_defaults_okular_done
    !insertmacro UnselectSection ${SEC_okular}
 calc_defaults_okular_done:
+!endif
+
+!ifdef HAVE_PKG_GPGPASS
+  g4wihelp::config_fetch_bool "inst_gpgpass"
+  StrCmp $R0 "1" 0 calc_defaults_gpgpass_not_one
+   !insertmacro SelectSection ${SEC_gpgpass}
+   Goto calc_defaults_gpgpass_done
+  calc_defaults_gpgpass_not_one:
+  StrCmp $R0 "0" 0 calc_defaults_gpgpass_done
+   !insertmacro UnselectSection ${SEC_gpgpass}
+calc_defaults_gpgpass_done:
 !endif
 
 !ifdef HAVE_PKG_GPGOL
@@ -586,6 +615,7 @@ StrCmp $is_minimal '1' select_minimal continue
 select_minimal:
    !insertmacro UnselectSection ${SEC_kleopatra}
    !insertmacro UnselectSection ${SEC_okular}
+   !insertmacro UnselectSection ${SEC_gpgpass}
    !insertmacro UnselectSection ${SEC_gpgol}
    !insertmacro UnselectSection ${SEC_gpgex}
    !insertmacro UnselectSection ${SEC_gpgme_browser}
@@ -767,6 +797,12 @@ Function CalcDepends
 !ifdef HAVE_PKG_MIMETREEPARSER
   !insertmacro UnselectSection ${SEC_mimetreeparser}
 !endif
+!ifdef HAVE_PKG_PRISON
+  !insertmacro UnselectSection ${SEC_prison}
+!endif
+!ifdef HAVE_PKG_QRENCODE
+  !insertmacro UnselectSection ${SEC_qrencode}
+!endif
 !ifdef HAVE_PKG_KDE_L10N
   !insertmacro UnselectSection ${SEC_kde_l10n}
 !endif
@@ -862,17 +898,31 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kparts}
   !insertmacro SelectSection ${SEC_kcrash}
   !insertmacro SelectSection ${SEC_kguiaddons}
-  !insertmacro SelectSection ${SEC_qtsvg}
-  !insertmacro SelectSection ${SEC_qttranslations}
   !insertmacro SelectSection ${SEC_kde_l10n}
-  !insertmacro SelectSection ${SEC_qttools}
-  !insertmacro SelectSection ${SEC_qtwinextras}
   !insertmacro SelectSection ${SEC_extra-cmake-modules}
   !insertmacro SelectSection ${SEC_tiff}
   !insertmacro SelectSection ${SEC_sonnet}
   !insertmacro SelectSection ${SEC_ktextwidgets}
   !insertmacro SelectSection ${SEC_openjpeg}
   skip_okular:
+!endif
+
+!ifdef HAVE_PKG_GPGPASS
+  ${IfNot} ${AtLeastWin7}
+    # Disable Gpgpass for Windows below 7
+    SectionSetFlags ${SEC_gpgpass} 16
+  ${Endif}
+  !insertmacro SectionFlagIsSet ${SEC_gpgpass} ${SF_SELECTED} have_gpgpass skip_gpgpass
+  have_gpgpass:
+  !insertmacro SelectSection ${SEC_kde_l10n}
+
+  !insertmacro SelectSection ${SEC_gpgme}
+  !insertmacro SelectSection ${SEC_qtbase}
+  !insertmacro SelectSection ${SEC_breeze_icons}
+  !insertmacro SelectSection ${SEC_kconfig}
+  !insertmacro SelectSection ${SEC_qrencode}
+  !insertmacro SelectSection ${SEC_prison}
+  skip_gpgpass:
 !endif
 
 !ifdef HAVE_PKG_KLEOPATRA
@@ -908,7 +958,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kbookmarks}
   !insertmacro SelectSection ${SEC_kcrash}
   !insertmacro SelectSection ${SEC_kguiaddons}
-  !insertmacro SelectSection ${SEC_qtsvg}
   !insertmacro SelectSection ${SEC_kmbox}
   !insertmacro SelectSection ${SEC_kmime}
   !insertmacro SelectSection ${SEC_kde_l10n}
@@ -980,6 +1029,9 @@ skip_gpgme_browser:
   !insertmacro SelectSection ${SEC_libpng}
   !insertmacro SelectSection ${SEC_jpeg}
   !insertmacro SelectSection ${SEC_pcre2}
+  !insertmacro SelectSection ${SEC_qtsvg}
+  !insertmacro SelectSection ${SEC_qtwinextras}
+  !insertmacro SelectSection ${SEC_qttools}
   skip_qtbase:
 !endif
 
@@ -1069,6 +1121,16 @@ is_no_admin:
 	"$INSTDIR\bin\okular.exe" \
         "" "$INSTDIR\bin\okular.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_okular)
   no_okular_menu:
+!endif
+
+!ifdef HAVE_PKG_GPGPASS
+    SectionGetFlags ${SEC_gpgpass} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
+    IntCmp $R0 ${SF_SELECTED} 0 no_gpgpass_menu
+    CreateShortCut "$SMPROGRAMS\GnuPG Password Manager.lnk" \
+	"$INSTDIR\bin\gpgpass.exe" \
+        "" "$INSTDIR\bin\gpgpass.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_okular)
+  no_gpgpass_menu:
 !endif
 
  no_start_menu:
