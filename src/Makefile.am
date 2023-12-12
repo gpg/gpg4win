@@ -558,15 +558,20 @@ common_nsi = inst-sections.nsi installer.nsi installer-finish.nsi	\
 
 # Sign additional files as per signing setup
 # This is a bit of a hack.
-$(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries
+# Exit in case of error because that usually means that sign.mk
+# is not up to date.
+$(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
+    $(foosum_exe)
 	(set -e;\
      cd "$(idir)"; \
      for f in $(AUTHENTICODE_FILES); do \
-       if [ -f "$$f" ]; then \
-         $(call AUTHENTICODE_sign,"$$f","$$f");\
-       else \
-         echo "speedo: WARNING: file '$$f' not available for signing";\
+       if [ ! -f "$$f" ]; then \
+         echo "speedo: ERROR: file '$$f' not available for signing"; \
+         exit 1; \
        fi;\
+     done; \
+     for f in $(AUTHENTICODE_FILES); do \
+       $(call AUTHENTICODE_sign,"$$f","$$f");\
      done \
      )
 	touch $(stampdir)/stamp-additional-signedfiles
