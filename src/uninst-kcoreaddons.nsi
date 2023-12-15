@@ -31,6 +31,7 @@ Section "-un.kcoreaddons"
   Delete "$INSTDIR\share\kf5\licenses\LGPL_V2"
   Delete "$INSTDIR\share\kf5\licenses\LGPL_V21"
   Delete "$INSTDIR\share\kf5\licenses\BSD"
+  RmDir "$INSTDIR\share\kf5\licenses"
   RmDir "$INSTDIR\share\kf5"
   RmDir "$INSTDIR\share"
 SectionEnd
