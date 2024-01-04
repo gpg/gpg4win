@@ -56,6 +56,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kleopatra/set-windows-registry.patch \
              patches/kleopatra/0001-Make-KCMUtils-optional.patch \
              patches/kleopatra/kleo-gpg4win-ja.patch \
+             patches/kleopatra/0001-Do-not-use-NTFS-permissions-check-to-check-if-output.patch \
              patches/libkleo/libkleo-gpg4win-ja.patch \
              patches/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
              patches/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
