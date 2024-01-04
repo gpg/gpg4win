@@ -1,0 +1,32 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 62b6f5d480eb50070eecab6398171ff23a97f54f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Thu, 4 Jan 2024 13:10:12 +0100
+Subject: [PATCH] Do not use NTFS permissions check to check if output
+ folder is writable
+
+This check appears to produce false results for network folders on NAS.
+
+GnuPG-bug-id: 6917
+---
+ src/crypto/gui/decryptverifyfilesdialog.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/crypto/gui/decryptverifyfilesdialog.cpp b/src/crypto/gui/decryptverifyfilesdialog.cpp
+index fb2e31e3f..52142da2e 100644
+--- a/src/crypto/gui/decryptverifyfilesdialog.cpp
++++ b/src/crypto/gui/decryptverifyfilesdialog.cpp
+@@ -218,7 +218,7 @@ void DecryptVerifyFilesDialog::checkAccept()
+         }
+     } else if (!fi.isDir()) {
+         KMessageBox::information(this, i18n("Please select a different output folder."), i18nc("@title:window", "Invalid Output Folder"));
+-    } else if (!Kleo::isWritable(fi)) {
++    } else if (!fi.isWritable()) {
+         KMessageBox::information(
+             this,
+             xi18nc("@info",
+--
+2.43.0
