@@ -2,22 +2,27 @@
 patch -p1 -l -f $* < $0
 exit $?
 
-From 528c3f0429b52a8c77f229493c5a013ca202e6da Mon Sep 17 00:00:00 2001
+From bac91fa8ab819ebd4e9ceaf9eac7c1a8b2832929 Mon Sep 17 00:00:00 2001
 From: Sune Vuorela <sune@vuorela.dk>
 Date: Mon, 23 Oct 2023 09:48:51 +0200
-Subject: [PATCH] Use dark icons if configured and available
+Subject: [PATCH] Draft: Load binary icons based on windows theme
 
+This adds detection code for high contrast / dark mode
+to KIconTheme so that it can detect early on which theme
+to load when binary icons are used and loaded from a file.
+
+GnuPG-Bug-Id: T6076
 ---
- src/CMakeLists.txt    |   5 ++
- src/DarkModeSetup.cpp | 130 ++++++++++++++++++++++++++++++++++++++++++
- src/DarkModeSetup.h   |  20 +++++++
- src/kicontheme.cpp    |  28 ++++++++-
- 4 files changed, 182 insertions(+), 1 deletion(-)
+ src/CMakeLists.txt    |  5 +++
+ src/DarkModeSetup.cpp | 98 +++++++++++++++++++++++++++++++++++++++++++
+ src/DarkModeSetup.h   | 20 +++++++++
+ src/kicontheme.cpp    | 28 ++++++++++++-
+ 4 files changed, 150 insertions(+), 1 deletion(-)
  create mode 100644 src/DarkModeSetup.cpp
  create mode 100644 src/DarkModeSetup.h
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index ce4ca1f1..40b37873 100644
+index ce4ca1f..2772401 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -29,6 +29,11 @@ target_sources(KF5IconThemes PRIVATE
@@ -34,108 +39,75 @@ index ce4ca1f1..40b37873 100644
 
 diff --git a/src/DarkModeSetup.cpp b/src/DarkModeSetup.cpp
 new file mode 100644
-index 00000000..1508aa5b
+index 0000000..341efc4
 --- /dev/null
 +++ b/src/DarkModeSetup.cpp
-@@ -0,0 +1,131 @@
+@@ -0,0 +1,98 @@
 +/*
-+    SPDX-FileCopyrightText: 2019 Richard Yu
 +    SPDX-FileCopyrightText: 2023 g10 Code GmbH
++    SPDX-FileContributor: Ingo Klöcker <dev@ingo-kloecker.de>
++    SPDX-FileContributor: Andre Heinecke <aheinecke@gnupg.org>
 +    SPDX-FileContributor: Sune Stolborg Vuorela <sune@vuorela.dk>
-+    SPDX-License-Identifier: MIT
++
++    SPDX-License-Identifier: LGPL-2.0-or-later
 +*/
 +
-+#define WIN32_LEAN_AND_MEAN
 +#include "DarkModeSetup.h"
-+#include <QByteArray>
-+#include <QList>
-+#include <QtGlobal>
-+#include <windows.h>
-+#include <uxtheme.h>
-+struct DarkModeSetupHelper {
-+    // Code originates from https://github.com/ysc3839/win32-darkmode/
-+    enum PreferredAppMode { Default, AllowDark, ForceDark, ForceLight, Max };
-+    // needed to get version number; some functions depend on the build version
-+    using fnRtlGetNtVersionNumbers = void(WINAPI *)(LPDWORD major, LPDWORD minor, LPDWORD build);
-+    // check if apps should use darkmode
-+    using fnShouldAppsUseDarkMode = bool(WINAPI *)(); // ordinal 132
-+    // tell back if we can use darkmode; version dependent
-+    using fnAllowDarkModeForApp = bool(WINAPI *)(bool allow); // ordinal 135, in 1809
-+    using fnSetPreferredAppMode = PreferredAppMode(WINAPI *)(PreferredAppMode appMode); // ordinal 135, in 1903
++#include "debug.h"
 +
-+    // Tells windows that it should reread things
-+    using fnRefreshImmersiveColorPolicyState = void(WINAPI *)(); // ordinal 104
++#include <QSettings>
 +
-+    fnRefreshImmersiveColorPolicyState _RefreshImmersiveColorPolicyState = nullptr;
-+    fnAllowDarkModeForApp _AllowDarkModeForApp = nullptr;
-+    fnShouldAppsUseDarkMode _ShouldAppsUseDarkMode = nullptr;
-+    fnSetPreferredAppMode _SetPreferredAppMode = nullptr;
++#include "windows.h"
 +
-+    bool darkModeSupported = false;
-+    bool darkModeEnabled = false;
-+
-+    bool IsHighContrast() {
-+        HIGHCONTRASTW highContrast = {sizeof(highContrast)};
-+        if (SystemParametersInfoW(SPI_GETHIGHCONTRAST, sizeof(highContrast), &highContrast, FALSE)) {
-+            return highContrast.dwFlags & HCF_HIGHCONTRASTON;
-+        }
-+        return false;
++namespace
++{
++bool win_isHighContrastModeActive()
++{
++    HIGHCONTRAST result;
++    result.cbSize = sizeof(HIGHCONTRAST);
++    if (SystemParametersInfo(SPI_GETHIGHCONTRAST, result.cbSize, &result, 0)) {
++        return (result.dwFlags & HCF_HIGHCONTRASTON);
 +    }
-+
-+    void AllowDarkModeForApp(bool allow) {
-+        if (_AllowDarkModeForApp) {
-+            _AllowDarkModeForApp(allow);
-+        } else if (_SetPreferredAppMode) {
-+           _SetPreferredAppMode(allow ? AllowDark : Default);
-+        }
-+    }
-+
-+    DarkModeSetupHelper() {
-+        auto RtlGetNtVersionNumbers = reinterpret_cast<fnRtlGetNtVersionNumbers>(GetProcAddress(GetModuleHandleW(L"ntdll.dll"), "RtlGetNtVersionNumbers"));
-+        if (RtlGetNtVersionNumbers) {
-+            DWORD buildNumber = 0;
-+            DWORD major, minor;
-+            RtlGetNtVersionNumbers(&major, &minor, &buildNumber);
-+            buildNumber &= ~0xF0000000;
-+
-+            if (major == 10 && minor == 0) {
-+                HMODULE hUxtheme = LoadLibraryExW(L"uxtheme.dll", nullptr,
-+                                          LOAD_LIBRARY_SEARCH_SYSTEM32);
-+                if (hUxtheme) {
-+                    _RefreshImmersiveColorPolicyState = reinterpret_cast<fnRefreshImmersiveColorPolicyState>(GetProcAddress(hUxtheme, MAKEINTRESOURCEA(104)));
-+
-+                    _ShouldAppsUseDarkMode = reinterpret_cast<fnShouldAppsUseDarkMode>(GetProcAddress(hUxtheme, MAKEINTRESOURCEA(132)));
-+
-+                    auto ord135 = GetProcAddress(hUxtheme, MAKEINTRESOURCEA(135));
-+                    if (buildNumber < 18362) {
-+                        _AllowDarkModeForApp = reinterpret_cast<fnAllowDarkModeForApp>(ord135);
-+                    } else {
-+                        _SetPreferredAppMode = reinterpret_cast<fnSetPreferredAppMode>(ord135);
-+                    }
-+
-+                    if (_ShouldAppsUseDarkMode &&
-+                        _RefreshImmersiveColorPolicyState &&
-+                        (_AllowDarkModeForApp || _SetPreferredAppMode)) {
-+                        darkModeSupported = true;
-+
-+                        AllowDarkModeForApp(true);
-+                        _RefreshImmersiveColorPolicyState();
-+
-+                        // Windows 10 only has one bright high contrast mode and three dark high contrast themes. So we check for the white one.
-+                        darkModeEnabled = _ShouldAppsUseDarkMode() || (IsHighContrast() && GetSysColor(COLOR_WINDOW) != 0xFFFFFF);
-+                    }
-+               }
-+           }
-+       }
-+    }
-+};
-+
-+const DarkModeSetupHelper &getHelper() {
-+    static DarkModeSetupHelper h;
-+    return h;
++    return false;
 +}
 +
-+bool DarkModeSetup::isDarkModeActive() { return getHelper().darkModeEnabled; }
++bool win_isDarkModeActive()
++{
++    // Most intutively this GetSysColor seems the right function for this
++    // but according to
++    // https://learn.microsoft.com/de-de/windows/win32/api/winuser/nf-winuser-getsyscolor
++    // these are already either deprecated or removed.
++
++    if (win_isHighContrastModeActive()) {
++        // Windows 11 has only one white High Contrast mode. The other
++        // three are dark. So even if we can't cath the white one let
++        // us assume that it it is dark.
++        qCDebug(KICONTHEMES) << "Bright icons for HighContrast";
++        return true;
++    }
++
++    // This is what KColorschemeWatcher and Qt also look for to check for dark mode. I would use this as a fallback. Because it only works good
++    // for dark mode so the style and not the accessibility feature it is not enough for us. But having this as the default behavior is the
++    // best way to keep it all in line.
++    const QSettings regSettings{QStringLiteral("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"),
++                                QSettings::NativeFormat};
++
++    // Nothing set -> default to bright. / Leave it to KColorSchemeManager.
++    const bool appsUseLightTheme = regSettings.value(QStringLiteral("AppsUseLightTheme"), true).value<bool>();
++    if (!appsUseLightTheme) {
++        qCDebug(KICONTHEMES) << "Bright icons for AppsUseLightTheme false";
++        return true;
++    }
++    // Default to no dark mode active
++    return false;
++}
++
++};
++
++bool DarkModeSetup::isDarkModeActive()
++{
++    return win_isDarkModeActive();
++}
 +
 +void DarkModeSetup::tellQt(int mode) {
 +    int qtm = qtMode();
@@ -171,7 +143,7 @@ index 00000000..1508aa5b
 +}
 diff --git a/src/DarkModeSetup.h b/src/DarkModeSetup.h
 new file mode 100644
-index 00000000..87ecfd76
+index 0000000..87ecfd7
 --- /dev/null
 +++ b/src/DarkModeSetup.h
 @@ -0,0 +1,20 @@
@@ -196,7 +168,7 @@ index 00000000..87ecfd76
 +    int qtMode();
 +};
 diff --git a/src/kicontheme.cpp b/src/kicontheme.cpp
-index 4eee2ff6..a5617218 100644
+index 4eee2ff..3b35b55 100644
 --- a/src/kicontheme.cpp
 +++ b/src/kicontheme.cpp
 @@ -34,14 +34,40 @@
@@ -242,4 +214,4 @@ index 4eee2ff6..a5617218 100644
          const QString iconThemeName = QStringLiteral("kf5_rcc_theme");
          const QString iconSubdir = QStringLiteral("/icons/") + iconThemeName;
 --
-GitLab
+2.43.0
