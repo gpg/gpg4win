@@ -2,9 +2,49 @@
 #
 # The version numbers given are used by gpg4win and GnuPG [VS-]Desktop
 
-Noteworthy changes in Version 3.2.1 (unreleased)
+Noteworthy changes in Version 3.2.1 (2024-01-08)
 ------------------------------------------------
 
+--- Bug Fixes ---
+
+(en) Kleopatra: During startup the new code to reduce icon load
+     times in Version 3.2.0 could trigger a crash. This happened at
+     least on Windows Server 2016 Enterprise LTSC. If Kleopatra launches
+     for you, you are not affected. (T4066)
+
+(de) Kleopatra: Während des startens konnte es dazu kommen das der
+     neue code um die Ladezeiten von Icons zu reduzieren, welcher in
+     Version 3.2.0 hinzugefügt wurde, einen Absturz verursachte. Dies
+     passierte mindestens unter Windows Server 2016 Enterprise LTSC.
+     Wenn Kleopatra 3.2.0 für Sie startet sind Sie nicht betroffen.
+     (T4066)
+
+(en) Kleopatra: A permission check could incorrectly fail to detect
+     write permissions on NTFS network shares and cause an error message
+     when attempting to save decrypted files in such a folder. This issue
+     has been introduced with Version 3.2.0. (T6917)
+
+(de) Kleopatra: Das prüfen auf Schreibrechte konnte auf NTFS
+     Netzwerk-Laufwerken fehlschlagen und eine Fehlermeldung verursachen
+     wenn entschlüsselte Daten in solchen Ordnern gespeichert werden
+     sollten. Dieses Problem ist mit Version 3.2.0 eingeführt worden.
+     (T6917)
+
+(en) GpgOL: A crash has been fixed which could occur when switching
+     between different Outlook views e.g. from the calendar back to
+     the mail view, while a crypto mail was open. Note that this
+     crash only happens on Outlook Versions < Outlook 2019 or when
+     the setting "always preview messages" is enabled. This possible
+     crash has affected all modern versions of GpgOL. (T6861)
+
+(de) GpgOL: Ein möglicher Outlook Absturz wurde behoben, wenn man
+     von einer anderen Ansicht zurück zur Mailansicht wechselte und
+     dort gerade eine Krypto Mail angezeigt wurde. Zum Beispiel vom
+     Kalender zur Mailansicht. Dieser Absturz betrifft nur Outlook
+     Versionen älter als Outlook 2019 oder wenn die Option:
+     "Immer Vorschau von Nachrichten anzeigen" aktiviert ist.
+     Dieser mögliche Absturz war in allen modernen Versionen von
+     GpgOL vorhanden. (T6861)
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.42
