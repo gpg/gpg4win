@@ -7,44 +7,43 @@ Noteworthy changes in Version 3.2.1 (2024-01-08)
 
 --- Bug Fixes ---
 
-(en) Kleopatra: During startup the new code to reduce icon load
-     times in Version 3.2.0 could trigger a crash. This happened at
-     least on Windows Server 2016 Enterprise LTSC. If Kleopatra launches
-     for you, you are not affected. (T4066)
+(en) Kleopatra: During startup, the new code implemented in Version
+     3.2.0 to reduce icon load times could trigger a crash. This issue was
+     particularly noted on Windows Server 2016 Enterprise LTSC. However, if
+     Kleopatra launches successfully for you, you are not affected by this
+     problem. (T4066)
 
-(de) Kleopatra: Während des startens konnte es dazu kommen das der
-     neue code um die Ladezeiten von Icons zu reduzieren, welcher in
-     Version 3.2.0 hinzugefügt wurde, einen Absturz verursachte. Dies
-     passierte mindestens unter Windows Server 2016 Enterprise LTSC.
-     Wenn Kleopatra 3.2.0 für Sie startet sind Sie nicht betroffen.
-     (T4066)
+(de) Kleopatra: Während des Starts konnte der in Version 3.2.0
+     eingeführte neue Code, der die Ladezeiten von Icons reduzieren sollte,
+     einen Absturz verursachen. Dies trat insbesondere unter Windows Server
+     2016 Enterprise LTSC auf. Wenn Kleopatra bei Ihnen erfolgreich startet,
+     sind Sie von diesem Problem nicht betroffen. (T4066)
 
-(en) Kleopatra: A permission check could incorrectly fail to detect
-     write permissions on NTFS network shares and cause an error message
-     when attempting to save decrypted files in such a folder. This issue
-     has been introduced with Version 3.2.0. (T6917)
+(en) Kleopatra: A permission check issue was discovered that could
+     incorrectly fail to detect write permissions on NTFS network shares. This
+     would lead to an error message when attempting to save decrypted files
+     in such a folder. This issue was introduced in Version 3.2.0. (T6917)
 
-(de) Kleopatra: Das prüfen auf Schreibrechte konnte auf NTFS
-     Netzwerk-Laufwerken fehlschlagen und eine Fehlermeldung verursachen
-     wenn entschlüsselte Daten in solchen Ordnern gespeichert werden
-     sollten. Dieses Problem ist mit Version 3.2.0 eingeführt worden.
-     (T6917)
+(de) Kleopatra: Bei der Überprüfung der Schreibrechte konnte ein
+     Fehler auftreten, der fälschlicherweise fehlende Schreibrechte auf
+     NTFS-Netzwerklaufwerken anzeigte. Dies führte zu einer Fehlermeldung beim
+     Versuch, entschlüsselte Dateien in solchen Ordnern zu speichern. Dieses
+     Problem wurde mit Version 3.2.0 eingeführt. (T6917)
 
-(en) GpgOL: A crash has been fixed which could occur when switching
-     between different Outlook views e.g. from the calendar back to
-     the mail view, while a crypto mail was open. Note that this
-     crash only happens on Outlook Versions < Outlook 2019 or when
-     the setting "always preview messages" is enabled. This possible
-     crash has affected all modern versions of GpgOL. (T6861)
+(en) GpgOL: A crash issue has been resolved that could occur when
+     switching between different Outlook views, for example, from the calendar
+     back to the mail view, while a crypto mail was open. This crash was
+     only happening in Outlook versions older than Outlook 2019 or when the
+     "always preview messages" setting was enabled. This potential crash
+     affected all modern versions of GpgOL. (T6861)
 
-(de) GpgOL: Ein möglicher Outlook Absturz wurde behoben, wenn man
-     von einer anderen Ansicht zurück zur Mailansicht wechselte und
-     dort gerade eine Krypto Mail angezeigt wurde. Zum Beispiel vom
-     Kalender zur Mailansicht. Dieser Absturz betrifft nur Outlook
-     Versionen älter als Outlook 2019 oder wenn die Option:
-     "Immer Vorschau von Nachrichten anzeigen" aktiviert ist.
-     Dieser mögliche Absturz war in allen modernen Versionen von
-     GpgOL vorhanden. (T6861)
+(de) GpgOL: Ein Absturzproblem wurde behoben, das auftreten konnte,
+     wenn zwischen verschiedenen Outlook-Ansichten gewechselt wurde,
+     beispielsweise vom Kalender zurück zur Mailansicht, während eine
+     Krypto-Mail geöffnet war. Dieser Absturz trat nur in Outlook-Versionen
+     auf, die älter als Outlook 2019 waren, oder wenn die Einstellung "Immer
+     Vorschau von Nachrichten anzeigen" aktiviert war. Dieser potenzielle
+     Absturz betraf alle modernen Versionen von GpgOL. (T6861)
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.42
