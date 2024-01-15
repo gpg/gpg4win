@@ -1,0 +1,8 @@
+#! /bin/sh
+
+# ensure that breeze-dark contains dark variants or copies of all breeze icons
+mv icons-dark icons-dark.tmp \
+&& mkdir icons-dark \
+&& cp -alv icons/* icons-dark/ \
+&& cp -alv icons-dark.tmp/* icons-dark/ \
+&& rm -rf icons-dark.tmp

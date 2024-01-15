@@ -47,6 +47,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              docker/run-gpg4win-build.sh \
              patches/breeze-icons/subset-crossbuild.patch \
              patches/breeze-icons/add-the-nose.patch \
+             patches/breeze-icons/azz-Make-all-breeze-icons-available-in-breeze-dark.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
              patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
