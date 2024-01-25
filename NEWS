@@ -5,6 +5,337 @@
 Noteworthy changes in Version 4.3.0 (unreleased)
 ------------------------------------------------
 
+--- Highlights ---
+
+(en) Kleopatra: A new mail viewer mode has been added, allowing crypto
+     mails received by mail clients without PGP/MIME or S/MIME support
+     to be decrypted. This means that you can open an SMIME.p7m file
+     or openpgp-encrypted-message.asc attachment with Kleopatra, and
+     it will be displayed as a mail. [T6199]
+
+(de) Kleopatra: Ein neuer Mail-Anzeigemodus wurde hinzugefügt, damit
+     Krypto-Mails, die von Mail-Clients ohne PGP/MIME- oder
+     S/MIME-Unterstützung empfangen wurden, komfortabel entschlüsselt
+     werden können. Dies bedeutet, dass Sie eine SMIME.p7m-Datei oder
+     eine openpgp-encrypted-message.asc-Anlage mit Kleopatra öffnen
+     können, und sie wird als Mail angezeigt. [T6199]
+
+(en) Kleopatra: It is now possible to certify multiple certificates at
+     once using the group interface. [T6469]
+
+(de) Kleopatra: Es ist nun möglich, mehrere Zertifikate gleichzeitig
+     über die Gruppen-Verwaltung zu beglaubigen. [T6469]
+
+--- Features ---
+
+(en) Okular (GnuPG Edition): This PDF reader has received a lot of
+     updates and is now ready for everyday's use.
+
+(de) Okular (GnuPG Edition): Dieser PDF Reader wurde erweitert und ist
+     nun zum täglichen Gebrauch einsetzbar.
+
+(en) GnuPG: Support for proxy authentication using the Negotiation method
+     has been added. [T6719]
+
+(de) GnuPG: Unterstützung für Proxy-Authentifizierung nach der
+     "Negotiation"-Methode wurde hinzugefügt. [T6719]
+
+(en) GnuPG: Keyserver can now be configured to the value "none" to avoid
+     unnecessary queries to non-existing keyservers that would slow down the
+     system. [T6708]
+
+(en) GnuPG: Es kann nun der Wert "none" als Schlüsselserver verwendet
+     werden, um unnötige Abfragen gegen nicht existierende Server zu
+     vermeiden, die das System verlangsamen würden. [T6708]
+
+(en) GnuPG: A new option has been added to ignore specific CRL
+     extensions. This can help as a workaround for problems with specific
+     CRLs. [T6545]
+
+(de) GnuPG: Eine neue Option wurde hinzugefügt, um bestimmte
+     CRL-Erweiterungen zu ignorieren. Dies kann als Workaround für Probleme
+     mit bestimmten CRLs hilfreich sein. [T6545]
+
+(en) GnuPG: Automatic proxy detection has been improved. [T5768]
+
+(de) GnuPG: Die automatische Erkennung von Proxy-Servereinstellungen
+     wurde verbessert. [T5768]
+
+(en) Kleopatra: The start time of Kleopatra has been drastically
+     improved on throttled systems with third-party software installed, which
+     manipulates system calls. The number of system calls to start Kleopatra
+     has been roughly halved. [T6259]
+
+(de) Kleopatra: Die Startzeit von Kleopatra wurde drastisch
+     verbessert, insbesondere auf gedrosselten Systemen mit installierter
+     Drittanbieter-Software, die Systemaufrufe manipuliert. Die Anzahl der
+     Systemaufrufe zum Starten von Kleopatra wurde etwa halbiert. [T6259]
+
+(en) Kleopatra: The advanced options in the certification view are now
+     automatically visible if they were open in the last certification. [T6480]
+
+(de) Kleopatra: Die erweiterten Optionen zur Beglaubigung bleiben
+     nun ausgeklappt, wenn sie bei der letzten Beglaubigung ausgeklappt
+     waren. [T6480]
+
+(en) Kleopatra: Windows dark mode is now fully supported. [T4066]
+
+(de) Kleopatra: Der Windows Dark Mode wird nun vollständig
+     unterstützt. [T4066]
+
+(en) Kleopatra: Some invalid operations, such as signing with an expired
+     certificate, which would have resulted in errors, can no longer be
+     triggered. The reason for this is indicated, too. [T6742 T6788]
+
+(de) Kleopatra: Verschiedene ungültige Operationen, z. B. das Signieren
+     mit einem abgelaufenen Zertifikat, die zu Fehlern geführt hätten,
+     können nicht mehr ausgelöst werden. Mit Anzeige, warum dies der
+     Fall ist. [T6742 T6788]
+
+(en) Kleopatra: The support for Telesec signature cards has been
+     improved. [T6830]
+
+(de) Kleopatra: Die Unterstützung von Telesec Signaturkarten wurde
+     verbessert. [T6830]
+
+(en) Kleopatra: When exporting or publishing certificates, the user is
+     now informed if there are uncertified certificates in the export. This
+     is especially useful when exporting groups. [T6766]
+
+(de) Kleopatra: Es wird nun eine Information angezeigt, wenn Zertifikate
+     ohne Beglaubigung exportiert werden sollen. Dies ist besonders beim
+     Exportieren von Gruppen hilfreich. [T6766]
+
+(en) Kleopatra: Expiry dates after 19.01.2038 (year 2038 bug) are now
+     possible. [T6736]
+
+(de) Kleopatra: Ablaufdaten nach dem 19.01.2038 (Jahr 2038 Fehler)
+     sind nun möglich. [T6736]
+
+(en) Kleopatra: The dialog to extend OpenPGP certificates has been
+     improved and redundant options removed. [T6621]
+
+(de) Kleopatra: Der Dialog um OpenPGP-Zertifikate zu verlängern wurde
+     verbessert und überflüssige Optionen entfernt. [T6621]
+
+(en) Kleopatra: When creating archives, they are now written out as a
+     .part file to improve error handling and canceling the operation without
+     leaving a broken archive in the file system. [T6584]
+
+(de) Kleopatra: Beim Erstellen von Archiven werden diese nun zunächst als
+     .part-Datei geschrieben, um die Fehlerbehandlung zu verbessern und
+     den Vorgang abbrechen zu können, ohne ein defektes Archiv im
+     Dateisystem zu hinterlassen. [T6584]
+
+(en) Kleopatra: Updating certificates now also looks for updates in a
+     Web Key Directory if one exists for the domain. [T5951]
+
+(de) Kleopatra: Das Aktualisieren von Zertifikaten berücksichtigt nun
+     auch ein eventuell vorhandenes Web Key Directory für die entsprechende
+     Domäne. [T5951]
+
+(en) Kleopatra: Progress bars are now also properly shown for S/MIME
+     file operations. [T6534]
+
+(de) Kleopatra: Fortschrittsbalken werden nun auch korrekt für
+     S/MIME-Dateioperationen angezeigt. [T6534]
+
+(en) GpgOL: Added support for RFC2231 encoded attachment filenames,
+     which increases compatibility with Apple Mail. [T6604]
+
+(de) GpgOL: Unterstützung für RFC2231-kodierte Anhangsdateinamen wurde
+     hinzugefügt, was die Kompatibilität mit Apple Mail erhöht. [T6604]
+
+(en) GpgOL: Draft encryption with S/MIME certificates now skips CRL
+     checks and is much faster and reliable. [T6827]
+
+(de) GpgOL: Die Entwurfsverschlüsselung mit S/MIME-Zertifikaten
+     wurde massiv verbessert und funktioniert nun zuverlässig. Es werden
+     hierbei z.B. keine CRL-Prüfungen mehr durchgeführt. [T6827]
+
+(en) GpgOL: The error handling was improved if a preference for S/MIME
+     is set and signing selected but no signing certificate can be found.
+     See: https://gnupg.com/vsd/registry-settings.html (smimeNoCertSigErr)
+     on how to add a custom message to instruct users what to do in this
+     case. [T6683]
+
+(de) GpgOL: Die Fehlerbehandlung wurde stark verbessert für den Fall,
+     dass S/MIME aktiviert und bevorzugt sowie Signieren ausgewählt
+     ist, ohne dass ein  Signaturzertifikat verfügbar ist. Siehe:
+     https://gnupg.com/vsd/registry-settings.html (smimeNoCertSigErr) dazu,
+     wie Sie eine benutzerdefinierte Anweisung für diesen Fall hinzufügen
+     können. [T6683]
+
+(en) GpgOL: It is now possible to encrypt to S/MIME certificates that
+     are untrusted or cannot be validated because of CRL errors. In
+     this case a warning dialog is shown, allowing the user to override the
+     errors. This is not VS-NfD compliant but can be used for unrestricted
+     encryption. [T6701]
+
+(de) GpgOL: Es ist nun möglich, an S/MIME-Zertifikate zu verschlüsseln,
+     die nicht vertrauenswürdig sind oder aufgrund von CRL-Fehlern
+     nicht validiert werden können. In diesem Fall wird ein Warnhinweis
+     angezeigt, der es dem Benutzer ermöglicht, die Fehler zu ignorieren.
+     Dies ist nicht VS-NfD konform, kann aber für nicht eingestufte
+     Kommunikation verwendet werden. [T6701]
+
+(en) GpgOL: Mails without the correct MIME type but which still look
+     like crypto mails are now decrypted. This improves compatibility with
+     Apple Mail and various mail gateways that modify the structure of crypto
+     mails in transit. [T6701]
+
+(de) GpgOL: Mails ohne den korrekten MIME-Typ, die jedoch immer noch
+     wie Krypto-Mails aussehen, werden nun entschlüsselt. Dies verbessert
+     die Kompatibilität mit Apple Mail und verschiedenen Mail-Gateways,
+     die die Struktur von Krypto-Mails im Transit ändern. [T6701]
+
+(en) GpgOL: The internal attachments are now called
+     "GpgOL_MIME_structure.mime" instead of "GpgOL_MIME_structure.txt"
+     to make it easier to link them to Kleopatra. This is, for example,
+     visible for users when using the Outlook web interface. [T6656]
+
+(de) GpgOL: Die internen Anhänge werden nun "GpgOL_MIME_structure.mime"
+     und nicht mehr "GpgOL_MIME_structure.txt" genannt, um es einfacher zu
+     machen, sie mit Kleopatra zu verknüpfen. Dies ist beispielsweise für
+     Benutzer sichtbar, die die Outlook-Web-Schnittstelle verwenden. [T6656]
+
+(en) GpgOL: The initialization has been moved to avoid the incorrect message
+     that GpgOL is causing a slow start of Outlook. This message might still
+     be shown, since Outlook shows this sometimes regardless of actual timings,
+     but the delay should be 0ms. [T6856]
+
+(de) GpgOL: Die Initialisierung des Plugins wurde nun verschoben, um
+     die falsche Meldung zu vermeiden, dass GpgOL einen langsamen Start von
+     Outlook verursacht. Diese Meldung kann immer noch angezeigt werden, da
+     Outlook dies manchmal unabhängig von den tatsächlichen Zeitabläufen
+     zeigt, aber die Verzögerung sollte 0ms betragen. [T6856]
+
+(en) GpgOL: The security approval dialog has been improved to better show
+     problems with the available certificates in case a compliant encryption
+     is not possible. [T6742 T6743 T6744]
+
+(de) GpgOL: Der Sicherheitsbestätigungs-Dialog wurde verbessert, um
+     Probleme mit den verfügbaren Zertifikaten besser anzuzeigen, falls eine
+     konforme Verschlüsselung nicht möglich ist. [T6742 T6743 T6744]
+
+(en) GpgOL: The security approval dialog now increases its size based on
+     the number of recipients to avoid having to use a scroll bar. [T6837]
+
+(de) GpgOL: Der Sicherheitsbestätigungs-Dialog verändert nun seine
+     Größe basierend auf der Anzahl der Empfänger, um Scrollbalken zu
+     vermeiden. [T6837]
+
+--- Bug Fixes ---
+
+(en) Kleopatra: The state of Kleopatra is now properly stored in
+     configuration files when Kleopatra is shut down on user log out.
+     [T6667]
+
+(de) Kleopatra: Der Zustand von Kleopatra wird nun ordnungsgemäß in
+     Konfigurationsdateien gespeichert, wenn Kleopatra beim Ausloggen des
+     Benutzers geschlossen wird. [T6667]
+
+(en) Kleopatra: Importing a certificate with Kleopatra will now open the
+     main window of Kleopatra. [T6671]
+
+(de) Kleopatra: Das Importieren einer Zertifikatsdatei öffnet nun auch das
+     Hauptfenster von Kleopatra. [T6671]
+
+(en) Kleopatra: No longer unnecessarily watches the clipboard for changes;
+     this could have caused issues with password managers that would empty the
+     clipboard as soon as a third-party application tried to access it. [T6531]
+
+(de) Kleopatra: Es wird nun nicht mehr unnötigerweise die Zwischenablage
+     überwacht. Dies könnte Probleme mit Passwortmanagern verursacht haben,
+     die die Zwischenablage leeren, sobald eine Fremdanwendung darauf
+     zugreifen will. [T6531]
+
+(en) Kleopatra: It is no longer possible to set expiry dates in the
+     past. [T6519]
+
+(de) Kleopatra: Es ist nun nicht mehr möglich, das Ablaufdatum eines
+     Zertifikats in die Vergangenheit zu legen. [T6519]
+
+(en) Kleopatra: Importing multiple certificates at once can no longer
+     cause Kleopatra to lock up. [T6323]
+
+(de) Kleopatra: Beim gleichzeitigen Importieren mehrerer Zertifikate
+     kann es nicht mehr vorkommen, dass Kleopatra einfriert. [T6323]
+
+(en) Kleopatra: When generating keys on a smart card in compliance mode,
+     only compliant algorithms are offered. [T6750]
+
+(de) Kleopatra: Beim Erstellen von Schlüsselmaterial auf Smartcards
+     werden im konformen Modus auch nur konforme Algorithmen angeboten. [T6750]
+
+(en) Kleopatra: Fixed an issue where certificate tags would not be
+     displayed correctly after reloading certificates. [T6768]
+
+(de) Kleopatra: Ein Problem wurde behoben, bei dem Tags bzw. Anmerkungen
+     an Zertifikaten nicht korrekt angezeigt wurden, nachdem die Zertifikate
+     neu geladen wurden. [T6768]
+
+(en) GpgOL: The security approval dialog now correctly updates the
+     compliance status after switching protocols. [T6600]
+
+(de) GpgOL: Der Sicherheitsbestätigungs-Dialog aktualisiert nun
+     korrekterweise die Anzeige der Konformität, wenn man zwischen Protokollen
+     wechselt. [T6600]
+
+(en) GpgOL: The security approval is now always shown and displays the
+     correct state for groups containing untrusted or otherwise non-compliant
+     certificates. [T6401]
+
+(de) GpgOL: Der Sicherheitsbestätigungs-Dialog wird nun immer
+     angezeigt, wenn an Gruppen verschlüsselt wird, die nicht beglaubigte
+     oder anderweitig nicht konforme Zertifikate enthalten. [T6401]
+
+(en) GpgOL: Fixed an issue with S/MIME opaque signed mails where the
+     contents of invalid signed mails would not be shown. [T6624]
+
+(de) GpgOL: Ein Problem wurde behoben, bei dem S/MIME "opak" signierte
+     Mails mit ungültiger Signatur ohne Inhalt angezeigt wurden. [T6624]
+
+(en) GpgOL: When generating a key through the security approval dialog,
+     the configured default algorithms from GnuPG are now used. [T6805]
+
+(de) GpgOL: Beim Erstellen von Schlüsseln über den
+     Sicherheitsbestätigungs-Dialog von GpgOL werden nun die Einstellungen
+     zur Schlüsselerstellung von GnuPG berücksichtigt. [T6805]
+
+(en) GpgOL: Generating keys through the security approval dialog now
+     works as intended. [T6813 T6823 T6566]
+
+(de) GpgOL: Das Erstellen von Schlüsseln über den
+     Sicherheitsbestätigungs-Dialog funktioniert nun wie vorgesehen.
+     [T6813 T6823 T6566]
+
+(en) GpgOL: A crash issue has been resolved that could occur when
+     switching between different Outlook views, for example, from the
+     calendar back to the mail view, while a crypto mail was
+     open. This crash was only happening in Outlook versions older
+     than Outlook 2019 or when the "always preview messages" setting
+     was enabled. This potential crash affected all modern versions of
+     GpgOL. (T6861)
+
+(de) GpgOL: Ein Absturzproblem wurde behoben, das auftreten konnte,
+     wenn zwischen verschiedenen Outlook-Ansichten gewechselt wurde,
+     beispielsweise vom Kalender zurück zur Mailansicht, während eine
+     Krypto-Mail geöffnet war. Dieser Absturz trat nur in
+     Outlook-Versionen auf, die älter als Outlook 2019 waren, oder
+     wenn die Einstellung "Immer Vorschau von Nachrichten anzeigen"
+     aktiviert war. Dieser potenzielle Absturz betraf alle modernen
+     Versionen von GpgOL. (T6861)
+
+(en) GnuPG: For a full list of the backend changes between GnuPG 2.4.3
+     in Gpg4win-4.2.0 and GnuPG 2.4.4 in Gpg4win-4.3.0 please see:
+     https://dev.gnupg.org/T6578
+
+(de) GnuPG: Die vollständige Liste der Änderungen zwischen GnuPG 2.4.0
+     in Gpg4win-4.1.0 und GnuPG 2.4.3 in Gpg4win-4.2.0 findet sich
+     hier (Englisch): https://dev.gnupg.org/T6578
+
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.4.44
 Kleopatra:      3.2.0
@@ -13,7 +344,6 @@ GpgEX:          1.0.10
 Kompendium DE:  4.0.1
 Compendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
-
 
 
 Noteworthy changes in Version 3.2.2 (unreleased)
