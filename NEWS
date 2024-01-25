@@ -47,7 +47,7 @@ Noteworthy changes in Version 4.3.0 (2024-01-25)
      unnecessary queries to non-existing keyservers that would slow down the
      system. [T6708]
 
-(en) GnuPG: Es kann nun der Wert "none" als Schlüsselserver verwendet
+(de) GnuPG: Es kann nun der Wert "none" als Schlüsselserver verwendet
      werden, um unnötige Abfragen gegen nicht existierende Server zu
      vermeiden, die das System verlangsamen würden. [T6708]
 
