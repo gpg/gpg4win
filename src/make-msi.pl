@@ -1840,7 +1840,11 @@ sub dump_customs
     opendir(DIR, ".") or die "Unable to open $workdir:$!\n";
     my @names = readdir(DIR) or die "Unable to read $workdir:$!\n";
     closedir(DIR);
-    dump_help("help");
+    if ($::product_name eq 'GnuPG VS-Desktop') {
+        dump_help("help");
+    } else {
+        dump_help("desktop-help");
+    }
 
     foreach my $name (@names) {
         next if ($name eq ".");
@@ -1856,6 +1860,7 @@ sub dump_customs
         next if ($name eq "gnupg.com-info-key.asc");
         next if ($name eq "general-enc-key.asc");
         next if ($name eq "help");
+        next if ($name eq "desktop-help");
         next if ($name eq "README");
         next if ($name =~ /~$/);
 
