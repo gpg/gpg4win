@@ -17,7 +17,7 @@
 # Third party libraries
 #
 
-server ftp://ftp.gnu.org/pub/gnu
+server https://ftp.gnu.org/pub/gnu
 # last-changed: 2017-02-15
 # by: ah
 # verified: Sig 68D9 4D8A AEEA D48A E7DC  5B90 4F49 4A94 2E46 16C2
