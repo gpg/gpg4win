@@ -1750,7 +1750,8 @@ EOF
             next;
         }
 
-        if ($dirname =~ /Standard\/etc\/gnupg/) {
+        if ($dirname =~ /[^\/]+\/etc\/gnupg/ and
+            $dirname !~ /ProgramData/) {
             # We need to skip the Unix etc directory so that it does
             # not end up as global config on Windows.
             next;
