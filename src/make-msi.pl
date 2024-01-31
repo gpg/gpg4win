@@ -1702,7 +1702,10 @@ sub dump_help {
 sub dump_single_custom {
     my ($workdir) = @_;
     my $custom_name = basename($workdir);
-    open (FILE, ">$workdir/$custom_name.wxs") or die "open failed:$!\n";
+    my $fname;
+
+    $fname = "$workdir/$custom_name.wxs";
+    open (FILE, ">$fname" ) or die "creating '$fname' failed: $!\n";
     print FILE <<EOF;
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
@@ -1723,8 +1726,13 @@ sub dump_single_custom {
    <Fragment>
     <ComponentGroup Id="c_customization">
 EOF
-   print STDERR "Including: help\n";
-   open (INCFILE, "<$workdir/../help/help.wxs") or die "open failed:$!\n";
+   print STDERR "Including: help or desktop-help\n";
+   if ($::product_name eq 'GnuPG Desktop') {
+       $fname =  "$workdir/../desktop-help/desktop-help.wxs";
+   } else {
+       $fname =  "$workdir/../help/help.wxs";
+   }
+   open (INCFILE, "<$fname") or die "open '$fname' failed: $!\n";
    while (<INCFILE>)
    {
        print FILE $_;
@@ -1763,8 +1771,8 @@ EOF
 
         if ($basename =~ /.+\.wxs\.include$/) {
            print STDERR "Including $basename for $custom_name\n";
-           open (INCFILE, "<$workdir/$basename") or
-               die "open failed:$!\n";
+           $fname = "$workdir/$basename";
+           open (INCFILE, "<$fname") or die "open '$fname' failed: $!\n";
            while (<INCFILE>)
            {
                print FILE $_;
@@ -1792,7 +1800,7 @@ EOF
                  $basename =~ /libkleopatrarc(.*)/) {
             $dirname = "KleopatraDataFolder";
             $mode = "$1";
-            $mode =~ s/_(.*)/\1/;
+            $mode =~ s/_(.*)/$1/;
             $basename =~ s/_.*//;
         }
         else {
@@ -1840,10 +1848,11 @@ sub dump_customs
     opendir(DIR, ".") or die "Unable to open $workdir:$!\n";
     my @names = readdir(DIR) or die "Unable to read $workdir:$!\n";
     closedir(DIR);
-    if ($::product_name eq 'GnuPG VS-Desktop') {
-        dump_help("help");
-    } else {
+
+    if ($::product_name eq 'GnuPG Desktop') {
         dump_help("desktop-help");
+    } else {
+        dump_help("help");
     }
 
     foreach my $name (@names) {
@@ -1873,7 +1882,6 @@ sub dump_customs
     chdir($startdir) or die "Unable to dir $startdir!\n";
 }
 
-dump_customs("gnupg-vsd");
 
 
 # Just so that it is defined.
@@ -1950,6 +1958,7 @@ while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
     }
 }
 
+dump_customs("gnupg-vsd");
 
 if ($#ARGV < 0)
 {
