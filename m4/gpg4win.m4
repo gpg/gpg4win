@@ -858,6 +858,7 @@ AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY],
                           | awk 'NR==1 {split($NF,a,"."); print a[1] "." a[2]}')
         gcc_major_minor_alt=$($CC --version | cut -d " " -f 3 \
                              | awk 'NR==1 {split($NF,a,"."); print a[1] "." a[2]}')
+        gcc_major=$(echo $gcc_major_minor |cut -d. -f1)
         changequote([,])
         guesses="/usr/lib/gcc/$host/$gcc_major_minor/$1.dll
                  /usr/$host/bin/$1.dll
@@ -865,8 +866,8 @@ AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY],
                  /usr/lib/gcc/$host/${gcc_major_minor}-posix/$1.dll
                  /usr/lib/gcc/$host/${gcc_major_minor_alt}-posix/$1.dll
                  /usr/lib/gcc/$host/${gcc_major_minor_alt}/$1.dll
-                 /usr/$host/sys-root/mingw/bin/$1.dll
-                 /usr/lib/gcc/$host/10-posix/$1.dll"
+                 /usr/lib/gcc/$host/${gcc_major}/$1.dll
+                 /usr/$host/sys-root/mingw/bin/$1.dll"
 
         for file in $guesses; do
             if test -r "$file"; then

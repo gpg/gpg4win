@@ -12,6 +12,7 @@ configure.lineno
 configure
 stamp-h1
 /*.tar.bz2
+/*.tar.xz
 /gpg4win-2.*
 doc/manual/version.tex
 src/config.nsi
@@ -70,3 +71,7 @@ src/signed_installers
 /po/build-cc
 /src/license.blurb
 /src/mkportable.exe
+/src/libgcc_s_dw2-1.dll-x
+/src/libwinpthread-1.dll-x
+/src/libwinpthread-1.dll-x64
+/src/toolchain.cmake

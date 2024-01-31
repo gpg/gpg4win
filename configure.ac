@@ -25,11 +25,15 @@ min_automake_version="1.9.3"
 # (git tag -s gpg4win-2.x.y) and run "./autogen.sh --force".  Please
 # bump the version number immediately after the release and do another
 # commit and push so that the git magic is able to work.
+# BUILDTYPE can be used to build the VSD or GPD versions.  Note that
+# IS_VSD_BUILD is set along with IS_GPD_BUILD.
 m4_define([mym4_package],[gpg4win])
-m4_define([mym4_isvsd],m4_if(m4_esyscmd([ls packages/gnupg-2.*.tar.* | \
-                               head -1 | cut -d. -f2 | tr -d '\n']),[2],
-                               [yes], [no]))
+m4_define([mym4_buildtype],
+           m4_chomp_all(m4_esyscmd([(cat packages/BUILDTYPE 2>/dev/null\
+                                                      || echo default)])))
+m4_if(mym4_buildtype,[vsd],[m4_define([mym4_isvsd],[yes])])
 
+# For VSD we use a different version number.
 m4_if(mym4_isvsd,yes,
       [m4_define([mym4_major],[3])
        m4_define([mym4_minor],[2])
@@ -37,6 +41,11 @@ m4_if(mym4_isvsd,yes,
       [m4_define([mym4_major],[4])
        m4_define([mym4_minor],[3])
        m4_define([mym4_micro],[1])])
+
+
+# We need to set isgpd only after having set the version number.
+m4_if(mym4_buildtype,[gpd],[m4_define([mym4_isvsd],[yes])
+                            m4_define([mym4_isgpd],[yes])])
 
 
 # Below is m4 magic to extract and compute the git revision number,
@@ -55,7 +64,6 @@ m4_define([mym4_revision_dec], m4_argn(8, mym4_verslist))
 
 AC_INIT([mym4_package],[mym4_version],[https://bugs.gnupg.org])
 
-IS_VSD_BUILD=mym4_isvsd
 PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION
 GIT_REVISION=mym4_revision
@@ -63,6 +71,7 @@ GIT_REVISION_DEC=mym4_revision_dec
 GIT_BETASTRING=mym4_betastr
 IS_BETA_BUILD=mym4_isbeta
 IS_VSD_BUILD=mym4_isvsd
+IS_GPD_BUILD=mym4_isgpd
 
 # XXX: It seems to be impossible in the way we call cmake to pass
 # defines with spaces. So we use a nice "FOUR-PER-EM SPACE" U+2005 *cough*
@@ -75,7 +84,7 @@ AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([tar-ustar])
 AM_MAINTAINER_MODE
 AC_CANONICAL_HOST
-AM_CONFIG_HEADER(config.h)
+AC_CONFIG_HEADERS([config.h])
 
 # Language support
 AM_PO_SUBDIRS
@@ -86,6 +95,7 @@ AC_SUBST(VERSION)
 AC_SUBST(GIT_BETASTRING)
 AC_SUBST(IS_BETA_BUILD)
 AC_SUBST(IS_VSD_BUILD)
+AC_SUBST(IS_GPD_BUILD)
 AC_SUBST(DISTRIBUTION_TEXT)
 
 # Generate extended version information.  Note, that for NSIS use we
@@ -122,7 +132,7 @@ GPG4WIN_BUILD_RELEASE(appimage, no)
 
 # Additionaly enable building gpgex for another host
 AC_ARG_WITH([additional-gpgex-host],
-    AC_HELP_STRING([--with-additional-gpgex-host=HOST],
+    AS_HELP_STRING([--with-additional-gpgex-host=HOST],
                    [Additionaly build gpgex for this host]),
                    [if test "$withval" = yes; then
                       AC_MSG_FAILURE(
@@ -140,7 +150,7 @@ fi
 AC_SUBST(GPGEX_ADD_HOST)
 
 AC_ARG_ENABLE(fast-makensis,
-    AC_HELP_STRING([--enable-fast-makensis],
+    AS_HELP_STRING([--enable-fast-makensis],
                    [Use a less efficient compressor to speed up building]),
                     use_fast_makensis=$enableval,
                     use_fast_makensis=no)
@@ -497,7 +507,7 @@ echo -n "
         Revision: ${GIT_REVISION}  (${GIT_REVISION_DEC})
         32bit platform: $host
         64bit platform: ${GPGEX_ADD_HOST}
-        Distribution: ${DISTRIBUTION_TEXT}
+        Distribution: ${DISTRIBUTION_TEXT} (mym4_buildtype)
 "
 if test -n "$JOBS"; then
     echo "        make jobs: ${JOBS}"

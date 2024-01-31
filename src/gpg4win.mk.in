@@ -743,6 +743,9 @@ define AUTHENTICODE_sign
    if [ -n "$(3)" ]; then \
      val_n="$(3)"; \
      val_i="https://gnupg.com"; \
+   elif [ "$(IS_GPD_BUILD)" = yes ]; then \
+     val_n="GnuPG Desktop" ;\
+     val_i="https://gnupg.com" ;\
    elif [ "$(IS_VSD_BUILD)" = yes ]; then \
      val_n="GnuPG VS-Desktop" ;\
      val_i="https://gnupg.com" ;\
