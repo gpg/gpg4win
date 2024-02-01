@@ -28,6 +28,8 @@ min_automake_version="1.9.3"
 # BUILDTYPE can be used to build the VSD or GPD versions.  Note that
 # IS_VSD_BUILD is set along with IS_GPD_BUILD.
 m4_define([mym4_package],[gpg4win])
+m4_define([mym4_isvsd],[no])
+m4_define([mym4_isgpd],[no])
 m4_define([mym4_buildtype],
            m4_chomp_all(m4_esyscmd([(cat packages/BUILDTYPE 2>/dev/null\
                                                       || echo default)])))
