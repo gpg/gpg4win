@@ -36,6 +36,13 @@ else
 	VSD_VERSION_FILE:=$(VSD_VERSION)
 endif
 
+
+ifeq ($(IS_GPD_BUILD),yes)
+  MSI_FNAME_PREFIX := GnuPG-Desktop
+else
+  MSI_FNAME_PREFIX := GnuPG-VS-Desktop
+endif
+
 # We collect the names of all pkg files used.
 pkg_files =
 
@@ -1198,19 +1205,18 @@ $(stampdir)/stamp-all-upload: $(stampdir)/stamp-dist-self \
 	cat $(addsuffix -upload, $(addprefix $(stampdir)/stamp-,$(msi_targets)))
 	gpg --yes -o gnupg-vsd-$(VERSION).tar.xz.sig -bau $(msi_signkey) \
 		../gpg4win-$(VERSION).tar.xz
-	rsync -vP ../gpg4win-$(VERSION).tar.xz $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VSD_VERSION).tar.xz
-	rsync -vP gnupg-vsd-$(VERSION).tar.xz.sig $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VSD_VERSION).tar.xz.sig
+	rsync -vP ../gpg4win-$(VERSION).tar.xz $(VSD_PUBLISH_HOST)/src/$(MSI_FNAME_PREFIX)-$(VSD_VERSION).tar.xz
+	rsync -vP gnupg-vsd-$(VERSION).tar.xz.sig $(VSD_PUBLISH_HOST)/src/$(MSI_FNAME_PREFIX)-$(VSD_VERSION).tar.xz.sig
 	echo "Source links:"
-	echo "https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.xz"
-	echo "https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.xz.sig"
+	echo "https://download.gnupg.com/files/src/$(MSI_FNAME_PREFIX)-$(VSD_VERSION).tar.xz"
+	echo "https://download.gnupg.com/files/src/$(MSI_FNAME_PREFIX)-$(VSD_VERSION).tar.xz.sig"
 	touch $(stampdir)/stamps-all-upload
 
 .PHONY: msi
 # Add here if you use new product names we need new subst targets
 msi: $(stampdir)/stamp-versions-all-signed \
-	$(subst GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-Desktop.msi, installers/GnuPG-Desktop-$(VSD_VERSION_FILE)-Desktop.msi, \
-	$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets))))
-	if [ -z "$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets)))" ]; then \
+	$(addsuffix .msi,$(addprefix installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-,$(msi_targets)))
+	if [ -z "$(addsuffix .msi,$(addprefix installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-,$(msi_targets)))" ]; then \
 		echo "No MSI targets configured."; \
 	else \
 		echo "######################"; \
@@ -1219,8 +1225,7 @@ msi: $(stampdir)/stamp-versions-all-signed \
 	fi
 
 $(stampdir)/stamp-msi-all-signed: gnupg-vsd/sign.mk \
-	$(subst GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-Desktop.msi, signed_installers/GnuPG-Desktop-$(VSD_VERSION_FILE)-Desktop.msi, \
-	  $(addsuffix .msi,$(addprefix signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets))))
+	$(addsuffix .msi,$(addprefix signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-,$(msi_targets)))
 	touch $(stampdir)/stamp-msi-all-signed
 
 
@@ -1228,7 +1233,7 @@ msi-signed: $(stampdir)/stamp-msi-all-signed
 msi-upload: $(stampdir)/stamp-all-upload $(stampdir)/stamp-dist-self
 
 installers: \
-	$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets)))
+	$(addsuffix .msi,$(addprefix installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-,$(msi_targets)))
 
 .PHONY : all-gpg4win clean-stamps clean-gpg4win msi msi-signed msi-upload
 
