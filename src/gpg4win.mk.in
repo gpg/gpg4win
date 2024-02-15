@@ -766,7 +766,7 @@ define AUTHENTICODE_sign
      ssh "$(AUTHENTICODE_SIGNHOST)" $(AUTHENTICODE_TOOL) sign \
         /v /sm \
         /a /n '"g10 Code GmbH"' \
-        /tr 'http://rfc3161timestamp.globalsign.com/advanced' /td sha256 \
+        /tr '$(AUTHENTICODE_TSURL)' /td sha256 \
         /d '"GnuPG VS-Desktop"' \
         /fd sha256 /du https://gnupg.com a.exe; \
      scp "$(AUTHENTICODE_SIGNHOST):a.exe" $(2);\
@@ -778,14 +778,14 @@ define AUTHENTICODE_sign
        -pkcs11module $(SCUTEMODULE) \
        -certs $(AUTHENTICODE_CERTS) \
        -h sha256 -n "$$$${val_n}" -i "$$$${val_i}" \
-       -ts http://rfc3161timestamp.globalsign.com/advanced \
+       -ts $(AUTHENTICODE_TSURL) \
        -in $(1) -out $(2).tmp ; cp $(2).tmp $(2) ; rm $(2).tmp ; \
        echo "signed file is '$(2)'" ;\
    else \
      echo "speedo: Signing using key $(AUTHENTICODE_KEY)";\
      osslsigncode sign -certs $(AUTHENTICODE_CERTS) \
        -pkcs12 $(AUTHENTICODE_KEY) -askpass \
-       -ts "http://timestamp.globalsign.com/scripts/timstamp.dll" \
+       -ts "$(AUTHENTICODE_TSURL)" \
        -h sha256 -n "$$$${val_n}" -i "$$$${val_i}" \
        -in $(1) -out $(2) ;\
    fi
@@ -973,9 +973,9 @@ gnupg-vsd/$(1)/$(1).wxs: gnupg-vsd/$(1)/VERSION.sig make-msi.pl $$($(1)_PRODUCT)
 
 gnupg-vsd/$(1)/VERSION.sig: gnupg-vsd/$(1)/VERSION
 	echo "----------SIGNING----------"
-	echo "using key: $(version_signkey)"
+	echo "using key: $(VERSION_SIGNKEY)"
 	cat gnupg-vsd/$(1)/VERSION
-	gpg --yes -o gnupg-vsd/$(1)/VERSION.sig -bau $(version_signkey) gnupg-vsd/$(1)/VERSION
+	gpg --yes -o gnupg-vsd/$(1)/VERSION.sig -bau $(VERSION_SIGNKEY) gnupg-vsd/$(1)/VERSION
 
 gnupg-vsd/$(1)/VERSION: gnupg-vsd/custom.mk $(stampdir)/stamp-betanum
 	echo "[Kleopatra]" > gnupg-vsd/$(1)/VERSION
