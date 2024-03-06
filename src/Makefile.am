@@ -239,7 +239,7 @@ $(eval $(call READ_AUTOGEN_template,AUTHENTICODE_KEY))
 $(eval $(call READ_AUTOGEN_template,AUTHENTICODE_CERTS))
 $(eval $(call READ_AUTOGEN_template,VERSION_SIGNKEY))
 $(eval $(call READ_AUTOGEN_template,OSSLSIGNCODE))
-$(eval $(call READ_AUTOGEN_template,OSSLPKCS11ENoGINE))
+$(eval $(call READ_AUTOGEN_template,OSSLPKCS11ENGINE))
 $(eval $(call READ_AUTOGEN_template,SCUTEMODULE))
 
 # The key to sign the MSI installer is usually the same as the key used
