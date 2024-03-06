@@ -59,11 +59,11 @@ ${If} ${RunningX64}
   SetOutPath "$INSTDIR\bin_64"
   ClearErrors
   SetOverwrite try
-  File ${exprefix}/bin/libassuan6-0.dll
+  File ${exprefix}/bin/libassuan-0.dll
   SetOverwrite lastused
   ifErrors 0 +3
-      File /oname=libassuan6-0.dll.tmp "${exprefix}/bin/libassuan6-0.dll"
-      Rename /REBOOTOK libassuan6-0.dll.tmp libassuan6-0.dll
+      File /oname=libassuan-0.dll.tmp "${exprefix}/bin/libassuan-0.dll"
+      Rename /REBOOTOK libassuan-0.dll.tmp libassuan-0.dll
 ${EndIf}
 
 !endif

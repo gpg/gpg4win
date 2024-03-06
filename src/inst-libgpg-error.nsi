@@ -71,11 +71,11 @@ ${If} ${RunningX64}
   SetOutPath "$INSTDIR\bin_64"
   ClearErrors
   SetOverwrite try
-  File ${exprefix}/bin/libgpg-error6-0.dll
+  File ${exprefix}/bin/libgpg-error-0.dll
   SetOverwrite lastused
   ifErrors 0 +3
-      File /oname=libgpg-error6-0.dll.tmp "${exprefix}/bin/libgpg-error6-0.dll"
-      Rename /REBOOTOK libgpg-error6-0.dll.tmp libgpg-error6-0.dll
+      File /oname=libgpg-error-0.dll.tmp "${exprefix}/bin/libgpg-error-0.dll"
+      Rename /REBOOTOK libgpg-error-0.dll.tmp libgpg-error-0.dll
 ${EndIf}
 
 

@@ -192,8 +192,8 @@ AUTHENTICODE_FILES = \
 	../install-ex/bin/gpgex.dll \
 	../install-ex/bin/gpgme-json.exe \
 	../install-ex/bin/gpgol.dll \
-	../install-ex/bin/libassuan6-0.dll \
-	../install-ex/bin/libgpg-error6-0.dll \
+	../install-ex/bin/libassuan-0.dll \
+	../install-ex/bin/libgpg-error-0.dll \
 	../install-ex/bin/libgpgme-11.dll \
 	../install-ex/bin/libgpgmepp-6.dll \
 	../install-ex/libexec/gpgme-w32spawn.exe \
