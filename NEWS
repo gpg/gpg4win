@@ -5,6 +5,16 @@
 Noteworthy changes in Version 4.3.1 (unreleased)
 ------------------------------------------------
 
+~~~~~~~~~~~~~~~
+GnuPG:          2.4.5
+Kleopatra:      3.2.0
+GpgOL:          2.5.12
+GpgEX:          1.0.10
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in Version 4.3.0 (2024-01-25)
 ------------------------------------------------
 
@@ -340,7 +350,7 @@ Noteworthy changes in Version 4.3.0 (2024-01-25)
 
 
 ~~~~~~~~~~~~~~~
-GnuPG:          2.4.44
+GnuPG:          2.4.4
 Kleopatra:      3.2.0
 GpgOL:          2.5.12
 GpgEX:          1.0.10
