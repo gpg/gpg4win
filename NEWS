@@ -2,12 +2,49 @@
 #
 # The version numbers given are used by gpg4win and GnuPG [VS-]Desktop
 
-Noteworthy changes in Version 4.3.1 (unreleased)
+Noteworthy changes in Version 4.3.1 (2024-03-11)
 ------------------------------------------------
+
+--- Features ---
+
+(en) GnuPG: D-TRUST ECC smart cards are now supported.  [T7000,T7001]
+
+(de) GnuPG: ECC Smartcards von D-Trust werden jetzt unterstützt.
+     [T7000,T7001]
+
+
+--- Bug Fixes ---
+
+(en) Kleopatra: The WKD lookup does now also work if the mail
+     addresses are surrounded by spaces.  [T6868]
+
+(de) Kleopatra: Eine WKD Suche funktioniert jetzt auch wenn die
+     Mailadresse führende oder nachgestellte Leerzeichen hat.  [T6881]
+
+(en) Kleopatra: The WKD lookup now works even if no keyserver is
+     configured. [T6868]
+
+(de) Kleopatra Eine WKD Suche funktioniert jetzt auch wenn kein
+     Keyserver konfiguriert ist.  [T6868]
+
+(en) GnuPG: The Windows system root CAs are now trusted when checking
+     CRL.  [T6963]
+
+(de) GnuPG: Den Wurzelzertifikaten von Windows wird jetzt bei der
+     Prüfung von CRLs vertraut.  [T6963]
+
+(en) GnuPG: For a full list of the backend changes between GnuPG 2.4.4
+     in Gpg4win-4.3.0 and GnuPG 2.4.5 in Gpg4win-4.3.1 please see:
+     https://dev.gnupg.org/T6960
+
+(de) GnuPG: Die vollständige Liste der Änderungen zwischen GnuPG 2.4.4
+     in Gpg4win-4.3.0 und GnuPG 2.4.5 in Gpg4win-4.3.1 findet sich
+     hier (Englisch): https://dev.gnupg.org/T6960
+
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.4.5
-Kleopatra:      3.2.0
+Kleopatra:      3.2.2
 GpgOL:          2.5.12
 GpgEX:          1.0.10
 Kompendium DE:  4.0.1
