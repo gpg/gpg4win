@@ -123,8 +123,10 @@ else
     if [ "$custom_l10n" != "no" ]; then
         echo "Downloading german translations from ${custom_l10n}"
         svn export --force svn://anonsvn.kde.org/home/kde/trunk/${custom_l10n}/messages/${package}/${package}.po \
-            po/de/${package}.po
-        git add po
+            po/de/${package}_summit.po
+        msgcat po/de/${package}.po po/de/${package}_summit.po > po/de/${package}_new.po
+        mv po/de/${package}_new.po po/de/${package}.po
+        git add po/de/${package}.po
         git commit -m "Add latest german translation"
     fi
     git archive --format tar.xz --prefix=${snapshotdir}/ "${branch}" > ${tarball}
