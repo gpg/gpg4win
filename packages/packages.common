@@ -563,19 +563,22 @@ chk 6cc3eec7bec7ebe32860c86e97d541e8b53836d50150a392270ba2e05d30201a
 file mimetreeparser/mimetreeparser-202312030131.tar.xz
 chk e5236e9c867664910d4019b17552822d84e92124490f40aa6ada05578c9ef200
 
+
 # libkleo
-# last changed: 2024-03-08
+# last changed: 2024-03-25
 # by: builder
 # verified: Tarball created by builder.
-file libkleo/libkleo-202403081149.tar.xz
-chk 87b9769718ed87ca79dee49fcd04c7a76cfef89516e5ba7f742378f6f5eaf829
+file libkleo/libkleo-202403251452.tar.xz
+chk f392d5d8f04622c18d5d3f1e504652b7984aa7d2bae7744149892f2dd3e4ad41
+
 
 # kleopatra
-# last changed: 2024-03-15
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202403151101.tar.xz
-chk da6f1ffef9f09009ee9d0b72060f6fb532cb6f277a995dc0b4acf99ab0f010e4
+# last changed: 2024-03-25
+# by: builder
+# verified: Tarball created by builder.
+file kleopatra/kleopatra-202403251450.tar.xz
+chk 261a82c44c63c4bb575fc8b695e1d7de859ac952d55e7973b1c7c6f009ed2213
+
 
 
 # Okular and dependencies
