@@ -10,7 +10,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-VERSION=2024-03-20
+VERSION=2024-03-25
 PGM=authenticode-sign.sh
 
 set -e
@@ -22,6 +22,7 @@ Usage: $PGM [OPTIONS]  [FILE_TO_SIGN]
 Options:
         [--desc=STRING]   Include STRING as description (default=$url)
         [--url=STRING]    Include STRING as URL (default=$desc)
+        [--stamp]         Use a stamp file to avoid double signing
         [--dry-run]       Do not actually run osslsigncode
         [--template]      Print a template for ~/.gnupg-autogenrc
         [--version]       Print version and exit
@@ -91,6 +92,7 @@ EOF
 
 autogenrc="$HOME/.gnupg-autogen.rc"
 dryrun=
+stamp=
 buildtype=
 # Set defaults  accrding to our build system.
 if [ -n "$abs_top_srcdir" -a -f "$abs_top_srcdir/packages/BUILDTYPE" ]; then
@@ -139,6 +141,9 @@ while [ $# -gt 0 ]; do
 	--dry-run|-n)
 	    dryrun=yes
 	    ;;
+	--stamp)
+	    stamp=yes
+	    ;;
 	--help|-h)
 	    usage 0
 	    ;;
@@ -182,6 +187,14 @@ for v in AUTHENTICODE_SIGNHOST AUTHENTICODE_TOOL AUTHENTICODE_TSURL \
 done
 
 
+if [ "$stamp" = yes ]; then
+    if [ "$outname.asig-done" -nt "$outname" ]; then
+        echo >&2 "$PGM: file is '$outname' is already signed"
+        exit 0
+    fi
+fi
+
+
 if [ -n "$AUTHENTICODE_SIGNHOST" ]; then
 
     echo >&2 "$PGM: Signing via host $AUTHENTICODE_SIGNHOST"
@@ -222,5 +235,5 @@ else
        rm "$outname.tmp"
 
 fi
-
+[ "$stamp" = yes ] && touch "$outname.asig-done"
 echo >&2 "$PGM: signed file is '$outname'"

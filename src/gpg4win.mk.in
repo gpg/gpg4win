@@ -1141,7 +1141,7 @@ installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi: $(stampdir)/stamp-
 
 signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi: installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
 	mkdir -p signed_installers
-	$$(abs_top_srcdir)/build-aux/authenticode-sign.sh \
+	$$(abs_top_srcdir)/build-aux/authenticode-sign.sh --stamp \
            --desc="$$($(1)_PRODUCT_PRETTY)" \
            "installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi" \
            "signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi"
