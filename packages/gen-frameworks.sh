@@ -32,7 +32,6 @@ if [ -z "$1" ]; then
 fi
 
 FRAMEWORKS="extra-cmake-modules
-    kactivities
     kauth
     kconfig
     ki18n
@@ -61,7 +60,9 @@ FRAMEWORKS="extra-cmake-modules
     ktextwidgets
     sonnet
     kcalendarcore
-    prison"
+    prison
+    knotifications
+    kcolorscheme"
 
 fullversion=$1
 case ${fullversion} in

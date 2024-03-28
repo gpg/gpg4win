@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
+EXTRA_DIST = gpg4win.nsi gpg4win-src.nsi \
 	config.site config.nsi.in \
         libiconv.def libintl.def findicons.sh \
         gpg4win-splash.wav exdll.h exdll.c g4wihelp.c desktopshellrun.cpp \
@@ -98,6 +98,8 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-qrencode.nsi uninst-qrencode.nsi \
         inst-prison.nsi uninst-prison.nsi \
         inst-gpgpass.nsi uninst-gpgpass.nsi \
+        inst-knotifications.nsi uninst-knotifications.nsi \
+        inst-kcolorscheme.nsi uninst-kcolorscheme.nsi \
         inst-final.nsi index.theme \
         slideshow/slides.dat \
         slideshow/slide1-gpgol.png \
@@ -111,6 +113,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         build-gpg4win.sh \
         WixUI_Gpg4win.wxs icons/shield.ico included-icons.txt
 
+#inst-snoretoast.nsi uninst-snoretoast.nsi
 
 if BUILD_APPIMAGE
 appimage = appimage
@@ -146,17 +149,18 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 		pinentry libassuan ntbtls pcre \
 		paperkey regex libiconv gettext scute qrencode
 
-gpg4win_qtpkgs = qtbase qttools qtwinextras qtsvg qttranslations
-
 # Source packages following the KDE pattern
-gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
+gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations \
+                  kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
                   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
                   kiconthemes kleopatra breeze-icons kitemmodels karchive \
                   gpg4win-tools kcrash kio kbookmarks kservice solid \
                   kjobwidgets poppler okular freetype threadweaver \
                   kparts tiff openjpeg sonnet ktextwidgets mimetreeparser \
-                  libical kcalendarcore kmbox pcre2 prison gpgpass
+                  libical kcalendarcore kmbox pcre2 prison gpgpass \
+                  knotifications kcolorscheme
+#snoretoast
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
@@ -231,9 +235,9 @@ define gpg4win_pkg_libgpg_error_post_install
  done)
 endef
 
-gpg4win_pkg_libassuan_configure =  --silent --enable-static
+gpg4win_pkg_libassuan_configure = --with-gpg-error-prefix=$(idir) --enable-static
 
-gpg4win_pkg_libassuan_ex_configure = --with-gpg-error-prefix=$(ex_idir) --silent --enable-static
+gpg4win_pkg_libassuan_ex_configure = --with-gpg-error-prefix=$(ex_idir) --enable-static
 
 gpg4win_pkg_libpng_configure = HAVE_SOLARIS_LD_FALSE=yes CPPFLAGS=\"-I$(idir)/include -DPNG_BUILD_DLL\" LDFLAGS=\"-L$(idir)/lib\" LIBPNG_DEFINES=\"-DPNG_BUILD_DLL\"
 
@@ -250,14 +254,14 @@ gpg4win_pkg_pinentry_configure = \
 
 # The LDFLAGS is needed for -lintl for glib.  The QT4 variables work
 # around the lack of cross compilation support in qt-dev.
-gpg4win_pkg_gpgme_configure = --silent \
+gpg4win_pkg_gpgme_configure = \
   --with-gpg-error-prefix=$(idir) --enable-static \
   LDFLAGS=-L$(idir)/lib \
   --enable-languages=qt,cpp \
   --disable-gpg-test \
   --disable-gpgsm-test
 
-gpg4win_pkg_gpgme_ex_configure = --silent \
+gpg4win_pkg_gpgme_ex_configure = \
   --with-gpg-error-prefix=$(ex_idir) --enable-static \
   --with-libassuan-prefix=$(ex_idir) \
   LDFLAGS=-L$(ex_idir)/lib \
@@ -294,101 +298,103 @@ gpg4win_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
 gpg4win_pkg_pcre2_configure = -DPCRE2_BUILD_PCRE2_8=OFF -DPCRE2_BUILD_PCRE2_16=ON \
                               -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF
 
+gpg4win_pkg_karchive_configure = -DWITH_LIBZSTD=OFF -DWITH_LIBLZMA=OFF
+
+gpg4win_pkg_kcoreaddons_configure = -DKCOREADDONS_USE_QML=OFF
+
+gpg4win_pkg_kwindowsystem_configure = -DKWINDOWSYSTEM_QML=OFF
 
 gpg4win_pkg_qtbase_configure = \
-            ../$$$${pkg_version}/configure \
-            -opensource \
-            -confirm-license \
-            -xplatform win32-g++ \
-            -device-option CROSS_COMPILE=$(host)- \
-            -no-use-gold-linker \
-            -release \
-            -shared \
-            -prefix $$$${pkgidir} \
-            -I "$(idir)/include" \
-            -L "$(idir)/lib" \
-            -no-icu \
-            -opengl desktop \
-            -no-glib \
-            -accessibility \
-            -nomake examples \
-            -nomake tests \
-            -no-sql-mysql \
-            -no-sql-sqlite \
-            -no-sql-odbc \
-            -no-sql-psql \
-            -no-sql-tds \
-            -system-zlib \
-            -system-libpng \
-            -system-libjpeg \
-            -system-freetype \
-            -system-pcre \
-            -no-openssl \
-            -no-dbus \
-            -v
+        -DQT_HOST_PATH=/usr \
+        -DQt6HostInfo_DIR=/usr/lib64/cmake/Qt6HostInfo \
+        -DQT_QMAKE_DEVICE_OPTIONS='CROSS_COMPILE=$(host)- \
+        -DQT_QMAKE_TARGET_MKSPEC=win32-g++ \
+        -DQT_BUILD_EXAMPLES=OFF \
+        -DQT_BUILD_TESTS=OFF \
+        -DBUILD_WITH_PCH=OFF \
+        -DFEATURE_accessibility=ON \
+        -DFEATURE_dbus=OFF \
+        -DFEATURE_fontconfig=OFF \
+        -DFEATURE_glib=OFF \
+        -DFEATURE_opengl_dynamic=ON \
+        -DFEATURE_openssl=OFF \
+        -DFEATURE_pkg_config=ON \
+        -DFEATURE_sql_mysql=OFF \
+        -DFEATURE_sql_odbc=ON \
+        -DFEATURE_sql_psql=OFF \
+        -DFEATURE_system_zlib=ON \
+        -DFEATUeE_zstd=ON \
+        -DFEATURE_system_pcre=ON \
+        -DFEATURE_system_freetype=ON \
+        -DFEATURE_system_harfbuzz=OFF \
+        -DFEATURE_schannel=ON \
+        -DFEATURE_use_gold_linker_alias=OFF \
+        -DCMAKE_VERBOSE_MAKEFILE=ON
 
-# qtbase
-# invoke qmake with removed debug options as a workaround for
-# https://bugreports.qt-project.org/browse/QTBUG-30898
-gpg4win_pkg_qtbase_make_args = \
-    QMAKE='$$$${pkgbdir}/bin/qmake'
+#        -DFEATURE_system_pcre2=ON \
+#            ../$$$${pkg_version}/configure \
+#            -opensource \
+#            -confirm-license \
+#            -xplatform win32-g++ \
+#            -device-option CROSS_COMPILE=$(host)- \
+#            -no-use-gold-linker \
+#            -release \
+#            -shared \
+ #           -prefix $$$${pkgidir} \
+#            -I "$(idir)/include" \
+#            -L "$(idir)/lib" \
+#            -no-icu \
+#            -opengl desktop \
+#            -no-glib \
+#            -accessibility \
+#            -nomake examples \
+#            -nomake tests \
+#            -no-sql-mysql \
+#            -no-sql-sqlite \
+#            -no-sql-odbc \
+#            -no-sql-psql \
+#            -no-sql-tds \
+#            -system-zlib \
+#            -system-libpng \
+#            -system-libjpeg \
+#            -system-freetype \
+#            -system-pcre \
+#            -no-openssl \
+#            -no-dbus \
+#            -v
 
 # Make install step. Somehow qtprintsupport is now installed automatically.
-define gpg4win_pkg_qtbase_post_install
-	(cd $$$${pkgbdir}; \
-	 make install; \
-	 cd $$$${pkgbdir}/src/printsupport; \
-	 make install;)
-endef
+#define gpg4win_pkg_qtbase_post_install
+#	(cd $$$${pkgbdir}; \
+#	 make install; \
+#	 cd $$$${pkgbdir}/src/printsupport; \
+#	 make install;)
+#endef
 
 
-gpg4win_pkg_qttools_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
+#gpg4win_pkg_qttools_configure = \
+#	"$(idir)/bin/qmake" ../$$$${pkg_version}
 
-define gpg4win_pkg_qttools_post_install
-	 (cd $$$${pkgbdir}; \
-	  mkdir -p $$$${pkgidir}; \
-	  cp -r bin lib include $$$${pkgidir})
-endef
-
-# Qmake does not support setting the installation path.
-# really https://bugreports.qt.io/browse/QTBUG-12341
-gpg4win_pkg_qtwinextras_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-define gpg4win_pkg_qtwinextras_post_install
- (cd $$$${pkgbdir}; \
-  mkdir -p $$$${pkgidir}/bin; \
-  cp -r lib include $$$${pkgidir}; \
-  mv $$$${pkgidir}/lib/*.dll $$$${pkgidir}/bin;)
-endef
-
-gpg4win_pkg_qtsvg_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
+#define gpg4win_pkg_qttools_post_install
+#	 (cd $$$${pkgbdir}; \
+#	  mkdir -p $$$${pkgidir}; \
+#	  cp -r bin lib include $$$${pkgidir})
+#endef
 
 # XXX Adding the qtconf after qtsvg is a weird hack
 # because somhow (yay qmake) zlib is not linked if
 # the qt conf exists before that. The qt conf is
 # needed for qttranslations to find the correct path
 # of the translation tools.
-define gpg4win_pkg_qtsvg_post_install
- (cd $$$${pkgbdir}; \
-  mkdir -p $$$${pkgidir}; \
-  cp -r lib include plugins $$$${pkgidir}; \
-  mkdir -p $$$${pkgidir}/bin; \
-  mv $$$${pkgidir}/lib/*.dll $$$${pkgidir}/bin; \
-  echo "[Paths]" > $$$${pkgidir}/bin/qt.conf; \
-  echo "Prefix = .." >> $$$${pkgidir}/bin/qt.conf)
-endef
-
-gpg4win_pkg_qttranslations_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-define gpg4win_pkg_qttranslations_post_install
- ( rm -fR $$$${pkgidir}/qttranslations; \
-   mkdir -p $$$${pkgidir}; \
-   cp -r $$$${pkgbdir}/translations $$$${pkgidir}/qttranslations;)
-endef
+#define gpg4win_pkg_qtsvg_post_install
+#(cd $$$${pkgbdir}; \
+#  mkdir -p $$$${pkgidir}; \
+#  cp -r lib include plugins $$$${pkgidir}; \
+#  mkdir -p $$$${pkgidir}/bin; \
+#  mv $$$${pkgidir}/lib/*.dll $$$${pkgidir}/bin; \
+# echo "[Paths]" > $$$${pkgidir}/bin/qt.conf; \
+#  echo "Prefix = .." >> $$$${pkgidir}/bin/qt.conf)
+# endef
 
 define gpg4win_pkg_okular_post_install
  ( rm $$$${pkgidir}/share/icons/hicolor/icon-theme.cache; )
@@ -406,6 +412,9 @@ gpg4win_pkg_kxmlgui_configure = \
     -DXMLGUI_COMPILER_VERSION="i686-w64-mingw32-gcc" \
     -DXMLGUI_DISTRIBUTION_TEXT="$(DISTRIBUTION_TEXT)"
 
+gpg4win_pkg_knotifications_configure = \
+    -DFORCE_DISABLE_CANBERRA=ON
+
 gpg4win_pkg_breeze_icons_configure = \
     -DBINARY_ICONS_RESOURCE=ON \
     -DICON_SUBSET_INCLUDE_FILE=$(abs_srcdir)/included-icons.txt
@@ -419,12 +428,20 @@ gpg4win_pkg_kservice_configure = \
 gpg4win_pkg_kjobwidgets_configure = \
     -DANDROID=ON
 
+gpg4win_pkg_kiconthemes_configure = \
+    -DANDROID=ON \
+    -DKICONTHEMES_USE_QTQUICK=OFF
+
 gpg4win_pkg_okular_configure = \
     -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Purpose\;Qt5TextToSpeech\;LibZip\;KF5Wallet\;KF5DocTools\;KF5JS\;Phonon4Qt5\;TIFF\;JPEG\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt5Qml\;Qt5DBus"
 
 gpg4win_pkg_libical_configure = \
     -DICAL_GLIB=false \
     -DENABLE_GTK_DOC=false
+
+gpg4win_pkg_prison_configure = \
+    -DWITH_QUICK=OFF \
+    -DWITH_MULTIMEDIA=OFF
 
 # Supported make-only source packages.
 gpg4win_mpkgs = bzip2 zlib

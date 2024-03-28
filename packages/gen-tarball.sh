@@ -58,30 +58,34 @@ case ${package} in
         is_gpg="yes"
         is_w32="yes"
         ;;
-    gpg4win-tools | gpgpass)
+    gpg4win-tools )
+        repo=git://git.gnupg.org/${package}.git
+        branch=tobias/qt6
+        ;;
+    gpgpass )
         repo=git://git.gnupg.org/${package}.git
         ;;
     mimetreeparser)
         repo=https://invent.kde.org/pim/${package}.git
-        branch="kf5"
+#        branch="kf5"
         ;;
     kleopatra)
         repo=https://invent.kde.org/pim/${package}.git
-        branch="gpg4win/23.10"
-        custom_l10n="l10n-support/de/summit"
+ #       branch="gpg4win/23.10"
+ #       custom_l10n="l10n-support/de/summit"
         ;;
     libkleo)
         repo=https://invent.kde.org/pim/${package}.git
-        branch="gpg4win/23.10"
+ #       branch="gpg4win/23.10"
         ;;
     okular)
         repo=https://invent.kde.org/graphics/${package}.git
-        branch="work/sune/WORK"
+  #      branch="work/sune/WORK"
         ;;
     poppler)
-        #repo=https://anongit.freedesktop.org/git/poppler/poppler.git
-        repo=https://gitlab.freedesktop.org/svuorela/${package}.git
-        branch="WORK"
+        repo=https://anongit.freedesktop.org/git/poppler/poppler.git
+        #repo=https://gitlab.freedesktop.org/svuorela/${package}.git
+        #branch="WORK"
         ;;
     *)
         echo "Error: Unsupported package '${package}'"
@@ -123,7 +127,9 @@ else
     if [ "$custom_l10n" != "no" ]; then
         echo "Downloading german translations from ${custom_l10n}"
         svn export --force svn://anonsvn.kde.org/home/kde/trunk/${custom_l10n}/messages/${package}/${package}.po \
-            po/de/${package}.po
+            po/de/${package}_summit.po
+        msgcat po/de/${package}.po po/de/${package}_summit.po > po/de/${package}_new.po
+        mv po/de/${package}_new.po po/de/${package}.po
         git add po
         git commit -m "Add latest german translation"
     fi

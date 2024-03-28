@@ -219,9 +219,8 @@ define SETVARS
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_args_inst)";\
 	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";             \
 	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";        \
-	export PKG_CONFIG="$(tsdir)/src/pkg-config";			\
 	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
-	export PKG_CONFIG_LIBDIR="";					\
+	export PKG_CONFIG_LIBDIR="$(idir)/lib/pkgconfig";		\
 	export PATH="$(idir)/bin:$${PATH}";				\
 	export SYSROOT="$(idir)";					\
 	export CONFIG_SITE="$(tsdir)/src/config.site"
@@ -244,7 +243,6 @@ define SETVARS_EX
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_args_inst)"; \
 	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_dir)";             \
 	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_dir)";        \
-	export PKG_CONFIG="$(tsdir)/src/pkg-config";                        \
 	export PKG_CONFIG_PATH="$(ex_idir)/lib/pkgconfig";                  \
 	export PKG_CONFIG_LIBDIR="";                                        \
 	export PATH="$(ex_idir)/bin:$${PATH}";                              \
@@ -491,7 +489,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
 		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-			(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
+			(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}";) \
 		done \
 	else \
 		echo "Not patching symlinked $(1)"; \
@@ -815,9 +813,8 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	 $(CMAKE)					\
 		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
 		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
-		-DQT_MAJOR_VERSION="5" \
+		-DQT_MAJOR_VERSION="6" \
 		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_srcdir)/src/toolchain.cmake \
-		-DPKG_CONFIG_EXECUTABLE=$(abs_top_srcdir)/src/pkg-config \
 		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 		-DBUILD_TESTING=False \
 		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}") && \
@@ -1362,7 +1359,14 @@ installers: \
 .PHONY : all-gpg4win clean-stamps clean-gpg4win msi msi-signed msi-upload
 
 # Insert the template for msi packages.
-$(foreach msipkg, $(msi_targets), $(eval $(call MSI_template,$(msipkg))))
+define uniq =
+  $(eval seen :=)
+  $(foreach _,$1,$(if $(filter $_,${seen}),,$(eval seen += $_)))
+  ${seen}
+endef
+
+$(info $(sort $msi_targets))
+$(foreach msipkg, $(info $(call uniq,$msi_targets)), $(eval $(call MSI_template,$(msipkg))))
 
 # @emacs_local_vars_begin@
 # @emacs_local_vars_read_only@

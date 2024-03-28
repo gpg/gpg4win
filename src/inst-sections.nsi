@@ -117,6 +117,15 @@
 !ifdef HAVE_PKG_KJOBWIDGETS
 !include "inst-kjobwidgets.nsi"
 !endif
+!ifdef HAVE_PKG_KNOTIFICATIONS
+!include "inst-knotifications.nsi"
+!endif
+!ifdef HAVE_PKG_KCOLORSCHEME
+!include "inst-kcolorscheme.nsi"
+!endif
+#!ifdef HAVE_PKG_SNORETOAST
+#!include "inst-snoretoast.nsi"
+#!endif
 !ifdef HAVE_PKG_PCRE2
 !include "inst-pcre2.nsi"
 !endif
@@ -392,9 +401,15 @@
 !ifdef HAVE_PKG_KIO
 !include "uninst-kio.nsi"
 !endif
-!ifdef HAVE_PKG_KJOBWIDGETS
-!include "uninst-kjobwidgets.nsi"
+!ifdef HAVE_PKG_KNOTIFICATIONS
+!include "uninst-knotifications.nsi"
 !endif
+!ifdef HAVE_PKG_KCOLORSCHEME
+!include "uninst-kcolorscheme.nsi"
+!endif
+#!ifdef HAVE_PKG_SNORETOAST
+#!include "uninst-snoretoast.nsi"
+#!endif
 !ifdef HAVE_PKG_SOLID
 !include "uninst-solid.nsi"
 !endif
@@ -728,6 +743,15 @@ Function CalcDepends
 !ifdef HAVE_PKG_KIO
   !insertmacro UnselectSection ${SEC_kio}
 !endif
+!ifdef HAVE_PKG_KNOTIFICATIONS
+  !insertmacro UnselectSection ${SEC_knotifications}
+!endif
+!ifdef HAVE_PKG_KCOLORSCHEME
+  !insertmacro UnselectSection ${SEC_kcolorscheme}
+!endif
+#!ifdef HAVE_PKG_SNORETOAST
+#  !insertmacro UnselectSection ${SEC_snoretoast}
+#!endif
 !ifdef HAVE_PKG_KJOBWIDGETS
   !insertmacro UnselectSection ${SEC_kjobwidgets}
 !endif
@@ -890,6 +914,9 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_karchive}
   !insertmacro SelectSection ${SEC_kio}
   !insertmacro SelectSection ${SEC_kjobwidgets}
+#  !insertmacro SelectSection ${SEC_snoretoast}
+  !insertmacro SelectSection ${SEC_kcolorscheme}
+  !insertmacro SelectSection ${SEC_knotifications}
   !insertmacro SelectSection ${SEC_solid}
   !insertmacro SelectSection ${SEC_kservice}
   !insertmacro SelectSection ${SEC_kbookmarks}
@@ -953,6 +980,9 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_karchive}
   !insertmacro SelectSection ${SEC_kio}
   !insertmacro SelectSection ${SEC_kjobwidgets}
+#  !insertmacro SelectSection ${SEC_snoretoast}
+  !insertmacro SelectSection ${SEC_knotifications}
+  !insertmacro SelectSection ${SEC_kcolorscheme}
   !insertmacro SelectSection ${SEC_solid}
   !insertmacro SelectSection ${SEC_kservice}
   !insertmacro SelectSection ${SEC_kbookmarks}

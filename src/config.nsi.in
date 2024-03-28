@@ -228,6 +228,10 @@
 !define gpg4win_pkg_kbookmarks @gpg4win_pkg_kbookmarks@
 !define gpg4win_pkg_kbookmarks_version @gpg4win_pkg_kbookmarks_version@
 
+@HAVE_PKG_KNOTIFICATIONS@
+!define gpg4win_pkg_knotifications @gpg4win_pkg_knotifications@
+!define gpg4win_pkg_knotifications_version @gpg4win_pkg_knotifications_version@
+
 @HAVE_PKG_KJOBWIDGETS@
 !define gpg4win_pkg_kjobwidgets @gpg4win_pkg_kjobwidgets@
 !define gpg4win_pkg_kjobwidgets_version @gpg4win_pkg_kjobwidgets_version@
@@ -271,6 +275,10 @@
 @HAVE_PKG_KTEXTWIDGETS@
 !define gpg4win_pkg_ktextwidgets @gpg4win_pkg_ktextwidgets@
 !define gpg4win_pkg_ktextwidgets_version @gpg4win_pkg_ktextwidgets_version@
+
+@HAVE_PKG_KCOLORSCHEME@
+!define gpg4win_pkg_kcolorscheme @gpg4win_pkg_kcolorscheme@
+!define gpg4win_pkg_kcolorscheme_version @gpg4win_pkg_kcolorscheme_version@
 
 @HAVE_PKG_SONNET@
 !define gpg4win_pkg_sonnet @gpg4win_pkg_sonnet@
