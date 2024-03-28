@@ -219,6 +219,7 @@ define SETVARS
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_args_inst)";\
 	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";             \
 	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";        \
+	pkg_conf_subdir="$(call GETVAR,gpg4win_pkg_$(1)_conf_subdir)"; \
 	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
 	export PKG_CONFIG_LIBDIR="$(idir)/lib/pkgconfig";		\
 	export PATH="$(idir)/bin:$${PATH}";				\
@@ -793,11 +794,13 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
-		cd "$$$${pkgsdir}";				\
-		sed -i 's/set(KF5_MIN_VERSION.*)/set(KF5_MIN_VERSION "5.109.0")/' CMakeLists.txt; \
-		sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "5.109.0")/' CMakeLists.txt; \
-		sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.109.0")/' CMakeLists.txt; \
-		sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.24.0")/' CMakeLists.txt; \
+		cd "$$$${pkgsdir}"; \
+		if [ -e "CMakeLists.txt" ]; then \
+			sed -i 's/set(KF5_MIN_VERSION.*)/set(KF5_MIN_VERSION "5.109.0")/' CMakeLists.txt; \
+			sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "5.109.0")/' CMakeLists.txt; \
+			sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.109.0")/' CMakeLists.txt; \
+			sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.24.0")/' CMakeLists.txt; \
+		fi; \
 		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
 		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
 		done \
@@ -817,7 +820,7 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_srcdir)/src/toolchain.cmake \
 		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 		-DBUILD_TESTING=False \
-		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}") && \
+		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}$$$${pkg_conf_subdir}") && \
 	touch $(stampdir)/stamp-$(1)-02-configure
 
 $(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure

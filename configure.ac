@@ -299,10 +299,11 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_BPKG_MSISRC([gnupg-msi])
 
     # Qt related stuff.
-    GPG4WIN_SPKG([qtbase], [jpeg zlib libpng freetype pcre2])
-    GPG4WIN_SPKG([qttools], [qtbase])
-    GPG4WIN_SPKG([qttranslations], [qtsvg qttools])
-    GPG4WIN_SPKG([qtsvg], [qtbase])
+    GPG4WIN_KDEPKG([zstd])
+    GPG4WIN_KDEPKG([qtbase], [jpeg zlib zstd libpng freetype pcre2])
+    GPG4WIN_KDEPKG([qttools], [qtbase])
+    GPG4WIN_KDEPKG([qttranslations], [qtsvg qttools])
+    GPG4WIN_KDEPKG([qtsvg], [qtbase])
     GPG4WIN_KDEPKG([tiff])
     GPG4WIN_KDEPKG([pcre2])
 #   GPG4WIN_KDEPKG([snoretoast])

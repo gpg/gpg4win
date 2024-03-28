@@ -81,6 +81,14 @@ server https://fukuchi.org/works/qrencode/
 file qrencode-4.1.1.tar.gz
 chk da448ed4f52aba6bcb0cd48cac0dd51b8692bccc4cd127431402fca6f8171e8e
 
+# libzstd
+# last-changed: 2024-03-28
+# by: ah
+# verified: SIG 4EF4AC63455FC9F4545D9B7DEF8FE99528B52FFD
+server https://github.com/facebook/zstd/releases/download/
+file v1.5.6/zstd-1.5.6.tar.gz
+chk 8c29e06cf42aacc1eafc4077ae2ec6c6fcb96a626157e0593d5e82a34fd403c1
+
 #
 # GIMP stuff for W32
 #

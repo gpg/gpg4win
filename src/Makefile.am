@@ -159,7 +159,7 @@ gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations \
                   kjobwidgets poppler okular freetype threadweaver \
                   kparts tiff openjpeg sonnet ktextwidgets mimetreeparser \
                   libical kcalendarcore kmbox pcre2 prison gpgpass \
-                  knotifications kcolorscheme
+                  knotifications kcolorscheme zstd
 #snoretoast
 
 # Supported source packages to build in an additional architecture
@@ -194,6 +194,9 @@ gpg4win_pkg_gettext_make_dir = gettext-runtime
 gpg4win_pkg_gettext_make_dir_inst = gettext-runtime
 gpg4win_pkg_gettext_ex_make_dir = gettext-runtime
 gpg4win_pkg_gettext_ex_make_dir_inst = gettext-runtime
+
+# CMakeList.txt does not live in the top level
+gpg4win_pkg_zstd_conf_subdir = /build/cmake
 
 
 # Paperkey comes with a man pages which we have to convert.
@@ -298,7 +301,7 @@ gpg4win_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
 gpg4win_pkg_pcre2_configure = -DPCRE2_BUILD_PCRE2_8=OFF -DPCRE2_BUILD_PCRE2_16=ON \
                               -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF
 
-gpg4win_pkg_karchive_configure = -DWITH_LIBZSTD=OFF -DWITH_LIBLZMA=OFF
+gpg4win_pkg_karchive_configure = -DWITH_LIBZSTD=ON -DWITH_LIBLZMA=OFF
 
 gpg4win_pkg_kcoreaddons_configure = -DKCOREADDONS_USE_QML=OFF
 
@@ -323,7 +326,7 @@ gpg4win_pkg_qtbase_configure = \
         -DFEATURE_sql_odbc=ON \
         -DFEATURE_sql_psql=OFF \
         -DFEATURE_system_zlib=ON \
-        -DFEATUeE_zstd=ON \
+        -DFEATURE_zstd=ON \
         -DFEATURE_system_pcre=ON \
         -DFEATURE_system_freetype=ON \
         -DFEATURE_system_harfbuzz=OFF \

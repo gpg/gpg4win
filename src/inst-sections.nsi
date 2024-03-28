@@ -674,6 +674,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_ZLIB
   !insertmacro UnselectSection ${SEC_zlib}
 !endif
+!ifdef HAVE_PKG_ZSTD
+  !insertmacro UnselectSection ${SEC_zstd}
+!endif
 !ifdef HAVE_PKG_PKGCONFIG
   !insertmacro UnselectSection ${SEC_pkgconfig}
 !endif
@@ -1054,6 +1057,7 @@ skip_gpgme_browser:
 		${SF_SELECTED} have_qtbase skip_qtbase
   have_qtbase:
   !insertmacro SelectSection ${SEC_zlib}
+  !insertmacro SelectSection ${SEC_zstd}
   !insertmacro SelectSection ${SEC_qttranslations}
   !insertmacro SelectSection ${SEC_freetype}
   !insertmacro SelectSection ${SEC_libpng}

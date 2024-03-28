@@ -280,6 +280,10 @@
 !define gpg4win_pkg_kcolorscheme @gpg4win_pkg_kcolorscheme@
 !define gpg4win_pkg_kcolorscheme_version @gpg4win_pkg_kcolorscheme_version@
 
+@HAVE_PKG_ZSTD@
+!define gpg4win_pkg_zstd @gpg4win_pkg_zstd@
+!define gpg4win_pkg_zstd_version @gpg4win_pkg_zstd_version@
+
 @HAVE_PKG_SONNET@
 !define gpg4win_pkg_sonnet @gpg4win_pkg_sonnet@
 !define gpg4win_pkg_sonnet_version @gpg4win_pkg_sonnet_version@
