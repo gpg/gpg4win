@@ -225,22 +225,22 @@ for i in $required_tools; do
 done
 
 if test "$build_gpg4win" = yes ; then
-    # Try to find the KF5ConfigConfig to set up host tooling
+    # Try to find the KF6ConfigConfig to set up host tooling
     # variable for the kconfig compiler.
     # A variable path here would probably be better but we cant
     # use $libdir to avoid it beeing required to configure gpg4win
     # build with a multiarch libdir set.
-    kf5_host_tooling_candidates="/usr/lib/x86_64-linux-gnu/cmake /usr/lib64/cmake"
-    for i in $kf5_host_tooling_candidates; do
-        if test -f "$i/KF5Config/KF5ConfigConfig.cmake"; then
-            kf5_host_tooling="$i"
+    kf6_host_tooling_candidates="/usr/lib/x86_64-linux-gnu/cmake /usr/lib64/cmake"
+    for i in $kf6_host_tooling_candidates; do
+        if test -f "$i/KF6Config/KF6ConfigConfig.cmake"; then
+            kf6_host_tooling="$i"
             break;
         fi
     done
-    if test ! -f "$kf5_host_tooling/KF5Config/KF5ConfigConfig.cmake"; then
+    if test ! -f "$kf6_host_tooling/KF6Config/KF6ConfigConfig.cmake"; then
         missing_tools="$missing_tools libkf5config-dev"
     fi
-    AC_SUBST(kf5_host_tooling)
+    AC_SUBST(kf6_host_tooling)
 
     GPG4WIN_RUNTIME_LIBRARY(libstdc++-6, REQUIRED)
     GPG4WIN_RUNTIME_LIBRARY(libwinpthread-1, REQUIRED)
