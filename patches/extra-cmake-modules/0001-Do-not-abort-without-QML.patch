@@ -1,0 +1,43 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 4b21ec7706e5f0ab64856c0f0e6b5f95269976f8 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Wed, 13 Mar 2024 13:04:21 +0100
+Subject: [PATCH] Do not abort without QML
+
+This means that every project which includes this module
+has a required dependency on QML even if the project itself
+only has an optional QML dependency.
+---
+ modules/ECMQmlModule6.cmake | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/modules/ECMQmlModule6.cmake b/modules/ECMQmlModule6.cmake
+index aff4c428..111a9c09 100644
+--- a/modules/ECMQmlModule6.cmake
++++ b/modules/ECMQmlModule6.cmake
+@@ -11,7 +11,9 @@ unset(QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
+
+ if (NOT TARGET Qt6::Qml)
+     message(WARNING "Target Qt6::Qml was not found. ECMQmlModule requires the QML module when building with Qt 6")
+-    return()
++else()
++    # Stop warning about a changed import prefix.
++    qt6_policy(SET QTP0001 NEW)
+ endif()
+
+ # Match KDECMakeSettings' RUNTIME_OUTPUT_DIRECTORY so that we can load plugins from
+@@ -20,9 +22,6 @@ if (NOT QT_QML_OUTPUT_DIRECTORY)
+     set(QT_QML_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+ endif()
+
+-# Stop warning about a changed import prefix.
+-qt6_policy(SET QTP0001 NEW)
+-
+ function(ecm_add_qml_module ARG_TARGET)
+     cmake_parse_arguments(PARSE_ARGV 1 ARG "NO_PLUGIN;QT_NO_PLUGIN;GENERATE_PLUGIN_SOURCE" "URI;VERSION;CLASSNAME" "")
+
+--
+2.43.2
