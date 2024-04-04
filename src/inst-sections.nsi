@@ -162,6 +162,9 @@
 !ifdef HAVE_PKG_KPARTS
 !include "inst-kparts.nsi"
 !endif
+!ifdef HAVE_PKG_KSTATUSNOTIFIERITEM
+!include "inst-kstatusnotifieritem.nsi"
+!endif
 !ifdef HAVE_PKG_OKULAR
 !include "inst-okular.nsi"
 !endif
@@ -424,6 +427,9 @@
 !endif
 !ifdef HAVE_PKG_KPARTS
 !include "uninst-kparts.nsi"
+!endif
+!ifdef HAVE_PKG_KSTATUSNOTIFIERITEM
+!include "uninst-kstatusnotifieritem.nsi"
 !endif
 !ifdef HAVE_PKG_OKULAR
 !include "uninst-okular.nsi"
@@ -782,6 +788,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_KPARTS
   !insertmacro UnselectSection ${SEC_kparts}
 !endif
+!ifdef HAVE_PKG_KSTATUSNOTIFIERITEM
+  !insertmacro UnselectSection ${SEC_kstatusnotifieritem}
+!endif
 !ifdef HAVE_PKG_FREETYPE
   !insertmacro UnselectSection ${SEC_freetype}
 !endif
@@ -1003,6 +1012,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_mimetreeparser}
   !insertmacro SelectSection ${SEC_libical}
   !insertmacro SelectSection ${SEC_kcalendarcore}
+  !insertmacro SelectSection ${SEC_kstatusnotifieritem}
   skip_kleopatra:
 !endif
 

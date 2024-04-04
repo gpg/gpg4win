@@ -90,6 +90,7 @@ EXTRA_DIST = gpg4win.nsi gpg4win-src.nsi \
         inst-tiff.nsi uninst-tiff.nsi \
         inst-freetype.nsi uninst-freetype.nsi \
         inst-threadweaver.nsi uninst-threadweaver.nsi \
+        inst-kstatusnotifieritem.nsi uninst-kstatusnotifieritem.nsi \
         inst-kparts.nsi uninst-kparts.nsi \
         inst-okular.nsi uninst-okular.nsi \
         inst-mimetreeparser.nsi uninst-mimetreeparser.nsi \
@@ -159,7 +160,7 @@ gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations \
                   kjobwidgets poppler okular freetype threadweaver \
                   kparts tiff openjpeg sonnet ktextwidgets mimetreeparser \
                   libical kcalendarcore kmbox pcre2 prison gpgpass \
-                  knotifications kcolorscheme zstd
+                  knotifications kcolorscheme zstd kstatusnotifieritem
 #snoretoast
 
 # Supported source packages to build in an additional architecture

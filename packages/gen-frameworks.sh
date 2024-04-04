@@ -62,7 +62,8 @@ FRAMEWORKS="extra-cmake-modules
     kcalendarcore
     prison
     knotifications
-    kcolorscheme"
+    kcolorscheme
+    kstatusnotifieritem"
 
 fullversion=$1
 case ${fullversion} in
