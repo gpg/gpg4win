@@ -67,9 +67,6 @@
 !ifdef HAVE_PKG_QTTOOLS
 !include "inst-qttools.nsi"
 !endif
-!ifdef HAVE_PKG_QTWINEXTRAS
-!include "inst-qtwinextras.nsi"
-!endif
 !ifdef HAVE_PKG_KCONFIG
 !include "inst-kconfig.nsi"
 !endif
@@ -340,9 +337,6 @@
 !endif
 !ifdef HAVE_PKG_QTTOOLS
 !include "uninst-qttools.nsi"
-!endif
-!ifdef HAVE_PKG_QTWINEXTRAS
-!include "uninst-qtwinextras.nsi"
 !endif
 !ifdef HAVE_PKG_KCONFIG
 !include "uninst-kconfig.nsi"
@@ -703,9 +697,6 @@ Function CalcDepends
 !endif
 !ifdef HAVE_PKG_QTTOOLS
   !insertmacro UnselectSection ${SEC_qttools}
-!endif
-!ifdef HAVE_PKG_QTWINEXTRAS
-  !insertmacro UnselectSection ${SEC_qtwinextras}
 !endif
 !ifdef HAVE_PKG_FREETYPE
   !insertmacro UnselectSection ${SEC_freetype}
@@ -1074,7 +1065,6 @@ skip_gpgme_browser:
   !insertmacro SelectSection ${SEC_jpeg}
   !insertmacro SelectSection ${SEC_pcre2}
   !insertmacro SelectSection ${SEC_qtsvg}
-  !insertmacro SelectSection ${SEC_qtwinextras}
   !insertmacro SelectSection ${SEC_qttools}
   skip_qtbase:
 !endif

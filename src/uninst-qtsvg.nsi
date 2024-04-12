@@ -26,7 +26,7 @@ Section "-un.qtsvg"
   Push "${gpg4win_pkg_qtsvg}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\Qt5Svg.dll"
+  Delete "$INSTDIR\bin\Qt6Svg.dll"
   Delete "$INSTDIR\bin\iconengines\qsvgicon.dll"
   Delete "$INSTDIR\bin\imageformats\qsvg.dll"
   RmDir "$INSTDIR\bin\imageformats"

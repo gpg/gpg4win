@@ -84,14 +84,14 @@ AUTHENTICODE_FILES = \
 	bin/paperkey.exe \
 	bin/pinentry.exe \
 	bin/pinentry-w32.exe \
-	bin/Qt5Core.dll \
-	bin/Qt5Gui.dll \
-	bin/Qt5Network.dll \
-	bin/Qt5PrintSupport.dll \
-	bin/Qt5Svg.dll \
-	bin/Qt5Widgets.dll \
-	bin/Qt5WinExtras.dll \
-	bin/Qt5Xml.dll \
+	bin/Qt6Core.dll \
+	bin/Qt6Gui.dll \
+	bin/Qt6Network.dll \
+	bin/Qt6PrintSupport.dll \
+	bin/Qt6Svg.dll \
+	bin/Qt6Widgets.dll \
+	bin/Qt6WinExtras.dll \
+	bin/Qt6Xml.dll \
 	bin/resolver.exe \
 	bin/zlib1.dll \
 	../install-ex/bin/gpgex.dll \

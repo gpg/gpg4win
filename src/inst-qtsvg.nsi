@@ -30,7 +30,7 @@ Section "-qtsvg" SEC_qtsvg
   File "${gpg4win_pkg_qtsvg}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/Qt5Svg.dll
+  File ${prefix}/bin/Qt6Svg.dll
   SetOutPath "$INSTDIR\bin\iconengines"
   File ${prefix}/plugins/iconengines/qsvgicon.dll
   SetOutPath "$INSTDIR\bin\imageformats"
