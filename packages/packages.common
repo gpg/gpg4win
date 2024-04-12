@@ -493,6 +493,13 @@ chk 35fed813fc594bbe808bc01b511b2d1eff9023977b7981137f3fec81984713e8
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
 file 6.0/kcolorscheme-6.0.0.tar.xz
 chk de45822431755be39ab7aebfcb7cb6ff90b4924579c2a4d66ae28f91d70a260e
+
+# kstatusnotifieritem
+# last changed: 2024-04-04
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 6.0/kstatusnotifieritem-6.0.0.tar.xz
+chk b426176d2cbc6fe80c758b6c476a47341d89a92cbb3355c2be37428a41772907
 ### END PASTE ###
 
 # snoretoast
@@ -540,11 +547,11 @@ chk 0c1156100b5b92deffa4e5281779561e94e1c2af29f7af412052e66677a4b9f6
 # chk 4582dd9d6c5f80018cd60102edf828d3e4fed159364af5fa8214a8fb17229b9a
 
 # gpg4win-tools
-# last changed: 2024-03-12
+# last changed: 2024-04-04
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpg4win-tools/gpg4win-tools-202403121234.tar.xz
-chk fb814117962c9332ae2189a74cb1931f96aee1b0713298d8c2f34692a3269e82
+file gpg4win-tools/gpg4win-tools-202404041519.tar.xz
+chk 55501b55addf6f983b75358b32c90eb5a35a66a82b990286c79866acfeb48949
 
 # gpgpass
 # last changed: 2024-03-12
@@ -554,34 +561,34 @@ file gpgpass/gpgpass-202403121234.tar.xz
 chk 4d4677304e6fc9ec9e3924edf7988b3710904439b06b5c8de6d6cea5744f8148
 
 # mimetreeparser
-# last changed: 2024-03-22
+# last changed: 2024-04-04
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file mimetreeparser/mimetreeparser-202403220837.tar.xz
-chk 054cf3c4b4ecb5b7f4132843540b0f31402b42ff73a597824f939a69dd3f8f11
+file mimetreeparser/mimetreeparser-202404041044.tar.xz
+chk 157c6f0f739e2d3f6936e29b7a388598763823ae67809aec52e4a02c45649f0b
 
 # libkleo
-# last changed: 2024-03-12
+# last changed: 2024-04-10
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202403121233.tar.xz
-chk c8da91e1e1b594501b286f3757c67a75db1d8fc9baabd3d0581b015d09419192
+file libkleo/libkleo-202404101129.tar.xz
+chk e216771efe451d53dc36c36afcdef39a304856e5e89f29b6b0432f76033170ea
 
 # kleopatra
-# last changed: 2024-03-12
+# last changed: 2024-04-10
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202403121232.tar.xz
-chk 0b2d929d147662584295a129cb80a7ca517411e267f6d944bf718c4159942122
+file kleopatra/kleopatra-202404101130.tar.xz
+chk bd2bab8e49151a89d47bb401ce1f53a8be8ec650d99a9a33a3d9532bdd1ef530
 
 
 # Okular and dependencies
 # poppler
-# last changed: 2024-03-12
+# last changed: 2024-04-04
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file poppler/poppler-202403121235.tar.xz
-chk 57cbfa9f51d3c10f8ae9da38bda704612c3a2498a814287ac12ff709a8e6542f
+file poppler/poppler-202404041143.tar.xz
+chk 364652fd083670aeadc3f2f6ecec55053b23da7a1f76e02ee4b4fa491d5bb664
 
 # okular
 # last changed: 2024-03-12

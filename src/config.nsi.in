@@ -148,10 +148,6 @@
 !define gpg4win_pkg_kwindowsystem @gpg4win_pkg_kwindowsystem@
 !define gpg4win_pkg_kwindowsystem_version @gpg4win_pkg_kwindowsystem_version@
 
-@HAVE_PKG_QTWINEXTRAS@
-!define gpg4win_pkg_qtwinextras @gpg4win_pkg_qtwinextras@
-!define gpg4win_pkg_qtwinextras_version @gpg4win_pkg_qtwinextras_version@
-
 @HAVE_PKG_KCOREADDONS@
 !define gpg4win_pkg_kcoreaddons @gpg4win_pkg_kcoreaddons@
 !define gpg4win_pkg_kcoreaddons_version @gpg4win_pkg_kcoreaddons_version@

@@ -308,6 +308,9 @@ gpg4win_pkg_kcoreaddons_configure = -DKCOREADDONS_USE_QML=OFF
 
 gpg4win_pkg_kwindowsystem_configure = -DKWINDOWSYSTEM_QML=OFF
 
+gpg4win_pkg_ktextwidgets_configure = -DWITH_TEXT_TO_SPEECH=OFF
+
+# TODO: Host build needs to be done by us
 gpg4win_pkg_qtbase_configure = \
         -DQT_HOST_PATH=/usr \
         -DQt6HostInfo_DIR=/usr/lib64/cmake/Qt6HostInfo \
@@ -416,6 +419,10 @@ gpg4win_pkg_kxmlgui_configure = \
     -DXMLGUI_COMPILER_VERSION="i686-w64-mingw32-gcc" \
     -DXMLGUI_DISTRIBUTION_TEXT="$(DISTRIBUTION_TEXT)"
 
+gpg4win_pkg_kio_configure = \
+    -DFORCE_DISABLE_DBUS=ON \
+    -DFORCE_DISABLE_KCRASH=ON
+
 gpg4win_pkg_knotifications_configure = \
     -DFORCE_DISABLE_CANBERRA=ON
 
@@ -437,7 +444,7 @@ gpg4win_pkg_kiconthemes_configure = \
     -DKICONTHEMES_USE_QTQUICK=OFF
 
 gpg4win_pkg_okular_configure = \
-    -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Purpose\;Qt5TextToSpeech\;LibZip\;KF5Wallet\;KF5DocTools\;KF5JS\;Phonon4Qt5\;TIFF\;JPEG\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt5Qml\;Qt5DBus"
+    -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF6Purpose\;Qt6TextToSpeech\;LibZip\;KF6DocTools\;Phonon4Qt6\;TIFF\;JPEG\;LibSpectre\;KExiv2Qt6\;CHM\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt6Qml\;Qt6DBus"
 
 gpg4win_pkg_libical_configure = \
     -DICAL_GLIB=false \
@@ -446,6 +453,14 @@ gpg4win_pkg_libical_configure = \
 gpg4win_pkg_prison_configure = \
     -DWITH_QUICK=OFF \
     -DWITH_MULTIMEDIA=OFF
+
+gpg4win_pkg_poppler_configure = \
+    -DENABLE_NSS3=OFF \
+    -DENABLE_GLIB=OFF \
+    -DENABLE_GOBJECT_INTROSPECTION=OFF \
+    -DENABLE_QT5=OFF \
+    -DENABLE_LCMS=OFF \
+    -DENABLE_LIBCURL=OFF
 
 # Supported make-only source packages.
 gpg4win_mpkgs = bzip2 zlib
