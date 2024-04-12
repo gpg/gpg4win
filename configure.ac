@@ -38,11 +38,11 @@ m4_if(mym4_buildtype,[vsd],[m4_define([mym4_isvsd],[yes])])
 # For VSD we use a different version number.
 m4_if(mym4_isvsd,yes,
       [m4_define([mym4_major],[3])
-       m4_define([mym4_minor],[2])
-       m4_define([mym4_micro],[2])],
-      [m4_define([mym4_major],[4])
        m4_define([mym4_minor],[3])
-       m4_define([mym4_micro],[2])])
+       m4_define([mym4_micro],[0])],
+      [m4_define([mym4_major],[4])
+       m4_define([mym4_minor],[4])
+       m4_define([mym4_micro],[0])])
 
 
 # We need to set isgpd only after having set the version number.
