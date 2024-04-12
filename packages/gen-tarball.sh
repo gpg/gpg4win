@@ -87,6 +87,9 @@ case ${package} in
         #repo=https://gitlab.freedesktop.org/svuorela/${package}.git
         #branch="WORK"
         ;;
+    kio)
+        repo=https://invent.kde.org/frameworks/${package}.git
+        ;;
     *)
         echo "Error: Unsupported package '${package}'"
         exit 1

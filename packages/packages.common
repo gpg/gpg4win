@@ -410,13 +410,6 @@ chk 75a591d9648026eb86826974e6f3882e7f620592ecef8fabeb19206e63b04e50
 file 6.0/kcrash-6.0.0.tar.xz
 chk f56f1ed44e494417b7046e4f94791ad4ddd07c6cb8f0f704f2053717a44296f9
 
-# kio
-# last changed: 2024-03-12
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 6.0/kio-6.0.0.tar.xz
-chk 4951adf043299e463803cc63ed33d5261b81bff969eb189dc13350f495cb4b42
-
 # kbookmarks
 # last changed: 2024-03-12
 # by: ah
@@ -529,6 +522,15 @@ chk 6ea8ea43483489d4467f528163101af4fb19ea33664c72857b2abfe8a468f403
 # Snapshots stored on the GnuPG server
 #
 server https://gnupg.org/ftp/gcrypt/snapshots
+
+# Temporarily as snapshot to avoid rebasing the patch to the last
+# release.
+# kio
+# last changed: 2024-04-08
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file kio/kio-202404081559.tar.xz
+chk 0c1156100b5b92deffa4e5281779561e94e1c2af29f7af412052e66677a4b9f6
 
 # gpgol
 # last changed: 2023-11-21
