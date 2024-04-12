@@ -796,10 +796,12 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	if [ ! -L "$$$${pkgsdir}" ]; then \
 		cd "$$$${pkgsdir}"; \
 		if [ -e "CMakeLists.txt" ]; then \
-			sed -i 's/set(KF5_MIN_VERSION.*)/set(KF5_MIN_VERSION "5.109.0")/' CMakeLists.txt; \
-			sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "5.109.0")/' CMakeLists.txt; \
-			sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.109.0")/' CMakeLists.txt; \
-			sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.24.0")/' CMakeLists.txt; \
+			sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "6.0.0")/' CMakeLists.txt; \
+			sed -i 's/find_package(ECM .* NO_MODULE)/find_package(ECM 6.0.0 NO_MODULE)/' CMakeLists.txt; \
+			sed -i 's/set(KF_DEP_VERSION.*)/set(KF_DEP_VERSION "6.0.0")/' CMakeLists.txt; \
+			sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "6.0.0")/' CMakeLists.txt; \
+			sed -i 's/set(KPIM_MIME_VERSION.*)/set(KPIM_MIME_VERSION "6.0.0")/' CMakeLists.txt; \
+			sed -i 's/set(KPIM_MBOX_VERSION.*)/set(KPIM_MBOX_VERSION "6.0.0")/' CMakeLists.txt; \
 		fi; \
 		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
 		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
