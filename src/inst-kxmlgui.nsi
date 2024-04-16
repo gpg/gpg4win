@@ -30,6 +30,6 @@ Section "-kxmlgui" SEC_kxmlgui
   File "${gpg4win_pkg_kxmlgui}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5XmlGui.dll
+  File ${prefix}/bin/libKF6XmlGui.dll
 !endif
 SectionEnd

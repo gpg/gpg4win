@@ -22,6 +22,6 @@
 
 ; Uninstaller section.
 Section "-un.solid"
-  Delete "$INSTDIR\bin\libKF5Solid.dll"
+  Delete "$INSTDIR\bin\libKF6Solid.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd

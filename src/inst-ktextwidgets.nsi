@@ -27,5 +27,5 @@ Section "-ktextwidgets" SEC_ktextwidgets
 !endif
   SetOutPath "$INSTDIR"
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5TextWidgets.dll
+  File ${prefix}/bin/libKF6TextWidgets.dll
 SectionEnd

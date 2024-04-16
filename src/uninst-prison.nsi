@@ -22,6 +22,6 @@
 
 ; Uninstaller section.
 Section "-un.prison"
-  Delete "$INSTDIR\bin\libKF5Prison.dll"
+  Delete "$INSTDIR\bin\libKF6Prison.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd

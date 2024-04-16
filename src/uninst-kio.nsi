@@ -22,12 +22,8 @@
 
 ; Uninstaller section.
 Section "-un.kio"
-  Delete "$INSTDIR\bin\libKF5KIOGui.dll"
-  Delete "$INSTDIR\bin\libKF5KIOCore.dll"
-  Delete "$INSTDIR\bin\libKF5KIOWidgets.dll"
-  Delete "$INSTDIR\bin\plugins\kf5\kio\kio_file.dll"
-  RmDir "$INSTDIR\bin\plugins\kf5\kio"
-  RmDir "$INSTDIR\bin\plugins\kf5"
-  RmDir "$INSTDIR\bin\plugins"
+  Delete "$INSTDIR\bin\libKF6KIOGui.dll"
+  Delete "$INSTDIR\bin\libKF6KIOCore.dll"
+  Delete "$INSTDIR\bin\libKF6KIOWidgets.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd

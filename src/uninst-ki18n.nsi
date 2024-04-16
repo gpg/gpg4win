@@ -26,7 +26,7 @@ Section "-un.ki18n"
   Push "${gpg4win_pkg_ki18n}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\libKF5I18n.dll"
+  Delete "$INSTDIR\bin\libKF6I18n.dll"
   RmDir "$INSTDIR\bin"
 
 !endif

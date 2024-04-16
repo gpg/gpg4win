@@ -26,7 +26,7 @@ Section "-un.kitemviews"
   Push "${gpg4win_pkg_kitemviews}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\libKF5ItemViews.dll"
+  Delete "$INSTDIR\bin\libKF6ItemViews.dll"
   RmDir "$INSTDIR\bin"
 
 !endif

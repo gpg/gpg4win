@@ -26,7 +26,7 @@ Section "-un.kwindowsystem"
   Push "${gpg4win_pkg_kwindowsystem}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\libKF5WindowSystem.dll"
+  Delete "$INSTDIR\bin\libKF6WindowSystem.dll"
   RmDir "$INSTDIR\bin"
 
 !endif

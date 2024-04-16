@@ -18,7 +18,7 @@
 
 ; Uninstaller section.
 Section "-un.mimetreeparser"
-  Delete "$INSTDIR\bin\libKPim5MimeTreeParserCore.dll"
-  Delete "$INSTDIR\bin\libKPim5MimeTreeParserWidgets.dll"
+  Delete "$INSTDIR\bin\libKPim6MimeTreeParserCore.dll"
+  Delete "$INSTDIR\bin\libKPim6MimeTreeParserWidgets.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd

@@ -26,7 +26,7 @@ Section "-un.kitemmodels"
   Push "${gpg4win_pkg_kitemmodels}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\libKF5ItemModels.dll"
+  Delete "$INSTDIR\bin\libKF6ItemModels.dll"
   RmDir "$INSTDIR\bin"
 
 !endif

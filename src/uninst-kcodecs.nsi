@@ -26,7 +26,7 @@ Section "-un.kcodecs"
   Push "${gpg4win_pkg_kcodecs}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\libKF5Codecs.dll"
+  Delete "$INSTDIR\bin\libKF6Codecs.dll"
   RmDir "$INSTDIR\bin"
 
 !endif

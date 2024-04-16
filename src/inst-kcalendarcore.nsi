@@ -27,5 +27,5 @@ Section "-kcalendarcore" SEC_kcalendarcore
 !endif
   SetOutPath "$INSTDIR"
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5CalendarCore.dll
+  File ${prefix}/bin/libKF6CalendarCore.dll
 SectionEnd

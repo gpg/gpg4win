@@ -18,6 +18,6 @@
 
 ; Uninstaller section.
 Section "-un.kcalendarcore"
-  Delete "$INSTDIR\bin\libKF5CalendarCore.dll"
+  Delete "$INSTDIR\bin\libKF6CalendarCore.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd

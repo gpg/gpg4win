@@ -30,6 +30,6 @@ Section "-kcrash" SEC_kcrash
   File "${gpg4win_pkg_kcrash}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5Crash.dll
+  File ${prefix}/bin/libKF6Crash.dll
 !endif
 SectionEnd

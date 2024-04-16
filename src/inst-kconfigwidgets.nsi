@@ -26,7 +26,7 @@ Section "kconfigwidgets" SEC_kconfigwidgets
 Section "-kconfigwidgets" SEC_kconfigwidgets
 !endif
 SetOutPath "$INSTDIR\bin"
-File ${prefix}/bin/libKF5ConfigWidgets.dll
+File ${prefix}/bin/libKF6ConfigWidgets.dll
 
 # This is a bit strange but these files are from the plasma repo
 # but actually used by a class from KConfigWidgets so we install

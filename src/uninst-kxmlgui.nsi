@@ -26,7 +26,7 @@ Section "-un.kxmlgui"
   Push "${gpg4win_pkg_kxmlgui}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\libKF5XmlGui.dll"
+  Delete "$INSTDIR\bin\libKF6XmlGui.dll"
   RmDir "$INSTDIR\bin"
   RMDir "$INSTDIR"
 !endif

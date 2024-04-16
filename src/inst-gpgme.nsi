@@ -49,7 +49,7 @@ Section "-gpgme" SEC_gpgme
   ClearErrors
   SetOverwrite try
 
-  File "${prefix}/bin/libqgpgme-15.dll"
+  File "${prefix}/bin/libqgpgmeqt6-15.dll"
   File "${prefix}/bin/libgpgmepp-6.dll"
   File "${prefix}/libexec/gpgme-w32spawn.exe"
   File "${prefix}/bin/gpgme-json.exe"

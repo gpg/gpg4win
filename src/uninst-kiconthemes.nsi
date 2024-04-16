@@ -26,7 +26,7 @@ Section "-un.kiconthemes"
   Push "${gpg4win_pkg_kiconthemes}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\libKF5IconThemes.dll"
+  Delete "$INSTDIR\bin\libKF6IconThemes.dll"
   RmDir "$INSTDIR\bin"
 
 !endif

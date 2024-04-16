@@ -30,6 +30,6 @@ Section "-kwindowsystem" SEC_kwindowsystem
   File "${gpg4win_pkg_kwindowsystem}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5WindowSystem.dll
+  File ${prefix}/bin/libKF6WindowSystem.dll
 !endif
 SectionEnd

@@ -25,18 +25,18 @@ ${MementoUnselectedSection} "Okular (GnuPG Edition)" SEC_okular
 
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/okular.exe
-  File ${prefix}/bin/libOkular5Core.dll
-  SetOutPath "$INSTDIR\bin\plugins\okular\generators"
+  File ${prefix}/bin/libOkular6Core.dll
+  SetOutPath "$INSTDIR\bin\okular_generators"
 #  File ${prefix}/plugins/okular/generators/okularGenerator_fb.dll
 #  File ${prefix}/plugins/okular/generators/okularGenerator_comicbook.dll
 #  File ${prefix}/plugins/okular/generators/okularGenerator_kimgio.dll
 #  File ${prefix}/plugins/okular/generators/okularGenerator_dvi.dll
 #  File ${prefix}/plugins/okular/generators/okularGenerator_txt.dll
 #  File ${prefix}/plugins/okular/generators/okularGenerator_fax.dll
-  File ${prefix}/lib/plugins/okular/generators/okularGenerator_poppler.dll
+  File ${prefix}/lib/plugins/okular_generators/okularGenerator_poppler.dll
 #  File ${prefix}/plugins/okular/generators/okularGenerator_xps.dll
-  SetOutPath "$INSTDIR\bin\plugins"
-  File ${prefix}/lib/plugins/okularpart.dll
+  SetOutPath "$INSTDIR\bin\plugins\kf6\parts"
+  File ${prefix}/lib/plugins/kf6/parts/okularpart.dll
 
 
   SetOutPath "$INSTDIR\share\icons\hicolor\128x128\apps"
@@ -62,11 +62,6 @@ ${MementoUnselectedSection} "Okular (GnuPG Edition)" SEC_okular
   SetOutPath "$INSTDIR\share\icons\hicolor\64x64\apps"
 
   File ${prefix}/share/icons/hicolor/64x64/apps/okular.png
-
-  SetOutPath "$INSTDIR\share\kxmlgui5\okular"
-  File ${prefix}/share/kxmlgui5/okular/part.rc
-  File ${prefix}/share/kxmlgui5/okular/part-viewermode.rc
-  File ${prefix}/share/kxmlgui5/okular/shell.rc
 
   SetOutPath "$INSTDIR\share\okular"
   File ${prefix}/share/okular/drawingtools.xml

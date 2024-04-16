@@ -27,5 +27,5 @@ Section "-kbookmarks" SEC_kbookmarks
 !endif
   SetOutPath "$INSTDIR"
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5Bookmarks.dll
+  File ${prefix}/bin/libKF6Bookmarks.dll
 SectionEnd

@@ -22,6 +22,6 @@
 
 ; Uninstaller section.
 Section "-un.kbookmarks"
-  Delete "$INSTDIR\bin\libKF5Bookmarks.dll"
+  Delete "$INSTDIR\bin\libKF6Bookmarks.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd

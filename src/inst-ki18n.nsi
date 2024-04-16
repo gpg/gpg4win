@@ -30,6 +30,6 @@ Section "-ki18n" SEC_ki18n
   File "${gpg4win_pkg_ki18n}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5I18n.dll
+  File ${prefix}/bin/libKF6I18n.dll
 !endif
 SectionEnd

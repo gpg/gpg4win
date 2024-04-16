@@ -26,7 +26,7 @@ Section "-un.karchive"
   Push "${gpg4win_pkg_karchive}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\libKF5Archive.dll"
+  Delete "$INSTDIR\bin\libKF6Archive.dll"
   RmDir "$INSTDIR\bin"
 
 !endif

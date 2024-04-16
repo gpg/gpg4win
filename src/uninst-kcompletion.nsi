@@ -26,7 +26,7 @@ Section "-un.kcompletion"
   Push "${gpg4win_pkg_kcompletion}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\libKF5Completion.dll"
+  Delete "$INSTDIR\bin\libKF6Completion.dll"
   RmDir "$INSTDIR\bin"
 
 !endif

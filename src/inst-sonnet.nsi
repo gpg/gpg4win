@@ -27,8 +27,8 @@ Section "-sonnet" SEC_sonnet
 !endif
   SetOutPath "$INSTDIR"
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5SonnetCore.dll
-  File ${prefix}/bin/libKF5SonnetUi.dll
-  SetOutPath "$INSTDIR\bin\plugins\kf5\sonnet"
-  File ${prefix}/lib/plugins/kf5/sonnet/sonnet_ispellchecker.dll
+  File ${prefix}/bin/libKF6SonnetCore.dll
+  File ${prefix}/bin/libKF6SonnetUi.dll
+  SetOutPath "$INSTDIR\bin\plugins\kf6\sonnet"
+  File ${prefix}/lib/plugins/kf6/sonnet/sonnet_ispellchecker.dll
 SectionEnd

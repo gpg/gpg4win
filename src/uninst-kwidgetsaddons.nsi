@@ -26,7 +26,7 @@ Section "-un.kwidgetsaddons"
   Push "${gpg4win_pkg_kwidgetsaddons}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\libKF5WidgetsAddons.dll"
+  Delete "$INSTDIR\bin\libKF6WidgetsAddons.dll"
   RmDir "$INSTDIR\bin"
 
 !endif

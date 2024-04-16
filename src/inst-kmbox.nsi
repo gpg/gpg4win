@@ -30,6 +30,6 @@ Section "-kmbox" SEC_kmbox
   File "${gpg4win_pkg_kmbox}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKPim5Mbox.dll
+  File ${prefix}/bin/libKPim6Mbox.dll
 !endif
 SectionEnd

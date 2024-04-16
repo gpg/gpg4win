@@ -30,6 +30,6 @@ Section "-kitemviews" SEC_kitemviews
   File "${gpg4win_pkg_kitemviews}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5ItemViews.dll
+  File ${prefix}/bin/libKF6ItemViews.dll
 !endif
 SectionEnd

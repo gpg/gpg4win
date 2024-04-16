@@ -22,6 +22,6 @@
 
 ; Uninstaller section.
 Section "-un.kservice"
-  Delete "$INSTDIR\bin\libKF5Service.dll"
+  Delete "$INSTDIR\bin\libKF6Service.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd

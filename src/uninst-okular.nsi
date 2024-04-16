@@ -23,7 +23,7 @@
 ; Uninstaller section.
 Section "-un.okular"
   Delete "$INSTDIR\bin\okular.exe"
-  Delete "$INSTDIR\bin\libOkular5Core.dll"
+  Delete "$INSTDIR\bin\libOkular6Core.dll"
   Delete "$INSTDIR\bin\plugins\okularpart.dll"
   Delete "$INSTDIR\bin\plugins\okular\generators\okularGenerator_poppler.dll"
   RmDir "$INSTDIR\bin\plugins\okular\generators"

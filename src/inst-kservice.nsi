@@ -27,5 +27,5 @@ Section "-kservice" SEC_kservice
 !endif
   SetOutPath "$INSTDIR"
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5Service.dll
+  File ${prefix}/bin/libKF6Service.dll
 SectionEnd

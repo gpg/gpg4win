@@ -26,8 +26,8 @@ Section "-un.kconfig"
   Push "${gpg4win_pkg_kconfig}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\libKF5ConfigCore.dll"
-  Delete "$INSTDIR\bin\libKF5ConfigGui.dll"
+  Delete "$INSTDIR\bin\libKF6ConfigCore.dll"
+  Delete "$INSTDIR\bin\libKF6ConfigGui.dll"
   RmDir "$INSTDIR\bin"
 
 !endif

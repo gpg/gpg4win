@@ -30,6 +30,6 @@ Section "-kmime" SEC_kmime
   File "${gpg4win_pkg_kmime}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKPim5Mime.dll
+  File ${prefix}/bin/libKPim6Mime.dll
 !endif
 SectionEnd

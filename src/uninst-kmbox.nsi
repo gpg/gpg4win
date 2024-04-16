@@ -26,7 +26,7 @@ Section "-un.kmbox"
   Push "${gpg4win_pkg_kmbox}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\libKPim5Mbox.dll"
+  Delete "$INSTDIR\bin\libKPim6Mbox.dll"
   RmDir "$INSTDIR\bin"
 !endif
 SectionEnd

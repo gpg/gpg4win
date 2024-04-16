@@ -22,16 +22,16 @@
 
 ; Uninstaller section.
 Section "-un.kcoreaddons"
-  Delete "$INSTDIR\bin\libKF5CoreAddons.dll"
+  Delete "$INSTDIR\bin\libKF6CoreAddons.dll"
   RmDir "$INSTDIR\bin"
 
-  Delete "$INSTDIR\share\kf5\licenses\GPL_V2"
-  Delete "$INSTDIR\share\kf5\licenses\GPL_V3"
-  Delete "$INSTDIR\share\kf5\licenses\LGPL_V3"
-  Delete "$INSTDIR\share\kf5\licenses\LGPL_V2"
-  Delete "$INSTDIR\share\kf5\licenses\LGPL_V21"
-  Delete "$INSTDIR\share\kf5\licenses\BSD"
-  RmDir "$INSTDIR\share\kf5\licenses"
-  RmDir "$INSTDIR\share\kf5"
+  Delete "$INSTDIR\share\kf6\licenses\GPL_V2"
+  Delete "$INSTDIR\share\kf6\licenses\GPL_V3"
+  Delete "$INSTDIR\share\kf6\licenses\LGPL_V3"
+  Delete "$INSTDIR\share\kf6\licenses\LGPL_V2"
+  Delete "$INSTDIR\share\kf6\licenses\LGPL_V21"
+  Delete "$INSTDIR\share\kf6\licenses\BSD"
+  RmDir "$INSTDIR\share\kf6\licenses"
+  RmDir "$INSTDIR\share\kf6"
   RmDir "$INSTDIR\share"
 SectionEnd

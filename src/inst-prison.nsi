@@ -27,5 +27,5 @@ Section "-prison" SEC_prison
 !endif
   SetOutPath "$INSTDIR"
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5Prison.dll
+  File ${prefix}/bin/libKF6Prison.dll
 SectionEnd

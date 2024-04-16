@@ -22,6 +22,6 @@
 
 ; Uninstaller section.
 Section "-un.kjobwidgets"
-  Delete "$INSTDIR\bin\libKF5JobWidgets.dll"
+  Delete "$INSTDIR\bin\libKF6JobWidgets.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd

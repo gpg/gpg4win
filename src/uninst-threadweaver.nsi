@@ -17,6 +17,6 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 ; Uninstaller section.
 Section "-un.threadweaver"
-  Delete "$INSTDIR\bin\libKF5ThreadWeaver.dll"
+  Delete "$INSTDIR\bin\libKF6ThreadWeaver.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd

@@ -22,6 +22,6 @@
 
 ; Uninstaller section.
 Section "-un.kparts"
-  Delete "$INSTDIR\bin\libKF5Parts.dll"
+  Delete "$INSTDIR\bin\libKF6Parts.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd

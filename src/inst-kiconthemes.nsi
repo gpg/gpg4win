@@ -30,6 +30,6 @@ Section "-kiconthemes" SEC_kiconthemes
   File "${gpg4win_pkg_kiconthemes}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5IconThemes.dll
+  File ${prefix}/bin/libKF6IconThemes.dll
 !endif
 SectionEnd

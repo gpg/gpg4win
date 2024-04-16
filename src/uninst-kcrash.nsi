@@ -26,7 +26,7 @@ Section "-un.kcrash"
   Push "${gpg4win_pkg_kcrash}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\libKF5Crash.dll"
+  Delete "$INSTDIR\bin\libKF6Crash.dll"
   RmDir "$INSTDIR\bin"
 
 !endif

@@ -30,6 +30,6 @@ Section "-kwidgetsaddons" SEC_kwidgetsaddons
   File "${gpg4win_pkg_kwidgetsaddons}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5WidgetsAddons.dll
+  File ${prefix}/bin/libKF6WidgetsAddons.dll
 !endif
 SectionEnd

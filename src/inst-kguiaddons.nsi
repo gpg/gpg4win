@@ -30,6 +30,6 @@ Section "-kguiaddons" SEC_kguiaddons
   File "${gpg4win_pkg_kguiaddons}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5GuiAddons.dll
+  File ${prefix}/bin/libKF6GuiAddons.dll
 !endif
 SectionEnd

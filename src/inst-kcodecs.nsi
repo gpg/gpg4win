@@ -30,6 +30,6 @@ Section "-kcodecs" SEC_kcodecs
   File "${gpg4win_pkg_kcodecs}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5Codecs.dll
+  File ${prefix}/bin/libKF6Codecs.dll
 !endif
 SectionEnd

@@ -22,6 +22,6 @@
 
 ; Uninstaller section.
 Section "-un.ktextwidgets"
-  Delete "$INSTDIR\bin\libKF5TextWidgets.dll"
+  Delete "$INSTDIR\bin\libKF6TextWidgets.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd

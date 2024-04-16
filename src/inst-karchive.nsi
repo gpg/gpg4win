@@ -30,6 +30,6 @@ Section "-karchive" SEC_karchive
   File "${gpg4win_pkg_karchive}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5Archive.dll
+  File ${prefix}/bin/libKF6Archive.dll
 !endif
 SectionEnd

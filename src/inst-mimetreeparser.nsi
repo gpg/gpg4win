@@ -27,6 +27,6 @@ Section "-mimetreeparser" SEC_mimetreeparser
 !endif
   SetOutPath "$INSTDIR"
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKPim5MimeTreeParserCore.dll
-  File ${prefix}/bin/libKPim5MimeTreeParserWidgets.dll
+  File ${prefix}/bin/libKPim6MimeTreeParserCore.dll
+  File ${prefix}/bin/libKPim6MimeTreeParserWidgets.dll
 SectionEnd

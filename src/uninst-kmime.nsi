@@ -26,7 +26,7 @@ Section "-un.kmime"
   Push "${gpg4win_pkg_kmime}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\libKPim5Mime.dll"
+  Delete "$INSTDIR\bin\libKPim6Mime.dll"
   RmDir "$INSTDIR\bin"
 !endif
 SectionEnd

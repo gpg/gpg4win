@@ -26,7 +26,7 @@ Section "-un.kguiaddons"
   Push "${gpg4win_pkg_kguiaddons}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\bin\libKF5GuiAddons.dll"
+  Delete "$INSTDIR\bin\libKF6GuiAddons.dll"
   RmDir "$INSTDIR\bin"
 
 !endif
