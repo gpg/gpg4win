@@ -78,7 +78,6 @@ EXTRA_DIST = gpg4win.nsi gpg4win-src.nsi \
         inst-qtsvg.nsi uninst-qtsvg.nsi \
         inst-qttools.nsi uninst-qttools.nsi \
         inst-qttranslations.nsi uninst-qttranslations.nsi \
-        inst-qtwinextras.nsi uninst-qtwinextras.nsi \
         inst-scute.nsi uninst-scute.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
         inst-gpg4win-tools.nsi uninst-gpg4win-tools.nsi \

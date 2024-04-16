@@ -45,64 +45,30 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              docker/gpg4win-bullseye/Dockerfile \
              docker/run-appimage-build.sh \
              docker/run-gpg4win-build.sh \
-             patches/breeze-icons/subset-crossbuild.patch \
+             patches/boost/boost-1-fixes.patch \
+             patches/breeze-icons/0001-WIP-Qt6-replacement-for-binary-icons.patch \
              patches/breeze-icons/add-the-nose.patch \
              patches/breeze-icons/azz-Make-all-breeze-icons-available-in-breeze-dark.patch \
+             patches/extra-cmake-modules/0001-Do-not-abort-without-QML.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
-             patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
-             patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
-             patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
-             patches/kiconthemes/0001-Make-DBus-optional.patch \
-             patches/kiconthemes/dark-mode-detection.patch \
-             patches/kleopatra/set-windows-registry.patch \
-             patches/kleopatra/0001-Make-KCMUtils-optional.patch \
-             patches/kleopatra/kleo-gpg4win-ja.patch \
-             patches/kleopatra/0001-Do-not-use-NTFS-permissions-check-to-check-if-output.patch \
-             patches/libkleo/libkleo-gpg4win-ja.patch \
-             patches/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
-             patches/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
-             patches/kwidgetsaddons/fix-height-of-text-after-update.patch \
-             patches/kxmlgui/0001-make-qdbus-optional.patch \
-             patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
-             patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
-             patches/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
-             patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
-             patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
-             patches/qtbase/add-kleopatras-mime-types.patch \
-             patches/qtbase/CVE-2023-32763-qtbase-5.15.patch \
-             patches/qtbase/CVE-2023-37369-qtbase-5.15.patch \
-             patches/qtbase/CVE-2023-43114-5.15.patch \
-             patches/qttools/disable-most-tools.patch \
-             patches/kcoreaddons/0001-Fix-MINGW-build.patch \
-             patches/ki18n/0001-Undef-snprintf-for-windows.patch \
-             patches/kio/0001-WIP-Remove-dependency-to-dbus.patch \
-             patches/kio/FileManagerWindowJob.patch \
-             patches/okular/lower-cmake-requirement.patch \
-             patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
-             patches/okular/0001-Add-support-to-customize-about-data.patch \
-             patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
-             patches/kparts/disable-jobuidelegate.patch \
-             patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches/jpeg/fix-redefine.patch \
-             patches/gpgme/0001-core-percent-decode-filename.patch \
-             patches-appimage/gpgme/0001-core-percent-decode-filename.patch \
-             patches-appimage/kleopatra/0001-Make-KCMUtils-optional.patch \
-             patches-appimage/kleopatra/kleo-gpg4win-ja.patch \
-             patches-appimage/libkleo/libkleo-gpg4win-ja.patch \
-             patches-appimage/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
-             patches-appimage/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
-             patches-appimage/kwidgetsaddons/fix-height-of-text-after-update.patch \
+             patches/kconfigwidgets/0001-Don-t-use-DBus-on-Windows-macOS.patch \
+             patches/ki18n/0001-Undef-snprintf-for-windows.patch \
+             patches/kio/0001-WIP-Add-option-to-force-disable-DBus-and-KCrash.patch \
+             patches/kleopatra/0001-No-more-WindowsWindowFunction.patch \
+             patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
+             patches/kparts/0001-Change-check-from-Android-to-DBus-check.patch \
+             patches/kxmlgui_bkp/0001-make-qdbus-optional.patch \
+             patches/kxmlgui_bkp/0004-Cruedly-disable-KSendbugmail.patch \
+             patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
+             patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
+             patches/okular/0001-Do-not-fail-if-WITH_K7ZIP-is-not-defined.patch \
+             patches/okular/lower-cmake-requirement.patch \
+             patches/pcre2/cross-build-cmake.patch \
+             patches/prison/0001-Only-include-ECMQmlModule-if-building-WITH_QUICK.patch \
              patches-appimage/libkleo/gpg4win-check.patch \
-             patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
-             patches-appimage/okular/0001-Add-support-to-customize-about-data.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
-             patches-appimage/poppler/fix-gpg-error-include.patch \
-             patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.patch \
-             patches-appimage/qtbase/CVE-2023-37369-qtbase-5.15.patch \
-             patches-appimage/qtbase/CVE-2023-43114-5.15.patch \
-             patches-appimage/qtbase/add-kleopatras-mime-types.patch \
-             patches-appimage/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
-             patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch
+             patches-appimage/qtbase/add-kleopatras-mime-types.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
