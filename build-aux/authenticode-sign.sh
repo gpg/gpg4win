@@ -63,7 +63,8 @@ VERSION_SIGNKEY=02F38DFF731FF97CB039A1DA549E695E905BA208
 # Depending on the used token it might be necessary to allow single
 # signon and unlock the token before running the make.  The following
 # variable references this entry.  This is greped by the Makefile.
-AUTHENTICODE_SIGNHOST=authenticode-signhost
+# To enable this use authenticode-signhost as value.
+AUTHENTICODE_SIGNHOST=
 
 # The name of the signtool as used on Windows.
 # This is greped by the Makefile.
@@ -74,17 +75,21 @@ AUTHENTICODE_TSURL=http://rfc3161timestamp.globalsign.com/advanced
 
 # To use osslsigncode the follwing entries are required and
 # an empty string must be given for AUTHENTICODE_SIGNHOST.
-# They are greped by the Makefile.
-AUTHENTICODE_KEY=/home/foo/.gnupg/my-authenticode-key.p12
-AUTHENTICODE_CERTS=/home/foo/.gnupg/my-authenticode-certs.pem
+# They are greped by the Makefile.  For example:
+#AUTHENTICODE_KEY=/home/foo/.gnupg/my-authenticode-key.p12
+#AUTHENTICODE_CERTS=/home/foo/.gnupg/my-authenticode-certs.pem
 
 # If a smartcard is used for the Authenticode signature these
-# entries are required instead:
-AUTHENTICODE_KEY=card
+# entries are required instead (remove comment).
+#AUTHENTICODE_KEY=card
 AUTHENTICODE_CERTS=/home/foo/.gnupg/my_authenticode_cert.pem
 OSSLSIGNCODE=/usr/bin/osslsigncode
 OSSLPKCS11ENGINE=/usr/lib/x86_64-linux-gnu/engines-1.1/pkcs11.so
 SCUTEMODULE=/usr/local/lib/scute.so
+
+# Signing can also be disabled:
+AUTHENTICODE_KEY=none
+
 #
 EOF
 }
@@ -222,6 +227,11 @@ elif [ "$AUTHENTICODE_KEY" = card ]; then
        -in "$inname" -out "$outname.tmp"
     cp "$outname.tmp" "$outname"
     rm "$outname.tmp"
+
+elif [ "$AUTHENTICODE_KEY" = none ]; then
+
+    echo >&2 "$PGM: Signing disabled; would sign: '$inname'"
+    if [ "$inname" != "$outname" ] && cp "$inname" "$outname"
 
 else
 
