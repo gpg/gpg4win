@@ -27,6 +27,7 @@ Section "-un.kiconthemes"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\bin\libKF6IconThemes.dll"
+  Delete "$INSTDIR\bin\libKF6IconWidgets.dll"
   RmDir "$INSTDIR\bin"
 
 !endif

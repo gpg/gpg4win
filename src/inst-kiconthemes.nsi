@@ -31,5 +31,6 @@ Section "-kiconthemes" SEC_kiconthemes
 !else
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/libKF6IconThemes.dll
+  File ${prefix}/bin/libKF6IconWidgets.dll
 !endif
 SectionEnd
