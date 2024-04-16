@@ -3,12 +3,41 @@
 # The version numbers given are used by gpg4win and GnuPG [VS-]Desktop
 
 
-Noteworthy changes in Version 3.2.2 (unreleased)
+Noteworthy changes in Version 3.2.2 (2024-04-16)
 ------------------------------------------------
+
+--- Bug Fixes ---
+
+(en) Kleopatra: Add help item for the approval manual.
+
+(en) Kleopatra: Fix the update check.  [T6985]
+
+(en) Kleopatra: Show an error if the usage of key servers has been
+     disabled.  [T6761, T6866]
+
+(en) Kleopatra: Don't start OpenPGP key server lookup if key server
+     usage is disabled.  [T6868]
+
+(en) Kleopatra: Make WKD lookup work for email addresses surrounded by
+     whitespace.  [T6868]
+
+(en) Kleopatra: Show a hint that a mail address is required if no
+     key/directory servers are configured.  [T6868]
+
+(en) Kleopatra: Always quit on Quit for users with elevated
+     permissions on Windows.  [T7049]
+
+(en) Kleopatra: Quit when last windows is closed for elevated users.
+     [T7050]
+
+(en) Kleopatra: Restart gpg-agent instead of just shutting down the
+     GnuPG daemons.  [T7021]
+
+(en) GnuPG: See https://dev.gnupg.org/T6849 for changes.
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.43
-Kleopatra:      3.2.0
+Kleopatra:      3.2.2
 GpgOL:          2.5.12
 GpgEX:          1.0.10
 Kompendium DE:  4.0.1
