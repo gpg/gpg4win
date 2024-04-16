@@ -39,6 +39,7 @@ SUBDIRS = ${po} packages ${doc} src
 EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              doc/license-page doc/GPLv3 \
              build-aux/git-log-footer build-aux/git-log-fix \
+	     build-aux/authenticode-sign.sh \
              docker/appimage/Dockerfile \
              docker/build-appimage-docker-image.sh \
              docker/build-gpg4win-docker-image.sh \
