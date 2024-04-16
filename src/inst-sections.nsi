@@ -195,6 +195,9 @@
 !ifdef HAVE_PKG_SCUTE
 !include "inst-scute.nsi"
 !endif
+!ifdef HAVE_PKG_ZSTD
+!include "inst-zstd.nsi"
+!endif
 !ifdef HAVE_PKG_SONNET
 !include "inst-sonnet.nsi"
 !endif
@@ -491,6 +494,9 @@
 !endif
 !ifdef HAVE_PKG_SCUTE
 !include "uninst-scute.nsi"
+!endif
+!ifdef HAVE_PKG_ZSTD
+!include "uninst-zstd.nsi"
 !endif
 
 !include "uninst-gpg4win.nsi"
