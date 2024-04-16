@@ -565,19 +565,19 @@ chk e5236e9c867664910d4019b17552822d84e92124490f40aa6ada05578c9ef200
 
 
 # libkleo
-# last changed: 2024-04-09
+# last changed: 2024-04-16
 # by: builder
 # verified: Tarball created by builder.
-file libkleo/libkleo-202404091516.tar.xz
-chk bd149dfa1c2ea0445a3aa368581c5c575d6774ae7644ff41e22a56daee639c9b
+file libkleo/libkleo-202404161156.tar.xz
+chk fda76c0a11e2f9c8860a34fdce6b0a8f1ef8b5869ef3354be22ad4b5b894b725
 
 
 # kleopatra
-# last changed: 2024-04-09
+# last changed: 2024-04-16
 # by: builder
 # verified: Tarball created by builder.
-file kleopatra/kleopatra-202404091524.tar.xz
-chk 525ccb0ce2b1cc118ab53d531b909dab012942801c20d435ed1748a4c9f49e0f
+file kleopatra/kleopatra-202404161156.tar.xz
+chk a7fe61099e78ba88079c68e3d48a4dd1e08612443bcacc1ee19a3aa9a39cd70e
 
 
 # Okular and dependencies
