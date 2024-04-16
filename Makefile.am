@@ -66,6 +66,8 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/okular/lower-cmake-requirement.patch \
              patches/pcre2/cross-build-cmake.patch \
              patches/prison/0001-Only-include-ECMQmlModule-if-building-WITH_QUICK.patch \
+             patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
+             patches/qtbase/add-kleopatras-mime-types.patch \
              patches-appimage/libkleo/gpg4win-check.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/qtbase/add-kleopatras-mime-types.patch
