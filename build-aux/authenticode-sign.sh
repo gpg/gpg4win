@@ -231,7 +231,7 @@ elif [ "$AUTHENTICODE_KEY" = card ]; then
 elif [ "$AUTHENTICODE_KEY" = none ]; then
 
     echo >&2 "$PGM: Signing disabled; would sign: '$inname'"
-    if [ "$inname" != "$outname" ] && cp "$inname" "$outname"
+    [ "$inname" != "$outname" ] && cp "$inname" "$outname"
 
 else
 
