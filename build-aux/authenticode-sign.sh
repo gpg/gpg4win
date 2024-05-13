@@ -96,7 +96,7 @@ EOF
 
 # gpg-authcode-sign.sh is distributed with gnupg 2.6 and basically the
 # same as this script.
-echo >&2 "$PGM: Note: Please consider to use gpg-authcode-sign.sh in the future
+echo >&2 "$PGM: Note: Please consider to use gpg-authcode-sign.sh in the future"
 
 
 autogenrc="$HOME/.gnupg-autogen.rc"
