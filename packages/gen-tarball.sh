@@ -67,12 +67,12 @@ case ${package} in
         ;;
     kleopatra)
         repo=https://invent.kde.org/pim/${package}.git
-        branch="gpg4win/23.10"
+        branch="gpg4win/24.05"
         custom_l10n="l10n-support/de/summit"
         ;;
     libkleo)
         repo=https://invent.kde.org/pim/${package}.git
-        branch="gpg4win/23.10"
+        branch="gpg4win/24.05"
         ;;
     okular)
         repo=https://invent.kde.org/graphics/${package}.git
