@@ -184,12 +184,13 @@ chk  bdfcb99024acec9c6c4b998ad63bb3921df4cfee4a772ad6c0ca324dbbf2b07c
 file pinentry/pinentry-1.2.1.tar.bz2
 chk 457a185e5a85238fb945a955dc6352ab962dc8b48720b62fc9fa48c7540a4067
 
-# gpgme
-# last changed: 2023-11-28
-# by:
-# verified: build tree
-file gpgme/gpgme-1.23.2.tar.bz2
-chk 9499e8b1f33cccb6815527a1bc16049d35a6198a6c5fae0185f2bd561bce5224
+# Disabled because a snapshot is used.
+## gpgme
+## last changed: 2023-11-28
+## by:
+## verified: build tree
+#file gpgme/gpgme-1.23.2.tar.bz2
+#chk 9499e8b1f33cccb6815527a1bc16049d35a6198a6c5fae0185f2bd561bce5224
 
 
 # last changed: 2021-01-07
@@ -534,6 +535,14 @@ chk 441bbb3c13cb535a216feb411ffe5925f4ca668a679c3cc1c4260c2bf406baec
 # Snapshots stored on the GnuPG server
 #
 server https://gnupg.org/ftp/gcrypt/snapshots
+
+# gpgme
+# last changed: 2024-05-21
+# by: wk
+# verified: build tree
+file gpgme/gpgme-1.24.0-beta566.tar.bz2
+chk fc56487dfed1a5bd0f66cc65c4c86ae5a5ef4e3c226ef5c745450039f1e0f1b1
+
 
 # gpgol
 # last changed: 2023-11-21
