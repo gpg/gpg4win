@@ -65,6 +65,9 @@ case ${package} in
     gpgpass )
         repo=git://git.gnupg.org/${package}.git
         ;;
+    gpgol.js)
+        repo=git://git.gnupg.org/${package}.git
+        ;;
     mimetreeparser)
         repo=https://invent.kde.org/pim/${package}.git
 #        branch="kf5"
@@ -90,6 +93,9 @@ case ${package} in
     kio)
         repo=https://invent.kde.org/frameworks/${package}.git
         ;;
+    ktextaddons)
+        repo=https://invent.kde.org/libraries/${package}.git
+        ;;
     *)
         echo "Error: Unsupported package '${package}'"
         exit 1
@@ -104,6 +110,7 @@ tmpdir=$(mktemp -d -t gen-tarball.XXXXXXXXXX)
 curdate=$(date +%Y-%m-%d)
 timestamp=$(date +%Y%m%d%H%M)
 snapshotdir=${package}-${timestamp}
+snapshotdir=$(echo ${snapshotdir} | sed 's/gpgol.js/gpgoljs/')
 tarball=${snapshotdir}.tar.xz
 
 git clone ${repo} ${tmpdir}/${snapshotdir}

@@ -58,8 +58,6 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kleopatra/0001-No-more-WindowsWindowFunction.patch \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
              patches/kparts/0001-Change-check-from-Android-to-DBus-check.patch \
-             patches/kxmlgui_bkp/0001-make-qdbus-optional.patch \
-             patches/kxmlgui_bkp/0004-Cruedly-disable-KSendbugmail.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Do-not-fail-if-WITH_K7ZIP-is-not-defined.patch \
@@ -68,6 +66,11 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/prison/0001-Only-include-ECMQmlModule-if-building-WITH_QUICK.patch \
              patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
+             patches/ktextaddons/0001-Do-not-require-QtMultimdediaWidgets.patch \
+             patches/libkdepim/0001-Remove-unecessary-config-requirements.patch \
+             patches/gpgme/gpgme/0001-WIP-Find-moc-from-host-installation.patch \
+             patches/pinentry/0002-Qt6-Fix-Windows-build.patch \
+             patches/pinentry/0001-WIP-When-crosscompiling-with-Qt6-look-for-host-moc.patch \
              patches-appimage/libkleo/gpg4win-check.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/qtbase/add-kleopatras-mime-types.patch

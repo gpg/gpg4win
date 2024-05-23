@@ -1,0 +1,42 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 98b47406872f4c20605e42dfdf24a9a62213b36c Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Fri, 15 Mar 2024 11:34:06 +0100
+Subject: [PATCH 2/2] Qt6: Fix Windows build
+
+* qt/pinentrydialog.cpp (raiseWindow): Do not
+use QWindowsWindowFunctions::setWindowActivationBehavior.
+This has been removed from Qt6 and is now default.
+---
+ qt/pinentrydialog.cpp | 9 ---------
+ 1 file changed, 9 deletions(-)
+
+diff --git a/qt/pinentrydialog.cpp b/qt/pinentrydialog.cpp
+index fa58759..f5e155b 100644
+--- a/qt/pinentrydialog.cpp
++++ b/qt/pinentrydialog.cpp
+@@ -58,19 +58,10 @@
+
+ #ifdef Q_OS_WIN
+ #include <windows.h>
+-#if QT_VERSION >= 0x050700
+-#include <QtPlatformHeaders/QWindowsWindowFunctions>
+-#endif
+ #endif
+
+ void raiseWindow(QWidget *w)
+ {
+-#ifdef Q_OS_WIN
+-#if QT_VERSION >= 0x050700
+-    QWindowsWindowFunctions::setWindowActivationBehavior(
+-            QWindowsWindowFunctions::AlwaysActivateWindow);
+-#endif
+-#endif
+     w->setWindowState((w->windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
+     w->activateWindow();
+     w->raise();
+--
+2.45.1

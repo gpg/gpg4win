@@ -352,6 +352,10 @@ define DEFLATE_macro
 				$(TAR) -xJ --transform='s,^qtsvg-everywhere-src,qtsvg,' -f "$(1)" ;; \
 			  */qttranslations*.*.tar.xz)          \
 				$(TAR) -xJ --transform='s,^qttranslations-everywhere-src,qttranslations,' -f "$(1)" ;; \
+			  */qthttpserver*.*.tar.xz)          \
+				$(TAR) -xJ --transform='s,^qthttpserver-everywhere-src,qthttpserver,' -f "$(1)" ;; \
+			  */qtwebsockets*.*.tar.xz)          \
+				$(TAR) -xJ --transform='s,^qtwebsockets-everywhere-src,qtwebsockets,' -f "$(1)" ;; \
 		  *.tar.gz | *.tgz)		\
 			$(TAR) xzf "$(1)" ;;	\
 		  *.tar.bz2 | *.tbz2 | *.tbz)	\

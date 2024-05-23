@@ -219,6 +219,33 @@
 !ifdef HAVE_PKG_PRISON
 !include "inst-prison.nsi"
 !endif
+!ifdef HAVE_PKG_GPGOLJS
+!include "inst-gpgoljs.nsi"
+!endif
+!ifdef HAVE_PKG_QTHTTPSERVER
+!include "inst-qthttpserver.nsi"
+!endif
+!ifdef HAVE_PKG_QTKEYCHAIN
+!include "inst-qtkeychain.nsi"
+!endif
+!ifdef HAVE_PKG_QTWEBSOCKETS
+!include "inst-qtwebsockets.nsi"
+!endif
+!ifdef HAVE_PKG_SYNTAX_HIGHLIGHTING
+!include "inst-syntax-highlighting.nsi"
+!endif
+!ifdef HAVE_PKG_KCONTACTS
+!include "inst-kcontacts.nsi"
+!endif
+!ifdef HAVE_PKG_LIBKDEPIM
+!include "inst-libkdepim.nsi"
+!endif
+!ifdef HAVE_PKG_KPIMTEXTEDIT
+!include "inst-kpimtextedit.nsi"
+!endif
+!ifdef HAVE_PKG_KTEXTADDONS
+!include "inst-ktextaddons.nsi"
+!endif
 !ifdef HAVE_PKG_GPGPASS
 !include "inst-gpgpass.nsi"
 !endif
@@ -486,6 +513,36 @@
 !ifdef HAVE_PKG_PRISON
 !include "uninst-prison.nsi"
 !endif
+!ifdef HAVE_PKG_GPGOLJS
+!include "uninst-gpgoljs.nsi"
+!endif
+!ifdef HAVE_PKG_QTHTTPSERVER
+!include "uninst-qthttpserver.nsi"
+!endif
+!ifdef HAVE_PKG_QTKEYCHAIN
+!include "uninst-qtkeychain.nsi"
+!endif
+!ifdef HAVE_PKG_QTWEBSOCKETS
+!include "uninst-qtwebsockets.nsi"
+!endif
+!ifdef HAVE_PKG_KSTATUSNOTIFIERITEM
+!include "uninst-kstatusnotifieritem.nsi"
+!endif
+!ifdef HAVE_PKG_SYNTAX_HIGHLIGHTING
+!include "uninst-syntax-highlighting.nsi"
+!endif
+!ifdef HAVE_PKG_KCONTACTS
+!include "uninst-kcontacts.nsi"
+!endif
+!ifdef HAVE_PKG_LIBKDEPIM
+!include "uninst-libkdepim.nsi"
+!endif
+!ifdef HAVE_PKG_KPIMTEXTEDIT
+!include "uninst-kpimtextedit.nsi"
+!endif
+!ifdef HAVE_PKG_KTEXTADDONS
+!include "uninst-ktextaddons.nsi"
+!endif
 !ifdef HAVE_PKG_GPGPASS
 !include "uninst-gpgpass.nsi"
 !endif
@@ -539,6 +596,17 @@ calc_defaults_okular_done:
   StrCmp $R0 "0" 0 calc_defaults_gpgpass_done
    !insertmacro UnselectSection ${SEC_gpgpass}
 calc_defaults_gpgpass_done:
+!endif
+
+!ifdef HAVE_PKG_GPGOLJS
+  g4wihelp::config_fetch_bool "inst_gpgoljs"
+  StrCmp $R0 "1" 0 calc_defaults_gpgoljs_not_one
+   !insertmacro SelectSection ${SEC_gpgoljs}
+   Goto calc_defaults_gpgoljs_done
+  calc_defaults_gpgoljs_not_one:
+  StrCmp $R0 "0" 0 calc_defaults_gpgoljs_done
+   !insertmacro UnselectSection ${SEC_gpgoljs}
+calc_defaults_gpgoljs_done:
 !endif
 
 !ifdef HAVE_PKG_GPGOL
@@ -637,6 +705,7 @@ select_minimal:
    !insertmacro UnselectSection ${SEC_kleopatra}
    !insertmacro UnselectSection ${SEC_okular}
    !insertmacro UnselectSection ${SEC_gpgpass}
+   !insertmacro UnselectSection ${SEC_gpgoljs}
    !insertmacro UnselectSection ${SEC_gpgol}
    !insertmacro UnselectSection ${SEC_gpgex}
    !insertmacro UnselectSection ${SEC_gpgme_browser}
@@ -848,7 +917,30 @@ Function CalcDepends
 !ifdef HAVE_PKG_GPG4WIN_TOOLS
   !insertmacro UnselectSection ${SEC_gpg4win_tools}
 !endif
-
+!ifdef HAVE_PKG_QTHTTPSERVER
+  !insertmacro UnselectSection ${SEC_qthttpserver}
+!endif
+!ifdef HAVE_PKG_QTWEBSOCKETS
+  !insertmacro UnselectSection ${SEC_qtwebsockets}
+!endif
+!ifdef HAVE_PKG_QTKEYCHAIN
+  !insertmacro UnselectSection ${SEC_qtkeychain}
+!endif
+!ifdef HAVE_PKG_SYNTAX_HIGHLIGHTING
+  !insertmacro UnselectSection ${SEC_syntax-highlighting}
+!endif
+!ifdef HAVE_PKG_LIBKDEPIM
+  !insertmacro UnselectSection ${SEC_libkdepim}
+!endif
+!ifdef HAVE_PKG_KPIMTEXTEDIT
+  !insertmacro UnselectSection ${SEC_kpimtextedit}
+!endif
+!ifdef HAVE_PKG_KTEXTADDONS
+  !insertmacro UnselectSection ${SEC_ktextaddons}
+!endif
+!ifdef HAVE_PKG_KCONTACTS
+  !insertmacro UnselectSection ${SEC_kcontacts}
+!endif
 # BEGIN MSI IGNORE
 # MSI pulls this in through the gnupg-w32 component.
   # Always install gnupg2.  This is also ensured by putting
@@ -961,6 +1053,33 @@ Function CalcDepends
   skip_gpgpass:
 !endif
 
+!ifdef HAVE_PKG_GPGOLJS
+  ${IfNot} ${AtLeastWin7}
+    # Disable gpgoljs for Windows below 7
+    SectionSetFlags ${SEC_gpgoljs} 16
+  ${Endif}
+  !insertmacro SectionFlagIsSet ${SEC_gpgoljs} ${SF_SELECTED} have_gpgoljs skip_gpgoljs
+  have_gpgoljs:
+  !insertmacro SelectSection ${SEC_kde_l10n}
+
+  !insertmacro SelectSection ${SEC_gpgme}
+  !insertmacro SelectSection ${SEC_qtbase}
+  !insertmacro SelectSection ${SEC_breeze_icons}
+  !insertmacro SelectSection ${SEC_kconfig}
+  !insertmacro SelectSection ${SEC_libkleo}
+  !insertmacro SelectSection ${SEC_qthttpserver}
+  !insertmacro SelectSection ${SEC_qtwebsockets}
+  !insertmacro SelectSection ${SEC_qtkeychain}
+  !insertmacro SelectSection ${SEC_kstatusnotifieritem}
+  !insertmacro SelectSection ${SEC_syntax-highlighting}
+  !insertmacro SelectSection ${SEC_libkdepim}
+  !insertmacro SelectSection ${SEC_kpimtextedit}
+  !insertmacro SelectSection ${SEC_ktextaddons}
+  !insertmacro SelectSection ${SEC_kcontacts}
+
+   skip_gpgoljs:
+!endif
+
 !ifdef HAVE_PKG_KLEOPATRA
 !ifndef SOURCES
   ${IfNot} ${AtLeastWin7}
@@ -1002,7 +1121,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kde_l10n}
   !insertmacro SelectSection ${SEC_libkleo}
   !insertmacro SelectSection ${SEC_qttools}
-  !insertmacro SelectSection ${SEC_qtwinextras}
   !insertmacro SelectSection ${SEC_extra-cmake-modules}
   !insertmacro SelectSection ${SEC_sonnet}
   !insertmacro SelectSection ${SEC_ktextwidgets}

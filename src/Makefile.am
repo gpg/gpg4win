@@ -78,6 +78,7 @@ EXTRA_DIST = gpg4win.nsi gpg4win-src.nsi \
         inst-qtsvg.nsi uninst-qtsvg.nsi \
         inst-qttools.nsi uninst-qttools.nsi \
         inst-qttranslations.nsi uninst-qttranslations.nsi \
+        inst-qthttpserver.nsi uninst-qthttpserver.nsi \
         inst-scute.nsi uninst-scute.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
         inst-gpg4win-tools.nsi uninst-gpg4win-tools.nsi \
@@ -100,6 +101,14 @@ EXTRA_DIST = gpg4win.nsi gpg4win-src.nsi \
         inst-gpgpass.nsi uninst-gpgpass.nsi \
         inst-knotifications.nsi uninst-knotifications.nsi \
         inst-kcolorscheme.nsi uninst-kcolorscheme.nsi \
+        inst-gpgoljs.nsi uninst-gpgoljs.nsi \
+        inst-libkdepim.nsi uninst-libkdepim.nsi \
+        inst-syntax-highlighting.nsi uninst-syntax-highlighting.nsi \
+        inst-ktextaddons.nsi uninst-ktextaddons.nsi \
+        inst-qtwebsockets.nsi uninst-qtwebsockets.nsi \
+        inst-kcontacts.nsi uninst-kcontacts.nsi \
+        inst-kpimtexedit.nsi uninst-kpimtexedit.nsi \
+        inst-qtkeychain.nsi uninst-qtkeychain.nsi \
         inst-final.nsi index.theme \
         slideshow/slides.dat \
         slideshow/slide1-gpgol.png \
@@ -150,7 +159,7 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 		paperkey regex libiconv gettext scute qrencode
 
 # Source packages following the KDE pattern
-gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations \
+gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
                   kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
                   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
@@ -159,7 +168,10 @@ gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations \
                   kjobwidgets poppler okular freetype threadweaver \
                   kparts tiff openjpeg sonnet ktextwidgets mimetreeparser \
                   libical kcalendarcore kmbox pcre2 prison gpgpass \
-                  knotifications kcolorscheme zstd kstatusnotifieritem
+                  knotifications kcolorscheme zstd kstatusnotifieritem \
+                  gpgoljs libkdepim syntax-highlighting ktextaddons \
+                  kpimtextedit qtkeychain kcontacts qtwebsockets
+
 #snoretoast
 
 # Supported source packages to build in an additional architecture
@@ -308,6 +320,12 @@ gpg4win_pkg_kcoreaddons_configure = -DKCOREADDONS_USE_QML=OFF
 gpg4win_pkg_kwindowsystem_configure = -DKWINDOWSYSTEM_QML=OFF
 
 gpg4win_pkg_ktextwidgets_configure = -DWITH_TEXT_TO_SPEECH=OFF
+
+gpg4win_pkg_qtkeychain_configure = -DBUILD_WITH_QT6=ON
+
+gpg4win_pkg_libkdepim_configure = -DFORCE_DISABLE_DBUS=ON
+
+gpg4win_pkg_ktextaddons_configure = -DFORCE_DISABLE_MULTIMEDIA=ON
 
 # TODO: Host build needs to be done by us
 gpg4win_pkg_qtbase_configure = \
