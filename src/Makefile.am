@@ -388,12 +388,11 @@ gpg4win_pkg_qtbase_configure = \
 #            -v
 
 # Make install step. Somehow qtprintsupport is now installed automatically.
-#define gpg4win_pkg_qtbase_post_install
-#	(cd $$$${pkgbdir}; \
-#	 make install; \
-#	 cd $$$${pkgbdir}/src/printsupport; \
-#	 make install;)
-#endef
+define gpg4win_pkg_qtbase_post_install
+	(cd $$$${pkgidir}/bin; \
+	 ln -fs /usr/libexec/qt6/moc; \
+	 ln -fs /usr/libexec/qt6/rcc;)
+endef
 
 
 #gpg4win_pkg_qttools_configure = \
