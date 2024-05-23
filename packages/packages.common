@@ -573,8 +573,8 @@ server https://gnupg.org/ftp/gcrypt/snapshots
 # last changed: 2024-05-23
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file pinentry/pinentry-1.3.1-beta5.tar.xz
-chk aab49f0843c33a7fdb165007bc1ebfbefe66a0cea336a4a3f06bdf10474cbb2e
+file pinentry/pinentry-1.3.1-beta6.tar.xz
+chk 22034bff19b81ce391c9149693735929adf079f165ebe5a03bc0c1c8eb38348c
 
 # gpgme
 # last changed: 2024-05-21
