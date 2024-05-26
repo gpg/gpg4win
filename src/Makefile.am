@@ -387,11 +387,14 @@ gpg4win_pkg_qtbase_configure = \
 #            -no-dbus \
 #            -v
 
-# Make install step. Somehow qtprintsupport is now installed automatically.
+# link moc and rcc from the host into the target tree
+# so that pkg-config can find them.
+# Uses realpath to avoid an error that stow
+# cannot handle absolute paths.
 define gpg4win_pkg_qtbase_post_install
 	(cd $$$${pkgidir}/bin; \
-	 ln -fs /usr/libexec/qt6/moc; \
-	 ln -fs /usr/libexec/qt6/rcc;)
+	 ln -fs `realpath -s --relative-to $$$${pkgidir}/bin /usr/libexec/qt6/moc`; \
+	 ln -fs `realpath -s --relative-to $$$${pkgidir}/bin /usr/libexec/qt6/rcc`;)
 endef
 
 
