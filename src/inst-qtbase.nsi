@@ -53,7 +53,7 @@ Section "-qtbase" SEC_qtbase
   File ${prefix}/plugins/platforms/qwindows.dll
 
   SetOutPath "$INSTDIR\bin\styles"
-  File ${prefix}/plugins/styles/qwindowsvistastyle.dll
+  File ${prefix}/plugins/styles/qmodernwindowsstyle.dll
 
 !endif
 SectionEnd

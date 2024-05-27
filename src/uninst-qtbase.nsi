@@ -40,7 +40,7 @@ Section "-un.qtbase"
   Delete "$INSTDIR\bin\qt.conf"
 
   Delete "$INSTDIR\bin\platforms\qwindows.dll"
-  Delete "$INSTDIR\bin\styles\qwindowsvistastyle.dll"
+  Delete "$INSTDIR\bin\styles\qmodernwindowsstyle.dll"
 
   RMDir "$INSTDIR\bin\platforms"
   RMDir "$INSTDIR\bin\styles"
