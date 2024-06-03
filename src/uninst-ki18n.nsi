@@ -27,6 +27,7 @@ Section "-un.ki18n"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\bin\libKF6I18n.dll"
+  Delete "$INSTDIR\bin\libKF6I18nLocaleData.dll"
   RmDir "$INSTDIR\bin"
 
 !endif

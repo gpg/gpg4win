@@ -31,5 +31,6 @@ Section "-ki18n" SEC_ki18n
 !else
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/libKF6I18n.dll
+  File ${prefix}/bin/libKF6I18nLocaleData.dll
 !endif
 SectionEnd

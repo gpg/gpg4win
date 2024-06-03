@@ -18,5 +18,7 @@
 ; Uninstaller section.
 Section "-un.ktextaddons"
   Delete "$INSTDIR\bin\libKF6TextAutoCorrectionCore.dll"
+  Delete "$INSTDIR\bin\libKF6TextEmoticonsWidgets.dll"
+  Delete "$INSTDIR\bin\libKF6TextCustomEditor.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd
