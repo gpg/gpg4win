@@ -22,7 +22,15 @@
 
 Section "-ktextaddons" SEC_ktextaddons
   SetOutPath "$INSTDIR\bin"
+  File ${prefix}/bin/libKF6TextAddonsWidgets.dll
   File ${prefix}/bin/libKF6TextAutoCorrectionCore.dll
-  File ${prefix}/bin/libKF6TextEmoticonsWidgets.dll
+  File ${prefix}/bin/libKF6TextAutoCorrectionWidgets.dll
   File ${prefix}/bin/libKF6TextCustomEditor.dll
+  File ${prefix}/bin/libKF6TextEditTextToSpeech.dll
+  File ${prefix}/bin/libKF6TextEmoticonsCore.dll
+  File ${prefix}/bin/libKF6TextEmoticonsWidgets.dll
+  File ${prefix}/bin/libKF6TextGrammarCheck.dll
+  File ${prefix}/bin/libKF6TextSpeechToText.dll
+  File ${prefix}/bin/libKF6TextTranslator.dll
+  File ${prefix}/bin/libKF6TextUtils.dll
 SectionEnd
