@@ -1,0 +1,42 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 5ad0e2cd5d364a8c41e21c39234893d17479cb1f Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sun, 24 Mar 2024 18:47:53 +0100
+Subject: [PATCH 1/4] Don't use DBus on Windows/macOS
+
+---
+ CMakeLists.txt                  | 2 +-
+ KF6ConfigWidgetsConfig.cmake.in | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8b407f7e..f0307621 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -27,7 +27,7 @@ include(CMakeDependentOption)
+ set(REQUIRED_QT_VERSION 6.5.0)
+ find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets)
+ set(HAVE_DBUS false)
+-if (NOT ANDROID)
++if (NOT ANDROID AND NOT WIN32 AND NOT APPLE)
+   find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
+   set(HAVE_DBUS true)
+ endif()
+diff --git a/KF6ConfigWidgetsConfig.cmake.in b/KF6ConfigWidgetsConfig.cmake.in
+index 56a49a91..b920e6fd 100644
+--- a/KF6ConfigWidgetsConfig.cmake.in
++++ b/KF6ConfigWidgetsConfig.cmake.in
+@@ -9,7 +9,7 @@ find_dependency(KF6ColorScheme "@KF_DEP_VERSION@")
+ if (NOT @BUILD_SHARED_LIBS@)
+     find_dependency(Qt6Widgets @REQUIRED_QT_VERSION@)
+
+-    if (NOT ANDROID)
++    if (NOT ANDROID AND NOT WIN32 AND NOT APPLE)
+         find_dependency(Qt6DBus @REQUIRED_QT_VERSION@)
+     endif()
+
+--
+2.44.0

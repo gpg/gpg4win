@@ -1,0 +1,52 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 94719b40a34b29dfa1eec10b9787e1a04bffc6dc Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Tue, 16 Apr 2024 16:33:57 +0200
+Subject: [PATCH] Remove unecessary config requirements
+
+DBus is not used in libkdepim and test is only used when
+testing.
+---
+ CMakeLists.txt     | 7 ++++++-
+ src/CMakeLists.txt | 5 -----
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 46f066f..08b2e40 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -35,7 +35,12 @@ option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant,
+ add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
+
+ set(LIBKDEPIM_LIB_VERSION ${PIM_VERSION})
+-find_package(Qt6 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Widgets Test DBus Network)
++
++find_package(Qt6 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Widgets Network)
++
++if (BUILD_TESTING)
++    find_package(Qt6 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Test)
++endif()
+
+ find_package(KF6Completion ${KF_MIN_VERSION} CONFIG REQUIRED)
+ find_package(KF6I18n ${KF_MIN_VERSION} CONFIG REQUIRED)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index b252a35..ff6aba3 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -69,11 +69,6 @@ target_link_libraries(KPim6Libkdepim
+     )
+
+
+-if(MINGW)
+-    target_link_libraries(KPim6Libkdepim oleaut32)
+-endif()
+-
+-
+ set_target_properties(KPim6Libkdepim PROPERTIES
+     VERSION ${LIBKDEPIM_VERSION}
+     SOVERSION ${LIBKDEPIM_SOVERSION}
+--
+2.44.0

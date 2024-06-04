@@ -1,0 +1,38 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 6ad03f8dc385c491cbd6b58f8f58034d15db3a34 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Wed, 10 Apr 2024 11:47:29 +0200
+Subject: [PATCH] No more WindowsWindowFunction
+
+Check if this is now default or required to port.
+---
+ src/kleopatraapplication.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/kleopatraapplication.cpp b/src/kleopatraapplication.cpp
+index 720b2ee4e..8b0c4be03 100644
+--- a/src/kleopatraapplication.cpp
++++ b/src/kleopatraapplication.cpp
+@@ -75,7 +75,7 @@
+ #include <KSharedConfig>
+ #include <memory>
+
+-#ifdef Q_OS_WIN
++#if 0
+ #include <QtPlatformHeaders/QWindowsWindowFunctions>
+ #endif
+
+@@ -307,7 +307,7 @@ KleopatraApplication::KleopatraApplication(int &argc, char *argv[])
+
+ void KleopatraApplication::init()
+ {
+-#ifdef Q_OS_WIN
++#if 0
+     QWindowsWindowFunctions::setWindowActivationBehavior(QWindowsWindowFunctions::AlwaysActivateWindow);
+ #endif
+     const auto blockedUrlSchemes = Settings{}.blockedUrlSchemes();
+--
+2.44.0
