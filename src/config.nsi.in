@@ -224,10 +224,6 @@
 !define gpg4win_pkg_kbookmarks @gpg4win_pkg_kbookmarks@
 !define gpg4win_pkg_kbookmarks_version @gpg4win_pkg_kbookmarks_version@
 
-@HAVE_PKG_KNOTIFICATIONS@
-!define gpg4win_pkg_knotifications @gpg4win_pkg_knotifications@
-!define gpg4win_pkg_knotifications_version @gpg4win_pkg_knotifications_version@
-
 @HAVE_PKG_KJOBWIDGETS@
 !define gpg4win_pkg_kjobwidgets @gpg4win_pkg_kjobwidgets@
 !define gpg4win_pkg_kjobwidgets_version @gpg4win_pkg_kjobwidgets_version@

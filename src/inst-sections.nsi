@@ -114,9 +114,6 @@
 !ifdef HAVE_PKG_KJOBWIDGETS
 !include "inst-kjobwidgets.nsi"
 !endif
-!ifdef HAVE_PKG_KNOTIFICATIONS
-!include "inst-knotifications.nsi"
-!endif
 !ifdef HAVE_PKG_KCOLORSCHEME
 !include "inst-kcolorscheme.nsi"
 !endif
@@ -427,9 +424,6 @@
 !endif
 !ifdef HAVE_PKG_KIO
 !include "uninst-kio.nsi"
-!endif
-!ifdef HAVE_PKG_KNOTIFICATIONS
-!include "uninst-knotifications.nsi"
 !endif
 !ifdef HAVE_PKG_KCOLORSCHEME
 !include "uninst-kcolorscheme.nsi"
@@ -818,9 +812,6 @@ Function CalcDepends
 !ifdef HAVE_PKG_KIO
   !insertmacro UnselectSection ${SEC_kio}
 !endif
-!ifdef HAVE_PKG_KNOTIFICATIONS
-  !insertmacro UnselectSection ${SEC_knotifications}
-!endif
 !ifdef HAVE_PKG_KCOLORSCHEME
   !insertmacro UnselectSection ${SEC_kcolorscheme}
 !endif
@@ -1017,7 +1008,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kjobwidgets}
 #  !insertmacro SelectSection ${SEC_snoretoast}
   !insertmacro SelectSection ${SEC_kcolorscheme}
-  !insertmacro SelectSection ${SEC_knotifications}
   !insertmacro SelectSection ${SEC_solid}
   !insertmacro SelectSection ${SEC_kservice}
   !insertmacro SelectSection ${SEC_kbookmarks}
@@ -1109,7 +1099,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kio}
   !insertmacro SelectSection ${SEC_kjobwidgets}
 #  !insertmacro SelectSection ${SEC_snoretoast}
-  !insertmacro SelectSection ${SEC_knotifications}
   !insertmacro SelectSection ${SEC_kcolorscheme}
   !insertmacro SelectSection ${SEC_solid}
   !insertmacro SelectSection ${SEC_kservice}
