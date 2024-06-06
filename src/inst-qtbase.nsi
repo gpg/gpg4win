@@ -52,6 +52,9 @@ Section "-qtbase" SEC_qtbase
   SetOutPath "$INSTDIR\bin\platforms"
   File ${prefix}/plugins/platforms/qwindows.dll
 
+  SetOutPath "$INSTDIR\bin\tls"
+  File ${prefix}/plugins/tls/qschannelbackend.dll
+
   SetOutPath "$INSTDIR\bin\styles"
   File ${prefix}/plugins/styles/qmodernwindowsstyle.dll
 
