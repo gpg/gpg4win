@@ -481,6 +481,9 @@ gpg4win_pkg_poppler_configure = \
     -DENABLE_LCMS=OFF \
     -DENABLE_LIBCURL=OFF
 
+gpg4win_pkg_libkdepim_configure = \
+    -DFORCE_NOT_REQUIRED_DEPENDENCIES="Qt6DBus"
+
 # Supported make-only source packages.
 gpg4win_mpkgs = bzip2 zlib
 

@@ -1,0 +1,27 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+From 170856d96aaa1efa004f7777d6832923ea64a7f0 Mon Sep 17 00:00:00 2001
+From: Carl Schwan <carl.schwan@gnupg.com>
+Date: Tue, 4 Jun 2024 17:57:28 +0200
+Subject: [PATCH 2/3] Fix compilation with mingw
+
+---
+ src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 23770a3..4031f9d 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -70,7 +70,7 @@ target_link_libraries(KPim6Libkdepim
+
+
+ if(MINGW)
+-    target_link_libraries(KPim6Libkdepim oleaut32)
++    target_link_libraries(KPim6Libkdepim PRIVATE oleaut32)
+ endif()
+
+
+--
+2.44.0
