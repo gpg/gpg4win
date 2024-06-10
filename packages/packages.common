@@ -537,11 +537,11 @@ chk 441bbb3c13cb535a216feb411ffe5925f4ca668a679c3cc1c4260c2bf406baec
 server https://gnupg.org/ftp/gcrypt/snapshots
 
 # gpgme
-# last changed: 2024-05-21
+# last changed: 2024-06-10
 # by: wk
 # verified: build tree
-file gpgme/gpgme-1.24.0-beta566.tar.bz2
-chk fc56487dfed1a5bd0f66cc65c4c86ae5a5ef4e3c226ef5c745450039f1e0f1b1
+file gpgme/gpgme-1.24.0-beta579.tar.bz2
+chk a64dd1a52d4ba4e5daa88c6e580eecfebedfd18dbcbe2c612110203575391843
 
 
 # gpgol
