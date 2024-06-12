@@ -168,7 +168,7 @@ Section "-un.kleopatra"
 #  Delete "$INSTDIR\share\doc\HTML\common\kde-localised.css"
 
   Delete "$INSTDIR\share\kdeglobals"
-  Delete "$INSTDIR\share\QtProject\qtlogging.ini"
+  Delete "$INSTDIR\bin\qtlogging.ini"
 #  Delete "$INSTDIR\share\apps\kwatchgnupg\pics\kwatchgnupg2.png"
 #  Delete "$INSTDIR\share\apps\kwatchgnupg\pics\kwatchgnupg.png"
 #  Delete "$INSTDIR\share\apps\kwatchgnupg\kwatchgnupgui.rc"

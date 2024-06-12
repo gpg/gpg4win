@@ -197,7 +197,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   # installer
   SetOutPath "$INSTDIR\share"
   File kdeglobals
-  SetOutPath "$INSTDIR\share\QtProject"
+  SetOutPath "$INSTDIR\bin"
   File qtlogging.ini
 
   SetOutPath "$INSTDIR\share\gpg4win"
