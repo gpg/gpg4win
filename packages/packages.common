@@ -482,13 +482,6 @@ chk 641356ac286c1a5287327ce8fa2529bf53048e439d1ff672c925d4ab7e0eb7c2
 file 6.0/prison-6.0.0.tar.xz
 chk 6ff5fbc6fc38581072ee45904e022d5bf2e7b3b1f49ac9d1d0c6024d7ca3ec5a
 
-# knotifications
-# last changed: 2024-03-15
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 6.0/knotifications-6.0.0.tar.xz
-chk 35fed813fc594bbe808bc01b511b2d1eff9023977b7981137f3fec81984713e8
-
 # kcolorscheme
 # last changed: 2024-03-27
 # by: ah

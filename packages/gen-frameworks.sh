@@ -61,7 +61,6 @@ FRAMEWORKS="extra-cmake-modules
     sonnet
     kcalendarcore
     prison
-    knotifications
     kcolorscheme
     kstatusnotifieritem
     syntax-highlighting
