@@ -86,6 +86,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches/jpeg/fix-redefine.patch \
              patches/gpgme/0001-core-percent-decode-filename.patch \
+             patches/gpgme/0001-core-w32-with-forward-slashes.patch \
              patches-appimage/gpgme/0001-core-percent-decode-filename.patch \
              patches-appimage/kleopatra/0001-Make-KCMUtils-optional.patch \
              patches-appimage/kleopatra/kleo-gpg4win-ja.patch \
