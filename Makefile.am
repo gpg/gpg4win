@@ -70,6 +70,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/qtbase/CVE-2023-32763-qtbase-5.15.patch \
              patches/qtbase/CVE-2023-37369-qtbase-5.15.patch \
              patches/qtbase/CVE-2023-43114-5.15.patch \
+             patches/qtbase/fix-high-contrast-item-view-selection-color.patch \
              patches/qttools/disable-most-tools.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
