@@ -42,7 +42,7 @@ new file mode 100644
 index 0000000..341efc4
 --- /dev/null
 +++ b/src/DarkModeSetup.cpp
-@@ -0,0 +1,98 @@
+@@ -0,0 +1,99 @@
 +/*
 +    SPDX-FileCopyrightText: 2023 g10 Code GmbH
 +    SPDX-FileContributor: Ingo Klöcker <dev@ingo-kloecker.de>
@@ -55,6 +55,7 @@ index 0000000..341efc4
 +#include "DarkModeSetup.h"
 +#include "debug.h"
 +
++#include <QColor>
 +#include <QSettings>
 +
 +#include "windows.h"
@@ -73,16 +74,16 @@ index 0000000..341efc4
 +
 +bool win_isDarkModeActive()
 +{
-+    // Most intutively this GetSysColor seems the right function for this
-+    // but according to
-+    // https://learn.microsoft.com/de-de/windows/win32/api/winuser/nf-winuser-getsyscolor
-+    // these are already either deprecated or removed.
-+
 +    if (win_isHighContrastModeActive()) {
-+        // Windows 11 has only one white High Contrast mode. The other
-+        // three are dark. So even if we can't cath the white one let
-+        // us assume that it it is dark.
-+        qCDebug(KICONTHEMES) << "Bright icons for HighContrast";
++        // First check for white background. That is set in High contrast white theme.
++        DWORD color = GetSysColor(COLOR_WINDOW);
++        QColor qtColor{GetRValue(color), GetGValue(color), GetBValue(color)};
++        if (qtColor == Qt::white) {
++            qCDebug(KICONTHEMES) << "Detected light high-contrast mode";
++            return false;
++        }
++        // The other three High Contrast modes are dark.
++        qCDebug(KICONTHEMES) << "Detected dark high-contrast mode";
 +        return true;
 +    }
 +
@@ -102,7 +103,7 @@ index 0000000..341efc4
 +    return false;
 +}
 +
-+};
++}
 +
 +bool DarkModeSetup::isDarkModeActive()
 +{
