@@ -55,7 +55,6 @@ index 0000000..341efc4
 +#include "DarkModeSetup.h"
 +#include "debug.h"
 +
-+#include <QColor>
 +#include <QSettings>
 +
 +#include "windows.h"
@@ -75,15 +74,16 @@ index 0000000..341efc4
 +bool win_isDarkModeActive()
 +{
 +    if (win_isHighContrastModeActive()) {
-+        // First check for white background. That is set in High contrast white theme.
++        // First check for a light high contrast theme.
 +        DWORD color = GetSysColor(COLOR_WINDOW);
-+        QColor qtColor{GetRValue(color), GetGValue(color), GetBValue(color)};
-+        if (qtColor == Qt::white) {
-+            qCDebug(KICONTHEMES) << "Detected light high-contrast mode";
++        // use relative luminance defined in Rec. 709 for HDTV as reasonable estimate of the perceived lightness of the background color
++        const double luminance709 = (0.2126 * GetRValue(color) + 0.7152 * GetGValue(color) + 0.0722 * GetBValue(color)) / 255.;
++        if (luminance709 > 0.5) {
++            qCDebug(KICONTHEMES) << "Detected light high-contrast mode; relative luminance =" << luminance709;
 +            return false;
 +        }
 +        // The other three High Contrast modes are dark.
-+        qCDebug(KICONTHEMES) << "Detected dark high-contrast mode";
++        qCDebug(KICONTHEMES) << "Detected dark high-contrast mode; relative luminance =" << luminance709;
 +        return true;
 +    }
 +
