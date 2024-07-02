@@ -220,6 +220,11 @@ gpg4win_pkg_libgpg_error_configure = --silent \
 gpg4win_pkg_libgpg_error_ex_configure = --silent \
   --enable-static --enable-install-gpg-error-config
 
+gpg4win_pkg_libgpg_error_extracflags = -D_WIN32_WINNT=0x0600
+
+gpg4win_pkg_libgpg_error_ex_extracflags = -D_WIN32_WINNT=0x0600
+
+
 # We convert the PO files to UTF-8.  FIXME: This should be done in
 # libgpg-error proper.
 define gpg4win_pkg_libgpg_error_post_install

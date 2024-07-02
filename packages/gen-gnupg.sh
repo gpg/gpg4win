@@ -11,9 +11,10 @@ usage()
     cat <<EOF
 Usage: $PGM [OPTIONS]  WINDOWS_SOURCE_TARBALL
 Options:
-        [--v4]       Append to packages.4
-        [--v3]       Append to packages.3 (default)
-        [--snapshot] Create for snapshot folder
+        [--v4]         Append to packages.4
+        [--v3]         Append to packages.3 (default)
+        [--snapshot]   Create for snapshot folder
+	[--no-wixlib]  Do not create a wixlib entry
 EOF
     exit $1
 }
@@ -21,6 +22,7 @@ EOF
 
 forversion=3
 bindir="binary"
+wixlib=wixlib
 snapshot=no
 while [ $# -gt 0 ]; do
     case "$1" in
@@ -43,6 +45,9 @@ while [ $# -gt 0 ]; do
             snapshot=yes
 	    bindir=gnupg
 	    ;;
+	--no-wixlib)
+	   wixlib=""
+	   ;;
 	--help|-h)
 	    usage 0
 	    ;;
@@ -83,13 +88,15 @@ fi
 
 cp "$dir/${prefix}-${version}.tar.bz2"            "${prefix}-${version}.tar.bz2"
 
-for suf in tar.xz exe wixlib; do
+for suf in tar.xz exe $wixlib ; do
     cp "$dir/${prefix}-w32-${version}_${date}.$suf" .
 done
 
 ln -f "${prefix}-w32-${version}_${date}.tar.xz" "${prefix}-w32-${version}_${date}-src.tar.xz"
 ln -f "${prefix}-w32-${version}_${date}.exe" "${prefix}-w32-${version}_${date}-bin.exe"
-ln -f "${prefix}-w32-${version}_${date}.wixlib" "${prefix}-msi-${version}_${date}-bin.wixlib"
+if [ -n "$wixlib" ]; then
+  ln -f "${prefix}-w32-${version}_${date}.wixlib" "${prefix}-msi-${version}_${date}-bin.wixlib"
+fi
 
 outfile="packages.$forversion"
 echo >>$outfile
@@ -125,11 +132,13 @@ echo >>$outfile "link $msifile"
 echo >>$outfile "chk  $(sha256sum < $orgfile | cut -d ' ' -f1)"
 echo >>$outfile
 
+if [ -n "$wixlib" ]; then
 orgfile="${prefix}-w32-${version}_${date}.wixlib"
 file="${prefix}-msi-${version}_${date}-bin.wixlib"
 echo >>$outfile "name $file"
 echo >>$outfile "file $bindir/${orgfile}"
 echo >>$outfile "chk  $(sha256sum < $orgfile | cut -d ' ' -f1)"
 echo >>$outfile
+fi
 
 echo >>$outfile "# eof"
