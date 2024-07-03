@@ -24,7 +24,7 @@ AUTHENTICODE_FILES = \
 	bin/gpgol.dll \
 	bin/gpgolkeyadder.exe \
 	bin/kleopatra.exe \
-	bin/libassuan-0.dll \
+	bin/libassuan-9.dll \
 	bin/libfreetype.dll \
 	bin/libgpg-error-0.dll \
 	bin/libgpgme-11.dll \
@@ -97,7 +97,7 @@ AUTHENTICODE_FILES = \
 	../install-ex/bin/gpgex.dll \
 	../install-ex/bin/gpgme-json.exe \
 	../install-ex/bin/gpgol.dll \
-	../install-ex/bin/libassuan-0.dll \
+	../install-ex/bin/libassuan-9.dll \
 	../install-ex/bin/libgpg-error-0.dll \
 	../install-ex/bin/libgpgme-11.dll \
 	../install-ex/bin/libgpgmepp-6.dll \
