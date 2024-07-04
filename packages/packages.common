@@ -178,11 +178,11 @@ chk  bdfcb99024acec9c6c4b998ad63bb3921df4cfee4a772ad6c0ca324dbbf2b07c
 #chk  133817a4c4d11996956676c5c200222839ee5dc16e9476bd682d4e68b33ef73e
 
 # pinentry
-# last changed: 2022-08-24
+# last changed: 2024-07-03
 # by: wk
 # verified: swdb
-file pinentry/pinentry-1.2.1.tar.bz2
-chk 457a185e5a85238fb945a955dc6352ab962dc8b48720b62fc9fa48c7540a4067
+file pinentry/pinentry-1.3.1.tar.bz2
+chk bc72ee27c7239007ab1896c3c2fae53b076e2c9bd2483dc2769a16902bce8c04
 
 # Disabled because a snapshot is used.
 ## gpgme
@@ -198,12 +198,13 @@ chk 457a185e5a85238fb945a955dc6352ab962dc8b48720b62fc9fa48c7540a4067
 file scute/scute-1.7.0.tar.bz2
 chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
 
-# GpgOL
-# last-changed: 2024-01-02
-# by: ah
-# verified: swdb
-file gpgol/gpgol-2.5.12.tar.bz2
-chk  b982b0393754a779bafdea9d864c6ad6a7aa763a3c49d28bf6106dc202d9dc0a
+# See snapshots
+## GpgOL
+## last-changed: 2024-01-02
+## by: ah
+## verified: swdb
+#file gpgol/gpgol-2.5.12.tar.bz2
+#chk  b982b0393754a779bafdea9d864c6ad6a7aa763a3c49d28bf6106dc202d9dc0a
 
 #
 # GpgEX
@@ -537,7 +538,7 @@ chk 441bbb3c13cb535a216feb411ffe5925f4ca668a679c3cc1c4260c2bf406baec
 server https://gnupg.org/ftp/gcrypt/snapshots
 
 # gpgme
-# last changed: 2024-06-10
+# last changed: 2024-07-02
 # by: wk
 # verified: build tree
 file gpgme/gpgme-1.24.0-beta597.tar.bz2
@@ -545,11 +546,12 @@ chk  4f1488899cf7c7b2346f02ff02c9106997f9ca13a77d5a7b9351cbaf2c40b8c7
 
 
 # gpgol
-# last changed: 2023-11-21
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-# file gpgol/gpgol-2.5.10-beta23.tar.xz
-# chk 4582dd9d6c5f80018cd60102edf828d3e4fed159364af5fa8214a8fb17229b9a
+# last changed: 2024-07-03
+# by: wk
+# verified: buildtree
+file gpgol/gpgol-2.5.13-beta6.tar.bz2
+chk 85fa5d021261addf4ab1929183fa0ec26ef5197ce0faa569eda066b4e51497e8
+
 
 # gpg4win-tools
 # last changed: 2024-06-10
