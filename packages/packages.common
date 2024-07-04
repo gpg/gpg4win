@@ -209,11 +209,11 @@ chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
 #
 # GpgEX
 #
-# last-changed: 2023-12-01
-# by: ah
+# last-changed: 2024-07-03
+# by: wk
 # verified: swdb
-file gpgex/gpgex-1.0.10.tar.bz2
-chk  849f88c2c4c29d4f0f021a8d6b9425ba3fc9d9b706c3e43a0e0e063e172498cd
+file gpgex/gpgex-1.0.11.tar.bz2
+chk  569b78132cd207f7d4a416a76eb1d9f8c260b4dd7a48d67dd830dc2b41d46cdb
 
 #
 #  GnuPG utilities
