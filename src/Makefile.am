@@ -213,7 +213,7 @@ gpg4win_pkg_gettext_ex_make_dir_inst = gettext-runtime
 
 # CMakeList.txt does not live in the top level
 gpg4win_pkg_zstd_conf_subdir = /build/cmake
-
+gpg4win_pkg_zstd_configure = -DZSTD_BUILD_PROGRAMS=OFF
 
 # Paperkey comes with a man pages which we have to convert.
 define gpg4win_pkg_paperkey_post_install
