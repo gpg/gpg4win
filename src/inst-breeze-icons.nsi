@@ -1,5 +1,5 @@
 # inst-breeze-icons.nsi - Snippet for breeze-icons.   -*- coding: latin-1; -*-
-# Copyright (C) 2005, 2007, 2008 g10 Code GmbH
+# Copyright (C) 2005, 2007, 2008, 2024 g10 Code GmbH
 #
 # This file is part of GPG4Win.
 #
@@ -16,21 +16,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
-
-
 !ifdef prefix
 !undef prefix
 !endif
 !define prefix ${ipdir}/breeze-icons-${gpg4win_pkg_breeze_icons_version}
 
-#
-# Note: You may want to use the findicon.sh script to create the
-# list of icons.
-#
 Section "-breeze-icons" SEC_breeze_icons
-SetOutPath "$INSTDIR\bin\data"
+SetOutPath "$INSTDIR\bin"
 
-File /oname=icontheme.rcc ${prefix}/share/icons/breeze/breeze-icons.rcc
-File /oname=icontheme-dark.rcc ${prefix}/share/icons/breeze-dark/breeze-icons-dark.rcc
-
+File ${prefix}/bin/libKF6BreezeIcons.dll
 SectionEnd
