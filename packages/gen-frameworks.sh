@@ -27,7 +27,7 @@
 set -e
 
 if [ -z "$1" ]; then
-    echo "Usage $0 <Version> > snippet"
+    echo "Usage $0 <Version> [frameworks] > snippet"
     exit 1
 fi
 
@@ -64,7 +64,12 @@ FRAMEWORKS="extra-cmake-modules
     kcolorscheme
     kstatusnotifieritem
     syntax-highlighting
-    kcontacts"
+    kcontacts
+    ktextaddons"
+
+if [ -n "$2" ]; then
+    FRAMEWORKS="$2"
+fi
 
 fullversion=$1
 case ${fullversion} in

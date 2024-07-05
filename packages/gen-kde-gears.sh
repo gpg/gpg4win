@@ -31,8 +31,10 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-GEARS="libkleo
-    kleopatra"
+GEARS="kmime
+    kmbox
+    libkdepim
+    kpimtextedit"
 
 fullversion=$1
 case ${fullversion} in
