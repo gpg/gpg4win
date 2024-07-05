@@ -132,6 +132,8 @@ tsdir := $(shell pwd)/${top_srcdir}
 pdir := $(shell pwd)/${top_srcdir}/patches
 ex_idir := $(root)/install-ex
 ex_ipdir := $(root)/install-ex/pkgs
+tools_idir := $(root)/install-tools
+tools_ipdir := $(root)/install-tools/pkgs
 
 ifdef GIT_BETASTRING
 	VSD_VERSION_FILE:=$(VSD_VERSION)-Beta
@@ -152,7 +154,7 @@ pkg_files =
 # The playground area is our scratch area, where we unpack, build and
 # install the packages.
 #
-# Boost includes are only needed for the host and are linked in the
+# Boost includes are only needed during the build and are linked in the
 # playground install tree
 $(stampdir)/stamp-directories:
 	$(MKDIR) $(stampdir)
@@ -165,6 +167,8 @@ $(stampdir)/stamp-directories:
 	$(MKDIR) $(ipdir)
 	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_idir))
 	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_ipdir))
+	$(MKDIR) $(tools_idir)
+	$(MKDIR) $(tools_ipdir)
 	touch $(bdir)/versioninfo.txt
 	touch $(stampdir)/stamp-directories
 
@@ -248,6 +252,29 @@ define SETVARS_EX
 	export PKG_CONFIG_LIBDIR="";                                        \
 	export PATH="$(ex_idir)/bin:$${PATH}";                              \
 	export SYSROOT="$(ex_idir)"
+endef
+
+# Set variables for building additional build tools
+define SETVARS_TOOLS
+	set -e; \
+	pkg="$(call GETVAR,gpg4win_pkg_$(1))";                              \
+	pkg_version="$(1)-$(call GETVAR,gpg4win_pkg_$(1)_version)";         \
+	pkgsdir="$(bdir)/$$$${pkg_version}";                                \
+	pkgbdir="$(bdir)/$$$${pkg_version}-tools-build";                    \
+	pkgpdir="$(pdir)/$$$${pkg_version}";                                \
+	pkgpbdir="$(pdir)/$(1)";                                            \
+	pkgidir="$(tools_ipdir)/$$$${pkg_version}";                         \
+	pkgidir_dev="$(tools_ipdir)/$$$${pkg_version_dev}";                 \
+	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_tools_configure)";           \
+	pkgextracflags="$(call GETVAR,gpg4win_pkg_$(1)_tools_extracflags)"; \
+	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_tools_make_args)";        \
+	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_tools_make_args_inst)"; \
+	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_tools_make_dir)";          \
+	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_tools_make_dir)";     \
+	export PKG_CONFIG_PATH="$(tools_idir)/lib/pkgconfig";               \
+	export PKG_CONFIG_LIBDIR="";                                        \
+	export PATH="$(tools_idir)/bin:$${PATH}";                           \
+	export SYSROOT="$(tools_idir)"
 endef
 
 define SETVARS_WINE
@@ -398,6 +425,10 @@ define GETDEPS_EX
   $(addprefix $(stampdir)/stamp-final-ex-, $(call GETVAR,gpg4win_pkg_$(1)_ex_deps))
 endef
 
+define GETDEPS_TOOLS
+  $(addprefix $(stampdir)/stamp-final-tools-, $(call GETVAR,gpg4win_pkg_$(1)_tools_deps))
+endef
+
 # Template for source packages to build for an additional host
 
 define EXPKG_template_
@@ -458,7 +489,7 @@ $(stampdir)/stamp-$(1)-ex-05-stow: $(stampdir)/stamp-$(1)-ex-04-install
 $(stampdir)/stamp-final-ex-$(1): $(stampdir)/stamp-$(1)-ex-05-stow
 	touch $(stampdir)/stamp-final-ex-$(1)
 
-$(1): $(stampdir)/stamp-final-$(1)
+$(1)-ex: $(stampdir)/stamp-final-ex-$(1)
 
 .PHONY : clean-ex-$(1)
 clean-ex-$(1):
@@ -874,6 +905,88 @@ $(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
   $(call KDEPKG_template_,$1))
 endef
 
+#
+#
+
+# Template for tools which should be compiled for the build
+# system
+define TOOLSPKG_template
+$(stampdir)/stamp-$(1)-tools-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS_TOOLS,$(1))
+	(cd $(bdir);					\
+	 $(call SETVARS_TOOLS,$(1));				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch $(stampdir)/stamp-$(1)-tools-00-unpack
+
+$(stampdir)/stamp-$(1)-tools-01-patch: $(stampdir)/stamp-$(1)-tools-00-unpack
+	(shopt -s nullglob;				\
+	$(call SETVARS_TOOLS,$(1));				\
+	if [ ! -L "$$$${pkgsdir}" ]; then \
+		cd "$$$${pkgsdir}"; \
+		for pfile in "$$$${pkgpbdir}"/*-tools.patch "$$$${pkgpdir}"/*-tools.patch ; do  \
+		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}") \
+		done \
+	else \
+		echo "Not patching symlinked $(1)"; \
+	fi)
+	touch $(stampdir)/stamp-$(1)-tools-01-patch
+
+$(stampdir)/stamp-$(1)-tools-02-configure: $(stampdir)/stamp-$(1)-tools-01-patch
+	($(call SETVARS_TOOLS,$(1));				\
+	 mkdir "$$$${pkgbdir}";				\
+	 cd "$$$${pkgbdir}";				\
+	 $(CMAKE)					\
+		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
+		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
+		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_srcdir)/src/toolchain-tools.cmake \
+		-DQT_MAJOR_VERSION="6" \
+		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
+		-DBUILD_TESTING=False \
+		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}$$$${pkg_conf_subdir}") && \
+	touch $(stampdir)/stamp-$(1)-tools-02-configure
+
+$(stampdir)/stamp-$(1)-tools-03-make: $(stampdir)/stamp-$(1)-tools-02-configure
+	($(call SETVARS_TOOLS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
+	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	touch $(stampdir)/stamp-$(1)-tools-03-make
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+$(stampdir)/stamp-$(1)-tools-04-install: $(stampdir)/stamp-$(1)-tools-03-make
+	($(call SETVARS_TOOLS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  cd "$$$${pkgmkdir_inst}";			\
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(call STRIP_macro,"$$$${pkgidir}");		\
+	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_tools_post_install))
+	touch $(stampdir)/stamp-$(1)-tools-04-install
+
+$(stampdir)/stamp-$(1)-tools-05-stow: $(stampdir)/stamp-$(1)-tools-04-install
+	($(call SETVARS_TOOLS,$(1));				\
+	 cd $(tools_ipdir);					\
+	 $(STOW) "$$$${pkg_version}")
+	touch $(stampdir)/stamp-$(1)-tools-05-stow
+
+$(stampdir)/stamp-final-tools-$(1): $(stampdir)/stamp-$(1)-tools-05-stow
+	touch $(stampdir)/stamp-final-tools-$(1)
+
+$(1)-tools: $(stampdir)/stamp-final-tools-$(1)
+
+.PHONY : clean-$(1)-tools
+clean-$(1)-tools:
+	($(call SETVARS_TOOLS,$(1));				\
+	 (cd $(tools_ipdir) &&				\
+	  ($(STOW) -D "$$$${pkg_version}" || true;	\
+	   rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
+	rm -f $(stampdir)/stamp-final-tools-$(1) $(stampdir)/stamp-$(1)-tools-*
+endef
+
+#
+# End Template definitions
+#
+
 # Sign the file $1 and save the result as $2
 define AUTHENTICODE_sign
    set -e;\
@@ -1277,6 +1390,9 @@ $(1)-announce: gnupg-vsd/$(1)/announcement.txt
 
 endef
 
+# Insert the template for each build tool package.
+$(foreach toolpkg, $(gpg4win_toolpkgs), $(eval $(call TOOLSPKG_template,$(toolpkg))))
+
 # Insert the template for each source package.
 $(foreach spkg, $(gpg4win_spkgs), $(eval $(call SPKG_template,$(spkg))))
 
@@ -1301,7 +1417,8 @@ $(foreach qtpkg, $(gpg4win_qtpkgs), $(eval $(call QTPKG_template,$(qtpkg))))
 $(foreach rll, $(gpg4win_howto_smime_ll), \
                $(eval $(call HOWTO_template,SMIME,$(rll))))
 
-$(stampdir)/stamp-binaries: $(addprefix $(stampdir)/stamp-final-,$(gpg4win_build_list)) \
+$(stampdir)/stamp-binaries: $(addprefix $(stampdir)/stamp-final-tools-,$(gpg4win_build_tools_list)) \
+	$(addprefix $(stampdir)/stamp-final-,$(gpg4win_build_list)) \
 	$(addprefix $(stampdir)/stamp-final-ex-,$(gpg4win_build_ex_list))
 	touch $(stampdir)/stamp-binaries
 

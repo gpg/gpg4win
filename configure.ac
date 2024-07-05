@@ -225,23 +225,6 @@ for i in $required_tools; do
 done
 
 if test "$build_gpg4win" = yes ; then
-    # Try to find the KF6ConfigConfig to set up host tooling
-    # variable for the kconfig compiler.
-    # A variable path here would probably be better but we cant
-    # use $libdir to avoid it beeing required to configure gpg4win
-    # build with a multiarch libdir set.
-    kf6_host_tooling_candidates="/usr/lib/x86_64-linux-gnu/cmake /usr/lib64/cmake"
-    for i in $kf6_host_tooling_candidates; do
-        if test -f "$i/KF6Config/KF6ConfigConfig.cmake"; then
-            kf6_host_tooling="$i"
-            break;
-        fi
-    done
-    if test ! -f "$kf6_host_tooling/KF6Config/KF6ConfigConfig.cmake"; then
-        missing_tools="$missing_tools libkf5config-dev"
-    fi
-    AC_SUBST(kf6_host_tooling)
-
     GPG4WIN_RUNTIME_LIBRARY(libstdc++-6, REQUIRED)
     GPG4WIN_RUNTIME_LIBRARY(libwinpthread-1, REQUIRED)
 
@@ -298,6 +281,13 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_BPKG_BINSRC([gnupg-w32])
     GPG4WIN_BPKG_MSISRC([gnupg-msi])
 
+    # Tools required for cross compiling
+    GPG4WIN_TOOLSPKG([qtbase])
+    GPG4WIN_TOOLSPKG([extra-cmake-modules])
+    GPG4WIN_TOOLSPKG([breeze-icons], [qtbase extra-cmake-modules])
+    GPG4WIN_TOOLSPKG([qttools], [qtbase])
+    GPG4WIN_TOOLSPKG([kconfig], [qtbase qttools extra-cmake-modules])
+
     # Qt related stuff.
     GPG4WIN_KDEPKG([zstd])
     GPG4WIN_KDEPKG([qtbase], [jpeg zlib zstd libpng freetype pcre2])
@@ -353,7 +343,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
     GPG4WIN_KDEPKG([gpgpass], [prison kconfigwidgets kiconthemes ki18n gpgme])
     GPG4WIN_KDEPKG([libkdepim], [kcompletion ki18n kwidgetsaddons])
-    GPG4WIN_KDEPKG([syntax-highlighting], [extra-cmake-modules qtbase])
+    GPG4WIN_KDEPKG([syntax-highlighting], [extra-cmake-modules qtbase qttools qttranslations])
     GPG4WIN_KDEPKG([ktextaddons], [qtkeychain syntax-highlighting kio ki18n kcoreaddons kconfigwidgets sonnet karchive])
     GPG4WIN_KDEPKG([kpimtextedit], [sonnet kconfig kxmlgui kwidgetsaddons kcoreaddons kio ki18n kiconthemes ktextaddons syntax-highlighting])
     GPG4WIN_KDEPKG([kcontacts], [kcoreaddons qtbase ki18n kconfig kcodecs])
@@ -504,6 +494,7 @@ AC_CONFIG_FILES(src/config.nsi src/gpg4win.mk)
 AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)
 AC_CONFIG_FILES(src/toolchain.cmake)
+AC_CONFIG_FILES(src/toolchain-tools.cmake)
 AC_CONFIG_FILES(src/appimage/Makefile src/appimage/appimage.mk)
 AC_CONFIG_FILES(src/appimage/rsync-filters/Makefile)
 AC_OUTPUT

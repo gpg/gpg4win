@@ -169,6 +169,41 @@ AC_DEFUN([GPG4WIN_FIND],
         [$6])
 ])
 
+AC_DEFUN([GPG4WIN_CHECK_TOOLSDEPS],
+[
+  AC_REQUIRE([GPG4WIN_CHECK_EXDEPS])
+
+  AC_MSG_CHECKING([additional tools build list])
+
+  gpg4win_build_tools_list=`echo $_gpg4win_tools_deps | tsort`
+  # Remove newlines.
+  gpg4win_build_tools_list=`echo $gpg4win_build_tools_list`
+  AC_MSG_RESULT($gpg4win_build_tools_list)
+  AC_SUBST(gpg4win_build_tools_list)
+
+  # Check each dependency.
+  _gpg4win_not_found=
+  _gpg4win_d=
+  _gpg4win_p=
+  for _gpg4win_p in $_gpg4win_tools_deps; do
+    AS_IF([test -z $_gpg4win_d], [_gpg4win_d=$_gpg4win_p],
+          [
+            _gpg4win_found=
+            for _gpg4win_i in $_gpg4win_pkgs; do
+              AS_IF([test $_gpg4win_d = $_gpg4win_i],
+                    _gpg4win_found=yes
+                    break)
+            done
+            AS_IF([test -z $_gpg4win_found],
+                  AC_MSG_WARN(could not find tools variant of package $_gpg4win_d required by package $_gpg4win_p)
+                  _gpg4win_not_found=yes)
+            _gpg4win_d=
+          ])
+  done
+  AS_IF([test ! -z "$_gpg4win_not_found"],
+        AC_MSG_ERROR([could not find some required packages]))
+])
+
 AC_DEFUN([GPG4WIN_CHECK_EXDEPS],
 [
   AC_REQUIRE([GPG4WIN_CHECK_DEPS])
@@ -239,7 +274,7 @@ AC_DEFUN([GPG4WIN_CHECK_DEPS],
 
 AC_DEFUN([GPG4WIN_FINALIZE],
 [
-  AC_REQUIRE([GPG4WIN_CHECK_EXDEPS])
+  AC_REQUIRE([GPG4WIN_CHECK_TOOLSDEPS])
 
   _gpg4win_debug=no
   AC_ARG_ENABLE([debug],
@@ -418,6 +453,49 @@ AC_DEFUN([GPG4WIN_KDEPKG],
           done)
       [$3],
       [$4])
+])
+
+# GPG4WIN_TOOLSPKG([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
+# Set up the source package PKG to be additionally built
+# for the current build machine for custom tools during build
+AC_DEFUN([GPG4WIN_TOOLSPKG],
+[
+  AC_REQUIRE([GPG4WIN_INIT])
+  _gpg4win_pkg=maybe
+  AC_ARG_ENABLE([pkg-$1],
+    AS_HELP_STRING([--enable-pkg-$1[=DIR]],
+                   [include package $1]),
+    _gpg4win_pkg=$enableval)
+  _gpg4win_spkg=no
+  _gpg4win_version=
+  AS_IF([test "$_gpg4win_pkg" != no],
+        [GPG4WIN_FIND($1,,, $_gpg4win_pkg,
+	 _gpg4win_spkg=$gpg4win_val
+	 _gpg4win_version=$gpg4win_version)])
+  # At this point, _gpg4win_spkg is no, or the actual package source file.
+
+  # gpg4win_pkg_PKGNAME=FILENAME_OF_SOURCE
+  gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]=$_gpg4win_spkg
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__]))
+
+  # gpg4win_pkg_PKGNAME_version=VERSION
+  gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version=$_gpg4win_version
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version)
+
+  # gpg4win_pkg_PKGNAME_deps=DEPS
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_tools_deps="$2"
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_tools_deps)
+
+  GPG4WIN_DEFINE(HAVE_PKG_[]m4_translit([$1],[a-z+-],[A-Z__])_TOOLS)
+
+  gpg4win_tools_pkgs="$gpg4win_tools_pkgs $1"
+
+  # Record dependencies.  Also enter every package as node.
+  _gpg4win_tools_deps="$_gpg4win_tools_deps $1 $1"
+  AS_IF([test ! -z "$2"],
+        for _gpg4win_i in $2; do
+          _gpg4win_tools_deps="$_gpg4win_tools_deps $_gpg4win_i $1"
+        done)
 ])
 
 # GPG4WIN_BPKG_GNUWIN32([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])

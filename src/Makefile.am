@@ -178,6 +178,10 @@ gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
                  gpgme
 
+# The packages that should also be compiled natively
+gpg4win_toolpkgs = qtbase breeze-icons kconfig extra-cmake-modules \
+                   qttools
+
 # Some variables
 WINE = wine
 WINHOST = win10
@@ -310,6 +314,14 @@ gpg4win_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
 
 gpg4win_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
 
+gpg4win_pkg_kconfig_tools_configure = -DKCONFIG_USE_DBUS=OFF \
+                                      -DKCONFIG_USE_QML=OFF \
+                                      -DKCONFIG_USE_GUI=OFF
+
+#define gpg4win_pkg_kconfig_tools_post_install
+#	(cp $$$${pkgidir}/lib64/libexec/kf6/* $$$${pkgidir}/bin;)
+#endef
+
 gpg4win_pkg_pcre2_configure = -DPCRE2_BUILD_PCRE2_8=OFF -DPCRE2_BUILD_PCRE2_16=ON \
                               -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF
 
@@ -327,10 +339,51 @@ gpg4win_pkg_libkdepim_configure = -DFORCE_DISABLE_DBUS=ON
 
 gpg4win_pkg_ktextaddons_configure = -DFORCE_DISABLE_MULTIMEDIA=ON
 
-# TODO: Host build needs to be done by us
+# Create a minmal build on the build system of the
+# same version before cross compiling.
+gpg4win_pkg_qtbase_tools_configure = \
+        -DQT_BUILD_EXAMPLES=OFF \
+        -DQT_BUILD_TESTS=OFF \
+        -DBUILD_WITH_PCH=OFF \
+        -DFEATURE_assistant=ON \
+        -DFEATURE_linguist=ON \
+        -DFEATURE_eventfd=OFF \
+        -DFEATURE_harfbuzz=OFF \
+        -DFEATURE_icu=OFF \
+        -DFEATURE_zstd=OFF \
+        -DFEATURE_glib=OFF \
+        -DFEATURE_opengl=OFF \
+        -DFEATURE_openssl=OFF \
+        -DFEATURE_zstd=OFF \
+        -DFEATURE_sql_mysql=OFF \
+        -DFEATURE_sql_db2=OFF \
+        -DFEATURE_sql_psql=OFF \
+        -DFEATURE_sql_oci=OFF \
+        -DFEATURE_sql_odbc=OFF \
+        -DFEATURE_sql_sqlite=OFF \
+        -DFEATURE_sql_ibase=OFF \
+        -DCMAKE_VERBOSE_MAKEFILE=ON
+
+#        -DINPUT_opengl=OFF \
+#        -DFEATURE_opengl_dynamic=OFF \
+#        -DFEATURE_opengles2=OFF \
+#        -DFEATURE_opengl_desktop=OFF \
+#        -DFEATURE_egl=OFF \
+#        -DFEATURE_dynamicgl=OFF
+define gpg4win_pkg_qtbase_tools_post_install
+	(cd $$$${pkgidir}/bin; \
+	 cp qtpaths qtpaths_real; \
+	 unlink qtpaths; \
+	 echo "#!/bin/sh" > qtpaths; \
+	 echo "$$$${pkgidir}/bin/qtpaths_real \"\$$$$@\" | sed 's@/pkgs.*@/@'" >> qtpaths; \
+	 chmod u+x qtpaths; \
+	 cp qtpaths qtpaths6; \
+)
+endef
+
 gpg4win_pkg_qtbase_configure = \
-        -DQT_HOST_PATH=/usr \
-        -DQt6HostInfo_DIR=/usr/lib64/cmake/Qt6HostInfo \
+        -DQT_HOST_PATH=$(tools_idir) \
+        -DQt6HostInfo_DIR=$(tools_idir)/lib/cmake/Qt6HostInfo \
         -DQT_QMAKE_DEVICE_OPTIONS='CROSS_COMPILE=$(host)- \
         -DQT_QMAKE_TARGET_MKSPEC=win32-g++ \
         -DQT_BUILD_EXAMPLES=OFF \
@@ -445,9 +498,17 @@ gpg4win_pkg_kio_configure = \
 gpg4win_pkg_knotifications_configure = \
     -DFORCE_DISABLE_CANBERRA=ON
 
-gpg4win_pkg_breeze_icons_configure = \
-    -DBINARY_ICONS_RESOURCE=ON \
-    -DICON_SUBSET_INCLUDE_FILE=$(abs_srcdir)/included-icons.txt
+gpg4win_pkg_breeze_icons_tools_configure = \
+    -DWITH_ICON_GENERATION=OFF \
+    -DSKIP_INSTALL_ICONS=ON
+
+define gpg4win_pkg_breeze_icons_tools_post_install
+ ( mkdir -p $$$${pkgidir}/bin/ && cp $$$${pkgbdir}/bin/* $$$${pkgidir}/bin )
+endef
+
+#gpg4win_pkg_breeze_icons_configure = \
+#    -DBINARY_ICONS_RESOURCE=ON \
+#    -DICON_SUBSET_INCLUDE_FILE=$(abs_srcdir)/included-icons.txt
 
 gpg4win_pkg_kbookmarks_configure = \
     -DANDROID=ON
@@ -459,7 +520,6 @@ gpg4win_pkg_kjobwidgets_configure = \
     -DANDROID=ON
 
 gpg4win_pkg_kiconthemes_configure = \
-    -DANDROID=ON \
     -DKICONTHEMES_USE_QTQUICK=OFF
 
 gpg4win_pkg_okular_configure = \
@@ -480,6 +540,9 @@ gpg4win_pkg_poppler_configure = \
     -DENABLE_QT5=OFF \
     -DENABLE_LCMS=OFF \
     -DENABLE_LIBCURL=OFF
+
+gpg4win_pkg_kcontacts_configure = \
+    -DKCONTACTS_USE_QML=OFF
 
 gpg4win_pkg_libkdepim_configure = \
     -DFORCE_NOT_REQUIRED_DEPENDENCIES="Qt6DBus"
