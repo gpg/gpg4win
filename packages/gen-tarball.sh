@@ -122,11 +122,12 @@ case ${package} in
     kleopatra)
         repo=https://invent.kde.org/pim/${package}.git
         branch="gpg4win/24.05"
-        custom_l10n="l10n-support/de/summit"
+        custom_l10n="l10n-support/de/summit/messages/kleopatra/kleopatra.po"
         ;;
     libkleo)
         repo=https://invent.kde.org/pim/${package}.git
         branch="gpg4win/24.05"
+        custom_l10n="l10n-support/de/summit/messages/libkleo/libkleopatra6.po"
         ;;
     okular)
         repo=https://invent.kde.org/graphics/${package}.git
@@ -173,18 +174,22 @@ else
     git checkout $branch
     if [ "$custom_l10n" != "no" ]; then
         echo "$PGM: Downloading german translations from ${custom_l10n}"
-        svn export --force svn://anonsvn.kde.org/home/kde/trunk/${custom_l10n}/messages/${package}/${package}.po \
-            po/de/${package}_summit.po
-        if ! msgcat --use-first po/de/${package}_summit.po \
-             po/de/${package}.po > po/de/${package}_new.po ; then
+        poname=${package}
+        if [ "${package}" == "libkleo" ]; then
+            poname="libkleopatra"
+        fi
+        svn export --force svn://anonsvn.kde.org/home/kde/trunk/${custom_l10n} \
+            po/de/${poname}_summit.po
+        if ! msgcat --use-first po/de/${poname}_summit.po \
+             po/de/${poname}.po > po/de/${poname}_new.po ; then
           if [ "$ignore_msgcat_errors" = yes ]; then
               echo "$PGM: error from msgcat ignored on demand" >&2
           else
               exit 2
           fi
         fi
-        mv po/de/${package}_new.po po/de/${package}.po
-        git add po/de/${package}.po
+        mv po/de/${poname}_new.po po/de/${poname}.po
+        git add po/de/${poname}.po
         git commit -m "Add latest German translation"
     fi
     git archive --format tar.xz --prefix=${snapshotdir}/ "${branch}" > ${tarball}
