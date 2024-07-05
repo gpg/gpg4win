@@ -621,51 +621,51 @@ file gpg4win-tools/gpg4win-tools-202404041519.tar.xz
 chk 55501b55addf6f983b75358b32c90eb5a35a66a82b990286c79866acfeb48949
 
 # gpgpass
-# last changed: 2024-03-12
+# last changed: 2024-07-05
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgpass/gpgpass-202403121234.tar.xz
-chk 4d4677304e6fc9ec9e3924edf7988b3710904439b06b5c8de6d6cea5744f8148
+file gpgpass/gpgpass-202407051645.tar.xz
+chk b527a1c65a5dd4ac6033562a198718665ce460a8b0e2209d946b22c1eb788be3
 
 # mimetreeparser
-# last changed: 2024-04-04
+# last changed: 2024-07-05
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file mimetreeparser/mimetreeparser-202404041044.tar.xz
-chk 157c6f0f739e2d3f6936e29b7a388598763823ae67809aec52e4a02c45649f0b
+file mimetreeparser/mimetreeparser-202407051645.tar.xz
+chk b39196115052e268241a806bd2fc56a8fc75a65e3df4295ffaca2b63cfa9322a
 
-
-# last changed: 2024-04-10
+# libkleo
+# last changed: 2024-07-05
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202404101129.tar.xz
-chk e216771efe451d53dc36c36afcdef39a304856e5e89f29b6b0432f76033170ea
+file libkleo/libkleo-202407051709.tar.xz
+chk a2afb416d38219c5776e37ab0a65164166c46668417975ec2fb6b55e8d885519
 
 # kleopatra
-# last changed: 2024-04-10
+# last changed: 2024-07-05
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202404101130.tar.xz
-chk bd2bab8e49151a89d47bb401ce1f53a8be8ec650d99a9a33a3d9532bdd1ef530
+file kleopatra/kleopatra-202407051644.tar.xz
+chk 2e808a211f74d34456a110e1cab2fedc3581390f16ebdf1ba91d2433435cd211
 
 # Okular and dependencies
 # poppler
-# last changed: 2024-04-04
+# last changed: 2024-07-05
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file poppler/poppler-202404041143.tar.xz
-chk 364652fd083670aeadc3f2f6ecec55053b23da7a1f76e02ee4b4fa491d5bb664
+file poppler/poppler-202407051646.tar.xz
+chk 7d23ae9b4594750e76bff09ec522445dc76bd1950e37f0c334934175ebe6af29
 
 # okular
-# last changed: 2024-03-12
+# last changed: 2024-07-05
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file okular/okular-202403121235.tar.xz
-chk c49f31e746a3c9b970c118ce7113e07df4e2b45d23f2d49af3f93d413f057169
+file okular/okular-202407051647.tar.xz
+chk 7ccd4b002896da05d7aca1df0094f22105542800a47cac3d1c6bcf97b4606a38
 
 # gpgol.js
-# last changed: 2024-06-10
+# last changed: 2024-07-05
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgol.js/gpgoljs-202406101247.tar.xz
-chk c274f2810707b88642810d5f50882360f6364861523c945f6fb49153578a5d3b
+file gpgol.js/gpgoljs-202407051645.tar.xz
+chk 2eebb5237eb05a47f6fbca6f3fa5785c974b5df03370c92d4437e54109e24948
