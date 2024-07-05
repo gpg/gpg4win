@@ -226,7 +226,8 @@ define SETVARS
 	pkg_conf_subdir="$(call GETVAR,gpg4win_pkg_$(1)_conf_subdir)"; \
 	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
 	export PKG_CONFIG_LIBDIR="$(idir)/lib/pkgconfig";		\
-	export PATH="$(idir)/bin:$${PATH}";				\
+	export PATH="$(idir)/bin:$(tools_idir)/bin:$${PATH}";		\
+	export LD_LIBRARY_PATH=$(tools_idir)/lib:$(tools_idir)/lib64; \
 	export SYSROOT="$(idir)";					\
 	export CONFIG_SITE="$(tsdir)/src/config.site"
 endef
@@ -250,7 +251,8 @@ define SETVARS_EX
 	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_dir)";        \
 	export PKG_CONFIG_PATH="$(ex_idir)/lib/pkgconfig";                  \
 	export PKG_CONFIG_LIBDIR="";                                        \
-	export PATH="$(ex_idir)/bin:$${PATH}";                              \
+	export PATH="$(ex_idir)/bin:$(tools_idir)/bin:$${PATH}";            \
+	export LD_LIBRARY_PATH=$(tools_idir)/lib:$(tools_idir)/lib64;       \
 	export SYSROOT="$(ex_idir)"
 endef
 
@@ -274,6 +276,7 @@ define SETVARS_TOOLS
 	export PKG_CONFIG_PATH="$(tools_idir)/lib/pkgconfig";               \
 	export PKG_CONFIG_LIBDIR="";                                        \
 	export PATH="$(tools_idir)/bin:$${PATH}";                           \
+	export LD_LIBRARY_PATH=$(tools_idir)/lib:$(tools_idir)/lib64;       \
 	export SYSROOT="$(tools_idir)"
 endef
 
