@@ -599,11 +599,11 @@ chk 64b80602e84b25e9164620af3f6341fa865b85e826ab8f5e02061ae24a277b20
 server https://gnupg.org/ftp/gcrypt/snapshots
 
 # gpgme
-# last changed: 2024-07-02
-# by: wk
-# verified: build tree
-file gpgme/gpgme-1.24.0-beta597.tar.bz2
-chk  4f1488899cf7c7b2346f02ff02c9106997f9ca13a77d5a7b9351cbaf2c40b8c7
+# last changed: 2024-07-05
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file gpgme/gpgme-1.24.0-beta606.tar.xz
+chk 9eabe5d98d71bf87e7a9d31386c9acb3e8298a102a82543cd53349466ae88805
 
 # gpgol
 # last changed: 2024-07-03
@@ -635,7 +635,6 @@ file mimetreeparser/mimetreeparser-202404041044.tar.xz
 chk 157c6f0f739e2d3f6936e29b7a388598763823ae67809aec52e4a02c45649f0b
 
 
-# libkleo
 # last changed: 2024-04-10
 # by: aheinecke
 # verified: Tarball created by aheinecke.
