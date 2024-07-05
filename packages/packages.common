@@ -538,11 +538,11 @@ chk 441bbb3c13cb535a216feb411ffe5925f4ca668a679c3cc1c4260c2bf406baec
 server https://gnupg.org/ftp/gcrypt/snapshots
 
 # gpgme
-# last changed: 2024-07-02
-# by: wk
-# verified: build tree
-file gpgme/gpgme-1.24.0-beta597.tar.bz2
-chk  4f1488899cf7c7b2346f02ff02c9106997f9ca13a77d5a7b9351cbaf2c40b8c7
+# last changed: 2024-07-05
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file gpgme/gpgme-1.24.0-beta606.tar.xz
+chk 9eabe5d98d71bf87e7a9d31386c9acb3e8298a102a82543cd53349466ae88805
 
 
 # gpgol
@@ -576,18 +576,18 @@ chk e5236e9c867664910d4019b17552822d84e92124490f40aa6ada05578c9ef200
 
 
 # libkleo
-# last changed: 2024-07-02
-# by: builder
-# verified: Tarball created by builder.
-file libkleo/libkleo-202407021717.tar.xz
-chk 6d27785b7ddb1ee2ff9203790fb2fe8b24d4fdece6e2d92dd738d97b6569b494
+# last changed: 2024-07-05
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file libkleo/libkleo-202407051439.tar.xz
+chk 8035fec9712d5864a4b8afaec49f619dfb5644ebb4f3f990b3484734818225a8
 
 # kleopatra
-# last changed: 2024-07-02
-# by: builder
-# verified: Tarball created by builder.
-file kleopatra/kleopatra-202407021717.tar.xz
-chk f2c3f7fc8aeaf67df42f65ad30ffe4aeb11accaf4bc867abc04128c99c0f6577
+# last changed: 2024-07-05
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file kleopatra/kleopatra-202407051440.tar.xz
+chk d47f2891346dfee08c2d6478254277f5b776d1be214f31fa911c5ffac54745a0
 
 
 # Okular and dependencies
