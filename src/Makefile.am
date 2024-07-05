@@ -243,6 +243,11 @@ gpg4win_pkg_libgpg_error_configure = --silent \
 gpg4win_pkg_libgpg_error_ex_configure = --silent \
   --enable-static --enable-install-gpg-error-config
 
+gpg4win_pkg_libgpg_error_extracflags = -D_WIN32_WINNT=0x0600
+
+gpg4win_pkg_libgpg_error_ex_extracflags = -D_WIN32_WINNT=0x0600
+
+
 # We convert the PO files to UTF-8.  FIXME: This should be done in
 # libgpg-error proper.
 define gpg4win_pkg_libgpg_error_post_install
@@ -264,7 +269,8 @@ gpg4win_pkg_libpng_configure = HAVE_SOLARIS_LD_FALSE=yes CPPFLAGS=\"-I$(idir)/in
 # --with-libintl-prefix, but these don't work with the cheesy
 # non-"libfoo.la" versions of iconv and gettext that we are using.
 gpg4win_pkg_pinentry_configure = \
-  --enable-pinentry-qt \
+  --enable-pinentry-qt5 \
+  --disable-pinentry-qt \
   --disable-pinentry-fltk \
   --disable-pinentry-curses \
   --disable-fallback-curses \
@@ -698,7 +704,7 @@ $(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
        fi;\
      done; \
      for f in $(AUTHENTICODE_FILES); do \
-       $(call AUTHENTICODE_sign,"$$f","$$f");\
+       $(abs_top_srcdir)/build-aux/authenticode-sign.sh --stamp "$$f" "$$f" ;\
      done \
      )
 	touch $(stampdir)/stamp-additional-signedfiles

@@ -39,6 +39,7 @@ SUBDIRS = ${po} packages ${doc} src
 EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              doc/license-page doc/GPLv3 \
              build-aux/git-log-footer build-aux/git-log-fix \
+	     build-aux/authenticode-sign.sh \
              docker/appimage/Dockerfile \
              docker/build-appimage-docker-image.sh \
              docker/build-gpg4win-docker-image.sh \
@@ -66,11 +67,25 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/prison/0001-Only-include-ECMQmlModule-if-building-WITH_QUICK.patch \
              patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
-             patches/ktextaddons/0001-Do-not-require-QtMultimdediaWidgets.patch \
-             patches/libkdepim/0001-Remove-unecessary-config-requirements.patch \
-             patches/gpgme/gpgme/0001-WIP-Find-moc-from-host-installation.patch \
-             patches/pinentry/0002-Qt6-Fix-Windows-build.patch \
-             patches/pinentry/0001-WIP-When-crosscompiling-with-Qt6-look-for-host-moc.patch \
+             patches/qtbase/CVE-2023-32763-qtbase-5.15.patch \
+             patches/qtbase/CVE-2023-37369-qtbase-5.15.patch \
+             patches/qtbase/CVE-2023-43114-5.15.patch \
+             patches/qtbase/fix-high-contrast-item-view-selection-color.patch \
+             patches/qttools/disable-most-tools.patch \
+             patches/kcoreaddons/0001-Fix-MINGW-build.patch \
+             patches/ki18n/0001-Undef-snprintf-for-windows.patch \
+             patches/kio/0001-WIP-Remove-dependency-to-dbus.patch \
+             patches/kio/FileManagerWindowJob.patch \
+             patches/okular/lower-cmake-requirement.patch \
+             patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
+             patches/okular/0001-Add-support-to-customize-about-data.patch \
+             patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
+             patches/kparts/disable-jobuidelegate.patch \
+             patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
+             patches/jpeg/fix-redefine.patch \
+             patches-appimage/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
+             patches-appimage/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
+             patches-appimage/kwidgetsaddons/fix-height-of-text-after-update.patch \
              patches-appimage/libkleo/gpg4win-check.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/qtbase/add-kleopatras-mime-types.patch

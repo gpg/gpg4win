@@ -41,12 +41,12 @@ Section "-libassuan" SEC_libassuan
   SetOutPath "$INSTDIR\bin"
   ClearErrors
   SetOverwrite try
-  File "${prefix}/bin/libassuan-0.dll"
+  File "${prefix}/bin/libassuan-9.dll"
 
   SetOverwrite lastused
   ifErrors 0 +3
-      File /oname=libassuan-0.dll.tmp "${prefix}/bin/libassuan-0.dll"
-      Rename /REBOOTOK libassuan-0.dll.tmp libassuan-0.dll
+      File /oname=libassuan-9.dll.tmp "${prefix}/bin/libassuan-9.dll"
+      Rename /REBOOTOK libassuan-9.dll.tmp libassuan-9.dll
 
   SetOutPath "$INSTDIR\lib"
   File /oname=libgpg-assuan.imp "${prefix}/lib/libassuan.dll.a"
@@ -59,11 +59,11 @@ ${If} ${RunningX64}
   SetOutPath "$INSTDIR\bin_64"
   ClearErrors
   SetOverwrite try
-  File ${exprefix}/bin/libassuan-0.dll
+  File ${exprefix}/bin/libassuan-9.dll
   SetOverwrite lastused
   ifErrors 0 +3
-      File /oname=libassuan-0.dll.tmp "${exprefix}/bin/libassuan-0.dll"
-      Rename /REBOOTOK libassuan-0.dll.tmp libassuan-0.dll
+      File /oname=libassuan-9.dll.tmp "${exprefix}/bin/libassuan-9.dll"
+      Rename /REBOOTOK libassuan-9.dll.tmp libassuan-9.dll
 ${EndIf}
 
 !endif

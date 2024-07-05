@@ -23,24 +23,78 @@
 # Packages the current HEAD of a git repository as tarball and generates
 # a text block that can be copy and pasted into packages.current.
 
+PGM=gen-tarball.sh
+
 set -e
 
-if [ -z "$1" ]; then
-    echo "Usage: $0 PACKAGE --auto"
-    echo "where PACKAGE is either the name of a supported library or application, e.g. 'kleopatra',"
-    echo "or the path of a local Git repository, e.g. '~/src/kleopatra',"
-    echo "or the URL of a remote Git repository, e.g. 'https://invent.kde.org/pim/kleopatra.git'."
-    echo ""
-    echo "add the --auto parameter to automatically update packages.common and upload the tarball."
-    exit 1
-fi
+usage()
+{
+    cat <<EOF
+Usage: $PGM [OPTIONS]  PACKAGE
+Generate a tarball from a repository.
 
-package=$1
+Options:
+        --auto                 Upload to ftp server
+        --user=name            Use NAME as FTP server user
+        --ignore-msgcat-error  Ignore errors from msgcat invocation
+
+PACKAGE is either the name of a supported library or application,
+e.g. 'kleopatra', or the path of a local Git repository,
+e.g. '~/src/kleopatra', or the URL of a remote Git repository,
+e.g. 'https://invent.kde.org/pim/kleopatra.git'.  Branches for
+packages are defined within this script.
+
+EOF
+    exit $1
+}
+
+autoupload=no
+ftpuser_at=""
 is_gpg="no"
 is_w32="no"
 do_auto="no"
 branch="master"
 custom_l10n="no"
+ignore_msgcat_errors="no"
+while [ $# -gt 0 ]; do
+    case "$1" in
+	--*=*)
+	    optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'`
+	    ;;
+	*)
+	    optarg=""
+	    ;;
+    esac
+
+    case $1 in
+	--auto)
+	    autoupload=yes
+	    ;;
+        --user|--user=*)
+            ftpuser_at="${optarg}@"
+            ;;
+        --ignore-msgcat-error)
+            ignore_msgcat_errors=yes
+            ;;
+	--help|-h)
+	    usage 0
+	    ;;
+	--*)
+	    usage 1 1>&2
+	    ;;
+	*)
+	    break
+	    ;;
+    esac
+    shift
+done
+
+if [  $# -ne 1 ]; then
+    usage 1 1>&2
+fi
+package="$1"
+shift
+
 
 case ${package} in
     */*)
@@ -74,12 +128,12 @@ case ${package} in
         ;;
     kleopatra)
         repo=https://invent.kde.org/pim/${package}.git
- #       branch="gpg4win/23.10"
- #       custom_l10n="l10n-support/de/summit"
+        branch="gpg4win/23.10"
+        custom_l10n="l10n-support/de/summit"
         ;;
     libkleo)
         repo=https://invent.kde.org/pim/${package}.git
- #       branch="gpg4win/23.10"
+        branch="gpg4win/24.05"
         ;;
     okular)
         repo=https://invent.kde.org/graphics/${package}.git
@@ -97,14 +151,11 @@ case ${package} in
         repo=https://invent.kde.org/libraries/${package}.git
         ;;
     *)
-        echo "Error: Unsupported package '${package}'"
+        echo "$PGM: error: Unsupported package '${package}'"
         exit 1
         ;;
 esac
 
-if [ "$2" == "--auto" ]; then
-    do_auto="yes";
-fi
 
 tmpdir=$(mktemp -d -t gen-tarball.XXXXXXXXXX)
 curdate=$(date +%Y-%m-%d)
@@ -131,17 +182,24 @@ if [ "${is_gpg}" == "yes" ]; then
     cd ${olddir}
 else
     olddir=$(pwd)
-    echo "Archiving $branch.."
+    echo "$PGM: Archiving branch $branch."
     cd ${tmpdir}/${snapshotdir}
     git checkout $branch
     if [ "$custom_l10n" != "no" ]; then
-        echo "Downloading german translations from ${custom_l10n}"
+        echo "$PGM: Downloading german translations from ${custom_l10n}"
         svn export --force svn://anonsvn.kde.org/home/kde/trunk/${custom_l10n}/messages/${package}/${package}.po \
             po/de/${package}_summit.po
-        msgcat po/de/${package}.po po/de/${package}_summit.po > po/de/${package}_new.po
+        if ! msgcat --use-first po/de/${package}_summit.po \
+             po/de/${package}.po > po/de/${package}_new.po ; then
+          if [ "$ignore_msgcat_errors" = yes ]; then
+              echo "$PGM: error from msgcat ignored on demand" >&2
+          else
+              exit 2
+          fi
+        fi
         mv po/de/${package}_new.po po/de/${package}.po
-        git add po
-        git commit -m "Add latest german translation"
+        git add po/de/${package}.po
+        git commit -m "Add latest German translation"
     fi
     git archive --format tar.xz --prefix=${snapshotdir}/ "${branch}" > ${tarball}
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
@@ -159,17 +217,17 @@ file ${package}/${tarball}
 chk ${checksum}
 EOF
 
-if [ "${do_auto}" == "yes" ]; then
+if [ "${autoupload}" = "yes" ]; then
     perl -i -p0e "s@# ${package}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
 '@se" packages.common
 
-    echo "uploading" >&2
-    rsync -vP ${tarball} trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/
+    echo "$PGM: uploading to ${ftpuser_at}trithemius.gnupg.org" >&2
+    rsync -vP ${tarball} ${ftpuser_at}trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/
 else
     echo "------------------------------ >8 ------------------------------"
     cat "${tmpdir}/snippet"
     echo "------------------------------ >8 ------------------------------"
-    echo "To upload:" >&2
+    echo "$PGM: info: To upload:" >&2
     echo "rsync -vP ${tarball} trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/" >&2
 fi;
 rm -fr ${tmpdir}

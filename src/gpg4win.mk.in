@@ -24,7 +24,7 @@ _AUTHENTICODE_FILES = \
 	bin/gpgol.dll \
 	bin/gpgolkeyadder.exe \
 	bin/kleopatra.exe \
-	bin/libassuan-0.dll \
+	bin/libassuan-9.dll \
 	bin/libfreetype.dll \
 	bin/libgpg-error-0.dll \
 	bin/libgpgme-11.dll \
@@ -97,7 +97,7 @@ _AUTHENTICODE_FILES = \
 	../install-ex/bin/gpgex.dll \
 	../install-ex/bin/gpgme-json.exe \
 	../install-ex/bin/gpgol.dll \
-	../install-ex/bin/libassuan-0.dll \
+	../install-ex/bin/libassuan-9.dll \
 	../install-ex/bin/libgpg-error-0.dll \
 	../install-ex/bin/libgpgme-11.dll \
 	../install-ex/bin/libgpgmepp-6.dll \
@@ -179,15 +179,7 @@ define READ_AUTOGEN_template
 $(1) = $$(shell grep '^[[:blank:]]*$(1)[[:blank:]]*=' $$$$HOME/.gnupg-autogen.rc|cut -d= -f2|xargs)
 endef
 
-$(eval $(call READ_AUTOGEN_template,AUTHENTICODE_SIGNHOST))
-$(eval $(call READ_AUTOGEN_template,AUTHENTICODE_TOOL))
-$(eval $(call READ_AUTOGEN_template,AUTHENTICODE_TSURL))
-$(eval $(call READ_AUTOGEN_template,AUTHENTICODE_KEY))
-$(eval $(call READ_AUTOGEN_template,AUTHENTICODE_CERTS))
 $(eval $(call READ_AUTOGEN_template,VERSION_SIGNKEY))
-$(eval $(call READ_AUTOGEN_template,OSSLSIGNCODE))
-$(eval $(call READ_AUTOGEN_template,OSSLPKCS11ENGINE))
-$(eval $(call READ_AUTOGEN_template,SCUTEMODULE))
 
 # The key to sign the MSI installer is usually the same as the key used
 # to sign the VERSION file.
@@ -908,9 +900,6 @@ $(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
   $(call KDEPKG_template_,$1))
 endef
 
-#
-#
-
 # Template for tools which should be compiled for the build
 # system
 define TOOLSPKG_template
@@ -1037,6 +1026,7 @@ define AUTHENTICODE_sign
    fi
 endef
 
+# Processed via eval as most other templates.
 define MSI_template
 
 $(1)_PRODUCT := $(msi_target_$(1)_PRODUCT)
@@ -1317,7 +1307,10 @@ installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi: $(stampdir)/stamp-
 
 signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi: installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
 	mkdir -p signed_installers
-	$(call AUTHENTICODE_sign,"installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi","signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi",$$($(1)_PRODUCT_PRETTY));\
+	$$(abs_top_srcdir)/build-aux/authenticode-sign.sh --stamp \
+           --desc="$$($(1)_PRODUCT_PRETTY)" \
+           "installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi" \
+           "signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi"
 
 $(stampdir)/stamp-$(1)-upload: signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi \
 	$(stampdir)/stamp-dist-self
