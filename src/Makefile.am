@@ -269,8 +269,7 @@ gpg4win_pkg_libpng_configure = HAVE_SOLARIS_LD_FALSE=yes CPPFLAGS=\"-I$(idir)/in
 # --with-libintl-prefix, but these don't work with the cheesy
 # non-"libfoo.la" versions of iconv and gettext that we are using.
 gpg4win_pkg_pinentry_configure = \
-  --enable-pinentry-qt5 \
-  --disable-pinentry-qt \
+  --enable-pinentry-qt \
   --disable-pinentry-fltk \
   --disable-pinentry-curses \
   --disable-fallback-curses \

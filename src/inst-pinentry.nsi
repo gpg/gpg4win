@@ -38,7 +38,7 @@ Section "-Pinentry" SEC_pinentry
 
   File "${prefix}/bin/pinentry-w32.exe"
 
-  File /oname=pinentry.exe "${prefix}/bin/pinentry-qt5.exe"
+  File /oname=pinentry.exe "${prefix}/bin/pinentry-qt.exe"
   Goto inst_pinentry_done
   inst_pinentry_skip_qt:
 
