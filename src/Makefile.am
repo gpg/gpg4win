@@ -172,8 +172,6 @@ gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
                   gpgoljs libkdepim syntax-highlighting ktextaddons \
                   kpimtextedit qtkeychain kcontacts qtwebsockets
 
-#snoretoast
-
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
                  gpgme
@@ -412,72 +410,14 @@ gpg4win_pkg_qtbase_configure = \
         -DFEATURE_use_gold_linker_alias=OFF \
         -DCMAKE_VERBOSE_MAKEFILE=ON
 
-#        -DFEATURE_system_pcre2=ON \
-#            ../$$$${pkg_version}/configure \
-#            -opensource \
-#            -confirm-license \
-#            -xplatform win32-g++ \
-#            -device-option CROSS_COMPILE=$(host)- \
-#            -no-use-gold-linker \
-#            -release \
-#            -shared \
- #           -prefix $$$${pkgidir} \
-#            -I "$(idir)/include" \
-#            -L "$(idir)/lib" \
-#            -no-icu \
-#            -opengl desktop \
-#            -no-glib \
-#            -accessibility \
-#            -nomake examples \
-#            -nomake tests \
-#            -no-sql-mysql \
-#            -no-sql-sqlite \
-#            -no-sql-odbc \
-#            -no-sql-psql \
-#            -no-sql-tds \
-#            -system-zlib \
-#            -system-libpng \
-#            -system-libjpeg \
-#            -system-freetype \
-#            -system-pcre \
-#            -no-openssl \
-#            -no-dbus \
-#            -v
-
-# link moc and rcc from the host into the target tree
+# copy moc and rcc from the tools into the target tree
 # so that pkg-config can find them.
-# Uses realpath to avoid an error that stow
-# cannot handle absolute paths.
 define gpg4win_pkg_qtbase_post_install
-	(cd $$$${pkgidir}/bin; \
-	 ln -fs `realpath -s --relative-to $$$${pkgidir}/bin /usr/libexec/qt6/moc`; \
-	 ln -fs `realpath -s --relative-to $$$${pkgidir}/bin /usr/libexec/qt6/rcc`;)
+	(cp $(tools_idir)/libexec/moc $$$${pkgidir}/bin; \
+	 cp $(tools_idir)/libexec/rcc $$$${pkgidir}/bin; \
+)
 endef
 
-
-#gpg4win_pkg_qttools_configure = \
-#	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-#define gpg4win_pkg_qttools_post_install
-#	 (cd $$$${pkgbdir}; \
-#	  mkdir -p $$$${pkgidir}; \
-#	  cp -r bin lib include $$$${pkgidir})
-#endef
-
-# XXX Adding the qtconf after qtsvg is a weird hack
-# because somhow (yay qmake) zlib is not linked if
-# the qt conf exists before that. The qt conf is
-# needed for qttranslations to find the correct path
-# of the translation tools.
-#define gpg4win_pkg_qtsvg_post_install
-#(cd $$$${pkgbdir}; \
-#  mkdir -p $$$${pkgidir}; \
-#  cp -r lib include plugins $$$${pkgidir}; \
-#  mkdir -p $$$${pkgidir}/bin; \
-#  mv $$$${pkgidir}/lib/*.dll $$$${pkgidir}/bin; \
-# echo "[Paths]" > $$$${pkgidir}/bin/qt.conf; \
-#  echo "Prefix = .." >> $$$${pkgidir}/bin/qt.conf)
-# endef
 
 define gpg4win_pkg_okular_post_install
  ( rm $$$${pkgidir}/share/icons/hicolor/icon-theme.cache; )
