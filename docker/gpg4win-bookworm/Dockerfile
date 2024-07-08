@@ -1,4 +1,4 @@
-# Dockerfile - docker/gpg4win-bullseye
+# Dockerfile - docker/gpg4win-bookworm
 # Copyright (C) 2022 g10 Code GmbH
 #
 # Software engineering by Ingo Klöcker <dev@ingo-kloecker.de>
@@ -20,7 +20,7 @@
 #
 # SPDX-License-Identifier: GPL-2.0+
 
-FROM debian:bullseye
+FROM debian:bookworm
 
 RUN set -x \
     && apt-get update \
@@ -40,13 +40,7 @@ RUN set -x \
         icoutils \
         imagemagick \
         libboost-dev \
-        libgdk-pixbuf2.0-dev \
         libgettextpo-dev \
-        libglib2.0-dev \
-        libgtk2.0-bin \
-        libkf5config-dev \
-        libkf5config-dev-bin \
-        libkf5coreaddons-dev \
         libxml2-utils \
         mingw-w64 \
         mingw-w64-i686-dev \
@@ -55,6 +49,9 @@ RUN set -x \
         stow \
         texinfo \
         unzip \
+        pkg-config \
+        python3-lxml \
+        gtk-update-icon-cache \
         wget
 
 RUN update-alternatives --install /usr/bin/i686-w64-mingw32-gcc i686-w64-mingw32-gcc /usr/bin/i686-w64-mingw32-gcc-posix 100

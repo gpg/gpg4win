@@ -23,4 +23,4 @@
 
 cd $(dirname $0)
 
-docker build -t g10-build-gpg4win:bullseye gpg4win-bullseye 2>&1
+docker build -t g10-build-gpg4win:bookworm gpg4win-bookworm 2>&1

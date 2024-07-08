@@ -32,10 +32,10 @@ fi
 sourcedir=$(cd $(dirname $0)/..; pwd)
 
 if [ -z "$devmode" ]; then
-    buildroot="${GPG4WIN_BUILDROOT:-/tmp/gpg4win-bullseye.$(id -un).d}"
+    buildroot="${GPG4WIN_BUILDROOT:-/tmp/gpg4win-bookworm.$(id -un).d}"
     [ -d "$buildroot" ] || mkdir "$buildroot"
 else
-    buildroot=$(mktemp -d --tmpdir gpg4win-bullseye.XXXXXXXXXX)
+    buildroot=$(mktemp -d --tmpdir gpg4win-bookworm.XXXXXXXXXX)
 fi
 echo Using ${buildroot}
 
@@ -47,6 +47,6 @@ fi
 
 docker run -it --rm --user "$(id -u):$(id -g)" \
     --volume ${buildroot}:/build \
-    g10-build-gpg4win:bullseye $devmode
+    g10-build-gpg4win:bookworm $devmode
 
 echo "You can find the installers in ${buildroot}/gpg4win/src/installers (if the build succeeded)."
