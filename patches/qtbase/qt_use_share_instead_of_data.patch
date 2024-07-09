@@ -1,0 +1,15 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+--- a/src/corelib/io/qstandardpaths_win.cpp
++++ b/src/corelib/io/qstandardpaths_win.cpp
+@@ -245,7 +245,7 @@
+         QString applicationDirPath = qApp ? QCoreApplication::applicationDirPath()
+             : QFileInfo(qAppFileName()).path();
+         dirs.append(applicationDirPath);
+-        const QString dataDir = applicationDirPath + "/data"_L1;
++        const QString dataDir = applicationDirPath + "/../share"_L1;
+         dirs.append(dataDir);
+
+         if (!isGenericConfigLocation(type)) {
