@@ -31,7 +31,7 @@ Section "-libkleo" SEC_libkleo
 !else
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/libKPim6Libkleo.dll
-  SetOutPath "$INSTDIR\etc\xdg"
+  SetOutPath "$INSTDIR\share"
   File ${prefix}/etc/xdg/libkleopatrarc
   SetOutPath "$INSTDIR\share\libkleopatra\pics"
   File ${prefix}/share/libkleopatra/pics/chiasmus_chi.png
