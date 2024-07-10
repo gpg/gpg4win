@@ -852,6 +852,7 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_srcdir)/src/toolchain.cmake \
 		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 		-DBUILD_TESTING=False \
+		$(CMAKE_GENERATOR_FLAGS) \
 		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}$$$${pkg_conf_subdir}") && \
 	touch $(stampdir)/stamp-$(1)-02-configure
 
@@ -859,7 +860,7 @@ $(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
-	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
 	touch $(stampdir)/stamp-$(1)-03-make
 
 # Note that post_install must come last because it may be empty and
@@ -868,7 +869,7 @@ $(stampdir)/stamp-$(1)-04-install: $(stampdir)/stamp-$(1)-03-make
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  cd "$$$${pkgmkdir_inst}";			\
-	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
 	  $(call STRIP_macro,"$$$${pkgidir}");		\
 	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
 	touch $(stampdir)/stamp-$(1)-04-install
@@ -933,6 +934,7 @@ $(stampdir)/stamp-$(1)-tools-02-configure: $(stampdir)/stamp-$(1)-tools-01-patch
 		-DQT_MAJOR_VERSION="6" \
 		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 		-DBUILD_TESTING=False \
+		$(CMAKE_GENERATOR_FLAGS) \
 		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}$$$${pkg_conf_subdir}") && \
 	touch $(stampdir)/stamp-$(1)-tools-02-configure
 
@@ -940,7 +942,7 @@ $(stampdir)/stamp-$(1)-tools-03-make: $(stampdir)/stamp-$(1)-tools-02-configure
 	($(call SETVARS_TOOLS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
-	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
 	touch $(stampdir)/stamp-$(1)-tools-03-make
 
 # Note that post_install must come last because it may be empty and
@@ -949,7 +951,7 @@ $(stampdir)/stamp-$(1)-tools-04-install: $(stampdir)/stamp-$(1)-tools-03-make
 	($(call SETVARS_TOOLS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  cd "$$$${pkgmkdir_inst}";			\
-	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
 	  $(call STRIP_macro,"$$$${pkgidir}");		\
 	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_tools_post_install))
 	touch $(stampdir)/stamp-$(1)-tools-04-install

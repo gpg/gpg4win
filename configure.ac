@@ -161,6 +161,13 @@ if test "$use_fast_makensis" = yes; then
 fi
 AC_SUBST(EXTRA_MAKENSIS_FLAGS)
 
+# Use ninja instead of make for cmake projects
+AC_ARG_ENABLE(ninja,
+    AS_HELP_STRING([--enable-ninja],
+                   [Use ninja instead of make]),
+                    use_ninja=$enableval,
+                    use_ninja=no)
+
 #
 # Set variables for use by automake makefiles.
 #
@@ -194,6 +201,16 @@ AC_CHECK_PROGS(GITLOG_TO_CHANGELOG, gitlog-to-changelog,
 AC_CHECK_PROGS(BUILD_CC, gcc cc)
 AC_CHECK_PROGS(CMAKE, cmake3 cmake)
 AC_CHECK_PROGS(RSYNC, rsync)
+if test "${use_ninja}" = "yes"; then
+    AC_CHECK_PROGS(NINJA, ninja)
+    MAKETOOL=${NINJA}
+    CMAKE_GENERATOR_FLAGS="-G Ninja -DCMAKE_GENERATOR=Ninja"
+    AC_MSG_NOTICE([Using ${NINJA} in cmake projects])
+else
+    MAKETOOL=${MAKE}
+fi
+AC_SUBST(CMAKE_GENERATOR_FLAGS)
+AC_SUBST(MAKETOOL)
 
 AC_PROG_INSTALL
 
