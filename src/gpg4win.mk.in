@@ -529,7 +529,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 
 $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	($(call SETVARS,$(1)); \
-	mkdir "$$$${pkgbdir}"; \
+	mkdir -p "$$$${pkgbdir}"; \
 	cd "$$$${pkgbdir}"; \
 	eval "../$$$${pkg_version}/configure" \
 		--prefix="$$$${pkgidir}" \
@@ -746,7 +746,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 
 $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	($(call SETVARS,$(1)); \
-	mkdir "$$$${pkgbdir}"; \
+	mkdir -p "$$$${pkgbdir}"; \
 	cd "$$$${pkgbdir}"; \
 	$$$${pkgcfg}) && \
 	touch $(stampdir)/stamp-$(1)-02-configure
@@ -843,7 +843,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 
 $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	($(call SETVARS,$(1));				\
-	 mkdir "$$$${pkgbdir}";				\
+	 mkdir -p "$$$${pkgbdir}";				\
 	 cd "$$$${pkgbdir}";				\
 	 $(CMAKE)					\
 		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
@@ -925,7 +925,7 @@ $(stampdir)/stamp-$(1)-tools-01-patch: $(stampdir)/stamp-$(1)-tools-00-unpack
 
 $(stampdir)/stamp-$(1)-tools-02-configure: $(stampdir)/stamp-$(1)-tools-01-patch
 	($(call SETVARS_TOOLS,$(1));				\
-	 mkdir "$$$${pkgbdir}";				\
+	 mkdir -p "$$$${pkgbdir}";				\
 	 cd "$$$${pkgbdir}";				\
 	 $(CMAKE)					\
 		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
