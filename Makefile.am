@@ -39,53 +39,38 @@ SUBDIRS = ${po} packages ${doc} src
 EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              doc/license-page doc/GPLv3 \
              build-aux/git-log-footer build-aux/git-log-fix \
-	     build-aux/authenticode-sign.sh \
+             build-aux/authenticode-sign.sh \
              docker/appimage/Dockerfile \
              docker/build-appimage-docker-image.sh \
              docker/build-gpg4win-docker-image.sh \
-             docker/gpg4win-bullseye/Dockerfile \
+             docker/gpg4win-bookworm/Dockerfile \
              docker/run-appimage-build.sh \
              docker/run-gpg4win-build.sh \
-             patches/boost/boost-1-fixes.patch \
-             patches/breeze-icons/0001-WIP-Qt6-replacement-for-binary-icons.patch \
+             patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools.patch \
              patches/breeze-icons/add-the-nose.patch \
-             patches/breeze-icons/azz-Make-all-breeze-icons-available-in-breeze-dark.patch \
-             patches/extra-cmake-modules/0001-Do-not-abort-without-QML.patch \
+             patches/extra-cmake-modules/0001-Do-not-abort-without-QML-tools.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/jpeg/fix-redefine.patch \
-             patches/kconfigwidgets/0001-Don-t-use-DBus-on-Windows-macOS.patch \
+             patches/kcontacts/0001-Make-the-depedency-to-QML-optional.patch \
+             patches/kcoreaddons/0001-Fix-MINGW-build.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
-             patches/kio/0001-WIP-Add-option-to-force-disable-DBus-and-KCrash.patch \
-             patches/kleopatra/0001-No-more-WindowsWindowFunction.patch \
+             patches/kio/0001-Remove-kencodingfiledialog-to-avoid-Qt5Compat.patch \
+             patches/kio2/0001-WIP-Add-option-to-force-disable-DBus-and-KCrash.patch \
+             patches/kjobwidgets/0001-Remove-knotification.patch \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
-             patches/kparts/0001-Change-check-from-Android-to-DBus-check.patch \
+             patches/kparts_/0001-Change-check-from-Android-to-DBus-check.patch \
+             patches/ktextaddons/0001-Remove-unused-QDbus-includes.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
+             patches/libkdepim/0001-Disable-dbus-on-windows-and-macOS.patch \
+             patches/libkdepim/0002-Fix-compilation-with-mingw.patch \
+             patches/libkdepim/0003-Remove-test-dependency-unless-we-compile-the-tests.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
-             patches/okular/0001-Do-not-fail-if-WITH_K7ZIP-is-not-defined.patch \
              patches/okular/lower-cmake-requirement.patch \
              patches/pcre2/cross-build-cmake.patch \
              patches/prison/0001-Only-include-ECMQmlModule-if-building-WITH_QUICK.patch \
-             patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
+             patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
-             patches/qtbase/CVE-2023-32763-qtbase-5.15.patch \
-             patches/qtbase/CVE-2023-37369-qtbase-5.15.patch \
-             patches/qtbase/CVE-2023-43114-5.15.patch \
-             patches/qtbase/fix-high-contrast-item-view-selection-color.patch \
-             patches/qttools/disable-most-tools.patch \
-             patches/kcoreaddons/0001-Fix-MINGW-build.patch \
-             patches/ki18n/0001-Undef-snprintf-for-windows.patch \
-             patches/kio/0001-WIP-Remove-dependency-to-dbus.patch \
-             patches/kio/FileManagerWindowJob.patch \
-             patches/okular/lower-cmake-requirement.patch \
-             patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
-             patches/okular/0001-Add-support-to-customize-about-data.patch \
-             patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
-             patches/kparts/disable-jobuidelegate.patch \
-             patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
-             patches/jpeg/fix-redefine.patch \
-             patches-appimage/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
-             patches-appimage/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
-             patches-appimage/kwidgetsaddons/fix-height-of-text-after-update.patch \
+             patches/qtbase/qt_use_share_instead_of_data.patch \
              patches-appimage/libkleo/gpg4win-check.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/qtbase/add-kleopatras-mime-types.patch

@@ -99,7 +99,6 @@ EXTRA_DIST = gpg4win.nsi gpg4win-src.nsi \
         inst-qrencode.nsi uninst-qrencode.nsi \
         inst-prison.nsi uninst-prison.nsi \
         inst-gpgpass.nsi uninst-gpgpass.nsi \
-        inst-knotifications.nsi uninst-knotifications.nsi \
         inst-kcolorscheme.nsi uninst-kcolorscheme.nsi \
         inst-gpgoljs.nsi uninst-gpgoljs.nsi \
         inst-libkdepim.nsi uninst-libkdepim.nsi \
@@ -107,8 +106,9 @@ EXTRA_DIST = gpg4win.nsi gpg4win-src.nsi \
         inst-ktextaddons.nsi uninst-ktextaddons.nsi \
         inst-qtwebsockets.nsi uninst-qtwebsockets.nsi \
         inst-kcontacts.nsi uninst-kcontacts.nsi \
-        inst-kpimtexedit.nsi uninst-kpimtexedit.nsi \
+        inst-kpimtextedit.nsi uninst-kpimtextedit.nsi \
         inst-qtkeychain.nsi uninst-qtkeychain.nsi \
+        inst-zstd.nsi uninst-zstd.nsi \
         inst-final.nsi index.theme \
         slideshow/slides.dat \
         slideshow/slide1-gpgol.png \
@@ -120,6 +120,7 @@ EXTRA_DIST = gpg4win.nsi gpg4win-src.nsi \
         kdeglobals qtlogging.ini \
         make-msi.pl make-msi.guids \
         build-gpg4win.sh \
+        qt.conf \
         WixUI_Gpg4win.wxs icons/shield.ico included-icons.txt
 
 #inst-snoretoast.nsi uninst-snoretoast.nsi
