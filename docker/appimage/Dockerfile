@@ -1,9 +1,10 @@
 # Dockerfile - docker/appimage
-# Copyright (C) 2021 g10 Code GmbH
+# Copyright (C) 2024 g10 Code GmbH
 #
 # Software engineering by Ingo Klöcker <dev@ingo-kloecker.de>
+#                         Andre Heinecke <aheinecke@gnupg.org>
 #
-# This file is part of GnuPG.
+# This file is part of Gpg4win.
 #
 # Gpg4win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,88 +21,55 @@
 #
 # SPDX-License-Identifier: GPL-2.0+
 
-FROM centos:7
+FROM registry.suse.com/suse/sle15:latest
+RUN zypper --non-interactive update && \
+    zypper --non-interactive install \
+    # Build basics
+    which file git-core cmake gcc13 gcc13-c++ glibc-devel-static cmake3 pkg-config \
+    flex bison gperf awk patch wget automake \
+    # Python
+    python311 python311-lxml \
+    # Libraries
+    alsa-devel \
+    boost-devel \
+    openssl-devel \
+    libicu-devel \
+    libmount-devel \
+    libudev-devel \
+    libX11-devel \
+    libX11-xcb1 \
+    libxcb-devel \
+    libXcomposite-devel \
+    libXcursor-devel \
+    libXi-devel \
+    libxkbcommon-devel \
+    libxkbcommon-x11-devel \
+    libXrandr-devel \
+    libXtst-devel \
+    Mesa-libEGL-devel \
+    Mesa-libGL-devel \
+    readline-devel \
+    vulkan-devel \
+    vulkan-headers \
+    wayland-devel \
+    xcb-util-image-devel \
+    xcb-util-keysyms-devel \
+    xcb-util-renderutil-devel \
+    xcb-util-wm-devel \
+    xz-devel \
+    zlib-devel
 
-# Import the CentOS 7 package signing key after verifying its fingerprint.
-# Then add the software collections repository from the CentOS SCLo SIG and
-# import its package signing key after verifying the fingerprint.
-# Ditto for the EPEL 7 package signing key.
-RUN test $(gpg --with-colons --with-fingerprint < /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 | grep ^pub: | wc -l) = 1 \
-    && gpg --with-colons --with-fingerprint < /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 | grep -q ^fpr:::::::::6341AB2753D78A78A7C27BB124C6A8A7F4A80EB5 \
-    && rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 \
-    && yum -y update \
-    && yum -y install \
-        centos-release-scl \
-    && test $(gpg --with-colons --with-fingerprint < /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo | grep ^pub: | wc -l) = 1 \
-    && gpg --with-colons --with-fingerprint < /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo | grep -q ^fpr:::::::::C4DBD535B1FBBA14F8BA64A84EB84E71F2EE9D55 \
-    && rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo \
-    && yum -y update \
-    && yum -y install \
-        epel-release \
-    && test $(gpg --with-colons --with-fingerprint < /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 | grep ^pub: | wc -l) = 1 \
-    && gpg --with-colons --with-fingerprint < /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 | grep -q ^fpr:::::::::91E97D7C4A5E96F17F3E888F6A2FAEA2352C64E5 \
-    && rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 \
-    && yum -y update \
-    && rm -rf /root/.gnupg
-
-RUN yum -y install \
-        at-spi2-core-devel \
-        automake \
-        bison \
-        boost169-devel \
-        bzip2 \
-        bzip2-devel \
-        cmake3 \
-        cups-devel \
-        dbus-devel \
-        devtoolset-10-binutils \
-        devtoolset-10-gcc \
-        devtoolset-10-gcc-c++ \
-        devtoolset-10-make \
-        double-conversion-devel \
-        egl-wayland-devel \
-        file \
-        flex \
-        fontconfig-devel \
-        freetype-devel \
-        gettext \
-        git \
-        gnutls-devel \
-        gperf \
-        gtk-update-icon-cache \
-        harfbuzz-devel \
-        libXrender-devel \
-        libicu-devel \
-        libinput-devel \
-        libjpeg-devel \
-        libmount-devel \
-        libpng-devel \
-        libtiff-devel \
-        libusbx-devel \
-        libxkbcommon-x11-devel \
-        libzstd-devel \
-        mesa-libEGL-devel \
-        mesa-libGL-devel \
-        mtdev-devel \
-        openjpeg2-devel \
-        openldap-devel \
-        openssl11-devel \
-        patch \
-        pcre2-devel \
-        python36-lxml \
-        readline-devel \
-        stow \
-        systemd-devel \
-        wayland-devel \
-        wget \
-        which \
-        xcb-util-image-devel \
-        xcb-util-keysyms-devel \
-        xcb-util-renderutil-devel \
-        xcb-util-wm-devel \
-        xcb-util-devel \
-        xz-devel \
-        zlib-devel
+# cleanup to ensure we don't leave behind anything that doesn't need to be in the image
+RUN zypper --non-interactive clean -a && \
+    # make sure the appropriate gcc/python versions are the defaults
+    alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 1 && \
+    alternatives --install /usr/bin/cc cc /usr/bin/gcc-13 1 && \
+    alternatives --install /usr/bin/cpp cpp /usr/bin/g++-13 1 && \
+    alternatives --install /usr/bin/g++ gcc++ /usr/bin/g++-13 1 && \
+    alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-13 1 && \
+    alternatives --install /usr/bin/python python /usr/bin/python3.11 1 && \
+    alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1 && \
+    alternatives --install /usr/bin/pip3 pip3 /usr/bin/pip3-3.11 1
 
 # download the necessary linuxdeploy AppImages and extract them because we have no fuse in the container
 RUN mkdir -p /tmp/download \
@@ -115,8 +83,3 @@ RUN mkdir -p /tmp/download \
     && rm -rf /tmp/download \
     && mkdir -p /opt \
     && mv /tmp/squashfs-root /opt/linuxdeploy
-
-# No need to copy the build scripts becuase it is available
-# in the mounted /src hierachy.
-# COPY build-appimage.sh /
-# RUN chmod +x build-appimage.sh
