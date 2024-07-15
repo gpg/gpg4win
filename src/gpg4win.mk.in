@@ -1102,76 +1102,6 @@ $(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib: \
 		exit 1; \
 	fi)
 
-$(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib: \
-      $(stampdir)/stamp-final \
-      $(foosum_exe) \
-      license.blurb \
-      WixUI_Gpg4win.wxs \
-      $$($(1)_PRODUCT)-$(VERSION).wxs \
-      $(stampdir)/stamp-additional-signedfiles
-	($(call SETVARS_WINE,); \
-	echo "Gpg4win" > $(root)/VERSION; \
-	echo "$(VERSION)" >> $(root)/VERSION; \
-	(ln -s $(idir) $$$$WINEINST; \
-	 ln -s $(ex_idir) $$$$WINEINSTEX; \
-	 ln -s `readlink -f $(top_srcdir)` $$$$WINESRC; \
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
-		-arch x86 \
-		-out k:\\$$($(1)_PRODUCT)-$(VERSION)-x86.wixobj \
-		-pedantic -wx i:\\src\\$$($(1)_PRODUCT)-$(VERSION).wxs || exit 1;\
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
-		-arch x86 \
-		-out k:\\gpg4win-ui-x86.wixobj \
-		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
-		\
-		$(WINE) $$$$WIXPREFIX2/lit.exe \
-		-out k:\\$$$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib \
-		-bf \
-		-wx \
-		-pedantic \
-		k:\\$$($(1)_PRODUCT)-$(VERSION)-x86.wixobj k:\\gpg4win-ui-x86.wixobj || exit 1; \
-		\
-	) || ERR=1; (rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
-	if [ -n "$$$$ERR" ]; then \
-		exit 1; \
-	fi)
-
-$(idir)/$(1)-x86.wixlib: gnupg-vsd/$(1)/$(1).wxs
-	($(call SETVARS_WINE,); \
-	( \
-	ln -s $(idir) $$$$WINEINST; \
-	ln -s $(ex_idir) $$$$WINEINSTEX; \
-	ln -s `readlink -f $(top_srcdir)` $$$$WINESRC; \
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
-		-arch x86 \
-		-out k:\\$(1)-$(VERSION)-x86.wixobj \
-		-pedantic -wx i:\\src\\gnupg-vsd\\$(1)\\$(1).wxs || exit 1;\
-		$(WINE) $$$$WIXPREFIX2/lit.exe \
-		-out k:\\$(1)-x86.wixlib \
-		-bf \
-		-wx \
-		-pedantic \
-		k:\\$(1)-$(VERSION)-x86.wixobj || exit 1; \
-		\
-	) || ERR=1; \
-		(rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
-	if [ -n "$$$$ERR" ]; then \
-		exit 1; \
-	fi \
-	)
-
 $(idir)/$(1).wixlib: gnupg-vsd/$(1)/$(1).wxs
 	($(call SETVARS_WINE,); \
 	( \
@@ -1278,35 +1208,6 @@ installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi: $(stampdir)/stamp-msi-
 	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/$$($(1)_PRODUCT)-$(VERSION)-$(1).msi \
 	 installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi;
 
-installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi: $(stampdir)/stamp-msi-base $(idir)/$(1)-x86.wixlib \
-	gnupg-vsd/$(1)/license.rtf \
-	$(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib
-	scp gnupg-vsd/$(1)/license.rtf \
-		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp $(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib \
-		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp $(idir)/$(1)-x86.wixlib \
-		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp $(call GETVAR,msi_target_$(1)_branding)/*.bmp \
-		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp $(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	ssh $(WINHOST) "cd AppData/Local/Temp/gpg4win-$(VERSION) && $(WINLIGHT) \
-	-cc . \
-	-reusecab \
-	-spdb \
-	-ext WixUIExtension \
-	-ext WixUtilExtension \
-	-out $$($(1)_PRODUCT)-$(VERSION)-$(1)-x86.msi \
-	 $(call GETVAR,msi_target_$(1)_l10n) \
-	-dcl:high \
-	-v -pedantic \
-	 \
-	 $$($(1)_PRODUCT)-$(VERSION)-x86.wixlib \
-	 gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
-	 $(1)-x86.wixlib"; \
-	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/$$($(1)_PRODUCT)-$(VERSION)-$(1)-x86.msi \
-	 installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi;
-
 signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi: installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
 	mkdir -p signed_installers
 	$$(abs_top_srcdir)/build-aux/authenticode-sign.sh --stamp \
@@ -1355,13 +1256,6 @@ $(stampdir)/stamp-$(1)-upload: signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_
 
 .phony : $(1)
 $(1): installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
-
-.PHONY : $(1)-x86
-$(1)-x86: installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi
-	echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-	echo "XXXX FIXME: x86 Registration of GpgOL and GpgEX does not work! XXXX"
-	echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-
 
 .PHONY : $(1)-upload
 $(1)-upload: $(stampdir)/stamp-$(1)-upload $(stampdir)/stamp-dist-self
