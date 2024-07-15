@@ -67,72 +67,20 @@ Instructions for AppImage:
 Basic requirements
 ==================
 
-A decent POSIX system is required for building this software as well
-as GNU make.  We are using Debian GNU/Linux 10 (buster), any other
-POSIX system should work as well but you may run into problems due to
-different toolchain versions. For MSI Packages you will additionally
-need the dependencies mentioned in src/README-msi.txt
+The recommended way to compile Gpg4win is to use docker. Alternatively
+see the dockerfile in the docker subdirectory for refence which
+packages are needed on which base system.
 
-To satisfy all needs of configure at least the following packages need
-to be installed:
-
-    build-essential autoconf automake mingw-w64 mingw-w64-i686-dev \
-    mingw-w64-x86-64-dev nsis stow unzip icoutils \
-    libglib2.0-dev gettext docbook-utils ghostscript texinfo \
-    texinfo libgdk-pixbuf2.0-dev ibc6-dev-i386 libqt4-dev-bin \
-    wget mingw-w64 cmake libgtk2.0-bin libxml2-utils \
-    gperf libgettextpo-dev automake-1.15 libkf5config-dev libkf5config-dev-bin \
-    libkf5coreaddons-dev gpgrt-tools imagemagick libboost-graph-dev icoutils
-
-Additionally on Debian Buster cmake has to be at least version 3.1.16 from
-debian backports.
-
-Note: That Gpg4win requires to be compiled with the -posix flavor of mingw
-so if you have both installed use update-alterantives to select the posix ones.
-
-To use update-alternatives:
-    update-alternatives --install /usr/bin/i686-w64-mingw32-gcc \
-        i686-w64-mingw32-gcc /usr/bin/i686-w64-mingw32-gcc-posix 100
-
-    update-alternatives --install /usr/bin/i686-w64-mingw32-g++ \
-        i686-w64-mingw32-g++ /usr/bin/i686-w64-mingw32-g++-posix 100
-
-
-Building on other platforms is not fully supported. Consider using docker:
+The build commands are then:
 
 ./autogen.sh
 ./docker/build-gpg4win-docker-image.sh
 ./docker/run-gpg4win-build.sh
 
-It is known that some developers compile Gpg4win also on other platforms
-
-For Fedora the required packages might be:
-
-yum install mingw64-gcc-c++ icoutils stow autoconf automake git cmake \
-    mingw32-gcc-c++ mingw32-libstdc++ mingw-nsis-base texinfo-tex \
-    ghostscript-tools-dvipdf kf5-kconfig-devel gettext gettext-devel \
-    patch flex bison gperf kf5-kcoreaddons-devel mingw32-nsis
-
-
-
 Building the Webpages
 =====================
 
-The website is in the dedicated branch "website" in the git reposity.
-Checkout that branch and read the instructions:
-
-  git checkout website
-
-
-Development Branches
-====================
-
-The old version of gpg4win (version < 1.2) is since 1.1.3 tracked by
-the GIT branch: gpg4win-1-branch.  Only important fixes will go into
-this version.  The current version in the GIT master starts as version
-1.9.
-
-
+The website is in a dedicated repository on git.gnupg.org
 
 Adding new packages to the installer:
 =====================================
@@ -166,16 +114,6 @@ some of these tasks.  Here is a short run up:
 
 Then run the usual "./autogen.sh" to create the actual configure file
 and run configure as described above.
-
-Kleopatra Locatization
-======================
-
-The kde-l10n package is generated with the script packages/gen-kde-l10n.sh
-execute it after a build to generate an updated l10n package which
-you can then upload and add to packages.common.
-The tarballs and the nsis scripts are located in the temp directory
-kde-l10n prints as output.
-
 
 Installer Slideshow
 ===================
