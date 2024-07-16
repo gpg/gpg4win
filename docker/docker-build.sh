@@ -155,7 +155,7 @@ if [ "$root_shell" == "yes" ]; then
     cmd="bash"
 fi
 
-if [ "shell" == "yes" ]; then
+if [ "$shell" == "yes" ]; then
     cmd="bash"
 fi
 
