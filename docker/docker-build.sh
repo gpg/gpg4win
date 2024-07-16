@@ -41,6 +41,7 @@ Options:
         --clean-pkgs    Do not use already downloaded packages
         --inplace       Build in the current directoy
         --buildroot     Directory where the build should take place
+        --update-image  Update the docker image before build
 
 This builds either the Appimage or Gpg4win for Windows. To
 build a source tarball the option inplace can be used. By
@@ -60,6 +61,7 @@ inplace="no"
 branch="master"
 srcdir=$(cd $(dirname $0)/..; pwd)
 is_tmpbuild="no"
+update_image="no"
 
 while [ $# -gt 0 ]; do
     case $1 in
@@ -70,6 +72,7 @@ while [ $# -gt 0 ]; do
         --root-shell) root_shell="yes";;
         --clean-pkgs) clean_pkgs="yes";;
         --inplace) inplace="yes";;
+        --update-image) update_image="yes";;
         --buildroot) buildroot="$2"; shift; ;;
         *) usage 1 1>&2; exit 1;;
     esac
@@ -93,10 +96,11 @@ else
 fi
 
 
-if [ ! $(docker images | grep -q $docker_image) ]; then
+if [ ! $(docker images | grep -q $docker_image) -o \
+    "$update_image"="yes" ]; then
     echo "Local image $docker_image not found"
     echo "Building docker image"
-#    docker build -t $docker_image $dockerfile 2>&1
+    docker build -t $docker_image $dockerfile 2>&1
 fi
 
 # make a local clone or export of gpg4win to keep the working copy clean
