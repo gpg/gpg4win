@@ -113,7 +113,11 @@ else
     mkdir -p "$buildroot"
     if test ! -d "${buildroot}/gpg4win"; then
         if [ "$dirty" == "yes" ]; then
-            git archive HEAD -- . | tar -xvf - -C "${buildroot}/gpg4win"
+            mkdir -p "${buildroot}/gpg4win"
+            rsync -av --exclude ".git" --exclude "playground" \
+                --exclude '*.tar.*' --exclude '*.zip' \
+                --exclude '*.exe' --exclude '*.wixlib' \
+                "${srcdir}/" "${buildroot}/gpg4win/"
         else
             git clone "${srcdir}" "${buildroot}/gpg4win"
         fi
