@@ -53,7 +53,6 @@ appimage_bpkgs = wayland-protocols
 
 define appimage_pkg_wayland_protocols_post_install
 ( \
-	set -x; \
 	cd ..; \
 	mv $$$${pkgidir}/* $$$${pkgsdir};\
 	cd $$$${pkgsdir}; \
