@@ -23,16 +23,7 @@
 !endif
 !define prefix ${ipdir}/libiconv-${gpg4win_pkg_libiconv_version}
 
-
-!ifdef DEBUG
-Section "libiconv" SEC_libiconv
-!else
 Section "-libiconv" SEC_libiconv
-!endif
-  SetOutPath "$INSTDIR"
-!ifdef SOURCES
-  File "${gpg4win_pkg_libiconv}"
-!else
   SetOutPath "$INSTDIR\bin"
 
   ClearErrors
@@ -53,13 +44,4 @@ Section "-libiconv" SEC_libiconv
       File /oname=iconv.dll.tmp "${prefix}/bin/libiconv-2.dll"
       Rename /REBOOTOK iconv.dll.tmp iconv.dll
 
-  SetOutPath "$INSTDIR\lib"
-  File ${prefix}/lib/charset.alias
-
-!ifdef DEBUG
-  # We install a couple of binaries that may be useful for testing.
-  File ${prefix}/bin/charset.dll
-  File ${prefix}/bin/iconv.exe
-!endif
-!endif
 SectionEnd
