@@ -79,6 +79,7 @@ define SETVARS
 	pkgmkdir="$(call GETVAR,appimage_pkg_$(1)_make_dir)";             \
 	pkgmkdir_inst="$(call GETVAR,appimage_pkg_$(1)_make_dir)"; \
 	pkgrsyncfilter="$(rsyncfilterdir)/$(1).rsync-filter"; \
+	pkg_conf_subdir="$(call GETVAR,appimage_pkg_$(1)_conf_subdir)"; \
 	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig:$(idir)/lib64/pkgconfig";	\
 	export FREETYPE_DIR="$(idir)"					\
 	export PATH="$(idir)/bin:$${PATH}"
@@ -382,10 +383,11 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	 cd "$$$${pkgbdir}";				\
 	 $(CMAKE) 		\
 			-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
-			-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
+			-DCMAKE_PREFIX_PATH="$(idir)" \
 			-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 			-DBUILD_TESTING=False \
-			$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}" | \
+			$$$${pkgcfg} $$$${pkgextracflags} \
+			"../$$$${pkg_version}$$$${pkg_conf_subdir}" | \
 		tee "$$$${pkglogdir}/configure.log")
 	touch $(stampdir)/stamp-$(1)-02-configure
 
