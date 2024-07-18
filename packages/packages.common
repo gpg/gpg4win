@@ -18,17 +18,17 @@
 #
 
 server https://ftp.gnu.org/pub/gnu
-# last-changed: 2017-02-15
+# last-changed: 2024-07-16
 # by: ah
-# verified: Sig 68D9 4D8A AEEA D48A E7DC  5B90 4F49 4A94 2E46 16C2
-file libiconv/libiconv-1.15.tar.gz
-chk  ccf536620a45458d26ba83887a983b96827001e92a13847b45e4925cc8913178
+# verified: Sig 9001 B85A F9E1 B83D F1BD  A942 F5BE 8B26 7C6A 406D
+file libiconv/libiconv-1.17.tar.gz
+chk  8f74213b56238c85a50a5329f77e06198771e70dd9a739779f4c02f65d971313
 
-# last-changed: 2021-08-17
-# by: ah (checksum added by ik)
+# last-changed: 2024-07-16
+# by: ah
 # verified: Sig 9001 B85A F9E1 B83D F1BD A942 F5BE 8B26 7C6A 406D
-file gettext/gettext-0.21.tar.xz
-chk  d20fcbb537e02dcf1383197ba05bd0734ef7bf5db06bdb241eb69b7d16b73192
+file gettext/gettext-0.22.5.tar.xz
+chk  fe10c37353213d78a5b83d48af231e005c4da84db5ce88037d88355938259640
 
 # last-changed: 2023-05-03
 # by ah
