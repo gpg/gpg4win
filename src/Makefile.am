@@ -339,8 +339,6 @@ gpg4win_pkg_ktextwidgets_configure = -DWITH_TEXT_TO_SPEECH=OFF
 
 gpg4win_pkg_qtkeychain_configure = -DBUILD_WITH_QT6=ON
 
-gpg4win_pkg_libkdepim_configure = -DFORCE_DISABLE_DBUS=ON
-
 gpg4win_pkg_ktextaddons_configure = -DFORCE_DISABLE_MULTIMEDIA=ON
 
 # Create a minmal build on the build system of the
@@ -400,10 +398,10 @@ gpg4win_pkg_qtbase_configure = \
         -DFEATURE_openssl=OFF \
         -DFEATURE_pkg_config=ON \
         -DFEATURE_sql_mysql=OFF \
-        -DFEATURE_sql_odbc=ON \
+        -DFEATURE_sql_odbc=OFF \
         -DFEATURE_sql_psql=OFF \
         -DFEATURE_system_zlib=ON \
-        -DFEATURE_zstd=ON \
+        -DFEATURE_system_zstd=ON \
         -DFEATURE_system_pcre=ON \
         -DFEATURE_system_freetype=ON \
         -DFEATURE_system_harfbuzz=OFF \
