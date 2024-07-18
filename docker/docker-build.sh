@@ -43,11 +43,26 @@ Options:
         --buildroot     Directory where the build should take place
         --update-image  Update the docker image before build
 
-This builds either the Appimage or Gpg4win for Windows. To
-build a source tarball the option inplace can be used. By
-default it builds in a temporary directory use the
-option --inplace or --build-dir to change that behavior.
+This builds either the Appimage the Windows installer.
+By default the build is done in \$TMPDIR (${TMPDIR}) with
+a subdirectory prefixed with gpg4win.
+Use the option --inplace or --buildroot to change that behavior.
 
+Note that the option --dirty uses rsync to copy the local
+checkout without the delete option.
+
+Examples:
+    ./$0
+        Clone the current gpg4win directory to a temporary
+        directory and build an installer there.
+
+    ./$0 --dirty --buildroot /home/$USER/build/
+        Make a copy with rsync of the current gpg4win checkout
+        and build in that directory. E.g. for development.
+
+    ./$0 --inplace
+        Build in the current checkout directory. For
+        example to rebuild a source tarball.
 EOF
     exit $1
 }
