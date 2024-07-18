@@ -375,6 +375,9 @@ if test "$build_appimage" = yes ; then
 
     APPIMAGE_SPKG([freetype])
     APPIMAGE_SPKG([sqlite])
+    APPIMAGE_SPKG([jpeg])
+    APPIMAGE_SPKG([qrencode])
+    APPIMAGE_SPKG([xcb-util-cursor])
 
     APPIMAGE_SPKG([libgpg-error])
     APPIMAGE_SPKG([libassuan], [libgpg-error])
@@ -383,7 +386,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([libksba], [libgpg-error])
     APPIMAGE_SPKG([ntbtls], [libgcrypt libksba])
     APPIMAGE_SPKG([gnupg], [libgpg-error libassuan npth libgcrypt libksba sqlite ntbtls])
-    APPIMAGE_SPKG([pinentry], [qtbase qtx11extras])
+    APPIMAGE_SPKG([pinentry], [qtbase])
 
     #  Note that GPGME needs Qt
     APPIMAGE_SPKG([gpgme], [libgpg-error libassuan qtbase])
@@ -392,12 +395,15 @@ if test "$build_appimage" = yes ; then
     # Qt related stuff.
     # (dependency on gnupg is only to make sure gnupg is build first so
     #  that we don't need to wait for the long running Qt builds)
-    APPIMAGE_SPKG([qtbase], [freetype gnupg])
-    APPIMAGE_SPKG([qttools], [qtbase])
-    APPIMAGE_SPKG([qttranslations], [qtsvg qttools qtx11extras])
-    APPIMAGE_SPKG([qtx11extras], [qtbase])
-    APPIMAGE_SPKG([qtwayland], [qtbase])
-    APPIMAGE_SPKG([qtsvg], [qtbase])
+    APPIMAGE_KDEPKG([zstd])
+    APPIMAGE_KDEPKG([pcre2])
+    APPIMAGE_KDEPKG([qtbase], [jpeg zstd freetype pcre2 gnupg xcb-util-cursor])
+    APPIMAGE_KDEPKG([qttools], [qtbase])
+    APPIMAGE_KDEPKG([qttranslations], [qtsvg qttools])
+    APPIMAGE_KDEPKG([qtsvg], [qtbase])
+    APPIMAGE_KDEPKG([qtwayland], [qtbase])
+    APPIMAGE_KDEPKG([wayland-protocols], [qtwayland])
+    APPIMAGE_KDEPKG([plasma-wayland-protocols], [wayland-protocols])
 
     # KDE Frameworks Tier 1
     APPIMAGE_KDEPKG([extra-cmake-modules], [qttools])
@@ -405,6 +411,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kauth], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kcodecs], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([kcolorscheme], [kconfig kguiaddons ki18n])
     APPIMAGE_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kcoreaddons], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kdbusaddons], [qtbase qttools extra-cmake-modules])
@@ -412,17 +419,17 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([ki18n], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kitemmodels], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kitemviews], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
-    APPIMAGE_KDEPKG([kwindowsystem], [qtbase qtx11extras extra-cmake-modules])
+    APPIMAGE_KDEPKG([kwindowsystem], [qtbase qtwayland extra-cmake-modules wayland-protocols plasma-wayland-protocols])
     APPIMAGE_KDEPKG([solid], [qtbase extra-cmake-modules])
     APPIMAGE_KDEPKG([sonnet], [qtbase extra-cmake-modules])
     APPIMAGE_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
 
     # KDE Frameworks Tier 2
-    APPIMAGE_KDEPKG([kactivities], [kwindowsystem])
     APPIMAGE_KDEPKG([kcompletion], [kwidgetsaddons])
     APPIMAGE_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
     APPIMAGE_KDEPKG([kjobwidgets], [kwidgetsaddons kcoreaddons qtbase extra-cmake-modules])
+    APPIMAGE_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
+    APPIMAGE_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
 
     # KDE Frameworks Tier 3
     APPIMAGE_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
@@ -442,14 +449,13 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([kmbox], [kmime])
     APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion gpgme])
 
-    APPIMAGE_KDEPKG([kleopatra], [mimetreeparser gnupg gpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons])
+    APPIMAGE_KDEPKG([kleopatra], [mimetreeparser gnupg gpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
 
     # Okular/Poppler
     APPIMAGE_KDEPKG([poppler], [gpgme kio qtbase freetype])
-    APPIMAGE_KDEPKG([okular], [kparts gpgme kio poppler threadweaver qtsvg kactivities])
+    APPIMAGE_KDEPKG([okular], [kparts gpgme kio poppler threadweaver qtsvg])
 
     # Gpgpass
-    APPIMAGE_SPKG([qrencode], [libpng libiconv])
     APPIMAGE_KDEPKG([prison], [qtbase extra-cmake-modules qrencode])
     APPIMAGE_KDEPKG([gpgpass], [prison kconfigwidgets kiconthemes ki18n gpgme])
     APPIMAGE_FINALIZE

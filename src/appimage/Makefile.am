@@ -30,14 +30,11 @@ stampdir := $(root)/stamps
 # Source packages for the AppImage (see also ../src/Makefile.am)
 appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
-		 freetype qrencode
+		 freetype qrencode jpeg libpng xcb-util-cursor
 
 
 appimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
 
-
-# Qt packages for the AppImage
-appimage_qtpkgs = qtbase qttools qtx11extras qtwayland qtsvg qttranslations
 
 # KDE packages for the AppImage
 appimage_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
@@ -46,113 +43,55 @@ appimage_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   kiconthemes kleopatra breeze-icons kitemmodels karchive \
 		   kcrash kdbusaddons kio kbookmarks kservice solid \
 		   kjobwidgets libical kcalendarcore mimetreeparser \
-		   sonnet ktextwidgets kauth \
-		   threadweaver kparts poppler okular kactivities \
-		   prison gpgpass
+		   kcolorscheme sonnet ktextwidgets kauth kstatusnotifieritem \
+		   threadweaver kparts poppler okular \
+		   prison gpgpass zstd pcre2 \
+		   qtbase qttools qtsvg qttranslations qtwayland \
+		   plasma-wayland-protocols
 
-# Binary packages for the AppImage
-# appimage_bpkgs =
+appimage_bpkgs = wayland-protocols
+
+define appimage_pkg_wayland_protocols_post_install
+( \
+	set -x; \
+	cd ..; \
+	mv $$$${pkgidir}/* $$$${pkgsdir};\
+	cd $$$${pkgsdir}; \
+	meson setup --prefix $$$${pkgidir} build; \
+	cd build; \
+	ninja && ninja install; \
+	cd $$$${pkgidir}; \
+)
+endef
 
 appimage_pkg_gpgme_configure = --enable-languages=cpp,qt \
   --disable-gpg-test \
   --disable-gpgsm-test
 
-# TODO: Disable Qt Sql?
-# TODO: Disable Qt Testlib?
-appimage_pkg_qtbase_configure = ../$$$${pkg_version}/configure -opensource \
-            -confirm-license \
-            -platform linux-g++ \
-            -release \
-            -shared \
-            -prefix $$$${pkgidir} \
-            -I '$(idir)/include' \
-            -L '$(idir)/lib' \
-            -opengl desktop \
-            -no-glib \
-            -accessibility \
-            -nomake examples \
-            -nomake tests \
-            -no-sql-mysql \
-            -no-sql-sqlite \
-            -no-sql-odbc \
-            -no-sql-psql \
-            -no-sql-tds \
-            -qt-harfbuzz \
-            -v \
-            -xcb \
-            OPENSSL_INCDIR=/usr/include/openssl11
-
-define appimage_pkg_qtbase_post_install
-	(cd $$$${pkgbdir}; \
-	 make install;)
-endef
-
-appimage_pkg_qttools_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-define appimage_pkg_qttools_post_install
-	 (cd $$$${pkgbdir}; \
-	  mkdir -p $$$${pkgidir}; \
-	  cp -r bin lib include $$$${pkgidir})
-endef
-
-appimage_pkg_qtx11extras_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-define appimage_pkg_qtx11extras_post_install
-	 (cd $$$${pkgbdir}; \
-	  mkdir -p $$$${pkginstallroot}; \
-	  make install INSTALL_ROOT=$$$${pkginstallroot}; \
-	  mkdir -p $$$${pkgidir}; \
-	  mv $$$${pkgbladir}/* $$$${pkgidir}; \
-	  rm -rf $$$${pkginstallroot};)
-endef
-
-appimage_pkg_qtwayland_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-define appimage_pkg_qtwayland_post_install
-	 (cd $$$${pkgbdir}; \
-	  mkdir -p $$$${pkginstallroot}; \
-	  make install INSTALL_ROOT=$$$${pkginstallroot}; \
-	  mkdir -p $$$${pkgidir}; \
-	  mv $$$${pkgbladir}/* $$$${pkgidir}; \
-	  rm -rf $$$${pkginstallroot};)
-endef
-
-appimage_pkg_qtsvg_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-# XXX Adding the qtconf after qtsvg is a weird hack
-# because somhow (yay qmake) zlib is not linked if
-# the qt conf exists before that. The qt conf is
-# needed for qttranslations to find the correct path
-# of the translation tools.
-define appimage_pkg_qtsvg_post_install
- (cd $$$${pkgbdir}; \
-  mkdir -p $$$${pkgidir}; \
-  cp -r lib include plugins $$$${pkgidir}; \
-  mkdir -p $$$${pkgidir}/bin; \
-  echo "[Paths]" > $$$${pkgidir}/bin/qt.conf; \
-  echo "Prefix = .." >> $$$${pkgidir}/bin/qt.conf)
-endef
-
-appimage_pkg_qttranslations_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-define appimage_pkg_qttranslations_post_install
- ( rm -rf $$$${pkgidir}/translations; \
-   mkdir -p $$$${pkgidir}; \
-   cp -r $$$${pkgbdir}/translations $$$${pkgidir}/translations;)
-endef
+appimage_pkg_qtbase_configure = \
+        -DQT_BUILD_EXAMPLES=OFF \
+        -DQT_BUILD_TESTS=OFF \
+        -DBUILD_WITH_PCH=OFF \
+        -DFEATURE_accessibility=ON \
+        -DFEATURE_glib=OFF \
+        -DFEATURE_opengl_desktop=ON \
+        -DFEATURE_pkg_config=ON \
+        -DFEATURE_sql_mysql=OFF \
+        -DFEATURE_sql_odbc=OFF \
+        -DFEATURE_sql_psql=OFF \
+        -DFEATURE_system_freetype=ON \
+        -DFEATURE_system_pcre=ON \
+        -DFEATURE_system_jpeg=ON \
+        -DFEATURE_system_zstd=ON \
+        -DFEATURE_xcb=ON \
+        -DFEATURE_use_gold_linker_alias=OFF \
+        -DCMAKE_MESSAGE_LOG_LEVEL=STATUS \
+        -DCMAKE_VERBOSE_MAKEFILE=ON
 
 # do not create the huge icon resource files
 appimage_pkg_breeze_icons_configure = -DBINARY_ICONS_RESOURCE=OFF
 
-appimage_pkg_kactivities_configure = \
-    -DBOOST_INCLUDEDIR=/usr/include/boost169 \
-    -DBOOST_LIBRARYDIR=/usr/lib64/boost169 \
-    -DKACTIVITIES_LIBRARY_ONLY=ON
+appimage_pkg_karchive_configure = -DWITH_BZIP2=OFF
 
 appimage_pkg_kcompletion_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
@@ -167,9 +106,6 @@ appimage_pkg_kguiaddons_configure = -DWITH_WAYLAND=OFF
 appimage_pkg_sonnet_configure = -DSONNET_USE_QML=OFF
 
 appimage_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
-
-appimage_pkg_kiconthemes_configure = \
-    -DBUILD_DESIGNERPLUGIN=OFF
 
 appimage_pkg_kitemviews_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
@@ -195,15 +131,38 @@ appimage_pkg_kleopatra_configure = \
 
 appimage_pkg_poppler_configure = \
     -DENABLE_BOOST=OFF \
-    -DENABLE_NSS=OFF
-
+    -DENABLE_NSS3=OFF \
+    -DENABLE_GOBJECT_INTROSPECTION=OFF \
+    -DENABLE_QT5=OFF \
+    -DENABLE_LCMS=OFF \
+    -DENABLE_LIBCURL=OFF
 
 appimage_pkg_okular_configure = \
-    -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Wallet\;KF5DocTools\;KF5JS\;KF5Purpose\;Qt5TextToSpeech\;Phonon4Qt5\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;LibZip\;DjVuLibre\;EPub\;QMobipocket\;Discount\;KF5Pty\;Qt5Qml"
+    -DFORCE_NOT_REQUIRED_DEPENDENCIES="PlasmaActivities\;KF6Wallet\;KF6Purpose\;Qt6TextToSpeech\;LibZip\;KF6DocTools\;Phonon4Qt6\;LibSpectre\;KExiv2Qt6\;CHM\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt6Qml\;Qt6DBus\;KF6Pty"
 
 appimage_pkg_libical_configure = \
     -DICAL_GLIB=false \
     -DENABLE_GTK_DOC=false
+
+appimage_pkg_prison_configure = \
+    -DWITH_QUICK=OFF \
+    -DWITH_MULTIMEDIA=OFF
+
+appimage_pkg_kiconthemes_configure = \
+    -DKICONTHEMES_USE_QTQUICK=OFF
+
+appimage_pkg_kcoreaddons_configure = -DKCOREADDONS_USE_QML=OFF
+
+appimage_pkg_ktextwidgets_configure = -DWITH_TEXT_TO_SPEECH=OFF
+
+appimage_pkg_kio_configure = -DWITH_WAYLAND=OFF
+appimage_pkg_kwindowsystem_configure = -DKWINDOWSYSTEM_QML=OFF
+
+appimage_pkg_xcb_util_cursor_configure = --enable-static --disable-shared
+appimage_pkg_xcb_util_cursor_extracflags = -fPIC
+
+appimage_pkg_zstd_conf_subdir = /build/cmake
+appimage_pkg_zstd_configure = -DZSTD_BUILD_PROGRAMS=OFF
 
 ########################################################################
 
