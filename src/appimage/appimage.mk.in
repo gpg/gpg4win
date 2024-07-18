@@ -159,7 +159,7 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	 eval "../$$$${pkg_version}/configure" \
 			--prefix="$$$${pkgidir}" \
 			$$$${pkgcfg} \
-			CFLAGS=\"-mms-bitfields $$$${pkgextracflags}\" | \
+			CFLAGS=\"$$$${pkgextracflags}\" | \
 		tee "$$$${pkglogdir}/configure.log"; \
 	 shopt -s nullglob; \
 	 for pfile in "$$$${pkgpbdir}"/*.postcfg \
