@@ -117,11 +117,17 @@ else
             rsync -av --exclude ".git" --exclude "playground" \
                 --exclude '*.tar.*' --exclude '*.zip' \
                 --exclude '*.exe' --exclude '*.wixlib' \
+                --exclude 'stamps'  --exclude 'installers' \
                 "${srcdir}/" "${buildroot}/gpg4win/"
         else
             git clone "${srcdir}" "${buildroot}/gpg4win"
         fi
     else
+        rsync -av --exclude ".git" --exclude "playground" \
+            --exclude '*.tar.*' --exclude '*.zip' \
+            --exclude '*.exe' --exclude '*.wixlib' \
+            --exclude 'stamps'  --exclude 'installers' \
+            "${srcdir}/" "${buildroot}/gpg4win/"
         echo "Continuing with existing directory"
     fi
     gpg4win_dir="${buildroot}/gpg4win"
@@ -184,5 +190,5 @@ if [ ! $err ]; then
 fi
 
 if [ "$is_tmpbuild" == "yes" ]; then
-    rm -ir "${buildroot}";
+    rm -I -rf "${buildroot}";
 fi
