@@ -25,17 +25,24 @@ FROM registry.suse.com/suse/sle15:latest
 RUN zypper --non-interactive update && \
     zypper --non-interactive install \
     # Build basics
-    which file git-core cmake gcc13 gcc13-c++ glibc-devel-static cmake3 pkg-config \
-    flex bison gperf awk patch wget automake \
+    flex bison gperf awk patch wget automake rsync xz bzip2 \
+    gettext gettext-tools gettext-runtime meson ninja \
+    which file git-core cmake gcc13 gcc13-c++ glibc-devel-static pkg-config \
+    glibc-locale-base \
     # Python
     python311 python311-lxml \
     # Libraries
     alsa-devel \
+    at-spi2-core-devel \
     boost-devel \
+    fontconfig-devel \
     openssl-devel \
+    libtiff-devel \
+    libusb-devel \
     libicu-devel \
     libmount-devel \
     libudev-devel \
+    libSM-devel \
     libX11-devel \
     libX11-xcb1 \
     libxcb-devel \
@@ -48,6 +55,8 @@ RUN zypper --non-interactive update && \
     libXtst-devel \
     Mesa-libEGL-devel \
     Mesa-libGL-devel \
+    openjpeg2-devel \
+    openldap2-devel \
     readline-devel \
     vulkan-devel \
     vulkan-headers \
@@ -56,6 +65,8 @@ RUN zypper --non-interactive update && \
     xcb-util-keysyms-devel \
     xcb-util-renderutil-devel \
     xcb-util-wm-devel \
+    xcb-proto-devel \
+    xkbcomp-devel \
     xz-devel \
     zlib-devel
 
@@ -66,10 +77,8 @@ RUN zypper --non-interactive clean -a && \
     alternatives --install /usr/bin/cc cc /usr/bin/gcc-13 1 && \
     alternatives --install /usr/bin/cpp cpp /usr/bin/g++-13 1 && \
     alternatives --install /usr/bin/g++ gcc++ /usr/bin/g++-13 1 && \
-    alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-13 1 && \
     alternatives --install /usr/bin/python python /usr/bin/python3.11 1 && \
-    alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1 && \
-    alternatives --install /usr/bin/pip3 pip3 /usr/bin/pip3-3.11 1
+    alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
 
 # download the necessary linuxdeploy AppImages and extract them because we have no fuse in the container
 RUN mkdir -p /tmp/download \
