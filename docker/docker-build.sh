@@ -111,39 +111,39 @@ if [ "$inplace" == "yes" ]; then
 else
     echo "Building in $buildroot"
     mkdir -p "$buildroot"
-    if test ! -d "${buildroot}/gpg4win"; then
+    gpg4win_dir="${buildroot}/gpg4win"
+    if test ! -d "${gpg4win_dir}"; then
         if [ "$dirty" == "yes" ]; then
-            mkdir -p "${buildroot}/gpg4win"
+            mkdir -p "${gpg4win_dir}"
             rsync -av --exclude ".git" --exclude "playground" \
                 --exclude '*.tar.*' --exclude '*.zip' \
                 --exclude '*.exe' --exclude '*.wixlib' \
                 --exclude 'stamps'  --exclude 'installers' \
-                "${srcdir}/" "${buildroot}/gpg4win/"
+                "${srcdir}/" "${gpg4win_dir}/"
         else
-            git clone "${srcdir}" "${buildroot}/gpg4win"
+            git clone "${srcdir}" "${gpg4win_dir}"
         fi
     else
         rsync -av --exclude ".git" --exclude "playground" \
             --exclude '*.tar.*' --exclude '*.zip' \
             --exclude '*.exe' --exclude '*.wixlib' \
             --exclude 'stamps'  --exclude 'installers' \
-            "${srcdir}/" "${buildroot}/gpg4win/"
+            "${srcdir}/" "${gpg4win_dir}/"
         echo "Continuing with existing directory"
     fi
-    gpg4win_dir="${buildroot}/gpg4win"
 fi
 
-if [ "$clean_pkgs" == "no" ]; then
+if [ "$clean_pkgs" == "no" -a "$inplace" == "no" ]; then
     echo "Copying packages from ${srcdir}/packages .."
     files=$(find ${srcdir}/packages -name \*.tar\* -o -name \*.zip -o -name \*.exe -o -name \*.wixlib)
-    cp $files ${buildroot}/gpg4win/packages
+    cp $files ${gpg4win_dir}/packages
 fi
 
 # Always call ./packages/download.sh to avoid accidentally
 # using old tarballs. Local tarball switches can be done
 # if the file and checksum is updated in the packages
 # file.
-cd ${buildroot}/gpg4win/packages
+cd ${gpg4win_dir}/packages
 
 echo "Downloading packages"
 if [ "$gpg22" == "yes" ]; then
@@ -167,6 +167,12 @@ fi
 
 start_time=$(date +"%s")
 
+if [ "$appimage" == "yes" ]; then
+    log_file="${buildroot}/appimage-buildlog.txt"
+else
+    log_file="${buildroot}/gpg4win-buildlog.txt"
+fi
+
 docker run -it --rm --user "$userid:$groupid" \
     --volume ${gpg4win_dir}:/build \
     $docker_image $cmd 2>&1 | tee ${buildroot}/build-log.txt
@@ -184,7 +190,7 @@ if [ ! $err ]; then
     echo "   Results (if successfull) can be found under:"
     echo "   ${gpg4win_dir}/src/installers"
     echo "   Log can be found at:"
-    echo "   ${buildroot}/build-log.txt"
+    echo "   ${log_file}"
     echo -n "    Build took: $buildtime"
     printf "%02d:%02d:%02d\n" "$hours" "$minutes" "$seconds"
 fi
