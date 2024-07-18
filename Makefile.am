@@ -34,7 +34,7 @@ endif
 SUBDIRS = ${po} packages ${doc} src
 
 # find patches -type f | sort | sed 's/$/ \\/' | sed 's/^/             /'
-# find patches-appimage -type f | sort | sed 's/$/ \\/' | sed 's/^/             /'
+# find -L patches-appimage -type f | sort | sed 's/$/ \\/' | sed 's/^/             /'
 
 EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              doc/license-page doc/GPLv3 \
@@ -71,7 +71,10 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
-             patches-appimage/libkleo/gpg4win-check.patch \
+             patches-appimage/extra-cmake-modules/0001-Do-not-abort-without-QML-tools.patch \
+             patches-appimage/kio/0001-Remove-kencodingfiledialog-to-avoid-Qt5Compat.patch \
+             patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
+             patches-appimage/okular/0001-Make-KF6Pty-dependency-optional.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/qtbase/add-kleopatras-mime-types.patch
 
