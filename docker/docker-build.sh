@@ -112,7 +112,7 @@ fi
 
 drep=$(echo $docker_image | cut -d : -f 1)
 dtag=$(echo $docker_image | cut -d : -f 2)
-if [ -z "$(docker images | grep $drep | grep $dtag)" -o "$update_image"="yes" ]; then
+if [ -z "$(docker images | grep $drep | grep $dtag)" -o "$update_image" == "yes" ]; then
     echo "Local image $docker_image not found"
     echo "Building docker image"
     docker build -t $docker_image $dockerfile 2>&1
