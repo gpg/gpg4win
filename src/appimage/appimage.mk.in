@@ -236,7 +236,8 @@ $(stampdir)/stamp-$(1)-00-install: $(stampdir)/stamp-directories $(call GETDEPS,
 	($(call SETVARS,$(1));				\
 	 $(MKDIR) "$$$${pkgidir}";			\
 	 cd $$$${pkgidir};				\
-	 $(call DEFLATE_macro,$$$${pkg}))
+	 $(call DEFLATE_macro,$$$${pkg}); \
+	 $(call appimage_pkg_$(call FROB_macro,$(1))_post_install))
 	touch $(stampdir)/stamp-$(1)-00-install
 
 $(stampdir)/stamp-$(1)-01-rsync: $(stampdir)/stamp-$(1)-00-install
