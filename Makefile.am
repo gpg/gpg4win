@@ -41,11 +41,9 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              build-aux/git-log-footer build-aux/git-log-fix \
              build-aux/authenticode-sign.sh \
              docker/appimage/Dockerfile \
-             docker/build-appimage-docker-image.sh \
-             docker/build-gpg4win-docker-image.sh \
+             docker/appimage/Dockerfile-CentOS7 \
+             docker/docker-build.sh \
              docker/gpg4win-bookworm/Dockerfile \
-             docker/run-appimage-build.sh \
-             docker/run-gpg4win-build.sh \
              patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools.patch \
              patches/breeze-icons/add-the-nose.patch \
              patches/extra-cmake-modules/0001-Do-not-abort-without-QML-tools.patch \
