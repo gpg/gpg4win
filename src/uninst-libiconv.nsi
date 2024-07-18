@@ -26,19 +26,7 @@
 
 ; Uninstaller section.
 Section "-un.libiconv"
-!ifdef SOURCES
-  Push "${gpg4win_pkg_libiconv}"
-  Call un.SourceDelete
-!else
   Delete /REBOOTOK "$INSTDIR\bin\libiconv-2.dll"
-  Delete /REBOOTOK "$INSTDIR\bin\iconv.dll"
-  Delete /REBOOTOK "$INSTDIR\bin\pub\iconv.dll"
-
-  Delete "$INSTDIR\lib\charset.alias"
-!ifdef DEBUG
-  Delete "$INSTDIR\bin\charset.dll"
-  Delete "$INSTDIR\bin\iconv.exe"
-!endif
-  RMDir "$INSTDIR"
-!endif
+  Delete /REBOOTOK "$INSTDIR\bin\iconv.dll
+  RMDir "$INSTDIR/bin"
 SectionEnd
