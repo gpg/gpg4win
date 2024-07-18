@@ -24,7 +24,7 @@ EXTRA_DIST = AppRun start-shell build-appimage.sh
 
 SUBDIRS = rsync-filters
 
-root := /build
+root := /build/src/playground
 stampdir := $(root)/stamps
 
 # Source packages for the AppImage (see also ../src/Makefile.am)

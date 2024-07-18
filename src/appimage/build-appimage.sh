@@ -23,15 +23,12 @@
 
 set -e
 
-. /opt/rh/devtoolset-10/enable
-
-cd /src
+cd /build
+./autogen.sh --force
 ./configure --enable-appimage --enable-maintainer-mode --disable-manuals
-
-cd /src
 make
 
-if [ -f /src/src/gnupg-vsd/custom.mk ]; then
+if [ -f /build/gnupg-vsd/custom.mk ]; then
     if ls /src/packages/gnupg-2.2* >/dev/null 2>&1 ; then
         GNUPG_BUILD_VSD=yes
     else
@@ -50,14 +47,14 @@ else
 fi
 
 # Copy the start-shell helper for use AppRun
-cp /src/src/appimage/start-shell /build/AppDir/
+cp /build/src/appimage/start-shell /build/AppDir/
 chmod +x /build/AppDir/start-shell
 
 # Copy standard global configuration
 if [ $GNUPG_BUILD_VSD = yes ]; then
     mkdir -p /build/AppDir/usr/share/gnupg/conf/gnupg-vsd
     rsync -aLv --delete --omit-dir-times \
-          /src/src/gnupg-vsd/Standard/etc/gnupg/ \
+          /build/src/gnupg-vsd/Standard/etc/gnupg/ \
           /build/AppDir/usr/share/gnupg/conf/gnupg-vsd/
 fi
 
@@ -75,7 +72,7 @@ export QMAKE=/build/install/bin/qmake
 mkdir -p /build/install/plugins/sqldrivers
 
 # copy KDE plugins
-for d in iconengines kauth kf5 okular pim5 plasma; do
+for d in iconengines kauth kf6 okular pim6 plasma; do
     mkdir -p /build/AppDir/usr/plugins/${d}/
     rsync -av --delete --omit-dir-times /build/install/lib64/plugins/${d}/ /build/AppDir/usr/plugins/${d}/
 done
@@ -92,7 +89,7 @@ cp -av /usr/lib64/libtiff.so* /build/AppDir/usr/lib
 
 # copy other libraries that are loaded dynamically
 mkdir -p /build/AppDir/usr/lib
-cp -av /build/install/lib64/libOkular5Core.so* /build/AppDir/usr/lib
+cp -av /build/install/lib64/libOkular6Core.so* /build/AppDir/usr/lib
 
 cd /build
 # Remove existing AppRun and wrapped AppRun, that may be left over
@@ -114,24 +111,24 @@ if [ $GNUPG_BUILD_VSD = yes ]; then
     OUTPUT=gnupg-vs-desktop-${myversion}-x86_64.AppImage
     echo "Packaging GnuPG VS-Desktop Appimage: $myversion"
     echo $myversion >/build/AppDir/GnuPG-VS-Desktop-VERSION
-    cp /src/src/gnupg-vsd/Standard/VERSION* /build/AppDir/usr/
+    cp /build/gnupg-vsd/Standard/VERSION* /build/AppDir/usr/
     echo "Packaging help files"
     mkdir -p /build/AppDir/usr/share/doc/gnupg-vsd
-    cp /src/src/gnupg-vsd/help/*.pdf /build/AppDir/usr/share/doc/gnupg-vsd
+    cp /build/gnupg-vsd/help/*.pdf /build/AppDir/usr/share/doc/gnupg-vsd
     echo "Packaging kleopatrarc"
     mkdir -p /build/AppDir/usr/etc/xdg
-    cp /src/src/gnupg-vsd/Standard/kleopatrarc /build/AppDir/usr/etc/xdg
+    cp /build/gnupg-vsd/Standard/kleopatrarc /build/AppDir/usr/etc/xdg
 elif [ $GNUPG_BUILD_VSD = desktop ]; then
     myversion=$(ls /src/packages/gnupg-2.*tar.* \
                     | sed -n 's,.*/gnupg-\(2.*\).tar.bz2,\1,p')
     OUTPUT=gnupg-desktop-${myversion}-x86_64.AppImage
     echo "Packaging GnuPG Desktop Appimage: $myversion"
     echo $myversion >/build/AppDir/GnuPG-Desktop-VERSION
-    cp /src/src/gnupg-vsd/Desktop/VERSION* /build/AppDir/usr/
-    if [ -f /src/src/gnupg-vsd/Desktop/kleopatrarc ]; then
+    cp /build/gnupg-vsd/Desktop/VERSION* /build/AppDir/usr/
+    if [ -f /build/gnupg-vsd/Desktop/kleopatrarc ]; then
         echo "Packaging kleopatrarc"
         mkdir -p /build/AppDir/usr/etc/xdg
-        cp /src/src/gnupg-vsd/Desktop/kleopatrarc /build/AppDir/usr/etc/xdg
+        cp /build/gnupg-vsd/Desktop/kleopatrarc /build/AppDir/usr/etc/xdg
     fi
 else
     myversion=$(ls /src/packages/gnupg-2.*tar.bz2 \
@@ -169,7 +166,7 @@ done
 linuxdeploy --appdir /build/AppDir \
             --desktop-file /build/AppDir/usr/share/applications/org.kde.kleopatra.desktop \
             --icon-file /build/AppDir/usr/share/icons/hicolor/256x256/apps/kleopatra.png \
-            --custom-apprun /src/src/appimage/AppRun \
+            --custom-apprun /build/appimage/AppRun \
             --plugin qt \
             --output appimage \
     2>&1 | tee /build/logs/linuxdeploy-gnupg-desktop.log
