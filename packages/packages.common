@@ -568,11 +568,11 @@ file gpgpass/gpgpass-202407121159.tar.xz
 chk b108532268060857e51e1e9170e7ad3718f0891f3088ec4388357d25b460d5af
 
 # mimetreeparser
-# last changed: 2024-07-12
+# last changed: 2024-07-19
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file mimetreeparser/mimetreeparser-202407121113.tar.xz
-chk 0b2e11dc6750f423b3213a8223283f29f7293c183eea810a32a5332179efd03c
+file mimetreeparser/mimetreeparser-202407191706.tar.xz
+chk 93348c2efd2fff5c9ead5332b38603303420ef92b28a7774a8bd9735ebb51abb
 
 
 # libkleo

@@ -117,7 +117,8 @@ case ${package} in
         ;;
     mimetreeparser)
         repo=https://invent.kde.org/pim/${package}.git
-        branch="kf5"
+        branch="gpg4win/24.05"
+        custom_l10n="l10n-support/de/summit/messages/mimetreeparser/mimetreeparser6.po"
         ;;
     kleopatra)
         repo=https://invent.kde.org/pim/${package}.git
