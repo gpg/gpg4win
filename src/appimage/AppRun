@@ -8,11 +8,11 @@ if [ -f "${APPDIR}/GnuPG-VS-Desktop-VERSION" ]; then
 elif [ -f "${APPDIR}/GnuPG-Desktop-VERSION" ]; then
     _gnupg_appimage=desktop
     _gnupg_appimage_name="GnuPG Desktop"
-    myname="$_gnupg_appimage_name "$(cat "${APPDIR}/GnuPG-VS-Desktop-VERSION")
+    myname="$_gnupg_appimage_name "$(cat "${APPDIR}/GnuPG-Desktop-VERSION")
 else
     _gnupg_appimage=generic
-    _gnupg_appimage_name="GnuPG Foo"
-    myname="$_gnupg_appimage_name "$(cat "${APPDIR}/GnuPG-Foo-VERSION")
+    _gnupg_appimage_name="Gpg4win"
+    myname="$_gnupg_appimage_name "$(cat "${APPDIR}/Gpg4win-VERSION")
 fi
 
 opt_c=no
