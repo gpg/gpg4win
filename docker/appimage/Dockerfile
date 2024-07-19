@@ -84,8 +84,11 @@ RUN zypper --non-interactive clean -a && \
 # download the necessary linuxdeploy AppImages and extract them because we have no fuse in the container
 RUN mkdir -p /tmp/download \
     && cd /tmp/download \
-    && wget --no-verbose https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage \
-    && wget --no-verbose https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage \
+    && wget --no-verbose https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20240109-1/linuxdeploy-x86_64.AppImage \
+    && wget --no-verbose https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/1-alpha-20240109-1/linuxdeploy-plugin-qt-x86_64.AppImage \
+    && echo "f53349093d333a6558c560844c1a0f64a3b6bd077bf02740af3ad3dbb8827433  linuxdeploy-plugin-qt-x86_64.AppImage" > chk \
+    && echo "c86d6540f1df31061f02f539a2d3445f8d7f85cc3994eee1e74cd1ac97b76df0  linuxdeploy-x86_64.AppImage" >> chk \
+    && sha256sum -c chk \
     && chmod +x linuxdeploy-* \
     && cd /tmp \
     && download/linuxdeploy-plugin-qt-x86_64.AppImage --appimage-extract \
