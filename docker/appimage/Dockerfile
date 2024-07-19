@@ -34,6 +34,7 @@ RUN zypper --non-interactive update && \
     # Libraries
     alsa-devel \
     at-spi2-core-devel \
+    cups-devel \
     boost-devel \
     fontconfig-devel \
     openssl-devel \
