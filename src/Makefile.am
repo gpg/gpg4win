@@ -93,8 +93,8 @@ gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
                  gpgme
 
 # The packages that should also be compiled natively
-gpg4win_toolpkgs = qtbase breeze-icons kconfig extra-cmake-modules \
-                   qttools
+gpg4win_nativepkgs = qtbase breeze-icons kconfig extra-cmake-modules \
+                     qttools
 
 # Some variables
 WINE = wine
@@ -233,13 +233,9 @@ gpg4win_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
 
 gpg4win_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
 
-gpg4win_pkg_kconfig_tools_configure = -DKCONFIG_USE_DBUS=OFF \
+gpg4win_pkg_kconfig_native_configure = -DKCONFIG_USE_DBUS=OFF \
                                       -DKCONFIG_USE_QML=OFF \
                                       -DKCONFIG_USE_GUI=OFF
-
-#define gpg4win_pkg_kconfig_tools_post_install
-#	(cp $$$${pkgidir}/lib64/libexec/kf6/* $$$${pkgidir}/bin;)
-#endef
 
 gpg4win_pkg_pcre2_configure = -DPCRE2_BUILD_PCRE2_8=OFF -DPCRE2_BUILD_PCRE2_16=ON \
                               -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF
@@ -258,7 +254,7 @@ gpg4win_pkg_ktextaddons_configure = -DFORCE_DISABLE_MULTIMEDIA=ON
 
 # Create a minmal build on the build system of the
 # same version before cross compiling.
-gpg4win_pkg_qtbase_tools_configure = \
+gpg4win_pkg_qtbase_native_configure = \
         -DQT_BUILD_EXAMPLES=OFF \
         -DQT_BUILD_TESTS=OFF \
         -DBUILD_WITH_PCH=OFF \
@@ -286,7 +282,7 @@ gpg4win_pkg_qtbase_tools_configure = \
         -DINPUT_opengl=no \
         -DCMAKE_VERBOSE_MAKEFILE=ON
 
-define gpg4win_pkg_qtbase_tools_post_install
+define gpg4win_pkg_qtbase_native_post_install
 	(cd $$$${pkgidir}/bin; \
 	 cp qtpaths qtpaths_real; \
 	 unlink qtpaths; \
@@ -298,8 +294,8 @@ define gpg4win_pkg_qtbase_tools_post_install
 endef
 
 gpg4win_pkg_qtbase_configure = \
-        -DQT_HOST_PATH=$(tools_idir) \
-        -DQt6HostInfo_DIR=$(tools_idir)/lib/cmake/Qt6HostInfo \
+        -DQT_HOST_PATH=$(native_idir) \
+        -DQt6HostInfo_DIR=$(native_idir)/lib/cmake/Qt6HostInfo \
         -DQT_QMAKE_DEVICE_OPTIONS='CROSS_COMPILE=$(host)- \
         -DQT_QMAKE_TARGET_MKSPEC=win32-g++ \
         -DQT_BUILD_EXAMPLES=OFF \
@@ -327,8 +323,8 @@ gpg4win_pkg_qtbase_configure = \
 # copy moc and rcc from the tools into the target tree
 # so that pkg-config can find them.
 define gpg4win_pkg_qtbase_post_install
-	(cp $(tools_idir)/libexec/moc $$$${pkgidir}/bin; \
-	 cp $(tools_idir)/libexec/rcc $$$${pkgidir}/bin; \
+	(cp $(native_idir)/libexec/moc $$$${pkgidir}/bin; \
+	 cp $(native_idir)/libexec/rcc $$$${pkgidir}/bin; \
 )
 endef
 
@@ -356,11 +352,11 @@ gpg4win_pkg_kio_configure = \
 gpg4win_pkg_knotifications_configure = \
     -DFORCE_DISABLE_CANBERRA=ON
 
-gpg4win_pkg_breeze_icons_tools_configure = \
+gpg4win_pkg_breeze_icons_native_configure = \
     -DWITH_ICON_GENERATION=OFF \
     -DSKIP_INSTALL_ICONS=ON
 
-define gpg4win_pkg_breeze_icons_tools_post_install
+define gpg4win_pkg_breeze_icons_native_post_install
  ( mkdir -p $$$${pkgidir}/bin/ && cp $$$${pkgbdir}/bin/* $$$${pkgidir}/bin )
 endef
 

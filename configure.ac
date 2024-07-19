@@ -299,11 +299,11 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_BPKG_MSISRC([gnupg-msi])
 
     # Tools required for cross compiling
-    GPG4WIN_TOOLSPKG([qtbase])
-    GPG4WIN_TOOLSPKG([extra-cmake-modules])
-    GPG4WIN_TOOLSPKG([breeze-icons], [qtbase extra-cmake-modules])
-    GPG4WIN_TOOLSPKG([qttools], [qtbase])
-    GPG4WIN_TOOLSPKG([kconfig], [qtbase qttools extra-cmake-modules])
+    GPG4WIN_NATIVEPKG([qtbase])
+    GPG4WIN_NATIVEPKG([extra-cmake-modules])
+    GPG4WIN_NATIVEPKG([breeze-icons], [qtbase extra-cmake-modules])
+    GPG4WIN_NATIVEPKG([qttools], [qtbase])
+    GPG4WIN_NATIVEPKG([kconfig], [qtbase qttools extra-cmake-modules])
 
     # Qt related stuff.
     GPG4WIN_KDEPKG([zstd])
@@ -517,7 +517,7 @@ AC_CONFIG_FILES(src/nsis/config.nsi src/gpg4win.mk)
 AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)
 AC_CONFIG_FILES(src/toolchain.cmake)
-AC_CONFIG_FILES(src/toolchain-tools.cmake)
+AC_CONFIG_FILES(src/toolchain-native.cmake)
 AC_CONFIG_FILES(src/appimage/Makefile src/appimage/appimage.mk)
 AC_CONFIG_FILES(src/appimage/rsync-filters/Makefile)
 AC_CONFIG_FILES(src/nsis/Makefile)
