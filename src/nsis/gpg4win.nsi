@@ -22,7 +22,7 @@ Unicode true
 !cd "${BUILD_DIR}"
 !addincludedir "${TOP_SRCDIR}"
 !addincludedir "${TOP_SRCDIR}/po"
-!addincludedir "${SRCDIR}"
+!addincludedir "${SRCDIR}/nsis"
 !addplugindir "${BUILD_DIR}"
 !include "config.nsi"
 

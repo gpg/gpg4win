@@ -1049,7 +1049,7 @@ endif
 
 $(1)-package: installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
 
-$$($(1)_PRODUCT)-$(VERSION).wxs: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-final \
+$$($(1)_PRODUCT)-$(VERSION).wxs: $(common_nsi) $(stampdir)/stamp-final \
 		        $(foosum_exe) gpgwrap.exe \
 				make-msi.pl \
 	$(addsuffix /VERSION.sig,$(addprefix gnupg-vsd/,$(msi_targets)))
@@ -1058,7 +1058,7 @@ $$($(1)_PRODUCT)-$(VERSION).wxs: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-fin
 		--version $(VSD_VERSION) \
 		--name "$$($(1)_PRODUCT_PRETTY)" \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
-		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $$($(1)_PRODUCT)-$(VERSION).wxs
+		-DSRCDIR=$(srcdir) $(srcdir)/nsis/gpg4win.nsi > $$($(1)_PRODUCT)-$(VERSION).wxs
 
 $(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib: \
       $(stampdir)/stamp-final \
@@ -1137,7 +1137,7 @@ gnupg-vsd/$(1)/$(1).wxs: gnupg-vsd/$(1)/VERSION.sig make-msi.pl $$($(1)_PRODUCT)
 		--version $(VSD_VERSION) \
 		--name "$$($(1)_PRODUCT_PRETTY)" \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
-		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > /dev/null
+		-DSRCDIR=$(srcdir) $(srcdir)/nsis/gpg4win.nsi > /dev/null
 
 gnupg-vsd/$(1)/VERSION.sig: gnupg-vsd/$(1)/VERSION
 	echo "----------SIGNING----------"

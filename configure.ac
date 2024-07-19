@@ -79,7 +79,7 @@ IS_GPD_BUILD=mym4_isgpd
 # defines with spaces. So we use a nice "FOUR-PER-EM SPACE" U+2005 *cough*
 DISTRIBUTION_TEXT=m4_if(mym4_isvsd, [yes], ["g10 Code GmbH"], ["Gpg4win"])
 
-AC_CONFIG_SRCDIR(src/config.nsi.in)
+AC_CONFIG_SRCDIR(src/nsis/config.nsi.in)
 AC_CONFIG_MACRO_DIR(m4)
 
 AC_CONFIG_AUX_DIR([build-aux])
@@ -513,13 +513,14 @@ fi
 AC_CONFIG_FILES(Makefile)
 AC_CONFIG_FILES(packages/Makefile src/Makefile po/Makefile.in)
 AC_CONFIG_FILES(po/build-cc)
-AC_CONFIG_FILES(src/config.nsi src/gpg4win.mk)
+AC_CONFIG_FILES(src/nsis/config.nsi src/gpg4win.mk)
 AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)
 AC_CONFIG_FILES(src/toolchain.cmake)
 AC_CONFIG_FILES(src/toolchain-tools.cmake)
 AC_CONFIG_FILES(src/appimage/Makefile src/appimage/appimage.mk)
 AC_CONFIG_FILES(src/appimage/rsync-filters/Makefile)
+AC_CONFIG_FILES(src/nsis/Makefile)
 AC_OUTPUT
 
 # Throw a warning if optional tools are missing

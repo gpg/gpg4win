@@ -16,114 +16,29 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-EXTRA_DIST = gpg4win.nsi gpg4win-src.nsi \
-	config.site config.nsi.in \
-        libiconv.def libintl.def findicons.sh \
-        gpg4win-splash.wav exdll.h exdll.c g4wihelp.c desktopshellrun.cpp \
-        g4wihelp.nsi slideshow.cpp gpgwrap.c \
-        gpg-enable-keyboxd.bat gpg-disable-keyboxd.bat \
-        BreezeClassic.colors BreezeDark.colors \
-        inst-sections.nsi installer.nsi installer-finish.nsi  \
-	zlib.pc sha1sum.c \
-        potomo Memento.nsh \
-        inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
-        inst-gettext.nsi	   uninst-gettext.nsi	      \
-        inst-gnupg-w32.nsi	   uninst-gnupg-w32.nsi	      \
-        inst-gpgme.nsi		   uninst-gpgme.nsi	      \
-        inst-paperkey.nsi	   uninst-paperkey.nsi	      \
-        inst-gpgol.nsi		   uninst-gpgol.nsi	      \
-        inst-gpgex.nsi		   uninst-gpgex.nsi	      \
-        inst-libassuan.nsi	   uninst-libassuan.nsi	      \
-        inst-libgpg-error.nsi	   uninst-libgpg-error.nsi    \
-        inst-libiconv.nsi	   uninst-libiconv.nsi	      \
-        inst-compendium.nsi	   uninst-compendium.nsi   \
-        inst-man_advanced_de.nsi   uninst-man_advanced_de.nsi \
-        inst-man_advanced_en.nsi   uninst-man_advanced_en.nsi \
-        inst-man_novice_de.nsi	   uninst-man_novice_de.nsi   \
-        inst-man_novice_en.nsi	   uninst-man_novice_en.nsi   \
-        inst-pcre2.nsi	           uninst-pcre2.nsi	      \
-        inst-pinentry.nsi	   uninst-pinentry.nsi	      \
-        inst-pkgconfig.nsi	   uninst-pkgconfig.nsi	      \
-        inst-zlib.nsi        	   uninst-zlib.nsi            \
-        inst-kconfig.nsi        uninst-kconfig.nsi              \
-        inst-kleopatra.nsi  	   uninst-kleopatra.nsi       \
-        inst-bzip2.nsi             uninst-bzip2.nsi           \
-        inst-qtbase.nsi uninst-qtbase.nsi \
-        inst-ki18n.nsi uninst-ki18n.nsi \
-        inst-kio.nsi uninst-kio.nsi \
-        inst-kbookmarks.nsi uninst-kbookmarks.nsi \
-        inst-kservice.nsi uninst-kservice.nsi \
-        inst-solid.nsi uninst-solid.nsi \
-        inst-kjobwidgets.nsi uninst-kjobwidgets.nsi \
-        inst-kwidgetsaddons.nsi uninst-kwidgetsaddons.nsi \
-        inst-kcompletion.nsi uninst-kcompletion.nsi \
-        inst-kwindowsystem.nsi uninst-kwindowsystem.nsi \
-        inst-ktextwidgets.nsi uninst-ktextwidgets.nsi \
-        inst-sonnet.nsi uninst-sonnet.nsi \
-        inst-libkleo.nsi uninst-libkleo.nsi \
-        inst-kcoreaddons.nsi uninst-kcoreaddons.nsi \
-        inst-kcodecs.nsi uninst-kcodecs.nsi \
-        inst-kconfigwidgets.nsi uninst-kconfigwidgets.nsi \
-        inst-kxmlgui.nsi uninst-kxmlgui.nsi \
-        inst-kiconthemes.nsi uninst-kiconthemes.nsi \
-        inst-breeze-icons.nsi uninst-breeze-icons.nsi \
-        inst-karchive.nsi uninst-karchive.nsi \
-        inst-kcrash.nsi uninst-kcrash.nsi \
-        inst-kitemviews.nsi uninst-kitemviews.nsi \
-        inst-kitemmodels.nsi uninst-kitemmodels.nsi \
-        inst-kguiaddons.nsi uninst-kguiaddons.nsi \
-        inst-kmbox.nsi uninst-kmbox.nsi \
-        inst-kmime.nsi uninst-kmime.nsi \
-        inst-kde-l10n.nsi uninst-kde-l10n.nsi \
-        inst-qtsvg.nsi uninst-qtsvg.nsi \
-        inst-qttools.nsi uninst-qttools.nsi \
-        inst-qttranslations.nsi uninst-qttranslations.nsi \
-        inst-qthttpserver.nsi uninst-qthttpserver.nsi \
-        inst-scute.nsi uninst-scute.nsi \
-        inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
-        inst-gpg4win-tools.nsi uninst-gpg4win-tools.nsi \
-        inst-gpgme-browser.nsi \
-        inst-poppler.nsi uninst-poppler.nsi \
-        inst-libpng.nsi uninst-libpng.nsi \
-        inst-openjpeg.nsi uninst-openjpeg.nsi \
-        inst-jpeg.nsi uninst-jpeg.nsi \
-        inst-tiff.nsi uninst-tiff.nsi \
-        inst-freetype.nsi uninst-freetype.nsi \
-        inst-threadweaver.nsi uninst-threadweaver.nsi \
-        inst-kstatusnotifieritem.nsi uninst-kstatusnotifieritem.nsi \
-        inst-kparts.nsi uninst-kparts.nsi \
-        inst-okular.nsi uninst-okular.nsi \
-        inst-mimetreeparser.nsi uninst-mimetreeparser.nsi \
-        inst-kcalendarcore.nsi uninst-kcalendarcore.nsi \
-        inst-libical.nsi uninst-libical.nsi \
-        inst-qrencode.nsi uninst-qrencode.nsi \
-        inst-prison.nsi uninst-prison.nsi \
-        inst-gpgpass.nsi uninst-gpgpass.nsi \
-        inst-kcolorscheme.nsi uninst-kcolorscheme.nsi \
-        inst-gpgoljs.nsi uninst-gpgoljs.nsi \
-        inst-libkdepim.nsi uninst-libkdepim.nsi \
-        inst-syntax-highlighting.nsi uninst-syntax-highlighting.nsi \
-        inst-ktextaddons.nsi uninst-ktextaddons.nsi \
-        inst-qtwebsockets.nsi uninst-qtwebsockets.nsi \
-        inst-kcontacts.nsi uninst-kcontacts.nsi \
-        inst-kpimtextedit.nsi uninst-kpimtextedit.nsi \
-        inst-qtkeychain.nsi uninst-qtkeychain.nsi \
-        inst-zstd.nsi uninst-zstd.nsi \
-        inst-final.nsi index.theme \
-        slideshow/slides.dat \
-        slideshow/slide1-gpgol.png \
-        slideshow/slide2-gpgex.png \
-        slideshow/slide3-kleopatra.png \
-        slideshow/slide4-summary.png \
-        icons/file-ext.ico \
-        icons/mail-ext.ico \
-        kdeglobals qtlogging.ini \
-        make-msi.pl make-msi.guids \
-        build-gpg4win.sh \
-        qt.conf \
-        WixUI_Gpg4win.wxs icons/shield.ico included-icons.txt
-
-#inst-snoretoast.nsi uninst-snoretoast.nsi
+EXTRA_DIST =  config.site                                                       \
+              libiconv.def libintl.def findicons.sh                             \
+              gpg4win-splash.wav exdll.h exdll.c                                \
+              g4wihelp.c desktopshellrun.cpp                                    \
+              slideshow.cpp gpgwrap.c                                           \
+              gpg-enable-keyboxd.bat gpg-disable-keyboxd.bat                    \
+              BreezeClassic.colors BreezeDark.colors                            \
+              zlib.pc sha1sum.c                                                 \
+              potomo                                                            \
+              index.theme                                                       \
+              slideshow/slides.dat                                              \
+              slideshow/slide1-gpgol.png                                        \
+              slideshow/slide2-gpgex.png                                        \
+              slideshow/slide3-kleopatra.png                                    \
+              slideshow/slide4-summary.png                                      \
+              icons/file-ext.ico                                                \
+              icons/mail-ext.ico                                                \
+              icons/shield.ico                                                  \
+              kdeglobals qtlogging.ini                                          \
+              make-msi.pl make-msi.guids                                        \
+              build-gpg4win.sh                                                  \
+              qt.conf                                                           \
+              WixUI_Gpg4win.wxs included-icons.txt
 
 if BUILD_APPIMAGE
 appimage = appimage
@@ -131,7 +46,7 @@ else
 appimage =
 endif
 
-SUBDIRS = ${appimage}
+SUBDIRS = ${appimage} nsis
 
 
 
@@ -622,9 +537,10 @@ endif
 
 clean-local: $(gpg4win_clean)
 
-common_nsi = inst-sections.nsi installer.nsi installer-finish.nsi	\
-  $(addsuffix .nsi,$(addprefix inst-,$(gpg4win_build_list)))		\
-  $(addsuffix .nsi,$(addprefix uninst-,$(gpg4win_build_list)))
+common_nsi = nsis/inst-sections.nsi nsis/installer.nsi \
+  nsis/installer-finish.nsi nsis/gpg4win.nsi \
+  $(addsuffix .nsi,$(addprefix nsis/inst-,$(gpg4win_build_list))) \
+  $(addsuffix .nsi,$(addprefix nsis/uninst-,$(gpg4win_build_list)))
 
 # Sign additional files as per signing setup
 # This is a bit of a hack.
@@ -685,26 +601,18 @@ COMPONENTS-list.tmp : $(top_srcdir)/NEWS
 # For some nut-crazy reason someone thought it would be a great idea
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
-installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-final \
+installers/gpg4win-$(VERSION).exe: $(common_nsi) $(stampdir)/stamp-final \
                         g4wihelp.dll gpgwrap.exe \
 		        $(foosum_exe) \
 				 $(HOWTO_files) \
 	                license.blurb versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
-           -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi && \
+           -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/nsis/gpg4win.nsi && \
 		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION).exe
 
 $(stampdir)/stamp-dist-self: versioninfo.txt
 	(set -e; cd ..; make dist-xz)
 	touch $(stampdir)/stamp-dist-self
-
-installers/gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsii) \
-                            $(stampdir)/stamp-final \
-                            $(stampdir)/stamp-dist-self \
-		            license.blurb
-	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
-	  -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win-src.nsi && \
-	mv gpg4win-src-$(VERSION).exe installers/gpg4win-src-$(VERSION).exe
 
 license.blurb: $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3
 	cat $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3 >$@
