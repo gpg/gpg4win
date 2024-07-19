@@ -67,6 +67,15 @@ EOF
     exit $1
 }
 
+rsync_gpg4win()
+{
+    rsync -a --exclude ".git" --exclude "playground" \
+        --exclude '*.tar.*' --exclude '*.zip' \
+        --exclude '*.exe' --exclude '*.wixlib' \
+        --exclude 'stamps'  --exclude 'installers' \
+        "$@"
+}
+
 gpg22="no"
 dirty="no"
 shell="no"
@@ -128,23 +137,23 @@ else
     mkdir -p "$buildroot"
     gpg4win_dir="${buildroot}/gpg4win"
     if test ! -d "${gpg4win_dir}"; then
-        if [ "$dirty" == "yes" ]; then
+        if [ "$dirty" == "yes" -o ! -d "${srcdir}/.git" ]; then
             mkdir -p "${gpg4win_dir}"
-            rsync -av --exclude ".git" --exclude "playground" \
-                --exclude '*.tar.*' --exclude '*.zip' \
-                --exclude '*.exe' --exclude '*.wixlib' \
-                --exclude 'stamps'  --exclude 'installers' \
-                "${srcdir}/" "${gpg4win_dir}/"
+            rsync_gpg4win "${srcdir}/" "${gpg4win_dir}/"
         else
             git clone "${srcdir}" "${gpg4win_dir}"
         fi
     else
-        rsync -av --exclude ".git" --exclude "playground" \
-            --exclude '*.tar.*' --exclude '*.zip' \
-            --exclude '*.exe' --exclude '*.wixlib' \
-            --exclude 'stamps'  --exclude 'installers' \
-            "${srcdir}/" "${gpg4win_dir}/"
-        echo "Continuing with existing directory"
+        echo "Directory ${gpg4win_dir} already exists."
+        if [ "$dirty" == "yes" ]; then
+            echo "Updating copy"
+            rsync_gpg4win "${srcdir}/" "${gpg4win_dir}/"
+        elif [ -d "${gpg4win_dir}/.git" ]; then
+            echo "Pulling local repo"
+            (cd "${gpg4win_dir}" && git pull)
+        else
+            echo "Continung without updating the buildscripts"
+        fi
     fi
 fi
 
@@ -162,9 +171,9 @@ cd ${gpg4win_dir}/packages
 
 echo "Downloading packages"
 if [ "$gpg22" == "yes" ]; then
-    ./download.sh --v3
+    ./download.sh --quiet --v3
 else
-    ./download.sh
+    ./download.sh --quiet
 fi
 
 userid=$(id -u)
