@@ -87,6 +87,9 @@ srcdir=$(cd $(dirname $0)/..; pwd)
 is_tmpbuild="no"
 update_image="no"
 
+# Store the original comamnd line
+commandline="$0 $@"
+
 while [ $# -gt 0 ]; do
     case $1 in
         --appimage) appimage="yes";;
@@ -128,7 +131,6 @@ if [ -z "$(docker images | grep $drep | grep $dtag)" -o "$update_image" == "yes"
 fi
 
 # make a local clone or export of gpg4win to keep the working copy clean
-
 if [ "$inplace" == "yes" ]; then
     echo "Building in $srcdir"
     gpg4win_dir="$srcdir"
@@ -200,6 +202,7 @@ fi
 docker run -it --rm --user "$userid:$groupid" \
     --volume ${gpg4win_dir}:/build \
     $docker_image $cmd 2>&1 | tee ${buildroot}/build-log.txt
+err="${PIPESTATUS[0]}"
 
 end_time=$(date +"%s")
 
@@ -208,17 +211,30 @@ hours=$((duration / 3600))
 minutes=$((duration % 3600 / 60))
 seconds=$((duration % 60))
 
-if [ ! $err ]; then
+if [ "$err" == "0" ]; then
+    mkdir -p "${srcdir}/installers"
+    results=$(find "${gpg4win_dir}/src/installers" -type f)
+    cp -i "$results" "${srcdir}/installers"
     echo ""
-    echo "#################### Finished ####################"
-    echo "   Results (if successfull) can be found under:"
-    echo "   ${gpg4win_dir}/src/installers"
-    echo "   Log can be found at:"
-    echo "   ${log_file}"
-    echo -n "    Build took: $buildtime"
-    printf "%02d:%02d:%02d\n" "$hours" "$minutes" "$seconds"
+    echo "#################### Success 🥳 ####################"
+    echo "Created:"
+    for result in "$results"; do
+        echo "${srcdir}/installers/$(basename $result)"
+    done
+else
+    echo "#################### Failure 😪 ####################"
+    echo "Command returned: $err"
 fi
 
+echo "Logfile:"
+echo "${log_file}"
+echo -n "Buildtime: $buildtime"
+printf "%02d:%02d:%02d\n" "$hours" "$minutes" "$seconds"
+echo "Build command:"
+echo "${commandline}"
+echo "###################################################"
+
 if [ "$is_tmpbuild" == "yes" ]; then
-    rm -I -rf "${buildroot}";
+    echo "Do you want to remove ${buildroot}?"
+    rm -rI "${buildroot}";
 fi

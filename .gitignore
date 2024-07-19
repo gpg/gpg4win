@@ -39,6 +39,7 @@ src/mingwm10.dll
 /src/stamps
 /src/appimage/appimage.mk
 
+installers
 src/installers
 src/signed_installers
 
