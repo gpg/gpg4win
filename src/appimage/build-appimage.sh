@@ -30,23 +30,33 @@ INSTDIR=${SRCDIR}/playground/install
 VSD_DIR=${SRCDIR}/gnupg-vsd
 
 cd ${BUILDROOT}
+# Check for the buildtype and existence of required files
+# early
+BUILDTYPE=$(cat ${BUILDROOT}/packages/BUILDTYPE || echo default)
+if [ $BUILDTYPE != default ] && [ ! -f ${SRCDIR}/gnupg-vsd/custom.mk ]; then
+    echo "ERROR: Non default build without custom file."
+    echo "Check that src/gnupg-vsd/custom.mk exists or "
+    echo "change the BUILDTYPE in packages/BUILDTYPE"
+    exit 2
+fi
+if [ $BUILDTYPE vsd ] && \
+    [ ! -f ${SRCDIR}/gnupg-vsd/Standard/VERSION ]; then
+    echo "No VERSION file in Standard dir."
+    exit 2
+fi
+if [ $BUILDTYPE gpd ] && \
+    [ ! -f ${SRCDIR}/gnupg-vsd/Desktop/VERSION ]; then
+    echo "No VERSION file in Desktop dir."
+    exit 2
+fi
+
+# The actual build
 ./autogen.sh --force
-./configure --enable-appimage --enable-maintainer-mode --disable-manuals
+./configure --enable-appimage --enable-maintainer-mode
 make
 
-if [ -f ${SRCDIR}/gnupg-vsd/custom.mk ]; then
-    if ls ${BUILDROOT}/packages/gnupg-2.2* >/dev/null 2>&1 ; then
-        GNUPG_BUILD_VSD=yes
-    else
-        GNUPG_BUILD_VSD=desktop
-    fi
-else
-    GNUPG_BUILD_VSD=no
-fi
-export GNUPG_BUILD_VSD
-
 echo 'rootdir = $APPDIR/usr' >${APPDIR}/usr/bin/gpgconf.ctl
-if [ $GNUPG_BUILD_VSD = yes ]; then
+if [ $BUILDTYPE = vsd ]; then
     echo 'sysconfdir = /etc/gnupg-vsd' >>${APPDIR}/usr/bin/gpgconf.ctl
 else
     echo 'sysconfdir = /etc/gnupg' >>${APPDIR}/usr/bin/gpgconf.ctl
@@ -57,7 +67,7 @@ cp ${SRCDIR}/appimage/start-shell ${APPDIR}/
 chmod +x ${APPDIR}/start-shell
 
 # Copy standard global configuration
-if [ $GNUPG_BUILD_VSD = yes ]; then
+if [ $BUILDTYPE = vsd ]; then
     mkdir -p ${APPDIR}/usr/share/gnupg/conf/gnupg-vsd
     rsync -aLv --delete --omit-dir-times \
           ${SRCDIR}/gnupg-vsd/Standard/etc/gnupg/ \
@@ -110,7 +120,7 @@ rm -f ${APPDIR}/GnuPG-Desktop-VERSION    2>/dev/null
 rm -f ${APPDIR}/Gpg4win-VERSION        2>/dev/null
 
 myversion=$(grep PACKAGE_VERSION ${SRCDIR}/../config.h|sed -n 's/.*"\(.*\)"$/\1/p')
-if [ $GNUPG_BUILD_VSD = yes ]; then
+if [ $BUILDTYPE = vsd ]; then
     OUTPUT=gnupg-vs-desktop-${myversion}-x86_64.AppImage
     echo "Packaging GnuPG VS-Desktop Appimage: $myversion"
     echo $myversion >${APPDIR}/GnuPG-VS-Desktop-VERSION
@@ -123,7 +133,7 @@ if [ $GNUPG_BUILD_VSD = yes ]; then
         mkdir -p ${APPDIR}/usr/etc/xdg
         cp ${VSD_DIR}/Standard/kleopatrarc ${APPDIR}/usr/etc/xdg
     fi
-elif [ $GNUPG_BUILD_VSD = desktop ]; then
+elif [ $BUILDTYPE = gpd ]; then
     OUTPUT=gnupg-desktop-${myversion}-x86_64.AppImage
     echo "Packaging GnuPG Desktop Appimage: $myversion"
     echo $myversion >${APPDIR}/GnuPG-Desktop-VERSION
