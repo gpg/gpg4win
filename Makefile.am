@@ -96,6 +96,8 @@ gen-ChangeLog:
 download: packages/packages.common packages/packages.4 packages/packages.3
 	(cd packages; ./download.sh)
 
+vsd-versions: src/stamps/stamp-versions-all-signed
+
 msi:
 	$(MAKE) $(AM_MAKEFLAGS) -C src msi
 
