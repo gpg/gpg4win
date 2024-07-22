@@ -76,29 +76,6 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/qtbase/add-kleopatras-mime-types.patch
 
-copy-news:
-	cp NEWS doc/website/NEWS.last
-
-
-copy-release: gpg4win-$(VERSION).tar.bz2 installers/gpg4win-$(VERSION).exe \
-	      installers/gpg4win-light-$(VERSION).exe \
-	      installers/gpg4win-vanilla-$(VERSION).exe
-	@echo Copying $(VERSION) to $(RELEASEHOST) >&2
-	@set -e;\
-	if ssh "$$(echo $(RELEASEHOST)|cut -d: -f -1)" \
-        test -f "$$(echo $(RELEASEHOST)/gpg4win-$(VERSION).exe|cut -d: -f2-)";\
-	then echo "This release has already been copied to the server" >&2 ;\
-	else scp gpg4win-$(VERSION).tar.bz2 \
-	         installers/gpg4win-$(VERSION).exe \
-	         installers/gpg4win-light-$(VERSION).exe \
-	         installers/gpg4win-vanilla-$(VERSION).exe \
-	         installers/gpg4win-src-$(VERSION).exe  $(RELEASEHOST)/ ;\
-	     for f in en de ; do \
-	       scp src/README.$$f.txt \
-	             $(RELEASEHOST)/README-$(VERSION).$$f.txt; \
-	     done;\
-	fi
-
 dist-hook: gen-ChangeLog
 
 gen_start_date = 2012-03-26T00:00:00
