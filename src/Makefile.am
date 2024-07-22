@@ -17,13 +17,13 @@
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 EXTRA_DIST =  config.site                                                       \
-              libiconv.def libintl.def findicons.sh                             \
-              gpg4win-splash.wav exdll.h exdll.c                                \
+              findicons.sh                                                      \
+              exdll.h exdll.c                                                   \
               g4wihelp.c desktopshellrun.cpp                                    \
               slideshow.cpp gpgwrap.c                                           \
               gpg-enable-keyboxd.bat gpg-disable-keyboxd.bat                    \
               BreezeClassic.colors BreezeDark.colors                            \
-              zlib.pc sha1sum.c                                                 \
+              sha1sum.c                                                         \
               potomo                                                            \
               index.theme                                                       \
               slideshow/slides.dat                                              \
@@ -38,7 +38,8 @@ EXTRA_DIST =  config.site                                                       
               make-msi.pl make-msi.guids                                        \
               build-gpg4win.sh                                                  \
               qt.conf                                                           \
-              WixUI_Gpg4win.wxs included-icons.txt
+              WixUI_Gpg4win.wxs included-icons.txt                              \
+              zlib.pc
 
 if BUILD_APPIMAGE
 appimage = appimage

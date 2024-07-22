@@ -73,10 +73,6 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-libkdepim.nsi uninst-libkdepim.nsi                     \
              inst-libkleo.nsi uninst-libkleo.nsi                         \
              inst-libpng.nsi uninst-libpng.nsi                           \
-             inst-man_advanced_de.nsi   uninst-man_advanced_de.nsi       \
-             inst-man_advanced_en.nsi   uninst-man_advanced_en.nsi       \
-             inst-man_novice_de.nsi     uninst-man_novice_de.nsi         \
-             inst-man_novice_en.nsi     uninst-man_novice_en.nsi         \
              inst-mimetreeparser.nsi uninst-mimetreeparser.nsi           \
              inst-okular.nsi uninst-okular.nsi                           \
              inst-openjpeg.nsi uninst-openjpeg.nsi                       \

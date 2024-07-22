@@ -774,21 +774,6 @@ FunctionEnd
 !ifdef HAVE_PKG_GPGPASS
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgpass} $(DESC_SEC_gpgpass)
 !endif
-!ifdef HAVE_PKG_MAN_NOVICE_EN
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_novice_en} $(DESC_SEC_man_novice_en)
-!endif
-!ifdef HAVE_PKG_MAN_ADVANCED_EN
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_advanced_en} $(DESC_SEC_man_advanced_en)
-!endif
-!ifdef HAVE_PKG_COMPENDIUM
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_compendium} $(DESC_SEC_compendium)
-!endif
-!ifdef HAVE_PKG_MAN_NOVICE_DE
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_novice_de} $(DESC_SEC_man_novice_de)
-!endif
-!ifdef HAVE_PKG_MAN_ADVANCED_DE
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_advanced_de} $(DESC_SEC_man_advanced_de)
-!endif
 
 !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgme_browser} $(DESC_SEC_gpgme_browser)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END

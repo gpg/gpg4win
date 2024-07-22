@@ -249,18 +249,6 @@
 !ifdef HAVE_PKG_PAPERKEY
 !include "inst-paperkey.nsi"
 !endif
-!ifdef HAVE_PKG_MAN_NOVICE_EN
-!include "inst-man_novice_en.nsi"
-!endif
-!ifdef HAVE_PKG_MAN_ADVANCED_EN
-!include "inst-man_advanced_en.nsi"
-!endif
-!ifdef HAVE_PKG_MAN_NOVICE_DE
-!include "inst-man_novice_de.nsi"
-!endif
-!ifdef HAVE_PKG_MAN_ADVANCED_DE
-!include "inst-man_advanced_de.nsi"
-!endif
 
 # These are displayed in the selection dialog.
 
@@ -273,31 +261,15 @@
 !ifdef HAVE_PKG_GPGEX
 !include "inst-gpgex.nsi"
 !endif
-!ifdef HAVE_PKG_COMPENDIUM
+
+# These always exist
 !include "inst-compendium.nsi"
-!endif
-
 !include "inst-gpgme-browser.nsi"
-
 !include "inst-final.nsi"
 
 # We have to invoke the uninstallers in reverse order!
-
-!ifdef HAVE_PKG_MAN_ADVANCED_DE
-!include "uninst-man_advanced_de.nsi"
-!endif
-!ifdef HAVE_PKG_MAN_NOVICE_DE
-!include "uninst-man_novice_de.nsi"
-!endif
-!ifdef HAVE_PKG_MAN_ADVANCED_EN
-!include "uninst-man_advanced_en.nsi"
-!endif
-!ifdef HAVE_PKG_MAN_NOVICE_EN
-!include "uninst-man_novice_en.nsi"
-!endif
-!ifdef HAVE_PKG_COMPENDIUM
 !include "uninst-compendium.nsi"
-!endif
+
 !ifdef HAVE_PKG_PAPERKEY
 !include "uninst-paperkey.nsi"
 !endif
@@ -346,18 +318,6 @@
 !endif
 !ifdef HAVE_PKG_BREEZE_ICONS
 !include "uninst-breeze-icons.nsi"
-!endif
-!ifdef HAVE_PKG_MAN_ADVANCED_DE
-!include "uninst-man_advanced_de.nsi"
-!endif
-!ifdef HAVE_PKG_MAN_NOVICE_DE
-!include "uninst-man_novice_de.nsi"
-!endif
-!ifdef HAVE_PKG_MAN_ADVANCED_EN
-!include "uninst-man_advanced_en.nsi"
-!endif
-!ifdef HAVE_PKG_MAN_NOVICE_EN
-!include "uninst-man_novice_en.nsi"
 !endif
 !ifdef HAVE_PKG_LIBICONV
 !include "uninst-libiconv.nsi"
@@ -634,62 +594,6 @@ calc_defaults_gpgex_done:
   StrCmp $R0 "0" 0 calc_defaults_paperkey_done
    !insertmacro UnselectSection ${SEC_paperkey}
 calc_defaults_paperkey_done:
-!endif
-
-!ifdef HAVE_PKG_COMPENDIUM
-  g4wihelp::config_fetch_bool "inst_compendium"
-  StrCmp $R0 "1" 0 calc_defaults_compendium_not_one
-   !insertmacro SelectSection ${SEC_compendium}
-   Goto calc_defaults_compendium_done
-  calc_defaults_compendium_not_one:
-  StrCmp $R0 "0" 0 calc_defaults_compendium_done
-   !insertmacro UnselectSection ${SEC_compendium}
-calc_defaults_compendium_done:
-!endif
-
-
-!ifdef HAVE_PKG_MAN_NOVICE_DE
-  g4wihelp::config_fetch_bool "inst_man_novice_de"
-  StrCmp $R0 "1" 0 calc_defaults_man_novice_de_not_one
-   !insertmacro SelectSection ${SEC_man_novice_de}
-   Goto calc_defaults_man_novice_de_done
-  calc_defaults_man_novice_de_not_one:
-  StrCmp $R0 "0" 0 calc_defaults_man_novice_de_done
-   !insertmacro UnselectSection ${SEC_man_novice_de}
-calc_defaults_man_novice_de_done:
-!endif
-
-!ifdef HAVE_PKG_MAN_NOVICE_EN
-  g4wihelp::config_fetch_bool "inst_man_novice_en"
-  StrCmp $R0 "1" 0 calc_defaults_man_novice_en_not_one
-   !insertmacro SelectSection ${SEC_man_novice_en}
-   Goto calc_defaults_man_novice_en_done
-  calc_defaults_man_novice_en_not_one:
-  StrCmp $R0 "0" 0 calc_defaults_man_novice_en_done
-   !insertmacro UnselectSection ${SEC_man_novice_en}
-calc_defaults_man_novice_en_done:
-!endif
-
-!ifdef HAVE_PKG_MAN_ADVANCED_DE
-  g4wihelp::config_fetch_bool "inst_man_advanced_de"
-  StrCmp $R0 "1" 0 calc_defaults_man_advanced_de_not_one
-   !insertmacro SelectSection ${SEC_man_advanced_de}
-   Goto calc_defaults_man_advanced_de_done
-  calc_defaults_man_advanced_de_not_one:
-  StrCmp $R0 "0" 0 calc_defaults_man_advanced_de_done
-   !insertmacro UnselectSection ${SEC_man_advanced_de}
-calc_defaults_man_advanced_de_done:
-!endif
-
-!ifdef HAVE_PKG_MAN_ADVANCED_EN
-  g4wihelp::config_fetch_bool "inst_man_advanced_en"
-  StrCmp $R0 "1" 0 calc_defaults_man_advanced_en_not_one
-   !insertmacro SelectSection ${SEC_man_advanced_en}
-   Goto calc_defaults_man_advanced_en_done
-  calc_defaults_man_advanced_en_not_one:
-  StrCmp $R0 "0" 0 calc_defaults_man_advanced_en_done
-   !insertmacro UnselectSection ${SEC_man_advanced_en}
-calc_defaults_man_advanced_en_done:
 !endif
 
 # Check if minimal install was requested on the command line
