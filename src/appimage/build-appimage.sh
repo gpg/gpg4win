@@ -186,3 +186,4 @@ linuxdeploy --appdir ${APPDIR} \
     2>&1 | tee /build/logs/linuxdeploy-gnupg-desktop.log
 
 echo ready
+exit 0

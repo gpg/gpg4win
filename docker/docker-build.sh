@@ -217,14 +217,23 @@ hours=$((duration / 3600))
 minutes=$((duration % 3600 / 60))
 seconds=$((duration % 60))
 
+if [ "$err" == "1" -a "$appimage" == "yes" ]; then
+    echo "Return value is 1 on AppImage build. Treating it as success."
+    err=0
+fi
+
 if [ "$err" == "0" ]; then
     mkdir -p "${srcdir}/installers"
-    results=$(find "${gpg4win_dir}/src/installers" -type f)
-    cp -i "$results" "${srcdir}/installers"
+    if [ "$appimage" == "yes" ]; then
+        results=$(find "${gpg4win_dir}" -maxdepth 1 -iname \*.appimage -a -type f -printf '%p ')
+    else
+        results=$(find "${gpg4win_dir}/src/installers" -type f -printf '%p ')
+    fi
     echo ""
     echo "#################### Success 🥳 ####################"
     echo "Created:"
-    for result in "$results"; do
+    for result in $results; do
+        cp -i "$result" ${srcdir}/installers/
         echo "${srcdir}/installers/$(basename $result)"
     done
 else
