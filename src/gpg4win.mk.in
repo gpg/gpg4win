@@ -792,14 +792,6 @@ $(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
   $(call QTPKG_template_,$1))
 endef
 
-# Template for internal packages.
-
-define IPKG_template
-
-$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-directories $(call GETDEPS,$(1))
-	touch $(stampdir)/stamp-final-$(1)
-endef
-
 define HOWTO_template
 HOWTO-$(1).$(2).txt : $(top_srcdir)/doc/HOWTO-$(1).$(2).txt
 	sed -e '/^;.*/d' \

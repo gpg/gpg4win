@@ -292,8 +292,6 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_SPKGEX([gpgme], [libgpg-error libassuan])
     GPG4WIN_SPKGEX([gpgol], [gpgme])
 
-    GPG4WIN_IPKG([compendium])
-
     # The GnuPG Package.
     GPG4WIN_BPKG_BINSRC([gnupg-w32])
     GPG4WIN_BPKG_MSISRC([gnupg-msi])

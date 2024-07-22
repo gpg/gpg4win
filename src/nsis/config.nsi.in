@@ -356,9 +356,6 @@
 !define gpg4win_pkg_gpgoljs @gpg4win_pkg_gpgoljs@
 !define gpg4win_pkg_gpgoljs_version @gpg4win_pkg_gpgoljs_version@
 
-# Internal packages.
-@HAVE_PKG_COMPENDIUM@
-
 # @HAVE_PKG_MAN_NOVICE_EN@
 
 # @HAVE_PKG_MAN_ADVANCED_EN@
