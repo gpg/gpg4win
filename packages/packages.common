@@ -217,11 +217,6 @@ chk bc72ee27c7239007ab1896c3c2fae53b076e2c9bd2483dc2769a16902bce8c04
 #file gpgme/gpgme-1.23.2.tar.bz2
 #chk 9499e8b1f33cccb6815527a1bc16049d35a6198a6c5fae0185f2bd561bce5224
 
-# last changed: 2021-01-07
-# by: ah
-file scute/scute-1.7.0.tar.bz2
-chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
-
 # See snapshots
 ## GpgOL
 ## last-changed: 2024-01-02
@@ -630,6 +625,13 @@ chk 64b80602e84b25e9164620af3f6341fa865b85e826ab8f5e02061ae24a277b20
 #
 server https://gnupg.org/ftp/gcrypt/snapshots
 
+# scute
+# last changed: 2024-07-19
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file scute/scute-1.7.1-beta45.tar.xz
+chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
+
 # gpgme
 # last changed: 2024-07-05
 # by: aheinecke
@@ -638,11 +640,11 @@ file gpgme/gpgme-1.24.0-beta606.tar.xz
 chk 9eabe5d98d71bf87e7a9d31386c9acb3e8298a102a82543cd53349466ae88805
 
 # gpgol
-# last changed: 2024-07-03
-# by: wk
-# verified: buildtree
-file gpgol/gpgol-2.5.13-beta6.tar.bz2
-chk 85fa5d021261addf4ab1929183fa0ec26ef5197ce0faa569eda066b4e51497e8
+# last changed: 2024-07-22
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file gpgol/gpgol-2.5.13-beta12.tar.xz
+chk c9d92cfc78736d3b73267667ae11d3437cab33f48cfcd613032fb6b8061310af
 
 
 # gpg4win-tools

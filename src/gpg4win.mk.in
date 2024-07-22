@@ -242,7 +242,7 @@ define SETVARS_EX
 	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_dir)";             \
 	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_dir)";        \
 	export PKG_CONFIG_PATH="$(ex_idir)/lib/pkgconfig";                  \
-	export PKG_CONFIG_LIBDIR="";                                        \
+	export PKG_CONFIG_LIBDIR="$(ex_idir)/lib/pkgconfig";                \
 	export PATH="$(ex_idir)/bin:$(native_idir)/bin:$${PATH}";            \
 	export LD_LIBRARY_PATH=$(native_idir)/lib:$(native_idir)/lib64;       \
 	export SYSROOT="$(ex_idir)"
@@ -442,6 +442,7 @@ $(stampdir)/stamp-$(1)-ex-02-configure: $(stampdir)/stamp-$(1)-ex-01-patch
 	  cd "$$$${pkgbdir}";				\
 	 eval "../$$$${pkg_version}/configure"		\
 		--prefix="$$$${pkgidir}"		\
+		--libdir="$$$${pkgidir}/lib"    \
 		--host=$(GPGEX_ADD_HOST)		\
 		--build=$(build)			\
 		$$$${pkgcfg} CFLAGS=\"-mms-bitfields -fcommon $$$${pkgextracflags}\";\
