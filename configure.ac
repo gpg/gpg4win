@@ -30,13 +30,21 @@ min_automake_version="1.9.3"
 m4_define([mym4_package],[gpg4win])
 m4_define([mym4_isvsd],[no])
 m4_define([mym4_isgpd],[no])
+m4_define([mym4_isv3build], m4_if(m4_esyscmd([ls packages/gnupg-2.*.tar.* | \
+                                             head -1 | cut -d. -f2 | \
+                                             tr -d '\n']),
+                                             [2],  [yes], [no]))
 m4_define([mym4_buildtype],
            m4_chomp_all(m4_esyscmd([(cat packages/BUILDTYPE 2>/dev/null\
                                                       || echo default)])))
-m4_if(mym4_buildtype,[vsd],[m4_define([mym4_isvsd],[yes])])
+m4_if(mym4_buildtype,[vsd],[m4_define([mym4_isvsd],[yes])
+                            m4_define([mym4_isv3build],[yes]]))
 
-# For VSD we use a different version number.
-m4_if(mym4_isvsd,yes,
+# If we are using GnuPG 2.2.x or building GnuPG VSD then
+# use a different version number. This allows configurations
+# where the buildtype is still VSD but the version used
+# for GnuPG might differ e.g 2.5 or 2.6
+m4_if(mym4_isv3build,yes,
       [m4_define([mym4_major],[3])
        m4_define([mym4_minor],[2])
        m4_define([mym4_micro],[3])],
