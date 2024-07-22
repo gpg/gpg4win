@@ -36,7 +36,7 @@ RUN zypper --non-interactive update && \
     at-spi2-core-devel \
     cups-devel \
     boost-devel \
-    fontconfig-devel \
+#    fontconfig-devel \
     openssl-devel \
     libtiff-devel \
     libusb-devel \
@@ -54,7 +54,7 @@ RUN zypper --non-interactive update && \
     libxkbcommon-x11-devel \
     libXrandr-devel \
     libXtst-devel \
-    Mesa-libEGL-devel \
+#   Mesa-libEGL-devel \
     Mesa-libGL-devel \
     openjpeg2-devel \
     openldap2-devel \

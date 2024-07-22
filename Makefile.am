@@ -70,6 +70,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
              patches-appimage/extra-cmake-modules/0001-Do-not-abort-without-QML-tools.patch \
+             patches-appimage/kcrash/0001-DRAFT-Do-not-use-OpenGL-if-it-is-not-available.patch \
              patches-appimage/kio/0001-Remove-kencodingfiledialog-to-avoid-Qt5Compat.patch \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
              patches-appimage/okular/0001-Make-KF6Pty-dependency-optional.patch \

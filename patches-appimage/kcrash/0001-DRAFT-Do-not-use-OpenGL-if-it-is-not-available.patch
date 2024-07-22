@@ -1,0 +1,52 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 6bae228a55b091dd658e0ee41dde0e6604a368b3 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Mon, 22 Jul 2024 22:37:17 +0200
+Subject: [PATCH] DRAFT: Do not use OpenGL if it is not available
+
+This is obviously missing the configure check for
+the opengl header and just a hack for now.
+---
+ src/kcrash.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/kcrash.cpp b/src/kcrash.cpp
+index f0fbc62..58385b4 100644
+--- a/src/kcrash.cpp
++++ b/src/kcrash.cpp
+@@ -47,8 +47,12 @@
+ #include <QGuiApplication>
+ #include <QLibraryInfo>
+ #include <QOffscreenSurface>
++// TODO add feature detection in cmake
++#define NO_OPENGL 1
++#ifndef NO_OPENGL
+ #include <QOpenGLContext>
+ #include <QOpenGLFunctions>
++#endif
+ #include <QStandardPaths>
+ #include <QThread>
+
+@@ -136,6 +140,7 @@ std::unique_ptr<char[]> s_glRenderer; // the GL_RENDERER
+
+ QString glRenderer()
+ {
++#ifndef NO_OPENGL
+     QOpenGLContext context;
+     QOffscreenSurface surface;
+     surface.create();
+@@ -152,6 +157,9 @@ QString glRenderer()
+         context.doneCurrent();
+     });
+     return QString::fromUtf8(reinterpret_cast<const char *>(context.functions()->glGetString(GL_RENDERER)));
++#else
++    return {};
++#endif
+ }
+
+ QString bootId()
+--
+2.45.2

@@ -232,11 +232,12 @@ gpg4win_pkg_qtbase_native_configure = \
         -DFEATURE_icu=OFF \
         -DFEATURE_zstd=OFF \
         -DFEATURE_glib=OFF \
+        -DFEATURE_dynamicgl=OFF \
+        -DFEATURE_egl=OFF \
+        -DFEATURE_opengl_desktop=OFF \
         -DFEATURE_opengl_dynamic=OFF \
         -DFEATURE_opengles2=OFF \
-        -DFEATURE_opengl_desktop=OFF \
-        -DFEATURE_egl=OFF \
-        -DFEATURE_dynamicgl=OFF \
+        -DINPUT_opengl=no \
         -DFEATURE_openssl=OFF \
         -DFEATURE_zstd=OFF \
         -DFEATURE_sql_mysql=OFF \
@@ -246,7 +247,6 @@ gpg4win_pkg_qtbase_native_configure = \
         -DFEATURE_sql_odbc=OFF \
         -DFEATURE_sql_sqlite=OFF \
         -DFEATURE_sql_ibase=OFF \
-        -DINPUT_opengl=no \
         -DCMAKE_VERBOSE_MAKEFILE=ON
 
 define gpg4win_pkg_qtbase_native_post_install
