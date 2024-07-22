@@ -70,7 +70,7 @@ EOF
 
 rsync_gpg4win()
 {
-    rsync -a --exclude ".git" --exclude "playground" \
+    rsync -a --exclude "playground" \
         --exclude '*.tar.*' --exclude '*.zip' \
         --exclude '*.exe' --exclude '*.wixlib' \
         --exclude 'stamps'  --exclude 'installers' \
