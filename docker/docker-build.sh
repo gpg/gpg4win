@@ -36,6 +36,7 @@ Options:
         --appimage      Build the AppImage
         --gpg-2.2       Use GnuPG 2.2 instead of the default
         --dirty         Include uncommited changes
+        --clean         Remove a pre-existing build directory
         --shell         Start a shell instead of starting a buildscript
         --root-shell    Start a root shell
         --clean-pkgs    Do not use already downloaded packages
@@ -81,6 +82,7 @@ dirty="no"
 shell="no"
 root_shell="no"
 clean_pkgs="no"
+clean="no"
 inplace="no"
 branch="master"
 srcdir=$(cd $(dirname $0)/..; pwd)
@@ -98,6 +100,7 @@ while [ $# -gt 0 ]; do
         --shell) shell="yes";;
         --root-shell) root_shell="yes";;
         --clean-pkgs) clean_pkgs="yes";;
+        --clean) clean="yes";;
         --inplace) inplace="yes";;
         --update-image) update_image="yes";;
         --buildroot) buildroot="$2"; shift; ;;
@@ -138,6 +141,9 @@ else
     echo "Building in $buildroot"
     mkdir -p "$buildroot"
     gpg4win_dir="${buildroot}/gpg4win"
+    if [ "$clean" == "yes" ]; then
+        rm -rf ${gpg4win_dir}
+    fi
     if test ! -d "${gpg4win_dir}"; then
         if [ "$dirty" == "yes" -o ! -d "${srcdir}/.git" ]; then
             mkdir -p "${gpg4win_dir}"
