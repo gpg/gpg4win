@@ -165,14 +165,16 @@ for f in dirmngr_ldap gpg-check-pattern \
 done
 
 # linuxdeploy also doesn't know about non-Qt plugins
+for f in $(find ${APPDIR}/usr/plugins/ -mindepth 1 -maxdepth 1 -type f); do
+    # Okularpart
+    /opt/linuxdeploy/usr/bin/patchelf --set-rpath '$ORIGIN/../../lib' $
+done
 for f in $(find ${APPDIR}/usr/plugins/ -mindepth 2 -maxdepth 2 -type f); do
     /opt/linuxdeploy/usr/bin/patchelf --set-rpath '$ORIGIN/../../../lib' $f
 done
 for f in $(find ${APPDIR}/usr/plugins/ -mindepth 3 -maxdepth 3 -type f); do
     /opt/linuxdeploy/usr/bin/patchelf --set-rpath '$ORIGIN/../../../../lib' $f
 done
-#/opt/linuxdeploy/usr/bin/patchelf \
-#        --set-rpath '$ORIGIN/../lib' ${APPDIR}/usr/plugins/okularpart.so
 
 # Fix up everything and build the file system
 linuxdeploy --appdir ${APPDIR} \
