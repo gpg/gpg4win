@@ -1370,14 +1370,16 @@ installers: \
 .PHONY : all-gpg4win clean-stamps clean-gpg4win msi msi-signed msi-upload
 
 # Insert the template for msi packages.
-define uniq =
-  $(eval seen :=)
-  $(foreach _,$1,$(if $(filter $_,${seen}),,$(eval seen += $_)))
-  ${seen}
-endef
+$(foreach msipkg, $(msi_targets), $(eval $(call MSI_template,$(msipkg))))
 
-$(info $(sort $msi_targets))
-$(foreach msipkg, $(info $(call uniq,$msi_targets)), $(eval $(call MSI_template,$(msipkg))))
+#define uniq =
+#  $(eval seen :=)
+#  $(foreach _,$1,$(if $(filter $_,${seen}),,$(eval seen += $_)))
+#  ${seen}
+#endef
+
+#$(info $(sort $msi_targets))
+#$(foreach msipkg, $(info $(call uniq,$msi_targets)), $(eval $(call MSI_template,$(msipkg))))
 
 # @emacs_local_vars_begin@
 # @emacs_local_vars_read_only@
