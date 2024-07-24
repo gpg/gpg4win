@@ -633,11 +633,11 @@ file scute/scute-1.7.1-beta45.tar.xz
 chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
 
 # gpgme
-# last changed: 2024-07-05
+# last changed: 2024-07-23
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgme/gpgme-1.24.0-beta606.tar.xz
-chk 9eabe5d98d71bf87e7a9d31386c9acb3e8298a102a82543cd53349466ae88805
+file gpgme/gpgme-1.24.0-beta616.tar.xz
+chk d565a45f397cc07bd3a6f2ca243d437916de5bb42fa5b78ccc166de151f033b6
 
 # gpgol
 # last changed: 2024-07-22
@@ -662,25 +662,25 @@ file gpgpass/gpgpass-202407051645.tar.xz
 chk b527a1c65a5dd4ac6033562a198718665ce460a8b0e2209d946b22c1eb788be3
 
 # mimetreeparser
-# last changed: 2024-07-05
+# last changed: 2024-07-23
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file mimetreeparser/mimetreeparser-202407051645.tar.xz
-chk b39196115052e268241a806bd2fc56a8fc75a65e3df4295ffaca2b63cfa9322a
+file mimetreeparser/mimetreeparser-202407231808.tar.xz
+chk 590c0b63ba88d9f35503f26417f67edb1b11ed062fa628474bf34294e3e872b0
 
 # libkleo
-# last changed: 2024-07-05
+# last changed: 2024-07-23
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202407051709.tar.xz
-chk a2afb416d38219c5776e37ab0a65164166c46668417975ec2fb6b55e8d885519
+file libkleo/libkleo-202407231548.tar.xz
+chk b8c29734b7486ad96ff81d641a7be4154fc568129948ef9b33be544466cbd377
 
 # kleopatra
-# last changed: 2024-07-05
+# last changed: 2024-07-23
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202407051834.tar.xz
-chk 300f05d64e0c2edc3c1448bff825876941c3ea4f1ed40f386c12228343448f8c
+file kleopatra/kleopatra-202407231548.tar.xz
+chk 99d916fed15d3755ad469a47ed4ace73d454df9b790a3b4c5abe365802174667
 
 # Okular and dependencies
 # poppler
