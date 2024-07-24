@@ -56,6 +56,7 @@ index 0000000..341efc4
 +#include "debug.h"
 +
 +#include <QSettings>
++#include <QOperatingSystemVersion>
 +
 +#include "windows.h"
 +
@@ -94,7 +95,7 @@ index 0000000..341efc4
 +
 +    // Nothing set -> default to bright. / Leave it to KColorSchemeManager.
 +    const bool appsUseLightTheme = regSettings.value(QStringLiteral("AppsUseLightTheme"), true).value<bool>();
-+    if (!appsUseLightTheme) {
++    if (!appsUseLightTheme && QOperatingSystemVersion::current() >= QOperatingSystemVersion(QOperatingSystemVersion::Windows, 10, 0, 17763)) {
 +        qCDebug(KICONTHEMES) << "Bright icons for AppsUseLightTheme false";
 +        return true;
 +    }

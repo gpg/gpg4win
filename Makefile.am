@@ -53,6 +53,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
              patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
              patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
+             patches/kguiaddons/0001-DRAFT-There-is-no-dark-mode-on-old-Windows.patch \
              patches/kiconthemes/0001-Make-DBus-optional.patch \
              patches/kiconthemes/dark-mode-detection.patch \
              patches/kleopatra/set-windows-registry.patch \
