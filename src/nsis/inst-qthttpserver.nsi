@@ -22,5 +22,5 @@
 
 Section "-qthttpserver" SEC_qthttpserver
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/Qt6Httpserver.dll
+  File ${prefix}/bin/Qt6HttpServer.dll
 SectionEnd

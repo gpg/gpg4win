@@ -22,6 +22,6 @@
 
 ; Uninstaller section.
 Section "-un.kstatusnotifieritem"
-  Delete "$INSTDIR\bin\libKF6Statusnotifieritem.dll"
+  Delete "$INSTDIR\bin\libKF6StatusNotifierItem.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd

@@ -22,5 +22,5 @@
 
 Section "-libkdepim" SEC_libkdepim
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKPim6libkdepim.dll
+  File ${prefix}/bin/libKPim6Libkdepim.dll
 SectionEnd

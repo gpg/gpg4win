@@ -27,5 +27,5 @@ Section "-kstatusnotifieritem" SEC_kstatusnotifieritem
 !endif
   SetOutPath "$INSTDIR"
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF6Statusnotifieritem.dll
+  File ${prefix}/bin/libKF6StatusNotifierItem.dll
 SectionEnd

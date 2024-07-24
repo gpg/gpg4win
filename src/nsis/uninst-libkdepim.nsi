@@ -17,6 +17,6 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 ; Uninstaller section.
 Section "-un.libkdepim"
-  Delete "$INSTDIR\bin\libKPim6libkdepim.dll"
+  Delete "$INSTDIR\bin\libKPim6Libkdepim.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd

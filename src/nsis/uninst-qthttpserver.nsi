@@ -17,5 +17,5 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 ; Uninstaller section.
 Section "-un.qthttpserver"
-  Delete "$INSTDIR\bin\Qt6Httpserver.dll"
+  Delete "$INSTDIR\bin\Qt6HttpServer.dll"
 SectionEnd
