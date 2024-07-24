@@ -1051,15 +1051,11 @@ define AUTHENTICODE_sign
    fi
 endef
 
-# Processed via eval as most other templates.
-define MSI_template
-
-$(1)-package: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
-
+# Generic MSI targets (same for each flavor)
 $(MSI_FNAME_PREFIX)-$(VERSION).wxs: $(common_nsi) $(stampdir)/stamp-final \
-		        $(foosum_exe) gpgwrap.exe \
-				make-msi.pl \
-	$(addsuffix /VERSION.sig,$(addprefix gnupg-vsd/,$(msi_targets)))
+    $(foosum_exe) gpgwrap.exe \
+    make-msi.pl \
+    $(addsuffix /VERSION.sig,$(addprefix gnupg-vsd/,$(msi_targets)))
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
 		--version $(VSD_VERSION) \
@@ -1074,40 +1070,46 @@ $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib: \
       WixUI_Gpg4win.wxs \
       $(MSI_FNAME_PREFIX)-$(VERSION).wxs \
       $(stampdir)/stamp-additional-signedfiles
-	($(call SETVARS_WINE,); \
+	($(call SETVARS_WINE_TWO_DOLLAR,); \
 	echo "Gpg4win" > $(root)/VERSION; \
 	echo "$(VERSION)" >> $(root)/VERSION; \
-	(ln -s $(idir) $$$$WINEINST; \
-	 ln -s $(ex_idir) $$$$WINEINSTEX; \
-	 ln -s `readlink -f $(top_srcdir)` $$$$WINESRC; \
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
+	(ln -s $(idir) $$WINEINST; \
+	 ln -s $(ex_idir) $$WINEINSTEX; \
+	 ln -s `readlink -f $(top_srcdir)` $$WINESRC; \
+		$(WINE) $$WIXPREFIX2/candle.exe \
 		-dInstDir=k: \
 		-dInstDirEx=j: \
 		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
+		-dVersion=$$MSI_VERSION \
 		-out k:\\$(MSI_FNAME_PREFIX)-$(VERSION).wixobj \
 		-pedantic -wx i:\\src\\$(MSI_FNAME_PREFIX)-$(VERSION).wxs \
 		-arch x64 || exit 1;\
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
+		$(WINE) $$WIXPREFIX2/candle.exe \
 		-dInstDir=k: \
 		-dInstDirEx=j: \
 		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
+		-dVersion=$$MSI_VERSION \
 		-out k:\\gpg4win-ui.wixobj \
 		-arch x64 \
 		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
 		\
-		$(WINE) $$$$WIXPREFIX2/lit.exe \
+		$(WINE) $$WIXPREFIX2/lit.exe \
 		-out k:\\$(MSI_FNAME_PREFIX)-$(VERSION).wixlib \
 		-bf \
 		-wx \
 		-pedantic \
 		k:\\$(MSI_FNAME_PREFIX)-$(VERSION).wixobj k:\\gpg4win-ui.wixobj || exit 1; \
 		\
-	) || ERR=1; (rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
-	if [ -n "$$$$ERR" ]; then \
+	) || ERR=1; (rm $$WINEINST; rm $$WINESRC; rm $$WINEINSTEX); \
+	if [ -n "$$ERR" ]; then \
 		exit 1; \
 	fi)
+
+# Custom targets for each msi_target flavor.
+# Processed via eval as most other templates.
+define MSI_template
+
+$(1)-package: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 
 $(idir)/$(1).wixlib: gnupg-vsd/$(1)/$(1).wxs
 	($(call SETVARS_WINE,); \
