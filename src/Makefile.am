@@ -472,11 +472,15 @@ $(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
      cd "$(idir)"; \
      for f in $(AUTHENTICODE_FILES); do \
        if [ ! -f "$$f" ]; then \
-         echo "speedo: ERROR: file '$$f' not available for signing"; \
+         echo "ERROR: file '$$f' not available for signing"; \
          exit 1; \
        fi;\
      done; \
      for f in $(AUTHENTICODE_FILES); do \
+       if [ ! -s "$$f" ]; then \
+         echo "Codesign: Skipping over empty file '$$f'"; \
+         continue; \
+       fi; \
        $(abs_top_srcdir)/build-aux/authenticode-sign.sh --stamp "$$f" "$$f" ;\
      done \
      )
