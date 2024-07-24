@@ -167,7 +167,8 @@ fi
 
 if [ "$clean_pkgs" == "no" -a "$inplace" == "no" ]; then
     echo "Copying packages from ${srcdir}/packages .."
-    files=$(find ${srcdir}/packages -name \*.tar\* -o -name \*.zip -o -name \*.exe -o -name \*.wixlib)
+    files=$(find ${srcdir}/packages -name \*.tar\* -o -name \*.zip -o \
+        -name \*.exe -o -name \*.wixlib -o -name '.#download.*')
     [ -n "$files" ] && cp $files ${gpg4win_dir}/packages
 fi
 
