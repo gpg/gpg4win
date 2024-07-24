@@ -15,85 +15,111 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
-
-_AUTHENTICODE_FILES = \
-	bin/gpg-error.exe \
-	bin/gpgex.dll \
-	bin/gpgme-json.exe \
-	bin/gpgolconfig.exe \
-	bin/gpgol.dll \
-	bin/gpgolkeyadder.exe \
-	bin/kleopatra.exe \
-	bin/libassuan-9.dll \
-	bin/libfreetype.dll \
-	bin/libgpg-error-0.dll \
-	bin/libgpgme-11.dll \
-	bin/libgpgmepp-6.dll \
-	bin/libical.dll \
-	bin/libicalss.dll \
-	bin/libicalvcal.dll \
-	bin/libiconv-2.dll \
-	bin/libintl-8.dll \
-	bin/libjpeg-9.dll \
-	bin/libKF5Archive.dll \
-	bin/libKF5Bookmarks.dll \
-	bin/libKF5CalendarCore.dll \
-	bin/libKF5Codecs.dll \
-	bin/libKF5Completion.dll \
-	bin/libKF5ConfigCore.dll \
-	bin/libKF5ConfigGui.dll \
-	bin/libKF5ConfigWidgets.dll \
-	bin/libKF5CoreAddons.dll \
-	bin/libKF5Crash.dll \
-	bin/libKF5GuiAddons.dll \
-	bin/libKF5I18n.dll \
-	bin/libKF5IconThemes.dll \
-	bin/libKF5ItemModels.dll \
-	bin/libKF5ItemViews.dll \
-	bin/libKF5JobWidgets.dll \
-	bin/libKF5KIOCore.dll \
-	bin/libKF5KIOGui.dll \
-	bin/libKF5KIOWidgets.dll \
-	bin/libKF5Parts.dll \
-	bin/libKF5Service.dll \
-	bin/libKF5Solid.dll \
-	bin/libKF5SonnetCore.dll \
-	bin/libKF5SonnetUi.dll \
-	bin/libKF5TextWidgets.dll \
-	bin/libKF5ThreadWeaver.dll \
-	bin/libKF5WidgetsAddons.dll \
-	bin/libKF5WindowSystem.dll \
-	bin/libKF5XmlGui.dll \
-	bin/libkleopatraclientcore.dll \
-	bin/libkleopatraclientgui.dll \
-	bin/libKPim5Libkleo.dll \
-	bin/libKPim5Mbox.dll \
-	bin/libKPim5Mime.dll \
-	bin/libKPim5MimeTreeParserCore.dll \
-	bin/libKPim5MimeTreeParserWidgets.dll \
-	bin/libOkular5Core.dll \
-	bin/libopenjp2.dll \
-	bin/libpcre2-16.dll \
-	bin/libpng16-16.dll \
-	bin/libpoppler-130.dll \
-	bin/libpoppler-qt5-1.dll \
-	bin/libqgpgme-15.dll \
-	bin/libtiff.dll \
-	bin/okular.exe \
-	bin/overlayer.exe \
-	bin/paperkey.exe \
-	bin/pinentry.exe \
-	bin/pinentry-w32.exe \
-	bin/Qt6Core.dll \
-	bin/Qt6Gui.dll \
-	bin/Qt6Network.dll \
-	bin/Qt6PrintSupport.dll \
-	bin/Qt6Svg.dll \
-	bin/Qt6Widgets.dll \
-	bin/Qt6WinExtras.dll \
-	bin/Qt6Xml.dll \
-	bin/resolver.exe \
-	bin/zlib1.dll \
+AUTHENTICODE_FILES = \
+	 bin/gpg-error.exe \
+	 bin/gpgex.dll \
+	 bin/gpgme-json.exe \
+	 bin/gpgol-client.exe \
+	 bin/gpgolconfig.exe \
+	 bin/gpgol.dll \
+	 bin/gpgolkeyadder.exe \
+	 bin/gpgol-server.exe \
+	 bin/gpgpass.exe \
+	 bin/libiconv-2.dll \
+	 bin/kleopatra.exe \
+	 bin/libassuan-9.dll \
+	 bin/libfreetype.dll \
+	 bin/libgpg-error-0.dll \
+	 bin/libgpgme-11.dll \
+	 bin/libgpgmepp-6.dll \
+	 bin/libical.dll \
+	 bin/libicalss.dll \
+	 bin/libicalvcal.dll \
+	 bin/libiconv-2.dll \
+	 bin/libintl-8.dll \
+	 bin/libjpeg-9.dll \
+	 bin/libKF6Archive.dll \
+	 bin/libKF6Bookmarks.dll \
+	 bin/libKF6BreezeIcons.dll \
+	 bin/libKF6CalendarCore.dll \
+	 bin/libKF6Codecs.dll \
+	 bin/libKF6ColorScheme.dll \
+	 bin/libKF6Completion.dll \
+	 bin/libKF6ConfigCore.dll \
+	 bin/libKF6ConfigGui.dll \
+	 bin/libKF6ConfigWidgets.dll \
+	 bin/libKF6Contacts.dll \
+	 bin/libKF6CoreAddons.dll \
+	 bin/libKF6Crash.dll \
+	 bin/libKF6GuiAddons.dll \
+	 bin/libKF6I18n.dll \
+	 bin/libKF6I18nLocaleData.dll \
+	 bin/libKF6IconThemes.dll \
+	 bin/libKF6IconWidgets.dll \
+	 bin/libKF6ItemModels.dll \
+	 bin/libKF6ItemViews.dll \
+	 bin/libKF6JobWidgets.dll \
+	 bin/libKF6KIOCore.dll \
+	 bin/libKF6KIOGui.dll \
+	 bin/libKF6KIOWidgets.dll \
+	 bin/libKF6Parts.dll \
+	 bin/libKF6Prison.dll \
+	 bin/libKF6Service.dll \
+	 bin/libKF6Solid.dll \
+	 bin/libKF6SonnetCore.dll \
+	 bin/libKF6SonnetUi.dll \
+	 bin/libKF6StatusNotifierItem.dll \
+	 bin/libKF6SyntaxHighlighting.dll \
+	 bin/libKF6TextAddonsWidgets.dll \
+	 bin/libKF6TextAutoCorrectionCore.dll \
+	 bin/libKF6TextAutoCorrectionWidgets.dll \
+	 bin/libKF6TextCustomEditor.dll \
+	 bin/libKF6TextEmoticonsCore.dll \
+	 bin/libKF6TextEmoticonsWidgets.dll \
+	 bin/libKF6TextGrammarCheck.dll \
+	 bin/libKF6TextTranslator.dll \
+	 bin/libKF6TextUtils.dll \
+	 bin/libKF6TextWidgets.dll \
+	 bin/libKF6ThreadWeaver.dll \
+	 bin/libKF6WidgetsAddons.dll \
+	 bin/libKF6WindowSystem.dll \
+	 bin/libKF6XmlGui.dll \
+	 bin/libkleopatraclientcore.dll \
+	 bin/libkleopatraclientgui.dll \
+	 bin/libKPim6Libkdepim.dll \
+	 bin/libKPim6Libkleo.dll \
+	 bin/libKPim6Mbox.dll \
+	 bin/libKPim6Mime.dll \
+	 bin/libKPim6MimeTreeParserCore.dll \
+	 bin/libKPim6MimeTreeParserWidgets.dll \
+	 bin/libKPim6TextEdit.dll \
+	 bin/libOkular6Core.dll \
+	 bin/libopenjp2.dll \
+	 bin/libpcre2-16.dll \
+	 bin/libpng16-16.dll \
+	 bin/libpoppler-138.dll \
+	 bin/libpoppler-qt6-3.dll \
+	 bin/libqgpgmeqt6-15.dll \
+	 bin/libqrencode.dll \
+	 bin/libqt6keychain.dll \
+	 bin/libtiff.dll \
+	 bin/libzstd.dll \
+	 bin/okular.exe \
+	 bin/overlayer.exe \
+	 bin/paperkey.exe \
+	 bin/pinentry.exe \
+	 bin/pinentry-w32.exe \
+	 bin/Qt6Core.dll \
+	 bin/Qt6Gui.dll \
+	 bin/Qt6HttpServer.dll \
+	 bin/Qt6Network.dll \
+	 bin/Qt6PrintSupport.dll \
+	 bin/Qt6Svg.dll \
+	 bin/Qt6WebSockets.dll \
+	 bin/Qt6Widgets.dll \
+	 bin/Qt6Xml.dll \
+	 bin/resolver.exe \
+	 bin/zlib1.dll \
 	../install-ex/bin/gpgex.dll \
 	../install-ex/bin/gpgme-json.exe \
 	../install-ex/bin/gpgol.dll \
@@ -104,10 +130,10 @@ _AUTHENTICODE_FILES = \
 	../install-ex/libexec/gpgme-w32spawn.exe \
 	libexec/gpgme-w32spawn.exe \
 	../../libgcc_s_dw2-1.dll-x \
-	lib/plugins/kf5/kio/kio_file.dll \
-	lib/plugins/kf5/sonnet/sonnet_ispellchecker.dll \
-	lib/plugins/okular/generators/okularGenerator_poppler.dll \
-	lib/plugins/okularpart.dll \
+	lib/plugins/kf6/kio/kio_file.dll \
+	lib/plugins/kf6/sonnet/sonnet_ispellchecker.dll \
+	lib/plugins/kf6/parts/okularpart.dll \
+	lib/plugins/okular_generators/okularGenerator_poppler.dll \
 	lib/scute.dll \
 	../../libstdc++-6.dll-x \
 	../../libwinpthread-1.dll-x \
@@ -115,8 +141,10 @@ _AUTHENTICODE_FILES = \
 	plugins/iconengines/qsvgicon.dll \
 	plugins/imageformats/qsvg.dll \
 	plugins/platforms/qwindows.dll \
-	plugins/printsupport/windowsprintersupport.dll \
-	plugins/styles/qwindowsvistastyle.dll \
+	plugins/styles/qmodernwindowsstyle.dll \
+	plugins/iconengines/qsvgicon.dll \
+	plugins/imageformats/qsvg.dll \
+	plugins/tls/qschannelbackend.dll \
 	../../sha1sum.exe \
 	../../sha256sum.exe
 
