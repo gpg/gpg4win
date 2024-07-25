@@ -42,6 +42,9 @@ Section "-un.qtbase"
   Delete "$INSTDIR\bin\platforms\qwindows.dll"
   Delete "$INSTDIR\bin\styles\qmodernwindowsstyle.dll"
 
+  Delete "$INSTDIR\bin\tls\qschannelbackend.dll"
+  RmDir "$INSTDIR\bin\tls"
+
   RMDir "$INSTDIR\bin\platforms"
   RMDir "$INSTDIR\bin\styles"
   RMDir "$INSTDIR\bin"

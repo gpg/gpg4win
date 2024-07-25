@@ -26,7 +26,7 @@
 
 ; Uninstaller section.
 Section "-un.breeze-icons"
-  RMDir "$INSTDIR\bin\libKF6BreezeIcons.dll"
+  Delete "$INSTDIR\bin\libKF6BreezeIcons.dll"
   RMDir "$INSTDIR\bin"
   RMDir "$INSTDIR"
 SectionEnd
