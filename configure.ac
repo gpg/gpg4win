@@ -83,10 +83,13 @@ IS_BETA_BUILD=mym4_isbeta
 IS_VSD_BUILD=mym4_isvsd
 IS_GPD_BUILD=mym4_isgpd
 
-# XXX: It seems to be impossible in the way we call cmake to pass
-# defines with spaces. So we use a nice "FOUR-PER-EM SPACE" U+2005 *cough*
-DISTRIBUTION_TEXT=m4_if(mym4_isvsd, [yes], ["g10 Code GmbH"], ["Gpg4win"])
+# Variables for the version info
+PRODUCT_NAME=m4_if(mym4_isvsd, [yes], ["GnuPG VS-Desktop"],
+                   m4_if(mym4_isgpd, [yes], ["GnuPG Desktop"], ["Gpg4win"]))
+COMPANY_NAME=m4_if(mym4_buildtype, [default],
+                ["Gpg4win Community"], ["g10 Code GmbH"])
 
+# Early sanity checks and dirs
 AC_CONFIG_SRCDIR(src/nsis/config.nsi.in)
 AC_CONFIG_MACRO_DIR(m4)
 
@@ -100,13 +103,14 @@ AC_CONFIG_HEADERS([config.h])
 AM_PO_SUBDIRS
 
 
+AC_SUBST(PRODUCT_NAME)
+AC_SUBST(COMPANY_NAME)
 AC_SUBST(PACKAGE)
 AC_SUBST(VERSION)
 AC_SUBST(GIT_BETASTRING)
 AC_SUBST(IS_BETA_BUILD)
 AC_SUBST(IS_VSD_BUILD)
 AC_SUBST(IS_GPD_BUILD)
-AC_SUBST(DISTRIBUTION_TEXT)
 
 # Generate extended version information.  Note, that for NSIS use we
 # must not translate the dots to commas in the BUILD_FILEVERSION.
@@ -116,11 +120,13 @@ changequote(,)dnl
 BUILD_FILEVERSION=`echo "$VERSION" | sed 's/\([0-9.]*\).*/\1./'`
 changequote([,])dnl
 BUILD_FILEVERSION="${BUILD_FILEVERSION}${GIT_REVISION_DEC}"
+BUILD_FILEVERSION_TR=`echo "${BUILD_FILEVERSION}" | tr . ,`
 BUILD_BETANUM=`echo "${GIT_BETASTRING}" | sed 's/-beta//'`
 AC_SUBST(BUILD_BETANUM)
 AC_SUBST(BUILD_TIMESTAMP)
 AC_SUBST(BUILD_ISODATE)
 AC_SUBST(BUILD_FILEVERSION)
+AC_SUBST(BUILD_FILEVERSION_TR)
 
 # The final release is copied to an archive server.  The default
 # location may be changed by setting the RELEASEHOST envvar.
@@ -527,6 +533,12 @@ AC_CONFIG_FILES(src/toolchain-native.cmake)
 AC_CONFIG_FILES(src/appimage/Makefile src/appimage/appimage.mk)
 AC_CONFIG_FILES(src/appimage/rsync-filters/Makefile)
 AC_CONFIG_FILES(src/nsis/Makefile)
+AC_CONFIG_FILES(src/versioninfo.rc.in)
+AC_CONFIG_FILES(src/gpg4win.w32-manifest.in)
+
+AC_CONFIG_FILES(src/gccwrap.sh)
+AC_OUTPUT_COMMANDS([chmod +x src/gccwrap.sh])
+
 AC_OUTPUT
 
 # Throw a warning if optional tools are missing
@@ -549,7 +561,7 @@ echo -n "
         Revision: ${GIT_REVISION}  (${GIT_REVISION_DEC})
         32bit platform: $host
         64bit platform: ${GPGEX_ADD_HOST}
-        Distribution: ${DISTRIBUTION_TEXT} (mym4_buildtype)
+        Distribution: ${PRODUCT_NAME} (mym4_buildtype)
 "
 if test -n "$JOBS"; then
     echo "        make jobs: ${JOBS}"

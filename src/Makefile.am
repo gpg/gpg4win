@@ -20,7 +20,8 @@ EXTRA_DIST =  config.site                                                       
               findicons.sh                                                      \
               exdll.h exdll.c                                                   \
               g4wihelp.c desktopshellrun.cpp                                    \
-              slideshow.cpp gpgwrap.c                                           \
+              slideshow.cpp gpgwrap.c gccwrap.sh.in                             \
+              versioninfo.rc.in.in gpg4win.w32-manifest.in.in                   \
               gpg-enable-keyboxd.bat gpg-disable-keyboxd.bat                    \
               BreezeClassic.colors BreezeDark.colors                            \
               sha1sum.c                                                         \
