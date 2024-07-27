@@ -1,0 +1,212 @@
+#!/bin/bash
+# Wrapper around gcc / g++ to link in Windows property resources.
+# Copyright (C) 2024 g10 Code GmbH
+#
+# Software engineering by Andre Heinecke <aheineceke@gnupg.org>
+#
+# This file is part of GnuPG.
+#
+# GnuPG is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# GnuPG is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, see <https://www.gnu.org/licenses/>.
+#
+# SPDX-License-Identifier: GPL-3.0+
+
+g4win_dir="@abs_top_srcdir@"
+
+# A list of binaries that have version info properties but which
+# the script might not catch, e.g. because the link command is in
+# a file.
+BINS_WITH_VERSIONINFO="kleopatra.exe"
+
+# Check early if the arguments contain exe or dll to indicate
+# linkage and then additionally check for conftest, which
+# is used as the filename in autotools configure checks. And
+# cmTC_ which is shorthand for CMake Test Compile.
+#
+# In such chases leave the wrapper early to avoid overhead.
+if ! echo "$@" | grep -qE '\.exe|\.dll' || echo "$@" | grep -qE 'conftest|cmTC_'; then
+  /usr/bin/`basename $0` "$@"
+  exit $?
+fi
+
+for bin in $BINS_WITH_VERSIONINFO; do
+  if echo "$@" | grep -q $bin; then
+    /usr/bin/`basename $0` "$@"
+    exit $?
+  fi
+done
+
+start_time=$(date +%s.%N)
+
+# Function to check if a string exists in an array
+contains() {
+  local n=$#
+  local value=${!n}
+  for ((i=1; i < $#; i++)) {
+    if [ "${!i}" == "${value}" ]; then
+      return 0
+    fi
+  }
+  return 1
+}
+
+# Prepare the resource files by setting package specific
+# variables and copy the files into the build tree.
+prepare_resources() {
+  set -x
+  prefix=$g4win_dir/src/playground/build
+  current_dir=$(pwd)
+
+  # Remove everything before the known prefix
+  build_dir=${current_dir#*$prefix/}
+
+  # PKGVERSION needs the a,b,c,d 4 part style */
+  if [[ $build_dir =~ -beta ]]; then
+    build_dir=$(echo $build_dir | sed 's/-beta/./')
+    vers_suffix=""
+  else
+    vers_suffix=",0"
+  fi
+
+  if [[ $build_dir =~ ^([^/]+)-([^/]+)-build ]]; then
+    pkgname=${BASH_REMATCH[1]}
+    pkgversion=${BASH_REMATCH[2]}
+  elif [[ $build_dir =~ ^([^/]+)-([^/]+)-ex-build ]]; then
+    pkgname=${BASH_REMATCH[1]}
+    pkgversion=${BASH_REMATCH[2]}
+  elif [[ $build_dir =~ ^([^/]+)-([^/]+) ]]; then
+    # For pkgs without a build dir like zlib
+    pkgname=${BASH_REMATCH[1]}
+    pkgversion=${BASH_REMATCH[2]}
+  else
+    echo "The current directory does not match the expected structure."
+    exit 1
+  fi
+
+  # Ensure that the FILEVERSION matches the 0,1,2,3 pattern
+  pkgversion=$(echo "${pkgversion}${vers_suffix}" | tr . ,)
+  # Count the number of commas
+  comma_count=$(echo "$pkgversion" | awk -F',' '{print NF-1}')
+  while [ $comma_count -lt 3 ]; do
+    pkgversion="${pkgversion},0"
+    comma_count=$((comma_count + 1))
+  done
+
+  if [[ ! "$1" =~ \.dll$ ]]; then
+    filetype="0x02L \/* VFT_DLL *\/"
+  else
+    filetype="0x01L \/* VFT_EXE *\/"
+  fi
+
+  if [ "@IS_BETA_BUILD@" == "yes" ]; then
+    # getting a bit fancy..
+    # VS_FF_PRERELEASE (2= the file is a development version
+    # only and not commercially available)
+    fileflags="0x02L \/* VS_FF_PRERELEASE *\/"
+  else
+    fileflags="0x0L"
+  fi
+
+  cat $g4win_dir/src/versioninfo.rc.in | \
+    sed "s/@PKG_VERS@/$pkgversion/" | \
+    sed "s/@ORIGINAL_FILENAME@/$1/" | \
+    sed "s/@FILEFLAGS@/$fileflags/" | \
+    sed "s/@FILETYPE@/$filetype/" | \
+    sed "s/@PKG_NAME@/$pkgname/" > versioninfo.rc
+
+  cat $g4win_dir/src/gpg4win.w32-manifest.in | \
+    sed "s/@PKG_VERS@/$pkgversion/" |
+    sed "s/@PKG_NAME@/$pkgname/" > gpg4win.w32-manifest
+}
+
+# Function to parse AUTHENTICODE_FILES from the makefile
+parse_authenticode_files() {
+  local makefile_path=$1
+  local files=()
+  local found=0
+
+  while IFS= read -r line; do
+    if [[ $line == "AUTHENTICODE_FILES ="* ]]; then
+      found=2
+      line=${line#*=}
+    fi
+    if [[ $found -gt 0 ]]; then
+      for file in $(echo $line | tr -d '\\'); do
+        files+=("$(basename -- $file)")
+        found=2
+      done
+    fi
+    if [[ $found -eq 1 && $line != '\\' ]]; then
+      break
+    fi
+    if [[ $found -eq 2 ]]; then
+        found=1
+    fi
+  done < "$makefile_path"
+
+  echo "${files[@]}"
+}
+
+# Parse the command line arguments
+output_file=""
+has_versioninfo=0
+
+for arg in "$@"; do
+  if [ "$arg" == "-o" ]; then
+    output_file_next=1
+  elif [ "$output_file_next" == "1" ]; then
+    output_file=$arg
+    output_file_next=
+    if [[ ! "$output_file" =~ \.dll$ && ! "$output_file" =~ \.exe$ ]]; then
+      break
+    fi
+  elif [[ "$arg" =~ versioninfo.o$ ]]; then
+    has_versioninfo=1
+  fi
+done
+
+# Parse the AUTHENTICODE_FILES from the gpg4win.mk.in
+AUTHENTICODE_FILES=($(parse_authenticode_files "$g4win_dir/src/gpg4win.mk.in"))
+
+original=/usr/bin/`basename $0`
+if [[ "$original" == *-gcc ]]; then
+  windres="${original%-gcc}-windres"
+elif [[ "$original" == *-g++ ]]; then
+  windres="${original%-g++}-windres"
+fi
+
+# If output file is found and the linker command does
+# not already contain versioninfo.o
+if [ "$output_file" != "" ] && [ "$has_versioninfo" -eq 0 ]; then
+  filename=$(basename -- "$output_file")
+
+  if contains "${AUTHENTICODE_FILES[@]}" "$filename"; then
+    echo "Preparing manifest and versioninfo for: $filename"
+    prepare_resources "$filename"
+    echo "Compiling resource file"
+    $windres -i versioninfo.rc -o versioninfo.o
+    added_obj=versioninfo.o
+  fi
+fi
+end_time=$(date +%s.%N)
+
+runtime=$(echo "$end_time - $start_time" | bc)
+echo $runtime >> /tmp/gccwrap_delay
+
+# Execute the original command
+if [ -n "$added_obj" ]; then
+  echo "Adding versioninfo for command: '$@'" >> /tmp/gccwrap.log
+  /usr/bin/`basename $0` "$@" "$added_obj"
+else
+  /usr/bin/`basename $0` "$@"
+fi

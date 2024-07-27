@@ -20,7 +20,8 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
 	config.site config.nsi.in \
         libiconv.def libintl.def findicons.sh \
         gpg4win-splash.wav exdll.h exdll.c g4wihelp.c desktopshellrun.cpp \
-        g4wihelp.nsi slideshow.cpp gpgwrap.c \
+        g4wihelp.nsi slideshow.cpp gpgwrap.c gccwrap.sh.in \
+        versioninfo.rc.in.in gpg4win.w32-manifest.in.in \
         gpg-enable-keyboxd.bat gpg-disable-keyboxd.bat \
         BreezeClassic.colors BreezeDark.colors \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
@@ -110,7 +111,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         make-msi.pl make-msi.guids \
         build-gpg4win.sh \
         WixUI_Gpg4win.wxs icons/shield.ico included-icons.txt
-
 
 if BUILD_APPIMAGE
 appimage = appimage

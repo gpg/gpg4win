@@ -165,6 +165,10 @@ $(stampdir)/stamp-directories:
 	$(MKDIR) $(ipdir)
 	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_idir))
 	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_ipdir))
+	ln -s $(abs_srcdir)/gccwrap.sh $(native_idir)/bin/i686-w64-mingw32-gcc
+	ln -s $(abs_srcdir)/gccwrap.sh $(native_idir)/bin/x86_64-w64-mingw32-gcc
+	ln -s $(abs_srcdir)/gccwrap.sh $(native_idir)/bin/i686-w64-mingw32-g++
+	ln -s $(abs_srcdir)/gccwrap.sh $(native_idir)/bin/x86_64-w64-mingw32-g++
 	touch $(bdir)/versioninfo.txt
 	touch $(stampdir)/stamp-directories
 
