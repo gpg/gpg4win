@@ -224,7 +224,7 @@ if [ "$err" == "1" -a "$appimage" == "yes" ]; then
 fi
 
 if [ "$err" == "0" ]; then
-    mkdir -p "${srcdir}/installers"
+    mkdir -p "${srcdir}/artifacts"
     if [ "$appimage" == "yes" ]; then
         results=$(find "${gpg4win_dir}" -maxdepth 1 -iname \*.appimage -a -type f -printf '%p ')
     else
@@ -234,8 +234,8 @@ if [ "$err" == "0" ]; then
     echo "#################### Success 🥳 ####################"
     echo "Created:"
     for result in $results; do
-        cp -i "$result" ${srcdir}/installers/
-        echo "${srcdir}/installers/$(basename $result)"
+        cp -i "$result" ${srcdir}/artifacts/
+        echo "${srcdir}/artifacts/$(basename $result)"
     done
 else
     echo "#################### Failure 😪 ####################"
