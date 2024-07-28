@@ -46,8 +46,6 @@ for bin in $BINS_WITH_VERSIONINFO; do
   fi
 done
 
-start_time=$(date +%s.%N)
-
 # Function to check if a string exists in an array
 contains() {
   local n=$#
@@ -63,7 +61,6 @@ contains() {
 # Prepare the resource files by setting package specific
 # variables and copy the files into the build tree.
 prepare_resources() {
-  set -x
   prefix=$g4win_dir/src/playground/build
   current_dir=$(pwd)
 
@@ -78,19 +75,24 @@ prepare_resources() {
     vers_suffix=",0"
   fi
 
-  if [[ $build_dir =~ ^([^/]+)-([^/]+)-build ]]; then
-    pkgname=${BASH_REMATCH[1]}
-    pkgversion=${BASH_REMATCH[2]}
-  elif [[ $build_dir =~ ^([^/]+)-([^/]+)-ex-build ]]; then
-    pkgname=${BASH_REMATCH[1]}
-    pkgversion=${BASH_REMATCH[2]}
-  elif [[ $build_dir =~ ^([^/]+)-([^/]+) ]]; then
-    # For pkgs without a build dir like zlib
+  # Normalize dirname
+  build_dir=$(echo $build_dir | sed 's/-ex-build//')
+  build_dir=$(echo $build_dir | sed 's/-build//')
+
+  if [[ $build_dir =~ ^([^/]+)-([^/]+) ]]; then
     pkgname=${BASH_REMATCH[1]}
     pkgversion=${BASH_REMATCH[2]}
   else
     echo "The current directory does not match the expected structure."
     exit 1
+  fi
+
+  # Check if the package version matches a snapshot pattern
+  if [[ $pkgversion =~ ^[0-9]{12}$ ]]; then
+    # If so we use this as version, since otherwise we get
+    # a syntax eror if the 12 digits are treated as the major
+    # version number.
+    pkgversion=$(echo "$pkgversion" | sed 's/\(....\)/\1,/g' | sed 's/,$//')
   fi
 
   # Ensure that the FILEVERSION matches the 0,1,2,3 pattern
@@ -101,6 +103,10 @@ prepare_resources() {
     pkgversion="${pkgversion},0"
     comma_count=$((comma_count + 1))
   done
+
+  # The resource needs comma seperation and the manifest
+  # a dotted version.
+  pkgversion_period=$(echo "${pkgversion}" | tr , .)
 
   if [[ ! "$1" =~ \.dll$ ]]; then
     filetype="0x02L \/* VFT_DLL *\/"
@@ -125,7 +131,7 @@ prepare_resources() {
     sed "s/@PKG_NAME@/$pkgname/" > versioninfo.rc
 
   cat $g4win_dir/src/gpg4win.w32-manifest.in | \
-    sed "s/@PKG_VERS@/$pkgversion/" |
+    sed "s/@PKG_VERS@/$pkgversion_period/" |
     sed "s/@PKG_NAME@/$pkgname/" > gpg4win.w32-manifest
 }
 
@@ -167,10 +173,10 @@ for arg in "$@"; do
   elif [ "$output_file_next" == "1" ]; then
     output_file=$arg
     output_file_next=
-    if [[ ! "$output_file" =~ \.dll$ && ! "$output_file" =~ \.exe$ ]]; then
+    if [[ ! $output_file =~ \.dll$ && ! $output_file =~ \.exe$ ]]; then
       break
     fi
-  elif [[ "$arg" =~ versioninfo.o$ ]]; then
+  elif [[ $arg =~ versioninfo.o$ ]]; then
     has_versioninfo=1
   fi
 done
@@ -193,19 +199,13 @@ if [ "$output_file" != "" ] && [ "$has_versioninfo" -eq 0 ]; then
   if contains "${AUTHENTICODE_FILES[@]}" "$filename"; then
     echo "Preparing manifest and versioninfo for: $filename"
     prepare_resources "$filename"
-    echo "Compiling resource file"
     $windres -i versioninfo.rc -o versioninfo.o
     added_obj=versioninfo.o
   fi
 fi
-end_time=$(date +%s.%N)
-
-runtime=$(echo "$end_time - $start_time" | bc)
-echo $runtime >> /tmp/gccwrap_delay
 
 # Execute the original command
 if [ -n "$added_obj" ]; then
-  echo "Adding versioninfo for command: '$@'" >> /tmp/gccwrap.log
   /usr/bin/`basename $0` "$@" "$added_obj"
 else
   /usr/bin/`basename $0` "$@"
