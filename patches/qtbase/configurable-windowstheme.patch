@@ -1,0 +1,38 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+--- a/src/plugins/platforms/windows/qwindowstheme.cpp
++++ b/src/plugins/platforms/windows/qwindowstheme.cpp
+@@ -476,11 +476,32 @@
+     return appDir.isDir() ? QStringList(appDir.absoluteFilePath()) : QStringList();
+ }
+
++static QSettings *findConfiguration()
++{
++    QString qtconfig = QStringLiteral(":/qt/etc/qt.conf");
++    if (QFile::exists(qtconfig))
++        return new QSettings(qtconfig, QSettings::IniFormat);
++    if (QCoreApplication::instance()) {
++        QDir pwd(QCoreApplication::applicationDirPath());
++        qtconfig = pwd.filePath(QLatin1String("qt.conf"));
++        if (QFile::exists(qtconfig))
++            return new QSettings(qtconfig, QSettings::IniFormat);
++    }
++    return 0;     //no luck
++}
++
+ static inline QStringList styleNames()
+ {
+     QStringList styles = { QStringLiteral("WindowsVista"), QStringLiteral("Windows") };
+     if (QOperatingSystemVersion::current() >= QOperatingSystemVersion::Windows11)
+         styles.prepend(QStringLiteral("Windows11"));
++    QScopedPointer<const QSettings> settings(findConfiguration());
++    if (!settings.isNull()) {
++        const QString value = settings->value(QStringLiteral("Qt/style")).toString();
++        if (!value.isEmpty()) {
++            styles.prepend(value);
++        }
++    }
+     return styles;
+ }

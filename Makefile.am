@@ -71,6 +71,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
+             patches/qtbase/configurable-windowstheme.patch \
              patches-appimage/extra-cmake-modules/0001-Do-not-abort-without-QML-tools.patch \
              patches-appimage/kcrash/0001-DRAFT-Do-not-use-OpenGL-if-it-is-not-available.patch \
              patches-appimage/kio/0001-Remove-kencodingfiledialog-to-avoid-Qt5Compat.patch \
