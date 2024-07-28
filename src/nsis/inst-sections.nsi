@@ -249,6 +249,9 @@
 !ifdef HAVE_PKG_PAPERKEY
 !include "inst-paperkey.nsi"
 !endif
+!ifdef HAVE_PKG_BREEZE
+!include "inst-breeze.nsi"
+!endif
 
 # These are displayed in the selection dialog.
 
@@ -270,6 +273,9 @@
 # We have to invoke the uninstallers in reverse order!
 !include "uninst-compendium.nsi"
 
+!ifdef HAVE_PKG_BREEZE
+!include "uninst-breeze.nsi"
+!endif
 !ifdef HAVE_PKG_PAPERKEY
 !include "uninst-paperkey.nsi"
 !endif
@@ -836,6 +842,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_KCONTACTS
   !insertmacro UnselectSection ${SEC_kcontacts}
 !endif
+!ifdef HAVE_PKG_BREEZE
+  !insertmacro UnselectSection ${SEC_breeze}
+!endif
 # BEGIN MSI IGNORE
 # MSI pulls this in through the gnupg-w32 component.
   # Always install gnupg2.  This is also ensured by putting
@@ -926,6 +935,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_sonnet}
   !insertmacro SelectSection ${SEC_ktextwidgets}
   !insertmacro SelectSection ${SEC_openjpeg}
+  !insertmacro SelectSection ${SEC_breeze}
   skip_okular:
 !endif
 
@@ -970,6 +980,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kpimtextedit}
   !insertmacro SelectSection ${SEC_ktextaddons}
   !insertmacro SelectSection ${SEC_kcontacts}
+  !insertmacro SelectSection ${SEC_breeze}
 
    skip_gpgoljs:
 !endif
@@ -1021,6 +1032,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_libical}
   !insertmacro SelectSection ${SEC_kcalendarcore}
   !insertmacro SelectSection ${SEC_kstatusnotifieritem}
+  !insertmacro SelectSection ${SEC_breeze}
   skip_kleopatra:
 !endif
 

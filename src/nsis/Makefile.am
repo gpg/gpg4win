@@ -20,6 +20,7 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              Memento.nsh inst-final.nsi                                  \
              inst-sections.nsi installer.nsi installer-finish.nsi        \
              inst-gpg4win.nsi       uninst-gpg4win.nsi                   \
+             inst-breeze.nsi             uninst-breeze.nsi               \
              inst-breeze-icons.nsi uninst-breeze-icons.nsi               \
              inst-bzip2.nsi             uninst-bzip2.nsi                 \
              inst-compendium.nsi    uninst-compendium.nsi                \

@@ -145,6 +145,10 @@ case ${package} in
         #repo=https://gitlab.freedesktop.org/svuorela/${package}.git
         #branch="WORK"
         ;;
+    breeze)
+        repo=https://invent.kde.org/plasma/${package}.git
+        branch=v6.1.3
+        ;;
     kio)
         repo=https://invent.kde.org/frameworks/${package}.git
         ;;
@@ -206,7 +210,13 @@ else
         git add po/de/${poname}.po
         git commit -m "Add latest German translation"
     fi
-    git archive --format tar.xz --prefix=${snapshotdir}/ "${branch}" > ${tarball}
+    if [ "${package}" == "breeze" ]; then
+        git rm -r wallpapers cursors
+        sed -i '/add_subdirectory(wallpapers)/d' CMakeLists.txt
+        sed -i '/add_subdirectory(cursors)/d' CMakeLists.txt
+        git commit -a -m "Escort the elephants out of the room"
+    fi
+    git archive --format tar.xz --prefix=${snapshotdir}/ HEAD > ${tarball}
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
     cd ${olddir}
 fi

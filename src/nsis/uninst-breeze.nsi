@@ -1,4 +1,4 @@
-# Copyright (C) 2015 Intevation GmbH
+# Copyright (C) 2024 g10 Code GmbH
 #
 # This file is part of GPG4Win.
 #
@@ -15,17 +15,18 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
-!ifdef prefix
-!undef prefix
-!endif
-!define prefix ${ipdir}/kconfigwidgets-${gpg4win_pkg_kconfigwidgets_version}
+; Uninstaller section.
+Section "-un.breeze"
+  Delete "$INSTDIR\bin\styles\breeze6.dll"
+  Delete "$INSTDIR\share\kstyle\themes\breeze.themerc"
+  Delete "$INSTDIR\share\color-schemes\BreezeDark.colors"
+  Delete "$INSTDIR\share\color-schemes\BreezeClassic.colors"
+  Delete "$INSTDIR\share\color-schemes\BreezeLight.colors"
 
-!ifdef DEBUG
-Section "kconfigwidgets" SEC_kconfigwidgets
-!else
-Section "-kconfigwidgets" SEC_kconfigwidgets
-!endif
-SetOutPath "$INSTDIR\bin"
-File ${prefix}/bin/libKF6ConfigWidgets.dll
-
+  RmDir "$INSTDIR\share\color-schemes"
+  RmDir "$INSTDIR\share\kstyle\themes"
+  RmDir "$INSTDIR\share\kstyly"
+  RmDir "$INSTDIR\share"
+  RmDir "$INSTDIR\bin\styles"
+  RmDir "$INSTDIR\bin"
 SectionEnd

@@ -356,6 +356,11 @@
 !define gpg4win_pkg_gpgoljs @gpg4win_pkg_gpgoljs@
 !define gpg4win_pkg_gpgoljs_version @gpg4win_pkg_gpgoljs_version@
 
+@HAVE_PKG_BREEZE@
+!define gpg4win_pkg_breeze @gpg4win_pkg_breeze@
+!define gpg4win_pkg_breeze_version @gpg4win_pkg_breeze_version@
+
+
 # @HAVE_PKG_MAN_NOVICE_EN@
 
 # @HAVE_PKG_MAN_ADVANCED_EN@

@@ -623,6 +623,16 @@ chk 64b80602e84b25e9164620af3f6341fa865b85e826ab8f5e02061ae24a277b20
 #
 server https://gnupg.org/ftp/gcrypt/snapshots
 
+# This is a respin of the release tag without the wallpapers and
+# cursor themes to avoid including a huge source package.
+# See gen-tarball.sh for details.
+# breeze
+# last changed: 2024-07-28
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file breeze/breeze-202407281104.tar.xz
+chk 3e91bf1e5324b03a417416916e2f159d7de96ab2c4f05a32b0667c262e1fa647
+
 # scute
 # last changed: 2024-07-19
 # by: aheinecke

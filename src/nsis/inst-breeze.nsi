@@ -1,4 +1,4 @@
-# Copyright (C) 2015 Intevation GmbH
+# Copyright (C) 2024 g10 Code GmbH
 #
 # This file is part of GPG4Win.
 #
@@ -18,14 +18,15 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/kconfigwidgets-${gpg4win_pkg_kconfigwidgets_version}
+!define prefix ${ipdir}/breeze-${gpg4win_pkg_breeze_version}
 
-!ifdef DEBUG
-Section "kconfigwidgets" SEC_kconfigwidgets
-!else
-Section "-kconfigwidgets" SEC_kconfigwidgets
-!endif
-SetOutPath "$INSTDIR\bin"
-File ${prefix}/bin/libKF6ConfigWidgets.dll
-
+Section "-breeze" SEC_breeze
+  SetOutPath "$INSTDIR\bin\styles"
+  File ${prefix}/lib/plugins/styles/breeze6.dll
+  SetOutPath "$INSTDIR\share\kstyle\themes"
+  File ${prefix}/share/kstyle/themes/breeze.themerc
+  SetOutPath "$INSTDIR\share\color-schemes"
+  File ${prefix}/share/color-schemes/BreezeClassic.colors
+  File ${prefix}/share/color-schemes/BreezeLight.colors
+  File ${prefix}/share/color-schemes/BreezeDark.colors
 SectionEnd

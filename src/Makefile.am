@@ -23,7 +23,6 @@ EXTRA_DIST =  config.site                                                       
               slideshow.cpp gpgwrap.c gccwrap.sh.in                             \
               versioninfo.rc.in.in gpg4win.w32-manifest.in.in                   \
               gpg-enable-keyboxd.bat gpg-disable-keyboxd.bat                    \
-              BreezeClassic.colors BreezeDark.colors                            \
               sha1sum.c                                                         \
               potomo                                                            \
               index.theme                                                       \
@@ -88,7 +87,8 @@ gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
                   libical kcalendarcore kmbox pcre2 prison gpgpass \
                   knotifications kcolorscheme zstd kstatusnotifieritem \
                   gpgoljs libkdepim syntax-highlighting ktextaddons \
-                  kpimtextedit qtkeychain kcontacts qtwebsockets
+                  kpimtextedit qtkeychain kcontacts qtwebsockets \
+                  breeze
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
@@ -333,6 +333,11 @@ endef
 #gpg4win_pkg_breeze_icons_configure = \
 #    -DBINARY_ICONS_RESOURCE=ON \
 #    -DICON_SUBSET_INCLUDE_FILE=$(abs_srcdir)/included-icons.txt
+
+gpg4win_pkg_breeze_configure = \
+    -DBUILD_QT6=ON \
+    -DBUILD_QT5=OFF \
+    -DWITH_DECORATIONS=OFF
 
 gpg4win_pkg_kbookmarks_configure = \
     -DANDROID=ON
