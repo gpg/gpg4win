@@ -471,12 +471,12 @@ common_nsi = nsis/inst-sections.nsi nsis/installer.nsi \
   $(addsuffix .nsi,$(addprefix nsis/uninst-,$(gpg4win_build_list)))
 
 # Sign additional files as per signing setup
-# This is a bit of a hack.
-# Exit in case of error because that usually means that sign.mk
-# is not up to date.
+# Exit in case of error because that usually means that AUTHENTICODE_FILES
+# are not up to date.
 $(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
     $(foosum_exe)
 	(set -e;\
+     $(eval $(call READ_AUTOGEN_template,AUTHENTICODE_KEY)) \
      cd "$(idir)"; \
      for f in $(AUTHENTICODE_FILES); do \
        if [ ! -f "$$f" ]; then \
@@ -489,7 +489,9 @@ $(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
          echo "Codesign: Skipping over empty file '$$f'"; \
          continue; \
        fi; \
-       $(abs_top_srcdir)/build-aux/authenticode-sign.sh --stamp "$$f" "$$f" ;\
+       if [ -n "$(AUTHENTICODE_KEY)" ] && [ "$(AUTHENTICODE_KEY)" != "none" ]; then \
+         $(abs_top_srcdir)/build-aux/authenticode-sign.sh --stamp "$$f" "$$f" ; \
+       fi; \
      done \
      )
 	touch $(stampdir)/stamp-additional-signedfiles

@@ -211,7 +211,15 @@ $(stampdir)/stamp-directories:
 # Read signing information from ~/.gnupg-autogen.rc
 # See gnupg/build-aux/speedo.mk for a description of this file.
 define READ_AUTOGEN_template
-$(1) = $$(shell grep '^[[:blank:]]*$(1)[[:blank:]]*=' $$$$HOME/.gnupg-autogen.rc|cut -d= -f2|xargs)
+$(1) = $$(shell \
+    if test -f $$$${HOME}/.gnupg-autogen.rc; then \
+        grep '^[[:blank:]]*$(1)[[:blank:]]*=' $$$${HOME}/.gnupg-autogen.rc | cut -d= -f2 | xargs; \
+    elif test -f $(top_srcdir)/.gnupg-autogen.rc; then \
+        grep '^[[:blank:]]*$(1)[[:blank:]]*=' $(top_srcdir)/.gnupg-autogen.rc | cut -d= -f2 | xargs; \
+    else \
+        echo "Warning: .gnupg-autogen.rc not found in HOME or $(top_srcdir)" >&2; \
+        echo ""; \
+    fi)
 endef
 
 $(eval $(call READ_AUTOGEN_template,VERSION_SIGNKEY))
