@@ -37,7 +37,7 @@ Section  "un.gnupg_w32"
   StrCmp $0 "" gnupg_w32_not_installed
   DetailPrint  "$(T_Uninstalling_GnuPG) ${gpg4win_pkg_gnupg_w32_version}"
   Delete "$0\bin\gpg-enable-keyboxd.bat"
-  Delete "$0\bin\gpg-disable-keybox.bat"
+  Delete "$0\bin\gpg-disable-keyboxd.bat"
   RmDir "$0\bin"
   ExecWait '"$0\gnupg-uninstall.exe" /S _?=$0'
   Delete "$0\gnupg-uninstall.exe"
