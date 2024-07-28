@@ -46,9 +46,11 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              docker/gpg4win-bookworm/Dockerfile \
              patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools.patch \
              patches/breeze-icons/add-the-nose.patch \
+             patches/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
              patches/extra-cmake-modules/0001-Do-not-abort-without-QML-tools.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/jpeg/fix-redefine.patch \
+             patches/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
              patches/kcontacts/0001-Make-the-depedency-to-QML-optional.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \

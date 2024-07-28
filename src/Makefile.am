@@ -220,6 +220,8 @@ gpg4win_pkg_qtkeychain_configure = -DBUILD_WITH_QT6=ON
 
 gpg4win_pkg_ktextaddons_configure = -DFORCE_DISABLE_MULTIMEDIA=ON
 
+gpg4win_pkg_kcalendarcore_configure = -DUSE_QML=OFF
+
 # Create a minmal build on the build system of the
 # same version before cross compiling.
 gpg4win_pkg_qtbase_native_configure = \

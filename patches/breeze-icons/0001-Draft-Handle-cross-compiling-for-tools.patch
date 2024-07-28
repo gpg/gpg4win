@@ -19,10 +19,11 @@ diff --git a/src/tools/CMakeLists.txt b/src/tools/CMakeLists.txt
 index 191dfdf3f..952409353 100644
 --- a/src/tools/CMakeLists.txt
 +++ b/src/tools/CMakeLists.txt
-@@ -1,7 +1,30 @@
+@@ -1,9 +1,31 @@
 -# takes light theme icons and makes modified copies of them with dark theme stylesheets
 -add_executable(generate-symbolic-dark generate-symbolic-dark.cpp)
 -target_link_libraries(generate-symbolic-dark PRIVATE Qt6::Core)
+-ecm_mark_nongui_executable(generate-symbolic-dark)
 +if (CMAKE_CROSSCOMPILING AND KF6_HOST_TOOLING)
 +    find_program(GENERATE_SYMBOLIC_DARK generate-symbolic-dark PATHS ${KF6_HOST_TOOLING}/../../bin NO_CACHE NO_CMAKE_FIND_ROOT_PATH)
 +    find_program(QRC_ALIAS qrcAlias PATHS ${KF6_HOST_TOOLING}/../../bin NO_CACHE NO_CMAKE_FIND_ROOT_PATH)
@@ -34,7 +35,11 @@ index 191dfdf3f..952409353 100644
 +    else ()
 +        message (WARNING "Could not find generate-symbolic-dark in '${KF6_HOST_TOOLING}/../../bin'.")
 +    endif ()
-+
+
+-# qrc generator
+-add_executable(qrcAlias qrcAlias.cpp)
+-target_link_libraries(qrcAlias PRIVATE Qt6::Core)
+-ecm_mark_nongui_executable(qrcAlias)
 +    if (QRC_ALIAS)
 +        add_executable(qrcAlias IMPORTED GLOBAL)
 +        set_target_properties(qrcAlias PROPERTIES IMPORTED_LOCATION
@@ -47,14 +52,12 @@ index 191dfdf3f..952409353 100644
 +    # takes light theme icons and makes modified copies of them with dark theme stylesheets
 +    add_executable(generate-symbolic-dark generate-symbolic-dark.cpp)
 +    target_link_libraries(generate-symbolic-dark PRIVATE Qt6::Core)
++    ecm_mark_nongui_executable(generate-symbolic-dark)
 +
 +    # qrc generator
 +    add_executable(qrcAlias qrcAlias.cpp)
 +    target_link_libraries(qrcAlias PRIVATE Qt6::Core)
++    ecm_mark_nongui_executable(qrcAlias)
 +endif ()
-
--# qrc generator
--add_executable(qrcAlias qrcAlias.cpp)
--target_link_libraries(qrcAlias PRIVATE Qt6::Core)
 --
 2.45.2

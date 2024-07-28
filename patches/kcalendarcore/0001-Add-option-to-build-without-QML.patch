@@ -1,0 +1,54 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 30c9ad5aa77b9c44b93558916f27f6bc32ca3fb4 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Sun, 28 Jul 2024 09:31:38 +0200
+Subject: [PATCH] Add option to build without QML
+
+---
+ CMakeLists.txt     | 5 +++++
+ src/CMakeLists.txt | 4 +++-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 15dda5f8e..65a8bdb0a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,6 +32,7 @@ set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprec
+
+ option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
+ add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
++option(USE_QML "Build QML plugin" ON)
+
+ set(KCALENDARCORE_LIB_VERSION ${KF_VERSION})
+ set(kcalendarcore_version_header "${KCalendarCore_BINARY_DIR}/src/kcalendarcore_version.h")
+@@ -44,6 +45,10 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX KCALENDARCORE
+ ########### Find packages ###########
+ find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core Gui)
+
++if(USE_QML)
++    find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Qml)
++endif()
++
+ set(LibIcal_MIN_VERSION "3.0")
+ # TODO remove our FindLibIcal.cmake in favor of upstream LibIcalConfig.cmake once the following issues are resolved:
+ # https://github.com/libical/libical/pull/510
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index c1059fe6e..864b48640 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -169,7 +169,9 @@ ecm_generate_headers(KCalendarCore_CamelCase_HEADERS
+   REQUIRED_HEADERS KCalendarCore_HEADERS
+ )
+
+-add_subdirectory(qml)
++if(USE_QML)
++  add_subdirectory(qml)
++endif()
+
+ ########### install files ###############
+
+--
+2.45.2

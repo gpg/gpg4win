@@ -64,8 +64,7 @@ FRAMEWORKS="extra-cmake-modules
     kcolorscheme
     kstatusnotifieritem
     syntax-highlighting
-    kcontacts
-    ktextaddons"
+    kcontacts"
 
 if [ -n "$2" ]; then
     FRAMEWORKS="$2"
