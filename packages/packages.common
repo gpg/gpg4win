@@ -249,17 +249,17 @@ chk  c4737943083ce92e41faf13c27a9d608105b6285c0840dfb684a7ee294142ddf
 #  Kleopatra and dependencies
 #
 
-# Qt base
+server http://download.qt.io/official_releases/qt/
+
+# qtbase
 # last changed: 2024-07-08
 # by: ah
 # verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.2/submodules/qtbase-everywhere-src-6.7.2.tar.xz.sha256
-server http://download.qt.io/official_releases/qt/
-
 name qtbase-6.7.2.tar.xz
 file 6.7/6.7.2/submodules/qtbase-everywhere-src-6.7.2.tar.xz
 chk c5f22a5e10fb162895ded7de0963328e7307611c688487b5d152c9ee64767599
 
-# Qt Tools
+# qttools
 # last changed: 2024-07-08
 # by: ah
 # verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.2/submodules/qttools-everywhere-src-6.7.2.tar.xz.sha256
@@ -267,7 +267,7 @@ name qttools-6.7.2.tar.xz
 file 6.7/6.7.2/submodules/qttools-everywhere-src-6.7.2.tar.xz
 chk 58e855ad1b2533094726c8a425766b63a04a0eede2ed85086860e54593aa4b2a
 
-# Qt svg
+# qtsvg
 # last changed: 2024-07-08
 # by: ah
 # verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.2/submodules/qtsvg-everywhere-src-6.7.2.tar.xz.sha256
@@ -275,7 +275,7 @@ name qtsvg-6.7.2.tar.xz
 file 6.7/6.7.2/submodules/qtsvg-everywhere-src-6.7.2.tar.xz
 chk fb0d1286a35be3583fee34aeb5843c94719e07193bdf1d4d8b0dc14009caef01
 
-# Qt translations
+# qttranslations
 # last changed: 2024-07-08
 # by: ah
 # verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.2/submodules/qttranslations-everywhere-src-6.7.2.tar.xz.sha256
@@ -283,7 +283,7 @@ name qttranslations-6.7.2.tar.xz
 file 6.7/6.7.2/submodules/qttranslations-everywhere-src-6.7.2.tar.xz
 chk 9845780b5dc1b7279d57836db51aeaf2e4a1160c42be09750616f39157582ca9
 
-# Qt httpserver
+# qthttpserver
 # last changed: 2024-07-08
 # by: ah
 # verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.2/submodules/qthttpserver-everywhere-src-6.7.2.tar.xz.sha256
@@ -291,7 +291,7 @@ name qthttpserver-6.7.2.tar.xz
 file 6.7/6.7.2/submodules/qthttpserver-everywhere-src-6.7.2.tar.xz
 chk 0353b9b4f98a83fec8f15046d4ff9d6ef7c874dcbb3664092fe2508f40778b86
 
-# Qt websockets
+# qtwebsockets
 # last changed: 2024-07-08
 # by: ah
 # verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.2/submodules/qtwebsockets-everywhere-src-6.7.2.tar.xz.sha256
