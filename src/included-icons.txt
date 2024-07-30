@@ -7,6 +7,7 @@
 accessories-text-editor
 application-epub+zip
 application-exit
+application-menu
 application-octet-stream
 application-pdf
 application-pkcs7-signature
