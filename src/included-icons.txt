@@ -306,3 +306,10 @@ password-show-on
 view-barcode
 view-barcode-qr
 x-office-address-book
+download
+collapse-symbolic
+configure-symbolic
+edit-copy-symbolic
+expand-symbolic
+password-show-off
+data-error
