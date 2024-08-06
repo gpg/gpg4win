@@ -1,119 +1,186 @@
-This is gpg4win - the GUI Installer Builder for W32.
+This is Gpg4win - A distribution of GnuPG and user interfaces for it.
 
-See also the file doc/README.en.txt.
+See also [www.gnupg.org](www.gnupg.org)
 
-For MSI Package instructions see src/README-msi.txt.
+About Gpg4win:
+==============
 
-Instructions:
-=============
+The Gpg4win source code (this repository) consists of a list of
+source packages in the `packages` subdirectory and build rules
+in the files `src/Makefile.am` and `src/gpg4win.mk.in`.
+
+During the build, the packages will be compiled for a Windows host
+system using these build rules and then packaged according to
+the various `.nsi` files in the folder `src/nsis`.
+
+To have the same software versions also available on GNU/Linux
+systems, independent of the distribution, Gpg4win can also be
+built for Linux as an AppImage. The rules for that can be found
+under `src/appimage`.
+
+Gpg4win can also be distributed as an MSI package in customized
+configurations. The MSI package description, using the WIX toolset,
+is generated from the NSIS files with the script `src/make-msi.pl`.
+
+Building:
+=========
+
+To achieve reproducible results independent of your system, Gpg4win
+utilizes Docker. The build with Docker is scripted; see:
+
+  ```shell
+  $ ./docker/docker-build.sh --help
+  ```
+
+Executing:
+
+  ```shell
+  $ ./docker/docker-build.sh
+  ```
+
+without any arguments will create an installer based on the
+current git version (uncommitted changes not included) using a
+temporary directory.
+
+To rebuild a source package or include custom changes in the
+build, you can also do an in-place build:
+
+  ```shell
+  $ ./docker/docker-build.sh --inplace
+  ```
+
+AppImage:
+=========
+
+To build the AppImage, add the parameter `--appimage` to invocations
+of `docker/docker-build.sh`. Building the AppImage without Docker
+is not supported.
+
+Major Build Steps:
+==================
+
+The Docker script `docker/docker-build.sh` prepares a build environment
+and then executes `src/build-gpg4win.sh` or `src/appimage/build-appimage.sh`.
+
+These scripts execute the following steps:
 
 1. Download the source and binary packages that are required to build
    the installer:
 
+   ```shell
    $ cd packages
    $ sh download.sh
    [...]
    $ cd ..
+   ```
 
-2. Generate config files
+2. Generate config files:
 
+   ```shell
    $ ./autogen.sh
+   ```
 
-3. Configure the source tree for cross compilation:
+3. Configure the source tree for cross-compilation:
 
+   ```shell
    $ ./autogen.sh --build-w32
+   ```
 
 4. Build the installer:
 
+   ```shell
    $ make
+   ```
 
-The installer will be made available under src/installers:
+The installer will be made available under `src/installers`:
 
+```
 src/installers/gpg4win-X.Y.Z.exe
+```
 
+Basic Requirements:
+===================
 
-Instructions for AppImage:
-==========================
+To build without a container, various tools are required
+on the host system. See the files "Dockerfile" in the
+subdirectory `docker` for a list of the required packages.
 
-1. Download the source and binary packages that are required to build
-   the installer:
+Building the Webpages:
+======================
 
-   $ cd packages
-   $ sh download.sh
-   [...]
-   $ cd ..
+The website is in a dedicated repository on [git.gnupg.org](https://git.gnupg.org).
 
-2. Generate config files
-
-   $ ./autogen.sh
-
-3. Build the Docker image that will be used for creating the AppImage:
-
-   $ docker/build-appimage-docker-image.sh
-
-4. Build the AppImage using the Docker image:
-
-   $ docker/run-appimage-build.sh
-
-   During development is it often easier to use
-
-   $ docker/run-appimage-build.sh --devel
-
-   which does not delete the temporary directory.  Inside the
-   docker shell you start the build using
-      src/src/appimage/build-appimage.sh
-
-
-Basic requirements
-==================
-
-The recommended way to compile Gpg4win is to use docker. Alternatively
-see the dockerfile in the docker subdirectory for refence which
-packages are needed on which base system.
-
-The build commands are then:
-
-./autogen.sh
-./docker/build-gpg4win-docker-image.sh
-./docker/run-gpg4win-build.sh
-
-Building the Webpages
-=====================
-
-The website is in a dedicated repository on git.gnupg.org
-
-Adding new packages to the installer:
+Adding New Packages to the Installer:
 =====================================
 
-This requires editing a couple of files; we might eventually automate
-some of these tasks.  Here is a short run up:
+This requires editing a couple of files. Here is a short run-up:
 
-1. Add constants for the package FOO into src/config.nsi.in .
+1. Add the package download to `packages/packages.common`. Please
+   add a comment with the current date and how you have verified
+   the sources. For verification, PGP signatures using one of the
+   trusted keys from the `distsigkey.gpg` file are preferable.
 
-2. Create 2 new installer scripts, named src/inst-foo.nsi and
-   uninst-foo.nsi and add them to EXTRA_DIST in src/Makefile.am.
+   If that is not available and upstream provides no other way
+   to verify a checksum besides HTTPS, at least confirm the
+   checksum from a second source and note that in the comment.
+   e.g.:
 
-3. Add foo to one the variables gpg4win_bpgks (if foo should not be
-   build be the gpg4win) or gpg4win_spkgs (if foo should be build by
-   gpg4win) in src/Makefile.am .  Also add any required configure
-   flags etc.
+   ```plaintext
+   # last-changed: 2023-05-03
+   # by ah
+   # verified: verification of checksum from both sf and freebsd.org
+   server https://downloads.sourceforge.net
+   file libfoo/foo16/1.6.40/foo-1.6.40.tar.xz
+   chk  535b479b2467ff231a3ec6d92a525906fb8ef27978be4f66dbe05d3f3a01b3a1
+   ```
 
-4. Add FOO to src/inst-sections.nsi.
+   If the filename does not match the pattern:
+   `pkgname-version.archive-suffix`
+   you can use the `name` keyword to match this pattern.
 
-5. Add detection of packages to configure.ac.  Check out the available
-   macros in m4/gpg4win.m4.  Depending on the way an upstream package
-   is packaged, you might need to write a new macro.
+2. Add the package to `configure.ac` using the appropriate macro for
+   the build system. `GPG4WIN_SPKG` is the macro for generic autotools
+   based packages. Check out the available macros in `m4/gpg4win.m4`.
+   The macro call must include the required dependencies as the
+   second parameter. If your package is a dependency of another package,
+   add this accordingly.
+   This has to be done for both `APPIMAGE_` and `GPG4WIN_`.
 
-6. Add download information to packages/download.sh.
+3. Define the build targets by adding foo to one of the package list
+   variables like `gpg4win_spkgs` in `src/Makefile.am` and
+   `src/appimage/Makefile.am`. And if required, also add any
+   required configure flags, etc. See existing
+   packages for examples.
 
-7. If the package ships pkg-config (*.pc) support files, you need add
-   post install instructions to Makefile.am.  Note that *.pc files may
-   be in the "runtime" directory ${pkgidir} if the package is built
-   within gpg4win (or peculiarly shipped), or in the development
-   package ${pkgidir_dev}.
+If your package is only for the AppImage, you are now done. Optionally,
+add an rsync filter under `src/appimage/rsync-filters` to only package
+some of the installed files.
 
-Then run the usual "./autogen.sh" to create the actual configure file
-and run configure as described above.
+NSIS Packaging:
+===============
+
+To have the package included in a Windows installation:
+
+4. Add constants for the package FOO into `src/config.nsi.in` which
+   are then configured by the build system automatically.
+
+   ```plaintext
+   @HAVE_PKG_FOO@
+   !define gpg4win_pkg_foo @gpg4win_pkg_foo@
+   !define gpg4win_pkg_foo_version @gpg4win_pkg_foo_version@
+   ```
+
+5. Create 2 new installer scripts, named `src/inst-foo.nsi` and
+   `uninst-foo.nsi` and add them to `EXTRA_DIST` in `src/Makefile.am`.
+
+6. Add FOO to `src/inst-sections.nsi` by including the `inst-foo.nsi`
+   and `uninst-foo.nsi` scripts depending on `HAVE_PKG_FOO`. Then modify
+   `CalcDepends`. For a dependency, first use `UnselectSection` on the
+   new package and then select it together with the component for
+   which it is required.
+
+Then run the usual `./autogen.sh` to create the actual configure file
+and build the installer as described above.
 
 Installer Slideshow
 ===================
