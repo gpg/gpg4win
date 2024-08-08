@@ -114,7 +114,6 @@ case ${package} in
         ;;
     gpg4win-tools )
         repo=git://git.gnupg.org/${package}.git
-        branch=tobias/qt6
         ;;
     gpgpass )
         repo=git://git.gnupg.org/${package}.git

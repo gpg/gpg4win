@@ -641,11 +641,11 @@ file scute/scute-1.7.1-beta45.tar.xz
 chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
 
 # gpgme
-# last changed: 2024-07-23
+# last changed: 2024-08-08
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgme/gpgme-1.24.0-beta616.tar.xz
-chk d565a45f397cc07bd3a6f2ca243d437916de5bb42fa5b78ccc166de151f033b6
+file gpgme/gpgme-1.24.0-beta623.tar.xz
+chk c60e9288f52f0abdff94ad5888fd8b214f3c66a58431c17e0a8e7d0c5f7a50d4
 
 # gpgol
 # last changed: 2024-07-22
@@ -656,11 +656,11 @@ chk c9d92cfc78736d3b73267667ae11d3437cab33f48cfcd613032fb6b8061310af
 
 
 # gpg4win-tools
-# last changed: 2024-04-04
+# last changed: 2024-08-08
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpg4win-tools/gpg4win-tools-202404041519.tar.xz
-chk 55501b55addf6f983b75358b32c90eb5a35a66a82b990286c79866acfeb48949
+file gpg4win-tools/gpg4win-tools-202408081647.tar.xz
+chk 7689ab23c7a7e0baec6ca80db34ee05125a3a5da58f07ee3228bf51299f989c3
 
 # gpgpass
 # last changed: 2024-07-05
@@ -677,18 +677,18 @@ file mimetreeparser/mimetreeparser-202407231808.tar.xz
 chk 590c0b63ba88d9f35503f26417f67edb1b11ed062fa628474bf34294e3e872b0
 
 # libkleo
-# last changed: 2024-07-23
+# last changed: 2024-08-08
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202407231548.tar.xz
-chk b8c29734b7486ad96ff81d641a7be4154fc568129948ef9b33be544466cbd377
+file libkleo/libkleo-202408081643.tar.xz
+chk 07761fe711fbe7400ef3c7f417c2805fda632b4bc1923010eea9dd616555f39f
 
 # kleopatra
-# last changed: 2024-07-23
+# last changed: 2024-08-08
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202407231548.tar.xz
-chk 99d916fed15d3755ad469a47ed4ace73d454df9b790a3b4c5abe365802174667
+file kleopatra/kleopatra-202408081643.tar.xz
+chk 59904df58de6dcc771d4dde865b2610122a2bb2ff6094b1488a5eb6ac3a04c74
 
 # Okular and dependencies
 # poppler
