@@ -30,7 +30,7 @@ set -e
 usage()
 {
     cat <<EOF
-Usage: $PGM [OPTIONS]  PACKAGE
+Usage: $PGM [OPTIONS]  PACKAGE ...
 Generate a tarball from a repository.
 
 Options:
@@ -50,11 +50,7 @@ EOF
 
 autoupload=no
 ftpuser_at=""
-is_gpg="no"
-is_w32="no"
 do_auto="no"
-branch="master"
-custom_l10n="no"
 ignore_msgcat_errors="no"
 while [ $# -gt 0 ]; do
     case "$1" in
@@ -89,12 +85,18 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-if [  $# -ne 1 ]; then
+if [  $# -eq 0 ]; then
     usage 1 1>&2
 fi
-package="$1"
+
+for package in "$@"; do
 shift
 
+# Reset variables
+branch="master"
+is_gpg="no"
+is_w32="no"
+custom_l10n="no"
 
 case ${package} in
     */*)
@@ -245,3 +247,4 @@ else
     echo "rsync -vP ${tarball} trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/" >&2
 fi;
 rm -fr ${tmpdir}
+done
