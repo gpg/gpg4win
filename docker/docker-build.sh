@@ -111,7 +111,7 @@ while [ $# -gt 0 ]; do
 done
 
 # Set default build directory if not specified
-if [ -z "$buildroot" ]; then
+if [ -z "$buildroot" -a "$inplace" == "no" ]; then
     buildroot=$(mktemp -d --tmpdir gpg4win.XXXXXXXXXX)
     is_tmpbuild="yes"
 fi
