@@ -74,6 +74,7 @@ rsync_gpg4win()
         --exclude '*.tar.*' --exclude '*.zip' \
         --exclude '*.exe' --exclude '*.wixlib' \
         --exclude 'stamps'  --exclude 'installers' \
+        --exclude 'config.status' --exclude 'config.log' \
         "$@"
 }
 
