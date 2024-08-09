@@ -56,7 +56,7 @@ Section "-libassuan" SEC_libassuan
 
 ${If} ${RunningX64}
   # Install the 64 bit version of the dll.
-  SetOutPath "$INSTDIR\bin_64"
+  SetOutPath "$INSTDIR\${EX_BINDIR}"
   ClearErrors
   SetOverwrite try
   File ${exprefix}/bin/libassuan-9.dll

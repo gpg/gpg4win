@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-
+var uninst64_checked
 # This is the very first section installed.
 Section "-gpg4win" SEC_gpg4win
 !ifdef SOURCES
@@ -44,6 +44,14 @@ Section "-gpg4win" SEC_gpg4win
   SetOutPath "$INSTDIR"
 # END MSI IGNORE
 
+# We do the uninstall check twice once in the 32 bit registry and once
+# looking in the 64 bit registry, even if we are a 32 bit installer.
+# because  we could be downgrading a 64 bit installation and would want
+# to call the uninstaller in that case, too.
+  StrCpy $uninst64_checked "0"
+
+  SetRegView 32
+uninstall_check:
 # Uninstall an old version if found.
   ClearErrors
   ReadRegStr $0 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "DisplayVersion"
@@ -63,6 +71,26 @@ Section "-gpg4win" SEC_gpg4win
   SetOutPath "$INSTDIR\share\gpg4win"
 
 skip_uninst:
+  # If we arrive here and uninst64_checked is 1 this means
+  # that we checked both for 32 bit in the first run and
+  # then jumped into another uninstall_check with the
+  # 64bit reg view.
+  StrCmp $uninst64_checked "1" uninst_checks_done 0
+  StrCpy $uninst64_checked "1"
+  SetRegView 64
+  goto uninstall_check
+
+uninst_checks_done:
+!ifdef IS_W64_INST
+# While trying to find the old installation dir and configuration in
+# both 32 and 64 views. For new Versions we only install in the
+# 64 view
+  SetRegView 64
+!else
+  # Legacy installation
+  SetRegView 32
+!endif
+
 # BEGIN MSI IGNORE
   SetOutPath "$INSTDIR\share\gpg4win"
 
@@ -120,9 +148,10 @@ skip_uninst:
   # only one of the following two files exists
   File /nonfatal /oname=libgcc_s_sjlj-1.dll "${BUILD_DIR}/libgcc_s_sjlj-1.dll-x"
   File /nonfatal /oname=libgcc_s_dw2-1.dll  "${BUILD_DIR}/libgcc_s_dw2-1.dll-x"
+  File /nonfatal /oname=libgcc_s_seh-1.dll "${BUILD_DIR}/libgcc_s_seh-1.dll-x"
 
-  SetOutPath "$INSTDIR\bin_64"
-  File /nonfatal /oname=libwinpthread-1.dll "${BUILD_DIR}/libwinpthread-1.dll-x64"
+  SetOutPath "$INSTDIR\${EX_BINDIR}"
+  File /nonfatal /oname=libwinpthread-1.dll "${BUILD_DIR}/libwinpthread-1.dll-ex"
 
   SetOutPath "$INSTDIR"
   File /oname=pkg-licenses.txt "${SRCDIR}/../doc/pkg-copyright.txt"

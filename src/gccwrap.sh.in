@@ -123,12 +123,16 @@ prepare_resources() {
     fileflags="0x0L"
   fi
 
+  cc_version=$(/usr/bin/`basename $0` --version | head -1)
+
+
   cat $g4win_dir/src/versioninfo.rc.in | \
     sed "s/@PKG_VERS@/$pkgversion/" | \
     sed "s/@ORIGINAL_FILENAME@/$1/" | \
     sed "s/@FILEFLAGS@/$fileflags/" | \
     sed "s/@FILETYPE@/$filetype/" | \
-    sed "s/@PKG_NAME@/$pkgname/" > versioninfo.rc
+    sed "s/@PKG_NAME@/$pkgname/" | \
+    sed "s/@CC_VERSION@/$cc_version/" > versioninfo.rc
 
   cat $g4win_dir/src/gpg4win.w32-manifest.in | \
     sed "s/@PKG_VERS@/$pkgversion_period/" |

@@ -68,13 +68,18 @@ Section "-un.gpgol"
   RMDir "$INSTDIR\share\locale"
   RMDir "$INSTDIR\share\"
 
+!ifdef IS_W64_INST
   UnRegDLL "$INSTDIR\bin\gpgol.dll"
-
+  ExecWait '"$SYSDIR\regsvr32" /u /s "$INSTDIR\${EX_BINDIR}\gpgol.dll"'
+!else
+  UnRegDLL "$INSTDIR\${EX_BINDIR}\gpgol.dll"
+  ExecWait '"$SYSDIR\regsvr32" /u /s "$INSTDIR\bin\gpgol.dll"'
+!endif
   Delete /REBOOTOK "$INSTDIR\bin\gpgol.dll"
 
 ${If} ${RunningX64}
-  ExecWait '"$SYSDIR\regsvr32" /u /s "$INSTDIR\bin_64\gpgol.dll"'
-  Delete /REBOOTOK "$INSTDIR\bin_64\gpgol.dll"
+  Delete /REBOOTOK "$INSTDIR\${EX_BINDIR}\gpgol.dll"
+  RMDir "$INSTDIR/${EX_BINDIR}"
 ${EndIf}
   RMDir "$INSTDIR"
 !endif

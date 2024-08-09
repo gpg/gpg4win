@@ -35,8 +35,9 @@ Section "-un.gpg4win"
   Delete "$INSTDIR\bin\libstdc++-6.dll"
   Delete "$INSTDIR\bin\libgcc_s_sjlj-1.dll"
   Delete "$INSTDIR\bin\libgcc_s_dw2-1.dll"
+  Delete "$INSTDIR\bin\libgcc_s_seh-1.dll"
   Delete "$INSTDIR\bin\libwinpthread-1.dll"
-  Delete /REBOOTOK "$INSTDIR\bin_64\libwinpthread-1.dll"
+  Delete /REBOOTOK "$INSTDIR\${EX_BINDIR}\libwinpthread-1.dll"
 
   # Delete standard stuff.
   Delete "$INSTDIR\share\gpg4win\HOWTO-SMIME.*.txt"
@@ -139,6 +140,7 @@ Section "-un.gpg4win"
   RMDir "$INSTDIR\etc"
   RMDir "$INSTDIR\bin"
   RMDir "$INSTDIR\bin_64"
+  RMDir "$INSTDIR\${EX_BINDIR}"
   RMDir "$INSTDIR"
 
 !endif

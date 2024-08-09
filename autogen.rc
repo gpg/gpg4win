@@ -5,16 +5,16 @@ patches_to="https://bugs.gnupg.org"
 
 case "$myhost:$myhostsub" in
   w32:64)
-    extraoptions=
+    extraoptions="--with-additional-gpgex-host=i686-w64-mingw32"
     ;;
   w32:)
-    extraoptions=
+    extraoptions="--with-additional-gpgex-host=x86_64-w64-mingw32"
     ;;
 esac
 
 case "$myhost" in
   w32)
-    configure_opts="--enable-gpg4win --with-additional-gpgex-host=x86_64-w64-mingw32"
+    configure_opts="--enable-gpg4win"
     ;;
 esac
 

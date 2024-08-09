@@ -934,11 +934,11 @@ AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY],
     fi
 ])
 
-AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY_X64],
+AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY_EX],
 [
     dll_path="no"
     AC_ARG_WITH([$1],
-    AS_HELP_STRING([--with-x64-$1-dll[=FILE]],
+    AS_HELP_STRING([--with-ex-$1-dll[=FILE]],
                    [include FILE as runtime dependency for the installer.]),
                    [dll_path=$withval])
 
@@ -967,15 +967,15 @@ AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY_X64],
     fi
 
     if test "$2" = "REQUIRED" -a "$dll_path" = "no"; then
-        AC_MSG_ERROR(can not find the x64 runtime library $1.dll in the default locations.
-                     Use the --with-x64-$1-dll option to set the path directly.
+        AC_MSG_ERROR(can not find the ex runtime library $1.dll in the default locations.
+                     Use the --with-ex-$1-dll option to set the path directly.
         )
     elif test "$dll_path" = no; then
-        AC_MSG_NOTICE(Using packaging dummy for $1.dll for x64)
-        touch src/$1.dll-x64
+        AC_MSG_NOTICE(Using packaging dummy for $1.dll for $gpgex_host)
+        touch src/$1.dll-ex
     else
-        AC_MSG_NOTICE(Using $dll_path to provide $1.dll for x64)
-        $CP "$dll_path" src/$1.dll-x64
-        $STRIP_EX src/$1.dll-x64
+        AC_MSG_NOTICE(Using $dll_path to provide $1.dll for $gpgex_host)
+        $CP "$dll_path" src/$1.dll-ex
+        $STRIP_EX src/$1.dll-ex
     fi
 ])

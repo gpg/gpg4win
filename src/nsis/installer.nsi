@@ -50,12 +50,6 @@ BrandingText "${PRETTY_PACKAGE}-${VERSION}"
 # Details button conflicts with splashscreen
 ShowInstDetails nevershow
 
-# Set the installation directory.
-!ifndef INSTALL_DIR
-!define INSTALL_DIR "${PACKAGE}"
-!endif
-InstallDir "$PROGRAMFILES\${INSTALL_DIR}"
-
 # Add version information to the file properties.
 VIProductVersion "${PROD_VERSION}"
 VIAddVersionKey "ProductName" "${PRETTY_PACKAGE_SHORT} (${VERSION})"
@@ -572,6 +566,10 @@ LangString T_WinisDeprecated ${LANG_ENGLISH} \
 LangString T_UPDATE_STR ${LANG_ENGLISH} \
    "Updating Version"
 
+# From onInit
+LangString T_ONLYX64 ${LANG_ENGLISH} \
+    "This software only runs on 64 bit Windows."
+
 # FIXME: The GetAfterChar function comes from the NSIS wiki.
 Function un.GetAfterChar
   Exch $0 ; chop char
@@ -682,17 +680,6 @@ Function .onInit
   # Temporay disabled until we have fixed the DLL issue (wk 2023-04-11)
   Call G4wRunOnce
 
-  SetOutPath $TEMP
-!ifdef SOURCES
-  File /oname=gpgspltmp.bmp "${TOP_SRCDIR}/doc/logo/gpg4win-logo-400px.bmp"
-  # We play the tune only for the source installer
-  File /oname=gpgspltmp.wav "${TOP_SRCDIR}/src/gpg4win-splash.wav"
-  g4wihelp::playsound $TEMP\gpgspltmp.wav
-  g4wihelp::showsplash 2500 $TEMP\gpgspltmp.bmp
-
-  Delete $TEMP\gpgspltmp.bmp
-  # Note that we delete gpgspltmp.wav in .onInst{Failed,Success}
-!else
   ${GetParameters} $R0
   ClearErrors
   ${GetOptions} $R0 /MINIMAL= $is_minimal
@@ -700,7 +687,7 @@ Function .onInit
 
   Var /GLOBAL changed_dir
   # Check if the install directory was modified on the command line
-  StrCmp "$INSTDIR" "$PROGRAMFILES\${INSTALL_DIR}" unmodified 0
+  StrCmp "$INSTDIR" "${InstallDir}" unmodified 0
   # It is modified. Save that value.
   StrCpy $changed_dir "$INSTDIR"
 
@@ -710,7 +697,6 @@ Function .onInit
   goto initDone
 unmodified:
   !insertmacro MULTIUSER_INIT
-!endif
 initDone:
   # Enable this to force a language selection dialog on every run (the
   # preferred language is the default).  Otherwise, the preferred
@@ -719,35 +705,44 @@ initDone:
 !ifdef DEBUG
 !define MUI_LANGDLL_ALWAYSSHOW
 !endif
+
+ # Since NSIS is still 32 bit we stay on that for NSIS registry
+ # keys.
+  SetRegView 32
   !insertmacro MUI_LANGDLL_DISPLAY
 
 ${IfNot} ${AtLeastWin7}
     MessageBox MB_OK "$(T_WinisDeprecated)"
 ${Endif}
 
+!ifdef IS_W64_INST
+  ${IfNot} ${RunningX64}
+      MessageBox MB_OK  "$(T_ONLYX64)"
+      Abort
+  ${EndIf}
+!endif
+
   ${MementoSectionRestore}
+  SetRegView 64
   Call CalcDefaults
   Call CalcDepends
-!ifndef SOURCES
   Call CheckOtherGnuPGApps
-!endif
 FunctionEnd
 
 
 Function un.onInit
-!ifndef SOURCES
-  !insertmacro MULTIUSER_UNINIT
+!ifdef IS_W64_INST
+  SetRegView 64
 !endif
+  !insertmacro MULTIUSER_UNINIT
   # Remove the language preference.
   !insertmacro MUI_UNGETLANGUAGE
-!ifndef SOURCES
   StrCpy $is_update "0"
   ${un.GetParameters} $R0
   ClearErrors
   ${un.GetOptions} $R0 /UPDATE= $R1
   IfErrors +2
   StrCpy $is_update "1"
-!endif
 FunctionEnd
 
 # This must be in a central place.  Urgs.

@@ -39,13 +39,26 @@ Unicode true
 !define PACKAGE "${_PACKAGE}"
 !define PRETTY_PACKAGE "Gpg4win"
 !define PRETTY_PACKAGE_SHORT "Gpg4win"
-!define VERSION "${_VERSION}"
 !define PROD_VERSION "${_BUILD_FILEVERSION}"
 !define COMPANY "g10 Code GmbH"
-!define COPYRIGHT "Copyright (C) 2023 g10 Code GmbH"
+!define COPYRIGHT "Copyright (C) 2024 g10 Code GmbH"
 !define DESCRIPTION "Gpg4win: The GNU Privacy Guard and Tools for Windows"
+!define VERSION "${_VERSION}"
 
-!define INSTALL_DIR "Gpg4win"
+# Set the installation directory.
+!ifndef INSTALL_DIR
+!define INSTALL_DIR "${PRETTY_PACKAGE_SHORT}"
+!endif
+
+!if ${_BUILD_W64} == "yes"
+InstallDir "$PROGRAMFILES64\${INSTALL_DIR}"
+!define EX_BINDIR "bin_32"
+!define MULTIUSER_USE_PROGRAMFILES64
+!define IS_W64_INST
+!else
+InstallDir "$PROGRAMFILES\${INSTALL_DIR}"
+!define EX_BINDIR "bin_64"
+!endif
 
 !define WELCOME_TITLE_STR "$(T_WelcomeTitleGpg4win)"
 

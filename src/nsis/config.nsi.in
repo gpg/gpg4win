@@ -24,6 +24,7 @@
 !define _BUILD_FILEVERSION @BUILD_FILEVERSION@
 !define _BUILD_TIMESTAMP   @BUILD_TIMESTAMP@
 !define _BUILD_ISODATE     @BUILD_ISODATE@
+!define _BUILD_W64         @BUILD_W64@
 
 !define build @build_cpu@-@build_os@
 !define host @host_cpu@-@host_os@

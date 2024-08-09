@@ -33,12 +33,12 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "Comments", "\0"
+            VALUE "Comments", "Compiled with: @CC_VERSION@\0"
             VALUE "CompanyName", "@COMPANY_NAME@\0"
-            VALUE "FileDescription", "This file is part of @PRODUCT_NAME@\0"
+/*          VALUE "FileDescription", "@PRODUCT_NAME@ - @ORIGINAL_FILENAME@\0" */
             VALUE "FileVersion", "@PKG_VERS@\0"
             VALUE "InternalName", "@PKG_NAME@\0"
-            VALUE "LegalCopyright", "\0"
+/*          VALUE "LegalCopyright", "This file is part of @PRODUCT_NAME@\0" */
             VALUE "LegalTrademarks", "\0"
             VALUE "OriginalFilename", "@ORIGINAL_FILENAME@\0"
             VALUE "PrivateBuild", "\0"

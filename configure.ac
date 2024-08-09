@@ -256,11 +256,29 @@ for i in $required_tools; do
 done
 
 if test "$build_gpg4win" = yes ; then
+
+    case "${host}" in
+    x86_64*-mingw32*)
+        BUILD_W64=yes
+        # Since we use 32 makensis we need to compile our plugin
+        # for NSIS also for 32bit so we hardcode this here.
+        # Otherwise for 64 bit builds --with-additional-gpgex-host
+        # is then 32 bit to take care of that.
+        AC_CHECK_PROGS(W32CC32, i686-w64-mingw32-gcc)
+        GPG4WIN_RUNTIME_LIBRARY(libgcc_s_seh-1)
+        VERSION=${VERSION}-x64
+        ;;
+    *)
+        W32CC32=${CC}
+        BUILD_W64=no
+        ;;
+    esac
+    AC_SUBST(BUILD_W64)
+
     GPG4WIN_RUNTIME_LIBRARY(libstdc++-6, REQUIRED)
     GPG4WIN_RUNTIME_LIBRARY(libwinpthread-1, REQUIRED)
 
-    # This is only required if you also use the pthread flavor for x64
-    GPG4WIN_RUNTIME_LIBRARY_X64(libwinpthread-1)
+    GPG4WIN_RUNTIME_LIBRARY_EX(libwinpthread-1)
 
     # One of these is required
     GPG4WIN_RUNTIME_LIBRARY(libgcc_s_dw2-1)
@@ -560,8 +578,8 @@ echo -n "
         $PACKAGE_NAME-$PACKAGE_VERSION prepared for make
 
         Revision: ${GIT_REVISION}  (${GIT_REVISION_DEC})
-        32bit platform: $host
-        64bit platform: ${GPGEX_ADD_HOST}
+        Main platform: $host
+        Additional platform: ${GPGEX_ADD_HOST}
         Distribution: ${PRODUCT_NAME} (mym4_buildtype)
 "
 if test -n "$JOBS"; then

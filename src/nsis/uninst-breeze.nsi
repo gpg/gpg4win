@@ -25,7 +25,7 @@ Section "-un.breeze"
 
   RmDir "$INSTDIR\share\color-schemes"
   RmDir "$INSTDIR\share\kstyle\themes"
-  RmDir "$INSTDIR\share\kstyly"
+  RmDir "$INSTDIR\share\kstyle"
   RmDir "$INSTDIR\share"
   RmDir "$INSTDIR\bin\styles"
   RmDir "$INSTDIR\bin"

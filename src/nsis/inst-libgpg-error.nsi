@@ -68,7 +68,7 @@ Section "-libgpg-error" SEC_libgpg_error
 
 ${If} ${RunningX64}
   # Install the 64 bit version of the dll.
-  SetOutPath "$INSTDIR\bin_64"
+  SetOutPath "$INSTDIR\${EX_BINDIR}"
   ClearErrors
   SetOverwrite try
   File ${exprefix}/bin/libgpg-error-0.dll

@@ -312,7 +312,7 @@ gpg4win_pkg_kleopatra_configure = \
 gpg4win_pkg_kxmlgui_configure = \
     -DFORCE_DISABLE_KGLOBALACCEL=ON \
     -DFORCE_DISABLE_DBUS=ON \
-    -DXMLGUI_COMPILER_VERSION="i686-w64-mingw32-gcc" \
+    -DXMLGUI_COMPILER_VERSION="$(CC)" \
     -DXMLGUI_DISTRIBUTION_TEXT="$(DISTRIBUTION_TEXT)"
 
 gpg4win_pkg_kio_configure = \
@@ -540,7 +540,7 @@ installers/gpg4win-$(VERSION).exe: $(common_nsi) $(stampdir)/stamp-final \
 		        $(foosum_exe) \
 				 $(HOWTO_files) \
 	                license.blurb versioninfo.txt
-	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
+	$(MAKENSIS) -V3 -DBUILD_W64=$(BUILD_W64) -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/nsis/gpg4win.nsi && \
 		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION).exe
 
@@ -552,13 +552,13 @@ license.blurb: $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3
 	cat $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3 >$@
 
 g4wihelp.dll: slideshow.cpp desktopshellrun.cpp g4wihelp.c exdll.h
-	$(CC) -DUNICODE -static-libgcc -I. -O2 -c \
+	$(W32CC32) -DUNICODE -static-libgcc -I. -O2 -c \
               -o exdll.o $(srcdir)/exdll.c
-	$(CC) -DUNICODE -static-libgcc -I. -O2 -c \
+	$(W32CC32) -DUNICODE -static-libgcc -I. -O2 -c \
               -o desktopshellrun.o $(srcdir)/desktopshellrun.cpp
-	$(CC) -DUNICODE -static-libgcc -I. -O2 -c \
+	$(W32CC32) -DUNICODE -static-libgcc -I. -O2 -c \
               -o slideshow.o $(srcdir)/slideshow.cpp
-	$(CC) -DUNICODE -DENABLE_SLIDE_SHOW -static-libgcc -I. -shared -O2 \
+	$(W32CC32) -DUNICODE -DENABLE_SLIDE_SHOW -static-libgcc -I. -shared -O2 \
               -o g4wihelp.dll $(srcdir)/g4wihelp.c \
 	      desktopshellrun.o slideshow.o exdll.o \
               -lwinmm -lgdi32 -luserenv -lshell32 \
