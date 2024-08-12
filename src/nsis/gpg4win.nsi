@@ -50,6 +50,7 @@ Unicode true
 !define INSTALL_DIR "${PRETTY_PACKAGE_SHORT}"
 !endif
 
+# BEGIN MSI IGNORE
 !if ${_BUILD_W64} == "yes"
 InstallDir "$PROGRAMFILES64\${INSTALL_DIR}"
 !define EX_BINDIR "bin_32"
@@ -59,6 +60,7 @@ InstallDir "$PROGRAMFILES64\${INSTALL_DIR}"
 InstallDir "$PROGRAMFILES\${INSTALL_DIR}"
 !define EX_BINDIR "bin_64"
 !endif
+# END MSI IGNORE
 
 !define WELCOME_TITLE_STR "$(T_WelcomeTitleGpg4win)"
 
