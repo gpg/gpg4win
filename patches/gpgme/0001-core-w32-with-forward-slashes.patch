@@ -2,10 +2,10 @@
 patch -p1 -l -f $* < $0
 exit $?
 
-From 25dd284b0c42ba4ad434ce43f6ac93f24acd6498 Mon Sep 17 00:00:00 2001
+From 86cfd6cff532606d122d6cdfa273374bc31f9469 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
 Date: Tue, 4 Jun 2024 16:52:24 +0200
-Subject: [PATCH 1/2] core,w32: Pass file names with forward slashes to gpg and
+Subject: [PATCH] core,w32: Pass file names with forward slashes to gpg and
  gpgtar
 
 src/conversion.c, src/util.h (_gpgme_replace_backslashes): New.
@@ -38,18 +38,19 @@ By passing all file names with forward slashes to gpg and gpgtar we
 avoid problems caused by the quoting of backslashes.
 
 GnuPG-bug-id: 7141
+Backported-from-master: 25dd284b0c42ba4ad434ce43f6ac93f24acd6498
 ---
  src/conversion.c | 10 ++++++
- src/engine-gpg.c | 93 +++++++++++++++++++++++++++++++++---------------
+ src/engine-gpg.c | 83 ++++++++++++++++++++++++++++++++++--------------
  src/util.h       |  3 ++
- 3 files changed, 77 insertions(+), 29 deletions(-)
+ 3 files changed, 72 insertions(+), 24 deletions(-)
 
 diff --git a/src/conversion.c b/src/conversion.c
 index f5dd7ea2..44636dd6 100644
 --- a/src/conversion.c
 +++ b/src/conversion.c
 @@ -632,3 +632,13 @@ _gpgme_cipher_mode_name (int algo, gpgme_protocol_t protocol)
-
+ 
    return "Unknown";
  }
 +
@@ -63,7 +64,7 @@ index f5dd7ea2..44636dd6 100644
 +      *string = '/';
 +}
 diff --git a/src/engine-gpg.c b/src/engine-gpg.c
-index e212f1f8..fd7064b5 100644
+index 8c9f62fb..a3f00653 100644
 --- a/src/engine-gpg.c
 +++ b/src/engine-gpg.c
 @@ -249,7 +249,7 @@ _prepend_to_arglist (engine_gpg_t gpg, struct arg_and_data_s *a)
@@ -95,14 +96,14 @@ index e212f1f8..fd7064b5 100644
 -  return _add_arg (gpg, NULL, arg, strlen (arg), front, NULL, 0);
 +  return _add_arg (gpg, NULL, arg, strlen (arg), front, NULL, 0, 0);
  }
-
+ 
  static gpgme_error_t
  add_arg_with_locp (engine_gpg_t gpg, const char *arg, int *locp, int front)
  {
 -  return _add_arg (gpg, NULL, arg, strlen (arg), front, locp, 0);
 +  return _add_arg (gpg, NULL, arg, strlen (arg), front, locp, 0, 0);
  }
-
+ 
  static gpgme_error_t
  add_arg (engine_gpg_t gpg, const char *arg)
  {
@@ -122,21 +123,21 @@ index e212f1f8..fd7064b5 100644
 +{
 +  return _add_arg (gpg, NULL, file_name, file_name_len, 0, NULL, 0, 1);
  }
-
+ 
  static gpgme_error_t
  add_arg_pfx (engine_gpg_t gpg, const char *prefix, const char *arg)
  {
 -  return _add_arg (gpg, prefix, arg, strlen (arg), 0, NULL, 0);
 +  return _add_arg (gpg, prefix, arg, strlen (arg), 0, NULL, 0, 0);
  }
-
+ 
  static gpgme_error_t
  add_gpg_arg (engine_gpg_t gpg, const char *arg)
  {
 -  return _add_arg (gpg, NULL, arg, strlen (arg), 0, NULL, 1);
 +  return _add_arg (gpg, NULL, arg, strlen (arg), 0, NULL, 1, 0);
  }
-
+ 
  static gpgme_error_t
  add_gpg_arg_with_value (engine_gpg_t gpg, const char *arg, const char *value,
                          int front)
@@ -151,7 +152,7 @@ index e212f1f8..fd7064b5 100644
 +{
 +  return _add_arg (gpg, arg, file_name, strlen (file_name), front, NULL, 1, 1);
  }
-
+ 
  static gpgme_error_t
  add_arg_len (engine_gpg_t gpg, const char *prefix,
               const char *arg, size_t arglen)
@@ -159,8 +160,8 @@ index e212f1f8..fd7064b5 100644
 -  return _add_arg (gpg, prefix, arg, arglen, 0, NULL, 0);
 +  return _add_arg (gpg, prefix, arg, arglen, 0, NULL, 0, 0);
  }
-
-
+ 
+ 
 @@ -371,7 +397,7 @@ add_file_name_arg_or_data (engine_gpg_t gpg, gpgme_data_t data, int dup_to, int
  {
    const char *file_name = gpgme_data_get_file_name (data);
@@ -171,13 +172,13 @@ index e212f1f8..fd7064b5 100644
      return add_data (gpg, data, dup_to, inbound);
  }
 @@ -593,7 +619,7 @@ gpg_new (void **engine, const char *file_name, const char *home_dir,
-
+ 
    if (home_dir)
      {
 -      rc = add_gpg_arg_with_value (gpg, "--homedir=", home_dir, 0);
 +      rc = add_gpg_arg_with_file_name (gpg, "--homedir=", home_dir, 0);
        if (rc)
-        goto leave;
+ 	goto leave;
      }
 @@ -1888,7 +1914,7 @@ gpg_decrypt (void *engine,
          {
@@ -188,16 +189,7 @@ index e212f1f8..fd7064b5 100644
          }
        if (!err)
          err = add_input_size_hint (gpg, ciph);
-@@ -1903,7 +1929,7 @@ gpg_decrypt (void *engine,
-       if (!err)
-         err = add_arg (gpg, "--output");
-       if (!err && output)
--        err = add_arg (gpg, output);
-+        err = add_file_name_arg (gpg, output);
-       else
-         {
-           if (!err)
-@@ -2299,9 +2325,18 @@ append_args_from_recipients_string (engine_gpg_t gpg,
+@@ -2293,9 +2319,18 @@ append_args_from_recipients_string (engine_gpg_t gpg,
          err = gpg_error (GPG_ERR_UNKNOWN_OPTION);
        else if (n) /* Not empty - use it.  */
          {
@@ -219,7 +211,7 @@ index e212f1f8..fd7064b5 100644
            if (!err)
              any = 1;
          }
-@@ -2392,7 +2427,7 @@ gpg_encrypt (void *engine, gpgme_key_t recp[], const char *recpstring,
+@@ -2382,7 +2417,7 @@ gpg_encrypt (void *engine, gpgme_key_t recp[], const char *recpstring,
      {
        const char *output = gpgme_data_get_file_name (ciph);
        if (output)
@@ -228,7 +220,7 @@ index e212f1f8..fd7064b5 100644
        else
          {
            err = add_arg (gpg, "-");
-@@ -2408,7 +2443,7 @@ gpg_encrypt (void *engine, gpgme_key_t recp[], const char *recpstring,
+@@ -2397,7 +2432,7 @@ gpg_encrypt (void *engine, gpgme_key_t recp[], const char *recpstring,
          {
            err = add_arg (gpg, "--directory");
            if (!err)
@@ -236,23 +228,17 @@ index e212f1f8..fd7064b5 100644
 +            err = add_file_name_arg (gpg, file_name);
          }
        if (!err)
-        err = add_arg (gpg, "--files-from");
-@@ -2429,12 +2464,12 @@ gpg_encrypt (void *engine, gpgme_key_t recp[], const char *recpstring,
-       if (!err && (!file_name || !*file_name))
-         err = gpg_error (GPG_ERR_INV_VALUE);
-       if (!err)
--	err = add_arg (gpg, file_name);
-+	err = add_file_name_arg (gpg, file_name);
-     }
-   else
+ 	err = add_arg (gpg, "--files-from");
+@@ -2415,7 +2450,7 @@ gpg_encrypt (void *engine, gpgme_key_t recp[], const char *recpstring,
      {
+       const char *file_name = gpgme_data_get_file_name (plain);
        if (!err && file_name)
 -	err = add_gpg_arg_with_value (gpg, "--set-filename=", file_name, 0);
 +	err = add_gpg_arg_with_file_name (gpg, "--set-filename=", file_name, 0);
        if (!err)
          err = add_input_size_hint (gpg, plain);
        if (!err)
-@@ -2525,7 +2560,7 @@ gpg_encrypt_sign (void *engine, gpgme_key_t recp[],
+@@ -2502,7 +2537,7 @@ gpg_encrypt_sign (void *engine, gpgme_key_t recp[],
      {
        const char *output = gpgme_data_get_file_name (ciph);
        if (output)
@@ -261,7 +247,7 @@ index e212f1f8..fd7064b5 100644
        else
          {
            err = add_arg (gpg, "-");
-@@ -2541,7 +2576,7 @@ gpg_encrypt_sign (void *engine, gpgme_key_t recp[],
+@@ -2517,7 +2552,7 @@ gpg_encrypt_sign (void *engine, gpgme_key_t recp[],
          {
            err = add_arg (gpg, "--directory");
            if (!err)
@@ -269,32 +255,26 @@ index e212f1f8..fd7064b5 100644
 +            err = add_file_name_arg (gpg, file_name);
          }
        if (!err)
-        err = add_arg (gpg, "--files-from");
-@@ -2562,12 +2597,12 @@ gpg_encrypt_sign (void *engine, gpgme_key_t recp[],
-       if (!err && (!file_name || !*file_name))
-         err = gpg_error (GPG_ERR_INV_VALUE);
-       if (!err)
--	err = add_arg (gpg, file_name);
-+	err = add_file_name_arg (gpg, file_name);
-     }
-   else
+ 	err = add_arg (gpg, "--files-from");
+@@ -2535,7 +2570,7 @@ gpg_encrypt_sign (void *engine, gpgme_key_t recp[],
      {
+       const char *file_name = gpgme_data_get_file_name (plain);
        if (!err && file_name)
 -	err = add_gpg_arg_with_value (gpg, "--set-filename=", file_name, 0);
 +	err = add_gpg_arg_with_file_name (gpg, "--set-filename=", file_name, 0);
        if (!err)
          err = add_input_size_hint (gpg, plain);
        if (!err)
-@@ -3706,7 +3741,7 @@ gpg_sign (void *engine, gpgme_data_t in, gpgme_data_t out,
-     {
-       const char *output = gpgme_data_get_file_name (out);
-       if (output)
--        err = add_arg (gpg, output);
-+        err = add_file_name_arg (gpg, output);
-       else
+@@ -3637,7 +3672,7 @@ gpg_sign (void *engine, gpgme_data_t in, gpgme_data_t out,
          {
-           err = add_arg (gpg, "-");
-@@ -3723,7 +3758,7 @@ gpg_sign (void *engine, gpgme_data_t in, gpgme_data_t out,
+           err = add_arg (gpg, "--output");
+           if (!err)
+-            err = add_arg (gpg, output);
++            err = add_file_name_arg (gpg, output);
+         }
+     }
+ 
+@@ -3649,7 +3684,7 @@ gpg_sign (void *engine, gpgme_data_t in, gpgme_data_t out,
          {
            err = add_arg (gpg, "--directory");
            if (!err)
@@ -302,23 +282,17 @@ index e212f1f8..fd7064b5 100644
 +            err = add_file_name_arg (gpg, file_name);
          }
        if (!err)
-        err = add_arg (gpg, "--files-from");
-@@ -3744,12 +3779,12 @@ gpg_sign (void *engine, gpgme_data_t in, gpgme_data_t out,
-       if (!err && (!file_name || !*file_name))
-         err = gpg_error (GPG_ERR_INV_VALUE);
-       if (!err)
--	err = add_arg (gpg, file_name);
-+	err = add_file_name_arg (gpg, file_name);
-     }
-   else
+ 	err = add_arg (gpg, "--files-from");
+@@ -3667,7 +3702,7 @@ gpg_sign (void *engine, gpgme_data_t in, gpgme_data_t out,
      {
+       const char *file_name = gpgme_data_get_file_name (in);
        if (!err && file_name)
 -	err = add_gpg_arg_with_value (gpg, "--set-filename=", file_name, 0);
 +	err = add_gpg_arg_with_file_name (gpg, "--set-filename=", file_name, 0);
        if (!err)
          err = add_input_size_hint (gpg, in);
        if (!err)
-@@ -3791,7 +3826,7 @@ gpg_verify (void *engine, gpgme_verify_flags_t flags, gpgme_data_t sig,
+@@ -3712,7 +3747,7 @@ gpg_verify (void *engine, gpgme_verify_flags_t flags, gpgme_data_t sig,
          {
            err = add_arg (gpg, "--directory");
            if (!err)
@@ -327,15 +301,6 @@ index e212f1f8..fd7064b5 100644
          }
        /* gpgtar uses --decrypt also for signed-only archives */
        err = add_arg (gpg, "--decrypt");
-@@ -3810,7 +3845,7 @@ gpg_verify (void *engine, gpgme_verify_flags_t flags, gpgme_data_t sig,
-         err = add_arg (gpg, "--verify");
-       err = add_arg (gpg, "--output");
-       if (!err && output)
--        err = add_arg (gpg, output);
-+        err = add_file_name_arg (gpg, output);
-       else if (!err)
-         err = add_data (gpg, plaintext, -1, 1);
-       if (!err)
 diff --git a/src/util.h b/src/util.h
 index 20a9ff7f..eedad610 100644
 --- a/src/util.h
@@ -343,12 +308,13 @@ index 20a9ff7f..eedad610 100644
 @@ -163,6 +163,9 @@ int _gpgme_map_pk_algo (int algo, gpgme_protocol_t protocol);
  const char *_gpgme_cipher_algo_name (int algo, gpgme_protocol_t protocol);
  const char *_gpgme_cipher_mode_name (int algo, gpgme_protocol_t protocol);
-
+ 
 +/* Replace all backslashes in STRING with forward slashes.  */
 +void _gpgme_replace_backslashes (char *string);
 +
  
  /*-- b64dec.c --*/
-
---
+ 
+-- 
 2.39.2
+
