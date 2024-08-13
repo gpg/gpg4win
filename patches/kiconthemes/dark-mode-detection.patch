@@ -42,7 +42,7 @@ new file mode 100644
 index 0000000..341efc4
 --- /dev/null
 +++ b/src/DarkModeSetup.cpp
-@@ -0,0 +1,98 @@
+@@ -0,0 +1,99 @@
 +/*
 +    SPDX-FileCopyrightText: 2023 g10 Code GmbH
 +    SPDX-FileContributor: Ingo Klöcker <dev@ingo-kloecker.de>
@@ -103,7 +103,7 @@ index 0000000..341efc4
 +    return false;
 +}
 +
-+};
++}
 +
 +bool DarkModeSetup::isDarkModeActive()
 +{
@@ -142,6 +142,7 @@ index 0000000..341efc4
 +    }
 +    return 0;
 +}
++
 diff --git a/src/DarkModeSetup.h b/src/DarkModeSetup.h
 new file mode 100644
 index 0000000..87ecfd7
