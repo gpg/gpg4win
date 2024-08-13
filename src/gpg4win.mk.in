@@ -1126,6 +1126,93 @@ define MSI_template
 
 $(1)-package: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 
+installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
+       gnupg-vsd/$(1)/license.rtf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
+	scp gnupg-vsd/$(1)/license.rtf \
+             $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
+    scp $(idir)/$(1).wixlib \
+             $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
+    scp $(call GETVAR,msi_target_$(1)_branding)/*.bmp \
+             $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
+    scp $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
+    ssh $(WINHOST) "cd AppData/Local/Temp/gpg4win-$(VERSION) && $(WINLIGHT) \
+    -cc . \
+    -reusecab \
+    -spdb \
+    -ext WixUIExtension \
+    -ext WixUtilExtension \
+    -out $(MSI_FNAME_PREFIX)-$(VERSION)-$(1).msi \
+     $(call GETVAR,msi_target_$(1)_l10n) \
+    -dcl:high \
+    -pedantic \
+     \
+     $(MSI_FNAME_PREFIX)-$(VERSION).wixlib \
+     gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
+     $(1).wixlib" | grep -v "ICE80" | grep -v "ICE57" ; \
+     scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/$(MSI_FNAME_PREFIX)-$(VERSION)-$(1).msi \
+     installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi;
+
+
+# Running light.exe in WINE triggers the error:
+# 12627.235:0024:err:msidb:msi_commit_streams failed to write stream
+# L"\430b\4131\4735\443e\4336\41ac\47a8\43e7\482f" (hr = 0x80030102)
+#
+# Below code does not work with wine 9.14 and wixtools 3.11 / 3.14
+# See T7248 for details. The default MSI targets still require a
+# WINHOST this is only optional to assist in debugging.
+$(1)-wine: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1)-wine.msi
+
+installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1)-wine.msi: $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
+	gnupg-vsd/$(1)/license.rtf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
+	($(call SETVARS_WINE); \
+	( set -x; set -e;\
+	workdir="$(idir)/$(1)-msi" || exit 1; \
+	mkdir -p $$$$workdir || exit 1; \
+	cp $(top_srcdir)/packages/gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
+	   $$$$workdir || exit 1; \
+	cp $(top_srcdir)/src/icons/shield.ico $$$$workdir || exit 1; \
+	cp $(top_srcdir)/doc/logo/gpg4win-msi-header_install-493x58.bmp \
+	   $$$$workdir/header.bmp || exit 1; \
+	cp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+	   $$$$workdir/dialog.bmp || exit 1; \
+	cp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+	   $$$$workdir/dialog.bmp || exit 1; \
+	cp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
+	   $$$$workdir/info.bmp || exit 1; \
+	cp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
+	   $$$$workdir/exclamation.bmp || exit 1; \
+	cp $(top_srcdir)/po/gpg4win-en.wxl $$$$workdir || exit 1; \
+	cp $(top_srcdir)/po/gpg4win-de.wxl $$$$workdir || exit 1; \
+	cp $(call GETVAR,msi_target_$(1)_branding)/*.bmp . || exit 1;\
+	cp WixUI_Gpg4win.wxs $$$$workdir || exit 1; \
+	ln -sf $$$$workdir $$$$WINEINST || exit 1; \
+	cd $$$$workdir || exit 1; \
+	ln -sf $(idir)/$(1).wixlib || exit 1; \
+	ln -sf $(abs_top_srcdir)/src/gnupg-vsd/$(1)/license.rtf || exit 1;\
+	ln -sf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib || exit 1; \
+	LC_ALL=C WINEDEBUG=+timestamp,+loaddll,+debugstr,msi+all $(WINE) $$$$WIXPREFIX2/light.exe \
+	-cc . \
+	-ct 1 \
+	-reusecab \
+	-spdb \
+	-ext WixUIExtension \
+	-ext WixUtilExtension \
+	-out k:\\$(MSI_FNAME_PREFIX)-$(VERSION)-$(1).msi\
+	 $(call GETVAR,msi_target_$(1)_l10n) \
+	-dcl:none\
+	-pedantic \
+	 \
+	 k:\\$(MSI_FNAME_PREFIX)-$(VERSION).wixlib \
+	 k:\\gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
+	 k:\\$(1).wixlib | grep -v "ICE80" | grep -v "ICE57"  || exit 1; \
+	 cd $(abs_top_srcdir)/src/installers || exit 1; \
+	 ln -sf $$$$workdir/$(MSI_FNAME_PREFIX)-$(VERSION)-$(1).msi || exit 1; \
+	) || ERR=1; rm -f $$$$WINEINST; \
+	if [ -n "$$$$ERR" ]; then \
+		exit 1; \
+	fi \
+	)
+
 $(idir)/$(1).wixlib: gnupg-vsd/$(1)/$(1).wxs
 	($(call SETVARS_WINE,); \
 	( \
@@ -1205,32 +1292,6 @@ gnupg-vsd/$(1)/announcement.txt: gnupg-vsd/custom.mk gnupg-vsd/announcement.de.i
 		sed 's/VSD_VERSION/$(VSD_VERSION)/' | \
 		sed 's@GNUPG_VSD_CUSTOMER_LINK@https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi@' | \
 		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.xz@' > gnupg-vsd/$(1)/announcement.txt
-
-installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
-	gnupg-vsd/$(1)/license.rtf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
-	scp gnupg-vsd/$(1)/license.rtf \
-		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp $(idir)/$(1).wixlib \
-		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp $(call GETVAR,msi_target_$(1)_branding)/*.bmp \
-		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	ssh $(WINHOST) "cd AppData/Local/Temp/gpg4win-$(VERSION) && $(WINLIGHT) \
-	-cc . \
-	-reusecab \
-	-spdb \
-	-ext WixUIExtension \
-	-ext WixUtilExtension \
-	-out $(MSI_FNAME_PREFIX)-$(VERSION)-$(1).msi \
-	 $(call GETVAR,msi_target_$(1)_l10n) \
-	-dcl:high \
-	-pedantic \
-	 \
-	 $(MSI_FNAME_PREFIX)-$(VERSION).wixlib \
-	 gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
-	 $(1).wixlib" | grep -v "ICE80" | grep -v "ICE57" ; \
-	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/$(MSI_FNAME_PREFIX)-$(VERSION)-$(1).msi \
-	 installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi;
 
 signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 	mkdir -p signed_installers
