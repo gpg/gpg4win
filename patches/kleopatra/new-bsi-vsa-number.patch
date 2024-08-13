@@ -1,0 +1,99 @@
+#! /bin/sh
+patch -p0 -l -f $* < $0
+exit $?
+
+
+--- src/kleopatra.rc.old	2024-04-16 11:56:52.000000000 +0200
++++ src/kleopatra.rc    2024-08-13 14:35:17.270695358 +0200
+@@ -103,8 +103,7 @@
+             <Separator/>
+             <Action name="help_doc_compendium"/>
+             <Action name="help_doc_approval_manual"/>
+-            <Action name="help_doc_vsa10573"/>
+-            <Action name="help_doc_vsa10584"/>
++            <Action name="help_doc_vsa10867"/>
+             <Separator/>
+             <Action name="help_check_updates"/>
+         </Menu>
+
+--- src/mainwindow.cpp.old	2024-08-13 14:07:54.341723962 +0200
++++ src/mainwindow.cpp	2024-08-13 13:59:29.356813751 +0200
+@@ -722,17 +722,12 @@
+                       coll);
+     coll->addAction(QStringLiteral("help_doc_approval_manual"), approvalmanual);
+
+-    const auto vsa10573 = new DocAction(QIcon::fromTheme(QStringLiteral("dvipdf")),
+-                                        i18n("SecOps VSA-10573"),
+-                                        i18nc("Only available in German and English. Leave to English for other languages.", "BSI-VSA-10573-ENG_secops.pdf"),
++    const auto vsa10867 = new DocAction(QIcon::fromTheme(QStringLiteral("dvipdf")),
++                                        i18n("SecOps VSA-10867"),
++                                        i18nc("Only available in German and English. Leave to English for other languages.", "BSI-VSA-10867_ENG_secops.pdf"),
+                                         QStringLiteral("../share/doc/gnupg-vsd"));
+-    coll->addAction(QStringLiteral("help_doc_vsa10573"), vsa10573);
++    coll->addAction(QStringLiteral("help_doc_vsa10867"), vsa10867);
+
+-    const auto vsa10584 = new DocAction(QIcon::fromTheme(QStringLiteral("dvipdf")),
+-                                        i18n("SecOps VSA-10584"),
+-                                        i18nc("Only available in German and English. Leave to English for other languages.", "BSI-VSA-10584-ENG_secops.pdf"),
+-                                        QStringLiteral("../share/doc/gnupg-vsd"));
+-    coll->addAction(QStringLiteral("help_doc_vsa10584"), vsa10584);
+
+     q->setStandardToolBarMenuEnabled(true);
+
+--- po/de/kleopatra.po.old	2024-08-13 14:20:38.643202616 +0200
++++ po/de/kleopatra.po	2024-08-13 14:22:04.524716975 +0200
+@@ -11546,30 +11546,16 @@
+ #. +> trunk6 stable6
+ #: src/mainwindow.cpp:780
+ #, kde-format
+-msgid "SecOps VSA-10573"
+-msgstr "SecOps VSA-10573"
++msgid "SecOps VSA-10867"
++msgstr "SecOps VSA-10867"
+
+ #. +> trunk6 stable6
+ #: src/mainwindow.cpp:781
+ #, kde-format
+ msgctxt ""
+ "Only available in German and English. Leave to English for other languages."
+-msgid "BSI-VSA-10573-ENG_secops-20220207.pdf"
+-msgstr "BSI-VSA-10573_secops.pdf"
+-
+-#. +> trunk6 stable6
+-#: src/mainwindow.cpp:789
+-#, kde-format
+-msgid "SecOps VSA-10584"
+-msgstr "SecOps VSA-10584"
+-
+-#. +> trunk6 stable6
+-#: src/mainwindow.cpp:790
+-#, kde-format
+-msgctxt ""
+-"Only available in German and English. Leave to English for other languages."
+-msgid "BSI-VSA-10584-ENG_secops-20220207.pdf"
+-msgstr "BSI-VSA-10584_secops.pdf"
++msgid "BSI-VSA-10867_ENG_secops.pdf"
++msgstr "BSI-VSA-10867_DEU_secops.pdf"
+
+ #. +> trunk6 stable6
+ #: src/mainwindow.cpp:817
+@@ -15696,20 +15682,6 @@
+ #~ msgstr "Auf Server suchen ..."
+
+ #, kde-format
+-#~ msgctxt ""
+-#~ "Only available in German and English. Leave to English for other "
+-#~ "languages."
+-#~ msgid "BSI-VSA-10573-ENG_secops.pdf"
+-#~ msgstr "BSI-VSA-10573_secops.pdf"
+-
+-#, kde-format
+-#~ msgctxt ""
+-#~ "Only available in German and English. Leave to English for other "
+-#~ "languages."
+-#~ msgid "BSI-VSA-10584-ENG_secops.pdf"
+-#~ msgstr "BSI-VSA-10584_secops.pdf"
+-
+-#, kde-format
+ #~ msgid "The validity period cannot be changed."
+ #~ msgstr "Die Gültigkeitsdauer kann nicht verändert werden."
