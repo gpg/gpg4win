@@ -117,13 +117,18 @@ for fw in $FRAMEWORKS; do
 
     sha2=$(sha256sum $tmpdir/${tarfile} | cut -d ' ' -f 1)
 
-    echo "# $fw"
-    echo "# last changed: $curdate"
-    echo "# by: ah"
-    echo "# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-    echo "file $majorversion/${tarfile}"
-    echo "chk $sha2"
-    echo ""
+    cat > ${tmpdir}/snippet <<EOF
+# ${fw}
+# last changed: ${curdate}
+# by: $USER
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
+file ${majorversion}/${tarfile}
+chk ${sha2}
+
+EOF
+
+perl -i -p0e "s@# ${fw}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
+'@se" packages.common
 done
 
 rm -r $tmpdir
