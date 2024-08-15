@@ -137,7 +137,7 @@ AUTHENTICODE_FILES = \
 	lib/scute.dll \
 	../../libstdc++-6.dll-x \
 	../../libwinpthread-1.dll-x \
-	../../libwinpthread-1.dll-x64 \
+	../../libwinpthread-1.dll-ex \
 	plugins/iconengines/qsvgicon.dll \
 	plugins/imageformats/qsvg.dll \
 	plugins/platforms/qwindows.dll \
