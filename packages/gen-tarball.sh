@@ -35,6 +35,7 @@ Generate a tarball from a repository.
 
 Options:
         --auto                 Upload to ftp server
+        -u|--update            Remove the old package locally
         --user=name            Use NAME as FTP server user
         --ignore-msgcat-error  Ignore errors from msgcat invocation
 
@@ -52,6 +53,7 @@ autoupload=no
 ftpuser_at=""
 do_auto="no"
 ignore_msgcat_errors="no"
+update="no"
 while [ $# -gt 0 ]; do
     case "$1" in
 	--*=*)
@@ -72,6 +74,9 @@ while [ $# -gt 0 ]; do
         --ignore-msgcat-error)
             ignore_msgcat_errors=yes
             ;;
+    --update|-u)
+        update="yes"
+        ;;
 	--help|-h)
 	    usage 0
 	    ;;
@@ -178,7 +183,6 @@ if [ "${is_gpg}" == "yes" ]; then
     ./autogen.sh --force >&2
     if [ "${is_w32}" == "yes" ]; then
         ./autogen.sh --build-w32 >&2
-#        ./autogen.sh --build-w32 --with-libassuan-prefix=/home/aheinecke/w64root/ >&2
     else
         ./configure >&2
     fi
@@ -218,6 +222,9 @@ else
         git commit -a -m "Escort the elephants out of the room"
     fi
     git archive --format tar.xz --prefix=${snapshotdir}/ HEAD > ${tarball}
+    if [ "$update" == "yes" ]; then
+        rm -f "${olddir}/${package}"*
+    fi
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
     cd ${olddir}
 fi
