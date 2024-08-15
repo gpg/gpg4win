@@ -490,7 +490,7 @@ $(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
          continue; \
        fi; \
        if [ -n "$(AUTHENTICODE_KEY)" ] && [ "$(AUTHENTICODE_KEY)" != "none" ]; then \
-         $(abs_top_srcdir)/build-aux/authenticode-sign.sh --stamp "$$f" "$$f" ; \
+         $(call AUTHENTICODE_sign,"$$f","$$f"); \
        fi; \
      done \
      )

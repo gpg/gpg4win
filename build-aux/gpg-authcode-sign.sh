@@ -1,5 +1,5 @@
 #!/bin/sh
-# authenticode-sign.sh - Wrapper for osslsigncode
+# gpg-authcode-sign.sh - Wrapper for osslsigncode
 # Copyright (C) 2024 g10 Code GmbH
 #
 # This file is free software; as a special exception the author gives
@@ -10,18 +10,18 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-VERSION=2024-03-25
-PGM=authenticode-sign.sh
+VERSION=2024-06-10
+PGM=gpg-authcode-sign.sh
 
 set -e
 
 usage()
 {
     cat <<EOF
-Usage: $PGM [OPTIONS]  [FILE_TO_SIGN]
+Usage: $PGM [OPTIONS]  FILE_TO_SIGN  SIGNED_FILE
 Options:
-        [--desc=STRING]   Include STRING as description (default=$url)
-        [--url=STRING]    Include STRING as URL (default=$desc)
+        [--desc=STRING]   Include STRING as description (default=$desc)
+        [--url=STRING]    Include STRING as URL (default=$url)
         [--stamp]         Use a stamp file to avoid double signing
         [--dry-run]       Do not actually run osslsigncode
         [--template]      Print a template for ~/.gnupg-autogenrc
@@ -73,7 +73,7 @@ AUTHENTICODE_TOOL="C:\Program Files (x86)\Windows Kits\10\bin\signtool.exe"
 # The URL for the timestamping service
 AUTHENTICODE_TSURL=http://rfc3161timestamp.globalsign.com/advanced
 
-# To use osslsigncode the follwing entries are required and
+# To use osslsigncode the following entries are required and
 # an empty string must be given for AUTHENTICODE_SIGNHOST.
 # They are greped by the Makefile.  For example:
 #AUTHENTICODE_KEY=/home/foo/.gnupg/my-authenticode-key.p12
@@ -94,16 +94,12 @@ AUTHENTICODE_KEY=none
 EOF
 }
 
-# gpg-authcode-sign.sh is distributed with gnupg 2.6 and basically the
-# same as this script.
-echo >&2 "$PGM: Note: Please consider to use gpg-authcode-sign.sh in the future"
-
 
 autogenrc="$HOME/.gnupg-autogen.rc"
 dryrun=
 stamp=
 buildtype=
-# Set defaults  accrding to our build system.
+# Set defaults according to our build system.
 if [ -n "$abs_top_srcdir" -a -f "$abs_top_srcdir/packages/BUILDTYPE" ]; then
     buildtype=$(cat "$abs_top_srcdir/packages/BUILDTYPE")
 elif [ -f "../packages/BUILDTYPE" ]; then
@@ -125,8 +121,8 @@ case "$buildtype" in
       url="https://gpg4win.org"
       ;;
     *)
-      desc=
-      url=
+      desc="GnuPG"
+      url="https://gnupg.org"
       ;;
 esac
 
@@ -187,6 +183,16 @@ if [ ! -f $autogenrc ]; then
     exit 1
 fi
 
+# Define the cleanup routine for osslsigncode
+cleanup() {
+    if [[ -n "$outname" && -f "${outname}.tmp" ]]; then
+        echo "Cleaning up: Removing ${outname}.tmp"
+        rm -f "${outname}.tmp"
+    fi
+}
+
+# Trap any error to call the cleanup routine
+trap cleanup ERR SIGINT SIGTERM
 
 for v in AUTHENTICODE_SIGNHOST AUTHENTICODE_TOOL AUTHENTICODE_TSURL \
          AUTHENTICODE_KEY AUTHENTICODE_CERTS VERSION_SIGNKEY \
@@ -203,8 +209,12 @@ if [ "$stamp" = yes ]; then
     fi
 fi
 
+waittime=2
+if [ -n "$dryrun" ]; then
 
-if [ -n "$AUTHENTICODE_SIGNHOST" ]; then
+    echo >&2 "$PGM: would sign: '$inname' to '$outname'"
+
+elif [ -n "$AUTHENTICODE_SIGNHOST" ]; then
 
     echo >&2 "$PGM: Signing via host $AUTHENTICODE_SIGNHOST"
 
@@ -222,13 +232,27 @@ elif [ "$AUTHENTICODE_KEY" = card ]; then
 
     echo >&2 "$PGM: Signing using a card: '$inname'"
 
-    "$OSSLSIGNCODE" sign \
+    while ! "$OSSLSIGNCODE" sign \
        -pkcs11engine "$OSSLPKCS11ENGINE" \
        -pkcs11module "$SCUTEMODULE" \
        -certs "$AUTHENTICODE_CERTS" \
        -h sha256 -n "$desc" -i "$url" \
        -ts "$AUTHENTICODE_TSURL" \
-       -in "$inname" -out "$outname.tmp"
+       -in "$inname" -out "$outname.tmp" 2> $outname.tmp.log ; do
+      cat >&2 $outname.tmp.log
+      if ! grep 'HTTP status 500' $outname.tmp.log >/dev/null ; then
+        echo >&2 "$PGM: signing failed - see above"
+        exit 2
+      fi
+      if [ $waittime -ge 32 ]; then
+        echo >&2 "$PGM: signing failed - giving up"
+        exit 2
+      fi
+      echo >&2 "$PGM: signing failed - waiting ${waittime}s before next try"
+      sleep $waittime
+      waittime=$(( $waittime * 2 ))
+    done
+    rm "$outname.tmp.log"
     cp "$outname.tmp" "$outname"
     rm "$outname.tmp"
 
@@ -237,9 +261,9 @@ elif [ "$AUTHENTICODE_KEY" = none ]; then
     echo >&2 "$PGM: Signing disabled; would sign: '$inname'"
     [ "$inname" != "$outname" ] && cp "$inname" "$outname"
 
-else
+elif [[ "$AUTHENTICODE_KEY" =~ \.p12$ || "$AUTHENTICODE_KEY" =~ \.pfx$ ]]; then
 
-    echo >&2 "$PGM: Signing using key $AUTHENTICODE_KEY"
+    echo >&2 "$PGM: Signing using PKCS#12 container $AUTHENTICODE_KEY"
     osslsigncode sign -certs "$AUTHENTICODE_CERTS" \
        -pkcs12 "$AUTHENTICODE_KEY" -askpass \
        -ts "$AUTHENTICODE_TSURL" \
@@ -248,6 +272,22 @@ else
        cp "$outname.tmp" "$outname"
        rm "$outname.tmp"
 
+else
+
+    echo >&2 "$PGM: Signing using unprotected key $AUTHENTICODE_KEY"
+    osslsigncode sign -certs "$AUTHENTICODE_CERTS" \
+       -key "$AUTHENTICODE_KEY" \
+       -ts "$AUTHENTICODE_TSURL" \
+       -h sha256 -n "$desc" -i "$url" \
+       -in "$inname" -out "$outname.tmp"
+       cp "$outname.tmp" "$outname"
+       rm "$outname.tmp"
+
 fi
-[ "$stamp" = yes ] && touch "$outname.asig-done"
-echo >&2 "$PGM: signed file is '$outname'"
+
+if [ -z "$dryrun" ]; then
+  [ "$stamp" = yes ] && touch "$outname.asig-done"
+  echo >&2 "$PGM: signed file is '$outname'"
+fi
+
+# eof
