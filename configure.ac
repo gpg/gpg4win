@@ -345,7 +345,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([kcalendarcore], [qtbase libical extra-cmake-modules])
     GPG4WIN_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmbox kmime kcodecs kcalendarcore])
     GPG4WIN_KDEPKG([prison], [qtbase extra-cmake-modules qrencode])
-    GPG4WIN_KDEPKG([gpgpass], [prison kconfigwidgets kiconthemes ki18n gpgme])
+    GPG4WIN_KDEPKG([gpgpass], [prison kio kconfigwidgets kiconthemes ki18n gpgme])
 
     GPG4WIN_FINALIZE
 fi
