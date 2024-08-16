@@ -389,7 +389,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmbox kmime kcodecs kcalendarcore])
     GPG4WIN_KDEPKG([prison], [qtbase extra-cmake-modules qrencode])
     GPG4WIN_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
-    GPG4WIN_KDEPKG([gpgpass], [prison kconfigwidgets kiconthemes ki18n gpgme])
+    GPG4WIN_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n gpgme])
     GPG4WIN_KDEPKG([libkdepim], [kcompletion ki18n kwidgetsaddons])
     GPG4WIN_KDEPKG([syntax-highlighting], [extra-cmake-modules qtbase qttools qttranslations])
     GPG4WIN_KDEPKG([ktextaddons], [qtkeychain syntax-highlighting kio ki18n kcoreaddons kconfigwidgets sonnet karchive])
