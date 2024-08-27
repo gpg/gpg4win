@@ -2329,13 +2329,13 @@ print <<EOF;
       <ComponentRef Id='c_gpg4win_7' />
       <!-- pkg-copyright.txt -->
       <ComponentRef Id='c_gpg4win_8' />
+      <!-- gnupg/share/gnupg/gpgconf.rnames -->
+      <ComponentRef Id='c_gpg4win_9' />
       <ComponentRef Id='c_pinentry_0' />
       <ComponentRef Id='c_pinentry_1' />
       <ComponentRef Id='c_scute_0' />
       <ComponentRef Id='c_paperkey_0' />
       <ComponentRef Id='c_paperkey_1' />
-      <!-- gnupg\share\gnupg\gpgconf.rnames -->
-      <ComponentRef Id='c_gnupg_w32_4' />
       <ComponentGroupRef Id='c_customization' />
 
     </Feature>

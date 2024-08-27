@@ -49,6 +49,9 @@ Section "-un.gpg4win"
 
   RMDir "$INSTDIR\share\gpg4win"
 
+  Delete "$INSTDIR\GnuPG\share\gnupg\gpgconf.rnames"
+  RmDir  "$INSTDIR\GnuPG\share\gnupg"
+
   # Remove the locale directories.
   RMDir "$INSTDIR\share\locale\ar\LC_MESSAGES"
   RMDir "$INSTDIR\share\locale\ar"

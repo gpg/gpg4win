@@ -126,6 +126,9 @@ skip_uninst:
 
   SetOutPath "$INSTDIR"
   File /oname=pkg-licenses.txt "${SRCDIR}/../doc/pkg-copyright.txt"
+
+  SetOutPath "$INSTDIR\GnuPG\share\gnupg"
+  File /oname=gpgconf.rnames "${SRCDIR}/gpgconf.rnames"
 !endif
 
 SectionEnd

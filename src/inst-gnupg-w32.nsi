@@ -43,9 +43,6 @@ done:
   File "${BUILD_DIR}/gpg-enable-keyboxd.bat"
   File "${BUILD_DIR}/gpg-disable-keyboxd.bat"
 
-  SetOutPath "$INSTDIR\..\GnuPG\share\gnupg"
-  File "${BUILD_DIR}/gpgconf.rnames"
-
   Delete "$TEMP\gnupg-w32-${gpg4win_pkg_gnupg_w32_version}-bin.exe"
 !endif
 ${MementoSectionEnd}
