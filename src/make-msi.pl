@@ -2334,6 +2334,8 @@ print <<EOF;
       <ComponentRef Id='c_scute_0' />
       <ComponentRef Id='c_paperkey_0' />
       <ComponentRef Id='c_paperkey_1' />
+      <!-- gnupg\share\gnupg\gpgconf.rnames -->
+      <ComponentRef Id='c_gnupg_w32_4' />
       <ComponentGroupRef Id='c_customization' />
 
     </Feature>
