@@ -12,6 +12,7 @@
 #
 
 \Software\GNU\GpgOL:syncDec
+\Software\GNU\GpgOL:syncEnc
 \Software\GNU\GpgOL:smimeNoCertSigErr
 \Software\GNU\GpgOL:alwaysShowApproval
 \Software\GNU\GpgOL:draftEnc
