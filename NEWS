@@ -3,7 +3,7 @@
 # The version numbers given are used by gpg4win and GnuPG [VS-]Desktop
 
 
-Noteworthy changes in Version 3.2.3 (unreleased)
+Noteworthy changes in Version 3.2.3 (2024-08-28)
 ------------------------------------------------
 
 (en) Kleopatra: Disable dark mode detection on old windows versions.
@@ -13,6 +13,26 @@ Noteworthy changes in Version 3.2.3 (unreleased)
      https://dev.gnupg.org/T7141 for details.
 
 (en) GnuPG: See https://dev.gnupg.org/T7087 for changes.
+
+(en) GpgOL: Added support for message/rfc822 encapsulated MIME
+     parts. They are shown as attachment.  [T7266]
+
+(en) GpgOL: Improved handling of attachments with names that cannot be
+     represented on a Windows file system.  [T4835,T6864]
+
+(en) GpgOL: Fixed a potential crash which could rarely occur after
+      decryption and / or verification.  [rO8349fea6]
+
+(en) GpgOL: Fix duplications of shown attachments and other oddities
+     in signed mails.  Regression introduced after 3.1.26.  [T7242]
+
+(en) GpgOL: Fixed additional incompatibilities with third party mail
+     clients where multipart/signed mails would be shown as empty,
+     after opening them with GpgOL. (since 3.1.12) [T7242]
+
+(en) GpgOL: Fixed that mails were marked directly as read when viewed
+     in GpgOL, disregarding the Outlook settings.  [T7223]
+
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.44
