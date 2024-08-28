@@ -24,7 +24,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         gpg-enable-keyboxd.bat gpg-disable-keyboxd.bat \
         BreezeClassic.colors BreezeDark.colors \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
-	zlib.pc sha1sum.c \
+	zlib.pc sha1sum.c gpgconf.rnames \
         potomo Memento.nsh \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
         inst-gettext.nsi	   uninst-gettext.nsi	      \
@@ -109,7 +109,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         kdeglobals qtlogging.ini \
         make-msi.pl make-msi.guids \
         build-gpg4win.sh \
-        WixUI_Gpg4win.wxs icons/shield.ico included-icons.txt
+        WixUI_Gpg4win.wxs icons/shield.ico shield.ico included-icons.txt
 
 
 if BUILD_APPIMAGE
