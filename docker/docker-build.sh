@@ -43,6 +43,7 @@ Options:
         --inplace       Build in the current directoy
         --buildroot     Directory where the build should take place
         --update-image  Update the docker image before build
+        --w64           Use 64 bit Windows as primary host arch
 
 This builds either the Appimage the Windows installer.
 By default the build is done in \$TMPDIR (${TMPDIR}) with
@@ -89,6 +90,7 @@ branch="master"
 srcdir=$(cd $(dirname $0)/..; pwd)
 is_tmpbuild="no"
 update_image="no"
+w64="no"
 
 # Store the original comamnd line
 commandline="$0 $@"
@@ -104,6 +106,7 @@ while [ $# -gt 0 ]; do
         --clean) clean="yes";;
         --inplace) inplace="yes";;
         --update-image) update_image="yes";;
+        --w64) w64="yes";;
         --buildroot) buildroot="$2"; shift; ;;
         *) usage 1 1>&2; exit 1;;
     esac
@@ -121,7 +124,11 @@ if [ "$appimage" == "yes" ]; then
     docker_image=g10-build-appimage:sles15
     dockerfile=${srcdir}/docker/appimage
 else
-    cmd=/build/src/build-gpg4win.sh
+    if [ "$w64" == "yes" ]; then
+        cmd="/build/src/build-gpg4win.sh --build-w64"
+    else
+        cmd="/build/src/build-gpg4win.sh"
+    fi
     docker_image=g10-build-gpg4win:bookworm
     dockerfile=${srcdir}/docker/gpg4win-bookworm
 fi

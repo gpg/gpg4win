@@ -30,5 +30,9 @@ cd ${gpg4win_root}/packages
 
 cd ${gpg4win_root}
 ./autogen.sh
-./autogen.sh --build-w32
+if [ $# -gt 0 ]; then
+    ./autogen.sh "$@"
+else
+    ./autogen.sh --build-w32
+fi
 make
