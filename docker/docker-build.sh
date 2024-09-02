@@ -141,6 +141,7 @@ if [ "$inplace" == "yes" ]; then
 else
     echo "Building in $buildroot"
     mkdir -p "$buildroot"
+    buildroot=$(readlink -f ${buildroot})
     gpg4win_dir="${buildroot}/gpg4win"
     if [ "$clean" == "yes" ]; then
         rm -rf ${gpg4win_dir}
