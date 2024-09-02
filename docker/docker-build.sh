@@ -44,6 +44,11 @@ Options:
         --buildroot     Directory where the build should take place
         --update-image  Update the docker image before build
         --w64           Use 64 bit Windows as primary host arch
+        --git-pkgs      Use latest git versions for the frontend
+                        packages:
+                        gpgme libkleo kleopatra gpgol gpgol.js
+                        gpgpass gpg4win-tools mimetreeparser
+
 
 This builds either the Appimage the Windows installer.
 By default the build is done in \$TMPDIR (${TMPDIR}) with
@@ -91,6 +96,7 @@ srcdir=$(cd $(dirname $0)/..; pwd)
 is_tmpbuild="no"
 update_image="no"
 w64="no"
+git_pkgs="no"
 
 # Store the original comamnd line
 commandline="$0 $@"
@@ -107,7 +113,8 @@ while [ $# -gt 0 ]; do
         --inplace) inplace="yes";;
         --update-image) update_image="yes";;
         --w64) w64="yes";;
-        --buildroot) buildroot="$2"; shift; ;;
+        --git|-g|--git-pkgs) fromgit="yes";;
+        --buildroot|-o) buildroot="$2"; shift; ;;
         *) usage 1 1>&2; exit 1;;
     esac
     shift
@@ -190,6 +197,22 @@ fi
 # if the file and checksum is updated in the packages
 # file.
 cd ${gpg4win_dir}/packages
+
+FRONTEND_PKGS="
+gpgme
+libkleo
+kleopatra
+gpgol
+gpgoljs
+gpgpass
+gpg4win-tools
+mimetreeparser"
+
+if [ "$fromgit" == "yes" ]; then
+    echo "Updating packages from git... "
+    ./gen-tarball.sh -u $FRONTEND_PKGS
+    echo "Done"
+fi
 
 echo "Downloading packages"
 if [ "$gpg22" == "yes" ]; then
