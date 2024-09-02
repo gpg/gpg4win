@@ -189,6 +189,9 @@ if [ "${is_gpg}" == "yes" ]; then
     fi
     make dist-xz >&2
     tarball=$(ls -t *.tar.xz | head -1)
+    if [ "$update" == "yes" ]; then
+        find "${olddir}" -name ${package}\* -print0 | xargs -0 rm -f
+    fi
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
     cd ${olddir}
 else
@@ -224,7 +227,7 @@ else
     fi
     git archive --format tar.xz --prefix=${snapshotdir}/ HEAD > ${tarball}
     if [ "$update" == "yes" ]; then
-        rm -f "${olddir}/${package}"*
+        find "${olddir}" -name ${package}\* -print0 | xargs -0 rm -f
     fi
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
     cd ${olddir}
@@ -241,16 +244,16 @@ file ${package}/${tarball}
 chk ${checksum}
 EOF
 
-if [ "${autoupload}" = "yes" ]; then
-    perl -i -p0e "s@# ${package}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
+perl -i -p0e "s@# ${package}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
 '@se" packages.common
 
+echo "------------------------------ >8 ------------------------------"
+cat "${tmpdir}/snippet"
+echo "------------------------------ >8 ------------------------------"
+if [ "${autoupload}" = "yes" ]; then
     echo "$PGM: uploading to ${ftpuser_at}trithemius.gnupg.org" >&2
     rsync -vP ${tarball} ${ftpuser_at}trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/
 else
-    echo "------------------------------ >8 ------------------------------"
-    cat "${tmpdir}/snippet"
-    echo "------------------------------ >8 ------------------------------"
     echo "$PGM: info: To upload:" >&2
     echo "rsync -vP ${tarball} trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/" >&2
 fi;
