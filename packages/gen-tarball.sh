@@ -65,7 +65,7 @@ while [ $# -gt 0 ]; do
     esac
 
     case $1 in
-	--auto)
+	--auto|-a)
 	    autoupload=yes
 	    ;;
         --user|--user=*)
@@ -125,8 +125,9 @@ case ${package} in
     gpgpass )
         repo=git://git.gnupg.org/${package}.git
         ;;
-    gpgol.js)
-        repo=git://git.gnupg.org/${package}.git
+    gpgol.js|gpgoljs)
+        repo=git://git.gnupg.org/gpgol.js.git
+        package=gpgoljs
         ;;
     mimetreeparser)
         repo=https://invent.kde.org/pim/${package}.git
@@ -173,7 +174,6 @@ tmpdir=$(mktemp -d -t gen-tarball.XXXXXXXXXX)
 curdate=$(date +%Y-%m-%d)
 timestamp=$(date +%Y%m%d%H%M)
 snapshotdir=${package}-${timestamp}
-snapshotdir=$(echo ${snapshotdir} | sed 's/gpgol.js/gpgoljs/')
 tarball=${snapshotdir}.tar.xz
 
 git clone ${repo} ${tmpdir}/${snapshotdir}
