@@ -284,9 +284,10 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_RUNTIME_LIBRARY(libgcc_s_dw2-1)
     GPG4WIN_RUNTIME_LIBRARY(libgcc_s_sjlj-1)
 
-    if [ ! test -s "src/libgcc_s_dw2-1.dll-x" -o -s "src/libgcc_s_sjlj-1.dll-x" ]; then
+    if [ ! test -s "src/libgcc_s_dw2-1.dll-x" -o -s "src/libgcc_s_sjlj-1.dll-x" \
+          -o -s "src/libgcc_s_seh-1.dll-x" ]; then
         AC_MSG_ERROR(No exception library found. Please check what your system
-                     uses and see above message about either dw2 or sjlj
+                     uses and see above message about either dw2- sjlj- or seh-
                      dlls.)
     fi
 fi
