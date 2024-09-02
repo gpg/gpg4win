@@ -61,9 +61,6 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kparts_/0001-Change-check-from-Android-to-DBus-check.patch \
              patches/ktextaddons/0001-Remove-unused-QDbus-includes.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
-             patches/libkdepim/0001-Disable-dbus-on-windows-and-macOS.patch \
-             patches/libkdepim/0002-Fix-compilation-with-mingw.patch \
-             patches/libkdepim/0003-Remove-test-dependency-unless-we-compile-the-tests.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/lower-cmake-requirement.patch \
              patches/pcre2/cross-build-cmake.patch \
