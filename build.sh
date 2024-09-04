@@ -92,7 +92,7 @@ clean_pkgs="no"
 clean="no"
 inplace="no"
 branch="master"
-srcdir=$(cd $(dirname $0)/..; pwd)
+srcdir=$(cd $(dirname $0); pwd)
 is_tmpbuild="no"
 update_image="no"
 w64="no"
@@ -105,13 +105,13 @@ while [ $# -gt 0 ]; do
     case $1 in
         --appimage) appimage="yes";;
         --gpg-2.2) gpg22="yes";;
-        --dirty) dirty="yes";;
+        --dirty|-d) dirty="yes";;
         --shell) shell="yes";;
         --root-shell) root_shell="yes";;
         --clean-pkgs) clean_pkgs="yes";;
-        --clean) clean="yes";;
+        --clean|-c) clean="yes";;
         --inplace) inplace="yes";;
-        --update-image) update_image="yes";;
+        --update-image|--update-img|-u) update_image="yes";;
         --w64) w64="yes";;
         --git|-g|--git-pkgs) fromgit="yes";;
         --buildroot|-o) buildroot="$2"; shift; ;;

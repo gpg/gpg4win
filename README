@@ -29,13 +29,13 @@ To achieve reproducible results independent of your system, Gpg4win
 utilizes Docker. The build with Docker is scripted; see:
 
   ```
-  $ ./docker/docker-build.sh --help
+  $ ./build.sh --help
   ```
 
 Executing:
 
   ```
-  $ ./docker/docker-build.sh
+  $ ./build.sh
   ```
 
 without any arguments will create an installer based on the
@@ -46,20 +46,20 @@ To rebuild a source package or include custom changes in the
 build, you can also do an in-place build:
 
   ```
-  $ ./docker/docker-build.sh --inplace
+  $ ./build.sh --inplace
   ```
 
 AppImage:
 =========
 
 To build the AppImage, add the parameter `--appimage` to invocations
-of `docker/docker-build.sh`. Building the AppImage without Docker
+of `build.sh`. Building the AppImage without Docker
 is not supported.
 
 Major Build Steps:
 ==================
 
-The Docker script `docker/docker-build.sh` prepares a build environment
+The Docker script `build.sh` prepares a build environment
 and then executes `src/build-gpg4win.sh` or `src/appimage/build-appimage.sh`.
 
 These scripts execute the following steps:
