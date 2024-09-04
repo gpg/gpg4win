@@ -71,7 +71,8 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh README.GIT ONEWS \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
              patches-appimage/okular/0001-Make-KF6Pty-dependency-optional.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
-             patches-appimage/qtbase/add-kleopatras-mime-types.patch
+             patches-appimage/qtbase/add-kleopatras-mime-types.patch \
+             patches-appimage/kcalendarcore/0001-Add-option-to-build-without-QML.patch
 
 dist-hook: gen-ChangeLog
 
@@ -115,6 +116,35 @@ download: packages/packages.common packages/packages.4 packages/packages.3
 	(cd packages; ./download.sh)
 
 vsd-versions: src/stamps/stamp-versions-all-signed
+
+rebuild:
+	./build.sh --update-img --inplace $(w64_extraargs)
+
+clean-local:
+	-rm -rf artifacts
+	-rm -f $(RELEASE_NAME).tar.xz
+
+distclean-local:
+	-rm -f $(RELEASE_NAME).swdb
+
+nightly:
+	 echo "/* Running configure */"
+	 $(abs_top_srcdir)/autogen.sh --force
+	 (cd $(abs_top_srcdir)/packages && ./download.sh -u && \
+		 ./gen-tarball.sh -f && git commit -a -m "nightly commit"); \
+	 $(abs_top_srcdir)/autogen.sh --build-w32
+	 echo "/* Running make distcheck */"
+	 $(MAKE) distcheck TESTFLAGS=--parallel
+	 echo "/* Unpacking release */"
+	 $(MKDIR_P) $(abs_top_srcdir)/PLAY
+	 $(MKDIR_P) $(OUTDIR)
+	 (cd $(abs_top_srcdir)/PLAY &&  $(AMTAR) xJf ../$(RELEASE_NAME).tar.xz) && \
+	 (cd $(abs_top_srcdir)/PLAY/$(RELEASE_NAME) && \
+	 ./build.sh $(w64_extraargs) --update-image --clean -o ./build-w64 && \
+	 mv artifacts/* $(OUTDIR) && \
+	 ./build.sh --appimage --update-image --clean -o ./PLAY/build-lin) && \
+	 mv artifacts/* $(OUTDIR)
+	 echo Results can be found under $(OUTDIR)
 
 msi:
 	$(MAKE) $(AM_MAKEFLAGS) -C src msi
