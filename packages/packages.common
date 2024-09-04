@@ -649,11 +649,11 @@ chk 266a909ecd8d95cda9f559cb71e62bd202de112bb7d0b9eb726de4dddd2ffb2e
 
 
 # gpgol
-# last changed: 2024-09-03
+# last changed: 2024-09-04
 # by: aheinecke
 # verified: Tarball created by aheinecke.
 file gpgol/gpgol-2.5.15-beta1.tar.xz
-chk 7bd5aec3f9e2446f2aec02aebe7434e5072b51626740edee0a605f6d649a8104
+chk 45798f963bde8458d6ee68852aeec904e9ee272285d1315ef5de0cec521d6907
 
 
 # gpg4win-tools
