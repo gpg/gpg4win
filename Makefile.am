@@ -36,18 +36,17 @@ SUBDIRS = ${po} packages ${doc} src
 # find patches -type f | sort | sed 's/$/ \\/' | sed 's/^/             /'
 # find -L patches-appimage -type f | sort | sed 's/$/ \\/' | sed 's/^/             /'
 
-EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
-             doc/license-page doc/GPLv3 \
+EXTRA_DIST = build.sh autogen.rc autogen.sh README.GIT ONEWS \
+             doc/license-page doc/GPLv3 build.sh \
              build-aux/git-log-footer build-aux/git-log-fix \
-             build-aux/authenticode-sign.sh \
+             build-aux/gpg-authcode-sign.sh \
              docker/appimage/Dockerfile \
              docker/appimage/Dockerfile-CentOS7 \
-             docker/docker-build.sh \
              docker/gpg4win-bookworm/Dockerfile \
              patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools.patch \
              patches/breeze-icons/add-the-nose.patch \
              patches/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
-             patches/extra-cmake-modules/0001-Do-not-abort-without-QML-tools.patch \
+             patches/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
@@ -55,16 +54,13 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/kio/0001-Remove-kencodingfiledialog-to-avoid-Qt5Compat.patch \
-             patches/kio2/0001-WIP-Add-option-to-force-disable-DBus-and-KCrash.patch \
              patches/kjobwidgets/0001-Remove-knotification.patch \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
-             patches/kparts_/0001-Change-check-from-Android-to-DBus-check.patch \
              patches/ktextaddons/0001-Remove-unused-QDbus-includes.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/lower-cmake-requirement.patch \
              patches/pcre2/cross-build-cmake.patch \
-             patches/prison/0001-Only-include-ECMQmlModule-if-building-WITH_QUICK.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
@@ -78,6 +74,28 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches-appimage/qtbase/add-kleopatras-mime-types.patch
 
 dist-hook: gen-ChangeLog
+
+if BUILD_W64_COND
+w64_extraargs=" --w64"
+endif
+
+distcheck-hook:
+	set -e; ( \
+	pref="#+macro: gpg4win_" ;\
+	reldate="$$(date -u +%Y-%m-%d)" ;\
+        echo "$${pref}ver  $(PACKAGE_VERSION)"  ;\
+        echo "$${pref}date $${reldate}" ;\
+        list='$(DIST_ARCHIVES)'; for i in $$list; do \
+	  case "$$i" in *.tar.bz2) \
+            echo "$${pref}size $$(wc -c <$$i|awk '{print int($$1/1024)}')k" ;\
+	    echo "$${pref}sha1 $$(sha1sum <$$i|cut -d' ' -f1)" ;\
+	    echo "$${pref}sha2 $$(sha256sum <$$i|cut -d' ' -f1)" ;;\
+	  esac;\
+	done ) | tee $(distdir).swdb
+
+# Names of to help the release target.
+RELEASE_NAME = $(PACKAGE_TARNAME)-$(PACKAGE_VERSION)
+OUTDIR="$(abs_top_srcdir)/artifacts/$(RELEASE_NAME)-nightly-$(shell date +%Y%m%d%H%M)"
 
 gen_start_date = 2012-03-26T00:00:00
 .PHONY: gen-ChangeLog
