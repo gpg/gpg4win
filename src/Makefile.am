@@ -46,6 +46,9 @@ appimage = appimage
 else
 appimage =
 endif
+if BUILD_W64_COND
+w64_suffix="-x64"
+endif
 
 SUBDIRS = ${appimage} nsis
 
@@ -535,14 +538,14 @@ COMPONENTS-list.tmp : $(top_srcdir)/NEWS
 # For some nut-crazy reason someone thought it would be a great idea
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
-installers/gpg4win-$(VERSION).exe: $(common_nsi) $(stampdir)/stamp-final \
+installers/gpg4win-$(VERSION)$(W64SUFFIX).exe: $(common_nsi) $(stampdir)/stamp-final \
                         g4wihelp.dll gpgwrap.exe \
 		        $(foosum_exe) \
 				 $(HOWTO_files) \
 	                license.blurb versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_W64=$(BUILD_W64) -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/nsis/gpg4win.nsi && \
-		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION).exe
+		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION)$(W64SUFFIX).exe
 
 $(stampdir)/stamp-dist-self: versioninfo.txt
 	(set -e; cd ..; make dist-xz)
@@ -582,7 +585,7 @@ sha256sum.exe: sha1sum.c
 	$(STRIP) $@
 
 if BUILD_GPG4WIN
-all_full = installers/gpg4win-$(VERSION).exe
+all_full = installers/gpg4win-$(VERSION)$(W64SUFFIX).exe
 endif
 
 all-local: $(all_full)
@@ -594,7 +597,7 @@ if BUILD_GPG4WIN
 endif
 
 clean-local:
-	-rm -f installers/gpg4win-$(VERSION).exe \
+	-rm -f installers/gpg4win-$(VERSION)$(W64SUFFIX).exe \
 		  installers/GnuPG-VS-Desktop-$(VERSION).msi \
 		  installers/GnuPG-Desktop-$(VERSION).msi
 

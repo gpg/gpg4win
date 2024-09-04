@@ -187,6 +187,8 @@ AC_ARG_ENABLE(ninja,
 #
 AM_CONDITIONAL(BUILD_GPG4WIN,  test "$build_gpg4win" = "yes")
 AM_CONDITIONAL(BUILD_APPIMAGE, test "$build_appimage" = "yes")
+AM_CONDITIONAL(BUILD_W64_COND, test "$BUILD_W64" = "yes")
+
 
 # Required tools.
 AC_PROG_CC
@@ -266,7 +268,6 @@ if test "$build_gpg4win" = yes ; then
         # is then 32 bit to take care of that.
         AC_CHECK_PROGS(W32CC32, i686-w64-mingw32-gcc)
         GPG4WIN_RUNTIME_LIBRARY(libgcc_s_seh-1)
-        VERSION=${VERSION}-x64
         ;;
     *)
         W32CC32=${CC}
