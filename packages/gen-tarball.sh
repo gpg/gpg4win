@@ -27,6 +27,16 @@ PGM=gen-tarball.sh
 
 set -e
 
+FRONTEND_PKGS="
+gpgme
+libkleo
+kleopatra
+gpgol
+gpgoljs
+gpgpass
+gpg4win-tools
+mimetreeparser"
+
 usage()
 {
     cat <<EOF
@@ -36,6 +46,8 @@ Generate a tarball from a repository.
 Options:
         --auto                 Upload to ftp server
         -u|--update            Remove the old package locally
+        -f                     Update frontend packages en block. These are:
+$FRONTEND_PKGS
         --user=name            Use NAME as FTP server user
         --ignore-msgcat-error  Ignore errors from msgcat invocation
 
@@ -77,6 +89,9 @@ while [ $# -gt 0 ]; do
     --update|-u)
         update="yes"
         ;;
+    -f)
+        update="full"
+        ;;
 	--help|-h)
 	    usage 0
 	    ;;
@@ -90,12 +105,17 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-if [  $# -eq 0 ]; then
+if [ $# -eq 0 ] && [ "$update" != "full" ]; then
     usage 1 1>&2
 fi
 
-for package in "$@"; do
-shift
+PACKAGES="$@"
+
+if [ "$update" == "full" ]; then
+    PACKAGES="$PACKAGES $FRONTEND_PKGS"
+fi
+
+for package in $PACKAGES; do
 
 # Reset variables
 branch="master"
@@ -189,7 +209,7 @@ if [ "${is_gpg}" == "yes" ]; then
     fi
     make dist-xz >&2
     tarball=$(ls -t *.tar.xz | head -1)
-    if [ "$update" == "yes" ]; then
+    if [ "$update" != "no" ]; then
         find "${olddir}" -name ${package}\* -print0 | xargs -0 rm -f
     fi
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
@@ -226,7 +246,7 @@ else
         git commit -a -m "Escort the elephants out of the room"
     fi
     git archive --format tar.xz --prefix=${snapshotdir}/ HEAD > ${tarball}
-    if [ "$update" == "yes" ]; then
+    if [ "$update" != "no" ]; then
         find "${olddir}" -name ${package}\* -print0 | xargs -0 rm -f
     fi
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
