@@ -96,7 +96,7 @@ distcheck-hook:
 
 # Names of to help the release target.
 RELEASE_NAME = $(PACKAGE_TARNAME)-$(PACKAGE_VERSION)
-OUTDIR="$(abs_top_srcdir)/artifacts/$(RELEASE_NAME)-nightly-$(shell date +%Y%m%d%H%M)"
+OUTDIR="$(abs_top_srcdir)/artifacts/$(RELEASE_NAME)-nightly-$(BUILD_DATETIME)"
 
 gen_start_date = 2012-03-26T00:00:00
 .PHONY: gen-ChangeLog
@@ -126,25 +126,30 @@ clean-local:
 
 distclean-local:
 	-rm -f $(RELEASE_NAME).swdb
+#	 (cd $(abs_top_srcdir)/packages && ./download.sh -u && \
+#		 ./gen-tarball.sh -f && git commit -a -m "nightly changes: $(BUILD_DATETIME)") || exit 1; \
+#	 $(abs_top_srcdir)/autogen.sh --build-w32
 
 nightly:
 	 echo "/* Running configure */"
 	 $(abs_top_srcdir)/autogen.sh --force
-	 (cd $(abs_top_srcdir)/packages && ./download.sh -u && \
-		 ./gen-tarball.sh -f && git commit -a -m "nightly commit"); \
-	 $(abs_top_srcdir)/autogen.sh --build-w32
 	 echo "/* Running make distcheck */"
 	 $(MAKE) distcheck TESTFLAGS=--parallel
 	 echo "/* Unpacking release */"
+	 rm -rf $(abs_top_srcdir)/PLAY
 	 $(MKDIR_P) $(abs_top_srcdir)/PLAY
 	 $(MKDIR_P) $(OUTDIR)
-	 (cd $(abs_top_srcdir)/PLAY &&  $(AMTAR) xJf ../$(RELEASE_NAME).tar.xz) && \
+	 (cd $(abs_top_srcdir)/PLAY && $(AMTAR) xJf ../$(RELEASE_NAME).tar.xz)
 	 (cd $(abs_top_srcdir)/PLAY/$(RELEASE_NAME) && \
-	 ./build.sh $(w64_extraargs) --update-image --clean -o ./build-w64 && \
+	 ./build.sh $(W64ARGS) --update-image --clean -o $(abs_top_srcdir)/PLAY/build-w64 && \
+	 ./build.sh --appimage --update-image --clean -o $(abs_top_srcdir)/PLAY/build-lin && \
 	 mv artifacts/* $(OUTDIR) && \
-	 ./build.sh --appimage --update-image --clean -o ./PLAY/build-lin) && \
-	 mv artifacts/* $(OUTDIR)
-	 echo Results can be found under $(OUTDIR)
+	 mv $(RELEASE_NAME).tar.xz $(OUTDIR) && \
+	 git format-patch HEAD~1) && \
+	 mv 000*nightly*.patch $(OUTDIR)/$(BUILD_DATETIME)-nightly-changes.patch && \
+	 mv $(OUTDIR)/$(BUILD_DATETIME)-nightly-changes.patch $(OUTDIR) && \
+	 git reset HEAD~1 && \
+	 echo "Results can be found under $(OUTDIR)"
 
 msi:
 	$(MAKE) $(AM_MAKEFLAGS) -C src msi

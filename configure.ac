@@ -116,6 +116,7 @@ AC_SUBST(IS_GPD_BUILD)
 # must not translate the dots to commas in the BUILD_FILEVERSION.
 BUILD_TIMESTAMP=`date --iso-8601=minutes`
 BUILD_ISODATE=`date --iso-8601`
+BUILD_DATETIME=`date +%Y%m%d%H%M`
 changequote(,)dnl
 BUILD_FILEVERSION=`echo "$VERSION" | sed 's/\([0-9.]*\).*/\1./'`
 changequote([,])dnl
