@@ -158,6 +158,8 @@ appimage_pkg_kiconthemes_configure = \
     -DKICONTHEMES_USE_QTQUICK=OFF
 
 appimage_pkg_kcoreaddons_configure = -DKCOREADDONS_USE_QML=OFF
+appimage_pkg_kcalendarcore_configure = -DUSE_QML=OFF
+appimage_pkg_ktextaddons_configure = -DFORCE_DISABLE_MULTIMEDIA=ON
 
 appimage_pkg_ktextwidgets_configure = -DWITH_TEXT_TO_SPEECH=OFF
 
