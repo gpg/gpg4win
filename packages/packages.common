@@ -537,11 +537,11 @@ chk 441bbb3c13cb535a216feb411ffe5925f4ca668a679c3cc1c4260c2bf406baec
 server https://gnupg.org/ftp/gcrypt/snapshots
 
 # gpgme
-# last changed: 2024-08-15
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file gpgme/gpgme-1.24.0-beta623.tar.xz
-chk 2d8c2d6add041169631b0c335cda880e1061334cd418383d31a753baeafe4e32
+# last changed: 2024-09-20
+# by: builder
+# verified: Tarball created by builder.
+file gpgme/gpgme-1.24.0-beta635.tar.xz
+chk 70704bbaab15899e0af4fa380daefa8c482ba481e3c6697834eb2962a32dbb51
 
 
 # gpgol
@@ -553,11 +553,11 @@ chk 2d8c2d6add041169631b0c335cda880e1061334cd418383d31a753baeafe4e32
 
 
 # gpg4win-tools
-# last changed: 2024-06-10
+# last changed: 2024-09-20
 # by: builder
 # verified: Tarball created by builder.
-file gpg4win-tools/gpg4win-tools-202406101442.tar.xz
-chk 4012afd3b0f13642a459264755e1e5eaacfa9ea679d8872dce3c1ecbb0ea8b45
+file gpg4win-tools/gpg4win-tools-202409201412.tar.xz
+chk e28412badd1afe65ce90a9fd37b32ac3a7e5d2e842c26e366fa6e4ef5e0d266f
 
 # gpgpass
 # last changed: 2024-08-15
@@ -575,18 +575,18 @@ chk 03b8a482386db9a3007b7b3cc1506264cd2ad9c5b26ad3acadc448feec30c4c0
 
 
 # libkleo
-# last changed: 2024-08-15
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file libkleo/libkleo-202408151255.tar.xz
-chk adbc4f68c2f6e4ba1b07f0ce9a58d6eb88150ac5f1214aedf93ebd734eefb5e5
+# last changed: 2024-09-20
+# by: builder
+# verified: Tarball created by builder.
+file libkleo/libkleo-202409201412.tar.xz
+chk b27fd0177a28e08fd76702ccd2584c30b9fda707037f8225cdc06a769e8efd5b
 
 # kleopatra
-# last changed: 2024-08-15
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202408151256.tar.xz
-chk 4901e2ca843ca61262815d2db0e371f3b11779b454669b4660ef8c88f5a71d21
+# last changed: 2024-09-20
+# by: builder
+# verified: Tarball created by builder.
+file kleopatra/kleopatra-202409201412.tar.xz
+chk 52c23e34d4689220d3827a47cee45915842d854bcd039442eeb7a31e7a60338f
 
 
 # Okular and dependencies
