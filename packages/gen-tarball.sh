@@ -138,6 +138,7 @@ case ${package} in
         repo=https://invent.kde.org/pim/${package}.git
         branch="gpg4win/24.05"
         custom_l10n="l10n-support/de/summit/messages/libkleo/libkleopatra6.po"
+        local_l10n="libkleopatra-24.05-de-full-translation.po"
         ;;
     okular)
         repo=https://invent.kde.org/graphics/${package}.git
