@@ -575,11 +575,11 @@ chk 03b8a482386db9a3007b7b3cc1506264cd2ad9c5b26ad3acadc448feec30c4c0
 
 
 # libkleo
-# last changed: 2024-09-20
-# by: builder
-# verified: Tarball created by builder.
-file libkleo/libkleo-202409201412.tar.xz
-chk b27fd0177a28e08fd76702ccd2584c30b9fda707037f8225cdc06a769e8efd5b
+# last changed: 2024-09-23
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file libkleo/libkleo-202409231611.tar.xz
+chk 2067975142cae2944bc20dba3e66fa5ce5a485b339e1f1c1efeab72dce160d7c
 
 # kleopatra
 # last changed: 2024-09-23
