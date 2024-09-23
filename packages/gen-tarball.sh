@@ -124,6 +124,15 @@ case ${package} in
         repo=https://invent.kde.org/pim/${package}.git
         branch="gpg4win/24.05"
         custom_l10n="l10n-support/de/summit/messages/kleopatra/kleopatra.po"
+        # When we are really far from upstream we might have strings
+        # in our custom branch which are neither in summit nor in the
+        # original branch. So they have to be manually extracted using
+        # git://invent.kde.org/sysadmin/l10n-scripty/extract_messages.sh
+        # and then merged and manually translated. "local_l10n"
+        # allows us to cat these additional strings to the translations,
+        # too.
+        # Requires custom_l10n to be also set.
+        local_l10n="kleopatra-24.05-de-full-translation.po"
         ;;
     libkleo)
         repo=https://invent.kde.org/pim/${package}.git
@@ -179,6 +188,7 @@ else
         if [ "${package}" == "libkleo" ]; then
             poname="libkleopatra"
         fi
+        # First integrate any additions from custom l10n
         svn export --force svn://anonsvn.kde.org/home/kde/trunk/${custom_l10n} \
             po/de/${poname}_summit.po
         if ! msgcat --use-first po/de/${poname}_summit.po \
@@ -189,7 +199,20 @@ else
               exit 2
           fi
         fi
-        mv po/de/${poname}_new.po po/de/${poname}.po
+        # Then add even more local strings
+        if [ "$local_l10n" != "" ]; then
+            echo "Adding local l10n file $local_l10n"
+            if ! msgcat --use-first po/de/${poname}_new.po \
+                $olddir/$local_l10n > po/de/${poname}.po ; then
+              if [ "$ignore_msgcat_errors" = yes ]; then
+                  echo "$PGM: error from msgcat ignored on demand" >&2
+              else
+                  exit 2
+              fi
+            fi
+        else
+            mv po/de/${poname}_new.po po/de/${poname}.po
+        fi
         git add po/de/${poname}.po
         git commit -m "Add latest German translation"
     fi
