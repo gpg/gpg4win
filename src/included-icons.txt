@@ -57,6 +57,7 @@ dialog-password
 dialog-question
 dialog-text-and-font
 dialog-warning
+document-edit
 document-edit-decrypt
 document-edit-decrypt-verify
 document-edit-encrypt
