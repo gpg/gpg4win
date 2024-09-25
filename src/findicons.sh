@@ -86,3 +86,5 @@ for pkg in $PACKAGES; do
         rm $dir.icons
     done
 done
+LC_ALL=C sort <included-icons.txt >included-icons-sorted.txt && \
+mv included-icons-sorted.txt included-icons.txt
