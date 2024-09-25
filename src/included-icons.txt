@@ -313,3 +313,12 @@ edit-copy-symbolic
 expand-symbolic
 password-show-off
 data-error
+document-new-symbolic
+document-save-symbolic
+folder-root
+folder-root-symbolic
+list-add-symbolic
+password-copy
+password-copy-symbolic
+trash-empty-symbolic
+view-refresh-symbolic
