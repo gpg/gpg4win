@@ -7,6 +7,18 @@
 Noteworthy changes in Version 3.2.4 (unreleased)
 ------------------------------------------------
 
+(en) GnuPG: See https://dev.gnupg.org/T7254 for changes.
+
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.45
+Kleopatra:      3.2.2
+GpgOL:          2.5.14
+GpgEX:          1.0.10
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
 
 Noteworthy changes in Version 3.2.3 (2024-08-28)
 ------------------------------------------------
