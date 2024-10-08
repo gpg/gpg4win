@@ -706,9 +706,11 @@ chk 7d23ae9b4594750e76bff09ec522445dc76bd1950e37f0c334934175ebe6af29
 file okular/okular-202407051647.tar.xz
 chk 7ccd4b002896da05d7aca1df0094f22105542800a47cac3d1c6bcf97b4606a38
 
+server https://gnupg.net/snapshots/
+
 # gpgoljs
-# last changed: 2024-09-03
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file gpgoljs/gpgoljs-202409031416.tar.xz
-chk ad9debc27ae401245b867b537ff3f9935cdd35cc3b370d2eb8b8b7b458302777
+# last changed: 2024-10-08
+# by: carl
+# verified: Tarball created by carl.
+file gpgoljs/gpgoljs-202410080958.tar.xz
+chk ce4ea48ff6a70f7654688c5e9912216d71c55bf0226f25ec46f4803834e64cd5
