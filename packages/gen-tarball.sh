@@ -20,10 +20,17 @@
 #
 # SPDX-License-Identifier: GPL-2.0+
 
-# Packages the current HEAD of a git repository as tarball and generates
-# a text block that can be copy and pasted into packages.current.
+# Packages the current HEAD of a git repository as tarball and updates
+# the packages.common accordingly if the entry matches the exact pattern.
+# For KDE this script also tries to integrate the translations even for
+# custom / stable branches which do not fit the upstream translation
+# workflow.
 
 PGM=gen-tarball.sh
+
+# Taken from the generated list which checked for languages
+# in which more then 500 strings for Kleopatra were translated
+translation_langs="bg bs ca cs da de el eo es et eu fi fr gl hu ia it ja km ko lv mk mr ms nb nds nl nn pl pt pt_BR ru sk sl sv tr uk zh_CN zh_TW"
 
 set -e
 
@@ -49,7 +56,6 @@ Options:
         -f                     Update frontend packages en block. These are:
 $FRONTEND_PKGS
         --user=name            Use NAME as FTP server user
-        --ignore-msgcat-error  Ignore errors from msgcat invocation
 
 PACKAGE is either the name of a supported library or application,
 e.g. 'kleopatra', or the path of a local Git repository,
@@ -64,8 +70,9 @@ EOF
 autoupload=no
 ftpuser_at=""
 do_auto="no"
-ignore_msgcat_errors="no"
 update="no"
+branch="master"
+custom_l10n="no"
 while [ $# -gt 0 ]; do
     case "$1" in
 	--*=*)
@@ -82,9 +89,6 @@ while [ $# -gt 0 ]; do
 	    ;;
         --user|--user=*)
             ftpuser_at="${optarg}@"
-            ;;
-        --ignore-msgcat-error)
-            ignore_msgcat_errors=yes
             ;;
     --update|-u)
         update="yes"
@@ -151,18 +155,28 @@ case ${package} in
         ;;
     mimetreeparser)
         repo=https://invent.kde.org/pim/${package}.git
-        #branch="gpg4win/24.05"
-        #custom_l10n="l10n-support/de/summit/messages/mimetreeparser/mimetreeparser6.po"
+#        branch="gpg4win/24.05"
+#        custom_l10n="mimetreeparser/mimetreeparser6.po"
         ;;
     kleopatra)
         repo=https://invent.kde.org/pim/${package}.git
 #        branch="gpg4win/24.05"
-#        custom_l10n="l10n-support/de/summit/messages/kleopatra/kleopatra.po"
+#        custom_l10n="kleopatra/kleopatra.po"
+        # When we are really far from upstream we might have strings
+        # in our custom branch which are neither in summit nor in the
+        # original branch. So they have to be manually extracted using
+        # git://invent.kde.org/sysadmin/l10n-scripty/extract_messages.sh
+        # and then merged and manually translated. "local_l10n"
+        # allows us to cat these additional strings to the translations,
+        # too.
+        # Requires custom_l10n to be also set.
+#        local_l10n="kleopatra-24.05-de-full-translation.po"
         ;;
     libkleo)
         repo=https://invent.kde.org/pim/${package}.git
 #        branch="gpg4win/24.05"
-#        custom_l10n="l10n-support/de/summit/messages/libkleo/libkleopatra6.po"
+#        custom_l10n="libkleo/libkleopatra6.po"
+#        local_l10n="libkleopatra-24.05-de-full-translation.po"
         ;;
     okular)
         repo=https://invent.kde.org/graphics/${package}.git
@@ -220,24 +234,56 @@ else
     cd ${tmpdir}/${snapshotdir}
     git checkout $branch
     if [ "$custom_l10n" != "no" ]; then
-        echo "$PGM: Downloading german translations from ${custom_l10n}"
-        poname=${package}
-        if [ "${package}" == "libkleo" ]; then
-            poname="libkleopatra"
-        fi
-        svn export --force svn://anonsvn.kde.org/home/kde/trunk/${custom_l10n} \
-            po/de/${poname}_summit.po
-        if ! msgcat --use-first po/de/${poname}_summit.po \
-             po/de/${poname}.po > po/de/${poname}_new.po ; then
-          if [ "$ignore_msgcat_errors" = yes ]; then
-              echo "$PGM: error from msgcat ignored on demand" >&2
-          else
-              exit 2
-          fi
-        fi
-        mv po/de/${poname}_new.po po/de/${poname}.po
-        git add po/de/${poname}.po
-        git commit -m "Add latest German translation"
+        for lang in $translation_langs; do
+            if [ "$lang" = "de" ]; then
+                # Sorry but the development team is german centric
+                echo "##############################DE#######################################"
+            fi
+            echo "$PGM: Downloading $lang translations from svn."
+            poname=${package}
+            if [ "${package}" == "libkleo" ]; then
+                poname="libkleopatra"
+            fi
+            # First integrate any additions from custom l10n
+            if ! svn export --force svn://anonsvn.kde.org/home/kde/trunk/l10n-support/$lang/summit/messages/${custom_l10n} po/$lang/${poname}_main.po >/dev/null 2>&1; then
+                if ! svn export --force svn://anonsvn.kde.org/home/kde/trunk/l10n-kf6/$lang/messages/${custom_l10n} po/$lang/${poname}_main.po >/dev/null 2>&1; then
+                    echo "No translations for $package found in language $lang"
+                    continue
+                else
+                    echo "Using l10n-kf6 for $lang"
+                fi
+            else
+                echo "Using summit for $lang"
+            fi
+            if [ ! -e po/$lang/${poname}_main.po ]; then
+                echo "failed to download the custom l10n file $custom_l10n for language $lang"
+                continue
+            fi
+
+            echo "Adding translations to $lang with:"
+            msgfmt --statistics po/$lang/${poname}_main.po
+            if ! msgcat --use-first po/$lang/${poname}_main.po po/$lang/${poname}.po > po/$lang/${poname}_new.po ; then
+                  echo "WARN: error from msgcat ignored" >&2
+            fi
+            # For german we go the extra mile to be 100% and add even
+            # more local strings if this is required
+            if [ "$lang" = "de" -a "$local_l10n" != "" ]; then
+                echo "Adding local l10n file $local_l10n which contains:"
+                msgfmt --statistics "$olddir/$local_l10n"
+                if ! msgcat --use-first po/$lang/${poname}_new.po "$olddir/$local_l10n" > po/$lang/${poname}.po ; then
+                  echo "WARN: error from msgcat ignored" >&2
+                fi
+            else
+                mv po/$lang/${poname}_new.po po/$lang/${poname}.po
+            fi
+            echo "Final translation statistics for $lang: "
+            msgfmt --statistics po/$lang/${poname}.po
+            git add po/$lang/${poname}.po
+            if [ "$lang" = "de" ]; then
+                echo "#####################################################################"
+            fi
+        done
+        git commit -m "Add latest translations"
     fi
     if [ "${package}" == "breeze" ]; then
         git rm -r wallpapers cursors

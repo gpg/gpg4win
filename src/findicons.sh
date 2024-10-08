@@ -69,10 +69,12 @@ for pkg in $PACKAGES; do
             continue
         fi
         echo "########## searching in $dir #########";
+        grep -r 'QIcon::fromTheme.*(u\?"' $sdir >$dir.icons
+        grep -r 'addPage.*("' $sdir >>$dir.icons
         for icon in $ICONS; do
-            if grep -m 1 -q -r QIcon::fromTheme.\*\(\"$icon $sdir ||
-               grep -m 1 -q -r addPage.\*\(\"$icon $sdir; then
-                if grep -q $icon included-icons.txt; then
+            if grep -m 1 -q 'QIcon::fromTheme.*(u\?"'$icon'[-"]' $dir.icons ||
+               grep -m 1 -q 'addPage.*("'$icon'[-"]' $dir.icons; then
+                if grep -q ^$icon$ included-icons.txt; then
                     # Shows some progress :)
                     echo "$icon already included"
                 else
@@ -81,5 +83,8 @@ for pkg in $PACKAGES; do
                 fi
             fi
         done
+        rm $dir.icons
     done
 done
+LC_ALL=C sort <included-icons.txt >included-icons-sorted.txt && \
+mv included-icons-sorted.txt included-icons.txt
