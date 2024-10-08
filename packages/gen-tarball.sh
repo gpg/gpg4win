@@ -198,8 +198,12 @@ else
             fi
             # First integrate any additions from custom l10n
             if ! svn export --force svn://anonsvn.kde.org/home/kde/trunk/l10n-support/$lang/summit/messages/${custom_l10n} po/$lang/${poname}_main.po >/dev/null 2>&1; then
-                echo "Using l10n-kf6 for $lang"
-                svn export --force svn://anonsvn.kde.org/home/kde/trunk/l10n-kf6/$lang/messages/${custom_l10n} po/$lang/${poname}_main.po
+                if ! svn export --force svn://anonsvn.kde.org/home/kde/trunk/l10n-kf6/$lang/messages/${custom_l10n} po/$lang/${poname}_main.po >/dev/null 2>&1; then
+                    echo "No translations for $package found in language $lang"
+                    continue
+                else
+                    echo "Using l10n-kf6 for $lang"
+                fi
             else
                 echo "Using summit for $lang"
             fi
