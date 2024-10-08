@@ -578,32 +578,32 @@ chk b711e098469a5821044bf99bd74d0a16b804731a347cf53609a4bd1b5fa5fdc4
 server http://download.kde.org/stable/release-service/
 
 # kmime
-# last changed: 2024-09-02
+# last changed: 2024-09-24
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
-file 24.08.0/src/kmime-24.08.0.tar.xz
-chk 9e5aa90d8a2314b5fbc015f066922f2e1fa529daad3b76dfd351567a954353c2
+file 24.08.1/src/kmime-24.08.1.tar.xz
+chk ec478f26144b1dfb6f0eab8e8efb0c1f06ad349cbb4f55cff233dcacf635a483
 
 # kmbox
-# last changed: 2024-09-02
+# last changed: 2024-09-24
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
-file 24.08.0/src/kmbox-24.08.0.tar.xz
-chk 5023414d70111305957879d9657eda6c79eaa6bdd0f48995bbb1f489334102e3
+file 24.08.1/src/kmbox-24.08.1.tar.xz
+chk 9328c393038c198be5547c7436ca1aaf7cdf41466dccc32c8edf92ac33eaf08f
 
 # libkdepim
-# last changed: 2024-09-02
+# last changed: 2024-09-24
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
-file 24.08.0/src/libkdepim-24.08.0.tar.xz
-chk 36b77351b98bdd12cb2a703eb3f4c87b56a47f81bce12418c4d67412465ecbca
+file 24.08.1/src/libkdepim-24.08.1.tar.xz
+chk cb76fab7ece14dc03cb090a2ca6a2972ccbc34f6a86c4c67ed29a18ff3309f6d
 
 # kpimtextedit
-# last changed: 2024-09-02
+# last changed: 2024-09-24
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
-file 24.08.0/src/kpimtextedit-24.08.0.tar.xz
-chk abc7d5170967b010fa6ace2ff762671b5212a9de4542f3da3fc31dbe7235c0a3
+file 24.08.1/src/kpimtextedit-24.08.1.tar.xz
+chk bf941d245a0626b3b36ab01c18722aa52fcccb91a017c7ff3b06fcf9cb73d2dd
 
 #
 # KDE Libraries
