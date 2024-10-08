@@ -51,7 +51,7 @@ Usage: $PGM [OPTIONS]  PACKAGE ...
 Generate a tarball from a repository.
 
 Options:
-        --auto                 Upload to ftp server
+        -a|--auto                 Upload to ftp server
         -u|--update            Remove the old package locally
         -f                     Update frontend packages en block. These are:
 $FRONTEND_PKGS
@@ -75,36 +75,53 @@ branch="master"
 custom_l10n="no"
 while [ $# -gt 0 ]; do
     case "$1" in
-	--*=*)
-	    optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'`
-	    ;;
-	*)
-	    optarg=""
-	    ;;
-    esac
-
-    case $1 in
-	--auto|-a)
-	    autoupload=yes
-	    ;;
-        --user|--user=*)
-            ftpuser_at="${optarg}@"
-            ;;
+    --*=*)
+        optarg=$(echo "$1" | sed 's/[-_a-zA-Z0-9]*=//')
+        ;;
+    -*)
+        # Handle combined short options
+        for (( i=1; i<${#1}; i++ )); do
+            char="${1:i:1}"
+            case "$char" in
+                a)
+                    autoupload="yes"
+                    ;;
+                u)
+                    update="yes"
+                    ;;
+                f)
+                    update="full"
+                    ;;
+                h)
+                    usage 0
+                    ;;
+                *)
+                    usage 1 1>&2
+                    ;;
+            esac
+        done
+        ;;
+    --auto|-a)
+        autoupload="yes"
+        ;;
+    --user|--user=*)
+        ftpuser_at="${optarg}@"
+        ;;
     --update|-u)
         update="yes"
         ;;
     -f)
         update="full"
         ;;
-	--help|-h)
-	    usage 0
-	    ;;
-	--*)
-	    usage 1 1>&2
-	    ;;
-	*)
-	    break
-	    ;;
+    --help|-h)
+        usage 0
+        ;;
+    --*)
+        usage 1 1>&2
+        ;;
+    *)
+        break
+        ;;
     esac
     shift
 done
