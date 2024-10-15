@@ -537,11 +537,11 @@ chk 441bbb3c13cb535a216feb411ffe5925f4ca668a679c3cc1c4260c2bf406baec
 server https://gnupg.org/ftp/gcrypt/snapshots
 
 # gpgme
-# last changed: 2024-09-20
+# last changed: 2024-10-15
 # by: builder
 # verified: Tarball created by builder.
-file gpgme/gpgme-1.24.0-beta635.tar.xz
-chk 70704bbaab15899e0af4fa380daefa8c482ba481e3c6697834eb2962a32dbb51
+file gpgme/gpgme-1.24.0-beta638.tar.xz
+chk c2e41fd61371d2e32b950ad65c733b41cfb42f9d6e91fed73c9faee983590e1f
 
 
 # gpgol
@@ -553,11 +553,11 @@ chk 70704bbaab15899e0af4fa380daefa8c482ba481e3c6697834eb2962a32dbb51
 
 
 # gpg4win-tools
-# last changed: 2024-09-20
+# last changed: 2024-10-15
 # by: builder
 # verified: Tarball created by builder.
-file gpg4win-tools/gpg4win-tools-202409201412.tar.xz
-chk e28412badd1afe65ce90a9fd37b32ac3a7e5d2e842c26e366fa6e4ef5e0d266f
+file gpg4win-tools/gpg4win-tools-202410151347.tar.xz
+chk 63580c7dd7b51b67f02fddadff77ce70dbb754ae9763ca29e8d1096d99423df3
 
 # gpgpass
 # last changed: 2024-08-15
@@ -573,20 +573,19 @@ chk b1b29cf2d4a73c7feaf750c3a7f995302f48eb225bf0521153592440f1ff5512
 file mimetreeparser/mimetreeparser-202410081200.tar.xz
 chk 4b05dc1827347cb5669dabc644e83af4c55555fc9f4701fd0989126f29e1e0eb
 
-
 # libkleo
-# last changed: 2024-10-08
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file libkleo/libkleo-202410081156.tar.xz
-chk 37061e92cdfe60b122fb7aeb107c838b0b941e1771b1a360ce62a4400d8a1b3d
+# last changed: 2024-10-15
+# by: builder
+# verified: Tarball created by builder.
+file libkleo/libkleo-202410151346.tar.xz
+chk 2f377d0242c5b427493eedfb46946b145567ce594edeb2fc108aba2d0fd9e582
 
 # kleopatra
-# last changed: 2024-10-08
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202410081155.tar.xz
-chk 198ebe2323000b026e3938658a31f0400ce33919ece24dff19163c44f38aab8e
+# last changed: 2024-10-15
+# by: builder
+# verified: Tarball created by builder.
+file kleopatra/kleopatra-202410151347.tar.xz
+chk f84340257736ad0acf1bd8fb86dc392c52d18d145071ea67670f006dafbdbba9
 
 
 # Okular and dependencies
