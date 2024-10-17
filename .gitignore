@@ -75,3 +75,7 @@ src/signed_installers
 /src/libwinpthread-1.dll-x
 /src/libwinpthread-1.dll-x64
 /src/toolchain.cmake
+
+/src/gccwrap.sh
+/src/gpg4win.w32-manifest.in
+/src/versioninfo.rc.in
