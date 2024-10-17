@@ -132,6 +132,7 @@ tsdir := $(shell pwd)/${top_srcdir}
 pdir := $(shell pwd)/${top_srcdir}/patches
 ex_idir := $(root)/install-ex
 ex_ipdir := $(root)/install-ex/pkgs
+native_idir := $(root)/install-native
 
 ifdef GIT_BETASTRING
 	VSD_VERSION_FILE:=$(VSD_VERSION)-Beta
@@ -155,16 +156,16 @@ pkg_files =
 # Boost includes are only needed for the host and are linked in the
 # playground install tree
 $(stampdir)/stamp-directories:
-	$(MKDIR) $(stampdir)
-	$(MKDIR) $(root)
+	$(MKDIR) -p $(stampdir)
+	$(MKDIR) -p $(root)
 	$(MKDIR) -p installers
-	$(MKDIR) $(bdir)
-	$(MKDIR) $(idir)
-	$(MKDIR) $(idir)/include
+	$(MKDIR) -p $(bdir)
+	$(MKDIR) -p $(idir)/include
 	ln -s /usr/include/boost $(idir)/include/boost
-	$(MKDIR) $(ipdir)
+	$(MKDIR) -p $(ipdir)
 	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_idir))
 	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_ipdir))
+	$(MKDIR) -p $(native_idir)/bin
 	ln -s $(abs_srcdir)/gccwrap.sh $(native_idir)/bin/i686-w64-mingw32-gcc
 	ln -s $(abs_srcdir)/gccwrap.sh $(native_idir)/bin/x86_64-w64-mingw32-gcc
 	ln -s $(abs_srcdir)/gccwrap.sh $(native_idir)/bin/i686-w64-mingw32-g++
@@ -243,7 +244,7 @@ define SETVARS_EX
 	export PKG_CONFIG="$(tsdir)/src/pkg-config";                        \
 	export PKG_CONFIG_PATH="$(ex_idir)/lib/pkgconfig";                  \
 	export PKG_CONFIG_LIBDIR="";                                        \
-	export PATH="$(ex_idir)/bin:$${PATH}";                              \
+	export PATH="$(ex_idir)/bin:$(native_idir)/bin:$${PATH}";           \
 	export SYSROOT="$(ex_idir)"
 endef
 
