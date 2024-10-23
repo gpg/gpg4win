@@ -1,0 +1,26 @@
+#! /bin/sh
+patch -p0 -l -f $* < $0
+exit $?
+
+From 9e39c2ec1763540d7c01d3f8c972c42ea82b02de Mon Sep 17 00:00:00 2001
+From: Carl Schwan <carl@carlschwan.eu>
+Date: Wed, 23 Oct 2024 16:26:17 +0200
+Subject: [PATCH] Remove stretch from about dialog
+
+---
+ src/kabstractaboutdialog_p.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/kabstractaboutdialog_p.cpp b/src/kabstractaboutdialog_p.cpp
+index eef759cc..cabc50e3 100644
+--- a/src/kabstractaboutdialog_p.cpp
++++ b/src/kabstractaboutdialog_p.cpp
+@@ -73,7 +73,6 @@ QWidget *KAbstractAboutDialogPrivate::createAboutWidget(const QString &shortDesc
+     aboutLabel->setText(aboutPageText.replace(QLatin1Char('\n'), QStringLiteral("<br />")));
+     aboutLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);
+
+-    aboutLayout->addStretch();
+     aboutLayout->addWidget(aboutLabel);
+
+     const int licenseCount = licenses.count();
+--
