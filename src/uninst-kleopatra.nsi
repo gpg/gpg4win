@@ -187,6 +187,8 @@ Section "-un.kleopatra"
   Delete "$INSTDIR\share\gpg4win\file-ext.ico"
   RMDir "$INSTDIR\share\gpg4win"
 
+  Delete "${prefix}/etc/xdg/kleopatradebugcommandsrc"
+
 
 #  RMDir "$INSTDIR\share\doc\HTML\en\kleopatra"
 #  RMDir "$INSTDIR\share\doc\HTML\en"
