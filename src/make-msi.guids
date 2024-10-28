@@ -414,6 +414,7 @@ AF018D0D-4D0A-426C-8BC9-BEE20ED67CC1 bin_64\libgpgmepp-6.dll
 55A87356-4E73-4BD5-9A53-C335D0271850 etc\gtk-2.0\im-multipress.conf
 6A1286A0-1667-4EFC-9895-F92756ADFA89 etc\pango\pango.modules
 D5418606-5F3C-4108-9DBB-7740C463F65D etc\xdg\libkleopatrarc
+d771fbcb-037e-4570-befc-7e7116cfdf7a etc\xdg\kleopatradebugcommandsrc
 4B26F997-2D8D-4CD0-9423-1DCC4051EB6B include\assuan.h
 E1886830-1938-49E2-9CAE-A3482AD8AFD6 include\gpg-error.h
 1CACBD71-7333-4DAE-879E-5B32D10A8992 include\gpgme.h

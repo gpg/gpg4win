@@ -26,6 +26,7 @@ Section "-un.libkleo"
   Push "${gpg4win_pkg_libkleo}"
   Call un.SourceDelete
 !else
+  Delete "$INSTDIR\etc\xdg\kleopatradebugcommandsrc"
   Delete "$INSTDIR\etc\xdg\libkleopatrarc"
   RmDir "$INSTDIR\etc\xdg"
   RmDir "$INSTDIR\etc"
