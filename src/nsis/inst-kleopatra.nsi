@@ -38,14 +38,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/bin/libkleopatraclientcore.dll
   File ${prefix}/bin/libkleopatraclientgui.dll
 
-  SetOutPath "$INSTDIR\share\kleopatra\pics"
-
-  File ${prefix}/share/kleopatra/pics/gpg4win.png
-  File ${prefix}/share/kleopatra/pics/kleopatra_splashscreen.png
-  File ${prefix}/share/kleopatra/pics/kleopatra_splashscreen.svgz
-  File ${prefix}/share/kleopatra/pics/kleopatra_wizard.png
-  File ${prefix}/share/kleopatra/pics/kleopatra_wizard.svgz
-
 #  SetOutPath "$INSTDIR\share\apps\kwatchgnupg\pics"
 
 #  File ${prefix}/share/apps/kwatchgnupg/pics/kwatchgnupg.png
@@ -165,7 +157,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   SetOutPath "$INSTDIR\share\icons\hicolor\16x16\apps"
 
-  File ${prefix}/share/kleopatra/pics/gpg4win-compact.png
   File ${prefix}/share/icons/hicolor/16x16/apps/kleopatra.png
 
   SetOutPath "$INSTDIR\share\icons\hicolor\22x22\apps"
