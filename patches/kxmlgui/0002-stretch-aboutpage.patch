@@ -1,5 +1,5 @@
 #! /bin/sh
-patch -p0 -l -f $* < $0
+patch -p1 -l -f $* < $0
 exit $?
 
 From 9e39c2ec1763540d7c01d3f8c972c42ea82b02de Mon Sep 17 00:00:00 2001
