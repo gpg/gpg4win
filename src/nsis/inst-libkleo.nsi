@@ -34,17 +34,6 @@ Section "-libkleo" SEC_libkleo
   SetOutPath "$INSTDIR\share"
   File ${prefix}/etc/xdg/libkleopatrarc
   SetOutPath "$INSTDIR\share\libkleopatra\pics"
-  File ${prefix}/share/libkleopatra/pics/chiasmus_chi.png
-  File ${prefix}/share/libkleopatra/pics/hi16-app-gpg.png
-  File ${prefix}/share/libkleopatra/pics/hi16-app-gpgsm.png
-  File ${prefix}/share/libkleopatra/pics/hi22-app-gpg.png
-  File ${prefix}/share/libkleopatra/pics/hi22-app-gpgsm.png
-  File ${prefix}/share/libkleopatra/pics/hi32-app-gpg.png
-  File ${prefix}/share/libkleopatra/pics/hi32-app-gpgsm.png
-  File ${prefix}/share/libkleopatra/pics/key_bad.png
-  File ${prefix}/share/libkleopatra/pics/key_ok.png
-  File ${prefix}/share/libkleopatra/pics/key.png
-  File ${prefix}/share/libkleopatra/pics/key_unknown.png
   File ${prefix}/share/libkleopatra/pics/smartcard.xpm
 
 !endif
