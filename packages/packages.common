@@ -707,8 +707,8 @@ chk 7ccd4b002896da05d7aca1df0094f22105542800a47cac3d1c6bcf97b4606a38
 server https://gnupg.net/snapshots/
 
 # gpgoljs
-# last changed: 2024-10-08
+# last changed: 2024-11-06
 # by: carl
 # verified: Tarball created by carl.
-file gpgoljs/gpgoljs-202410080958.tar.xz
-chk ce4ea48ff6a70f7654688c5e9912216d71c55bf0226f25ec46f4803834e64cd5
+file gpgoljs/gpgoljs-202411061619.tar.xz
+chk b43c5ca9a98e0e9ad1b092180a3335332b72a271131d8164fbaa53fd0306f80f
