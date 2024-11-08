@@ -545,11 +545,11 @@ server https://gnupg.org/ftp/gcrypt/snapshots
 
 
 # gpg4win-tools
-# last changed: 2024-10-30
+# last changed: 2024-11-08
 # by: builder
 # verified: Tarball created by builder.
-file gpg4win-tools/gpg4win-tools-202410300823.tar.xz
-chk 6f730760fde2ce8fa2dd3c2f3e2f61c5731893db4c8b283fcaf06aa382445c37
+file gpg4win-tools/gpg4win-tools-202411080930.tar.xz
+chk 9112e3690ec168c2312e743295674ba1dfc4c8d0c0312117c8783517ea3f409f
 
 # gpgpass
 # last changed: 2024-08-15
@@ -566,31 +566,31 @@ file mimetreeparser/mimetreeparser-202410081200.tar.xz
 chk 4b05dc1827347cb5669dabc644e83af4c55555fc9f4701fd0989126f29e1e0eb
 
 # libkleo
-# last changed: 2024-10-30
+# last changed: 2024-11-08
 # by: builder
 # verified: Tarball created by builder.
-file libkleo/libkleo-202410300821.tar.xz
-chk 216ea12e56d7ce4f52bbebfcf03f30cb01f280a56fe4ae77e9380d59087f945c
+file libkleo/libkleo-202411080929.tar.xz
+chk 7f1e8aa243e982408e1ac9194d61d628d9714959521a4018f9487ecb18a4a6c1
 
 # kleopatra
-# last changed: 2024-10-30
+# last changed: 2024-11-08
 # by: builder
 # verified: Tarball created by builder.
-file kleopatra/kleopatra-202410300820.tar.xz
-chk b40dcf826e37aa015b9ef361c62518ee3e5a795cfcbbccea71173fd2da3ebf12
+file kleopatra/kleopatra-202411080928.tar.xz
+chk b265c8c3951eab72ece418f73285870841fe5f455d4be703c489b5eb64111901
 
 
 # Okular and dependencies
 # poppler
-# last changed: 2023-09-08
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file poppler/poppler-202309080910.tar.xz
-chk 2ca1273a6ef9ce00e9bc886b0864ef02b88f4df2525922e1ac322ce7360e6621
+# last changed: 2024-11-08
+# by: builder
+# verified: Tarball created by builder.
+file poppler/poppler-202411080932.tar.xz
+chk b74b6d7daa925420e138c3ad4cc79b6914c3b1d178875c02759f0f4b16747c52
 
 # okular
-# last changed: 2023-11-22
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file okular/okular-202311221749.tar.xz
-chk 205df68c183900a1b21d1381d9a3d7554a642fa6dd3ef7e9bc5bbcfcd0aa8f1b
+# last changed: 2024-11-08
+# by: builder
+# verified: Tarball created by builder.
+file okular/okular-202411080932.tar.xz
+chk 0027416c6add40b2e0a77165779d773cad6c36337276bafa3da172529e3ef9b5
