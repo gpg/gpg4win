@@ -18,7 +18,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <https://www.gnu.org/licenses/>.
 #
-# SPDX-License-Identifier: GPL-2.0+
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 # Packages the current HEAD of a git repository as tarball and generates
 # a text block that can be copy and pasted into packages.current.
@@ -43,7 +43,7 @@ Options:
         --inplace       Build in the current directoy
         --buildroot     Directory where the build should take place
         --update-image  Update the docker image before build
-        --w64           Use 64 bit Windows as primary host arch
+        --w32           Use 32 bit Windows as primary host arch
         --git-pkgs      Use latest git versions for the frontend
                         packages:
                         gpgme libkleo kleopatra gpgol gpgol.js
@@ -95,8 +95,8 @@ branch="master"
 srcdir=$(cd $(dirname $0); pwd)
 is_tmpbuild="no"
 update_image="no"
-w64="no"
-git_pkgs="no"
+w64="yes"
+fromgit="no"
 
 # Store the original comamnd line
 commandline="$0 $@"
@@ -112,6 +112,7 @@ while [ $# -gt 0 ]; do
         --clean|-c) clean="yes";;
         --inplace) inplace="yes";;
         --update-image|--update-img|-u) update_image="yes";;
+        --w32) w64="no";;
         --w64) w64="yes";;
         --git|-g|--git-pkgs) fromgit="yes";;
         --buildroot|-o) buildroot="$2"; shift; ;;
@@ -121,17 +122,17 @@ while [ $# -gt 0 ]; do
 done
 
 # Set default build directory if not specified
-if [ -z "$buildroot" -a "$inplace" == "no" ]; then
+if [ -z "$buildroot" -a "$inplace" = "no" ]; then
     buildroot=$(mktemp -d --tmpdir gpg4win.XXXXXXXXXX)
     is_tmpbuild="yes"
 fi
 
-if [ "$appimage" == "yes" ]; then
+if [ "$appimage" = "yes" ]; then
     cmd=/build/src/appimage/build-appimage.sh
     docker_image=g10-build-appimage:sles15
     dockerfile=${srcdir}/docker/appimage
 else
-    if [ "$w64" == "yes" ]; then
+    if [ "$w64" = "yes" ]; then
         cmd="/build/src/build-gpg4win.sh --build-w64"
     else
         cmd="/build/src/build-gpg4win.sh"
@@ -142,14 +143,15 @@ fi
 
 drep=$(echo $docker_image | cut -d : -f 1)
 dtag=$(echo $docker_image | cut -d : -f 2)
-if [ -z "$(docker images | grep $drep | grep $dtag)" -o "$update_image" == "yes" ]; then
+if [ -z "$(docker images | grep $drep | grep $dtag)" \
+     -o "$update_image" = "yes" ]; then
     echo "Local image $docker_image not found"
     echo "Building docker image"
     docker build -t $docker_image $dockerfile 2>&1
 fi
 
 # make a local clone or export of gpg4win to keep the working copy clean
-if [ "$inplace" == "yes" ]; then
+if [ "$inplace" = "yes" ]; then
     echo "Building in $srcdir"
     gpg4win_dir="$srcdir"
 else
@@ -157,11 +159,11 @@ else
     mkdir -p "$buildroot"
     buildroot=$(readlink -f ${buildroot})
     gpg4win_dir="${buildroot}/gpg4win"
-    if [ "$clean" == "yes" ]; then
+    if [ "$clean" = "yes" ]; then
         rm -rf ${gpg4win_dir}
     fi
     if test ! -d "${gpg4win_dir}"; then
-        if [ "$dirty" == "yes" -o ! -d "${srcdir}/.git" ]; then
+        if [ "$dirty" = "yes" -o ! -d "${srcdir}/.git" ]; then
             mkdir -p "${gpg4win_dir}"
             rsync_gpg4win "${srcdir}/" "${gpg4win_dir}/"
         else
@@ -169,7 +171,7 @@ else
         fi
     else
         echo "Directory ${gpg4win_dir} already exists."
-        if [ "$dirty" == "yes" ]; then
+        if [ "$dirty" = "yes" ]; then
             echo "Updating copy"
             rsync_gpg4win "${srcdir}/" "${gpg4win_dir}/"
         elif [ -d "${gpg4win_dir}/.git" ]; then
@@ -181,7 +183,7 @@ else
     fi
 fi
 
-if [ "$clean_pkgs" == "no" -a "$inplace" == "no" ]; then
+if [ "$clean_pkgs" = "no" -a "$inplace" = "no" ]; then
     echo "Copying packages from ${srcdir}/packages .."
     files=$(find ${srcdir}/packages -maxdepth 1 \
         -name \*.tar\* -o \
@@ -208,14 +210,14 @@ gpgpass
 gpg4win-tools
 mimetreeparser"
 
-if [ "$fromgit" == "yes" ]; then
+if [ "$fromgit" = "yes" ]; then
     echo "Updating packages from git... "
     ./gen-tarball.sh -u $FRONTEND_PKGS
     echo "Done"
 fi
 
 echo "Downloading packages"
-if [ "$gpg22" == "yes" ]; then
+if [ "$gpg22" = "yes" ]; then
     ./download.sh --quiet --v3
 else
     ./download.sh --quiet
@@ -224,19 +226,19 @@ fi
 userid=$(id -u)
 grouid=$(id -g)
 
-if [ "$root_shell" == "yes" ]; then
+if [ "$root_shell" = "yes" ]; then
     userid="0"
     groupid="0"
     cmd="bash"
 fi
 
-if [ "$shell" == "yes" ]; then
+if [ "$shell" = "yes" ]; then
     cmd="bash"
 fi
 
 start_time=$(date +"%s")
 
-if [ "$appimage" == "yes" ]; then
+if [ "$appimage" = "yes" ]; then
     log_file="${buildroot}/appimage-buildlog.txt"
 else
     log_file="${buildroot}/gpg4win-buildlog.txt"
@@ -254,14 +256,14 @@ hours=$((duration / 3600))
 minutes=$((duration % 3600 / 60))
 seconds=$((duration % 60))
 
-if [ "$err" == "1" -a "$appimage" == "yes" ]; then
+if [ "$err" = "1" -a "$appimage" = "yes" ]; then
     echo "Return value is 1 on AppImage build. Treating it as success."
     err=0
 fi
 
-if [ "$err" == "0" ]; then
+if [ "$err" = "0" ]; then
     mkdir -p "${srcdir}/artifacts"
-    if [ "$appimage" == "yes" ]; then
+    if [ "$appimage" = "yes" ]; then
         results=$(find "${gpg4win_dir}" -maxdepth 1 -iname \*.appimage -a -type f -printf '%p ')
     else
         results=$(find "${gpg4win_dir}/src/installers" -type f -printf '%p ')
@@ -286,7 +288,7 @@ echo "Build command:"
 echo "${commandline}"
 echo "###################################################"
 
-if [ "$is_tmpbuild" == "yes" ]; then
+if [ "$is_tmpbuild" = "yes" ]; then
     echo "Do you want to remove ${buildroot}?"
     rm -rI "${buildroot}";
 fi
