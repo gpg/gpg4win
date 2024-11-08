@@ -216,13 +216,12 @@ chk bc72ee27c7239007ab1896c3c2fae53b076e2c9bd2483dc2769a16902bce8c04
 file gpgme/gpgme-1.24.0.tar.bz2
 chk 61e3a6ad89323fecfaff176bc1728fb8c3312f2faa83424d9d5077ba20f5f7da
 
-# See snapshots
-## GpgOL
-## last-changed: 2024-01-02
-## by: ah
-## verified: swdb
-#file gpgol/gpgol-2.5.12.tar.bz2
-#chk  b982b0393754a779bafdea9d864c6ad6a7aa763a3c49d28bf6106dc202d9dc0a
+# GpgOL
+# last-changed: 2024-08-28
+# by: ah
+# verified: swdb
+file gpgol/gpgol-2.5.14.tar.bz2
+chk  2cec52d73dd3b74c474cc0a15823d24af5469ca1c272c6791640fc1b3bbc6189
 
 #
 # GpgEX
@@ -645,13 +644,6 @@ chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
 # verified: Tarball created by aheinecke.
 file gpgme/gpgme-1.24.0-beta628.tar.xz
 chk 266a909ecd8d95cda9f559cb71e62bd202de112bb7d0b9eb726de4dddd2ffb2e
-
-# gpgol
-# last changed: 2024-09-04
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file gpgol/gpgol-2.5.15-beta1.tar.xz
-chk 45798f963bde8458d6ee68852aeec904e9ee272285d1315ef5de0cec521d6907
 
 
 # gpg4win-tools
