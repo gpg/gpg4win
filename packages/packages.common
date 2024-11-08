@@ -712,3 +712,41 @@ server https://gnupg.net/snapshots/
 # verified: Tarball created by carl.
 file gpgoljs/gpgoljs-202411061619.tar.xz
 chk b43c5ca9a98e0e9ad1b092180a3335332b72a271131d8164fbaa53fd0306f80f
+
+
+#
+# GnuPG proper
+#
+
+server https://gnupg.org/ftp/gcrypt
+
+# All tarballs from this server are verified with an openpgp
+# signature made by "Werner Koch (dist sig)" or one of the other
+# gnupg main contributors.
+
+# last changed 2024-09-20
+# by wk
+# verified: swdb.lst
+file libgcrypt/libgcrypt-1.11.0.tar.bz2
+chk  09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c
+
+
+# last changed 2024-10-30
+# by builder
+# verified: [taken from buildtree]
+name gnupg-2.4.6.tar.bz2
+file gnupg/gnupg-2.4.6.tar.bz2
+chk  95acfafda7004924a6f5c901677f15ac1bda2754511d973bb4523e8dd840e17a
+
+name gnupg-w32-2.4.6_20241029-bin.exe
+file binary/gnupg-w32-2.4.6_20241029.exe
+chk  af5866586309418ae2f83f55de6ec96e9f557695a50a0631ccedfebfa708f51e
+
+name gnupg-w32-2.4.6_20241029-src.tar.xz
+file binary/gnupg-w32-2.4.6_20241029.tar.xz
+link gnupg-msi-2.4.6_20241029-src.tar.xz
+chk  d93a089ce176733d50dd9c3cc4ee40e249bde81f50fceabb5b2dec4f11c42f2e
+
+name gnupg-msi-2.4.6_20241029-bin.wixlib
+file binary/gnupg-w32-2.4.6_20241029.wixlib
+chk  4318877c1d64bfb1fd1c291c23f788cf8b6f6f766024357a538bdd41962f5295

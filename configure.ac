@@ -40,14 +40,12 @@ m4_define([mym4_buildtype],
 m4_if(mym4_buildtype,[vsd],[m4_define([mym4_isvsd],[yes])
                             m4_define([mym4_isv3build],[yes]]))
 
-# If we are using GnuPG 2.2.x or building GnuPG VSD then
-# use a different version number. This allows configurations
-# where the buildtype is still VSD but the version used
-# for GnuPG might differ e.g 2.5 or 2.6
-m4_if(mym4_isv3build,yes,
-      [m4_define([mym4_major],[3])
-       m4_define([mym4_minor],[2])
-       m4_define([mym4_micro],[3])],
+# For VSD with GnuPG 2.6 we will use version 4.x
+# For GPD and Gpg4win with GnuPG 2.6 we use version 5.x
+m4_if(mym4_buildtype,vsd,
+      [m4_define([mym4_major],[4])
+       m4_define([mym4_minor],[0])
+       m4_define([mym4_micro],[0])],
       [m4_define([mym4_major],[5])
        m4_define([mym4_minor],[0])
        m4_define([mym4_micro],[0])])

@@ -46,8 +46,6 @@ Options:
         [--quiet]
         [--ipv4]
         [--ipv6]
-        [--v4]       Download packages for Version 4.x (default)
-        [--v3]       Download packages for Version 3.x
         [--dry-run]  Do not download - just check
         [--clean]    Do not download but remove downloaded files.
         [--update]   Remove old files with the same name.
@@ -58,8 +56,6 @@ EOF
 
 force=no
 quiet=no
-version3=no
-version4=no
 ipvx=
 clean=no
 dryrun=no
@@ -96,12 +92,6 @@ while [ $# -gt 0 ]; do
             ;;
         --ipv6)
             ipvx="-6"
-            ;;
-        --v4)
-            version4=yes
-            ;;
-        --v3)
-            version3=yes
             ;;
         --clean)
             clean=yes
@@ -148,21 +138,22 @@ WGET="wget $ipvx"
 
 packages="packages.common"
 
-if [ "$version4" = "yes" ] && [ "$version3" = "yes" ]; then
-    echo "Invalid arguments. Both -v4 and -v3 set."
-    exit 1;
-elif [ "$version4" = "yes" ]; then
-    echo "Downloading packages for version 4.x"
-    rm -f '.#download.v3'
-    packages="$packages packages.4"
-elif [ "$version3" = "yes" ] || [ -f '.#download.v3' ]; then
-    echo "Downloading packages for version 3.x"
-    packages="$packages packages.3"
-    touch '.#download.v3'
-else
-    echo "Downloading packages for version 4.x"
-    packages="$packages packages.4"
-fi
+# Not anymore used for GPD-5 and VSD-4
+# if [ "$version4" = "yes" ] && [ "$version3" = "yes" ]; then
+#     echo "Invalid arguments. Both -v4 and -v3 set."
+#     exit 1;
+# elif [ "$version4" = "yes" ]; then
+#     echo "Downloading packages for version 4.x"
+#     rm -f '.#download.v3'
+#     packages="$packages packages.4"
+# elif [ "$version3" = "yes" ] || [ -f '.#download.v3' ]; then
+#     echo "Downloading packages for version 3.x"
+#     packages="$packages packages.3"
+#     touch '.#download.v3'
+# else
+#     echo "Downloading packages for version 4.x"
+#     packages="$packages packages.4"
+# fi
 
 
 lnr=0
