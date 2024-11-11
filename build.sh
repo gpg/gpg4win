@@ -26,6 +26,8 @@
 
 set -e
 
+PGM=build.sh
+
 usage()
 {
     cat <<EOF
@@ -59,15 +61,15 @@ Note that the option --dirty uses rsync to copy the local
 checkout without the delete option.
 
 Examples:
-    ./$0
+    ./$PGM
         Clone the current gpg4win directory to a temporary
         directory and build an installer there.
 
-    ./$0 --dirty --buildroot /home/$USER/build/
+    ./$PGM --dirty --buildroot /home/$USER/build/
         Make a copy with rsync of the current gpg4win checkout
         and build in that directory. E.g. for development.
 
-    ./$0 --inplace
+    ./$PGM --inplace
         Build in the current checkout directory. For
         example to rebuild a source tarball.
 EOF
@@ -99,8 +101,10 @@ w64="yes"
 fromgit="no"
 
 # Store the original comamnd line
+# for diagnostic reasons
 commandline="$0 $@"
 
+skipshift=
 while [ $# -gt 0 ]; do
     case $1 in
         --appimage) appimage="yes";;
@@ -116,9 +120,10 @@ while [ $# -gt 0 ]; do
         --w64) w64="yes";;
         --git|-g|--git-pkgs) fromgit="yes";;
         --buildroot|-o) buildroot="$2"; shift; ;;
-        *) usage 1 1>&2; exit 1;;
+        --*) usage 1 1>&2; exit 1;;
+        *) skipshift=1; break ;;
     esac
-    shift
+    [ -z "$skipshift" ] && shift
 done
 
 # Set default build directory if not specified
@@ -135,11 +140,15 @@ else
     if [ "$w64" = "yes" ]; then
         cmd="/build/src/build-gpg4win.sh --build-w64"
     else
-        cmd="/build/src/build-gpg4win.sh"
+        cmd="/build/src/build-gpg4win.sh --build-w32"
     fi
     docker_image=g10-build-gpg4win:bookworm
     dockerfile=${srcdir}/docker/gpg4win-bookworm
 fi
+if [ $dirty = yes ]; then
+    cmd="$cmd --dirty"
+fi
+
 
 drep=$(echo $docker_image | cut -d : -f 1)
 dtag=$(echo $docker_image | cut -d : -f 2)
@@ -150,7 +159,7 @@ if [ -z "$(docker images | grep $drep | grep $dtag)" \
     docker build -t $docker_image $dockerfile 2>&1
 fi
 
-# make a local clone or export of gpg4win to keep the working copy clean
+# Make a local clone or export of gpg4win to keep the working copy clean
 if [ "$inplace" = "yes" ]; then
     echo "Building in $srcdir"
     gpg4win_dir="$srcdir"
@@ -162,7 +171,7 @@ else
     if [ "$clean" = "yes" ]; then
         rm -rf ${gpg4win_dir}
     fi
-    if test ! -d "${gpg4win_dir}"; then
+    if [ ! -d "${gpg4win_dir}" ]; then
         if [ "$dirty" = "yes" -o ! -d "${srcdir}/.git" ]; then
             mkdir -p "${gpg4win_dir}"
             rsync_gpg4win "${srcdir}/" "${gpg4win_dir}/"
@@ -216,11 +225,15 @@ if [ "$fromgit" = "yes" ]; then
     echo "Done"
 fi
 
-echo "Downloading packages"
-if [ "$gpg22" = "yes" ]; then
-    ./download.sh --quiet --v3
+if [ "$dirty" = "yes" ]; then
+    echo >&2 "Skipping download step"
 else
-    ./download.sh --quiet
+    echo "Downloading packages"
+    if [ "$gpg22" = "yes" ]; then
+       ./download.sh --quiet --v3
+    else
+       ./download.sh --quiet
+    fi
 fi
 
 userid=$(id -u)
