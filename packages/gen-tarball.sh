@@ -18,7 +18,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <https://www.gnu.org/licenses/>.
 #
-# SPDX-License-Identifier: GPL-2.0+
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 # Packages the current HEAD of a git repository as tarball and updates
 # the packages.common accordingly if the entry matches the exact pattern.
@@ -51,11 +51,13 @@ Usage: $PGM [OPTIONS]  PACKAGE ...
 Generate a tarball from a repository.
 
 Options:
-        -a|--auto                 Upload to ftp server
+        -a|--auto              Upload to ftp server
         -u|--update            Remove the old package locally
-        -f                     Update frontend packages en block. These are:
-$FRONTEND_PKGS
         --user=name            Use NAME as FTP server user
+        -f                     Update frontend packages en block.
+
+Frontend packages are:
+$FRONTEND_PKGS
 
 PACKAGE is either the name of a supported library or application,
 e.g. 'kleopatra', or the path of a local Git repository,
@@ -75,8 +77,32 @@ branch="master"
 custom_l10n="no"
 while [ $# -gt 0 ]; do
     case "$1" in
-    --*=*)
-        optarg=$(echo "$1" | sed 's/[-_a-zA-Z0-9]*=//')
+	--*=*)
+	    optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'`
+	    ;;
+	*)
+	    optarg=""
+	    ;;
+    esac
+
+    case "$1" in
+    --auto|-a)
+        autoupload="yes"
+        ;;
+    --user|--user=*)
+        ftpuser_at="${optarg}@"
+        ;;
+    --update|-u)
+        update="yes"
+        ;;
+    -f)
+        update="full"
+        ;;
+    --help|-h)
+        usage 0
+        ;;
+    --*)
+        usage 1 1>&2
         ;;
     -*)
         # Handle combined short options
@@ -100,24 +126,6 @@ while [ $# -gt 0 ]; do
                     ;;
             esac
         done
-        ;;
-    --auto|-a)
-        autoupload="yes"
-        ;;
-    --user|--user=*)
-        ftpuser_at="${optarg}@"
-        ;;
-    --update|-u)
-        update="yes"
-        ;;
-    -f)
-        update="full"
-        ;;
-    --help|-h)
-        usage 0
-        ;;
-    --*)
-        usage 1 1>&2
         ;;
     *)
         break
