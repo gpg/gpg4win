@@ -890,6 +890,7 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_srcdir)/src/toolchain.cmake \
 		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 		-DBUILD_TESTING=False \
+                -DUSE_QML=off \
 		$(CMAKE_GENERATOR_FLAGS) \
 		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}$$$${pkg_conf_subdir}") && \
 	touch $(stampdir)/stamp-$(1)-02-configure
@@ -972,6 +973,7 @@ $(stampdir)/stamp-$(1)-native-02-configure: $(stampdir)/stamp-$(1)-native-01-pat
 		-DQT_MAJOR_VERSION="6" \
 		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 		-DBUILD_TESTING=False \
+                -DUSE_QML=off \
 		$(CMAKE_GENERATOR_FLAGS) \
 		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}$$$${pkg_conf_subdir}") && \
 	touch $(stampdir)/stamp-$(1)-native-02-configure
