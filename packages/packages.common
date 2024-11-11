@@ -639,13 +639,6 @@ chk 3e91bf1e5324b03a417416916e2f159d7de96ab2c4f05a32b0667c262e1fa647
 file scute/scute-1.7.1-beta45.tar.xz
 chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
 
-# gpgme
-# last changed: 2024-09-03
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file gpgme/gpgme-1.24.0-beta628.tar.xz
-chk 266a909ecd8d95cda9f559cb71e62bd202de112bb7d0b9eb726de4dddd2ffb2e
-
 # gpgol
 # last changed: 2024-09-04
 # by: aheinecke
