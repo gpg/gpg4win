@@ -12,7 +12,7 @@ usage()
 Usage: $PGM [OPTIONS]  WINDOWS_SOURCE_TARBALL
 Options:
         [--v4]         Append to packages.4
-        [--v3]         Append to packages.3 (default)
+        [--v3]         Append to packages.3
         [--snapshot]   Create for snapshot folder
 	[--no-wixlib]  Do not create a wixlib entry
 EOF
@@ -20,7 +20,7 @@ EOF
 }
 
 
-forversion=3
+forversion=common
 bindir="binary"
 wixlib=wixlib
 snapshot=no
