@@ -50,7 +50,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh README.GIT ONEWS \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
-             patches/kcontacts/0001-Make-the-depedency-to-QML-optional.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/kio/0001-Remove-kencodingfiledialog-to-avoid-Qt5Compat.patch \
