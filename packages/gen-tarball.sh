@@ -222,7 +222,7 @@ else
             if [ "$lang" = "de" -a "$local_l10n" != "" ]; then
                 echo "Adding local l10n file $local_l10n which contains:"
                 msgfmt --statistics "$olddir/$local_l10n"
-                if ! msgcat --use-first po/$lang/${poname}_new.po "$olddir/$local_l10n" > po/$lang/${poname}.po ; then
+                if ! msgcat po/$lang/${poname}_new.po "$olddir/$local_l10n" > po/$lang/${poname}.po ; then
                   echo "WARN: error from msgcat ignored" >&2
                 fi
             else
