@@ -717,27 +717,27 @@ file libgcrypt/libgcrypt-1.11.0.tar.bz2
 chk  09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c
 
 
-# last changed 2024-11-11
+# last changed 2024-11-12
 # by builder
 # verified: [taken from buildtree]
 
 server https://gnupg.org/ftp/gcrypt/snapshots
 
-name gnupg-2.5.2-beta55.tar.bz2
-file gnupg/gnupg-2.5.2-beta55.tar.bz2
-chk  302c227fe2036ec2f1a7526ca4cd0c5919907e0c52cbe7a794cac1878a238c41
+name gnupg-2.5.2-beta58.tar.bz2
+file gnupg/gnupg-2.5.2-beta58.tar.bz2
+chk  22c4b8a4fa6f95c0eac919d4e77bbe65b203704c95ad7cccfc69c97c1ad02876
 
-name gnupg-w32-2.5.2-beta55_20241111-bin.exe
-file gnupg/gnupg-w32-2.5.2-beta55_20241111.exe
-chk  698383581e120c3344a6c1c9f24707002cc105753ec169c4059c493e55cc88d9
+name gnupg-w32-2.5.2-beta58_20241112-bin.exe
+file gnupg/gnupg-w32-2.5.2-beta58_20241112.exe
+chk  361bb787dd0dbc9dedb5fd6d0d69a40b1e752f5f837b9532b53b8cac2c515c63
 
-name gnupg-w32-2.5.2-beta55_20241111-src.tar.xz
-file gnupg/gnupg-w32-2.5.2-beta55_20241111.tar.xz
-link gnupg-msi-2.5.2-beta55_20241111-src.tar.xz
-chk  0070983e3af436df5dc4341bae0f3062f2e4398396014594ac6622009cc5221b
+name gnupg-w32-2.5.2-beta58_20241112-src.tar.xz
+file gnupg/gnupg-w32-2.5.2-beta58_20241112.tar.xz
+link gnupg-msi-2.5.2-beta58_20241112-src.tar.xz
+chk  8d60a98990dff01b5334e88e19a95c7cc472b618a78171df516437f4f4d700ba
 
-name gnupg-msi-2.5.2-beta55_20241111-bin.wixlib
-file gnupg/gnupg-w32-2.5.2-beta55_20241111.wixlib
-chk  eaa6c1f87eb0e312847b31572258f273a56a207ac5e13ae4ce07e188bc1f3efe
+name gnupg-msi-2.5.2-beta58_20241112-bin.wixlib
+file gnupg/gnupg-w32-2.5.2-beta58_20241112.wixlib
+chk  eefff471c361796e1905d3c00f4e158448bc5a470bc1703a08a13a67f1ad80a4
 
 # eof
