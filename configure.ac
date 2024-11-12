@@ -557,7 +557,7 @@ AC_CONFIG_FILES(src/versioninfo.rc.in)
 AC_CONFIG_FILES(src/gpg4win.w32-manifest.in)
 
 AC_CONFIG_FILES(src/gccwrap.sh)
-AC_OUTPUT_COMMANDS([chmod +x src/gccwrap.sh])
+AC_CONFIG_COMMANDS([chmod],[chmod +x src/gccwrap.sh])
 
 AC_OUTPUT
 
