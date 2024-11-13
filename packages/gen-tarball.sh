@@ -211,6 +211,13 @@ else
                 echo "failed to download the custom l10n file $custom_l10n for language $lang"
                 continue
             fi
+            # get rid of obsolete messages because msgcat --use-first would drop non-obsolete messages from
+            # the package's po file that match obsolete messages from the *_main.po file
+            if msgattrib --no-obsolete po/$lang/${poname}_main.po > po/$lang/${poname}_main_noobsolete.po ; then
+                mv po/$lang/${poname}_main_noobsolete.po po/$lang/${poname}_main.po
+            else
+                echo "WARN: error from msgattrib ignored" >&2
+            fi
 
             echo "Adding translations to $lang with:"
             msgfmt --statistics po/$lang/${poname}_main.po
@@ -220,9 +227,16 @@ else
             # For german we go the extra mile to be 100% and add even
             # more local strings if this is required
             if [ "$lang" = "de" -a "$local_l10n" != "" ]; then
+                # get rid of obsolete messages because msgcat --use-first would drop non-obsolete messages from
+                # the local_l10n file that match obsolete messages from the *_new.po file
+                if msgattrib --no-obsolete po/$lang/${poname}_new.po > po/$lang/${poname}_new_noobsolete.po ; then
+                    mv po/$lang/${poname}_new_noobsolete.po po/$lang/${poname}_new.po
+                else
+                    echo "WARN: error from msgattrib ignored" >&2
+                fi
                 echo "Adding local l10n file $local_l10n which contains:"
                 msgfmt --statistics "$olddir/$local_l10n"
-                if ! msgcat po/$lang/${poname}_new.po "$olddir/$local_l10n" > po/$lang/${poname}.po ; then
+                if ! msgcat --use-first po/$lang/${poname}_new.po "$olddir/$local_l10n" > po/$lang/${poname}.po ; then
                   echo "WARN: error from msgcat ignored" >&2
                 fi
             else
