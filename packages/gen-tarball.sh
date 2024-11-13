@@ -235,9 +235,8 @@ timestamp=$(date +%Y%m%d%H%M)
 snapshotdir=${package}-${timestamp}
 tarball=${snapshotdir}.tar.xz
 
-git clone ${repo} ${tmpdir}/${snapshotdir}
-
 if [ "${is_gpg}" == "yes" ]; then
+    git clone ${repo} ${tmpdir}/${snapshotdir}
     olddir=$(pwd)
     cd ${tmpdir}/${snapshotdir}
     ./autogen.sh --force >&2
@@ -254,10 +253,10 @@ if [ "${is_gpg}" == "yes" ]; then
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
     cd ${olddir}
 else
+    git clone --depth=1 --branch $branch ${repo} ${tmpdir}/${snapshotdir}
     olddir=$(pwd)
     echo "$PGM: Archiving branch $branch."
     cd ${tmpdir}/${snapshotdir}
-    git checkout $branch
     if [ "$custom_l10n" != "no" ]; then
         for lang in $translation_langs; do
             if [ "$lang" = "de" ]; then
