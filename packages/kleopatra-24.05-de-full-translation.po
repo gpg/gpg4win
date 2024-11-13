@@ -11340,6 +11340,18 @@ msgstr "Mit OpenPGP signieren …"
 msgid "Decrypt/Verify..."
 msgstr "&Entschlüsseln/Überprüfen …"
 
+#: libkleo/utils/expiration.cpp:102
+#, kde-format
+msgctxt "@label Valid until (<a date>):"
+msgid "Valid until (%1):"
+msgstr "Gültig bis (%1):"
+
+#: libkleo/utils/expiration.cpp:105
+#, kde-format
+msgctxt "@label ... (between <a date> and <another date>):"
+msgid "Valid until (between %1 and %2):"
+msgstr "Gültig bis (zwischen %1 und %2)"
+
 #: src/utils/expiration.cpp:104
 #, kde-format
 msgctxt "@info"
