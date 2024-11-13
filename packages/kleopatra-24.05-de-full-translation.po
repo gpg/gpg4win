@@ -152,7 +152,7 @@ msgctxt "@info"
 msgid ""
 "<p>An error occurred while trying to add an ADSK to <b>%1</b>:</p><p>%2</p>"
 msgstr ""
-"<p>Beim Versuch, zu <b>%1</b>einen ADSK hinzuzufügen, ist ein Fehler "
+"<p>Beim Versuch, zu <b>%1</b> einen ADSK hinzuzufügen, ist ein Fehler "
 "aufgetreten:</p><p>%2</p>"
 
 #: src/commands/addadskcommand.cpp:114
@@ -192,7 +192,7 @@ msgid ""
 "<p>An error occurred while trying to add a new subkey to <b>%1</b>:</"
 "p><p>%2</p>"
 msgstr ""
-"<p>Beim Versuch, zu <b>%1</b>einen neuen Unterschlüssel hinzuzufügen, ist "
+"<p>Beim Versuch, zu <b>%1</b> einen neuen Unterschlüssel hinzuzufügen, ist "
 "ein Fehler aufgetreten:</p><p>%2</p>"
 
 #: src/commands/addsubkeycommand.cpp:176
