@@ -16,29 +16,29 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-EXTRA_DIST =  config.site                                                       \
-              findicons.sh                                                      \
-              exdll.h exdll.c                                                   \
-              g4wihelp.c desktopshellrun.cpp                                    \
-              slideshow.cpp gpgwrap.c gccwrap.sh.in                             \
-              versioninfo.rc.in.in gpg4win.w32-manifest.in.in                   \
-              gpg-enable-keyboxd.bat gpg-disable-keyboxd.bat                    \
-              sha1sum.c                                                         \
-              potomo                                                            \
-              index.theme                                                       \
-              slideshow/slides.dat                                              \
-              slideshow/slide1-gpgol.png                                        \
-              slideshow/slide2-gpgex.png                                        \
-              slideshow/slide3-kleopatra.png                                    \
-              slideshow/slide4-summary.png                                      \
-              icons/file-ext.ico                                                \
-              icons/mail-ext.ico                                                \
-              icons/shield.ico                                                  \
-              kdeglobals qtlogging.ini                                          \
-              make-msi.pl make-msi.guids                                        \
-              build-gpg4win.sh                                                  \
-              qt.conf                                                           \
-              WixUI_Gpg4win.wxs included-icons.txt                              \
+EXTRA_DIST =  config.site                                      \
+              findicons.sh                                     \
+              exdll.h exdll.c                                  \
+              g4wihelp.c desktopshellrun.cpp                   \
+              slideshow.cpp gpgwrap.c gccwrap.sh.in            \
+              versioninfo.rc.in.in gpg4win.w32-manifest.in.in  \
+              gpg-enable-keyboxd.bat gpg-disable-keyboxd.bat   \
+              sha1sum.c                                        \
+              potomo                                           \
+              index.theme                                      \
+              slideshow/slides.dat                             \
+              slideshow/slide1-gpgol.png                       \
+              slideshow/slide2-gpgex.png                       \
+              slideshow/slide3-kleopatra.png                   \
+              slideshow/slide4-summary.png                     \
+              icons/file-ext.ico                               \
+              icons/mail-ext.ico                               \
+              icons/shield.ico                                 \
+              kdeglobals qtlogging.ini                         \
+              make-msi.pl make-msi.guids                       \
+              build-gpg4win.sh                                 \
+              qt.conf                                          \
+              WixUI_Gpg4win.wxs included-icons.txt             \
               zlib.pc
 
 if BUILD_APPIMAGE
@@ -174,7 +174,11 @@ gpg4win_pkg_libassuan_configure = --enable-static
 
 gpg4win_pkg_libassuan_ex_configure = --enable-static
 
-gpg4win_pkg_libpng_configure = HAVE_SOLARIS_LD_FALSE=yes CPPFLAGS=\"-I$(idir)/include -DPNG_BUILD_DLL\" LDFLAGS=\"-L$(idir)/lib\" LIBPNG_DEFINES=\"-DPNG_BUILD_DLL\"
+gpg4win_pkg_libpng_configure = \
+      HAVE_SOLARIS_LD_FALSE=yes \
+      CPPFLAGS=\"-I$(idir)/include -DPNG_BUILD_DLL\" \
+      LDFLAGS=\"-L$(idir)/lib\" \
+      LIBPNG_DEFINES=\"-DPNG_BUILD_DLL\"
 
 gpg4win_pkg_pinentry_configure = \
   --enable-pinentry-qt \
@@ -205,11 +209,12 @@ gpg4win_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
 gpg4win_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
 
 gpg4win_pkg_kconfig_native_configure = -DKCONFIG_USE_DBUS=OFF \
-                                      -DKCONFIG_USE_QML=OFF \
-                                      -DKCONFIG_USE_GUI=OFF
+                                       -DKCONFIG_USE_QML=OFF  \
+                                       -DKCONFIG_USE_GUI=OFF
 
-gpg4win_pkg_pcre2_configure = -DPCRE2_BUILD_PCRE2_8=OFF -DPCRE2_BUILD_PCRE2_16=ON \
-                              -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF
+gpg4win_pkg_pcre2_configure =
+		-DPCRE2_BUILD_PCRE2_8=OFF -DPCRE2_BUILD_PCRE2_16=ON \
+                -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF
 
 gpg4win_pkg_karchive_configure = -DWITH_LIBZSTD=ON -DWITH_LIBLZMA=OFF
 
@@ -256,20 +261,21 @@ gpg4win_pkg_qtbase_native_configure = \
         -DCMAKE_VERBOSE_MAKEFILE=ON
 
 define gpg4win_pkg_qtbase_native_post_install
-	(cd $$$${pkgidir}/bin; \
+	(set -e ; \
+         cd $$$${pkgidir}/bin; \
 	 cp qtpaths qtpaths_real; \
 	 unlink qtpaths; \
 	 echo "#!/bin/sh" > qtpaths; \
-	 echo "$$$${pkgidir}/bin/qtpaths_real \"\$$$$@\" | sed 's@/pkgs.*@/@'" >> qtpaths; \
+	 echo "$$$${pkgidir}/bin/qtpaths_real \"\$$$$@\" | sed 's@/pkgs.*@/@'" \
+               >> qtpaths; \
 	 chmod u+x qtpaths; \
-	 cp qtpaths qtpaths6; \
-)
+	 cp qtpaths qtpaths6 )
 endef
 
 gpg4win_pkg_qtbase_configure = \
         -DQT_HOST_PATH=$(native_idir) \
         -DQt6HostInfo_DIR=$(native_idir)/lib/cmake/Qt6HostInfo \
-        -DQT_QMAKE_DEVICE_OPTIONS='CROSS_COMPILE=$(host)- \
+        -DQT_QMAKE_DEVICE_OPTIONS='CROSS_COMPILE=$(host)-' \
         -DQT_QMAKE_TARGET_MKSPEC=win32-g++ \
         -DQT_BUILD_EXAMPLES=OFF \
         -DQT_BUILD_TESTS=OFF \
@@ -297,13 +303,12 @@ gpg4win_pkg_qtbase_configure = \
 # so that pkg-config can find them.
 define gpg4win_pkg_qtbase_post_install
 	(cp $(native_idir)/libexec/moc $$$${pkgidir}/bin; \
-	 cp $(native_idir)/libexec/rcc $$$${pkgidir}/bin; \
-)
+	 cp $(native_idir)/libexec/rcc $$$${pkgidir}/bin   )
 endef
 
 
 define gpg4win_pkg_okular_post_install
- ( rm $$$${pkgidir}/share/icons/hicolor/icon-theme.cache; )
+        (rm $$$${pkgidir}/share/icons/hicolor/icon-theme.cache)
 endef
 
 gpg4win_pkg_kleopatra_configure = \
@@ -435,7 +440,8 @@ $(stampdir)/stamp-msi-base: icons/shield.ico Makefile.am \
 	ssh $(WINHOST) "mkdir AppData\\Local\\Temp\\gpg4win-$(VERSION)" || true
 	scp $(top_srcdir)/packages/gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
 		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION);
-	scp $(top_srcdir)/src/icons/shield.ico $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	scp $(top_srcdir)/src/icons/shield.ico \
+                $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
 	scp $(top_srcdir)/doc/logo/gpg4win-msi-header_install-493x58.bmp \
 		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/header.bmp
 	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
@@ -446,9 +452,12 @@ $(stampdir)/stamp-msi-base: icons/shield.ico Makefile.am \
 		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/info.bmp
 	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
 		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/exclamation.bmp
-	scp $(top_srcdir)/po/gpg4win-en.wxl $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	scp $(top_srcdir)/po/gpg4win-de.wxl $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	scp WixUI_Gpg4win.wxs $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	scp $(top_srcdir)/po/gpg4win-en.wxl \
+                $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	scp $(top_srcdir)/po/gpg4win-de.wxl \
+                $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	scp WixUI_Gpg4win.wxs \
+                $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
 	touch $(stampdir)/stamp-msi-base
 
 # Now do the bunch of the work.  This is a bunch of dirty magic to
@@ -477,26 +486,26 @@ common_nsi = nsis/inst-sections.nsi nsis/installer.nsi \
 # Exit in case of error because that usually means that AUTHENTICODE_FILES
 # are not up to date.
 $(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
-    $(foosum_exe)
+                                          $(foosum_exe)
 	(set -e;\
-     $(eval $(call READ_AUTOGEN_template,AUTHENTICODE_KEY)) \
-     cd "$(idir)"; \
-     for f in $(AUTHENTICODE_FILES); do \
-       if [ ! -f "$$f" ]; then \
-         echo "ERROR: file '$$f' not available for signing"; \
-         exit 1; \
-       fi;\
-     done; \
-     for f in $(AUTHENTICODE_FILES); do \
-       if [ ! -s "$$f" ]; then \
-         echo "Codesign: Skipping over empty file '$$f'"; \
-         continue; \
-       fi; \
-       if [ -n "$(AUTHENTICODE_KEY)" ] && [ "$(AUTHENTICODE_KEY)" != "none" ]; then \
-         $(call AUTHENTICODE_sign,"$$f","$$f"); \
-       fi; \
-     done \
-     )
+	 $(eval $(call READ_AUTOGEN_template,AUTHENTICODE_KEY)) \
+         cd "$(idir)"; \
+         for f in $(AUTHENTICODE_FILES); do \
+           if [ ! -f "$$f" ]; then \
+             echo "ERROR: file '$$f' not available for signing"; \
+             exit 1; \
+           fi;\
+         done; \
+         for f in $(AUTHENTICODE_FILES); do \
+           if [ ! -s "$$f" ]; then \
+             echo "Codesign: Skipping over empty file '$$f'"; \
+             continue; \
+           fi; \
+           if [ -n "$(AUTHENTICODE_KEY)" \
+                -a "$(AUTHENTICODE_KEY)" != "none" ]; then
+             $(call AUTHENTICODE_sign,"$$f","$$f"); \
+           fi; \
+         done )
 	touch $(stampdir)/stamp-additional-signedfiles
 
 # Prepare the versioninfo file.  The pipeline extracts the last
@@ -538,14 +547,19 @@ COMPONENTS-list.tmp : $(top_srcdir)/NEWS
 # For some nut-crazy reason someone thought it would be a great idea
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
-installers/gpg4win-$(VERSION)$(W64SUFFIX).exe: $(common_nsi) $(stampdir)/stamp-final \
+installers/gpg4win-$(VERSION)$(W64SUFFIX).exe: \
+                        $(common_nsi) \
+                        $(stampdir)/stamp-final \
                         g4wihelp.dll gpgwrap.exe \
 		        $(foosum_exe) \
-				 $(HOWTO_files) \
+			$(HOWTO_files) \
 	                license.blurb versioninfo.txt
-	$(MAKENSIS) -V3 -DBUILD_W64=$(BUILD_W64) -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
-           -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/nsis/gpg4win.nsi && \
-		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION)$(W64SUFFIX).exe
+	$(MAKENSIS) -V3 -DBUILD_W64=$(BUILD_W64) -DBUILD_DIR=`pwd` \
+                    -DTOP_SRCDIR=$(top_srcdir) \
+                    -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
+                    $(srcdir)/nsis/gpg4win.nsi \
+	  && mv gpg4win-$(VERSION).exe \
+                installers/gpg4win-$(VERSION)$(W64SUFFIX).exe
 
 $(stampdir)/stamp-dist-self: versioninfo.txt
 	(set -e; cd ..; make dist-xz)
@@ -561,7 +575,8 @@ g4wihelp.dll: slideshow.cpp desktopshellrun.cpp g4wihelp.c exdll.h
               -o desktopshellrun.o $(srcdir)/desktopshellrun.cpp
 	$(W32CC32) -DUNICODE -static-libgcc -I. -O2 -c \
               -o slideshow.o $(srcdir)/slideshow.cpp
-	$(W32CC32) -DUNICODE -DENABLE_SLIDE_SHOW -static-libgcc -I. -shared -O2 \
+	$(W32CC32) -DUNICODE -DENABLE_SLIDE_SHOW -static-libgcc \
+              -I. -shared -O2 \
               -o g4wihelp.dll $(srcdir)/g4wihelp.c \
 	      desktopshellrun.o slideshow.o exdll.o \
               -lwinmm -lgdi32 -luserenv -lshell32 \

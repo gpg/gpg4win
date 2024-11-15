@@ -15,6 +15,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
+
 AUTHENTICODE_FILES = \
 	 bin/gpg-error.exe \
 	 bin/gpgex.dll \
@@ -213,11 +214,14 @@ $(stampdir)/stamp-directories:
 define READ_AUTOGEN_template
 $(1) = $$(shell \
     if test -f $$$${HOME}/.gnupg-autogen.rc; then \
-        grep '^[[:blank:]]*$(1)[[:blank:]]*=' $$$${HOME}/.gnupg-autogen.rc | cut -d= -f2 | xargs; \
+        grep '^[[:blank:]]*$(1)[[:blank:]]*=' $$$${HOME}/.gnupg-autogen.rc \
+            | cut -d= -f2 | xargs; \
     elif test -f $(top_srcdir)/.gnupg-autogen.rc; then \
-        grep '^[[:blank:]]*$(1)[[:blank:]]*=' $(top_srcdir)/.gnupg-autogen.rc | cut -d= -f2 | xargs; \
+        grep '^[[:blank:]]*$(1)[[:blank:]]*=' $(top_srcdir)/.gnupg-autogen.rc \
+            | cut -d= -f2 | xargs; \
     else \
-        echo "Warning: .gnupg-autogen.rc not found in HOME or $(top_srcdir)" >&2; \
+        echo "Warning: .gnupg-autogen.rc not found in HOME or $(top_srcdir)" \
+             >&2; \
         echo ""; \
     fi)
 endef
@@ -256,9 +260,9 @@ define SETVARS
 	pkgextracflags="$(call GETVAR,gpg4win_pkg_$(1)_extracflags)";	\
 	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_make_args)";          \
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_args_inst)";\
-	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";             \
-	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";        \
-	pkg_conf_subdir="$(call GETVAR,gpg4win_pkg_$(1)_conf_subdir)"; \
+	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";            \
+	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";       \
+	pkg_conf_subdir="$(call GETVAR,gpg4win_pkg_$(1)_conf_subdir)";  \
 	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
 	export PKG_CONFIG_LIBDIR="$(idir)/lib/pkgconfig";		\
 	export PATH="$(idir)/bin:$(native_idir)/bin:$${PATH}";		\
@@ -286,8 +290,8 @@ define SETVARS_EX
 	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_dir)";        \
 	export PKG_CONFIG_PATH="$(ex_idir)/lib/pkgconfig";                  \
 	export PKG_CONFIG_LIBDIR="$(ex_idir)/lib/pkgconfig";                \
-	export PATH="$(ex_idir)/bin:$(native_idir)/bin:$${PATH}";            \
-	export LD_LIBRARY_PATH=$(native_idir)/lib:$(native_idir)/lib64;       \
+	export PATH="$(ex_idir)/bin:$(native_idir)/bin:$${PATH}";           \
+	export LD_LIBRARY_PATH=$(native_idir)/lib:$(native_idir)/lib64;     \
 	export SYSROOT="$(ex_idir)"
 endef
 
@@ -305,54 +309,54 @@ define SETVARS_NATIVE
 	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_native_configure)";           \
 	pkgextracflags="$(call GETVAR,gpg4win_pkg_$(1)_native_extracflags)"; \
 	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_native_make_args)";        \
-	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_native_make_args_inst)"; \
+	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_native_make_args_inst)";\
 	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_native_make_dir)";          \
 	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_native_make_dir)";     \
 	export PKG_CONFIG_PATH="$(native_idir)/lib/pkgconfig";               \
-	export PKG_CONFIG_LIBDIR="";                                        \
+	export PKG_CONFIG_LIBDIR="";                                         \
 	export PATH="$(native_idir)/bin:$${PATH}";                           \
-	export LD_LIBRARY_PATH=$(native_idir)/lib:$(native_idir)/lib64;       \
+	export LD_LIBRARY_PATH=$(native_idir)/lib:$(native_idir)/lib64;      \
 	export SYSROOT="$(native_idir)"
 endef
 
 define SETVARS_WINE
 	set -e; \
 	if [ -z "$$$$(which $(WINE))" ]; then \
-		echo "ERROR: For the msi-package wine needs to be installed."; \
+	    echo "ERROR: For the msi-package wine needs to be installed."; \
 	exit 1; \
 	fi; \
 	if [ -z "$(WIXPREFIX)" ]; then \
-		if [ -d `readlink -f ~/w32root/wixtools` ]; then \
-			WIXPREFIX2=`readlink -f ~/w32root/wixtools`; \
-			echo "Using $$$$WIXPREFIX2 as WIXPREFIX"; \
-		else \
-			echo "ERROR: You must set WIXPREFIX to an installation of wixtools."; \
-			exit 1; \
-		fi; \
+	    if [ -d `readlink -f ~/w32root/wixtools` ]; then \
+		WIXPREFIX2=`readlink -f ~/w32root/wixtools`; \
+		echo "Using $$$$WIXPREFIX2 as WIXPREFIX"; \
+            else \
+		echo "ERROR: You must set WIXPREFIX to an installation of wixtools."; \
+		exit 1; \
+	    fi; \
 	else \
-		WIXPREFIX2="$(WIXPREFIX)"; \
+	    WIXPREFIX2="$(WIXPREFIX)"; \
 	fi; \
 	if [ -z "$$$$WINEPREFIX" ]; then \
-		WINEPREFIX="$$$$HOME/.wine"; \
-		if [ ! -e "$$$$WINEPREFIX/dosdevices" ]; then \
-			echo "ERROR: No wine prefix found under $$WINEPREFIX"; \
-			exit 1; \
-		fi; \
+	    WINEPREFIX="$$$$HOME/.wine"; \
+	    if [ ! -e "$$$$WINEPREFIX/dosdevices" ]; then \
+		echo "ERROR: No wine prefix found under $$WINEPREFIX"; \
+		exit 1; \
+	    fi; \
 	fi; \
 	WINEINST=$$$$WINEPREFIX/dosdevices/k:; \
 	WINESRC=$$$$WINEPREFIX/dosdevices/i:; \
 	WINEINSTEX=$$$$WINEPREFIX/dosdevices/j:; \
 	if [ -e "$$$$WINEINST" ]; then \
-		echo "ERROR: $$$$WINEINST already exists. Please remove."; \
-		exit 1; \
+	    echo "ERROR: $$$$WINEINST already exists. Please remove."; \
+	    exit 1; \
 	fi; \
 	if [ -e "$$$$WINESRC" ]; then \
-		echo "ERROR: $$$$WINESRC already exists. Please remove."; \
-		exit 1; \
+	    echo "ERROR: $$$$WINESRC already exists. Please remove."; \
+	    exit 1; \
 	fi; \
 	if [ -e "$$$$WINEINSTEX" ]; then \
-		echo "ERROR: $$$$WINEINSTEX already exists. Please remove."; \
-		exit 1; \
+	    echo "ERROR: $$$$WINEINSTEX already exists. Please remove."; \
+	    exit 1; \
 	fi; \
 	MSI_VERSION=$$$$(echo $(VSD_VERSION))
 endef
@@ -361,41 +365,41 @@ endef
 define SETVARS_WINE_TWO_DOLLAR
 	set -e; \
 	if [ -z "$$(which $(WINE))" ]; then \
-		echo "ERROR: For the msi-package wine needs to be installed."; \
+	    echo "ERROR: For the msi-package wine needs to be installed."; \
 	exit 1; \
 	fi; \
 	if [ -z "$(WIXPREFIX)" ]; then \
-		if [ -d `readlink -f ~/w32root/wixtools` ]; then \
-			WIXPREFIX2=`readlink -f ~/w32root/wixtools`; \
-			echo "Using $$WIXPREFIX2 as WIXPREFIX"; \
-		else \
-			echo "ERROR: You must set WIXPREFIX to an installation of wixtools."; \
-			exit 1; \
-		fi; \
+	    if [ -d `readlink -f ~/w32root/wixtools` ]; then \
+		WIXPREFIX2=`readlink -f ~/w32root/wixtools`; \
+		echo "Using $$WIXPREFIX2 as WIXPREFIX"; \
+	    else \
+		echo "ERROR: You must set WIXPREFIX to an installation of wixtools."; \
+		exit 1; \
+	    fi; \
 	else \
-		WIXPREFIX2="$(WIXPREFIX)"; \
+	    WIXPREFIX2="$(WIXPREFIX)"; \
 	fi; \
 	if [ -z "$$WINEPREFIX" ]; then \
-		WINEPREFIX="$$HOME/.wine"; \
-		if [ ! -e "$$WINEPREFIX/dosdevices" ]; then \
-			echo "ERROR: No wine prefix found under $$WINEPREFIX"; \
-			exit 1; \
-		fi; \
+	    WINEPREFIX="$$HOME/.wine"; \
+	    if [ ! -e "$$WINEPREFIX/dosdevices" ]; then \
+		echo "ERROR: No wine prefix found under $$WINEPREFIX"; \
+		exit 1; \
+	    fi; \
 	fi; \
 	WINEINST=$$WINEPREFIX/dosdevices/k:; \
 	WINESRC=$$WINEPREFIX/dosdevices/i:; \
 	WINEINSTEX=$$WINEPREFIX/dosdevices/j:; \
 	if [ -e "$$WINEINST" ]; then \
-		echo "ERROR: $$WINEINST already exists. Please remove."; \
-		exit 1; \
+	    echo "ERROR: $$WINEINST already exists. Please remove."; \
+	    exit 1; \
 	fi; \
 	if [ -e "$$WINESRC" ]; then \
-		echo "ERROR: $$WINESRC already exists. Please remove."; \
-		exit 1; \
+	    echo "ERROR: $$WINESRC already exists. Please remove."; \
+	    exit 1; \
 	fi; \
 	if [ -e "$$WINEINSTEX" ]; then \
-		echo "ERROR: $$WINEINSTEX already exists. Please remove."; \
-		exit 1; \
+	    echo "ERROR: $$WINEINSTEX already exists. Please remove."; \
+	    exit 1; \
 	fi; \
 	MSI_VERSION=$$(echo $(VSD_VERSION))
 endef
@@ -403,36 +407,36 @@ endef
 # Support macro.  Unpack the archive $(1).
 define DEFLATE_macro
 	if [ -L "$$$${pkgsdir}" ]; then \
-		echo "Not overwriting symlink $$$${pkgsdir}"; \
+	    echo "Not overwriting symlink $$$${pkgsdir}"; \
 	else \
-		rm -rf $$$${pkgsdir}; \
-		case "$(1)" in			\
-			  */qtbase*.*.tar.xz)          \
-				$(TAR) -xJ --transform='s,^qtbase-everywhere-src,qtbase,' -f "$(1)" ;; \
-			  */qttools*.*.tar.xz)          \
-				$(TAR) -xJ --transform='s,^qttools-everywhere-src,qttools,' -f "$(1)" ;; \
-			  */qtwinextras*.*.tar.xz)          \
-				$(TAR) -xJ --transform='s,^qtwinextras-everywhere-src,qtwinextras,' -f "$(1)" ;; \
-			  */qtsvg*.*.tar.xz)          \
-				$(TAR) -xJ --transform='s,^qtsvg-everywhere-src,qtsvg,' -f "$(1)" ;; \
-			  */qttranslations*.*.tar.xz)          \
-				$(TAR) -xJ --transform='s,^qttranslations-everywhere-src,qttranslations,' -f "$(1)" ;; \
-			  */qthttpserver*.*.tar.xz)          \
-				$(TAR) -xJ --transform='s,^qthttpserver-everywhere-src,qthttpserver,' -f "$(1)" ;; \
-			  */qtwebsockets*.*.tar.xz)          \
-				$(TAR) -xJ --transform='s,^qtwebsockets-everywhere-src,qtwebsockets,' -f "$(1)" ;; \
-		  *.tar.gz | *.tgz)		\
-			$(TAR) xzf "$(1)" ;;	\
-		  *.tar.bz2 | *.tbz2 | *.tbz)	\
-			$(TAR) xjf "$(1)" ;;	\
-		  *.tar.xz )          		\
-			$(TAR) xJf "$(1)" ;;	\
-		  *.exe ) 	         		\
-			cp "$(1)" .       ;;	\
-		  *.zip)			\
-			$(UNZIP) -o "$(1)" ;;		\
-		esac; \
-	fi
+	    rm -rf $$$${pkgsdir}; \
+            tc=J; tf=""; \
+            case "$(1)" in \
+		*/qtbase*.*.tar.xz)
+                    tf='s,^qtbase-everywhere-src,qtbase,' ;; \
+		*/qttools*.*.tar.xz)
+                    tf='s,^qttools-everywhere-src,qttools,' ;; \
+		*/qtwinextras*.*.tar.xz) \
+		    tf='s,^qtwinextras-everywhere-src,qtwinextras,' ;; \
+		*/qtsvg*.*.tar.xz)          \
+		    tf='s,^qtsvg-everywhere-src,qtsvg,' ;; \
+		*/qttranslations*.*.tar.xz)          \
+		    tf='s,^qttranslations-everywhere-src,qttranslations,' ;; \
+		*/qthttpserver*.*.tar.xz)          \
+		    tf='s,^qthttpserver-everywhere-src,qthttpserver,' ;; \
+		*/qtwebsockets*.*.tar.xz)          \
+		    tf='s,^qtwebsockets-everywhere-src,qtwebsockets,' ;; \
+		*.tar.gz | *.tgz)            tc=z ;; \
+		*.tar.bz2 | *.tbz2 | *.tbz)  tc=j ;; \
+		*.tar.xz )          	     tc=J ;; \
+		*.exe )  cp "$(1)" .  ;      tc="" ;; \
+		*.zip)   $(UNZIP) -o "$(1)"; tc="" ;;\
+	    esac; \
+            [ -n "$$$$tf" ] && tf="--transform=$$$$tf"; \
+	    if [ -n "$$$$tc" ]; then \
+	        $(TAR) -x$$$$tc $$$$tf -f "$(1)" ; \
+            fi; \
+        fi
 endef
 
 # Support macro.  Strip all exe files below $(1).
@@ -440,8 +444,9 @@ define STRIP_macro
 	if test -z '$(DEBUG)'; then			\
 	  (cd $(1);					\
 	   for f in `find . -name \*.exe -o -name \*.dll`; do		\
-	   echo Calling $(STRIP) "$$$${pkg_version}/$$$${f}"; \
-	   $(STRIP) "$$$${f}"; done);			\
+	     echo Calling $(STRIP) "$$$${pkg_version}/$$$${f}"; \
+	     $(STRIP) "$$$${f}";\
+           done);\
 	fi
 endef
 
@@ -450,8 +455,9 @@ define STRIP_EX_macro
 	if test -z '$(DEBUG)'; then			\
 	  (cd $(1);					\
 	   for f in `find . -name \*.exe -o -name \*.dll`; do		\
-	   echo Calling $(STRIP_EX) "$$$${pkg_version}/$$$${f}"; \
-	   $(STRIP_EX) "$$$${f}"; done);			\
+	     echo Calling $(STRIP_EX) "$$$${pkg_version}/$$$${f}"; \
+	     $(STRIP_EX) "$$$${f}";\
+           done);			\
 	fi
 endef
 
@@ -473,10 +479,14 @@ define EXPKG_template_
 
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 
-$(stampdir)/stamp-$(1)-ex-00-unpack: $(stampdir)/stamp-$(1)-00-unpack $(call GETDEPS_EX,$(1))
+$(stampdir)/stamp-$(1)-ex-00-unpack: \
+		$(stampdir)/stamp-$(1)-00-unpack \
+                $(call GETDEPS_EX,$(1))
 	touch $(stampdir)/stamp-$(1)-ex-00-unpack
 
-$(stampdir)/stamp-$(1)-ex-01-patch: $(stampdir)/stamp-$(1)-ex-00-unpack $(stampdir)/stamp-$(1)-01-patch
+$(stampdir)/stamp-$(1)-ex-01-patch: \
+                $(stampdir)/stamp-$(1)-ex-00-unpack \
+                $(stampdir)/stamp-$(1)-01-patch
 	touch $(stampdir)/stamp-$(1)-ex-01-patch
 
 $(stampdir)/stamp-$(1)-ex-02-configure: $(stampdir)/stamp-$(1)-ex-01-patch
@@ -488,8 +498,8 @@ $(stampdir)/stamp-$(1)-ex-02-configure: $(stampdir)/stamp-$(1)-ex-01-patch
 		--libdir="$$$${pkgidir}/lib"    \
 		--host=$(GPGEX_ADD_HOST)		\
 		--build=$(build)			\
-		$$$${pkgcfg} CFLAGS=\"-mms-bitfields -fcommon $$$${pkgextracflags}\"\
-	|| exit 1; \
+		$$$${pkgcfg} CFLAGS=\"-fcommon $$$${pkgextracflags}\"\
+           || exit 1; \
 	 shopt -s nullglob;					\
 	 for pfile in "$$$${pkgpbdir}"/*.postcfg       		\
                        "$$$${pkgpdir}"/*.postcfg ; do  		\
@@ -554,7 +564,8 @@ define SPKG_template_
 
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 
-$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
+$(stampdir)/stamp-$(1)-00-unpack: \
+		$(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	(cd $(bdir);					\
 	 $(call SETVARS,$(1));				\
 	 $(call DEFLATE_macro,$$$${pkg}))
@@ -564,11 +575,11 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
-		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-			(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}";) \
-		done \
+	    for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch; do \
+		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}";) \
+	    done \
 	else \
-		echo "Not patching symlinked $(1)"; \
+	    echo "Not patching symlinked $(1)"; \
 	fi)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
@@ -580,24 +591,24 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 		--prefix="$$$${pkgidir}" \
 		--host=$(host) \
 		--build=$(build) \
-		$$$${pkgcfg} CFLAGS=\"-mms-bitfields  -fcommon $$$${pkgextracflags}\" \
-	|| exit 1; \
+		$$$${pkgcfg} CFLAGS=\"-fcommon $$$${pkgextracflags}\" \
+           || exit 1; \
 	shopt -s nullglob; \
 	for pfile in "$$$${pkgpbdir}"/*.postcfg \
-				"$$$${pkgpdir}"/*.postcfg ; do \
-			(cd "$$$${pkgsdir}"; "$$$${pfile}") \
-		done; \
+	             "$$$${pkgpdir}"/*.postcfg ; do \
+	    (cd "$$$${pkgsdir}"; "$$$${pfile}") \
+	done; \
 	for pfile in "$$$${pkgpbdir}"/*.postcfg-build \
-				 "$$$${pkgpdir}"/*.postcfg-build ; do \
-				(cd "$$$${pkgbdir}"; "$$$${pfile}") \
-	done;) && \
+	             "$$$${pkgpdir}"/*.postcfg-build ; do \
+            (cd "$$$${pkgbdir}"; "$$$${pfile}") \
+	done)
 	touch $(stampdir)/stamp-$(1)-02-configure
 
 $(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
-	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	      $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
 	touch $(stampdir)/stamp-$(1)-03-make
 
 # Note that post_install must come last because it may be empty and
@@ -657,11 +668,11 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
-		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do \
-			(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
-		done \
+	    for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do \
+		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}") \
+	    done \
 	else \
-		echo "Not patching symlinked $(1)"; \
+	    echo "Not patching symlinked $(1)"; \
 	fi)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
@@ -716,7 +727,8 @@ define BPKG_template_
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1)_dev)
 
-$(stampdir)/stamp-$(1)-00-install: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
+$(stampdir)/stamp-$(1)-00-install: \
+		$(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	($(call SETVARS,$(1));				\
 	 $(MKDIR) "$$$${pkgidir}";			\
 	 cd $$$${pkgidir};				\
@@ -760,13 +772,14 @@ clean-$(1):
 	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
 
 endef
+# (end BPKG_template_)
 
 define BPKG_template
 $(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
   $(call BPKG_template_,$1))
 endef
 
-# Template for qt packages.
+# Template for Qt packages.
 
 define QTPKG_template_
 
@@ -832,11 +845,14 @@ clean-$(1):
 	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
 
 endef
+# (end QTPKG_template_)
+
 
 define QTPKG_template
 $(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
   $(call QTPKG_template_,$1))
 endef
+
 
 define HOWTO_template
 HOWTO-$(1).$(2).txt : $(top_srcdir)/doc/HOWTO-$(1).$(2).txt
@@ -934,6 +950,7 @@ clean-$(1):
 	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
 
 endef
+# (end KDEPKG_template_)
 
 define KDEPKG_template
 $(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
