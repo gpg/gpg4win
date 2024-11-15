@@ -502,7 +502,7 @@ $(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
              continue; \
            fi; \
            if [ -n "$(AUTHENTICODE_KEY)" \
-                -a "$(AUTHENTICODE_KEY)" != "none" ]; then
+                -a "$(AUTHENTICODE_KEY)" != "none" ]; then \
              $(call AUTHENTICODE_sign,"$$f","$$f"); \
            fi; \
          done )

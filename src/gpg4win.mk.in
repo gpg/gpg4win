@@ -412,19 +412,19 @@ define DEFLATE_macro
 	    rm -rf $$$${pkgsdir}; \
             tc=J; tf=""; \
             case "$(1)" in \
-		*/qtbase*.*.tar.xz)
+		*/qtbase*.*.tar.xz) \
                     tf='s,^qtbase-everywhere-src,qtbase,' ;; \
-		*/qttools*.*.tar.xz)
+		*/qttools*.*.tar.xz) \
                     tf='s,^qttools-everywhere-src,qttools,' ;; \
 		*/qtwinextras*.*.tar.xz) \
 		    tf='s,^qtwinextras-everywhere-src,qtwinextras,' ;; \
-		*/qtsvg*.*.tar.xz)          \
+		*/qtsvg*.*.tar.xz) \
 		    tf='s,^qtsvg-everywhere-src,qtsvg,' ;; \
-		*/qttranslations*.*.tar.xz)          \
+		*/qttranslations*.*.tar.xz) \
 		    tf='s,^qttranslations-everywhere-src,qttranslations,' ;; \
-		*/qthttpserver*.*.tar.xz)          \
+		*/qthttpserver*.*.tar.xz) \
 		    tf='s,^qthttpserver-everywhere-src,qthttpserver,' ;; \
-		*/qtwebsockets*.*.tar.xz)          \
+		*/qtwebsockets*.*.tar.xz) \
 		    tf='s,^qtwebsockets-everywhere-src,qtwebsockets,' ;; \
 		*.tar.gz | *.tgz)            tc=z ;; \
 		*.tar.bz2 | *.tbz2 | *.tbz)  tc=j ;; \
@@ -433,7 +433,7 @@ define DEFLATE_macro
 		*.zip)   $(UNZIP) -o "$(1)"; tc="" ;;\
 	    esac; \
             [ -n "$$$$tf" ] && tf="--transform=$$$$tf"; \
-	    if [ -n "$$$$tc" ]; then \
+	    if [ -n "$$$$tc" -a -n "$(1)" ]; then \
 	        $(TAR) -x$$$$tc $$$$tf -f "$(1)" ; \
             fi; \
         fi
