@@ -43,6 +43,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh README.GIT ONEWS \
              docker/appimage/Dockerfile \
              docker/appimage/Dockerfile-CentOS7 \
              docker/gpg4win-bookworm/Dockerfile \
+             patches/gpgme/0001-Support-the-Kyber-algorithm-in-key-listings.patch \
              patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools.patch \
              patches/breeze-icons/add-the-nose.patch \
              patches/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \

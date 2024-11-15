@@ -1,0 +1,118 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 62b6c1f16ae0ed7b0eb1b095ee383aa0910314bb Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Thu, 14 Nov 2024 12:31:21 +0100
+Subject: [PATCH] Support the Kyber algorithm in key listings.
+
+* src/gpgme.h.in (GPGME_PK_KYBER): New.
+* src/conversion.c (_gpgme_map_pk_algo): Handle Kyber.
+* src/gpgme.c (gpgme_pubkey_algo_string): Support Kyber.
+(gpgme_pubkey_algo_name): Add Kyber.
+
+
+diff --git a/src/conversion.c b/src/conversion.c
+index 68b2e399..d299114b 100644
+--- a/src/conversion.c
++++ b/src/conversion.c
+@@ -650,7 +650,7 @@ _gpgme_map_pk_algo (int algo, gpgme_protocol_t protocol)
+     {
+       switch (algo)
+         {
+-        case 1: case 2: case 3: case 16: case 17: break;
++        case 1: case 2: case 3: case 8: case 16: case 17: break;
+         case 18: algo = GPGME_PK_ECDH; break;
+         case 19: algo = GPGME_PK_ECDSA; break;
+         case 20: break;
+diff --git a/src/gpgme.c b/src/gpgme.c
+index 4f63cc4f..e65fb38a 100644
+--- a/src/gpgme.c
++++ b/src/gpgme.c
+@@ -1295,6 +1295,7 @@ gpgme_pubkey_algo_string (gpgme_subkey_t subkey)
+ {
+   const char *prefix = NULL;
+   char *result;
++  int composite = 0;
+
+   if (!subkey)
+     {
+@@ -1306,6 +1307,7 @@ gpgme_pubkey_algo_string (gpgme_subkey_t subkey)
+     {
+     case GPGME_PK_RSA:
+     case GPGME_PK_RSA_E:
++    case GPGME_PK_KYBER: composite = 1; break;
+     case GPGME_PK_RSA_S: prefix = "rsa"; break;
+     case GPGME_PK_ELG_E: prefix = "elg"; break;
+     case GPGME_PK_DSA:	 prefix = "dsa"; break;
+@@ -1316,9 +1318,12 @@ gpgme_pubkey_algo_string (gpgme_subkey_t subkey)
+     case GPGME_PK_EDDSA: prefix = "";    break;
+     }
+
+-  if (prefix && *prefix)
++  if (composite && subkey->curve)
++    result = strdup (subkey->curve);
++  else if (prefix && *prefix)
+     {
+       char buffer[40];
++
+       snprintf (buffer, sizeof buffer, "%s%u", prefix, subkey->length);
+       result = strdup (buffer);
+     }
+@@ -1341,6 +1346,7 @@ gpgme_pubkey_algo_name (gpgme_pubkey_algo_t algo)
+     case GPGME_PK_RSA:   return "RSA";
+     case GPGME_PK_RSA_E: return "RSA-E";
+     case GPGME_PK_RSA_S: return "RSA-S";
++    case GPGME_PK_KYBER: return "KYBER";
+     case GPGME_PK_ELG_E: return "ELG-E";
+     case GPGME_PK_DSA:   return "DSA";
+     case GPGME_PK_ECC:   return "ECC";
+diff --git a/src/gpgme.h.in b/src/gpgme.h.in
+index e2c22362..c471e25c 100644
+--- a/src/gpgme.h.in
++++ b/src/gpgme.h.in
+@@ -270,6 +270,7 @@ typedef enum
+     GPGME_PK_RSA   = 1,
+     GPGME_PK_RSA_E = 2,
+     GPGME_PK_RSA_S = 3,
++    GPGME_PK_KYBER = 8,
+     GPGME_PK_ELG_E = 16,
+     GPGME_PK_DSA   = 17,
+     GPGME_PK_ECC   = 18,
+@@ -616,7 +617,8 @@ struct _gpgme_subkey
+   /* The serial number of a smart card holding this key or NULL.  */
+   char *card_number;
+
+-  /* The name of the curve for ECC algorithms or NULL.  */
++  /* The name of the curve for ECC algorithms, or the entire algorithm
++   * string for composite algorithms, or NULL.  */
+   char *curve;
+
+   /* The keygrip of the subkey in hex digit form or NULL if not available.  */
+diff --git a/tests/run-keylist.c b/tests/run-keylist.c
+index 8e784451..7bbb9769 100644
+--- a/tests/run-keylist.c
++++ b/tests/run-keylist.c
+@@ -347,13 +347,17 @@ main (int argc, char **argv)
+       subkey = key->subkeys;
+       for (nsub=0; subkey; subkey = subkey->next, nsub++)
+         {
++          char *algostr;
++
+           printf ("fpr   %2d: %s\n", nsub, nonnull (subkey->fpr));
+           if (subkey->v5fpr)
+             printf ("v5fpr %2d: %s\n", nsub, nonnull (subkey->v5fpr));
+           if (subkey->keygrip)
+             printf ("grip  %2d: %s\n", nsub, subkey->keygrip);
+-          if (subkey->curve)
+-            printf ("curve %2d: %s\n", nsub, subkey->curve);
++          algostr = gpgme_pubkey_algo_string (subkey);
++          printf   ("algo  %2d: %s (%s)\n", nsub, algostr,
++                    gpgme_pubkey_algo_name (subkey->pubkey_algo));
++          gpgme_free (algostr);
+           printf ("caps  %2d: %s%s%s%s%s%s\n",
+                   nsub,
+                   subkey->can_encrypt? "e":"",
+--
+2.39.2
