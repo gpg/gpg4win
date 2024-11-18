@@ -54,9 +54,40 @@ SUBDIRS = ${appimage} nsis
 
 
 
-# These paths must be absolute, as we switch directories pretty often.
-root := $(shell pwd)/playground
-stampdir := $(shell pwd)/stamps
+# Define macros for the various directories.  These directory names
+# must be absolute, as we switch pretty often between them and don't
+# want to track relative names.  The directories are created as needed
+# by the $(stampdir)/stamp-directories target.
+#
+# root     :: Our build root.
+# stampdir :: The directory to hold stamp files.
+# bdir     :: The build dir for the individual packages.
+# idir     :: The to directory with the installed files from the packages.
+# ipdir    :: A subdir of the install directory to hold the installed
+#             packages which will be stowed to other subdirs of $(idir).
+# ex_idir  :: Same as $(idir) but for packages which are build for the
+#             other bit size than the standard.
+# ex_ipdir :: Likewise for $(ipdir).
+# nat_idir :: Same as $(idir) but for packages which are build for
+#             build platform itself.
+# nat_ipdir:: Likewise for $(ipdir).
+# tsdir    :: The top source directory.
+# patdir   :: The source directory with the patches.
+
+root      := $(shell pwd)/playground
+stampdir  := $(shell pwd)/stamps
+bdir      := $(root)/build
+idir      := $(root)/install
+ipdir     := $(root)/install/pkgs
+ex_idir   := $(root)/install-ex
+ex_ipdir  := $(root)/install-ex/pkgs
+nat_idir  := $(root)/install-native
+nat_ipdir := $(root)/install-native/pkgs
+tsdir     := $(shell pwd)/${top_srcdir}
+patdir    := $(shell pwd)/${top_srcdir}/patches
+
+
+
 
 gpg4win_howto_smime_ll = en de
 
@@ -273,8 +304,8 @@ define gpg4win_pkg_qtbase_native_post_install
 endef
 
 gpg4win_pkg_qtbase_configure = \
-        -DQT_HOST_PATH=$(native_idir) \
-        -DQt6HostInfo_DIR=$(native_idir)/lib/cmake/Qt6HostInfo \
+        -DQT_HOST_PATH=$(nat_idir) \
+        -DQt6HostInfo_DIR=$(nat_idir)/lib/cmake/Qt6HostInfo \
         -DQT_QMAKE_DEVICE_OPTIONS='CROSS_COMPILE=$(host)-' \
         -DQT_QMAKE_TARGET_MKSPEC=win32-g++ \
         -DQT_BUILD_EXAMPLES=OFF \
@@ -302,8 +333,8 @@ gpg4win_pkg_qtbase_configure = \
 # copy moc and rcc from the tools into the target tree
 # so that pkg-config can find them.
 define gpg4win_pkg_qtbase_post_install
-	(cp $(native_idir)/libexec/moc $$$${pkgidir}/bin; \
-	 cp $(native_idir)/libexec/rcc $$$${pkgidir}/bin   )
+	(cp $(nat_idir)/libexec/moc $$$${pkgidir}/bin; \
+	 cp $(nat_idir)/libexec/rcc $$$${pkgidir}/bin   )
 endef
 
 
@@ -431,6 +462,33 @@ VSD_VERSION=$(VERSION)
 
 # Include installer targets for customized packages
 -include gnupg-vsd/custom.mk
+
+
+# The playground area is our scratch area, where we unpack, build and
+# install the packages.
+#
+# Boost includes are only needed during the build and are linked in the
+# playground install tree
+$(stampdir)/stamp-directories:
+	$(MKDIR) $(root)
+	$(MKDIR) $(stampdir)
+	$(MKDIR) -p installers
+	$(MKDIR) $(bdir)
+	$(MKDIR) $(idir)
+	$(MKDIR) $(idir)/include
+	ln -s /usr/include/boost $(idir)/include/boost
+	$(MKDIR) $(ipdir)
+	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_idir))
+	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_ipdir))
+	$(MKDIR) $(nat_idir)
+	$(MKDIR) $(nat_idir)/bin
+	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/i686-w64-mingw32-gcc
+	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/x86_64-w64-mingw32-gcc
+	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/i686-w64-mingw32-g++
+	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/x86_64-w64-mingw32-g++
+	$(MKDIR) $(nat_ipdir)
+	touch $(bdir)/versioninfo.txt
+	touch $(stampdir)/stamp-directories
 
 
 $(stampdir)/stamp-msi-base: icons/shield.ico Makefile.am \

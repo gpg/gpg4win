@@ -153,17 +153,6 @@ AUTHENTICODE_FILES = \
 # No servicable parts below this line :)
 
 
-# These paths must be absolute, as we switch directories pretty often.
-bdir := $(root)/build
-idir := $(root)/install
-ipdir := $(root)/install/pkgs
-tsdir := $(shell pwd)/${top_srcdir}
-pdir := $(shell pwd)/${top_srcdir}/patches
-ex_idir := $(root)/install-ex
-ex_ipdir := $(root)/install-ex/pkgs
-native_idir := $(root)/install-native
-native_ipdir := $(root)/install-native/pkgs
-
 ifdef GIT_BETASTRING
 	VSD_VERSION_FILE:=$(VSD_VERSION)-Beta
 else
@@ -181,32 +170,6 @@ endif
 
 # We collect the names of all pkg files used.
 pkg_files =
-
-# The playground area is our scratch area, where we unpack, build and
-# install the packages.
-#
-# Boost includes are only needed during the build and are linked in the
-# playground install tree
-$(stampdir)/stamp-directories:
-	$(MKDIR) $(stampdir)
-	$(MKDIR) $(root)
-	$(MKDIR) -p installers
-	$(MKDIR) $(bdir)
-	$(MKDIR) $(idir)
-	$(MKDIR) $(idir)/include
-	ln -s /usr/include/boost $(idir)/include/boost
-	$(MKDIR) $(ipdir)
-	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_idir))
-	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_ipdir))
-	$(MKDIR) $(native_idir)
-	$(MKDIR) $(native_idir)/bin
-	ln -s $(abs_srcdir)/gccwrap.sh $(native_idir)/bin/i686-w64-mingw32-gcc
-	ln -s $(abs_srcdir)/gccwrap.sh $(native_idir)/bin/x86_64-w64-mingw32-gcc
-	ln -s $(abs_srcdir)/gccwrap.sh $(native_idir)/bin/i686-w64-mingw32-g++
-	ln -s $(abs_srcdir)/gccwrap.sh $(native_idir)/bin/x86_64-w64-mingw32-g++
-	$(MKDIR) $(native_ipdir)
-	touch $(bdir)/versioninfo.txt
-	touch $(stampdir)/stamp-directories
 
 
 # Read signing information from ~/.gnupg-autogen.rc
@@ -243,15 +206,17 @@ define GETVAR
 $($(call FROB_macro,$(1)))
 endef
 
-# Set a couple of common variables.
+# Set a couple of common variables for the standard build architecture.
+# Most of them describe package specific directories and are derived
+# from the the macros set in the Makefile.am.
 define SETVARS
 	set -e; \
 	pkg="$(call GETVAR,gpg4win_pkg_$(1))";				\
 	pkg_version="$(1)-$(call GETVAR,gpg4win_pkg_$(1)_version)";	\
 	pkgsdir="$(bdir)/$$$${pkg_version}";				\
 	pkgbdir="$(bdir)/$$$${pkg_version}-build";			\
-	pkgpdir="$(pdir)/$$$${pkg_version}";				\
-	pkgpbdir="$(pdir)/$(1)";	          			\
+	pkgpatdir="$(patdir)/$$$${pkg_version}";			\
+	pkgpatbdir="$(patdir)/$(1)";	          			\
 	pkgidir="$(ipdir)/$$$${pkg_version}";				\
 	pkg_dev="$(call GETVAR,gpg4win_pkg_$(1)_dev)";			\
 	pkg_version_dev="$(1)-dev-$(call GETVAR,gpg4win_pkg_$(1)_version)"; \
@@ -265,8 +230,8 @@ define SETVARS
 	pkg_conf_subdir="$(call GETVAR,gpg4win_pkg_$(1)_conf_subdir)";  \
 	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
 	export PKG_CONFIG_LIBDIR="$(idir)/lib/pkgconfig";		\
-	export PATH="$(idir)/bin:$(native_idir)/bin:$${PATH}";		\
-	export LD_LIBRARY_PATH=$(native_idir)/lib:$(native_idir)/lib64; \
+	export PATH="$(idir)/bin:$(nat_idir)/bin:$${PATH}";		\
+	export LD_LIBRARY_PATH=$(nat_idir)/lib:$(nat_idir)/lib64; \
 	export SYSROOT="$(idir)";					\
 	export CONFIG_SITE="$(tsdir)/src/config.site"
 endef
@@ -278,8 +243,8 @@ define SETVARS_EX
 	pkg_version="$(1)-$(call GETVAR,gpg4win_pkg_$(1)_version)";         \
 	pkgsdir="$(bdir)/$$$${pkg_version}";                                \
 	pkgbdir="$(bdir)/$$$${pkg_version}-ex-build";                       \
-	pkgpdir="$(pdir)/$$$${pkg_version}";                                \
-	pkgpbdir="$(pdir)/$(1)";                                            \
+	pkgpatdir="$(patdir)/$$$${pkg_version}";                            \
+	pkgpatbdir="$(patdir)/$(1)";                                        \
 	pkgidir="$(ex_ipdir)/$$$${pkg_version}";                            \
 	pkgidir_dev="$(ex_ipdir)/$$$${pkg_version_dev}";                    \
 	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_ex_configure)";              \
@@ -290,35 +255,37 @@ define SETVARS_EX
 	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_dir)";        \
 	export PKG_CONFIG_PATH="$(ex_idir)/lib/pkgconfig";                  \
 	export PKG_CONFIG_LIBDIR="$(ex_idir)/lib/pkgconfig";                \
-	export PATH="$(ex_idir)/bin:$(native_idir)/bin:$${PATH}";           \
-	export LD_LIBRARY_PATH=$(native_idir)/lib:$(native_idir)/lib64;     \
+	export PATH="$(ex_idir)/bin:$(nat_idir)/bin:$${PATH}";           \
+	export LD_LIBRARY_PATH=$(nat_idir)/lib:$(nat_idir)/lib64;     \
 	export SYSROOT="$(ex_idir)"
 endef
 
-# Set variables for building additional build tools
+# Set variables for building additional build tools for the native
+# (i.e. build system) architecture.
 define SETVARS_NATIVE
 	set -e; \
 	pkg="$(call GETVAR,gpg4win_pkg_$(1))";                              \
 	pkg_version="$(1)-$(call GETVAR,gpg4win_pkg_$(1)_version)";         \
 	pkgsdir="$(bdir)/$$$${pkg_version}";                                \
 	pkgbdir="$(bdir)/$$$${pkg_version}-native-build";                   \
-	pkgpdir="$(pdir)/$$$${pkg_version}";                                \
-	pkgpbdir="$(pdir)/$(1)";                                            \
-	pkgidir="$(native_ipdir)/$$$${pkg_version}";                         \
-	pkgidir_dev="$(native_ipdir)/$$$${pkg_version_dev}";                 \
+	pkgpatdir="$(patdir)/$$$${pkg_version}";                            \
+	pkgpatbdir="$(patdir)/$(1)";                                        \
+	pkgidir="$(nat_ipdir)/$$$${pkg_version}";                           \
+	pkgidir_dev="$(nat_ipdir)/$$$${pkg_version_dev}";                   \
 	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_native_configure)";           \
 	pkgextracflags="$(call GETVAR,gpg4win_pkg_$(1)_native_extracflags)"; \
 	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_native_make_args)";        \
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_native_make_args_inst)";\
 	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_native_make_dir)";          \
 	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_native_make_dir)";     \
-	export PKG_CONFIG_PATH="$(native_idir)/lib/pkgconfig";               \
+	export PKG_CONFIG_PATH="$(nat_idir)/lib/pkgconfig";               \
 	export PKG_CONFIG_LIBDIR="";                                         \
-	export PATH="$(native_idir)/bin:$${PATH}";                           \
-	export LD_LIBRARY_PATH=$(native_idir)/lib:$(native_idir)/lib64;      \
-	export SYSROOT="$(native_idir)"
+	export PATH="$(nat_idir)/bin:$${PATH}";                           \
+	export LD_LIBRARY_PATH=$(nat_idir)/lib:$(nat_idir)/lib64;      \
+	export SYSROOT="$(nat_idir)"
 endef
 
+# Set variables for use with Wine.
 define SETVARS_WINE
 	set -e; \
 	if [ -z "$$$$(which $(WINE))" ]; then \
@@ -361,7 +328,7 @@ define SETVARS_WINE
 	MSI_VERSION=$$$$(echo $(VSD_VERSION))
 endef
 
-# Same as above
+# Same as above (kludge)
 define SETVARS_WINE_TWO_DOLLAR
 	set -e; \
 	if [ -z "$$(which $(WINE))" ]; then \
@@ -501,12 +468,12 @@ $(stampdir)/stamp-$(1)-ex-02-configure: $(stampdir)/stamp-$(1)-ex-01-patch
 		$$$${pkgcfg} CFLAGS=\"-fcommon $$$${pkgextracflags}\"\
            || exit 1; \
 	 shopt -s nullglob;					\
-	 for pfile in "$$$${pkgpbdir}"/*.postcfg       		\
-                       "$$$${pkgpdir}"/*.postcfg ; do  		\
+	 for pfile in "$$$${pkgpatbdir}"/*.postcfg       		\
+                       "$$$${pkgpatdir}"/*.postcfg ; do  	\
 	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		     	\
 	 done;                                               	\
-	 for pfile in "$$$${pkgpbdir}"/*.postcfg-build    	\
-                       "$$$${pkgpdir}"/*.postcfg-build ; do	\
+	 for pfile in "$$$${pkgpatbdir}"/*.postcfg-build    	\
+                       "$$$${pkgpatdir}"/*.postcfg-build ; do	\
 	   (cd "$$$${pkgbdir}"; "$$$${pfile}")			\
 	 done)
 	touch $(stampdir)/stamp-$(1)-ex-02-configure
@@ -575,7 +542,8 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
-	    for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch; do \
+	    for pfile in "$$$${pkgpatbdir}"/*.patch \
+                         "$$$${pkgpatdir}"/*.patch; do \
 		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}";) \
 	    done \
 	else \
@@ -594,12 +562,12 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 		$$$${pkgcfg} CFLAGS=\"-fcommon $$$${pkgextracflags}\" \
            || exit 1; \
 	shopt -s nullglob; \
-	for pfile in "$$$${pkgpbdir}"/*.postcfg \
-	             "$$$${pkgpdir}"/*.postcfg ; do \
+	for pfile in "$$$${pkgpatbdir}"/*.postcfg \
+	             "$$$${pkgpatdir}"/*.postcfg ; do \
 	    (cd "$$$${pkgsdir}"; "$$$${pfile}") \
 	done; \
-	for pfile in "$$$${pkgpbdir}"/*.postcfg-build \
-	             "$$$${pkgpdir}"/*.postcfg-build ; do \
+	for pfile in "$$$${pkgpatbdir}"/*.postcfg-build \
+	             "$$$${pkgpatdir}"/*.postcfg-build ; do \
             (cd "$$$${pkgbdir}"; "$$$${pfile}") \
 	done)
 	touch $(stampdir)/stamp-$(1)-02-configure
@@ -668,7 +636,8 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
-	    for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do \
+	    for pfile in "$$$${pkgpatbdir}"/*.patch \
+                         "$$$${pkgpatdir}"/*.patch ; do \
 		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}") \
 	    done \
 	else \
@@ -795,11 +764,12 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
-		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-			(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
-		done \
+	    for pfile in "$$$${pkgpatbdir}"/*.patch \
+                         "$$$${pkgpatdir}"/*.patch ; do  \
+	        (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}") \
+	    done \
 	else \
-		echo "Not patching symlinked $(1)"; \
+	    echo "Not patching symlinked $(1)"; \
 	fi)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
@@ -887,8 +857,9 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 			sed -i 's/set(KPIM_MIME_VERSION.*)/set(KPIM_MIME_VERSION "6.1.0")/' CMakeLists.txt; \
 			sed -i 's/set(KPIM_MBOX_VERSION.*)/set(KPIM_MBOX_VERSION "6.1.0")/' CMakeLists.txt; \
 		fi; \
-		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
+		for pfile in "$$$${pkgpatbdir}"/*.patch \
+                             "$$$${pkgpatdir}"/*.patch ; do  \
+		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}") \
 		done \
 	else \
 		echo "Not patching symlinked $(1)"; \
@@ -971,7 +942,8 @@ $(stampdir)/stamp-$(1)-native-01-patch: $(stampdir)/stamp-$(1)-native-00-unpack
 	$(call SETVARS_NATIVE,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
 		cd "$$$${pkgsdir}"; \
-		for pfile in "$$$${pkgpbdir}"/*-native.patch "$$$${pkgpdir}"/*-native.patch ; do  \
+		for pfile in "$$$${pkgpatbdir}"/*-native.patch \
+                             "$$$${pkgpatdir}"/*-native.patch ; do  \
 		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}") \
 		done \
 	else \
@@ -1015,7 +987,7 @@ $(stampdir)/stamp-$(1)-native-04-install: $(stampdir)/stamp-$(1)-native-03-make
 
 $(stampdir)/stamp-$(1)-native-05-stow: $(stampdir)/stamp-$(1)-native-04-install
 	($(call SETVARS_NATIVE,$(1));				\
-	 cd $(native_ipdir);					\
+	 cd $(nat_ipdir);					\
 	 $(STOW) "$$$${pkg_version}")
 	touch $(stampdir)/stamp-$(1)-native-05-stow
 
@@ -1027,7 +999,7 @@ $(1)-native: $(stampdir)/stamp-final-native-$(1)
 .PHONY : clean-$(1)-native
 clean-$(1)-native:
 	($(call SETVARS_NATIVE,$(1));				\
-	 (cd $(native_ipdir) &&				\
+	 (cd $(nat_ipdir) &&				\
 	  ($(STOW) -D "$$$${pkg_version}" || true;	\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
