@@ -45,13 +45,19 @@ AC_DEFUN([GPG4WIN_BASH],
 
 
 # GPG4WIN_PACKAGES
-# Determines the path to the source and binary packages.
-# Default is the "packages" directory in the source directory.
-# The path is stored in the shell variable gpg4win_packages.
+
+# Determines the path to the source and binary packages.  Default is
+# the the "/src/packages" directory if that exists and has a file
+# named BUILDTYPE, otherwise the default is the "packages" directory
+# below the CWD.  The former is for the docker build system, the
+# latter for the classic build system.  The path is stored in the
+# shell variable gpg4win_packages.
 AC_DEFUN([GPG4WIN_PACKAGES],
 [
   AC_MSG_CHECKING(for packages directory)
-  _gpg4win_packages_default=packages
+  AS_IF([test -f /src/packages/BUILDTYPE],
+        [_gpg4win_packages_default=/src/packages],
+        [_gpg4win_packages_default=packages])
   AC_ARG_WITH([packages],
     AS_HELP_STRING([--with-packages=DIR],
                    [source and binary packages [[packages]]]),
@@ -203,6 +209,7 @@ AC_DEFUN([GPG4WIN_CHECK_NATIVEDEPS],
   AS_IF([test ! -z "$_gpg4win_not_found"],
         AC_MSG_ERROR([could not find some required packages]))
 ])
+
 
 AC_DEFUN([GPG4WIN_CHECK_EXDEPS],
 [
@@ -981,3 +988,31 @@ AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY_EX],
     gpg4win_rtlib_ex_[]m4_translit([$1],[-+],[__])[]="$dll_path"
     AC_SUBST(gpg4win_rtlib_ex_[]m4_translit([$1],[-+],[__]))
 ])
+
+
+# GPG4WIN_BUILD_RELEASE(NAME,DEFAULT)
+# Add a --enable-NAME option to configure and set the shell variable
+# build_NAME either to "yes" or "no".  DEFAULT must either be "yes" or "no"
+# and decides on the default value for build_NAME and whether --enable-NAME
+# or --disable-NAME is shown with ./configure --help
+AC_DEFUN([GPG4WIN_BUILD_RELEASE],
+  [m4_define([my_build], [m4_bpatsubst(build_$1, [[^a-zA-Z0-9_]], [_])])
+   my_build=$2
+   m4_if([$2],[yes],[
+      AC_ARG_ENABLE([$1], AS_HELP_STRING([--disable-$1],
+                                         [do not build the $1 release]),
+                           my_build=$enableval, my_build=$2)
+    ],[
+      AC_ARG_ENABLE([$1], AS_HELP_STRING([--enable-$1],
+                                         [build the $1 release]),
+                           my_build=$enableval, my_build=$2)
+    ])
+   case "$my_build" in
+         no|yes)
+           ;;
+         *)
+           AC_MSG_ERROR([only yes or no allowed for feature --enable-$1])
+           ;;
+   esac
+   m4_undefine([my_build])
+  ])

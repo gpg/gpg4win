@@ -544,7 +544,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	if [ ! -L "$$$${pkgsdir}" ]; then \
 	    for pfile in "$$$${pkgpatbdir}"/*.patch \
                          "$$$${pkgpatdir}"/*.patch; do \
-		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}";) \
+		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}";) \
 	    done \
 	else \
 	    echo "Not patching symlinked $(1)"; \
@@ -638,7 +638,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	if [ ! -L "$$$${pkgsdir}" ]; then \
 	    for pfile in "$$$${pkgpatbdir}"/*.patch \
                          "$$$${pkgpatdir}"/*.patch ; do \
-		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}") \
+		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
 	    done \
 	else \
 	    echo "Not patching symlinked $(1)"; \
@@ -766,7 +766,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	if [ ! -L "$$$${pkgsdir}" ]; then \
 	    for pfile in "$$$${pkgpatbdir}"/*.patch \
                          "$$$${pkgpatdir}"/*.patch ; do  \
-	        (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}") \
+	        (cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
 	    done \
 	else \
 	    echo "Not patching symlinked $(1)"; \
@@ -859,7 +859,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 		fi; \
 		for pfile in "$$$${pkgpatbdir}"/*.patch \
                              "$$$${pkgpatdir}"/*.patch ; do  \
-		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}") \
+		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
 		done \
 	else \
 		echo "Not patching symlinked $(1)"; \
@@ -874,7 +874,7 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
 		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
 		-DQT_MAJOR_VERSION="6" \
-		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_srcdir)/src/toolchain.cmake \
+		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_builddir)/src/toolchain.cmake \
 		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 		-DBUILD_TESTING=False \
                 -DUSE_QML=off \
@@ -944,7 +944,7 @@ $(stampdir)/stamp-$(1)-native-01-patch: $(stampdir)/stamp-$(1)-native-00-unpack
 		cd "$$$${pkgsdir}"; \
 		for pfile in "$$$${pkgpatbdir}"/*-native.patch \
                              "$$$${pkgpatdir}"/*-native.patch ; do  \
-		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}") \
+		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
 		done \
 	else \
 		echo "Not patching symlinked $(1)"; \
@@ -957,8 +957,8 @@ $(stampdir)/stamp-$(1)-native-02-configure: $(stampdir)/stamp-$(1)-native-01-pat
 	 cd "$$$${pkgbdir}";				\
 	 $(CMAKE)					\
 		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
-		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
-		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_srcdir)/src/toolchain-native.cmake \
+		-DCMAKE_PREFIX_PATH="$(nat_idir)" \
+		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_builddir)/src/toolchain-native.cmake \
 		-DQT_MAJOR_VERSION="6" \
 		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 		-DBUILD_TESTING=False \
@@ -1154,7 +1154,7 @@ installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1)-wine.msi: $(stampdir)/st
 	 k:\\$(MSI_FNAME_PREFIX)-$(VERSION).wixlib \
 	 k:\\gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
 	 k:\\$(1).wixlib | grep -v "ICE80" | grep -v "ICE57"  || exit 1; \
-	 cd $(abs_top_srcdir)/src/installers || exit 1; \
+	 cd $(abs_top_builddir)/src/installers || exit 1; \
 	 ln -sf $$$$workdir/$(MSI_FNAME_PREFIX)-$(VERSION)-$(1).msi || exit 1; \
 	) || ERR=1; rm -f $$$$WINEINST; \
 	if [ -n "$$$$ERR" ]; then \

@@ -184,6 +184,18 @@ AC_ARG_ENABLE(ninja,
 #
 # Set variables for use by automake makefiles.
 #
+if test -f /src/packages/BUILDTYPE ; then
+   dockerbuild=yes
+   TOPSRCDIR=/src
+   PLAYGROUND=/build
+else
+   dockerbuild=no
+   TOPSRCDIR=.
+   PLAYGROUND=playground
+fi
+AC_SUBST(TOPSRCDIR)
+AC_SUBST(PLAYGROUND)
+AM_CONDITIONAL(DOCKERBUILD,    test "$dockerbuild" = "yes")
 AM_CONDITIONAL(BUILD_GPG4WIN,  test "$build_gpg4win" = "yes")
 AM_CONDITIONAL(BUILD_APPIMAGE, test "$build_appimage" = "yes")
 AM_CONDITIONAL(BUILD_W64_COND, test "$BUILD_W64" = "yes")
