@@ -71,7 +71,7 @@ endef
 #             to override the default.
 # stampdir :: The directory to hold stamp files.
 # bdir     :: The build dir for the individual packages.
-# idir     :: The to directory with the installed files from the packages.
+# idir     :: The directory with the installed files from the packages.
 # ipdir    :: A subdir of the install directory to hold the installed
 #             packages which will be stowed to other subdirs of $(idir).
 # ex_idir  :: Same as $(idir) but for packages which are build for the
@@ -255,7 +255,7 @@ gpg4win_pkg_kconfig_native_configure = -DKCONFIG_USE_DBUS=OFF \
                                        -DKCONFIG_USE_QML=OFF  \
                                        -DKCONFIG_USE_GUI=OFF
 
-gpg4win_pkg_pcre2_configure =
+gpg4win_pkg_pcre2_configure = \
 		-DPCRE2_BUILD_PCRE2_8=OFF -DPCRE2_BUILD_PCRE2_16=ON \
                 -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF
 

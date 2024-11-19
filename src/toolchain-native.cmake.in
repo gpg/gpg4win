@@ -19,7 +19,7 @@
 set(BUILD_SHARED_LIBS ON)
 set(LIBTYPE SHARED)
 set(CMAKE_BUILD_TYPE Release)
-set(CMAKE_FIND_ROOT_PATH @abs_top_builddir@/src/playground/install-native)
+set(CMAKE_FIND_ROOT_PATH @abs_top_builddir@/install-native)
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
