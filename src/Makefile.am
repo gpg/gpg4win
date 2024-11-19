@@ -16,7 +16,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-EXTRA_DIST =  config.site                                      \
+
+# Use make TOPSRCDIR=foo/s and PLAYGROUND=/foo/b to override the
+# default source and build directories
+TOPSRCDIR = default
+PLAYGROUND = default
+
+EXTRA_DIST =  setupvars.mk                                     \
+              config.site                                      \
               findicons.sh                                     \
               exdll.h exdll.c                                  \
               g4wihelp.c desktopshellrun.cpp                   \
@@ -52,41 +59,14 @@ endif
 
 SUBDIRS = ${appimage} nsis
 
+# This template is used to include standard GNU make files. See below
+# for a description.
+define INCLUDE_BY_MAKE
+include $(1)
+endef
 
-
-# Define macros for the various directories.  These directory names
-# must be absolute, as we switch pretty often between them and don't
-# want to track relative names.  The directories are created as needed
-# by the $(stampdir)/stamp-directories target.
-#
-# root     :: Our build root.
-# stampdir :: The directory to hold stamp files.
-# bdir     :: The build dir for the individual packages.
-# idir     :: The to directory with the installed files from the packages.
-# ipdir    :: A subdir of the install directory to hold the installed
-#             packages which will be stowed to other subdirs of $(idir).
-# ex_idir  :: Same as $(idir) but for packages which are build for the
-#             other bit size than the standard.
-# ex_ipdir :: Likewise for $(ipdir).
-# nat_idir :: Same as $(idir) but for packages which are build for
-#             build platform itself.
-# nat_ipdir:: Likewise for $(ipdir).
-# tsdir    :: The top source directory.
-# patdir   :: The source directory with the patches.
-
-root      := $(shell pwd)/playground
-stampdir  := $(shell pwd)/stamps
-bdir      := $(root)/build
-idir      := $(root)/install
-ipdir     := $(root)/install/pkgs
-ex_idir   := $(root)/install-ex
-ex_ipdir  := $(root)/install-ex/pkgs
-nat_idir  := $(root)/install-native
-nat_ipdir := $(root)/install-native/pkgs
-tsdir     := $(shell pwd)/${top_srcdir}
-patdir    := $(shell pwd)/${top_srcdir}/patches
-
-
+# Define macros for the various directories.
+$(eval $(call INCLUDE_BY_MAKE,setupvars.mk))
 
 
 gpg4win_howto_smime_ll = en de
@@ -470,23 +450,22 @@ VSD_VERSION=$(VERSION)
 # Boost includes are only needed during the build and are linked in the
 # playground install tree
 $(stampdir)/stamp-directories:
-	$(MKDIR) $(root)
-	$(MKDIR) $(stampdir)
+	$(MKDIR) -p $(root)
+	$(MKDIR) -p $(stampdir)
 	$(MKDIR) -p installers
-	$(MKDIR) $(bdir)
-	$(MKDIR) $(idir)
-	$(MKDIR) $(idir)/include
-	ln -s /usr/include/boost $(idir)/include/boost
-	$(MKDIR) $(ipdir)
-	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_idir))
-	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_ipdir))
-	$(MKDIR) $(nat_idir)
-	$(MKDIR) $(nat_idir)/bin
-	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/i686-w64-mingw32-gcc
-	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/x86_64-w64-mingw32-gcc
-	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/i686-w64-mingw32-g++
-	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/x86_64-w64-mingw32-g++
-	$(MKDIR) $(nat_ipdir)
+	$(MKDIR) -p $(bdir)
+	$(MKDIR) -p $(idir)
+	$(MKDIR) -p $(idir)/include
+	ln -s /usr/include/boost $(idir)/include/boost || true
+	$(MKDIR) -p $(ipdir)
+	$(if $GPGEX_ADD_HOST, $(MKDIR) -p $(ex_idir))
+	$(if $GPGEX_ADD_HOST, $(MKDIR) -p $(ex_ipdir))
+	$(MKDIR) -p $(nat_idir)/bin
+	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/i686-w64-mingw32-gcc || true
+	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/x86_64-w64-mingw32-gcc || true
+	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/i686-w64-mingw32-g++ || true
+	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/x86_64-w64-mingw32-g++ || true
+	$(MKDIR) -p $(nat_ipdir)
 	touch $(bdir)/versioninfo.txt
 	touch $(stampdir)/stamp-directories
 
@@ -523,10 +502,6 @@ $(stampdir)/stamp-msi-base: icons/shield.ico Makefile.am \
 # including it (make should include it).  This is in turn necessary
 # because automake can't deal with the elegant magic in the actual
 # Makefile.
-
-define INCLUDE_BY_MAKE
-include $(1)
-endef
 
 if BUILD_GPG4WIN
 $(eval $(call INCLUDE_BY_MAKE,gpg4win.mk))

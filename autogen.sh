@@ -135,6 +135,7 @@ die_p
 configure_opts=
 extraoptions=
 # List of optional variables sourced from autogen.rc and ~/.gnupg-autogen.rc
+maintainer_mode_option=
 w32_toolprefixes=
 w32_extraoptions=
 w64_toolprefixes=
@@ -212,6 +213,13 @@ fi
 if [ -f "$HOME/.gnupg-autogen.rc" ]; then
     info "sourcing extra definitions from $HOME/.gnupg-autogen.rc"
     . "$HOME/.gnupg-autogen.rc"
+fi
+
+# Disable the --enable-maintainer_mode option.
+if [ "${maintainer_mode_option}" = off ]; then
+    maintainer_mode_option=
+elif [ -z "${maintainer_mode_option}" ]; then
+    maintainer_mode_option=--enable-maintainer-mode
 fi
 
 
@@ -343,7 +351,7 @@ if [ "$myhost" = "w32" ]; then
         fi
     fi
 
-    $tsdir/configure --enable-maintainer-mode ${SILENT} \
+    $tsdir/configure "${maintainer_mode_option}" ${SILENT} \
              --prefix=${w32root}  \
              --host=${host} --build=${build} SYSROOT=${w32root} \
              PKG_CONFIG_LIBDIR=${w32root}/lib/pkgconfig \
@@ -388,7 +396,7 @@ if [ "$myhost" = "amd64" ]; then
         fi
     fi
 
-    $tsdir/configure --enable-maintainer-mode ${SILENT} \
+    $tsdir/configure "${maintainer_mode_option}" ${SILENT} \
              --prefix=${amd64root}  \
              --host=${host} --build=${build} \
              ${configure_opts} ${extraoptions} "$@"

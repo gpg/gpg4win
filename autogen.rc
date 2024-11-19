@@ -2,6 +2,9 @@
 
 display_name="Gpg4win"
 patches_to="https://bugs.gnupg.org"
+# We don't want the maintainer mode due to the docker build
+# with the source directory mounted read-only
+maintainer_mode_option=off
 
 case "$myhost:$myhostsub" in
   w32:64)

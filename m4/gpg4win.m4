@@ -885,8 +885,12 @@ AC_DEFUN([GPG4WIN_BPKG_BINSRC],
           [$4])
 ])
 
-# Add a runtime library argument 1 should be the dll
-# name without the .dll suffix
+
+# Add a runtime library.  Argument 1 should be the dll
+# name without the .dll suffix.  If argument 2 is "REQUIRED" the
+# function fails if the DLL was not found.  On success an
+# AC_SUBST(gpg4win_rtlib_$(1)) is done.
+#
 AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY],
 [
     dll_path="no"
@@ -925,13 +929,12 @@ AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY],
                      Use the --with-$1-dll option to set the path directly.
         )
     elif test "$dll_path" = no; then
-        AC_MSG_NOTICE(Using packaging dummy for $1.dll)
-        touch src/$1.dll-x
+        AC_MSG_NOTICE(Using dummy for $1.dll)
     else
         AC_MSG_NOTICE(Using $dll_path to provide $1.dll)
-        $CP "$dll_path" src/$1.dll-x
-        $STRIP src/$1.dll-x
     fi
+    gpg4win_rtlib_[]m4_translit([$1],[-+],[__])[]="$dll_path"
+    AC_SUBST(gpg4win_rtlib_[]m4_translit([$1],[-+],[__]))
 ])
 
 AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY_EX],
@@ -971,11 +974,10 @@ AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY_EX],
                      Use the --with-ex-$1-dll option to set the path directly.
         )
     elif test "$dll_path" = no; then
-        AC_MSG_NOTICE(Using packaging dummy for $1.dll for $gpgex_host)
-        touch src/$1.dll-ex
+        AC_MSG_NOTICE(Using dummy for $1.dll for $gpgex_host)
     else
         AC_MSG_NOTICE(Using $dll_path to provide $1.dll for $gpgex_host)
-        $CP "$dll_path" src/$1.dll-ex
-        $STRIP_EX src/$1.dll-ex
     fi
+    gpg4win_rtlib_ex_[]m4_translit([$1],[-+],[__])[]="$dll_path"
+    AC_SUBST(gpg4win_rtlib_ex_[]m4_translit([$1],[-+],[__]))
 ])
