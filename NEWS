@@ -3,6 +3,192 @@
 # The version numbers given are used by gpg4win and GnuPG [VS-]Desktop
 
 
+Noteworthy changes in Version 4.4.0 (unreleased)
+------------------------------------------------
+
+--- Highlights ---
+
+--- Features ---
+
+(en) File encryption/decryption and signing/verification
+
+(en) Kleopatra: Encryption and decryption of large files is much faster.
+     [T6351]
+(en) Kleopatra: It's possible to change the name of a decrypted file if another
+     file with the same name already exists. [T6851]
+(en) Kleopatra: Files can be signed with multiple signatures. [T6867, T7273]
+(en) Kleopatra: All valid user IDs are listed for signing and encryption. This
+     simplifies using certificates with multiple user IDs. [T7183]
+(en) Kleopatra: An easier to understand message is shown if a file could not be
+     decrypted because it wasn't encrypted for one of the user's certificates.
+     [T7295]
+(en) Kleopatra: An icon for folder encryption was added. [T6984]
+
+(en)  Certificate management
+
+(en) Kleopatra: Certificates can be updated directly from the certificate list.
+     [T6739]
+(en) Kleopatra: Additional subkeys can be added to existing certificates.
+     [T6877]
+(en) Kleopatra: ADSKs can be added to existing certificates. [T6879]
+(en) Kleopatra: Look and feel of the certificate details view has been
+     improved. [T7019, T6924, T6959, T7128, T7227, T7229, T7237, T7250, T7258]
+(en) Kleopatra: Changing the validity of subkeys has been improved.
+     [T6878, T7198]
+(en) Kleopatra: Algorithm and keygrip can be displayed in the certificate list.
+     [T6957]
+(en) Kleopatra: Generating a new OpenPGP certificate has been simplified by
+     removing some options. [T6998]
+(en) Kleopatra: The confirmation window that is shown when deleting a
+     certificate was simplified. [T7043]
+(en) Kleopatra: The workflow for revoking a certificate has been improved.
+     [T7076, T7078]
+(en) Kleopatra: Certificates can be disabled if one doesn't want to use them
+     for encryption or signing but still wants to keep them available.
+     [T7089, T7217, T7234, T7296]
+(en) Kleopatra: In the certificate details window the origin of user-IDs can be
+     displayed. [T7096]
+(en) Kleopatra: The password protecting a subkey can be changed even if the
+     primary secret key is not available (offline key). [T7104]
+(en) Kleopatra: The name of the column displaying the status of certificates
+     (e.g. certified, not certified, expired, revoked, etc.) was changed to
+     "Status". [T7219]
+(en) Kleopatra: Descriptions (tooltips) clarify the filter criteria that can be
+     applied to the listed certificates. [T7302]
+
+(en) Certificate lookup
+
+(en) Kleopatra: Show message that certificate lookup is in progress. [T6493]
+(en) Kleopatra: Show the certificate details on double-click on search results.
+     [T7027]
+(en) Kleopatra: Show origin in search results. [T7067]
+(en) Kleopatra: Show all search results if same certificate was found on
+     multiple servers. [T7153]
+(en) Kleopatra: Show origin and protocol columns in search results. [T7155]
+(en) Kleopatra: Adapt widths of columns to search results. [T7252]
+(en) Kleopatra: Select a unique search result for easier import. [T6936]
+
+(en)  Certificate groups
+
+(en) Kleopatra: The group configuration can be opened from the toolbar. [T6913]
+(en) Kleopatra: The configuration of groups has been simplified.
+     [T6662, T6722, T6966, T7321]
+(en) Kleopatra: New groups can be created directly from the certificate list.
+     [T6912]
+(en) Kleopatra: When a certificate is deleted then the groups containing the
+     certificate are listed. [T6403]
+(en) Kleopatra: The group configuration is stored next to the certificates.
+     [T6931]
+
+(en) Smartcard management
+
+(en) Kleopatra: Look and feel of the smartcard management has been unified.
+     [T6420, T6847, T7018, T7082]
+(en) Kleopatra: Certificates are imported automatically from smartcards.
+     [T6846]
+(en) Kleopatra: The workflow for moving a key to a smartcard has been improved.
+     [T6933]
+
+(en) Compliance
+
+(en) Kleopatra: Ignore authentication subkeys when checking certificates for
+     VS-NfD compliance. [T7260]
+
+(en) Other features
+
+(en) Kleopatra: Add option to disable OpenPGP keyserver lookup. Add option to
+     enable automatic retrieval of signing certificates when verifying
+     signatures. [T6950]
+(en) Kleopatra: Add possibility to show the GnuPG configuration to help
+     customer support. [T6072, T7331]
+(en) Kleopatra: Automatically initiate the most likely operation (encryption,
+     decryption or import) when a file is dropped on Kleopatra. [T6894]
+(en) Kleopatra: The Help menu contains a link to the GnuPG manual. [T7064]
+(en) Kleopatra: Improve accessibility of additional information offered when
+     deleting S/MIME CA certificates. [T7073]
+
+--- Bug Fixes ---
+
+(en) Kleopatra: Cancel the "print secret key" operation when the password
+     prompt is canceled. [T6091]
+(en) Kleopatra: Keep selection in certificate list when showing the certificate
+     details. [T6360]
+(en) Kleopatra: Always show imported certificates in a new tab. [T6447]
+(en) Kleopatra: Report a failed encryption if the creation of an encrypted
+     archive is not completed successfully. [T6554]
+(en) Kleopatra: A crash was resolved that occurred when deleting a certificate
+     in a circular certificate chain. [T6602]
+(en) Kleopatra: Do not offer publication of revocations when revoking local
+     certifications. [T6712]
+(en) Kleopatra: Don't show the root certificate twice when Kleo shows a
+     certificate with two certificates. [T6807]
+(en) GpgOL: Don't show conformance status if "Do not sign this email" is
+     selected in the security approval window. [T6808]
+(en) Kleopatra: Create OpenPGP certificates that are created from smartcard
+     keys with correct validity. [T6889]
+(en) Kleopatra: Make it more obvious whether the validity of subkeys is
+     extended together with the validity of the primary key. [T6958]
+(en) Kleopatra: Do not show certificate groups if no certificate in the group
+     matches the current filter criteria. [T6970]
+(en) Kleopatra: Report correct reason for failure if generating smartcard keys
+     fails because a wrong PIN is entered. [T6971]
+(en) Kleopatra: Also change the title of the first tab in the certificate list
+     when the selected filter is changed. [T7002]
+(en) Kleopatra: Report error if lookup on server fails because of an invalid
+     keyserver. [T7036]
+(en) Kleopatra: Do not perform a keyserver lookup when updating a certificate
+     if keyserver lookup was disabled. [T7037]
+(en) Kleopatra: Correctly display the saved value of the "Treat .p7m files
+     without extensions as mails" option in the configuration dialog. [T7048]
+(en) Kleopatra: Don't show warning that a certificate has expired for
+     certificates that expire in the year 2038 or later. [T7069]
+(en) Kleopatra: Ensure that the About dialog always shows the version
+     information for GnuPG and libgcrypt. [T7090]
+(en) Kleopatra: Allow showing the main window with the certificate list above
+     the certificate details windows. [T7094]
+(en) Kleopatra: Show correct success/error messages when changing the reset
+     code/PUK of an OpenPGP card. [T7122]
+(en) Kleopatra: Ignore leading and trailing space characters when looking up
+     certificates on servers. [T7132]
+(en) Kleopatra: Do not change OpenPGP keyserver entries starting with "ldap:".
+     [T7145]
+(en) Kleopatra: Do not show a success message if deleting the secret key from
+     the hard disk fails after copying the secret key to a smart card. [T7157]
+(en) Kleopatra: Do not wrongly claim that a certificate without email address
+     was updated via WKD. [T7190]
+(en) Kleopatra: Fix issue that the certificate details window was unusable
+     when it was opened from the edit group window. [T7233]
+(en) Kleopatra: Fix issue that the certificate details window opened in the
+     background when opened from the decryption/verification result window.
+     [T7244]
+(en) Kleopatra: Fix a problem that occurred when importing and certifying a
+     certificate with a revoked user ID. [T7274]
+(en) Kleopatra: Fix a problem that for some certificates the email address was
+     shown in the Name column. [T7280]
+(en) GpgOL: A crash was resolved that sometimes occurred in the security
+     approval window and that resulted in a "No recipients for encryption
+     selected" error in Outlook. [T7312]
+(en) Kleopatra: Fix a problem on key generation after using the "Retry" button.
+     [T7365]
+(en) Kleopatra: A crash was resolved that occurred when unplugging a smartcard
+     while an operation is in progress. [T7372]
+(en) Kleopatra: Correctly finish a print secret key operation if an empty or
+     wrong password is entered. [T7375]
+
+
+Additionally, the Noteworthy changes in Version 3.2.2 (of VSD) are new compared
+to Version 4.3.1 (of Gpg4win).
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.4.5
+Kleopatra:      3.3.0
+GpgOL:          2.5.12
+GpgEX:          1.0.10
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in Version 3.2.3 (unreleased)
 ------------------------------------------------
 
