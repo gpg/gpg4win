@@ -174,6 +174,8 @@ Noteworthy changes in Version 4.4.0 (unreleased)
      while an operation is in progress. [T7372]
 (en) Kleopatra: Correctly finish a print secret key operation if an empty or
      wrong password is entered. [T7375]
+(en) Kleopatra: Ensure that tool tips are easy to read if a dark color scheme
+     is used on Windows. [T7414]
 
 
 Additionally, the Noteworthy changes in Version 3.2.2 (of VSD) are new compared
