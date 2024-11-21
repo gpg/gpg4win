@@ -60,6 +60,7 @@ m4_if(mym4_buildtype,[gpd],[m4_define([mym4_isvsd],[yes])
 # the decimalized short revision number, a beta version string and a
 # flag indicating a development version (mym4_isbeta).  Note that the
 # m4 processing is done by autoconf and not during the configure run.
+m4_define([mym4_tsdir], m4_chomp_all(m4_esyscmd([./autogen.sh --print-tsdir])))
 m4_define([mym4_verslist], m4_split(m4_esyscmd([./autogen.sh --find-version] \
                           mym4_package mym4_major mym4_minor mym4_micro),[:]))
 m4_define([mym4_isbeta],       m4_argn(2, mym4_verslist))
@@ -68,7 +69,10 @@ m4_define([mym4_version],      m4_argn(4, mym4_verslist))
 m4_define([mym4_betastr],      m4_argn(6, mym4_verslist))
 m4_define([mym4_revision],     m4_argn(7, mym4_verslist))
 m4_define([mym4_revision_dec], m4_argn(8, mym4_verslist))
+m4_define([mym4_commitid],     m4_argn(9, mym4_verslist))
 
+m4_esyscmd([echo ]mym4_version[>VERSION])
+m4_esyscmd([echo ]mym4_commitid[>>VERSION])
 
 AC_INIT([mym4_package],[mym4_version],[https://bugs.gnupg.org])
 
@@ -187,15 +191,9 @@ AC_ARG_ENABLE(ninja,
 #
 if test -f /src/packages/BUILDTYPE ; then
    dockerbuild=yes
-   TOPSRCDIR=/src
-   PLAYGROUND=/build
 else
    dockerbuild=no
-   TOPSRCDIR=.
-   PLAYGROUND=playground
 fi
-AC_SUBST(TOPSRCDIR)
-AC_SUBST(PLAYGROUND)
 AM_CONDITIONAL(DOCKERBUILD,    test "$dockerbuild" = "yes")
 AM_CONDITIONAL(BUILD_GPG4WIN,  test "$build_gpg4win" = "yes")
 AM_CONDITIONAL(BUILD_APPIMAGE, test "$build_appimage" = "yes")
@@ -307,6 +305,35 @@ if test "$build_gpg4win" = yes ; then
 fi
 
 AC_CHECK_PROGS(WGET, wget)
+
+
+#
+# Set source and build directory.
+#
+if test $dockerbuild = yes ; then
+   TOPSRCDIR=/src
+   PLAYGROUND=/build
+else
+   TOPSRCDIR="mym4_tsdir"
+   AC_ARG_WITH([playground],
+       AS_HELP_STRING([--with-playground=DIR],
+                      [Use DIR as the build directory]),
+       [PLAYGROUND="$withval"], [PLAYGROUND=""])
+  if test -n "$PLAYGROUND" ; then
+    if test ! -d "$PLAYGROUND"; then
+        AC_MSG_ERROR([[
+***
+*** Given playground directory does not exist.
+*** Please create it first or use the default.
+***]])
+    fi
+    PLAYGROUND="$(cd "$PLAYGROUND" && pwd)"
+  else
+    PLAYGROUND="$(dirname "$TOPSRCDIR")/b/$(basename "$TOPSRCDIR")-playground"
+  fi
+fi
+AC_SUBST(TOPSRCDIR)
+AC_SUBST(PLAYGROUND)
 
 
 # Packages for Gpg4Win.
@@ -591,13 +618,15 @@ fi
 echo -n "
         $PACKAGE_NAME-$PACKAGE_VERSION prepared for make
 
-        Revision: ${GIT_REVISION}  (${GIT_REVISION_DEC})
-        Main platform: $host
-        Additional platform: ${GPGEX_ADD_HOST}
-        Distribution: ${PRODUCT_NAME} (mym4_buildtype)
+        Revision .....: ${GIT_REVISION}  (${GIT_REVISION_DEC})
+        Main platform : $host
+        Extra platform: ${GPGEX_ADD_HOST}
+        Distribution .: ${PRODUCT_NAME} (mym4_buildtype)
+        Source dir ...: ${TOPSRCDIR}
+        Build dir ....: ${PLAYGROUND}
 "
 if test -n "$JOBS"; then
-    echo "        make jobs: ${JOBS}"
+    echo "        make jobs ....: ${JOBS}"
 else
     echo ""
 fi
