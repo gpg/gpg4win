@@ -109,6 +109,8 @@ Noteworthy changes in Version 4.4.0 (unreleased)
 
 --- Bug Fixes ---
 
+(en) Kleopatra: Ensure that links and selected certificates are readable if
+     a high contrast color scheme is used on Windows. [T6073]
 (en) Kleopatra: Cancel the "print secret key" operation when the password
      prompt is canceled. [T6091]
 (en) Kleopatra: Keep selection in certificate list when showing the certificate
@@ -126,6 +128,8 @@ Noteworthy changes in Version 4.4.0 (unreleased)
      selected in the security approval window. [T6808]
 (en) Kleopatra: Create OpenPGP certificates that are created from smartcard
      keys with correct validity. [T6889]
+(en) Kleopatra: Use dark icons if the light high contrast color scheme
+     ("Desert") is used on Windows 11. [T6921]
 (en) Kleopatra: Make it more obvious whether the validity of subkeys is
      extended together with the validity of the primary key. [T6958]
 (en) Kleopatra: Do not show certificate groups if no certificate in the group
