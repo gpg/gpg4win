@@ -62,7 +62,10 @@ m4_define([mym4_version],      m4_argn(4, mym4_verslist))
 m4_define([mym4_betastr],      m4_argn(6, mym4_verslist))
 m4_define([mym4_revision],     m4_argn(7, mym4_verslist))
 m4_define([mym4_revision_dec], m4_argn(8, mym4_verslist))
+m4_define([mym4_commitid],     m4_argn(9, mym4_verslist))
 
+m4_esyscmd([echo ]mym4_version[>VERSION])
+m4_esyscmd([echo ]mym4_commitid[>>VERSION])
 
 AC_INIT([mym4_package],[mym4_version],[https://bugs.gnupg.org])
 
@@ -525,13 +528,13 @@ fi
 echo -n "
         $PACKAGE_NAME-$PACKAGE_VERSION prepared for make
 
-        Revision: ${GIT_REVISION}  (${GIT_REVISION_DEC})
-        32bit platform: $host
-        64bit platform: ${GPGEX_ADD_HOST}
-        Distribution: ${PRODUCT_NAME} (mym4_buildtype)
+        Revision .....: ${GIT_REVISION}  (${GIT_REVISION_DEC})
+        Main platform : $host
+        Extra platform: ${GPGEX_ADD_HOST}
+        Distribution .: ${PRODUCT_NAME} (mym4_buildtype)
 "
 if test -n "$JOBS"; then
-    echo "        make jobs: ${JOBS}"
+    echo "        make jobs ....: ${JOBS}"
 else
     echo ""
 fi

@@ -15,7 +15,7 @@
 # configure it for the respective package.  It is maintained as part of
 # GnuPG and source copied by other packages.
 #
-# Version: 2023-04-11
+# Version: 2024-11-21
 
 configure_ac="configure.ac"
 
@@ -72,6 +72,7 @@ FORCE=
 SILENT=
 PRINT_HOST=no
 PRINT_BUILD=no
+PRINT_TSDIR=no
 tmp=$(dirname "$0")
 tsdir=$(cd "${tmp}"; pwd)
 
@@ -84,9 +85,10 @@ if test x"$1" = x"--help"; then
   echo "    --silent       Silent operation"
   echo "    --force        Pass --force to autoconf"
   echo "    --find-version Helper for configure.ac"
-  echo "    --git-build    Run all commands to  build from a Git"
+  echo "    --git-build    Run all commands to build from a Git"
   echo "    --print-host   Print only the host triplet"
   echo "    --print-build  Print only the build platform triplet"
+  echo "    --print-tsdir  Print only the dir of this script"
   echo "    --build-TYPE   Configure to cross build for TYPE"
   echo ""
   echo "  ARGS are passed to configure in --build-TYPE mode."
@@ -157,6 +159,11 @@ case "$1" in
         SILENT=" --silent"
         shift
         ;;
+    --print-tsdir)
+        myhost="print-tsdir"
+        SILENT=" --silent"
+        shift
+        ;;
     --git-build)
         myhost="git-build"
         shift
@@ -214,6 +221,12 @@ if [ -f "$HOME/.gnupg-autogen.rc" ]; then
     . "$HOME/.gnupg-autogen.rc"
 fi
 
+# Disable the --enable-maintainer_mode option.
+if [ "${maintainer_mode_option}" = off ]; then
+    maintainer_mode_option=
+elif [ -z "${maintainer_mode_option}" ]; then
+    maintainer_mode_option=--enable-maintainer-mode
+fi
 
 # **** FIND VERSION ****
 # This is a helper for the configure.ac M4 magic
@@ -265,20 +278,30 @@ if [ "$myhost" = "find-version" ]; then
           fi
       fi
       [ -n "$tmp" ] && beta=yes
+      cid=$(git rev-parse --verify HEAD | tr -d '\n\r')
       rev=$(git rev-parse --short HEAD | tr -d '\n\r')
       rvd=$((0x$(echo ${rev} | dd bs=1 count=4 2>/dev/null)))
     else
       ingit=no
       beta=yes
       tmp="-unknown"
+      cid="0000000"
       rev="0000000"
       rvd="0"
     fi
 
-    echo "$package-$vers$tmp:$beta:$ingit:$vers$tmp:$vers:$tmp:$rev:$rvd:"
+    echo "$package-$vers$tmp:$beta:$ingit:$vers$tmp:$vers:$tmp:$rev:$rvd:$cid:"
     exit 0
 fi
 # **** end FIND VERSION ****
+
+# **** PRINT TSDIR VERSION ****
+# This is a helper used by some configure.ac M4 magic
+if [ "$myhost" = "print-tsdir" ]; then
+    echo "$tsdir"
+    exit 0
+fi
+# **** end PRINT TSDIR ****
 
 
 if [ ! -f "$tsdir/build-aux/config.guess" ]; then
@@ -504,7 +527,7 @@ if [ -n "${extra_automake_flags}" ]; then
   automake_flags="${automake_flags} ${extra_automake_flags}"
 fi
 if [ -n "${AUTOMAKE_FLAGS}" ]; then
-  auotomake_flags="${automake_flags} ${AUTOMAKE_FLAGS}"
+  automake_flags="${automake_flags} ${AUTOMAKE_FLAGS}"
 fi
 
 info "Running $ACLOCAL ${aclocal_flags} ..."
