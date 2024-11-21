@@ -21,7 +21,9 @@ Unicode true
 
 !cd "${BUILD_DIR}"
 !addincludedir "${TOP_SRCDIR}"
+!addincludedir "${BUILD_DIR}/po"
 !addincludedir "${TOP_SRCDIR}/po"
+!addincludedir "${BUILD_DIR}/nsis"
 !addincludedir "${SRCDIR}/nsis"
 !addplugindir "${BUILD_DIR}"
 !include "config.nsi"
@@ -95,9 +97,9 @@ SetCompressor /SOLID lzma
 !endif
 
 # The installation directory.
-!define ipdir "playground/install/pkgs"
-!define exipdir "playground/install-ex/pkgs"
-!define bpdir "playground/build"
+!define ipdir "../install/pkgs"
+!define exipdir "../install-ex/pkgs"
+!define bpdir "../build"
 
 # Variables
 VAR is_minimal

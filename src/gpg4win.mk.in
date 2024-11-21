@@ -130,15 +130,13 @@ AUTHENTICODE_FILES = \
 	../install-ex/bin/libgpgmepp-6.dll \
 	../install-ex/libexec/gpgme-w32spawn.exe \
 	libexec/gpgme-w32spawn.exe \
-	../../libgcc_s_dw2-1.dll-x \
 	lib/plugins/kf6/kio/kio_file.dll \
 	lib/plugins/kf6/sonnet/sonnet_ispellchecker.dll \
 	lib/plugins/kf6/parts/okularpart.dll \
 	lib/plugins/okular_generators/okularGenerator_poppler.dll \
 	lib/scute.dll \
-	../../libstdc++-6.dll-x \
-	../../libwinpthread-1.dll-x \
-	../../libwinpthread-1.dll-ex \
+	../src/libstdc++-6.dll-x \
+	../src/libwinpthread-1.dll-x \
 	plugins/iconengines/qsvgicon.dll \
 	plugins/imageformats/qsvg.dll \
 	plugins/platforms/qwindows.dll \
@@ -146,8 +144,16 @@ AUTHENTICODE_FILES = \
 	plugins/iconengines/qsvgicon.dll \
 	plugins/imageformats/qsvg.dll \
 	plugins/tls/qschannelbackend.dll \
-	../../sha1sum.exe \
-	../../sha256sum.exe
+	../src/sha1sum.exe \
+	../src/sha256sum.exe
+
+# Not all of these dlls must exist as they are installed by nsis with
+# the /nonfatal option.
+AUTHENTICODE_FILES_OPTIONAL = \
+	../src/libgcc_s_dw2-1.dll-x \
+        ../src/libgcc_s_sjlj-1.dll-x \
+        ../src/libgcc_s_seh-1.dll-x  \
+	../src/libwinpthread-1.dll-ex
 
 
 # No servicable parts below this line :)
@@ -699,7 +705,7 @@ pkg_files += $(call GETVAR,gpg4win_pkg_$(1)_dev)
 $(stampdir)/stamp-$(1)-00-install: \
 		$(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	($(call SETVARS,$(1));				\
-	 $(MKDIR) "$$$${pkgidir}";			\
+	 test -d "$$$${pkgidir}" || $(MKDIR) "$$$${pkgidir}";\
 	 cd $$$${pkgidir};				\
 	 $(call DEFLATE_macro,$$$${pkg}))
 	touch $(stampdir)/stamp-$(1)-00-install
@@ -708,7 +714,7 @@ $(stampdir)/stamp-$(1)-00-install: \
 # "; ;" is a syntax error.
 $(stampdir)/stamp-$(1)-01-install-dev: $(stampdir)/stamp-$(1)-00-install
 	($(call SETVARS,$(1));				\
-	 $(MKDIR) "$$$${pkgidir_dev}";			\
+	 test -d "$$$${pkgidir_dev}" || $(MKDIR) "$$$${pkgidir_dev}";\
 	 (cd $$$${pkgidir_dev};				\
 	  $(call DEFLATE_macro,$$$${pkg_dev}));		\
 	 $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))

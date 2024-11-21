@@ -552,7 +552,40 @@ endif
 
 clean-local: $(gpg4win_clean)
 
-common_nsi = nsis/inst-sections.nsi nsis/installer.nsi \
+
+# Copy the DLL files for NSIS.  We use a stamp because we need only
+# some of them.  The dependency on the Makefile is to avoid the need
+# for a clean in some situations.
+$(stampdir)/stamp-rtlib-files: Makefile
+	(set -x; \
+	 f=libwinpthread-1.dll-ex ; test -f "$$f" && rm -f "$$f" ; \
+	 if test "$(gpg4win_rtlib_ex_libwinpthread_1)" != no ; then \
+	   cp $(gpg4win_rtlib_ex_libwinpthread_1) "$$f"; $(STRIP_EX) "$$f";\
+	 fi; \
+	 f=libwinpthread-1.dll-x ; test -f "$$f" && rm -f "$$f" ; \
+	 if test "$(gpg4win_rtlib_libwinpthread_1)" != no ; then \
+	   cp $(gpg4win_rtlib_libwinpthread_1)    "$$f"; $(STRIP) "$$f";\
+	 fi; \
+         f=libstdc++-6.dll-x ; test -f "$$f" && rm -f "$$f" ; \
+	 if test "$(gpg4win_rtlib_libstdc___6)" != no ; then \
+	   cp $(gpg4win_rtlib_libstdc___6)        "$$f"; $(STRIP) "$$f";\
+	 fi; \
+         f=libgcc_s_sjlj-1.dll-x ; test -f "$$f" && rm -f "$$f" ; \
+	 if test "$(gpg4win_rtlib_libgcc_s_seh_1)" != no ; then \
+	   cp $(gpg4win_rtlib_libgcc_s_seh_1)     "$$f"; $(STRIP) "$$f";\
+	 fi; \
+         f=libgcc_s_dw2-1.dll-x ; test -f "$$f" && rm -f "$$f" ; \
+	 if test "$(gpg4win_rtlib_libgcc_s_dw2_1)" != no ; then \
+	   cp $(gpg4win_rtlib_libgcc_s_dw2_1)     "$$f"; $(STRIP) "$$f";\
+	 fi; \
+         f=libgcc_s_seh-1.dll-x ; test -f "$$f" && rm -f "$$f" ; \
+	 if test "$(gpg4win_rtlib_libgcc_s_seh_1)" != no ; then \
+	   cp $(gpg4win_rtlib_libgcc_s_seh_1)     "$$f"; $(STRIP) "$$f";\
+	 fi )
+	touch $(stampdir)/stamp-rtlib-files
+
+common_nsi = $(stampdir)/stamp-rtlib-files \
+  nsis/inst-sections.nsi nsis/installer.nsi \
   nsis/installer-finish.nsi nsis/gpg4win.nsi \
   $(addsuffix .nsi,$(addprefix nsis/inst-,$(gpg4win_build_list))) \
   $(addsuffix .nsi,$(addprefix nsis/uninst-,$(gpg4win_build_list)))
@@ -571,7 +604,10 @@ $(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
              exit 1; \
            fi;\
          done; \
-         for f in $(AUTHENTICODE_FILES); do \
+         for f in $(AUTHENTICODE_FILES) $(AUTHENTICODE_FILES_OPTIONAL); do \
+           if [ ! -f "$$f" ]; then \
+             continue; \
+           fi; \
            if [ ! -s "$$f" ]; then \
              echo "Codesign: Skipping over empty file '$$f'"; \
              continue; \

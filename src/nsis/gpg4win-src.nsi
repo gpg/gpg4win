@@ -71,9 +71,9 @@ Unicode true
 
 
 # The installation directory.
-!define ipdir "playground/install/pkgs"
-!define exipdir "playground/install-ex/pkgs"
-!define bpdir "playground/build"
+!define ipdir "../install/pkgs"
+!define exipdir "./install-ex/pkgs"
+!define bpdir "../build"
 
 # For source packages we use the standard zip method because it takes
 # ages to compress a large archive of already packed sources.

@@ -181,19 +181,19 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   SetOutPath "$INSTDIR\share\icons\hicolor"
   File ${prefix}/share/icons/hicolor/icon-theme.cache
-  File index.theme
+  File ${SRCDIR}/index.theme
 
   # In KDE 4.10 the locale detection in kdelibs is broken so we
   # install a kdeglobals with the language setting chosen in the
   # installer
   SetOutPath "$INSTDIR\share"
-  File kdeglobals
+  File ${SRCDIR}/kdeglobals
   SetOutPath "$INSTDIR\bin"
-  File qtlogging.ini
+  File ${SRCDIR}/qtlogging.ini
 
   SetOutPath "$INSTDIR\share\gpg4win"
-  File "icons/file-ext.ico"
-  File "icons/mail-ext.ico"
+  File "${SRCDIR}/icons/file-ext.ico"
+  File "${SRCDIR}/icons/mail-ext.ico"
 
 #  SetRegView 64
   # Openpgp4fpr URI scheme
