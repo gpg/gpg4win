@@ -46,25 +46,35 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              docker/gpg4win-bullseye/Dockerfile \
              docker/run-appimage-build.sh \
              docker/run-gpg4win-build.sh \
-             patches/breeze-icons/subset-crossbuild.patch \
+             patches/breeze-icons/0001-Add-folder-edit-sign-encrypt-icon.patch \
              patches/breeze-icons/add-the-nose.patch \
              patches/breeze-icons/azz-Make-all-breeze-icons-available-in-breeze-dark.patch \
-             patches/breeze-icons/0001-Add-folder-edit-sign-encrypt-icon.patch \
+             patches/breeze-icons/subset-crossbuild.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
+             patches/jpeg/fix-redefine.patch \
              patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
              patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
              patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
+             patches/kcoreaddons/0001-Fix-MINGW-build.patch \
              patches/kguiaddons/0001-DRAFT-There-is-no-dark-mode-on-old-Windows.patch \
+             patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/kiconthemes/0001-Make-DBus-optional.patch \
              patches/kiconthemes/dark-mode-detection.patch \
+             patches/kio/0001-WIP-Remove-dependency-to-dbus.patch \
+             patches/kio/FileManagerWindowJob.patch \
              patches/kleopatra/set-windows-registry.patch \
+             patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
+             patches/kparts/disable-jobuidelegate.patch \
              patches/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
              patches/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
              patches/kwidgetsaddons/fix-height-of-text-after-update.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
+             patches/kxmlgui/0002-stretch-aboutpage.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
-             patches/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
+             patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
+             patches/okular/0001-Add-support-to-customize-about-data.patch \
+             patches/okular/lower-cmake-requirement.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
@@ -73,18 +83,9 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/qtbase/CVE-2023-43114-5.15.patch \
              patches/qtbase/fix-high-contrast-item-view-selection-color.patch \
              patches/qtbase/fix-tooltip-text-color-with-dark-theme.patch \
+             patches/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
              patches/qttools/disable-most-tools.patch \
-             patches/kcoreaddons/0001-Fix-MINGW-build.patch \
-             patches/ki18n/0001-Undef-snprintf-for-windows.patch \
-             patches/kio/0001-WIP-Remove-dependency-to-dbus.patch \
-             patches/kio/FileManagerWindowJob.patch \
-             patches/okular/lower-cmake-requirement.patch \
-             patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
-             patches/okular/0001-Add-support-to-customize-about-data.patch \
-             patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
-             patches/kparts/disable-jobuidelegate.patch \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
-             patches/jpeg/fix-redefine.patch \
              patches-appimage/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
              patches-appimage/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
              patches-appimage/kwidgetsaddons/fix-height-of-text-after-update.patch \
