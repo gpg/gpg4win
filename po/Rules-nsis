@@ -19,15 +19,18 @@
 
 NSIFILES = $(GMOFILES:.gmo=.nsi)
 DISTFILES.extra1 = nsis-xgettext.sh nsis-xgettext.awk nsis-msgfmt.c \
-                   $(NSIFILES) Rules-nsis build-cc.in README.nsis
+                   $(NSIFILES) Rules-nsis README.nsis
+
 
 .SUFFIXES: .nsi
 
 # We build this little utility on the BUILD architecture!
-nsis-msgfmt: nsis-msgfmt.c
-	$$(cat $(srcdir)/build-cc) -o nsis-msgfmt $(srcdir)/nsis-msgfmt.c -lgettextpo
+nsis-msgfmt: $(srcdir)/nsis-msgfmt.c
+	$(BUILD_CC) -o nsis-msgfmt $(srcdir)/nsis-msgfmt.c -lgettextpo
 
-# We extend the GMO file mechanism to also handle NSIS files.
+# We extend the GMO file mechanism to also handle NSIS files.  In
+# reality we only handle NSI files and use the GMO files only to get a
+# list of to be created NSI files.
 $(GMOFILES): %.gmo: %.nsi
 
 %.nsi : %.po
@@ -35,7 +38,7 @@ $(GMOFILES): %.gmo: %.nsi
 	@lang=`echo $* | sed -e 's,.*/,,'`; \
 	test "$(srcdir)" = . && dir="" || dir="$(srcdir)/"; \
 	echo "rm -f $${dir}$${lang}.nsi && ./nsis-msgfmt $${dir}$${lang}.po > $${dir}$${lang}.nsi"; \
-	rm -f $${dir}$${lang}.nsi && ./nsis-msgfmt $${dir}$${lang}.po > $${dir}t-$${lang}.nsi && mv $${dir}t-$${lang}.nsi $${dir}$${lang}.nsi
+	rm -f $${lang}.nsi && ./nsis-msgfmt $${dir}$${lang}.po > t-$${lang}.nsi && mv t-$${lang}.nsi $${lang}.nsi
 
 # Collect all NSI files we need to include.
 catalogs.nsi: $(GMOFILES)

@@ -98,6 +98,7 @@ AC_CANONICAL_HOST
 AC_CONFIG_HEADERS([config.h])
 
 # Language support
+# Take care when updating; see the comments in po/Makefile.in.in
 AM_PO_SUBDIRS
 
 
@@ -557,7 +558,6 @@ fi
 
 AC_CONFIG_FILES(Makefile)
 AC_CONFIG_FILES(packages/Makefile src/Makefile po/Makefile.in)
-AC_CONFIG_FILES(po/build-cc)
 AC_CONFIG_FILES(src/nsis/config.nsi src/gpg4win.mk)
 AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)

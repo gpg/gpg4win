@@ -14,6 +14,8 @@ PACKAGE = @PACKAGE@
 VERSION = @VERSION@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 
+BUILD_CC = @BUILD_CC@
+
 SHELL = /bin/sh
 @SET_MAKE@
 
@@ -72,14 +74,10 @@ CATALOGS = @CATALOGS@
 .SUFFIXES: .po .gmo .mo .sed .sin .nop .po-create .po-update
 
 .po.mo:
-	@echo "$(MSGFMT) -c -o $@ $<"; \
-	$(MSGFMT) -c -o t-$@ $< && mv t-$@ $@
+	@echo No need to build MO files.
 
 .po.gmo:
-	@lang=`echo $* | sed -e 's,.*/,,'`; \
-	test "$(srcdir)" = . && cdcmd="" || cdcmd="cd $(srcdir) && "; \
-	echo "$${cdcmd}rm -f $${lang}.gmo && $(GMSGFMT) -c --statistics -o $${lang}.gmo $${lang}.po"; \
-	cd $(srcdir) && rm -f $${lang}.gmo && $(GMSGFMT) -c --statistics -o t-$${lang}.gmo $${lang}.po && mv t-$${lang}.gmo $${lang}.gmo
+	@echo No need to build GMO files.
 
 .sin.sed:
 	sed -e '/^#/d' $< > t-$@
@@ -303,7 +301,7 @@ mostlyclean:
 clean: mostlyclean
 
 distclean: clean
-	rm -f Makefile Makefile.in POTFILES *.mo build-cc
+	rm -f Makefile Makefile.in POTFILES *.mo
 
 maintainer-clean: distclean
 	@echo "This command is intended for maintainers to use;"
