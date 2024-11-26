@@ -545,40 +545,40 @@ server https://gnupg.org/ftp/gcrypt/snapshots
 
 
 # gpg4win-tools
-# last changed: 2024-11-08
+# last changed: 2024-11-25
 # by: builder
 # verified: Tarball created by builder.
-file gpg4win-tools/gpg4win-tools-202411080930.tar.xz
-chk 9112e3690ec168c2312e743295674ba1dfc4c8d0c0312117c8783517ea3f409f
+file gpg4win-tools/gpg4win-tools-202411251240.tar.xz
+chk 20984d72b1f505b09ec74c4b482fd77b3eee4a7613726ffcb72bdd290d681d08
 
 # gpgpass
-# last changed: 2024-08-15
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file gpgpass/gpgpass-202408151352.tar.xz
-chk b1b29cf2d4a73c7feaf750c3a7f995302f48eb225bf0521153592440f1ff5512
+# last changed: 2024-11-26
+# by: builder
+# verified: Tarball created by builder.
+file gpgpass/gpgpass-202411261019.tar.xz
+chk 026f20d1400300a7fdbf14bb121e988aea30c32f2d6acbcf6aa6d769c29a5550
 
 
 # mimetreeparser
-# last changed: 2024-10-08
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file mimetreeparser/mimetreeparser-202410081200.tar.xz
-chk 4b05dc1827347cb5669dabc644e83af4c55555fc9f4701fd0989126f29e1e0eb
+# last changed: 2024-11-25
+# by: builder
+# verified: Tarball created by builder.
+file mimetreeparser/mimetreeparser-202411251239.tar.xz
+chk 556ff9452a905a7438ee26c7b13c7dc2cfce099366ba00ddfe0422b4b242cec0
 
 # libkleo
-# last changed: 2024-11-08
+# last changed: 2024-11-25
 # by: builder
 # verified: Tarball created by builder.
-file libkleo/libkleo-202411080929.tar.xz
-chk 7f1e8aa243e982408e1ac9194d61d628d9714959521a4018f9487ecb18a4a6c1
+file libkleo/libkleo-202411251238.tar.xz
+chk 514ae36b2ef0768810e77dd7479898b488d655f9e851ed6c2a77b7d74b675a41
 
 # kleopatra
-# last changed: 2024-11-08
+# last changed: 2024-11-25
 # by: builder
 # verified: Tarball created by builder.
-file kleopatra/kleopatra-202411080928.tar.xz
-chk b265c8c3951eab72ece418f73285870841fe5f455d4be703c489b5eb64111901
+file kleopatra/kleopatra-202411251238.tar.xz
+chk a8329fedd601187c913f02a5626789fbe66f201589ebf85cd9ae8ea192fc7f09
 
 
 # Okular and dependencies
