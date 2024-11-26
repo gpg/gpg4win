@@ -136,7 +136,7 @@ foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll desktopshellrun.o versioninfo.txt \
 			 $(HOWTO_files) NEWS.tmp COMPONENTS-list.tmp \
-			 license.blurb cdversioninfo.tmp slideshow.o \
+			 license.blurb versioninfo.tmp slideshow.o \
 			 $(foosum_exe) gpgwrap.exe
 
 # Supported source packages. (see also ../appimage/Makefile.am)
