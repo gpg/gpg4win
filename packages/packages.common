@@ -551,12 +551,13 @@ server https://gnupg.org/ftp/gcrypt/snapshots
 file gpg4win-tools/gpg4win-tools-202411251240.tar.xz
 chk 20984d72b1f505b09ec74c4b482fd77b3eee4a7613726ffcb72bdd290d681d08
 
-# gpgpass
-# last changed: 2024-11-26
-# by: builder
-# verified: Tarball created by builder.
-file gpgpass/gpgpass-202411261019.tar.xz
-chk 026f20d1400300a7fdbf14bb121e988aea30c32f2d6acbcf6aa6d769c29a5550
+# Disabled - not ready for a release on Windows.
+## gpgpass
+## last changed: 2024-11-26
+## by: builder
+## verified: Tarball created by builder.
+#file gpgpass/gpgpass-202411261019.tar.xz
+#chk 026f20d1400300a7fdbf14bb121e988aea30c32f2d6acbcf6aa6d769c29a5550
 
 
 # mimetreeparser
