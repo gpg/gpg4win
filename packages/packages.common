@@ -506,12 +506,13 @@ chk 593ba654a8b5f61af95fec3fd0b269a8f5e89dbed54d62aafb41a0ce0146eeba
 file 5.109/kcalendarcore-5.109.0.tar.xz
 chk 8581e0e2ac540ce4c8ea76fb61c61234c85c3c908e70b8b5afd0b8ca244edad4
 
+# Disabled because gpgpass is also disabled (wk 2024-11-27)
 # prison
 # last changed: 2023-11-30
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.109/prison-5.109.0.tar.xz
-chk 8109d7daada25735e4aa9c0f0b51640f34386aa51a9d03bb49b84a0359e8bcde
+#file 5.109/prison-5.109.0.tar.xz
+#chk 8109d7daada25735e4aa9c0f0b51640f34386aa51a9d03bb49b84a0359e8bcde
 
 ### END PASTE ###
 
