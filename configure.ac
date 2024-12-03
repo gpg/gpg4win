@@ -547,7 +547,16 @@ if test -n "$missing_tools"; then
 ***]])
 fi
 
-# Throw an error if any duplicate source packages have been found
+# Throw an error if any duplicate source packages have been found The
+# packages_dirpfx is set depending on whether we are running under
+# docker.  See also GPG4WIN_PACKAGES.
+packages_dirpfx=
+test -f /src/packages/BUILDTYPE && packages_dirpfx=/src/
+packages_files=${packages_dirpfx}packages/packages.common
+for f in ${packages_dirpfx}packages/packages.3 \
+         ${packages_dirpfx}packages/packages.4 ; do
+    test -f "$f" && packages_files="$packages_files $f"
+done
 if test -n "$gpg4win_dup_sources"; then
     tmp=
     for i in $gpg4win_dup_sources; do
@@ -557,7 +566,7 @@ $i"
     tmp2="
 You might remove them with:"
     for i in $gpg4win_rm_candidates; do
-        if ! grep -q $(basename $i) packages/packages.common packages/packages.3 packages/packages.4; then
+        if ! grep -q $(basename $i) $packages_files; then
             tmp2="$tmp2
 rm $i"
         fi
@@ -574,7 +583,7 @@ $i"
     tmp2="
 You might remove them with:"
     for i in $appimage_rm_candidates; do
-        if ! grep -q $(basename $i) packages/packages.common packages/packages.3 packages/packages.4; then
+        if ! grep -q $(basename $i) $packages_files; then
             tmp2="$tmp2
 rm $i"
         fi
