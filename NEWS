@@ -6,12 +6,12 @@
 Noteworthy changes in Version 4.4.1 (unreleased)
 ------------------------------------------------
 
---- Features ---
-
 --- Bug Fixes ---
 
 (en) Kleopatra: Ensure that the decryption result window is visible when
      decrypting a file from the Windows Explorer. [T5780]
+(en) Kleopatra: Make showing the details of a certificate selected under
+     Encrypt for others work again. [T7435]
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.4.7
