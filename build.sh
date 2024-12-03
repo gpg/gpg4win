@@ -35,7 +35,6 @@ Options:
         --w32           Use 32 bit Windows as primary host arch
         --clean         Remove a pre-existing build directory
         --shell         Start a shell instead of starting the build script
-        --inplace       Build in the current directoy
         --builddir=DIR  Directory where the build should take place
                         (default is ../b/foo-playground)
         --update-image  Update the docker image before build
@@ -46,9 +45,10 @@ Options:
                         gpgpass gpg4win-tools mimetreeparser
 
 
-This builds either the Appimage or the Windows installer.  By default
-the build is done in a sibling dir with the suffix "-playground"
-Use the option --inplace or --builddir to change that behavior.
+This script is used to build either the Appimage or the Windows
+installer.  The build is done in a build directory with the suffix
+"-playground".  Use the option --builddir to use a non-default build
+directory.  Take care not to use the source directory for building.
 
 Examples:
     ./$PGM
@@ -70,7 +70,6 @@ indocker="no"
 gpg22="no"
 shell="no"
 clean="no"
-inplace="no"
 branch="master"
 srcdir=$(cd $(dirname $0); pwd)
 is_tmpbuild="no"
@@ -101,7 +100,6 @@ while [ $# -gt 0 ]; do
         --v3) gpg22="yes";;
         --shell) shell="yes";;
         --clean|-c) clean="yes";;
-        --inplace) inplace="yes";;
         --update-image|--update-img|-u) update_image="yes";;
         --w32) w64="no";;
         --w64) w64="yes";;
@@ -119,9 +117,8 @@ if [ -d /src/src -a -d /src/patches -a -d /build ]; then
     indocker="yes"
     srcdir=/src
     builddir=/build
-    echo >&2 "$PGM: HOME=$home"
+    echo >&2 "$PGM: running in docker"
 fi
-
 
 echo >&2 "$PGM: source directory: $srcdir"
 echo >&2 "$PGM: build  directory: $builddir"
@@ -227,14 +224,15 @@ else
 fi
 
 
-# Run docker
-echo >&2 "running docker"
-set -x
-docker run -it --rm --user "$userid:$groupid" \
-       --volume "${srcdir}":/src:ro \
-       --volume "${builddir}":/build:rw \
-       $docker_image $cmd 2>&1 \
-    | tee -a ${builddir}/build-log.txt
+# Run docker but create the build directory first so that dcoker does
+# not create it with root as owner.
+[ -d "${builddir}" ] || mkdir -p "${builddir}"
+docker_cmdline="run -it --rm --user $userid:$groupid"
+docker_cmdline="$docker_cmdline --volume "${srcdir}":/src:ro"
+docker_cmdline="$docker_cmdline --volume "${builddir}":/build:rw"
+docker_cmdline="$docker_cmdline $docker_image $cmd"
+echo >&2 "$PGM: running: docker $docker_cmdline"
+docker $docker_cmdline 2>&1 | tee -a ${builddir}/build-log.txt
 err="${PIPESTATUS[0]}"
 echo >&2 "docker finished. rc=$err"
 

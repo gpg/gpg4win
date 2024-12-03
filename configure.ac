@@ -332,6 +332,7 @@ if test -n "$PLAYGROUND" ; then
 else
     PLAYGROUND="${HOME}/b/$(basename "$TOPSRCDIR")-playground"
 fi
+PLAYGROUND=$(echo "$PLAYGROUND" | sed s,^//,/,)
 AC_SUBST(TOPSRCDIR)
 AC_SUBST(PLAYGROUND)
 

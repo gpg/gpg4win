@@ -66,3 +66,4 @@ src/signed_installers
 /po/build-cc
 /src/license.blurb
 /src/toolchain.cmake
+/VERSION
