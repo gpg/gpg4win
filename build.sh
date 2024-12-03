@@ -216,12 +216,7 @@ else
 fi
 
 start_time=$(date +"%s")
-
-if [ "$appimage" = "yes" ]; then
-    log_file="${builddir}/appimage-buildlog.txt"
-else
-    log_file="${builddir}/gpg4win-buildlog.txt"
-fi
+log_file="${builddir}/build-log.txt"
 
 
 # Run docker but create the build directory first so that dcoker does
@@ -232,7 +227,7 @@ docker_cmdline="$docker_cmdline --volume "${srcdir}":/src:ro"
 docker_cmdline="$docker_cmdline --volume "${builddir}":/build:rw"
 docker_cmdline="$docker_cmdline $docker_image $cmd"
 echo >&2 "$PGM: running: docker $docker_cmdline"
-docker $docker_cmdline 2>&1 | tee -a ${builddir}/build-log.txt
+docker $docker_cmdline 2>&1 | tee -a ${log_file}
 err="${PIPESTATUS[0]}"
 echo >&2 "docker finished. rc=$err"
 
@@ -241,6 +236,7 @@ duration=$((end_time - start_time))
 hours=$((duration / 3600))
 minutes=$((duration % 3600 / 60))
 seconds=$((duration % 60))
+buildtime=$(printf "%02d:%02d:%02d\n" "$hours" "$minutes" "$seconds")
 
 if [ "$err" = "1" -a "$appimage" = "yes" ]; then
     echo "Return value is 1 on AppImage build. Treating it as success."
@@ -248,7 +244,7 @@ if [ "$err" = "1" -a "$appimage" = "yes" ]; then
 fi
 
 if [ "$err" = "0" ]; then
-    # mkdir -p "${builddir}/artifacts"
+    mkdir -p "${builddir}/artifacts"
     if [ "$appimage" = "yes" ]; then
         results=$(find "${builddir}" -maxdepth 1 -iname \*.appimage \
                   -a -type f -printf '%p ')
@@ -259,6 +255,7 @@ if [ "$err" = "0" ]; then
     echo "#################### Success 🥳 ####################"
     echo "Created:"
     for result in $results; do
+        ln -sf -t "${srcdir}/artifacts/" "$result"
         echo "${builddir}/artifacts/$(basename $result)"
     done
 else
@@ -266,10 +263,7 @@ else
     echo "Command returned: $err"
 fi
 
-echo "Logfile:"
-echo "${log_file}"
-echo -n "Buildtime: $buildtime"
-printf "%02d:%02d:%02d\n" "$hours" "$minutes" "$seconds"
-echo "Build command:"
-echo "${commandline}"
+echo "Logfile: ${log_file}"
+echo "Build command: ${commandline}"
+echo "Build time: $buildtime"
 echo "###################################################"
