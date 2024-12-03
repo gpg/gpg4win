@@ -690,8 +690,6 @@ chk 7d23ae9b4594750e76bff09ec522445dc76bd1950e37f0c334934175ebe6af29
 file okular/okular-202407051647.tar.xz
 chk 7ccd4b002896da05d7aca1df0094f22105542800a47cac3d1c6bcf97b4606a38
 
-server https://gnupg.net/snapshots/
-
 # gpgoljs
 # last changed: 2024-11-11
 # by: builder
