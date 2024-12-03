@@ -17,12 +17,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <https://www.gnu.org/licenses/>.
-#
 # SPDX-License-Identifier: GPL-2.0-or-later
-
-# Packages the current HEAD of a git repository as tarball and generates
-# a text block that can be copy and pasted into packages.current.
-
 
 set -e
 
@@ -35,62 +30,45 @@ Usage: $PGM [OPTIONS]
 Build Gpg4win in a docker containter.
 
 Options:
-        --appimage      Build the AppImage
-        --gpg-2.2       Use GnuPG 2.2 instead of the default
-        --dirty         Include uncommited changes
-        --clean         Remove a pre-existing build directory
-        --shell         Start a shell instead of starting a buildscript
-        --root-shell    Start a root shell
-        --clean-pkgs    Do not use already downloaded packages
-        --inplace       Build in the current directoy
-        --buildroot     Directory where the build should take place
-        --update-image  Update the docker image before build
+        --appimage      Build the AppImage instead of the NSIS installer.
+        --v3            Use packages.3 instead of the default
         --w32           Use 32 bit Windows as primary host arch
+        --clean         Remove a pre-existing build directory
+        --shell         Start a shell instead of starting the build script
+        --inplace       Build in the current directoy
+        --builddir=DIR  Directory where the build should take place
+                        (default is ../b/foo-playground)
+        --update-image  Update the docker image before build
+        --user=name     Use NAME as FTP server user
         --git-pkgs      Use latest git versions for the frontend
                         packages:
                         gpgme libkleo kleopatra gpgol gpgol.js
                         gpgpass gpg4win-tools mimetreeparser
 
 
-This builds either the Appimage the Windows installer.
-By default the build is done in \$TMPDIR (${TMPDIR}) with
-a subdirectory prefixed with gpg4win.
-Use the option --inplace or --buildroot to change that behavior.
-
-Note that the option --dirty uses rsync to copy the local
-checkout without the delete option.
+This builds either the Appimage or the Windows installer.  By default
+the build is done in a sibling dir with the suffix "-playground"
+Use the option --inplace or --builddir to change that behavior.
 
 Examples:
     ./$PGM
-        Clone the current gpg4win directory to a temporary
-        directory and build an installer there.
+        Build in the default build directory ~/b/SRCDIRNAME-playground
 
-    ./$PGM --dirty --buildroot /home/$USER/build/
-        Make a copy with rsync of the current gpg4win checkout
-        and build in that directory. E.g. for development.
-
-    ./$PGM --inplace
-        Build in the current checkout directory. For
-        example to rebuild a source tarball.
+    ./$PGM --builddir=/foo/bar/my-playground
+        Build in the given directory.
 EOF
     exit $1
 }
 
-rsync_gpg4win()
-{
-    rsync -a --exclude "playground" \
-        --exclude '*.tar.*' --exclude '*.zip' \
-        --exclude '*.exe' --exclude '*.wixlib' \
-        --exclude 'stamps'  --exclude 'installers' \
-        --exclude 'config.status' --exclude 'config.log' \
-        "$@"
-}
 
+# Store the original command line
+# for diagnostic reasons
+commandline="$0 $@"
+
+# Preset variables.
+indocker="no"
 gpg22="no"
-dirty="no"
 shell="no"
-root_shell="no"
-clean_pkgs="no"
 clean="no"
 inplace="no"
 branch="master"
@@ -99,118 +77,59 @@ is_tmpbuild="no"
 update_image="no"
 w64="yes"
 fromgit="no"
+builddir="${HOME}/b/$(basename "$srcdir")-playground"
+ftpuser=
+# Get UID for use by docker.
+userid=$(id -u)
+groupid=$(id -g)
 
-# Store the original comamnd line
-# for diagnostic reasons
-commandline="$0 $@"
 
+# Parse the command line options.
 skipshift=
 while [ $# -gt 0 ]; do
-    case $1 in
+    case "$1" in
+	--*=*)
+	    optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'`
+	    ;;
+	*)
+	    optarg=""
+	    ;;
+    esac
+
+    case "$1" in
         --appimage) appimage="yes";;
-        --gpg-2.2) gpg22="yes";;
-        --dirty|-d) dirty="yes";;
+        --v3) gpg22="yes";;
         --shell) shell="yes";;
-        --root-shell) root_shell="yes";;
-        --clean-pkgs) clean_pkgs="yes";;
         --clean|-c) clean="yes";;
         --inplace) inplace="yes";;
         --update-image|--update-img|-u) update_image="yes";;
         --w32) w64="no";;
         --w64) w64="yes";;
-        --git|-g|--git-pkgs) fromgit="yes";;
-        --buildroot|-o) buildroot="$2"; shift; ;;
+        --git|-g|--git-pkgs)       fromgit="yes";;
+        --builddir|--builddir=*) builddir="${optarg}" ;;
+        --user|--user=*)           ftpuser="${optarg}"  ;;
         --*) usage 1 1>&2; exit 1;;
         *) skipshift=1; break ;;
     esac
     [ -z "$skipshift" ] && shift
 done
 
-# Set default build directory if not specified
-if [ -z "$buildroot" -a "$inplace" = "no" ]; then
-    buildroot=$(mktemp -d --tmpdir gpg4win.XXXXXXXXXX)
-    is_tmpbuild="yes"
-fi
-
-if [ "$appimage" = "yes" ]; then
-    cmd=/build/src/appimage/build-appimage.sh
-    docker_image=g10-build-appimage:sles15
-    dockerfile=${srcdir}/docker/appimage
-else
-    if [ "$w64" = "yes" ]; then
-        cmd="/build/src/build-gpg4win.sh --build-w64"
-    else
-        cmd="/build/src/build-gpg4win.sh --build-w32"
-    fi
-    docker_image=g10-build-gpg4win:bookworm
-    dockerfile=${srcdir}/docker/gpg4win-bookworm
-fi
-if [ $dirty = yes ]; then
-    cmd="$cmd --dirty"
+# Check whether we are running in the docker container.
+if [ -d /src/src -a -d /src/patches -a -d /build ]; then
+    indocker="yes"
+    srcdir=/src
+    builddir=/build
+    echo >&2 "$PGM: HOME=$home"
 fi
 
 
-drep=$(echo $docker_image | cut -d : -f 1)
-dtag=$(echo $docker_image | cut -d : -f 2)
-if [ -z "$(docker images | grep $drep | grep $dtag)" \
-     -o "$update_image" = "yes" ]; then
-    echo "Local image $docker_image not found"
-    echo "Building docker image"
-    docker build -t $docker_image $dockerfile 2>&1
-fi
+echo >&2 "$PGM: source directory: $srcdir"
+echo >&2 "$PGM: build  directory: $builddir"
 
-# Make a local clone or export of gpg4win to keep the working copy clean
-if [ "$inplace" = "yes" ]; then
-    echo "Building in $srcdir"
-    gpg4win_dir="$srcdir"
-else
-    echo "Building in $buildroot"
-    mkdir -p "$buildroot"
-    buildroot=$(readlink -f ${buildroot})
-    gpg4win_dir="${buildroot}/gpg4win"
-    if [ "$clean" = "yes" ]; then
-        rm -rf ${gpg4win_dir}
-    fi
-    if [ ! -d "${gpg4win_dir}" ]; then
-        if [ "$dirty" = "yes" -o ! -d "${srcdir}/.git" ]; then
-            mkdir -p "${gpg4win_dir}"
-            rsync_gpg4win "${srcdir}/" "${gpg4win_dir}/"
-        else
-            git clone "${srcdir}" "${gpg4win_dir}"
-        fi
-    else
-        echo "Directory ${gpg4win_dir} already exists."
-        if [ "$dirty" = "yes" ]; then
-            echo "Updating copy"
-            rsync_gpg4win "${srcdir}/" "${gpg4win_dir}/"
-        elif [ -d "${gpg4win_dir}/.git" ]; then
-            echo "Pulling local repo"
-            (cd "${gpg4win_dir}" && git pull)
-        else
-            echo "Continung without updating the buildscripts"
-        fi
-    fi
-fi
 
-if [ "$clean_pkgs" = "no" -a "$inplace" = "no" ]; then
-    echo "Copying packages from ${srcdir}/packages .."
-    files=$(find ${srcdir}/packages -maxdepth 1 \
-        -name \*.tar\* -o \
-        -name \*.zip -o \
-        -name \*.exe -o \
-        -name \*.wixlib \
-        -o -name '.#download.*')
-    [ -n "$files" ] && cp $files ${gpg4win_dir}/packages
-fi
-
-# Always call ./packages/download.sh to avoid accidentally
-# using old tarballs. Local tarball switches can be done
-# if the file and checksum is updated in the packages
-# file.
-cd ${gpg4win_dir}/packages
-
+# The main GUI packages.  check the gen-tarball script to see which
+# branches are used.
 FRONTEND_PKGS="
-gpgme
 libkleo
 kleopatra
 gpgol
@@ -219,51 +138,107 @@ gpgpass
 gpg4win-tools
 mimetreeparser"
 
-if [ "$fromgit" = "yes" ]; then
-    echo "Updating packages from git... "
-    ./gen-tarball.sh -u $FRONTEND_PKGS
-    echo "Done"
-fi
 
-if [ "$dirty" = "yes" ]; then
-    echo >&2 "Skipping download step"
-else
-    echo "Downloading packages"
-    if [ "$gpg22" = "yes" ]; then
-       ./download.sh --quiet --v3
-    else
-       ./download.sh --quiet
+# Function to download the packages.  Optionally generate new tarballs
+# for the main GUI components.
+download_packages() {
+    if [ "$indocker" = yes ]; then
+        echo >&2 "error downloading files from docker is not possible"
+        exit 2
     fi
+
+    cd packages
+
+    if [ "$fromgit" = yes ]; then
+        echo >&2 "Creating new tarballs and updating packages file ... "
+        myargs=
+        [ -n "$ftpuser" ]  && myargs="$myargs --user=$ftpuser"
+        ./gen-tarball.sh $myargs -u $FRONTEND_PKGS
+        echo >&2 "Done"
+    fi
+
+    echo "Downloading packages"
+    myargs=
+    [ "$gpg22" = yes ] && myargs="$myargs --v3"
+    ./download.sh --quiet $myargs
+
+    cd ..
+}
+
+
+# Check whether we are in the docker image run appropriate commands.
+# Note that this script is used to start the docker container and also
+# within the docker container to run the desired commands.
+if [ "$indocker" = yes ]; then
+    # NB: In docker the builddir is always /build and the source /src
+    cd /build
+    if [ "$w64" = "yes" ]; then
+        /src/autogen.sh --build-w64
+    else
+        /src/autogen.sh --build-w32
+    fi
+    make TOPSRCDIR=/src PLAYGROUND=/build
+    exit $?
+fi # (end of script use inside the docker container) #
+
+
+# Determine the needed docker image
+if [ "$appimage" = "yes" ]; then
+    cmd=/build/src/appimage/build-appimage.sh
+    docker_image=g10-build-appimage:sles15
+    dockerfile=${srcdir}/docker/appimage
+else
+    # We will run our self again in the docker image.
+    if [ "$w64" = "yes" ]; then
+        cmd="/src/build.sh --w64"
+    else
+        cmd="/src/build.sh --w32"
+    fi
+    docker_image=g10-build-gpg4win:bookworm
+    dockerfile=${srcdir}/docker/gpg4win-bookworm
 fi
 
-userid=$(id -u)
-grouid=$(id -g)
-
-if [ "$root_shell" = "yes" ]; then
-    userid="0"
-    groupid="0"
-    cmd="bash"
+# Update the docker image if requested or if it does not exist.
+drep=$(echo $docker_image | cut -d : -f 1)
+dtag=$(echo $docker_image | cut -d : -f 2)
+if [ -z "$(docker images | grep $drep | grep $dtag)" \
+     -o "$update_image" = "yes" ]; then
+    echo >&2 "Local image $docker_image not found"
+    echo >&2 "Building docker image"
+    docker build -t $docker_image $dockerfile 2>&1
 fi
 
+
+# If --shell was used override the command for docker.
+# if not used try to download first.
 if [ "$shell" = "yes" ]; then
     cmd="bash"
+else
+    echo >&2 "skipping download for now"
+    # download_packages
 fi
 
 start_time=$(date +"%s")
 
 if [ "$appimage" = "yes" ]; then
-    log_file="${buildroot}/appimage-buildlog.txt"
+    log_file="${builddir}/appimage-buildlog.txt"
 else
-    log_file="${buildroot}/gpg4win-buildlog.txt"
+    log_file="${builddir}/gpg4win-buildlog.txt"
 fi
 
+
+# Run docker
+echo >&2 "running docker"
+set -x
 docker run -it --rm --user "$userid:$groupid" \
-    --volume ${gpg4win_dir}:/build \
-    $docker_image $cmd 2>&1 | tee ${buildroot}/build-log.txt
+       --volume "${srcdir}":/src:ro \
+       --volume "${builddir}":/build:rw \
+       $docker_image $cmd 2>&1 \
+    | tee -a ${builddir}/build-log.txt
 err="${PIPESTATUS[0]}"
+echo >&2 "docker finished. rc=$err"
 
 end_time=$(date +"%s")
-
 duration=$((end_time - start_time))
 hours=$((duration / 3600))
 minutes=$((duration % 3600 / 60))
@@ -275,18 +250,18 @@ if [ "$err" = "1" -a "$appimage" = "yes" ]; then
 fi
 
 if [ "$err" = "0" ]; then
-    mkdir -p "${srcdir}/artifacts"
+    # mkdir -p "${builddir}/artifacts"
     if [ "$appimage" = "yes" ]; then
-        results=$(find "${gpg4win_dir}" -maxdepth 1 -iname \*.appimage -a -type f -printf '%p ')
+        results=$(find "${builddir}" -maxdepth 1 -iname \*.appimage \
+                  -a -type f -printf '%p ')
     else
-        results=$(find "${gpg4win_dir}/src/installers" -type f -printf '%p ')
+        results=$(find "${builddir}/src/installers" -type f -printf '%p ')
     fi
     echo ""
     echo "#################### Success 🥳 ####################"
     echo "Created:"
     for result in $results; do
-        cp -i "$result" ${srcdir}/artifacts/
-        echo "${srcdir}/artifacts/$(basename $result)"
+        echo "${builddir}/artifacts/$(basename $result)"
     done
 else
     echo "#################### Failure 😪 ####################"
@@ -300,8 +275,3 @@ printf "%02d:%02d:%02d\n" "$hours" "$minutes" "$seconds"
 echo "Build command:"
 echo "${commandline}"
 echo "###################################################"
-
-if [ "$is_tmpbuild" = "yes" ]; then
-    echo "Do you want to remove ${buildroot}?"
-    rm -rI "${buildroot}";
-fi

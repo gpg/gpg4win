@@ -310,16 +310,17 @@ AC_CHECK_PROGS(WGET, wget)
 #
 # Set source and build directory.
 #
-if test $dockerbuild = yes ; then
-   TOPSRCDIR=/src
-   PLAYGROUND=/build
-else
-   TOPSRCDIR="mym4_tsdir"
-   AC_ARG_WITH([playground],
+# They are always set to the directories seen outside of the
+# container.  The Makefile then resets them to /src/and /build if run
+# inside docker.
+#
+TOPSRCDIR="mym4_tsdir"
+AC_ARG_WITH([playground],
        AS_HELP_STRING([--with-playground=DIR],
                       [Use DIR as the build directory]),
        [PLAYGROUND="$withval"], [PLAYGROUND=""])
-  if test -n "$PLAYGROUND" ; then
+
+if test -n "$PLAYGROUND" ; then
     if test ! -d "$PLAYGROUND"; then
         AC_MSG_ERROR([[
 ***
@@ -328,9 +329,8 @@ else
 ***]])
     fi
     PLAYGROUND="$(cd "$PLAYGROUND" && pwd)"
-  else
-    PLAYGROUND="$(dirname "$TOPSRCDIR")/b/$(basename "$TOPSRCDIR")-playground"
-  fi
+else
+    PLAYGROUND="${HOME}/b/$(basename "$TOPSRCDIR")-playground"
 fi
 AC_SUBST(TOPSRCDIR)
 AC_SUBST(PLAYGROUND)

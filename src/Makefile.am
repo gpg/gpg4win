@@ -37,7 +37,6 @@ EXTRA_DIST =  config.site                                      \
               icons/shield.ico                                 \
               kdeglobals qtlogging.ini                         \
               make-msi.pl make-msi.guids                       \
-              build-gpg4win.sh                                 \
               qt.conf                                          \
               WixUI_Gpg4win.wxs included-icons.txt             \
               zlib.pc
@@ -83,14 +82,8 @@ endef
 # tsdir    :: The top source directory.
 # patdir   :: The source directory with the patches.
 
-if DOCKERBUILD
 tsdir     := $(TOPSRCDIR)
 root      := $(PLAYGROUND)
-else
-tsdir     := ${abs_top_srcdir}
-root      := $(shell cd .. && pwd)-playground
-endif
-
 stampdir  := $(root)/stamps
 bdir      := $(root)/build
 idir      := $(root)/install
@@ -571,8 +564,8 @@ $(stampdir)/stamp-rtlib-files: Makefile
 	   cp $(gpg4win_rtlib_libstdc___6)        "$$f"; $(STRIP) "$$f";\
 	 fi; \
          f=libgcc_s_sjlj-1.dll-x ; test -f "$$f" && rm -f "$$f" ; \
-	 if test "$(gpg4win_rtlib_libgcc_s_seh_1)" != no ; then \
-	   cp $(gpg4win_rtlib_libgcc_s_seh_1)     "$$f"; $(STRIP) "$$f";\
+	 if test "$(gpg4win_rtlib_libgcc_s_sjlj-1)" != no ; then \
+	   cp $(gpg4win_rtlib_libgcc_s_sjlj_1)     "$$f"; $(STRIP) "$$f";\
 	 fi; \
          f=libgcc_s_dw2-1.dll-x ; test -f "$$f" && rm -f "$$f" ; \
 	 if test "$(gpg4win_rtlib_libgcc_s_dw2_1)" != no ; then \
@@ -582,6 +575,7 @@ $(stampdir)/stamp-rtlib-files: Makefile
 	 if test "$(gpg4win_rtlib_libgcc_s_seh_1)" != no ; then \
 	   cp $(gpg4win_rtlib_libgcc_s_seh_1)     "$$f"; $(STRIP) "$$f";\
 	 fi )
+	$(MKDIR) -p $(stampdir)
 	touch $(stampdir)/stamp-rtlib-files
 
 common_nsi = $(stampdir)/stamp-rtlib-files \

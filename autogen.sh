@@ -15,7 +15,7 @@
 # configure it for the respective package.  It is maintained as part of
 # GnuPG and source copied by other packages.
 #
-# Version: 2024-11-21
+# Version: 2024-12-03
 
 configure_ac="configure.ac"
 
@@ -335,6 +335,7 @@ if [ "$myhost" = "w32" ]; then
           extraoptions="$extraoptions $w32_extraoptions"
           ;;
     esac
+    w32root=$(echo "$w32root" | sed s,^//,/,)
     info "Using $w32root as standard install directory"
     replace_sysroot
 
