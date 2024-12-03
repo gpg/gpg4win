@@ -18,8 +18,8 @@ Noteworthy changes in Version 4.4.0 (2024-11-27)
 
 (en) Kleopatra: Encryption and decryption of large files is much faster.
      [T6351]
-(en) Kleopatra: It's possible to change the name of a decrypted file if another
-     file with the same name already exists. [T6851]
+(en) Kleopatra: It is now possible to change the name of a decrypted
+     file if another file with the same name already exists. [T6851]
 (en) Kleopatra: Files can be signed with multiple signatures. [T6867, T7273]
 (en) Kleopatra: All valid user IDs are listed for signing and encryption. This
      simplifies using certificates with multiple user IDs. [T7183]
@@ -127,7 +127,7 @@ Noteworthy changes in Version 4.4.0 (2024-11-27)
 (en) Kleopatra: Do not offer publication of revocations when revoking local
      certifications. [T6712]
 (en) Kleopatra: Don't show the root certificate twice when Kleo shows a
-     certificate with two certificates. [T6807]
+     certificate chain with two certificates. [T6807]
 (en) GpgOL: Don't show conformance status if "Do not sign this email" is
      selected in the security approval window. [T6808]
 (en) Kleopatra: Create OpenPGP certificates that are created from smartcard
@@ -192,8 +192,8 @@ to Version 4.3.1 (of Gpg4win).
 ~~~~~~~~~~~~~~~
 GnuPG:          2.4.7
 Kleopatra:      3.3.0
-GpgOL:          2.5.12
-GpgEX:          1.0.10
+GpgOL:          2.5.14
+GpgEX:          1.0.11
 Kompendium DE:  4.0.1
 Compendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
