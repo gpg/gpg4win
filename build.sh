@@ -255,7 +255,7 @@ if [ "$err" = "0" ]; then
     echo "#################### Success 🥳 ####################"
     echo "Created:"
     for result in $results; do
-        ln -sf -t "${srcdir}/artifacts/" "$result"
+        ln -sf -t "${builddir}/artifacts/" "$result"
         echo "${builddir}/artifacts/$(basename $result)"
     done
 else
