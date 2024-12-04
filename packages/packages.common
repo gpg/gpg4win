@@ -210,11 +210,11 @@ file pinentry/pinentry-1.3.1.tar.bz2
 chk bc72ee27c7239007ab1896c3c2fae53b076e2c9bd2483dc2769a16902bce8c04
 
 # gpgme
-# last changed: 2024-11-06
+# last changed: 2024-12-04
 # by: wk
-# verified: build tree
-file gpgme/gpgme-1.24.0.tar.bz2
-chk 61e3a6ad89323fecfaff176bc1728fb8c3312f2faa83424d9d5077ba20f5f7da
+# verified: swdb
+file gpgme/gpgme-1.24.1.tar.bz2
+chk ea05d0258e71061d61716584ec34cef59330a91340571edc46b78374973ba85f
 
 # GpgOL
 # last-changed: 2024-08-28
