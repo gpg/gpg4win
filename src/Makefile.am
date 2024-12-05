@@ -412,6 +412,7 @@ gpg4win_pkg_poppler_configure = \
     -DENABLE_GOBJECT_INTROSPECTION=OFF \
     -DENABLE_QT5=OFF \
     -DENABLE_LCMS=OFF \
+    -DENABLE_BOOST=OFF \
     -DENABLE_LIBCURL=OFF
 
 gpg4win_pkg_kcontacts_configure = \
@@ -469,22 +470,18 @@ VSD_VERSION=$(VERSION)
 -include gnupg-vsd/custom.mk
 
 
-PHONY: show-directory-info
-show-directory-info:
-        $(info -------------------------------------------------)
-        $(info Source .......: $(tsdir))
-        $(info Playground ...: $(root))
-        $(info Stamps at ....: $(stampdir))
-        $(info Building at ..: $(bdir))
-        $(info -------------------------------------------------)
-
-
 # The playground area is our scratch area, where we unpack, build and
 # install the packages.
 #
 # Boost includes are only needed during the build and are linked in the
 # playground install tree
-$(stampdir)/stamp-directories:  show-directory-info
+$(stampdir)/stamp-directories:
+        @echo -------------------------------------------------
+        @echo Source .......: $(tsdir)
+        @echo Playground ...: $(root)
+        @echo Stamps at ....: $(stampdir)
+        @echo Building at ..: $(bdir)
+	@echo -------------------------------------------------
 	$(MKDIR) -p $(root)
 	$(MKDIR) -p $(stampdir)
 	$(MKDIR) -p installers

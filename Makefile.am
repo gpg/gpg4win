@@ -56,6 +56,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh README.GIT ONEWS \
              patches/kjobwidgets/0001-Remove-knotification.patch \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
              patches/ktextaddons/0001-Remove-unused-QDbus-includes.patch \
+	     patches/mimetreeparser/fix-build-error-in-202412051138.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/lower-cmake-requirement.patch \

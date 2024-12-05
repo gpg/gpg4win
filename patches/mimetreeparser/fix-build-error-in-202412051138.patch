@@ -1,0 +1,16 @@
+#! /bin/sh
+patch -p0 -l -f $* < $0
+exit $?
+
+
+--- src/core/messageparser.cpp~ 2024-12-05 02:33:24.000000000 +0100
++++ src/core/messageparser.cpp  2024-12-05 12:39:19.758707965 +0100
+@@ -186,7 +186,7 @@
+         if (!header) {
+             return {};
+         }
+-        return mailboxesToHtml({header->mailbox()});
++        return mailboxesToHtml(header->mailboxes());
+     }
+
+    return QString();
