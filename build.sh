@@ -37,6 +37,7 @@ Options:
         --shell         Start a shell instead of starting the build script
         --builddir=DIR  Directory where the build should take place
                         (default is ../b/foo-playground)
+        --force         Force configure run
         --update-image  Update the docker image before build
         --user=name     Use NAME as FTP server user
         --git-pkgs      Use latest git versions for the frontend
@@ -77,6 +78,7 @@ update_image="no"
 w64="yes"
 fromgit="no"
 builddir="${HOME}/b/$(basename "$srcdir")-playground"
+force=no
 ftpuser=
 # Get UID for use by docker.
 userid=$(id -u)
@@ -103,6 +105,7 @@ while [ $# -gt 0 ]; do
         --update-image|--update-img|-u) update_image="yes";;
         --w32) w64="no";;
         --w64) w64="yes";;
+        --force) force="yes";;
         --git|-g|--git-pkgs)       fromgit="yes";;
         --builddir|--builddir=*) builddir="${optarg}" ;;
         --user|--user=*)           ftpuser="${optarg}"  ;;
@@ -169,7 +172,14 @@ download_packages() {
 if [ "$indocker" = yes ]; then
     # NB: In docker the builddir is always /build and the source /src
     cd /build
-    if [ "$w64" = "yes" ]; then
+    if [ ! -f config.status ]; then
+        force=yes
+    elif [ /src/configure -nt config.status ]; then
+        force=yes
+    fi
+    if [ $force = no ]; then
+         echo >&2 "$PGM: Not running configure (--force not used)"
+    elif [ "$w64" = "yes" ]; then
         /src/autogen.sh --build-w64
     else
         /src/autogen.sh --build-w32
@@ -191,6 +201,7 @@ else
     else
         cmd="/src/build.sh --w32"
     fi
+    [ $force = yes ] && cmd="$cmd --force"
     docker_image=g10-build-gpg4win:bookworm
     dockerfile=${srcdir}/docker/gpg4win-bookworm
 fi
@@ -219,9 +230,10 @@ start_time=$(date +"%s")
 log_file="${builddir}/build-log.txt"
 
 
-# Run docker but create the build directory first so that dcoker does
+# Run docker but create the build directory first so that docker does
 # not create it with root as owner.
 [ -d "${builddir}" ] || mkdir -p "${builddir}"
+[ -d "${builddir}/po" ] || mkdir -p "${builddir}/po"
 docker_cmdline="run -it --rm --user $userid:$groupid"
 docker_cmdline="$docker_cmdline --volume "${srcdir}":/src:ro"
 docker_cmdline="$docker_cmdline --volume "${builddir}":/build:rw"
