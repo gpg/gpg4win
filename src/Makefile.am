@@ -476,11 +476,11 @@ VSD_VERSION=$(VERSION)
 # Boost includes are only needed during the build and are linked in the
 # playground install tree
 $(stampdir)/stamp-directories:
-        @echo -------------------------------------------------
-        @echo Source .......: $(tsdir)
-        @echo Playground ...: $(root)
-        @echo Stamps at ....: $(stampdir)
-        @echo Building at ..: $(bdir)
+	@echo -------------------------------------------------
+	@echo Source .......: $(tsdir)
+	@echo Playground ...: $(root)
+	@echo Stamps at ....: $(stampdir)
+	@echo Building at ..: $(bdir)
 	@echo -------------------------------------------------
 	$(MKDIR) -p $(root)
 	$(MKDIR) -p $(stampdir)
@@ -547,7 +547,7 @@ clean-local: $(gpg4win_clean)
 # some of them.  The dependency on the Makefile is to avoid the need
 # for a clean in some situations.
 $(stampdir)/stamp-rtlib-files: Makefile
-	(set -x; \
+	( \
 	 f=libwinpthread-1.dll-ex ; test -f "$$f" && rm -f "$$f" ; \
 	 if test "$(gpg4win_rtlib_ex_libwinpthread_1)" != no ; then \
 	   cp $(gpg4win_rtlib_ex_libwinpthread_1) "$$f"; $(STRIP_EX) "$$f";\

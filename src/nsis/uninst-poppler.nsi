@@ -22,7 +22,7 @@
 
 ; Uninstaller section.
 Section "-un.poppler"
-  Delete "$INSTDIR\bin\libpoppler-138.dll"
+  Delete "$INSTDIR\bin\libpoppler-144.dll"
   Delete "$INSTDIR\bin\libpoppler-qt6-3.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd
