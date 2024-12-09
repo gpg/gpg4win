@@ -594,9 +594,9 @@ $(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
 # duplicate entries in case one package has been rebuild (which is
 # common when developing a new version).
 versioninfo.txt:
-	$(SHA1SUM) $(pkg_files) </dev/null > versioninfo.tmp
+	$(srcdir)/mk-sbom.sh -- $(pkg_files) > versioninfo.tmp
 	set -e; \
-	( while read a b; do echo "$$a $$(basename $$b)"; \
+	( while read a b c; do echo "$$a $$(basename $$b)"; \
             done < versioninfo.tmp \
           | sort -k2 -sf | tac | uniq -f1 ; \
           echo '=========== SHA-1 checksum ============= == package ==' \
