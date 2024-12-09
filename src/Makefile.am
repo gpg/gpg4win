@@ -104,7 +104,7 @@ foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll desktopshellrun.o versioninfo.txt \
 			 $(HOWTO_files) NEWS.tmp COMPONENTS-list.tmp \
-			 license.blurb cdversioninfo.tmp slideshow.o \
+			 license.blurb versioninfo.tmp slideshow.o \
 			 $(foosum_exe) gpgwrap.exe
 
 # Supported source packages. (see also ../appimage/Makefile.am)
@@ -616,9 +616,9 @@ $(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
 # duplicate entries in case one package has been rebuild (which is
 # common when developing a new version).
 versioninfo.txt:
-	$(SHA1SUM) $(pkg_files) </dev/null > versioninfo.tmp
+	$(srcdir)/mk-sbom.sh -- $(pkg_files) > versioninfo.tmp
 	set -e; \
-	( while read a b; do echo "$$a $$(basename $$b)"; \
+	( while read a b c; do echo "$$a $$(basename $$b)"; \
             done < versioninfo.tmp \
           | sort -k2 -sf | tac | uniq -f1 ; \
           echo '=========== SHA-1 checksum ============= == package ==' \
