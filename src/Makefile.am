@@ -26,7 +26,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         BreezeClassic.colors BreezeDark.colors \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
 	zlib.pc sha1sum.c \
-        potomo Memento.nsh \
+        potomo Memento.nsh mk-sbom.sh \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
         inst-gettext.nsi	   uninst-gettext.nsi	      \
         inst-gnupg-w32.nsi	   uninst-gnupg-w32.nsi	      \
@@ -596,7 +596,7 @@ $(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
 versioninfo.txt:
 	$(srcdir)/mk-sbom.sh -- $(pkg_files) > versioninfo.tmp
 	set -e; \
-	( while read a b c; do echo "$$a $$(basename $$b)"; \
+	( while read a b c; do echo "$$a $$b $$c"; \
             done < versioninfo.tmp \
           | sort -k2 -sf | tac | uniq -f1 ; \
           echo '=========== SHA-1 checksum ============= == package ==' \
