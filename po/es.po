@@ -257,9 +257,21 @@ msgid ""
 "Do you want to continue installing Gpg4win without administrator rights?"
 msgstr ""
 
-msgctxt "T_KillUserVisibleApps"
-msgid "Closing applications using Gpg4win plugins."
+#, fuzzy
+msgctxt "T_CloseOtherApps"
+msgid ""
+"Please make sure that other applications are not running. In particular you "
+"should close Outlook and all Explorer windows.  Gpg4win will try to install "
+"anyway but a reboot will be required then."
 msgstr ""
+"Por favor asegúrese que otras aplicaciones no están ejecutándose.  En "
+"especial, cierre Outlook y las ventanas del Explorador de Windows. Gpg4Win "
+"intentará instalarse de todas formas, pero será necesario que reinicie su "
+"sistema una vez terminado el proceso. "
+
+msgctxt "T_ShuttingDownWinPT"
+msgid "Trying to shutdown a possible running instance of WinPT."
+msgstr "Intentado cerrar instancias de WinPT que podrían estar ejecutándose."
 
 msgctxt "T_FoundOldClaws"
 msgid ""
@@ -283,6 +295,10 @@ msgstr ""
 
 msgctxt "T_UPDATE_STR"
 msgid "Updating Version"
+msgstr ""
+
+msgctxt "T_ONLYX64"
+msgid "This software only runs on 64 bit Windows."
 msgstr ""
 
 msgctxt "T_Installing_GnuPG"
@@ -423,23 +439,6 @@ msgstr ""
 msgctxt "DESC_Menu_gpgpass"
 msgid "Run the GnuPG Password Manager"
 msgstr "Ejecutar el gestor de llaves"
-
-#, fuzzy
-#~ msgctxt "T_CloseOtherApps"
-#~ msgid ""
-#~ "Please make sure that other applications are not running. In particular "
-#~ "you should close Outlook and all Explorer windows.  Gpg4win will try to "
-#~ "install anyway but a reboot will be required then."
-#~ msgstr ""
-#~ "Por favor asegúrese que otras aplicaciones no están ejecutándose.  En "
-#~ "especial, cierre Outlook y las ventanas del Explorador de Windows. "
-#~ "Gpg4Win intentará instalarse de todas formas, pero será necesario que "
-#~ "reinicie su sistema una vez terminado el proceso. "
-
-#~ msgctxt "T_ShuttingDownWinPT"
-#~ msgid "Trying to shutdown a possible running instance of WinPT."
-#~ msgstr ""
-#~ "Intentado cerrar instancias de WinPT que podrían estar ejecutándose."
 
 #~ msgctxt "T_ShowReadme"
 #~ msgid "Show the README file"
