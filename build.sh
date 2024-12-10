@@ -40,6 +40,7 @@ Options:
         --force         Force configure run
         --update-image  Update the docker image before build
         --user=name     Use NAME as FTP server user
+        --download      Download packages first
         --git-pkgs      Use latest git versions for the frontend
                         packages:
                         gpgme libkleo kleopatra gpgol gpgol.js
@@ -76,10 +77,13 @@ srcdir=$(cd $(dirname $0); pwd)
 is_tmpbuild="no"
 update_image="no"
 w64="yes"
+download="no"
 fromgit="no"
 builddir="${HOME}/b/$(basename "$srcdir")-playground"
 force=no
 ftpuser=
+verbose=
+quiet=
 # Get UID for use by docker.
 userid=$(id -u)
 groupid=$(id -g)
@@ -106,14 +110,18 @@ while [ $# -gt 0 ]; do
         --w32) w64="no";;
         --w64) w64="yes";;
         --force) force="yes";;
-        --git|-g|--git-pkgs)       fromgit="yes";;
+        --download) download="yes";;
+        --git|-g|--git-pkgs)     fromgit="yes";;
         --builddir|--builddir=*) builddir="${optarg}" ;;
-        --user|--user=*)           ftpuser="${optarg}"  ;;
+        --user|--user=*)         ftpuser="${optarg}"  ;;
+        --verbose|-v)            verbose=yes          ;;
         --*) usage 1 1>&2; exit 1;;
         *) skipshift=1; break ;;
     esac
     [ -z "$skipshift" ] && shift
 done
+
+[ -z "$verbose" ] && quiet="--quiet"
 
 # Check whether we are running in the docker container.
 if [ -d /src/src -a -d /src/patches -a -d /build ]; then
@@ -143,24 +151,25 @@ mimetreeparser"
 # for the main GUI components.
 download_packages() {
     if [ "$indocker" = yes ]; then
-        echo >&2 "error downloading files from docker is not possible"
+        echo >&2 "$PGM: error: downloading files from docker is not possible"
         exit 2
     fi
 
     cd packages
 
     if [ "$fromgit" = yes ]; then
-        echo >&2 "Creating new tarballs and updating packages file ... "
+        echo >&2 "$PGM: Creating new tarballs and updating packages file ... "
         myargs=
         [ -n "$ftpuser" ]  && myargs="$myargs --user=$ftpuser"
         ./gen-tarball.sh $myargs -u $FRONTEND_PKGS
-        echo >&2 "Done"
+        echo >&2 "$PGM: Generating tarballs done"
     fi
 
-    echo "Downloading packages"
+    echo "$PGM: Downloading packages"
     myargs=
     [ "$gpg22" = yes ] && myargs="$myargs --v3"
-    ./download.sh --quiet $myargs
+    ./download.sh $quiet $myargs
+    echo >&2 "$PGM: downloading done"
 
     cd ..
 }
@@ -184,6 +193,7 @@ if [ "$indocker" = yes ]; then
     else
         /src/autogen.sh --build-w32
     fi
+    export CMAKE_COLOR_DIAGNOSTICS=OFF
     make TOPSRCDIR=/src PLAYGROUND=/build
     exit $?
 fi # (end of script use inside the docker container) #
@@ -211,8 +221,8 @@ drep=$(echo $docker_image | cut -d : -f 1)
 dtag=$(echo $docker_image | cut -d : -f 2)
 if [ -z "$(docker images | grep $drep | grep $dtag)" \
      -o "$update_image" = "yes" ]; then
-    echo >&2 "Local image $docker_image not found"
-    echo >&2 "Building docker image"
+    echo >&2 "$PGM: Local image $docker_image not found"
+    echo >&2 "$PGM: Building docker image"
     docker build -t $docker_image $dockerfile 2>&1
 fi
 
@@ -221,9 +231,10 @@ fi
 # if not used try to download first.
 if [ "$shell" = "yes" ]; then
     cmd="bash"
+elif [ "$download" = yes ]; then
+    download_packages
 else
-    echo >&2 "skipping download for now"
-    # download_packages
+    echo >&2 "$PGM: package download skipped"
 fi
 
 start_time=$(date +"%s")
@@ -241,7 +252,7 @@ docker_cmdline="$docker_cmdline $docker_image $cmd"
 echo >&2 "$PGM: running: docker $docker_cmdline"
 docker $docker_cmdline 2>&1 | tee -a ${log_file}
 err="${PIPESTATUS[0]}"
-echo >&2 "docker finished. rc=$err"
+echo >&2 "$PGM: docker finished. rc=$err"
 
 end_time=$(date +"%s")
 duration=$((end_time - start_time))
@@ -251,7 +262,7 @@ seconds=$((duration % 60))
 buildtime=$(printf "%02d:%02d:%02d\n" "$hours" "$minutes" "$seconds")
 
 if [ "$err" = "1" -a "$appimage" = "yes" ]; then
-    echo "Return value is 1 on AppImage build. Treating it as success."
+    echo >&2 "$PGM: Return code 1 on AppImage build.  Treating as success."
     err=0
 fi
 
@@ -263,19 +274,17 @@ if [ "$err" = "0" ]; then
     else
         results=$(find "${builddir}/src/installers" -type f -printf '%p ')
     fi
-    echo ""
-    echo "#################### Success 🥳 ####################"
-    echo "Created:"
+    echo >&2 ""
+    echo >&2 "$PGM: ############### Success 🥳 ####################"
     for result in $results; do
         ln -sf -t "${builddir}/artifacts/" "$result"
-        echo "${builddir}/artifacts/$(basename $result)"
+        echo >&2 "$PGM: Created: ${builddir}/artifacts/$(basename $result)"
     done
 else
-    echo "#################### Failure 😪 ####################"
-    echo "Command returned: $err"
+    echo >&2 "$PGM: ############### Failure 😪 ####################"
 fi
 
-echo "Logfile: ${log_file}"
-echo "Build command: ${commandline}"
-echo "Build time: $buildtime"
-echo "###################################################"
+echo >&2 "$PGM: Logfile: ${log_file}"
+echo >&2 "$PGM: Build command: ${commandline}"
+echo >&2 "$PGM: Build time: $buildtime"
+echo >&2 "$PGM: ##############################################"
