@@ -185,11 +185,11 @@ $(1) = $$(shell \
     if test -f $$$${HOME}/.gnupg-autogen.rc; then \
         grep '^[[:blank:]]*$(1)[[:blank:]]*=' $$$${HOME}/.gnupg-autogen.rc \
             | cut -d= -f2 | xargs; \
-    elif test -f $(top_srcdir)/.gnupg-autogen.rc; then \
-        grep '^[[:blank:]]*$(1)[[:blank:]]*=' $(top_srcdir)/.gnupg-autogen.rc \
+    elif test -f $(tsdir)/.gnupg-autogen.rc; then \
+        grep '^[[:blank:]]*$(1)[[:blank:]]*=' $(tsdir)/.gnupg-autogen.rc \
             | cut -d= -f2 | xargs; \
     else \
-        echo "Warning: .gnupg-autogen.rc not found in HOME or $(top_srcdir)" \
+        echo "Warning: .gnupg-autogen.rc not found in HOME or $(tsdir)" \
              >&2; \
         echo ""; \
     fi)
@@ -831,11 +831,11 @@ endef
 
 
 define HOWTO_template
-HOWTO-$(1).$(2).txt : $(top_srcdir)/doc/HOWTO-$(1).$(2).txt
+HOWTO-$(1).$(2).txt : $(tsdir)/doc/HOWTO-$(1).$(2).txt
 	sed -e '/^;.*/d' \
         -e 's,!VERSION!,$(VERSION),g' \
 	-e 's,!BUILD_ISODATE!,$(BUILD_ISODATE),g' \
-	   < $(top_srcdir)/doc/HOWTO-$(1).$(2).txt \
+	   < $(tsdir)/doc/HOWTO-$(1).$(2).txt \
         | awk '{printf "%s\r\n", $$$$0}' > HOWTO-$(1).$(2).txt
 endef
 
@@ -1018,20 +1018,20 @@ endef
 
 # Sign the file $1 and save the result as $2
 define AUTHENTICODE_sign
-	$(abs_top_srcdir)/build-aux/gpg-authcode-sign.sh "$(1)" "$(2)"
+	$(tsdir)/build-aux/gpg-authcode-sign.sh "$(1)" "$(2)"
 endef
 
 # Generic MSI targets (same for each flavor)
 $(MSI_FNAME_PREFIX)-$(VERSION).wxs: $(common_nsi) $(stampdir)/stamp-final \
     $(foosum_exe) gpgwrap.exe \
     make-msi.pl \
-    $(addsuffix /VERSION.sig,$(addprefix gnupg-vsd/,$(msi_targets)))
-	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
+    $(addsuffix /VERSION.sig,$(addprefix $(vsddir)/,$(msi_targets)))
+	perl make-msi.pl --guids $(sdir)/make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
 		--version $(VSD_VERSION) \
 		--name "$(MSI_PRODUCT_NAME)" \
-		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
-		-DSRCDIR=$(srcdir) $(srcdir)/nsis/gpg4win.nsi > $(MSI_FNAME_PREFIX)-$(VERSION).wxs
+		-DBUILD_DIR=. -DTOP_SRCDIR=$(tsdir) \
+		-DSRCDIR=$(sdir) $(sdir)/nsis/gpg4win.nsi > $(MSI_FNAME_PREFIX)-$(VERSION).wxs
 
 $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib: \
       $(stampdir)/stamp-final \
@@ -1045,7 +1045,7 @@ $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib: \
 	echo "$(VERSION)" >> $(root)/VERSION; \
 	(ln -s $(idir) $$WINEINST; \
 	 ln -s $(ex_idir) $$WINEINSTEX; \
-	 ln -s `readlink -f $(top_srcdir)` $$WINESRC; \
+	 ln -s `readlink -f $(tsdir)` $$WINESRC; \
 		$(WINE) $$WIXPREFIX2/candle.exe \
 		-dInstDir=k: \
 		-dInstDirEx=j: \
@@ -1082,8 +1082,8 @@ define MSI_template
 $(1)-package: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 
 installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
-       gnupg-vsd/$(1)/license.rtf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
-	scp gnupg-vsd/$(1)/license.rtf \
+       $(vsddir)/$(1)/license.rtf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
+	scp $(vsddir)/$(1)/license.rtf \
              $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
     scp $(idir)/$(1).wixlib \
              $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
@@ -1118,32 +1118,32 @@ installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: $(stampdir)/stamp-m
 $(1)-wine: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1)-wine.msi
 
 installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1)-wine.msi: $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
-	gnupg-vsd/$(1)/license.rtf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
+	$(vsddir)/$(1)/license.rtf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
 	($(call SETVARS_WINE); \
 	( set -x; set -e;\
 	workdir="$(idir)/$(1)-msi" || exit 1; \
 	mkdir -p $$$$workdir || exit 1; \
-	cp $(top_srcdir)/packages/gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
+	cp $(tsdir)/packages/gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
 	   $$$$workdir || exit 1; \
-	cp $(top_srcdir)/src/icons/shield.ico $$$$workdir || exit 1; \
-	cp $(top_srcdir)/doc/logo/gpg4win-msi-header_install-493x58.bmp \
+	cp $(tsdir)/src/icons/shield.ico $$$$workdir || exit 1; \
+	cp $(tsdir)/doc/logo/gpg4win-msi-header_install-493x58.bmp \
 	   $$$$workdir/header.bmp || exit 1; \
-	cp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+	cp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
 	   $$$$workdir/dialog.bmp || exit 1; \
-	cp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+	cp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
 	   $$$$workdir/dialog.bmp || exit 1; \
-	cp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
+	cp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
 	   $$$$workdir/info.bmp || exit 1; \
-	cp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
+	cp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
 	   $$$$workdir/exclamation.bmp || exit 1; \
-	cp $(top_srcdir)/po/gpg4win-en.wxl $$$$workdir || exit 1; \
-	cp $(top_srcdir)/po/gpg4win-de.wxl $$$$workdir || exit 1; \
+	cp $(tsdir)/po/gpg4win-en.wxl $$$$workdir || exit 1; \
+	cp $(tsdir)/po/gpg4win-de.wxl $$$$workdir || exit 1; \
 	cp $(call GETVAR,msi_target_$(1)_branding)/*.bmp . || exit 1;\
 	cp WixUI_Gpg4win.wxs $$$$workdir || exit 1; \
 	ln -sf $$$$workdir $$$$WINEINST || exit 1; \
 	cd $$$$workdir || exit 1; \
 	ln -sf $(idir)/$(1).wixlib || exit 1; \
-	ln -sf $(abs_top_srcdir)/src/gnupg-vsd/$(1)/license.rtf || exit 1;\
+	ln -sf $(vsddir)/$(1)/license.rtf || exit 1;\
 	ln -sf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib || exit 1; \
 	LC_ALL=C WINEDEBUG=+timestamp,+loaddll,+debugstr,msi+all $(WINE) $$$$WIXPREFIX2/light.exe \
 	-cc . \
@@ -1168,12 +1168,12 @@ installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1)-wine.msi: $(stampdir)/st
 	fi \
 	)
 
-$(idir)/$(1).wixlib: gnupg-vsd/$(1)/$(1).wxs
+$(idir)/$(1).wixlib: $(vsddir)/$(1)/$(1).wxs
 	($(call SETVARS_WINE,); \
 	( \
 	ln -s $(idir) $$$$WINEINST; \
 	ln -s $(ex_idir) $$$$WINEINSTEX; \
-	ln -s `readlink -f $(top_srcdir)` $$$$WINESRC; \
+	ln -s `readlink -f $(tsdir)` $$$$WINESRC; \
 		$(WINE) $$$$WIXPREFIX2/candle.exe \
 		-dInstDir=k: \
 		-dInstDirEx=j: \
@@ -1197,60 +1197,60 @@ $(idir)/$(1).wixlib: gnupg-vsd/$(1)/$(1).wxs
 	)
 
 # This is generated by make-msi.pl
-gnupg-vsd/$(1)/$(1).wxs: gnupg-vsd/$(1)/VERSION.sig make-msi.pl $(MSI_FNAME_PREFIX)-$(VERSION).wxs
-	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
+$(vsddir)/$(1)/$(1).wxs: $(vsddir)/$(1)/VERSION.sig make-msi.pl $(MSI_FNAME_PREFIX)-$(VERSION).wxs
+	perl make-msi.pl --guids $(sdir)/make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
 		--version $(VSD_VERSION) \
 		--name "$(MSI_PRODUCT_NAME)" \
-		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
-		-DSRCDIR=$(srcdir) $(srcdir)/nsis/gpg4win.nsi > /dev/null
+		-DBUILD_DIR=. -DTOP_SRCDIR=$(tsdir) \
+		-DSRCDIR=$(sdir) $(sdir)/nsis/gpg4win.nsi > /dev/null
 
-gnupg-vsd/$(1)/VERSION.sig: gnupg-vsd/$(1)/VERSION
+$(vsddir)/$(1)/VERSION.sig: $(vsddir)/$(1)/VERSION
 	echo "----------SIGNING----------"
 	echo "using key: $(VERSION_SIGNKEY)"
-	cat gnupg-vsd/$(1)/VERSION
-	gpg --yes -o gnupg-vsd/$(1)/VERSION.sig -bau $(VERSION_SIGNKEY) gnupg-vsd/$(1)/VERSION
+	cat $(vsddir)/$(1)/VERSION
+	gpg --yes -o $(vsddir)/$(1)/VERSION.sig -bau $(VERSION_SIGNKEY) $(vsddir)/$(1)/VERSION
 
-gnupg-vsd/$(1)/VERSION: gnupg-vsd/custom.mk $(stampdir)/stamp-betanum
-	echo "[Kleopatra]" > gnupg-vsd/$(1)/VERSION
+$(vsddir)/$(1)/VERSION: $(vsddir)/custom.mk $(stampdir)/stamp-betanum
+	echo "[Kleopatra]" > $(vsddir)/$(1)/VERSION
 	if [ "$(call GETVAR,msi_target_$(1)_VERSION)" = "VS-Desktop-$(VSD_VERSION)" ]; then \
-		echo "version=VS-Desktop-$(VSD_VERSION_FILE)" >> gnupg-vsd/$(1)/VERSION; \
+		echo "version=VS-Desktop-$(VSD_VERSION_FILE)" >> $(vsddir)/$(1)/VERSION; \
 	else \
-		echo "version=$(call GETVAR,msi_target_$(1)_VERSION)" >> gnupg-vsd/$(1)/VERSION;\
+		echo "version=$(call GETVAR,msi_target_$(1)_VERSION)" >> $(vsddir)/$(1)/VERSION;\
 	fi
-	echo "shortDescription=$(call GETVAR,msi_target_$(1)_DESC)" >> gnupg-vsd/$(1)/VERSION
-	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> gnupg-vsd/$(1)/VERSION
-	echo "bugAddress=$(VSD_BUG_REPORT)" >> gnupg-vsd/$(1)/VERSION
-	echo "homepage=$(VSD_HOMEPAGE)" >> gnupg-vsd/$(1)/VERSION
-	echo "copyrightStatement=<pre><pre/>" >> gnupg-vsd/$(1)/VERSION
+	echo "shortDescription=$(call GETVAR,msi_target_$(1)_DESC)" >> $(vsddir)/$(1)/VERSION
+	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> $(vsddir)/$(1)/VERSION
+	echo "bugAddress=$(VSD_BUG_REPORT)" >> $(vsddir)/$(1)/VERSION
+	echo "homepage=$(VSD_HOMEPAGE)" >> $(vsddir)/$(1)/VERSION
+	echo "copyrightStatement=<pre><pre/>" >> $(vsddir)/$(1)/VERSION
 	if [ -n "$(call GETVAR,msi_target_$(1)_statusline)" ]; then \
-		echo "statusline=$(call GETVAR,msi_target_$(1)_statusline)" >> gnupg-vsd/$(1)/VERSION; \
+		echo "statusline=$(call GETVAR,msi_target_$(1)_statusline)" >> $(vsddir)/$(1)/VERSION; \
 	fi
 	if [ -n "$(call GETVAR,msi_target_$(1)_uidcomment)" ]; then \
-		echo "uidcomment=$(call GETVAR,msi_target_$(1)_uidcomment)" >> gnupg-vsd/$(1)/VERSION; \
+		echo "uidcomment=$(call GETVAR,msi_target_$(1)_uidcomment)" >> $(vsddir)/$(1)/VERSION; \
 	fi
-	echo "" >> gnupg-vsd/$(1)/VERSION
-	echo "[Okular]" >> gnupg-vsd/$(1)/VERSION
+	echo "" >> $(vsddir)/$(1)/VERSION
+	echo "[Okular]" >> $(vsddir)/$(1)/VERSION
 	if [ "$(call GETVAR,msi_target_$(1)_VERSION)" = "VS-Desktop-$(VSD_VERSION)" ]; then \
-		echo "version=VS-Desktop-$(VSD_VERSION_FILE)" >> gnupg-vsd/$(1)/VERSION; \
+		echo "version=VS-Desktop-$(VSD_VERSION_FILE)" >> $(vsddir)/$(1)/VERSION; \
 	else \
-		echo "version=$(call GETVAR,msi_target_$(1)_VERSION)" >> gnupg-vsd/$(1)/VERSION;\
+		echo "version=$(call GETVAR,msi_target_$(1)_VERSION)" >> $(vsddir)/$(1)/VERSION;\
 	fi
-	echo "shortDescription=$(call GETVAR,msi_target_$(1)_DESC)" >> gnupg-vsd/$(1)/VERSION
-	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> gnupg-vsd/$(1)/VERSION
-	echo "bugAddress=$(VSD_BUG_REPORT)" >> gnupg-vsd/$(1)/VERSION
-	echo "homepage=$(VSD_HOMEPAGE)" >> gnupg-vsd/$(1)/VERSION
-	echo "displayName=$(OKULAR_DISPLAY_NAME)" >> gnupg-vsd/$(1)/VERSION
+	echo "shortDescription=$(call GETVAR,msi_target_$(1)_DESC)" >> $(vsddir)/$(1)/VERSION
+	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> $(vsddir)/$(1)/VERSION
+	echo "bugAddress=$(VSD_BUG_REPORT)" >> $(vsddir)/$(1)/VERSION
+	echo "homepage=$(VSD_HOMEPAGE)" >> $(vsddir)/$(1)/VERSION
+	echo "displayName=$(OKULAR_DISPLAY_NAME)" >> $(vsddir)/$(1)/VERSION
 
-gnupg-vsd/$(1)/announcement.txt: gnupg-vsd/custom.mk gnupg-vsd/announcement.de.in gnupg-vsd/announcement.en.in
-	cat gnupg-vsd/$(call GETVAR,msi_target_$(1)_announcement) | \
+$(vsddir)/$(1)/announcement.txt: $(vsddir)/custom.mk $(vsddir)/announcement.de.in $(vsddir)/announcement.en.in
+	cat $(vsddir)/$(call GETVAR,msi_target_$(1)_announcement) | \
 		sed 's/VSD_VERSION/$(VSD_VERSION)/' | \
 		sed 's@GNUPG_VSD_CUSTOMER_LINK@https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi@' | \
-		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.xz@' > gnupg-vsd/$(1)/announcement.txt
+		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.xz@' > $(vsddir)/$(1)/announcement.txt
 
 signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 	mkdir -p signed_installers
-	$$(abs_top_srcdir)/build-aux/authenticode-sign.sh --stamp \
+	$$(tsdir)/build-aux/authenticode-sign.sh --stamp \
            --desc="$(MSI_PRODUCT_NAME)" \
            "installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi" \
            "signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi"
@@ -1260,17 +1260,17 @@ $(stampdir)/stamp-$(1)-upload: signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSI
 	@(set -e; cd signed_installers; \
           sha256sum $(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi > \
 		$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi.sha256; \
-	  if [ -f "../gnupg-vsd/$(1)/customer-enc-key.asc" ]; then \
+	  if [ -f "$(vsddir)/$(1)/customer-enc-key.asc" ]; then \
 		echo "Encrypting installer"; \
-	        k="-f ../gnupg-vsd/$(1)/customer-enc-key.asc" ; \
+	        k="-f $(vsddir)/$(1)/customer-enc-key.asc" ; \
                 for i in 2 3 4 5 6 7 8 9; do \
-	          if [ -f "../gnupg-vsd/$(1)/customer-enc-key$$$${i}.asc" ]; then \
-                    k="$$$${k} -f ../gnupg-vsd/$(1)/customer-enc-key$$$${i}.asc";\
+	          if [ -f "$(vsddir)/$(1)/customer-enc-key$$$${i}.asc" ]; then \
+                    k="$$$${k} -f $(vsddir)/$(1)/customer-enc-key$$$${i}.asc";\
 		  fi; \
 	        done; \
 		gpg --no-options --batch --yes -seu $(msi_signkey) \
 			$$$${k} \
-			-f "../gnupg-vsd/general-enc-key.asc" \
+			-f "$(vsddir)/general-enc-key.asc" \
                         -o $(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi.gpg \
 			$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi;\
 		sha256sum $(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi.gpg > \
@@ -1299,10 +1299,10 @@ $(1): installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 
 .PHONY : $(1)-upload
 $(1)-upload: $(stampdir)/stamp-$(1)-upload $(stampdir)/stamp-dist-self
-	gpg --yes -o gnupg-vsd-$(VERSION).tar.xz.sig -bau $(msi_signkey) \
+	gpg --yes -o $(vsddir)-$(VERSION).tar.xz.sig -bau $(msi_signkey) \
 		../gpg4win-$(VERSION).tar.xz
 	rsync -vP ../gpg4win-$(VERSION).tar.xz $(VSD_PUBLISH_HOST)/src/$(MSI_FNAME_PREFIX)-$(VERSION).tar.xz
-	rsync -vP gnupg-vsd-$(VERSION).tar.xz.sig $(VSD_PUBLISH_HOST)/src/$(MSI_FNAME_PREFIX)-$(VERSION).tar.xz.sig
+	rsync -vP $(vsddir)-$(VERSION).tar.xz.sig $(VSD_PUBLISH_HOST)/src/$(MSI_FNAME_PREFIX)-$(VERSION).tar.xz.sig
 	echo "Upload URLs:"
 	cat $(stampdir)/stamp-$(1)-upload
 	echo "Source links:"
@@ -1311,10 +1311,10 @@ $(1)-upload: $(stampdir)/stamp-$(1)-upload $(stampdir)/stamp-dist-self
 
 $(1)-signed: signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 
-$(1)-announce: gnupg-vsd/$(1)/announcement.txt
+$(1)-announce: $(vsddir)/$(1)/announcement.txt
 	set -x
 	echo "-------- Announcement for $(1) ---------"
-	cat gnupg-vsd/$(1)/announcement.txt
+	cat $(vsddir)/$(1)/announcement.txt
 	echo "-----------------------------"
 	echo "Send to: $(call GETVAR,msi_target_$(1)_contact)"
 	echo "Ticket: $(call GETVAR,msi_target_$(1)_ticket)"
@@ -1375,7 +1375,7 @@ clean-gpg4win:
 	$(RM) -fR $(root) $(stampdir)
 
 $(stampdir)/stamp-versions-all-signed: $(stampdir)/stamp-directories \
-	$(addsuffix /VERSION.sig, $(addprefix gnupg-vsd/,$(msi_targets)))
+	$(addsuffix /VERSION.sig, $(addprefix $(vsddir)/,$(msi_targets)))
 	touch $(stampdir)/stamp-versions-all-signed
 
 $(stampdir)/stamp-all-upload: $(stampdir)/stamp-dist-self \
@@ -1403,7 +1403,7 @@ msi: $(stampdir)/stamp-versions-all-signed \
 		echo "######################"; \
 	fi
 
-$(stampdir)/stamp-msi-all-signed: gnupg-vsd/sign.mk \
+$(stampdir)/stamp-msi-all-signed: $(vsddir)/sign.mk \
 	$(addsuffix .msi,$(addprefix signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-,$(msi_targets)))
 	touch $(stampdir)/stamp-msi-all-signed
 

@@ -52,19 +52,12 @@ endif
 
 SUBDIRS = ${appimage} nsis
 
-# This template is used to include standard GNU make files. See below
-# for a description.
-define INCLUDE_BY_MAKE
-include $(1)
-endef
-
-# Define macros for the various directories.
-#### $(eval $(call INCLUDE_BY_MAKE,setupvars.mk))
-
 # Define macros for the various directories.  These directory names
 # must be absolute, as we switch pretty often between them and don't
 # want to track relative names.  The directories are created as needed
-# by the $(stampdir)/stamp-directories target.
+# by the $(stampdir)/stamp-directories target.  tsdir and sdir are
+# used instead of the predefined top_srcdir and srcdir so that we can
+# override them using make variables
 #
 # root     :: Our build root.  The make variable PLAYGROUND can be used
 #             to override the default.
@@ -80,7 +73,8 @@ endef
 #             build platform itself.
 # nat_ipdir:: Likewise for $(ipdir).
 # tsdir    :: The top source directory.
-# patdir   :: The source directory with the patches.
+# sdir     :: The source directory src/ below tsdir.
+# patdir   :: The source directory patches/ below tsdir.
 
 tsdir     := $(TOPSRCDIR)
 root      := $(PLAYGROUND)
@@ -92,7 +86,30 @@ ex_idir   := $(root)/install-ex
 ex_ipdir  := $(root)/install-ex/pkgs
 nat_idir  := $(root)/install-native
 nat_ipdir := $(root)/install-native/pkgs
+sdir      := $(tsdir)/src
+vsddir    := $(tsdir)/src/gnupg-vsd
 patdir    := $(tsdir)/patches
+
+
+$(info -------------------------------------------------)
+$(info Topsource ....: $(tsdir))
+$(info Source .......: $(sdir))
+$(info Playground ...: $(root))
+$(info Stamps at ....: $(stampdir))
+$(info Building at ..: $(bdir))
+$(info -------------------------------------------------)
+
+
+# This template is used to include standard GNU make files. See below
+# for a description.
+define INCLUDE_BY_MAKE
+include $(1)
+endef
+
+# Define macros for the various directories.
+$(eval $(call INCLUDE_BY_MAKE,setupvars.mk))
+
+
 
 gpg4win_howto_smime_ll = en de
 
@@ -467,7 +484,7 @@ gpg4win_bpkgs = pkgconfig gnupg-w32
 VSD_VERSION=$(VERSION)
 
 # Include installer targets for customized packages
--include gnupg-vsd/custom.mk
+-include $(vsddir)/custom.mk
 
 
 # The playground area is our scratch area, where we unpack, build and
@@ -502,28 +519,28 @@ $(stampdir)/stamp-directories:
 	touch $(stampdir)/stamp-directories
 
 
-$(stampdir)/stamp-msi-base: icons/shield.ico Makefile.am \
-                       $(top_srcdir)/doc/logo/gpg4win-msi*.bmp \
-                       $(top_srcdir)/po/gpg4win-de.wxl \
-                       $(top_srcdir)/po/gpg4win-en.wxl
+$(stampdir)/stamp-msi-base: $(sdir)/icons/shield.ico $(sdir)/Makefile.am \
+                       $(tsdir)/doc/logo/gpg4win-msi*.bmp \
+                       $(tsdir)/po/gpg4win-de.wxl \
+                       $(tsdir)/po/gpg4win-en.wxl
 	ssh $(WINHOST) "mkdir AppData\\Local\\Temp\\gpg4win-$(VERSION)" || true
-	scp $(top_srcdir)/packages/gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
+	scp $(tsdir)/packages/gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
 		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION);
-	scp $(top_srcdir)/src/icons/shield.ico \
+	scp $(tsdir)/src/icons/shield.ico \
                 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	scp $(top_srcdir)/doc/logo/gpg4win-msi-header_install-493x58.bmp \
+	scp $(tsdir)/doc/logo/gpg4win-msi-header_install-493x58.bmp \
 		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/header.bmp
-	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+	scp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
 		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/dialog.bmp
-	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+	scp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
 		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/dialog.bmp
-	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
+	scp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
 		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/info.bmp
-	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
+	scp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
 		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/exclamation.bmp
-	scp $(top_srcdir)/po/gpg4win-en.wxl \
+	scp $(tsdir)/po/gpg4win-en.wxl \
                 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	scp $(top_srcdir)/po/gpg4win-de.wxl \
+	scp $(tsdir)/po/gpg4win-de.wxl \
                 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
 	scp WixUI_Gpg4win.wxs \
                 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
@@ -616,7 +633,7 @@ $(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
 # duplicate entries in case one package has been rebuild (which is
 # common when developing a new version).
 versioninfo.txt:
-	$(srcdir)/mk-sbom.sh -- $(pkg_files) > versioninfo.tmp
+	$(sdir)/mk-sbom.sh -- $(pkg_files) > versioninfo.tmp
 	set -e; \
 	( while read a b c; do echo "$$a $$b $$c"; \
             done < versioninfo.tmp \
@@ -625,26 +642,26 @@ versioninfo.txt:
          ) | tac | awk '{printf "%s\r\n", $$0}' > versioninfo.txt
 	-rm versioninfo.tmp
 
-NEWS.tmp : $(top_srcdir)/NEWS
+NEWS.tmp : $(tsdir)/NEWS
 	 awk '/^#/ {next} /^\(de\)/ {skip=1;next} /^[^[:space:]]/ {skip=0} \
              !skip { sub(/^\(en\)/,"   *"); print }' \
-             <$(top_srcdir)/NEWS >NEWS.tmp
+             <$(tsdir)/NEWS >NEWS.tmp
 
-NEWS.de : $(top_srcdir)/NEWS
+NEWS.de : $(tsdir)/NEWS
 	 awk '/^#/ {next} /^\(en\)/ {skip=1;next} /^[^[:space:]]/ {skip=0} \
              !skip { sub(/^\(de\)/,"-"); print }' \
-             <$(top_srcdir)/NEWS >NEWS.de; \
+             <$(tsdir)/NEWS >NEWS.de; \
      sed -i 's/^     /  /' NEWS.de
 
-NEWS.en : $(top_srcdir)/NEWS
+NEWS.en : $(tsdir)/NEWS
 	 awk '/^#/ {next} /^\(de\)/ {skip=1;next} /^[^[:space:]]/ {skip=0} \
              !skip { sub(/^\(en\)/,"-"); print }'  \
-             <$(top_srcdir)/NEWS >NEWS.en; \
+             <$(tsdir)/NEWS >NEWS.en; \
      sed -i 's/^     /  /' NEWS.en
 
-COMPONENTS-list.tmp : $(top_srcdir)/NEWS
+COMPONENTS-list.tmp : $(tsdir)/NEWS
 	awk '/^~~~~~~~~~~~/ { ok++; next} ok==1 {print "    "$$0}' \
-            < $(top_srcdir)/NEWS > COMPONENTS-list.tmp
+            < $(tsdir)/NEWS > COMPONENTS-list.tmp
 
 # For some nut-crazy reason someone thought it would be a great idea
 # if makensis changed to the directory of the source file at startup.
@@ -657,9 +674,9 @@ installers/gpg4win-$(VERSION)$(W64SUFFIX).exe: \
 			$(HOWTO_files) \
 	                license.blurb versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_W64=$(BUILD_W64) -DBUILD_DIR=`pwd` \
-                    -DTOP_SRCDIR=$(top_srcdir) \
-                    -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
-                    $(srcdir)/nsis/gpg4win.nsi \
+                    -DTOP_SRCDIR=$(tsdir) \
+                    -DSRCDIR=$(sdir) $(EXTRA_MAKENSIS_FLAGS) \
+                    $(sdir)/nsis/gpg4win.nsi \
 	  && mv gpg4win-$(VERSION).exe \
                 installers/gpg4win-$(VERSION)$(W64SUFFIX).exe
 
@@ -667,19 +684,19 @@ $(stampdir)/stamp-dist-self: versioninfo.txt
 	(set -e; cd ..; make dist-xz)
 	touch $(stampdir)/stamp-dist-self
 
-license.blurb: $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3
-	cat $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3 >$@
+license.blurb: $(tsdir)/doc/license-page $(tsdir)/doc/GPLv3
+	cat $(tsdir)/doc/license-page $(tsdir)/doc/GPLv3 >$@
 
 g4wihelp.dll: slideshow.cpp desktopshellrun.cpp g4wihelp.c exdll.h
 	$(W32CC32) -DUNICODE -static-libgcc -I. -O2 -c \
-              -o exdll.o $(srcdir)/exdll.c
+              -o exdll.o $(sdir)/exdll.c
 	$(W32CC32) -DUNICODE -static-libgcc -I. -O2 -c \
-              -o desktopshellrun.o $(srcdir)/desktopshellrun.cpp
+              -o desktopshellrun.o $(sdir)/desktopshellrun.cpp
 	$(W32CC32) -DUNICODE -static-libgcc -I. -O2 -c \
-              -o slideshow.o $(srcdir)/slideshow.cpp
+              -o slideshow.o $(sdir)/slideshow.cpp
 	$(W32CC32) -DUNICODE -DENABLE_SLIDE_SHOW -static-libgcc \
               -I. -shared -O2 \
-              -o g4wihelp.dll $(srcdir)/g4wihelp.c \
+              -o g4wihelp.dll $(sdir)/g4wihelp.c \
 	      desktopshellrun.o slideshow.o exdll.o \
               -lwinmm -lgdi32 -luserenv -lshell32 \
               -lole32 -loleaut32 -lshlwapi -lmsimg32
