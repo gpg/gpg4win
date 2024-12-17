@@ -41,6 +41,7 @@ Options:
         --update-image  Update the docker image before build
         --user=name     Use NAME as FTP server user
         --download      Download packages first
+        --runcmd CMD    Run a command via a pair of FIFOs
         --git-pkgs      Use latest git versions for the frontend
                         packages:
                         gpgme libkleo kleopatra gpgol gpgol.js
@@ -78,6 +79,7 @@ is_tmpbuild="no"
 update_image="no"
 w64="yes"
 download="no"
+runcmd="no"
 fromgit="no"
 builddir="${HOME}/b/$(basename "$srcdir")-playground"
 force=no
@@ -111,6 +113,7 @@ while [ $# -gt 0 ]; do
         --w64) w64="yes";;
         --force) force="yes";;
         --download) download="yes";;
+        --runcmd)   runcmd="yes";;
         --git|-g|--git-pkgs)     fromgit="yes";;
         --builddir|--builddir=*) builddir="${optarg}" ;;
         --user|--user=*)         ftpuser="${optarg}"  ;;
@@ -173,6 +176,34 @@ download_packages() {
 
     cd ..
 }
+
+
+# Run a command using the FIFOs.  This needs to be called via a FIFO
+# from the docker.  Note that we don't explicit serialize access to the
+# FIFO, hopefully no parallel make rules are run.
+if [ "$runcmd" = yes ]; then
+    if [ "$indocker" != yes ]; then
+        echo >&2 "$PGM: Option --runcmd must be called from docker"
+        echo >&2 "$PGM: Available commands are:"
+        echo >&2 "$PGM:   ping    - Wait for a pong"
+        echo >&2 "$PGM:   gpg     - Run a gpg command"
+        echo >&2 "$PGM:   msibase - prepare MSI linking"
+        exit 2
+    fi
+    # Running in docker
+    if [ -z "$1" ]; then
+        echo >&2 "usage: /src/build.sh --runcmd COMMAND ARGS"
+        exit 2
+    fi
+    [ -f /build/S.build.sh-rc ] && rm /build/S.build.sh-rc
+    echo "$@" >/build/S.build.sh-in
+    cat /build/S.build.sh-out
+    while [ ! -f /build/S.build.sh-rc ]; do sleep 0.05; done
+    rc=$(sed -ne 's/EXITSTATUS=\([0-9]*\).*$/\1/p' \
+             </build/S.build.sh-rc 2>/dev/null || true)
+    [ -z "$rc" ] && rc=0
+    exit $rc
+fi
 
 
 # Check whether we are in the docker image run appropriate commands.
@@ -240,14 +271,150 @@ fi
 start_time=$(date +"%s")
 log_file="${builddir}/build-log.txt"
 
+# Kill the given process and all its descendants
+killtree() {
+    local parent=$1 child
+    for child in $(ps -o ppid= -o pid= | awk "\$1==$parent {print \$2}"); do
+        killtree $child
+    done
+    kill $parent
+}
 
-# Run docker but create the build directory first so that docker does
-# not create it with root as owner.
+
+# Remove FIFO files.
+remove_fifos() {
+  [ -e "${builddir}/S.build.sh-in" ] && rm "${builddir}/S.build.sh-in"
+  [ -e "${builddir}/S.build.sh-out" ] && rm "${builddir}/S.build.sh-out"
+  return 0
+}
+
+
+# Create FIFO files.
+create_fifos() {
+  remove_fifos
+  mkfifo -m 600 "${builddir}/S.build.sh-in"
+  mkfifo -m 600 "${builddir}/S.build.sh-out"
+  return 0
+}
+
+
+# Make sure we have a build directory and the fifos so that docker
+# does not create it with root as owner.
 [ -d "${builddir}" ] || mkdir -p "${builddir}"
 [ -d "${builddir}/po" ] || mkdir -p "${builddir}/po"
+create_fifos
+
+# Function to stop our command runner
+runnerpid=
+stop_runner() {
+    printf >&2 -- "$PGM: stop-runner called\n"
+    if [ -n "$runnerpid" ]; then
+        echo >&2 "$PGM: stopping runner ..."
+        killtree $runnerpid
+        runnerpid=
+        remove_fifos
+    fi
+    return 0
+}
+
+
+# Run a gpg command
+runner_cmd_gpg() {
+    local cmd="$1"
+
+    # Fixme: This sed expression is not robust enough.
+    cmd=$(echo "$cmd"|sed -e "s, /build/, $builddir/,g" -e "s, /src/, $srcdir,g")
+    printf >&2 -- "$PGM(runner): invoking gpg\n"
+    set +e
+    $cmd </dev/null
+    rc=$?
+    set -e
+    printf >&2 -- "$PGM(runner): gpg returned $rc\n"
+    return 0
+}
+
+
+# Copy some files to the Windows hos to prepare the MSI linking
+# Args are
+runner_cmd_msibase() {
+    local winhost="$1" version="$1" gnupgmsi="$3"
+
+    ssh "$winhost" "mkdir AppData\\Local\\Temp\\gpg4win-$version" || true
+    scp "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
+	"$winhost":AppData/Local/Temp/gpg4win-"$version";
+    scp "$srcdir"/src/icons/shield.ico \
+        "$winhost":AppData/Local/Temp/gpg4win-"$version"
+    scp "$srcdir"/doc/logo/gpg4win-msi-header_install-493x58.bmp \
+	"$winhost":AppData/Local/Temp/gpg4win-"$version"/header.bmp
+    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+	"$winhost":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
+    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+	"$winhost":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
+    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
+	"$winhost":AppData/Local/Temp/gpg4win-"$version"/info.bmp
+    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
+	"$winhost":AppData/Local/Temp/gpg4win-"$version"/exclamation.bmp
+    scp "$srcdir"/po/gpg4win-en.wxl \
+        "$winhost":AppData/Local/Temp/gpg4win-"$version"
+    scp "$srcdir"/po/gpg4win-de.wxl \
+        "$winhost":AppData/Local/Temp/gpg4win-"$version"
+    scp WixUI_Gpg4win.wxs \
+        "$winhost":AppData/Local/Temp/gpg4win-"$version"
+    rc=0
+    return 0
+}
+
+
+# Run a command received from the fifo.  Args are command and the line
+# with args for the command.
+runner_exec_cmd() {
+    local cmd="$1" line="$2" rc
+    #printf >&2 -- "$PGM: cmd='%s' line='%s'\n" "$cmd" "$line"
+    # The called functions need to set RC to the desired exit status
+    rc=42
+    case "$cmd" in
+        ping) echo pong; rc=0 ;;
+        gpg)  runner_cmd_gpg "gpg $line" ;;
+        msibase) runner_cmd_msibase $line ;;
+        *)    echo "$PGM(runner): $cmd: no such command"; rc=4 ;;
+    esac
+    echo >&2 "$PGM: runner cmd '$cmd' returned $rc"
+    # Make sure that we have a final LF in the output and then write
+    # the error line
+    echo
+    echo "EXITSTATUS=$rc" > "${builddir}/S.build.sh-rc"
+    return 0
+}
+
+
+# Start our FIFO command runner.
+runner_loop() {
+   echo >&2 "$PGM: command runner started pid=$$"
+   while : ; do
+       if read -r cmd line < "${builddir}/S.build.sh-in" ; then
+           echo >&2 "$PGM(runner): executing cmd"
+           runner_exec_cmd "$cmd" "$line" >"${builddir}/S.build.sh-out" &
+           echo >&2 "$PGM(runner): waiting for cmd"
+           wait
+           echo >&2 "$PGM(runner): cmd finished"
+       fi
+   done
+   echo >&2 "$PGM: command runner stopped"
+   exit 0
+}
+
+# Start our FIFO command runner
+trap stop_runner EXIT SIGTERM SIGINT SIGHUP
+runner_loop &
+runnerpid=$!
+echo >&2 "$PGM: command runner pid is $runnerpid"
+
+
+# Run docker
 docker_cmdline="run -it --rm --user $userid:$groupid"
-docker_cmdline="$docker_cmdline --volume "${srcdir}":/src:ro"
-docker_cmdline="$docker_cmdline --volume "${builddir}":/build:rw"
+docker_cmdline="$docker_cmdline -v "${srcdir}":/src:ro"
+docker_cmdline="$docker_cmdline -v "${builddir}":/build:rw"
+docker_cmdline="$docker_cmdline -v "$HOME/.gnupg-autogen.rc":/.gnupg-autogen.rc:ro"
 docker_cmdline="$docker_cmdline $docker_image $cmd"
 echo >&2 "$PGM: running: docker $docker_cmdline"
 docker $docker_cmdline 2>&1 | tee -a ${log_file}
