@@ -1243,14 +1243,30 @@ sub dump_all
 
             my $sourcefull;
             $sourcefull = $file->{source};
-            $sourcefull =~ s/playground\/install-ex/\$(var.InstDirEx)/;
-            $sourcefull =~ s/playground\/install/\$(var.InstDir)/;
-            $sourcefull =~ s/\.\//\$(var.SrcDir)\//;
-            $sourcefull =~ s/\//\\/g;
+            print STDERR "dump_all: file{source}='$sourcefull'\n";
+
+
+            if ($sourcefull =~ /^\.\.\/install/ )
+            {
+                $sourcefull =~ s,^\.\./install-ex/,\$(var.InstDirEx)/,;
+                $sourcefull =~ s,^\.\./install/,\$(var.InstDir)/,;
+            }
+            elsif ($sourcefull =~ /^\/src\// )
+            {
+                $sourcefull =~ s,^/src/src/,\$(var.SrcDir)/,;
+            }
+            else
+            {
+                $sourcefull =~ s,^./,\$(var.BldDir)/,;
+                $sourcefull =~ s,^../,\$(var.BldDir)/../,;
+            }
+            $sourcefull =~ s,/,\\,g;
+
             print ' ' x $::level
             . "  <File Id='f_$pkg->{name}_$fileidx' Name='"
             . $file->{target} ."' KeyPath='yes'" . " Source='" .
             $sourcefull . "'";
+            print STDERR "dump_all:       result='$sourcefull'\n";
 
             if ($targetfull eq 'bin_64\\gpgol.dll' or
                 $targetfull eq 'bin_64\\gpgex.dll')
@@ -1629,6 +1645,10 @@ EOF
     }
 }
 
+
+# Scan the provided directory and return an array with all file names.
+# Also modify the absolute directory by replacing /build by /src and
+# do a listing there too.
 sub scan_dir {
     my ($workdir) = @_;
 
@@ -1637,6 +1657,9 @@ sub scan_dir {
     my ($startdir) = &cwd; # keep track of where we began
 
     chdir($workdir) or die "Unable to enter dir $workdir:$!\n";
+    my ($workdir2) = &cwd;
+    $workdir2 =~ s,/build/,/src/,;
+
     opendir(DIR, ".") or die "Unable to open $workdir:$!\n";
     my @names = readdir(DIR) or die "Unable to read $workdir:$!\n";
     closedir(DIR);
@@ -1656,6 +1679,27 @@ sub scan_dir {
         push (@ret, $abspath);
     }
 
+    chdir($workdir2) or die "Unable to enter dir $workdir2:$!\n";
+
+    opendir(DIR, ".") or die "Unable to open $workdir2:$!\n";
+    @names = readdir(DIR) or die "Unable to read $workdir2:$!\n";
+    closedir(DIR);
+
+    foreach my $name (@names){
+        next if ($name eq ".");
+        next if ($name eq "..");
+
+        my $abspath = "$workdir2/$name";
+
+        if (-d "$abspath") {
+            foreach my $subname (&scan_dir($name)) {
+                push (@ret, $subname);
+            }
+            next;
+        }
+        push (@ret, $abspath);
+    }
+
     chdir($startdir) or
         die "Unable to change to dir $startdir:$!\n";
     return @ret;
@@ -1665,21 +1709,34 @@ sub dump_help {
     my ($workdir) = @_;
     my $custom_name = basename($workdir);
     open (FILE, ">$workdir/$custom_name.wxs") or
-        die "Can't create $custom_name.wxs:$!\n";
+        die "Can't create $workdir/$custom_name.wxs:$!\n";
     my $fileidx = 0;
+
+    print STDERR "dump_help: workdir='$workdir' custom_name='$custom_name'\n";
 
     foreach my $file (&scan_dir($workdir)) {
         my $basename = basename($file);
         my $dirname = "HelpDataFolder";
+        my $sourcefull;
 
         if ($basename =~ /^\./) {
             next;
         }
 
         my $guid = get_tmp_guid ($file);
-        my $sourcefull = "\$(var.SrcDir)/" . $file;
-        $sourcefull =~ s/.*\/src\//\$(var.SrcDir)\//;
-        $sourcefull =~ s/\//\\/g;
+
+        if ($file =~ /^\/src\// )
+        {
+            $sourcefull = "\$(var.SrcDir)/" . $file;
+            $sourcefull =~ s,.*/src/,\$(var.SrcDir)/,;
+        }
+        else
+        {
+            $sourcefull = "\$(var.BldDir)/" . $file;
+            $sourcefull =~ s,.*/src/,\$(var.BldDir)/,;
+        }
+        $sourcefull =~ s,/,\\,g;
+        # print STDERR "dump_help:   file='$file' fullsrc='$sourcefull'\n";
 
         my $custom_name_us=$custom_name;
         $custom_name_us =~ s/-/_/;
@@ -1696,6 +1753,7 @@ sub dump_help {
 
         $fileidx += 1;
     }
+
     close FILE;
 }
 
@@ -1706,6 +1764,9 @@ sub dump_single_custom {
 
     $fname = "$workdir/$custom_name.wxs";
     open (FILE, ">$fname" ) or die "creating '$fname' failed: $!\n";
+
+    # print STDERR "dump_single: workdir='$workdir' custom_name='$custom_name'\n";
+
     print FILE <<EOF;
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
@@ -1726,12 +1787,14 @@ sub dump_single_custom {
    <Fragment>
     <ComponentGroup Id="c_customization">
 EOF
+
    print STDERR "Including: help or desktop-help\n";
    if ($::product_name eq 'GnuPG Desktop') {
        $fname =  "$workdir/../desktop-help/desktop-help.wxs";
    } else {
        $fname =  "$workdir/../help/help.wxs";
    }
+
    open (INCFILE, "<$fname") or die "open '$fname' failed: $!\n";
    while (<INCFILE>)
    {
@@ -1744,6 +1807,7 @@ EOF
     foreach my $file (&scan_dir($workdir)) {
         my $basename = basename($file);
         my $dirname = dirname($file);
+        my $sourcefull;
 
         if ($basename eq "$custom_name.wxs") {
             next;
@@ -1770,8 +1834,8 @@ EOF
         }
 
         if ($basename =~ /.+\.wxs\.include$/) {
-           print STDERR "Including $basename for $custom_name\n";
-           $fname = "$workdir/$basename";
+           print STDERR "Including: $basename for $custom_name\n";
+           $fname = "$::vsddir/$workdir/$basename";
            open (INCFILE, "<$fname") or die "open '$fname' failed: $!\n";
            while (<INCFILE>)
            {
@@ -1781,9 +1845,20 @@ EOF
         }
 
         my $guid = get_tmp_guid ($file);
-        my $sourcefull = "\$(var.SrcDir)/" . $file;
-        $sourcefull =~ s/.*\/src\//\$(var.SrcDir)\//;
-        $sourcefull =~ s/\//\\/g;
+
+        if ($file =~ /^\/src\// )
+        {
+            $sourcefull = "\$(var.SrcDir)/" . $file;
+            $sourcefull =~ s,.*/src/,\$(var.SrcDir)/,;
+        }
+        else
+        {
+            $sourcefull = "\$(var.BldDir)/" . $file;
+            $sourcefull =~ s,.*/src/,\$(var.BldDir)/,;
+        }
+        $sourcefull =~ s,/,\\,g;
+        # print STDERR "dump_single_custom:   file='$file' fullsrc='$sourcefull'\n";
+
         my $mode = "";
 
         if ($dirname =~ /trusted-certs$/) {
@@ -1958,6 +2033,9 @@ while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
     }
 }
 
+
+$::vsddir = nsis_fetch ($parser, 'VSDDIR');
+
 dump_customs("gnupg-vsd");
 
 if ($#ARGV < 0)
@@ -2079,7 +2157,7 @@ print <<EOF;
     <!-- Turn on logging
         <Property Id="MsiLogging" Value="gnupg-desktop"/>
     -->
-    <Icon Id="shield.ico" SourceFile="shield.ico"/>
+    <Icon Id="shield.ico" SourceFile="\$(var.SrcDir)/icons/shield.ico"/>
     <Property Id="ARPPRODUCTICON" Value="shield.ico"/>
 
     <WixVariable Id="WixUIBannerBmp" Value="header.bmp" />

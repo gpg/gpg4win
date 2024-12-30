@@ -174,6 +174,11 @@ else
   MSI_PRODUCT_NAME := GnuPG VS-Desktop
 endif
 
+
+# Common helpers
+empty :=
+space := $(empty) $(empty)
+
 # We collect the names of all pkg files used.
 pkg_files =
 
@@ -291,91 +296,6 @@ define SETVARS_NATIVE
 	export SYSROOT="$(nat_idir)"
 endef
 
-# Set variables for use with Wine.
-define SETVARS_WINE
-	set -e; \
-	if [ -z "$$$$(which $(WINE))" ]; then \
-	    echo "ERROR: For the msi-package wine needs to be installed."; \
-	exit 1; \
-	fi; \
-	if [ -z "$(WIXPREFIX)" ]; then \
-	    if [ -d `readlink -f ~/w32root/wixtools` ]; then \
-		WIXPREFIX2=`readlink -f ~/w32root/wixtools`; \
-		echo "Using $$$$WIXPREFIX2 as WIXPREFIX"; \
-            else \
-		echo "ERROR: You must set WIXPREFIX to an installation of wixtools."; \
-		exit 1; \
-	    fi; \
-	else \
-	    WIXPREFIX2="$(WIXPREFIX)"; \
-	fi; \
-	if [ -z "$$$$WINEPREFIX" ]; then \
-	    WINEPREFIX="$$$$HOME/.wine"; \
-	    if [ ! -e "$$$$WINEPREFIX/dosdevices" ]; then \
-		echo "ERROR: No wine prefix found under $$WINEPREFIX"; \
-		exit 1; \
-	    fi; \
-	fi; \
-	WINEINST=$$$$WINEPREFIX/dosdevices/k:; \
-	WINESRC=$$$$WINEPREFIX/dosdevices/i:; \
-	WINEINSTEX=$$$$WINEPREFIX/dosdevices/j:; \
-	if [ -e "$$$$WINEINST" ]; then \
-	    echo "ERROR: $$$$WINEINST already exists. Please remove."; \
-	    exit 1; \
-	fi; \
-	if [ -e "$$$$WINESRC" ]; then \
-	    echo "ERROR: $$$$WINESRC already exists. Please remove."; \
-	    exit 1; \
-	fi; \
-	if [ -e "$$$$WINEINSTEX" ]; then \
-	    echo "ERROR: $$$$WINEINSTEX already exists. Please remove."; \
-	    exit 1; \
-	fi; \
-	MSI_VERSION=$$$$(echo $(VSD_VERSION))
-endef
-
-# Same as above (kludge)
-define SETVARS_WINE_TWO_DOLLAR
-	set -e; \
-	if [ -z "$$(which $(WINE))" ]; then \
-	    echo "ERROR: For the msi-package wine needs to be installed."; \
-	exit 1; \
-	fi; \
-	if [ -z "$(WIXPREFIX)" ]; then \
-	    if [ -d `readlink -f ~/w32root/wixtools` ]; then \
-		WIXPREFIX2=`readlink -f ~/w32root/wixtools`; \
-		echo "Using $$WIXPREFIX2 as WIXPREFIX"; \
-	    else \
-		echo "ERROR: You must set WIXPREFIX to an installation of wixtools."; \
-		exit 1; \
-	    fi; \
-	else \
-	    WIXPREFIX2="$(WIXPREFIX)"; \
-	fi; \
-	if [ -z "$$WINEPREFIX" ]; then \
-	    WINEPREFIX="$$HOME/.wine"; \
-	    if [ ! -e "$$WINEPREFIX/dosdevices" ]; then \
-		echo "ERROR: No wine prefix found under $$WINEPREFIX"; \
-		exit 1; \
-	    fi; \
-	fi; \
-	WINEINST=$$WINEPREFIX/dosdevices/k:; \
-	WINESRC=$$WINEPREFIX/dosdevices/i:; \
-	WINEINSTEX=$$WINEPREFIX/dosdevices/j:; \
-	if [ -e "$$WINEINST" ]; then \
-	    echo "ERROR: $$WINEINST already exists. Please remove."; \
-	    exit 1; \
-	fi; \
-	if [ -e "$$WINESRC" ]; then \
-	    echo "ERROR: $$WINESRC already exists. Please remove."; \
-	    exit 1; \
-	fi; \
-	if [ -e "$$WINEINSTEX" ]; then \
-	    echo "ERROR: $$WINEINSTEX already exists. Please remove."; \
-	    exit 1; \
-	fi; \
-	MSI_VERSION=$$(echo $(VSD_VERSION))
-endef
 
 # Support macro.  Unpack the archive $(1).
 define DEFLATE_macro
@@ -1024,56 +944,28 @@ endef
 # Generic MSI targets (same for each flavor)
 $(MSI_FNAME_PREFIX)-$(VERSION).wxs: $(common_nsi) $(stampdir)/stamp-final \
     $(foosum_exe) gpgwrap.exe \
-    make-msi.pl \
-    $(addsuffix /VERSION.sig,$(addprefix $(vsddir)/,$(msi_targets)))
-	perl make-msi.pl --guids $(sdir)/make-msi.guids \
+    $(sdir)/make-msi.pl \
+    $(addsuffix /VERSION.sig,$(addprefix $(msidir)/,$(msi_targets)))
+	cp $(sdir)/make-msi.guids make-msi.guids
+	perl $(sdir)/make-msi.pl --guids make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
 		--version $(VSD_VERSION) \
 		--name "$(MSI_PRODUCT_NAME)" \
-		-DBUILD_DIR=. -DTOP_SRCDIR=$(tsdir) \
-		-DSRCDIR=$(sdir) $(sdir)/nsis/gpg4win.nsi > $(MSI_FNAME_PREFIX)-$(VERSION).wxs
+		-DBUILD_DIR=. -DTOP_SRCDIR=$(tsdir) -DVSDDIR=$(vsddir) \
+		-DSRCDIR=$(sdir) \
+                $(sdir)/nsis/gpg4win.nsi > $(MSI_FNAME_PREFIX)-$(VERSION).wxs
 
 $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib: \
-      $(stampdir)/stamp-final \
-      $(foosum_exe) \
-      license.blurb \
-      WixUI_Gpg4win.wxs \
-      $(MSI_FNAME_PREFIX)-$(VERSION).wxs \
-      $(stampdir)/stamp-additional-signedfiles
-	($(call SETVARS_WINE_TWO_DOLLAR,); \
+	      $(stampdir)/stamp-final \
+	      $(foosum_exe) \
+	      license.blurb \
+	      WixUI_Gpg4win.wxs \
+	      $(MSI_FNAME_PREFIX)-$(VERSION).wxs \
+	      $(stampdir)/stamp-additional-signedfiles
 	echo "Gpg4win" > $(root)/VERSION; \
 	echo "$(VERSION)" >> $(root)/VERSION; \
-	(ln -s $(idir) $$WINEINST; \
-	 ln -s $(ex_idir) $$WINEINSTEX; \
-	 ln -s `readlink -f $(tsdir)` $$WINESRC; \
-		$(WINE) $$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$MSI_VERSION \
-		-out k:\\$(MSI_FNAME_PREFIX)-$(VERSION).wixobj \
-		-pedantic -wx i:\\src\\$(MSI_FNAME_PREFIX)-$(VERSION).wxs \
-		-arch x64 || exit 1;\
-		$(WINE) $$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$MSI_VERSION \
-		-out k:\\gpg4win-ui.wixobj \
-		-arch x64 \
-		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
-		\
-		$(WINE) $$WIXPREFIX2/lit.exe \
-		-out k:\\$(MSI_FNAME_PREFIX)-$(VERSION).wixlib \
-		-bf \
-		-wx \
-		-pedantic \
-		k:\\$(MSI_FNAME_PREFIX)-$(VERSION).wixobj k:\\gpg4win-ui.wixobj || exit 1; \
-		\
-	) || ERR=1; (rm $$WINEINST; rm $$WINESRC; rm $$WINEINSTEX); \
-	if [ -n "$$ERR" ]; then \
-		exit 1; \
-	fi)
+	$(RUNCMD) litcandle std \
+                  $(VERSION) $(MSI_FNAME_PREFIX) $(idir) $(ex_idir)
 
 # Custom targets for each msi_target flavor.
 # Processed via eval as most other templates.
@@ -1081,31 +973,20 @@ define MSI_template
 
 $(1)-package: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 
-installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
-       $(vsddir)/$(1)/license.rtf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
-	scp $(vsddir)/$(1)/license.rtf \
-             $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-    scp $(idir)/$(1).wixlib \
-             $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-    scp $(call GETVAR,msi_target_$(1)_branding)/*.bmp \
-             $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-    scp $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-    ssh $(WINHOST) "cd AppData/Local/Temp/gpg4win-$(VERSION) && $(WINLIGHT) \
-    -cc . \
-    -reusecab \
-    -spdb \
-    -ext WixUIExtension \
-    -ext WixUtilExtension \
-    -out $(MSI_FNAME_PREFIX)-$(VERSION)-$(1).msi \
-     $(call GETVAR,msi_target_$(1)_l10n) \
-    -dcl:high \
-    -pedantic \
-     \
-     $(MSI_FNAME_PREFIX)-$(VERSION).wixlib \
-     gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
-     $(1).wixlib" | grep -v "ICE80" | grep -v "ICE57" ; \
-     scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/$(MSI_FNAME_PREFIX)-$(VERSION)-$(1).msi \
-     installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi;
+# Copy the reqquired files to the Windows Host, run light.exe on that host
+# and copy the result into the installers directory.
+installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: \
+     $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
+     $(vsddir)/$(1)/license.rtf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
+	$(RUNCMD) cptowinhost $(VERSION) $(vsddir)/$(1)/license.rtf \
+                  $(idir)/$(1)-$(VERSION).wixlib \
+                  $(vsddir)/../$(call GETVAR,msi_target_$(1)_branding)/*.bmp \
+                  $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
+	$(RUNCMD) lightwinhost $(VERSION) $(MSI_FNAME_PREFIX) $(1) \
+                  $(subst $(space),%20,$(call GETVAR,msi_target_$(1)_l10n)) \
+                  $(gpg4win_pkg_gnupg_msi_version)
+	$(RUNCMD) cpfromwinhost $(VERSION) $(MSI_FNAME_PREFIX) $(1) \
+                  $(VSD_VERSION_FILE)
 
 
 # Running light.exe in WINE triggers the error:
@@ -1119,7 +1000,7 @@ $(1)-wine: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1)-wine.msi
 
 installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1)-wine.msi: $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
 	$(vsddir)/$(1)/license.rtf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
-	($(call SETVARS_WINE); \
+	(
 	( set -x; set -e;\
 	workdir="$(idir)/$(1)-msi" || exit 1; \
 	mkdir -p $$$$workdir || exit 1; \
@@ -1168,85 +1049,64 @@ installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1)-wine.msi: $(stampdir)/st
 	fi \
 	)
 
-$(idir)/$(1).wixlib: $(vsddir)/$(1)/$(1).wxs
-	($(call SETVARS_WINE,); \
-	( \
-	ln -s $(idir) $$$$WINEINST; \
-	ln -s $(ex_idir) $$$$WINEINSTEX; \
-	ln -s `readlink -f $(tsdir)` $$$$WINESRC; \
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
-		-out k:\\$(1)-$(VERSION).wixobj \
-		-arch x64 \
-		-pedantic -wx i:\\src\\gnupg-vsd\\$(1)\\$(1).wxs || exit 1;\
-		$(WINE) $$$$WIXPREFIX2/lit.exe \
-		-out k:\\$(1).wixlib \
-		-bf \
-		-wx \
-		-pedantic \
-		k:\\$(1)-$(VERSION).wixobj || exit 1; \
-		\
-	) || ERR=1; \
-		(rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
-	if [ -n "$$$$ERR" ]; then \
-		exit 1; \
-	fi \
-	)
+$(idir)/$(1).wixlib: $(msidir)/$(1)/$(1).wxs
+	$(RUNCMD) litcandle ui $(VERSION) $(1) $(idir) $(ex_idir)
 
 # This is generated by make-msi.pl
-$(vsddir)/$(1)/$(1).wxs: $(vsddir)/$(1)/VERSION.sig make-msi.pl $(MSI_FNAME_PREFIX)-$(VERSION).wxs
-	perl make-msi.pl --guids $(sdir)/make-msi.guids \
+$(msidir)/$(1)/$(1).wxs: $(msidir)/$(1)/VERSION.sig \
+                         $(sdir)/make-msi.pl \
+                         $(MSI_FNAME_PREFIX)-$(VERSION).wxs
+	cp $(sdir)/make-msi.guids make-msi.guids
+	perl $(sdir)/make-msi.pl --guids make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
 		--version $(VSD_VERSION) \
 		--name "$(MSI_PRODUCT_NAME)" \
-		-DBUILD_DIR=. -DTOP_SRCDIR=$(tsdir) \
+		-DBUILD_DIR=. -DTOP_SRCDIR=$(tsdir) -DVSDDIR=$(vsddir) \
 		-DSRCDIR=$(sdir) $(sdir)/nsis/gpg4win.nsi > /dev/null
 
-$(vsddir)/$(1)/VERSION.sig: $(vsddir)/$(1)/VERSION
+$(msidir)/$(1)/VERSION.sig: $(msidir)/$(1)/VERSION
 	echo "----------SIGNING----------"
 	echo "using key: $(VERSION_SIGNKEY)"
-	cat $(vsddir)/$(1)/VERSION
-	gpg --yes -o $(vsddir)/$(1)/VERSION.sig -bau $(VERSION_SIGNKEY) $(vsddir)/$(1)/VERSION
+	cat $(msidir)/$(1)/VERSION
+	$(RUNCMD) gpg --yes -o $(msidir)/$(1)/VERSION.sig -bau $(VERSION_SIGNKEY) $(msidir)/$(1)/VERSION
 
-$(vsddir)/$(1)/VERSION: $(vsddir)/custom.mk $(stampdir)/stamp-betanum
-	echo "[Kleopatra]" > $(vsddir)/$(1)/VERSION
+$(msidir)/$(1)/VERSION: $(vsddir)/custom.mk $(stampdir)/stamp-betanum
+	[ -d $(msidir)/$(1) ] || mkdir -p $(msidir)/$(1)
+	echo "[Kleopatra]" > $(msidir)/$(1)/VERSION
 	if [ "$(call GETVAR,msi_target_$(1)_VERSION)" = "VS-Desktop-$(VSD_VERSION)" ]; then \
-		echo "version=VS-Desktop-$(VSD_VERSION_FILE)" >> $(vsddir)/$(1)/VERSION; \
+		echo "version=VS-Desktop-$(VSD_VERSION_FILE)" >> $(msidir)/$(1)/VERSION; \
 	else \
-		echo "version=$(call GETVAR,msi_target_$(1)_VERSION)" >> $(vsddir)/$(1)/VERSION;\
+		echo "version=$(call GETVAR,msi_target_$(1)_VERSION)" >> $(msidir)/$(1)/VERSION;\
 	fi
-	echo "shortDescription=$(call GETVAR,msi_target_$(1)_DESC)" >> $(vsddir)/$(1)/VERSION
-	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> $(vsddir)/$(1)/VERSION
-	echo "bugAddress=$(VSD_BUG_REPORT)" >> $(vsddir)/$(1)/VERSION
-	echo "homepage=$(VSD_HOMEPAGE)" >> $(vsddir)/$(1)/VERSION
-	echo "copyrightStatement=<pre><pre/>" >> $(vsddir)/$(1)/VERSION
+	echo "shortDescription=$(call GETVAR,msi_target_$(1)_DESC)" >> $(msidir)/$(1)/VERSION
+	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> $(msidir)/$(1)/VERSION
+	echo "bugAddress=$(VSD_BUG_REPORT)" >> $(msidir)/$(1)/VERSION
+	echo "homepage=$(VSD_HOMEPAGE)" >> $(msidir)/$(1)/VERSION
+	echo "copyrightStatement=<pre><pre/>" >> $(msidir)/$(1)/VERSION
 	if [ -n "$(call GETVAR,msi_target_$(1)_statusline)" ]; then \
-		echo "statusline=$(call GETVAR,msi_target_$(1)_statusline)" >> $(vsddir)/$(1)/VERSION; \
+		echo "statusline=$(call GETVAR,msi_target_$(1)_statusline)" >> $(msidir)/$(1)/VERSION; \
 	fi
 	if [ -n "$(call GETVAR,msi_target_$(1)_uidcomment)" ]; then \
-		echo "uidcomment=$(call GETVAR,msi_target_$(1)_uidcomment)" >> $(vsddir)/$(1)/VERSION; \
+		echo "uidcomment=$(call GETVAR,msi_target_$(1)_uidcomment)" >> $(msidir)/$(1)/VERSION; \
 	fi
-	echo "" >> $(vsddir)/$(1)/VERSION
-	echo "[Okular]" >> $(vsddir)/$(1)/VERSION
+	echo "" >> $(msidir)/$(1)/VERSION
+	echo "[Okular]" >> $(msidir)/$(1)/VERSION
 	if [ "$(call GETVAR,msi_target_$(1)_VERSION)" = "VS-Desktop-$(VSD_VERSION)" ]; then \
-		echo "version=VS-Desktop-$(VSD_VERSION_FILE)" >> $(vsddir)/$(1)/VERSION; \
+		echo "version=VS-Desktop-$(VSD_VERSION_FILE)" >> $(msidir)/$(1)/VERSION; \
 	else \
-		echo "version=$(call GETVAR,msi_target_$(1)_VERSION)" >> $(vsddir)/$(1)/VERSION;\
+		echo "version=$(call GETVAR,msi_target_$(1)_VERSION)" >> $(msidir)/$(1)/VERSION;\
 	fi
-	echo "shortDescription=$(call GETVAR,msi_target_$(1)_DESC)" >> $(vsddir)/$(1)/VERSION
-	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> $(vsddir)/$(1)/VERSION
-	echo "bugAddress=$(VSD_BUG_REPORT)" >> $(vsddir)/$(1)/VERSION
-	echo "homepage=$(VSD_HOMEPAGE)" >> $(vsddir)/$(1)/VERSION
-	echo "displayName=$(OKULAR_DISPLAY_NAME)" >> $(vsddir)/$(1)/VERSION
+	echo "shortDescription=$(call GETVAR,msi_target_$(1)_DESC)" >> $(msidir)/$(1)/VERSION
+	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> $(msidir)/$(1)/VERSION
+	echo "bugAddress=$(VSD_BUG_REPORT)" >> $(msidir)/$(1)/VERSION
+	echo "homepage=$(VSD_HOMEPAGE)" >> $(msidir)/$(1)/VERSION
+	echo "displayName=$(OKULAR_DISPLAY_NAME)" >> $(msidir)/$(1)/VERSION
 
-$(vsddir)/$(1)/announcement.txt: $(vsddir)/custom.mk $(vsddir)/announcement.de.in $(vsddir)/announcement.en.in
+$(msidir)/$(1)/announcement.txt: $(vsddir)/custom.mk $(vsddir)/announcement.de.in $(vsddir)/announcement.en.in
 	cat $(vsddir)/$(call GETVAR,msi_target_$(1)_announcement) | \
 		sed 's/VSD_VERSION/$(VSD_VERSION)/' | \
 		sed 's@GNUPG_VSD_CUSTOMER_LINK@https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi@' | \
-		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.xz@' > $(vsddir)/$(1)/announcement.txt
+		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.xz@' > $(msidir)/$(1)/announcement.txt
 
 signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 	mkdir -p signed_installers
@@ -1299,10 +1159,10 @@ $(1): installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 
 .PHONY : $(1)-upload
 $(1)-upload: $(stampdir)/stamp-$(1)-upload $(stampdir)/stamp-dist-self
-	gpg --yes -o $(vsddir)-$(VERSION).tar.xz.sig -bau $(msi_signkey) \
+	gpg --yes -o $(msidir)-$(VERSION).tar.xz.sig -bau $(msi_signkey) \
 		../gpg4win-$(VERSION).tar.xz
 	rsync -vP ../gpg4win-$(VERSION).tar.xz $(VSD_PUBLISH_HOST)/src/$(MSI_FNAME_PREFIX)-$(VERSION).tar.xz
-	rsync -vP $(vsddir)-$(VERSION).tar.xz.sig $(VSD_PUBLISH_HOST)/src/$(MSI_FNAME_PREFIX)-$(VERSION).tar.xz.sig
+	rsync -vP $(msidir)-$(VERSION).tar.xz.sig $(VSD_PUBLISH_HOST)/src/$(MSI_FNAME_PREFIX)-$(VERSION).tar.xz.sig
 	echo "Upload URLs:"
 	cat $(stampdir)/stamp-$(1)-upload
 	echo "Source links:"
@@ -1311,10 +1171,10 @@ $(1)-upload: $(stampdir)/stamp-$(1)-upload $(stampdir)/stamp-dist-self
 
 $(1)-signed: signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 
-$(1)-announce: $(vsddir)/$(1)/announcement.txt
+$(1)-announce: $(msidir)/$(1)/announcement.txt
 	set -x
 	echo "-------- Announcement for $(1) ---------"
-	cat $(vsddir)/$(1)/announcement.txt
+	cat $(msidir)/$(1)/announcement.txt
 	echo "-----------------------------"
 	echo "Send to: $(call GETVAR,msi_target_$(1)_contact)"
 	echo "Ticket: $(call GETVAR,msi_target_$(1)_ticket)"
@@ -1360,7 +1220,7 @@ $(stampdir)/stamp-final: $(stampdir)/stamp-directories $(stampdir)/stamp-additio
 $(bdir)/versioninfo.txt: $(stampdir)/stamp-final
 	touch $(bdir)/versioninfo.txt
 
-$(stampdir)/stamp-betanum: $(top_srcdir)/config.log
+$(stampdir)/stamp-betanum: ../config.log
 	if [ ! -e "$(stampdir)/stamp-betanum" -o "$$(cat "$(stampdir)/stamp-betanum")" != "$(BUILD_BETANUM)" ]; then \
 		echo -n "$(BUILD_BETANUM)" > "$(stampdir)/stamp-betanum"; \
 	fi
@@ -1375,7 +1235,7 @@ clean-gpg4win:
 	$(RM) -fR $(root) $(stampdir)
 
 $(stampdir)/stamp-versions-all-signed: $(stampdir)/stamp-directories \
-	$(addsuffix /VERSION.sig, $(addprefix $(vsddir)/,$(msi_targets)))
+	$(addsuffix /VERSION.sig, $(addprefix $(msidir)/,$(msi_targets)))
 	touch $(stampdir)/stamp-versions-all-signed
 
 $(stampdir)/stamp-all-upload: $(stampdir)/stamp-dist-self \

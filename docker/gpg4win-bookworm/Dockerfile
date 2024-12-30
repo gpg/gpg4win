@@ -52,6 +52,7 @@ RUN set -x \
         pkg-config \
         python3-lxml \
         gtk-update-icon-cache \
+        uuid-runtime \
         wget
 
 RUN update-alternatives --install /usr/bin/i686-w64-mingw32-gcc i686-w64-mingw32-gcc /usr/bin/i686-w64-mingw32-gcc-posix 100

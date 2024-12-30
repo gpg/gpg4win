@@ -39,6 +39,7 @@ Options:
                         (default is ../b/foo-playground)
         --force         Force configure run
         --update-image  Update the docker image before build
+        --with-msi      Prepare for building MSI packages
         --user=name     Use NAME as FTP server user
         --download      Download packages first
         --runcmd CMD    Run a command via a pair of FIFOs
@@ -63,6 +64,13 @@ EOF
     exit $1
 }
 
+# Other constants
+WINE=wine
+WINHOST=win10
+WINLIGHT=c:/wix/light.exe
+# WINEPREFIX - determined at runtime or passed by caller
+# WIXPREFIX  - determined at runtime or passed by caller
+
 
 # Store the original command line
 # for diagnostic reasons
@@ -81,6 +89,7 @@ w64="yes"
 download="no"
 runcmd="no"
 fromgit="no"
+withmsi="no"
 builddir="${HOME}/b/$(basename "$srcdir")-playground"
 force=no
 ftpuser=
@@ -117,6 +126,7 @@ while [ $# -gt 0 ]; do
         --git|-g|--git-pkgs)     fromgit="yes";;
         --builddir|--builddir=*) builddir="${optarg}" ;;
         --user|--user=*)         ftpuser="${optarg}"  ;;
+        --with-msi|--msi)        withmsi=yes          ;;
         --verbose|-v)            verbose=yes          ;;
         --*) usage 1 1>&2; exit 1;;
         *) skipshift=1; break ;;
@@ -185,9 +195,10 @@ if [ "$runcmd" = yes ]; then
     if [ "$indocker" != yes ]; then
         echo >&2 "$PGM: Option --runcmd must be called from docker"
         echo >&2 "$PGM: Available commands are:"
-        echo >&2 "$PGM:   ping    - Wait for a pong"
-        echo >&2 "$PGM:   gpg     - Run a gpg command"
-        echo >&2 "$PGM:   msibase - prepare MSI linking"
+        echo >&2 "$PGM:   ping      - Wait for a pong"
+        echo >&2 "$PGM:   gpg       - Run a gpg command"
+        echo >&2 "$PGM:   msibase   - Prepare MSI linking"
+        echo >&2 "$PGM:   litcandle - Run candle.exe"
         exit 2
     fi
     # Running in docker
@@ -228,6 +239,43 @@ if [ "$indocker" = yes ]; then
     make TOPSRCDIR=/src PLAYGROUND=/build
     exit $?
 fi # (end of script use inside the docker container) #
+
+
+# Setup for using the Wix tools under Wine if requested.
+if [ $withmsi = yes ]; then
+    if [ -z "$(which $WINE)" ]; then
+       echo >&2 "$PGM: error: For MSI packaging Wine needs to be installed"
+       exit 1
+    fi
+    [ -z "$WINEPREFIX" ] && WINEPREFIX="$HOME/.wine"
+    if [ ! -e "$WINEPREFIX/dosdevices" ]; then
+	echo 2>&1 "PGM: error: No value for WINEPREFIX found"
+	exit 1
+    fi
+    if [ -z "$WIXPREFIX" ]; then
+        tmp="$(readlink -f ~/w32root/wixtools)"
+	if [ -d "$tmp" ]; then
+	    WIXPREFIX="$tmp"
+	    echo 2>&1 "$PGM: Using $WIXPREFIX as WIXPREFIX"
+	else
+	    echo 2>&1 "$PGM: error: You must set WIXPREFIX" \
+                 " to an installation of wixtools"
+	    exit 1
+	fi
+    fi
+    WINEINST="$WINEPREFIX/dosdevices/k:"
+    WINESRC="$WINEPREFIX/dosdevices/i:"
+    WINEINSTEX="$WINEPREFIX/dosdevices/j:"
+    WINEBLD="$WINEPREFIX/dosdevices/l:"
+    die=no
+    for f in "$WINEINST" "$WINESRC" "$WINEINSTEX" "$WINEBLD" ; do
+	if [ -e "$f" -a ! -h "$f" ]; then
+	    echo 2>&1 "$PGM: error: '$f' already exists. Please remove."
+            die=yes
+	fi
+    done
+    [ $die = yes ] && exit 1
+fi
 
 
 # Determine the needed docker image
@@ -317,13 +365,22 @@ stop_runner() {
     return 0
 }
 
+# Transform a directory from docker to host directory
+transform_dir() {
+    echo "$1"|sed -e "s,^/build/,$builddir/," -e "s,/src/,$srcdir/,"
+}
+
+# Transform all directories in the provided string
+# Fixme: This sed expression is not robust enough.
+transform_multi_dir() {
+    echo "$1"|sed -e "s, /build/, $builddir/,g" -e "s, /src/, $srcdir,g"
+}
 
 # Run a gpg command
 runner_cmd_gpg() {
     local cmd="$1"
 
-    # Fixme: This sed expression is not robust enough.
-    cmd=$(echo "$cmd"|sed -e "s, /build/, $builddir/,g" -e "s, /src/, $srcdir,g")
+    cmd=$(transform_multi_dir "$cmd")
     printf >&2 -- "$PGM(runner): invoking gpg\n"
     set +e
     $cmd </dev/null
@@ -334,33 +391,170 @@ runner_cmd_gpg() {
 }
 
 
-# Copy some files to the Windows hos to prepare the MSI linking
-# Args are
+# Copy some files to the Windows host to prepare the MSI linking
+# Args are: See below
 runner_cmd_msibase() {
-    local winhost="$1" version="$1" gnupgmsi="$3"
+    local version="$1" gnupgmsi="$2"
 
-    ssh "$winhost" "mkdir AppData\\Local\\Temp\\gpg4win-$version" || true
+    set +e
+    set -x
+    ssh "$WINHOST" "mkdir AppData\\Local\\Temp\\gpg4win-$version" || true
     scp "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
-	"$winhost":AppData/Local/Temp/gpg4win-"$version";
+	"$WINHOST":AppData/Local/Temp/gpg4win-"$version";
     scp "$srcdir"/src/icons/shield.ico \
-        "$winhost":AppData/Local/Temp/gpg4win-"$version"
+        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
     scp "$srcdir"/doc/logo/gpg4win-msi-header_install-493x58.bmp \
-	"$winhost":AppData/Local/Temp/gpg4win-"$version"/header.bmp
+	"$WINHOST":AppData/Local/Temp/gpg4win-"$version"/header.bmp
     scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-	"$winhost":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
+	"$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
     scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-	"$winhost":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
+	"$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
     scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
-	"$winhost":AppData/Local/Temp/gpg4win-"$version"/info.bmp
+	"$WINHOST":AppData/Local/Temp/gpg4win-"$version"/info.bmp
     scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
-	"$winhost":AppData/Local/Temp/gpg4win-"$version"/exclamation.bmp
+	"$WINHOST":AppData/Local/Temp/gpg4win-"$version"/exclamation.bmp
     scp "$srcdir"/po/gpg4win-en.wxl \
-        "$winhost":AppData/Local/Temp/gpg4win-"$version"
+        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
     scp "$srcdir"/po/gpg4win-de.wxl \
-        "$winhost":AppData/Local/Temp/gpg4win-"$version"
+        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
     scp WixUI_Gpg4win.wxs \
-        "$winhost":AppData/Local/Temp/gpg4win-"$version"
+        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
     rc=0
+    set +x
+    set -e
+    return 0
+}
+
+
+# Copy files to the Windows host
+runner_cmd_cptowinhost() {
+    local version="$1"
+    local target="$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    local files
+
+    shift
+
+    files=
+    for f in $@; do
+        files="$files $(transform_dir "$f")"
+    done
+    set +e
+    echo 2>&1 "$PGM: running scp $files  $target"
+    scp $files  "$target"
+    rc=$?
+    set -e
+
+    return 0
+}
+
+# Copy file from the Windows host
+runner_cmd_cpfromwinhost() {
+    local version="$1" prefix="$2" name="$3" vsdvers="$4"
+    local mydir="$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+
+    set +e
+    scp "$mydir/$prefix-$version-$name.msi" \
+        "$builddir/src/installers/$prefix-$vsdvers-$name.msi"
+    rc=$?
+    set -e
+
+    return 0
+}
+
+# Copy files to the Windows host
+runner_cmd_lightwinhost() {
+    local version="$1" prefix="$2" name="$3" intlopt="$4" msivers="$5"
+
+    set +e
+    ssh "$WINHOST" "cd AppData/Local/Temp/gpg4win-$version \
+        && $WINLIGHT \
+        -cc . -reusecab -spdb \
+        -ext WixUIExtension   \
+        -ext WixUtilExtension \
+        -out $prefix-$version-$name.msi \
+        $(echo "$intlopt" | sed 's,%20, ,g') \
+        -dcl:high -pedantic \
+        $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name.wixlib" \
+      | grep -v "ICE80" | grep -v "ICE57"
+    rc="${PIPESTATUS[0]}"
+    set -e
+    # FIXME:
+    echo 2>&1 "$PGM(runner): cmd lightwinhost exited with $rc - forcing 0"
+    rc=0
+
+    return 0
+}
+
+
+
+# Run the Wix tools under Wine.
+runner_cmd_litcandle() {
+    local mode="$1" version="$2" prefix="$3" idir="$4" exidir="$5"
+    local dwixobj fwxs
+
+    if [ $withmsi = no ]; then
+        echo 2>&1 "$PGM(runner): litcandle requires --with-msi option"
+        rc=2
+        return 0
+    fi
+
+    idir=$(transform_dir "$idir")
+    exidir=$(transform_dir "$exidir")
+
+    fwixlib="$prefix"-"$version".wixlib
+    fwixobj="$prefix"-"$version".wixobj
+    if [ "$mode" = ui ]; then
+        fwxs="l:\\src\\gnupg-vsd\\$prefix\\$prefix".wxs
+        fextraobj="k:\\gpg4win-ui.wixobj"
+    else
+        fwxs="l:\\src\\$prefix"-"$version".wxs
+        fextraobj=
+    fi
+
+    # Create symlinks into the Wine dosdevices directory
+    ln -sf "$idir"   "$WINEINST"
+    ln -sf "$exidir" "$WINEINSTEX"
+    ln -sf "$srcdir" "$WINESRC"
+    ln -sf "$builddir" "$WINEBLD"
+    # Run the tools
+    rc=0
+    set +e
+    if [ $rc -eq 0 ]; then
+        $WINE "$WIXPREFIX/candle.exe" \
+	      -dInstDir=k: \
+	      -dInstDirEx=j: \
+	      -dSrcDir=i:\\src \
+	      -dBldDir=l:\\src \
+	      -dVersion="$version" \
+	      -out k:\\"$fwixobj" \
+	      -pedantic -wx "$fwxs" \
+	      -arch x64
+        rc=$?
+    fi
+    if [ $rc -eq 0 -a -n "$fextraobj" ]; then
+        $WINE "$WIXPREFIX/candle.exe" \
+	      -dInstDir=k: \
+	      -dInstDirEx=j: \
+	      -dSrcDir=i:\\src \
+	      -dBldDir=l:\\src \
+	      -dVersion="$version" \
+	      -out "$fextraobj" \
+	      -arch x64 \
+	      -pedantic -wx i:\\src\\WixUI_Gpg4win.wxs
+        rc=$?
+    fi
+    if [ $rc -eq 0 ]; then
+	$WINE "$WIXPREFIX/lit.exe" \
+	      -out k:\\"$fwixlib" \
+	      -bf \
+	      -wx \
+	      -pedantic \
+	      k:\\"$fwixobj" "$fextraobj"
+        rc=$?
+    fi
+    set -e
+    # Remove the symlinks
+    rm "$WINEINST" "$WINESRC" "$WINEINSTEX" "$WINEBLD" || true
     return 0
 }
 
@@ -369,13 +563,17 @@ runner_cmd_msibase() {
 # with args for the command.
 runner_exec_cmd() {
     local cmd="$1" line="$2" rc
-    #printf >&2 -- "$PGM: cmd='%s' line='%s'\n" "$cmd" "$line"
+    printf >&2 -- "$PGM: cmd='%s' line='%s'\n" "$cmd" "$line"
     # The called functions need to set RC to the desired exit status
     rc=42
     case "$cmd" in
         ping) echo pong; rc=0 ;;
         gpg)  runner_cmd_gpg "gpg $line" ;;
         msibase) runner_cmd_msibase $line ;;
+        cptowinhost)   runner_cmd_cptowinhost $line ;;
+        cpfromwinhost) runner_cmd_cpfromwinhost $line ;;
+        lightwinhost)  runner_cmd_lightwinhost $line ;;
+        litcandle) runner_cmd_litcandle $line ;;
         *)    echo "$PGM(runner): $cmd: no such command"; rc=4 ;;
     esac
     echo >&2 "$PGM: runner cmd '$cmd' returned $rc"

@@ -311,8 +311,7 @@ AC_CHECK_PROGS(WGET, wget)
 # Set source and build directory.
 #
 # They are always set to the directories seen outside of the
-# container.  The Makefile then resets them to /src/and /build if run
-# inside docker.
+# container.
 #
 TOPSRCDIR="mym4_tsdir"
 AC_ARG_WITH([playground],

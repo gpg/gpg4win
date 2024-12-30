@@ -72,9 +72,11 @@ SUBDIRS = ${appimage} nsis
 # nat_idir :: Same as $(idir) but for packages which are build for
 #             build platform itself.
 # nat_ipdir:: Likewise for $(ipdir).
+# msidir   :: The direcory to but generated fiels for MSIs
 # tsdir    :: The top source directory.
 # sdir     :: The source directory src/ below tsdir.
 # patdir   :: The source directory patches/ below tsdir.
+# vsddir   :: The source direcory with MSI configurations.
 
 tsdir     := $(TOPSRCDIR)
 root      := $(PLAYGROUND)
@@ -86,10 +88,10 @@ ex_idir   := $(root)/install-ex
 ex_ipdir  := $(root)/install-ex/pkgs
 nat_idir  := $(root)/install-native
 nat_ipdir := $(root)/install-native/pkgs
+msidir    := $(root)/src/gnupg-vsd
 sdir      := $(tsdir)/src
 vsddir    := $(tsdir)/src/gnupg-vsd
 patdir    := $(tsdir)/patches
-
 
 $(info -------------------------------------------------)
 $(info Topsource ....: $(tsdir))
@@ -100,15 +102,14 @@ $(info Building at ..: $(bdir))
 $(info -------------------------------------------------)
 
 
+# Now we invoke commands on the host.
+RUNCMD=$(tsdir)/build.sh --runcmd
+
 # This template is used to include standard GNU make files. See below
 # for a description.
 define INCLUDE_BY_MAKE
 include $(1)
 endef
-
-# Define macros for the various directories.
-$(eval $(call INCLUDE_BY_MAKE,setupvars.mk))
-
 
 
 gpg4win_howto_smime_ll = en de
@@ -493,12 +494,6 @@ VSD_VERSION=$(VERSION)
 # Boost includes are only needed during the build and are linked in the
 # playground install tree
 $(stampdir)/stamp-directories:
-	@echo -------------------------------------------------
-	@echo Source .......: $(tsdir)
-	@echo Playground ...: $(root)
-	@echo Stamps at ....: $(stampdir)
-	@echo Building at ..: $(bdir)
-	@echo -------------------------------------------------
 	$(MKDIR) -p $(root)
 	$(MKDIR) -p $(stampdir)
 	$(MKDIR) -p installers
@@ -523,27 +518,7 @@ $(stampdir)/stamp-msi-base: $(sdir)/icons/shield.ico $(sdir)/Makefile.am \
                        $(tsdir)/doc/logo/gpg4win-msi*.bmp \
                        $(tsdir)/po/gpg4win-de.wxl \
                        $(tsdir)/po/gpg4win-en.wxl
-	ssh $(WINHOST) "mkdir AppData\\Local\\Temp\\gpg4win-$(VERSION)" || true
-	scp $(tsdir)/packages/gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION);
-	scp $(tsdir)/src/icons/shield.ico \
-                $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	scp $(tsdir)/doc/logo/gpg4win-msi-header_install-493x58.bmp \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/header.bmp
-	scp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/dialog.bmp
-	scp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/dialog.bmp
-	scp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/info.bmp
-	scp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/exclamation.bmp
-	scp $(tsdir)/po/gpg4win-en.wxl \
-                $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	scp $(tsdir)/po/gpg4win-de.wxl \
-                $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	scp WixUI_Gpg4win.wxs \
-                $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	$(RUNCMD) msibase $(VERSION) $(gpg4win_pkg_gnupg_msi_version)
 	touch $(stampdir)/stamp-msi-base
 
 # Now do the bunch of the work.  This is a bunch of dirty magic to
@@ -562,32 +537,39 @@ clean-local: $(gpg4win_clean)
 
 # Copy the DLL files for NSIS.  We use a stamp because we need only
 # some of them.  The dependency on the Makefile is to avoid the need
-# for a clean in some situations.
+# for a clean in some situations.  The dummy files are required to
+# keep stable componentrefs in the Wix files.
 $(stampdir)/stamp-rtlib-files: Makefile
 	( \
 	 f=libwinpthread-1.dll-ex ; test -f "$$f" && rm -f "$$f" ; \
 	 if test "$(gpg4win_rtlib_ex_libwinpthread_1)" != no ; then \
 	   cp $(gpg4win_rtlib_ex_libwinpthread_1) "$$f"; $(STRIP_EX) "$$f";\
+	 else echo dummy > "$$f";\
 	 fi; \
 	 f=libwinpthread-1.dll-x ; test -f "$$f" && rm -f "$$f" ; \
 	 if test "$(gpg4win_rtlib_libwinpthread_1)" != no ; then \
 	   cp $(gpg4win_rtlib_libwinpthread_1)    "$$f"; $(STRIP) "$$f";\
+	 else echo dummy > "$$f";\
 	 fi; \
          f=libstdc++-6.dll-x ; test -f "$$f" && rm -f "$$f" ; \
 	 if test "$(gpg4win_rtlib_libstdc___6)" != no ; then \
 	   cp $(gpg4win_rtlib_libstdc___6)        "$$f"; $(STRIP) "$$f";\
+	 else echo dummy > "$$f";\
 	 fi; \
          f=libgcc_s_sjlj-1.dll-x ; test -f "$$f" && rm -f "$$f" ; \
-	 if test "$(gpg4win_rtlib_libgcc_s_sjlj-1)" != no ; then \
+	 if test "$(gpg4win_rtlib_libgcc_s_sjlj_1)" != no ; then \
 	   cp $(gpg4win_rtlib_libgcc_s_sjlj_1)     "$$f"; $(STRIP) "$$f";\
+	 else echo dummy > "$$f";\
 	 fi; \
          f=libgcc_s_dw2-1.dll-x ; test -f "$$f" && rm -f "$$f" ; \
 	 if test "$(gpg4win_rtlib_libgcc_s_dw2_1)" != no ; then \
 	   cp $(gpg4win_rtlib_libgcc_s_dw2_1)     "$$f"; $(STRIP) "$$f";\
+	 else echo dummy > "$$f";\
 	 fi; \
          f=libgcc_s_seh-1.dll-x ; test -f "$$f" && rm -f "$$f" ; \
 	 if test "$(gpg4win_rtlib_libgcc_s_seh_1)" != no ; then \
 	   cp $(gpg4win_rtlib_libgcc_s_seh_1)     "$$f"; $(STRIP) "$$f";\
+	 else echo dummy > "$$f";\
 	 fi )
 	$(MKDIR) -p $(stampdir)
 	touch $(stampdir)/stamp-rtlib-files
