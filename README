@@ -11,11 +11,11 @@ About Gpg4win:
 
 The Gpg4win source code (this repository) consists of a list of
 source packages in the `packages` subdirectory and build rules
-in the files `src/Makefile.am` and `src/gpg4win.mk.in`.
+in the files `build.sh`, `src/Makefile.am` and `src/gpg4win.mk.in`.
 
 During the build, the packages will be compiled for a Windows host
-system using these build rules and then packaged according to
-the various `.nsi` files in the folder `src/nsis`.
+system using these build rules and then packaged according to the
+various `.nsi` files in the folder `src/nsis`.
 
 To have the same software versions also available on Linux
 systems, independent of the distribution, Gpg4win can also be
@@ -31,7 +31,7 @@ Building:
 ---------
 
 To achieve reproducible results independent of your system, Gpg4win
-utilizes Docker. The build with Docker is scripted; see:
+utilizes Docker; see:
 
   $ ./build.sh --help
 
@@ -39,63 +39,46 @@ Executing
 
   $ ./build.sh
 
-without any arguments will create an installer based on the
-current Git version (uncommitted changes not included) using a
-temporary directory.
+without any arguments will create an installer based on the current
+version using a dedicated build directory.
 
-To rebuild a source package or include custom changes in the
-build, you can also do an in-place build:
+If you want to build from a Git repository or using modified sources
+you should do this in the source directory.
 
-  $ ./build.sh --inplace
+1. If you don't have a ~/.gnupg-autogen.sh file use
 
+     build-aux/gpg-authcode-sign.sh --template >~/~/.gnupg-autogen.sh
 
-AppImage:
----------
+   and adjust the file for your setup.
 
-To build the AppImage, add the parameter `--appimage` to invocations
-of `build.sh`. Building the AppImage without Docker
-is not supported.
+2. Check that packages/BUILDTYPE is what you want (usually "default").
 
+3. Run
 
-Major Build Steps:
-------------------
+     ./autogen.sh
 
-The Docker script `build.sh` prepares a build environment
-and then executes `src/build-gpg4win.sh` or `src/appimage/build-appimage.sh`.
+4. Do either this
 
-These scripts execute the following steps:
+     cd packages
+     ./download.sh
+     cd ..
 
-Step 1: Download the source and binary packages that are required to
-build the installer:
+   or pass the --download option to the command below.
 
-  $ cd packages
-  $ sh download.sh
-  [...]
-  $ cd ..
+5. Run
 
-Step 2: Generate config files:
+     ./build.sh
 
-  $ ./autogen.sh
+   You may add certain options as show by the option --help.  For
+   example in case of a build problem you may enter the docker
+   container using
 
-Step 3: Configure the source tree for cross-compilation:
+    ./build.sh --shell
 
-  $ ./autogen.sh --build-w32
+   and then cd to /build.  The option --builddir can be used to
+   specify a non-default build directory.  To build an AppImage, add
+   the parameter `--appimage` to invocations of build.sh.
 
-Step 4: Build the installer:
-
-  $ make
-
-The installer will be made available under `src/installers`:
-
-  src/installers/gpg4win-X.Y.Z.exe
-
-
-Basic Requirements:
--------------------
-
-To build without a container, various tools are required
-on the host system. See the files "Dockerfile" in the
-subdirectory `docker` for a list of the required packages.
 
 Building the Webpages:
 ----------------------
@@ -205,7 +188,7 @@ Copyright
 A list of copyright noticed can be found in `doc/pkg-copyright.txt`.
 The **Gpg4win build system** is
 
-Copyright (C) 2005-2013,2019-2023 g10 Code GmbH
+Copyright (C) 2005-2013,2019-2025 g10 Code GmbH
 Copyright (C) 2013-2018 Intevation GmbH
 Copyright (C) 2015-2018 Bundesamt für Sicherheit in der Informationstechnik
 
