@@ -72,7 +72,7 @@ SUBDIRS = ${appimage} nsis
 # nat_idir :: Same as $(idir) but for packages which are build for
 #             build platform itself.
 # nat_ipdir:: Likewise for $(ipdir).
-# msidir   :: The direcory to but generated fiels for MSIs
+# msidir   :: The directory to put generated files for MSIs
 # tsdir    :: The top source directory.
 # sdir     :: The source directory src/ below tsdir.
 # patdir   :: The source directory patches/ below tsdir.
@@ -518,6 +518,7 @@ $(stampdir)/stamp-msi-base: $(sdir)/icons/shield.ico $(sdir)/Makefile.am \
                        $(tsdir)/doc/logo/gpg4win-msi*.bmp \
                        $(tsdir)/po/gpg4win-de.wxl \
                        $(tsdir)/po/gpg4win-en.wxl
+	[ -d $(msidir)/help ] || mkdir -p $(msidir)/help
 	$(RUNCMD) msibase $(VERSION) $(gpg4win_pkg_gnupg_msi_version)
 	touch $(stampdir)/stamp-msi-base
 

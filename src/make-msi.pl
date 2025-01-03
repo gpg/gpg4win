@@ -1243,7 +1243,7 @@ sub dump_all
 
             my $sourcefull;
             $sourcefull = $file->{source};
-            print STDERR "dump_all: file{source}='$sourcefull'\n";
+            # print STDERR "dump_all: file{source}='$sourcefull'\n";
 
 
             if ($sourcefull =~ /^\.\.\/install/ )
@@ -1266,7 +1266,7 @@ sub dump_all
             . "  <File Id='f_$pkg->{name}_$fileidx' Name='"
             . $file->{target} ."' KeyPath='yes'" . " Source='" .
             $sourcefull . "'";
-            print STDERR "dump_all:       result='$sourcefull'\n";
+            # print STDERR "dump_all:       result='$sourcefull'\n";
 
             if ($targetfull eq 'bin_64\\gpgol.dll' or
                 $targetfull eq 'bin_64\\gpgex.dll')

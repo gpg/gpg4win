@@ -152,10 +152,13 @@ nightly:
 	 echo "Results can be found under $(OUTDIR)"
 
 msi:
-	$(MAKE) $(AM_MAKEFLAGS) -C src msi
+	$(MAKE) $(AM_MAKEFLAGS) -C src \
+		TOPSRCDIR=/src PLAYGROUND=/build msi
 
 msi-signed:
-	$(MAKE) $(AM_MAKEFLAGS) -C src msi-signed
+	$(MAKE) $(AM_MAKEFLAGS) -C src \
+		TOPSRCDIR=/src PLAYGROUND=/build msi-signed
 
 msi-upload:
-	$(MAKE) $(AM_MAKEFLAGS) -C src msi-upload
+	$(MAKE) $(AM_MAKEFLAGS) -C src \
+		TOPSRCDIR=/src PLAYGROUND=/build msi-upload
