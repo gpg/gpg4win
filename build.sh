@@ -39,7 +39,7 @@ Options:
                         (default is ../b/foo-playground)
         --force         Force configure run
         --update-image  Update the docker image before build
-        --with-msi      Prepare for building MSI packages
+        --msi           Building MSI packages
         --user=name     Use NAME as FTP server user
         --download      Download packages first
         --runcmd CMD    Run a command via a pair of FIFOs
@@ -126,7 +126,7 @@ while [ $# -gt 0 ]; do
         --git|-g|--git-pkgs)     fromgit="yes";;
         --builddir|--builddir=*) builddir="${optarg}" ;;
         --user|--user=*)         ftpuser="${optarg}"  ;;
-        --with-msi|--msi)        withmsi=yes          ;;
+        --msi|--with-msi)        withmsi=yes          ;;
         --verbose|-v)            verbose=yes          ;;
         --*) usage 1 1>&2; exit 1;;
         *) skipshift=1; break ;;
@@ -237,6 +237,9 @@ if [ "$indocker" = yes ]; then
     fi
     export CMAKE_COLOR_DIAGNOSTICS=OFF
     make TOPSRCDIR=/src PLAYGROUND=/build
+    if [ $? = 0 -a $withmsi = yes ]; then
+        make TOPSRCDIR=/src PLAYGROUND=/build msi
+    fi
     exit $?
 fi # (end of script use inside the docker container) #
 
@@ -291,6 +294,7 @@ else
         cmd="/src/build.sh --w32"
     fi
     [ $force = yes ] && cmd="$cmd --force"
+    [ $withmsi = yes -a $shell = no ] && cmd="$cmd --msi"
     docker_image=g10-build-gpg4win:bookworm
     dockerfile=${srcdir}/docker/gpg4win-bookworm
 fi
@@ -397,7 +401,7 @@ runner_cmd_msibase() {
     local version="$1" gnupgmsi="$2"
 
     set +e
-    set -x
+    [ -n "$verbose" ] && set -x
     ssh "$WINHOST" "mkdir AppData\\Local\\Temp\\gpg4win-$version" || true
     scp "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
 	"$WINHOST":AppData/Local/Temp/gpg4win-"$version";
@@ -420,7 +424,7 @@ runner_cmd_msibase() {
     scp WixUI_Gpg4win.wxs \
         "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
     rc=0
-    set +x
+    [ -n "$verbose" ] && set +x
     set -e
     return 0
 }
@@ -465,6 +469,7 @@ runner_cmd_cpfromwinhost() {
 runner_cmd_lightwinhost() {
     local version="$1" prefix="$2" name="$3" intlopt="$4" msivers="$5"
 
+    [ -n "$verbose" ] && set -x
     set +e
     ssh "$WINHOST" "cd AppData/Local/Temp/gpg4win-$version \
         && $WINLIGHT \
@@ -474,10 +479,11 @@ runner_cmd_lightwinhost() {
         -out $prefix-$version-$name.msi \
         $(echo "$intlopt" | sed 's,%20, ,g') \
         -dcl:high -pedantic \
-        $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name.wixlib" \
+        $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name-$version.wixlib" \
       | grep -v "ICE80" | grep -v "ICE57"
     rc="${PIPESTATUS[0]}"
     set -e
+    [ -n "$verbose" ] && set +x
     # FIXME:
     echo 2>&1 "$PGM(runner): cmd lightwinhost exited with $rc - forcing 0"
     rc=0
@@ -518,6 +524,7 @@ runner_cmd_litcandle() {
     ln -sf "$builddir" "$WINEBLD"
     # Run the tools
     rc=0
+    [ -n "$verbose" ] && set -x
     set +e
     if [ $rc -eq 0 ]; then
         $WINE "$WIXPREFIX/candle.exe" \
@@ -553,6 +560,7 @@ runner_cmd_litcandle() {
         rc=$?
     fi
     set -e
+    [ -n "$verbose" ] && set +x
     # Remove the symlinks
     rm "$WINEINST" "$WINESRC" "$WINEINSTEX" "$WINEBLD" || true
     return 0
