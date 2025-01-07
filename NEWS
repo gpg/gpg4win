@@ -20,12 +20,20 @@ Compendium EN:  3.0.0
 Noteworthy changes in Version 4.4.1 (unreleased)
 ------------------------------------------------
 
+--- Features ---
+
+(en) Kleopatra: The setting whether to show tags has been removed. The
+     Tags column in the certificate lists can be shown/hidden the same way
+     as the other columns. [T7204]
+
 --- Bug Fixes ---
 
 (en) Kleopatra: Ensure that the decryption result window is visible when
      decrypting a file from the Windows Explorer. [T5780]
 (en) Kleopatra: Make showing the details of a certificate selected under
      Encrypt for others work again. [T7435]
+(en) Kleopatra: A crash was resolved that occurred when trying to decrypt
+     something that was encrypted for a single unknown certificate. [T7476]
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.4.7
