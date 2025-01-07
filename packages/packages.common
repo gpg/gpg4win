@@ -715,24 +715,27 @@ file libgcrypt/libgcrypt-1.11.0.tar.bz2
 chk  09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c
 
 
-# last changed 2024-12-05
+# last changed 2024-12-16
 # by builder
 # verified: [taken from buildtree]
-name gnupg-2.5.2.tar.bz2
-file gnupg/gnupg-2.5.2.tar.bz2
-chk  7f404ccc6a58493fedc15faef59f3ae914831cff866a23f0bf9d66cfdd0fea29
 
-name gnupg-w32-2.5.2_20241205-bin.exe
-file binary/gnupg-w32-2.5.2_20241205.exe
-chk  9f3407f8c85f00c90ff7a8368ea196af75eadeba86635c90f08c7f4470e8ef60
+server https://gnupg.org/ftp/gcrypt/snapshots
 
-name gnupg-w32-2.5.2_20241205-src.tar.xz
-file binary/gnupg-w32-2.5.2_20241205.tar.xz
-link gnupg-msi-2.5.2_20241205-src.tar.xz
-chk  7f02de219442b9f5398ed0f397f3bd48d6c7437b12f28d71ce653ec416644c40
+name gnupg-2.5.3-beta6.tar.bz2
+file gnupg/gnupg-2.5.3-beta6.tar.bz2
+chk  6cd248c7aba60da691021a880dee7e910bff0a0edf9f95a882a817989bc8af94
 
-name gnupg-msi-2.5.2_20241205-bin.wixlib
-file binary/gnupg-w32-2.5.2_20241205.wixlib
-chk  784b1c174d9aba78d20fb1565482cf6b554207e6697cb2f8b428cd8334c5f0e7
+name gnupg-w32-2.5.3-beta6_20241216-bin.exe
+file gnupg/gnupg-w32-2.5.3-beta6_20241216.exe
+chk  8a8b645ecb3dab43f8b910b68733c865271c85b54940ba2244d0a9cdf8a4d693
+
+name gnupg-w32-2.5.3-beta6_20241216-src.tar.xz
+file gnupg/gnupg-w32-2.5.3-beta6_20241216.tar.xz
+link gnupg-msi-2.5.3-beta6_20241216-src.tar.xz
+chk  6e0027ff5c967cc6a4a263ba356e3cb970ea7a1fc68bb2d263283ca2452e802d
+
+name gnupg-msi-2.5.3-beta6_20241216-bin.wixlib
+file gnupg/gnupg-w32-2.5.3-beta6_20241216.wixlib
+chk  16f8c67bc02afda5be3d1eee22831e4bbdb883e528efcf5f421cf6a5d2a89c6a
 
 # eof
