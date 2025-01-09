@@ -52,7 +52,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh README.GIT ONEWS \
              patches/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
-             patches/kio/0001-Remove-kencodingfiledialog-to-avoid-Qt5Compat.patch \
              patches/kjobwidgets/0001-Remove-knotification.patch \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
              patches/ktextaddons/0001-Remove-unused-QDbus-includes.patch \
