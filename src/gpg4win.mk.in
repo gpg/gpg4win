@@ -938,7 +938,7 @@ endef
 
 # Sign the file $1 and save the result as $2
 define AUTHENTICODE_sign
-	$(tsdir)/build-aux/gpg-authcode-sign.sh "$(1)" "$(2)"
+	$(RUNCMD) gpg-authcode-sign "$(1)" "$(2)"
 endef
 
 # Generic MSI targets (same for each flavor)

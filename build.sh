@@ -394,6 +394,21 @@ runner_cmd_gpg() {
     return 0
 }
 
+# Run the gpg-authcode-sign command
+runner_cmd_gpg_authcode_sign() {
+    local cmd="$1"
+
+    printf >&2 -- "$PGM(runner): gpg-authcode-sign.sh --stamp $cmd\n"
+    set +e
+    [ -n "$verbose" ] && set -x
+    ( cd "$builddir"/install && gpg-authcode-sign.sh --stamp $cmd </dev/null )
+    rc=$?
+    [ -n "$verbose" ] && set +x
+    set -e
+    printf >&2 -- "$PGM(runner): gpg-authcode-sign.sh returned $rc\n"
+    return 0
+}
+
 
 # Copy some files to the Windows host to prepare the MSI linking
 # Args are: See below
@@ -577,6 +592,7 @@ runner_exec_cmd() {
     case "$cmd" in
         ping) echo pong; rc=0 ;;
         gpg)  runner_cmd_gpg "gpg $line" ;;
+        gpg-authcode-sign) runner_cmd_gpg_authcode_sign "$line" ;;
         msibase) runner_cmd_msibase $line ;;
         cptowinhost)   runner_cmd_cptowinhost $line ;;
         cpfromwinhost) runner_cmd_cpfromwinhost $line ;;
