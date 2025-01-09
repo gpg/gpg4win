@@ -217,11 +217,11 @@ file gpgme/gpgme-1.24.1.tar.bz2
 chk ea05d0258e71061d61716584ec34cef59330a91340571edc46b78374973ba85f
 
 # GpgOL
-# last-changed: 2024-08-28
-# by: ah
+# last-changed: 2025-01-07
+# by: wk
 # verified: swdb
-file gpgol/gpgol-2.5.14.tar.bz2
-chk  2cec52d73dd3b74c474cc0a15823d24af5469ca1c272c6791640fc1b3bbc6189
+file gpgol/gpgol-2.5.15.tar.bz2
+chk  92b47bb657960a147a80753ec2c128fd4cfbf85bbb5c135acbc4a75a1c482e84
 
 #
 # GpgEX
@@ -640,11 +640,11 @@ chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
 
 
 # gpg4win-tools
-# last changed: 2024-12-05
+# last changed: 2025-01-09
 # by: builder
 # verified: Tarball created by builder.
-file gpg4win-tools/gpg4win-tools-202412051138.tar.xz
-chk 9cb4985230c149316726b31f0433f84006c6aef35b170e18807ac4bddcb8b802
+file gpg4win-tools/gpg4win-tools-202501091105.tar.xz
+chk 71230b40eaf94a54d718a09a00188e80087df213e108442a94c83bde0944ec35
 
 # gpgpass
 # last changed: 2024-12-05
@@ -662,18 +662,18 @@ file mimetreeparser/mimetreeparser-202412051138.tar.xz
 chk 36852f2925738012cfe5ce9e2708c35a65403712e90b4714f7dec60605c85d00
 
 # libkleo
-# last changed: 2024-12-05
+# last changed: 2025-01-09
 # by: builder
 # verified: Tarball created by builder.
-file libkleo/libkleo-202412051137.tar.xz
-chk 92fb67057aa7811f86e8c05edf73993ca15a492f9f73468f1bcbbb6fbf962c0f
+file libkleo/libkleo-202501091105.tar.xz
+chk 759d3848a491405a43f55c2b1cb738e604c24629fcab93959bc500b8b4f2010e
 
 # kleopatra
-# last changed: 2024-12-05
+# last changed: 2025-01-09
 # by: builder
 # verified: Tarball created by builder.
-file kleopatra/kleopatra-202412051137.tar.xz
-chk 2dbb9773f5c30313e46b8ebd93f37d67c1d669e1e1949f0ac728c36dd2c70ff1
+file kleopatra/kleopatra-202501091104.tar.xz
+chk 9b266ed5d3d6c5cd2194592a1dd58c0a680f093aa041aa5ae4d6cb8d3756e484
 
 # Okular and dependencies
 # poppler
@@ -715,27 +715,24 @@ file libgcrypt/libgcrypt-1.11.0.tar.bz2
 chk  09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c
 
 
-# last changed 2024-12-16
+# last changed 2025-01-09
 # by builder
 # verified: [taken from buildtree]
+name gnupg-2.5.3.tar.bz2
+file gnupg/gnupg-2.5.3.tar.bz2
+chk  23128b136aed4e5121e793d1b6c60ee50c8007a9d926c1313e524d05386b54ac
 
-server https://gnupg.org/ftp/gcrypt/snapshots
+name gnupg-w32-2.5.3_20250109-bin.exe
+file binary/gnupg-w32-2.5.3_20250109.exe
+chk  882dd034a10495e579653f278e02c83d2af9d037ad0ef7eed0e1d67cf04a896c
 
-name gnupg-2.5.3-beta6.tar.bz2
-file gnupg/gnupg-2.5.3-beta6.tar.bz2
-chk  6cd248c7aba60da691021a880dee7e910bff0a0edf9f95a882a817989bc8af94
+name gnupg-w32-2.5.3_20250109-src.tar.xz
+file gnupg/gnupg-w32-2.5.3_20250109.tar.xz
+link gnupg-msi-2.5.3_20250109-src.tar.xz
+chk  8f0beffbec4d8bc5209452267c261b700e4eef57e0d487177058c54a330ee882
 
-name gnupg-w32-2.5.3-beta6_20241216-bin.exe
-file gnupg/gnupg-w32-2.5.3-beta6_20241216.exe
-chk  8a8b645ecb3dab43f8b910b68733c865271c85b54940ba2244d0a9cdf8a4d693
-
-name gnupg-w32-2.5.3-beta6_20241216-src.tar.xz
-file gnupg/gnupg-w32-2.5.3-beta6_20241216.tar.xz
-link gnupg-msi-2.5.3-beta6_20241216-src.tar.xz
-chk  6e0027ff5c967cc6a4a263ba356e3cb970ea7a1fc68bb2d263283ca2452e802d
-
-name gnupg-msi-2.5.3-beta6_20241216-bin.wixlib
-file gnupg/gnupg-w32-2.5.3-beta6_20241216.wixlib
-chk  16f8c67bc02afda5be3d1eee22831e4bbdb883e528efcf5f421cf6a5d2a89c6a
+name gnupg-msi-2.5.3_20250109-bin.wixlib
+file binary/gnupg-w32-2.5.3_20250109.wixlib
+chk  ba56fdb1008f80601fc8d9df28cb8141be9cd614ce47f29088ebeea8665c61ec
 
 # eof
