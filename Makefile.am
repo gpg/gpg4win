@@ -66,7 +66,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh README.GIT ONEWS \
              patches/qtbase/configurable-windowstheme.patch \
              patches-appimage/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
              patches-appimage/kcrash/0001-DRAFT-Do-not-use-OpenGL-if-it-is-not-available.patch \
-             patches-appimage/kio/0001-Remove-kencodingfiledialog-to-avoid-Qt5Compat.patch \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
              patches-appimage/okular/0001-Make-KF6Pty-dependency-optional.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
@@ -111,7 +110,7 @@ gen-ChangeLog:
 	  mv $(distdir)/cl-t $(distdir)/ChangeLog;			\
 	fi
 
-download: packages/packages.common packages/packages.4 packages/packages.3
+download: packages/packages.common
 	(cd packages; ./download.sh)
 
 vsd-versions: src/stamps/stamp-versions-all-signed
