@@ -67,3 +67,8 @@ src/signed_installers
 /src/license.blurb
 /src/toolchain.cmake
 /VERSION
+/src/gccwrap.sh
+/src/gpg4win.w32-manifest.in
+/src/nsis/config.nsi
+/src/toolchain-native.cmake
+/src/versioninfo.rc.in
