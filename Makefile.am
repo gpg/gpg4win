@@ -36,7 +36,7 @@ SUBDIRS = ${po} packages ${doc} src
 # find patches -type f | sort | sed 's/$/ \\/' | sed 's/^/             /'
 # find -L patches-appimage -type f | sort | sed 's/$/ \\/' | sed 's/^/             /'
 
-EXTRA_DIST = build.sh autogen.rc autogen.sh README.GIT ONEWS \
+EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              doc/license-page doc/GPLv3 build.sh \
              build-aux/git-log-footer build-aux/git-log-fix \
              build-aux/gpg-authcode-sign.sh \
@@ -72,7 +72,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh README.GIT ONEWS \
              patches-appimage/qtbase/add-kleopatras-mime-types.patch \
              patches-appimage/kcalendarcore/0001-Add-option-to-build-without-QML.patch
 
-dist-hook: gen-ChangeLog
+dist-hook: gen-ChangeLog pack_packages_tarballs
 
 if BUILD_W64_COND
 w64_extraargs=" --w64"
@@ -109,6 +109,20 @@ gen-ChangeLog:
 	  rm -f $(distdir)/ChangeLog;					\
 	  mv $(distdir)/cl-t $(distdir)/ChangeLog;			\
 	fi
+
+# We also need to package all tarballs.  Actually it would be better
+# to pack only those which are listed in packages.current but for this
+# wen need to extend the script and also handle the package list for
+# appimages.  Note further that we can't use ln(1) because /src and
+# /build are on different partitions inside docker.
+.PHONY: pack_packages_tarballs
+pack_packages_tarballs:
+	(find $(top_srcdir)/packages -type f \
+           \( -name '*.tar.gz' -o -name '*.tar.bz2' \
+           -o -name '*.tar.xz' -o -name '*.zip' \
+           -o -name '*.exe' -o -name '*.wixlib' \
+           \) -print | xargs cp -t $(distdir)/packages/ )
+
 
 download: packages/packages.common
 	(cd packages; ./download.sh)
