@@ -1101,6 +1101,10 @@ $(msidir)/$(1)/VERSION: $(vsddir)/custom.mk $(stampdir)/stamp-betanum
 	echo "bugAddress=$(VSD_BUG_REPORT)" >> $(msidir)/$(1)/VERSION
 	echo "homepage=$(VSD_HOMEPAGE)" >> $(msidir)/$(1)/VERSION
 	echo "displayName=$(OKULAR_DISPLAY_NAME)" >> $(msidir)/$(1)/VERSION
+	echo "" >> $(msidir)/$(1)/VERSION
+	echo "[Build]" >> $(msidir)/$(1)/VERSION
+	echo "cidInstaller=$(BUILD_COMMITID)" >> $(msidir)/$(1)/VERSION
+	echo "cidConfig=$$$$(cd $(vsddir) && git rev-parse --verify HEAD)" >> $(msidir)/$(1)/VERSION
 
 $(msidir)/$(1)/announcement.txt: $(vsddir)/custom.mk $(vsddir)/announcement.de.in $(vsddir)/announcement.en.in
 	cat $(vsddir)/$(call GETVAR,msi_target_$(1)_announcement) | \

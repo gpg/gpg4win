@@ -76,8 +76,10 @@ m4_esyscmd([echo ]mym4_commitid[>>VERSION])
 
 AC_INIT([mym4_package],[mym4_version],[https://bugs.gnupg.org])
 
+
 PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION
+BUILD_COMMITID="mym4_commitid"
 GIT_REVISION=mym4_revision
 GIT_REVISION_DEC=mym4_revision_dec
 GIT_BETASTRING=mym4_betastr
@@ -114,6 +116,7 @@ AC_SUBST(GIT_BETASTRING)
 AC_SUBST(IS_BETA_BUILD)
 AC_SUBST(IS_VSD_BUILD)
 AC_SUBST(IS_GPD_BUILD)
+AC_SUBST(BUILD_COMMITID)
 
 # Generate extended version information.  Note, that for NSIS use we
 # must not translate the dots to commas in the BUILD_FILEVERSION.
@@ -131,6 +134,7 @@ AC_SUBST(BUILD_TIMESTAMP)
 AC_SUBST(BUILD_ISODATE)
 AC_SUBST(BUILD_FILEVERSION)
 AC_SUBST(BUILD_FILEVERSION_TR)
+
 
 # The final release is copied to an archive server.  The default
 # location may be changed by setting the RELEASEHOST envvar.
