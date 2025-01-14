@@ -18,7 +18,7 @@
 
 
 EXTRA_DIST =  config.site                                      \
-              findicons.sh                                     \
+              findicons.sh mk-sbom.sh                          \
               exdll.h exdll.c                                  \
               g4wihelp.c desktopshellrun.cpp                   \
               slideshow.cpp gpgwrap.c gccwrap.sh.in            \
