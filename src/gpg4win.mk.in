@@ -1082,6 +1082,11 @@ gnupg-vsd/$(1)/VERSION: gnupg-vsd/custom.mk $(stampdir)/stamp-betanum
 	echo "bugAddress=$(VSD_BUG_REPORT)" >> gnupg-vsd/$(1)/VERSION
 	echo "homepage=$(VSD_HOMEPAGE)" >> gnupg-vsd/$(1)/VERSION
 	echo "displayName=$(OKULAR_DISPLAY_NAME)" >> gnupg-vsd/$(1)/VERSION
+	echo "" >> gnupg-vsd/$(1)/VERSION
+	echo "[Build]" >> gnupg-vsd/$(1)/VERSION
+	echo "cidInstaller=$(BUILD_COMMITID)" >> gnupg-vsd/$(1)/VERSION
+	echo "cidConfig=$$$$(cd gnupg-vsd && git rev-parse --verify HEAD)" >> gnupg-vsd/$(1)/VERSION
+
 
 gnupg-vsd/$(1)/announcement.txt: gnupg-vsd/custom.mk gnupg-vsd/announcement.de.in gnupg-vsd/announcement.en.in
 	cat gnupg-vsd/$(call GETVAR,msi_target_$(1)_announcement) | \
