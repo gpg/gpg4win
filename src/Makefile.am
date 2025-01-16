@@ -152,6 +152,9 @@ gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
                  gpgme
 
+# Supported CMake packages to build in an additional architecture
+gpg4win_excmkpkgs =
+
 # The packages that should also be compiled natively
 gpg4win_nativepkgs = qtbase breeze-icons kconfig extra-cmake-modules \
                      qttools

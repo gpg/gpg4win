@@ -854,6 +854,83 @@ $(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
   $(call KDEPKG_template_,$1))
 endef
 
+
+# Template for source packages using CMake to build for an additional host
+define EXCMKPKG_template_
+
+pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
+
+$(stampdir)/stamp-$(1)-ex-00-unpack: \
+		$(stampdir)/stamp-$(1)-00-unpack \
+		$(call GETDEPS_EX,$(1))
+	touch $(stampdir)/stamp-$(1)-ex-00-unpack
+
+$(stampdir)/stamp-$(1)-ex-01-patch: \
+		$(stampdir)/stamp-$(1)-ex-00-unpack \
+		$(stampdir)/stamp-$(1)-01-patch
+	touch $(stampdir)/stamp-$(1)-ex-01-patch
+
+$(stampdir)/stamp-$(1)-ex-02-configure: $(stampdir)/stamp-$(1)-ex-01-patch
+	($(call SETVARS_EX,$(1));				\
+	 mkdir -p "$$$${pkgbdir}";				\
+	 cd "$$$${pkgbdir}";				\
+	 $(CMAKE)					\
+		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
+		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
+		-DQT_MAJOR_VERSION="6" \
+		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_builddir)/src/toolchain-ex.cmake \
+		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
+		-DBUILD_TESTING=OFF \
+		$(CMAKE_GENERATOR_FLAGS) \
+		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}$$$${pkg_conf_subdir}") && \
+	touch $(stampdir)/stamp-$(1)-ex-02-configure
+
+$(stampdir)/stamp-$(1)-ex-03-make: $(stampdir)/stamp-$(1)-ex-02-configure
+	($(call SETVARS_EX,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	touch $(stampdir)/stamp-$(1)-ex-03-make
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+$(stampdir)/stamp-$(1)-ex-04-install: $(stampdir)/stamp-$(1)-ex-03-make
+	($(call SETVARS_EX,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  cd "$$$${pkgmkdir_inst}";			\
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(call STRIP_EX_macro,"$$$${pkgidir}");		\
+	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_ex_post_install))
+	touch $(stampdir)/stamp-$(1)-ex-04-install
+
+$(stampdir)/stamp-$(1)-ex-05-stow: $(stampdir)/stamp-$(1)-ex-04-install
+	($(call SETVARS_EX,$(1));				\
+	 cd $(ex_ipdir);					\
+	 $(STOW) -t `readlink -f $(ex_idir)` "$$$${pkg_version}")
+	touch $(stampdir)/stamp-$(1)-ex-05-stow
+
+$(stampdir)/stamp-final-ex-$(1): $(stampdir)/stamp-$(1)-ex-05-stow
+	touch $(stampdir)/stamp-final-ex-$(1)
+
+$(1)-ex: $(stampdir)/stamp-final-ex-$(1)
+
+.PHONY : clean-ex-$(1)
+clean-ex-$(1):
+	($(call SETVARS_EX,$(1));				\
+	 (cd $(ex_ipdir) &&				\
+	  ($(STOW) -D "$$$${pkg_version}" || true;	\
+	   rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
+	rm -f $(stampdir)/stamp-final-ex-$(1) $(stampdir)/stamp-$(1)-ex-*
+
+endef
+# (end EXCMKPKG_template_)
+
+define EXCMKPKG_template
+$(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
+  $(call EXCMKPKG_template_,$1))
+endef
+
 # Template for tools which should be compiled natively on
 # the build system
 define NATIVEPKG_template
@@ -1208,6 +1285,9 @@ $(foreach ipkg, $(gpg4win_ipkgs), $(eval $(call IPKG_template,$(ipkg))))
 
 # Insert the template for KDE packages.
 $(foreach kdepkg, $(gpg4win_kdepkgs), $(eval $(call KDEPKG_template,$(kdepkg))))
+
+# Insert the template for each CMake package to build for the additional gpgEx architecture.
+$(foreach excmkpkg, $(gpg4win_excmkpkgs), $(eval $(call EXCMKPKG_template,$(excmkpkg))))
 
 # Insert the template for qt packages.
 $(foreach qtpkg, $(gpg4win_qtpkgs), $(eval $(call QTPKG_template,$(qtpkg))))
