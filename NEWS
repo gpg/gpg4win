@@ -6,20 +6,6 @@
 Noteworthy changes in Version 3.3.0 (unreleased)
 ------------------------------------------------
 
-
-~~~~~~~~~~~~~~~
-GnuPG:          2.2.46
-Kleopatra:      3.3.0
-GpgOL:          2.5.15
-GpgEX:          1.0.10
-Kompendium DE:  4.0.1
-Compendium EN:  3.0.0
-~~~~~~~~~~~~~~~
-
-
-Noteworthy changes in Version 4.4.1 (unreleased)
-------------------------------------------------
-
 --- Features ---
 
 (en) Kleopatra: The setting whether to show tags has been removed. The
@@ -34,12 +20,14 @@ Noteworthy changes in Version 4.4.1 (unreleased)
      Encrypt for others work again. [T7435]
 (en) Kleopatra: A crash was resolved that occurred when trying to decrypt
      something that was encrypted for a single unknown certificate. [T7476]
+(en) Kleopatra: Respect the default expiration date for certificates generated
+     for smart cards. [T7481]
 
 ~~~~~~~~~~~~~~~
-GnuPG:          2.4.7
+GnuPG:          2.2.46
 Kleopatra:      3.3.0
-GpgOL:          2.5.14
-GpgEX:          1.0.11
+GpgOL:          2.5.15
+GpgEX:          1.0.10
 Kompendium DE:  4.0.1
 Compendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
