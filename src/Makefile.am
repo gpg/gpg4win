@@ -162,6 +162,9 @@ gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
                  gpgme
 
+# Supported CMake packages to build in an additional architecture
+gpg4win_excmkpkgs =
+
 # Some variables
 WINE = wine
 WINHOST = win10
