@@ -91,13 +91,15 @@ uninst_checks_done:
   SetRegView 32
 !endif
 
+  SetOutPath "$INSTDIR"
+  File "${BUILD_DIR}/versioninfo.txt"
+
 # BEGIN MSI IGNORE
   SetOutPath "$INSTDIR\share\gpg4win"
 
   File "${BUILD_DIR}/HOWTO-SMIME.en.txt"
   File "${BUILD_DIR}/HOWTO-SMIME.de.txt"
 
-  File "${BUILD_DIR}/versioninfo.txt"
 # END MSI IGNORE
 
   # Write a version file.

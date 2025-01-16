@@ -42,7 +42,7 @@ Section "-un.gpg4win"
   # Delete standard stuff.
   Delete "$INSTDIR\share\gpg4win\HOWTO-SMIME.*.txt"
 
-  Delete "$INSTDIR\share\gpg4win\versioninfo.txt"
+  Delete "$INSTDIR\versioninfo.txt"
 
   Delete "$INSTDIR\VERSION"
 

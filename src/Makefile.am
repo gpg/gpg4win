@@ -621,7 +621,7 @@ versioninfo.txt:
 	( while read a b c; do echo "$$a $$b $$c"; \
             done < versioninfo.tmp \
           | sort -k2 -sf | tac | uniq -f1 ; \
-          echo '=========== SHA-1 checksum ============= == package ==' \
+          echo '# Package version infos: SHA-1, name, commit-id' \
          ) | tac | awk '{printf "%s\r\n", $$0}' > versioninfo.txt
 	-rm versioninfo.tmp
 
