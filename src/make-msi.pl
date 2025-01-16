@@ -63,6 +63,9 @@ sub fail
 $::guid_file = 'make-msi.guids';
 $::guid_changed = 0;
 
+# A const string to avoid quoting complications
+$::varwin64 = "\$(var.Win64)";
+
 sub fetch_guids
 {
     # FIXME: Check if file exists.
@@ -1234,10 +1237,17 @@ sub dump_all
                 . "<Component Win64='yes' Id='c_$pkg->{name}_$fileidx' Guid='"
                 . get_guid ($targetfull) . "'>\n";
             }
-            else # 32 bit components
-            {
+            elsif ($targetfull eq 'bin_32\\gpgol.dll' or
+                $targetfull eq 'bin_32\\gpgex.dll')
+            {   # 32 bit components
                 print ' ' x $::level
                 . "<Component Win64='no' Id='c_$pkg->{name}_$fileidx' Guid='"
+                . get_guid ($targetfull) . "'>\n";
+            }
+            else # Component bitness depending on Candle's -arch option.
+            {
+                print ' ' x $::level
+                . "<Component Win64=\"$::varwin64\" Id='c_$pkg->{name}_$fileidx' Guid='"
                 . get_guid ($targetfull) . "'>\n";
             }
 
@@ -1430,7 +1440,7 @@ EOF
             }
 
             print ' ' x $::level
-            . "<Component Win64=\"$(var.Win64)\" Id='c_$pkg->{name}_r_$regidx' Guid='"
+            . "<Component Win64=\"$::varwin64\" Id='c_$pkg->{name}_r_$regidx' Guid='"
             . get_guid ($target) . "' KeyPath='yes'>\n";
             print ' ' x $::level
             . "  <RegistryValue Id='r_$pkg->{name}_$regidx' Root='"
@@ -1566,7 +1576,7 @@ sub dump_all2
             . " Display='hidden' InstallDefault='followParent'>\n"
             . "  <Condition Level='1'>DEFAULT_ALL_SMIME = \"true\"</Condition>\n"
             . "  <Condition Level='1000'>DEFAULT_ALL_SMIME = \"false\"</Condition>\n"
-            . "  <Component Win64=\"$(var.Win64)\" Id='DefaultSmimeExt' Guid='9B63C4D2-50F1-4747-8D79-0621130B7318' KeyPath='yes' Directory='APPLICATIONFOLDER'>\n"
+            . "  <Component Win64=\"$::varwin64\" Id='DefaultSmimeExt' Guid='9B63C4D2-50F1-4747-8D79-0621130B7318' KeyPath='yes' Directory='APPLICATIONFOLDER'>\n"
             . "      <RegistryValue Id='r_kleopatra_default' Root='HKMU' Key='Software\\Classes\\gpg4win.AssocFile.Kleopatra.X509' Name='AllowSilentDefaultTakeOver' Action='write' Type='binary' Value='1'/>\n"
             . "      <RegistryValue Id='r_kleopatra_cer' Root='HKMU' Key='Software\\Classes\\.cer\\OpenWithProgIDs' Name='gpg4win.AssocFile.Kleopatra.X509'  Action='write' Type='binary' Value='0'/>\n"
             . "      <RegistryValue Id='r_kleopatra_cer_o' Root='HKMU' Key='Software\\Classes\\CERFile\\shell\\open\\command'  Action='write' Type='expandable' Value='\"[APPLICATIONFOLDER]bin\\kleopatra.exe\" -- \"%1\"'/>\n"
@@ -1597,7 +1607,7 @@ sub dump_all2
             . " Display='hidden' InstallDefault='followParent'>\n"
             . "  <Condition Level='1'>AUTOSTART= \"true\"</Condition>\n"
             . "  <Condition Level='1000'>AUTOSTART= \"false\"</Condition>\n"
-            . "  <Component Win64=\"$(var.Win64)\" Id='KleoAutostartRegKey' Guid='6520AE4C-E588-4CC9-B433-102F35C95B74' Directory='APPLICATIONFOLDER'>\n"
+            . "  <Component Win64=\"$::varwin64\" Id='KleoAutostartRegKey' Guid='6520AE4C-E588-4CC9-B433-102F35C95B74' Directory='APPLICATIONFOLDER'>\n"
             . "  <RegistryValue Root='HKMU' Key='Software\\Microsoft\\Windows\\CurrentVersion\\Run' Name='Kleopatra'\n"
             . "    Type='string' Value='[APPLICATIONFOLDER]bin\\kleopatra.exe --daemon' KeyPath='yes'/>\n"
             . "  </Component>\n"
@@ -1609,10 +1619,10 @@ sub dump_all2
             print <<EOF;
             <Feature Id='p_gpgol_autoload' Title='p_gpgol_autoload' Level='1' Display='hidden' InstallDefault='followParent'>
               <Condition Level='1000'>INST_GPGOL=\"inactive\"</Condition>
-              <Component Win64=\"$(var.Win64)\" Id='GpgOLActivateRegKey' Guid='87765E51-3902-41F8-B624-4CCEBC731A13' Directory='APPLICATIONFOLDER'>
+              <Component Win64=\"$::varwin64\" Id='GpgOLActivateRegKey' Guid='87765E51-3902-41F8-B624-4CCEBC731A13' Directory='APPLICATIONFOLDER'>
                 <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="LoadBehavior" Value="3" Type="integer" Action="write" />
               </Component>
-              <Component Win64=\"$(var.Win64)\" Id='GpgOLActivateRegKey_32' Guid='87765E51-3902-41F8-B624-4CCEBC731A14' Directory='APPLICATIONFOLDER'>
+              <Component Win64=\"$::varwin64\" Id='GpgOLActivateRegKey_32' Guid='87765E51-3902-41F8-B624-4CCEBC731A14' Directory='APPLICATIONFOLDER'>
                 <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="LoadBehavior" Value="3" Type="integer" Action="write" />
               </Component>
             </Feature>
@@ -1741,7 +1751,7 @@ sub dump_help {
         my $custom_name_us=$custom_name;
         $custom_name_us =~ s/-/_/;
 
-        print FILE ' ' x 6 . '<Component Win64="$(var.Win64)" Id="c_' . $custom_name_us . "_" . $fileidx
+        print FILE ' ' x 6 . '<Component Win64="' . $::varwin64 . '" Id="c_' . $custom_name_us . "_" . $fileidx
         . '" Directory="' . $dirname . '" Guid="' . $guid . '" KeyPath="yes">' . "\n";
 
         print FILE ' ' x 8
@@ -1885,7 +1895,7 @@ EOF
         my $custom_name_us=$custom_name;
         $custom_name_us =~ s/-/_/;
 
-        print FILE ' ' x 6 . '<Component Win64="$(var.Win64)" Id="c_' . $custom_name_us . "_" . $fileidx
+        print FILE ' ' x 6 . '<Component Win64="' . $::varwin64 . '" Id="c_' . $custom_name_us . "_" . $fileidx
         . '" Directory="' . $dirname . '" Guid="' . $guid . '" KeyPath="yes">' . "\n";
 
         print FILE ' ' x 8
@@ -2383,7 +2393,7 @@ print <<EOF;
          Level="1"
          Absent='disallow'>
       <ComponentGroupRef Id="CMP_GnuPG" />
-      <Component Win64="$(var.Win64)" Id="gpg4win_reg_cmp" Guid="7F122F29-DB6A-4DE5-9DD2-0DAF1A24B62F" Directory="APPLICATIONFOLDER">
+      <Component Win64="$::varwin64" Id="gpg4win_reg_cmp" Guid="7F122F29-DB6A-4DE5-9DD2-0DAF1A24B62F" Directory="APPLICATIONFOLDER">
         <RegistryValue Id="r_gpg4win_01" Root="HKMU" Key="Software\\Gpg4win" Name="Install Directory" Action="write"
                        Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes"/>
         <RegistryValue Id="r_gpg4win_02" Root="HKMU" Key="Software\\Gpg4win" Name="VS-Desktop-Version" Action="write"
@@ -2392,7 +2402,7 @@ print <<EOF;
       <Feature Id='p_homedir' Title='p_homedir' Level='1000'
         Display='hidden' InstallDefault='followParent'>
         <Condition Level='1'>HOMEDIR</Condition>
-        <Component Win64="$(var.Win64)" Id='homedir_non_default_cmp' Guid='2C11476C-747D-4CA9-9A53-A64445761A4C' Directory='APPLICATIONFOLDER'>
+        <Component Win64="$::varwin64" Id='homedir_non_default_cmp' Guid='2C11476C-747D-4CA9-9A53-A64445761A4C' Directory='APPLICATIONFOLDER'>
         <RegistryValue Root='HKMU' Key='Software\\GNU\\GnuPG' Name='HomeDir'
          Type='expandable' Value='[HOMEDIR]' KeyPath='yes'/>
         </Component>
@@ -2471,7 +2481,7 @@ print <<EOF;
     <Directory Id='ProgramMenuDir' Name='$::product_name'/>
   </Directory>
   <Directory Id='DesktopFolder' Name='Desktop' >
-    <Component Win64="$(var.Win64)" Id='ApplicationShortcutDesktop' Guid='8FCEA457-D3AD-41CC-BD0B-3E071D6E70BE'>
+    <Component Win64="$::varwin64" Id='ApplicationShortcutDesktop' Guid='8FCEA457-D3AD-41CC-BD0B-3E071D6E70BE'>
       <Shortcut Id='ApplicationDesktopShortcut'
        Name='Kleopatra'
        Description='!(loc.DESC_Menu_kleopatra)'

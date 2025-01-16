@@ -548,6 +548,7 @@ runner_cmd_litcandle() {
 	      -dSrcDir=i:\\src \
 	      -dBldDir=l:\\src \
 	      -dVersion="$version" \
+	      -dWin64="yes" \
 	      -out k:\\"$fwixobj" \
 	      -pedantic -wx "$fwxs" \
 	      -arch x64
@@ -560,6 +561,7 @@ runner_cmd_litcandle() {
 	      -dSrcDir=i:\\src \
 	      -dBldDir=l:\\src \
 	      -dVersion="$version" \
+	      -dWin64="yes" \
 	      -out "$fextraobj" \
 	      -arch x64 \
 	      -pedantic -wx i:\\src\\WixUI_Gpg4win.wxs
