@@ -3,8 +3,19 @@
 # The version numbers given are used by gpg4win and GnuPG [VS-]Desktop
 
 
+Noteworthy changes in Version 4.4.1 (unreleased)
+------------------------------------------------
+Additionally, the Noteworthy changes in Version 3.3.0 (of VSD) are new
+compared to Version 4.4.0 (of Gpg4win).
+
+--- Bug Fixes ---
+
+(en) Kleopatra: Keyresolver GpgOL, groups are resolved again [T7484]
+
 Noteworthy changes in Version 3.3.0 (unreleased)
 ------------------------------------------------
+Additionally, the noteworthy changes in Version 4.4.0 are new compared
+to Version 3.2.3 / 3.2.4 (of VSD)
 
 --- Features ---
 
@@ -17,11 +28,11 @@ Noteworthy changes in Version 3.3.0 (unreleased)
 (en) Kleopatra: Ensure that the decryption result window is visible when
      decrypting a file from the Windows Explorer. [T5780]
 (en) Kleopatra: Make showing the details of a certificate selected under
-     Encrypt for others work again. [T7435]
+     "Encrypt for others" work again. [T7435]
 (en) Kleopatra: A crash was resolved that occurred when trying to decrypt
-     something that was encrypted for a single unknown certificate. [T7476]
-(en) Kleopatra: Respect the default expiration date for certificates generated
-     for smart cards. [T7481]
+     something that was encrypted for a single hidden recipient. [T7476]
+(en) Kleopatra: Respect the default expiration date for key generation also
+     when generating certificates for smart cards. [T7481]
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.46
@@ -46,7 +57,7 @@ Noteworthy changes in Version 4.4.0 (2024-11-27)
      [T6351]
 (en) Kleopatra: It is now possible to change the name of a decrypted
      file if another file with the same name already exists. [T6851]
-(en) Kleopatra: Files can be signed with multiple signatures. [T6867, T7273]
+(en) Kleopatra: Files can now have multiple signatures. [T6867, T7273]
 (en) Kleopatra: All valid user IDs are listed for signing and encryption. This
      simplifies using certificates with multiple user IDs. [T7183]
 (en) Kleopatra: An easier to understand message is shown if a file could not be
@@ -212,8 +223,8 @@ Noteworthy changes in Version 4.4.0 (2024-11-27)
      is used on Windows. [T7414]
 
 
-Additionally, the Noteworthy changes in Version 3.2.2 (of VSD) are new compared
-to Version 4.3.1 (of Gpg4win).
+Additionally, the Noteworthy changes in Version 3.2.2 and 3.2.3 (of VSD) are
+new compared to Version 4.3.1 (of Gpg4win).
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.4.7
@@ -224,10 +235,18 @@ Kompendium DE:  4.0.1
 Compendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
 
-
-Noteworthy changes in Version 3.2.3 (unreleased)
+Noteworthy changes in Version 3.2.4 (2024-10-22)
 ------------------------------------------------
 
+
+
+Noteworthy changes in Version 3.2.3 (2024-08-28)
+------------------------------------------------
+
+(en) Kleopatra: Dark mode detection has been disabled for old Windows versions
+    (earlier than Windows10 17763). [T7214]
+(en) Kleopatra A problem in handling backslashes for archives has been fixed.
+    [T7141]
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.43
