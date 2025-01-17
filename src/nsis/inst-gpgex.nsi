@@ -95,8 +95,11 @@ ${MementoSection} "GpgEX" SEC_gpgex
 
 !ifndef IS_W64_INST
 
+# BEGIN MSI IGNORE
+
 # If the installer is 64 bit no need to install an addional
 # variant.
+
 ${If} ${RunningX64}
 
   # Install the 64 bit version of the dll.
@@ -121,6 +124,8 @@ ${If} ${RunningX64}
   # Note: There is no need to install the help an mo files because
   # they are identical to those installed by the 32 bit version.
 ${EndIf}
+
+# END MSI IGNORE
 
 !endif
 ${MementoSectionEnd}

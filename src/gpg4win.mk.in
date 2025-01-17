@@ -951,6 +951,7 @@ $(MSI_FNAME_PREFIX)-$(VERSION).wxs: $(common_nsi) $(stampdir)/stamp-final \
 		--manifest gpg4win-$(VERSION).files \
 		--version $(VSD_VERSION) \
 		--name "$(MSI_PRODUCT_NAME)" \
+		--win64 \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(tsdir) -DVSDDIR=$(vsddir) \
 		-DSRCDIR=$(sdir) \
                 $(sdir)/nsis/gpg4win.nsi > $(MSI_FNAME_PREFIX)-$(VERSION).wxs
@@ -1061,6 +1062,7 @@ $(msidir)/$(1)/$(1).wxs: $(msidir)/$(1)/VERSION.sig \
 		--manifest gpg4win-$(VERSION).files \
 		--version $(VSD_VERSION) \
 		--name "$(MSI_PRODUCT_NAME)" \
+		--win64 \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(tsdir) -DVSDDIR=$(vsddir) \
 		-DSRCDIR=$(sdir) $(sdir)/nsis/gpg4win.nsi > /dev/null
 
