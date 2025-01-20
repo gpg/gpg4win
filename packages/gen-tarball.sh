@@ -182,6 +182,7 @@ case ${package} in
         repo=https://invent.kde.org/pim/${package}.git
 #        branch="gpg4win/24.05"
 #        custom_l10n="mimetreeparser/mimetreeparser6.po"
+#        local_l10n='mimetreeparser-24.05-${lang}-full-translation.po'
         ;;
     kleopatra)
         repo=https://invent.kde.org/pim/${package}.git
@@ -191,17 +192,18 @@ case ${package} in
         # in our custom branch which are neither in summit nor in the
         # original branch. So they have to be manually extracted using
         # git://invent.kde.org/sysadmin/l10n-scripty/extract_messages.sh
-        # and then merged and manually translated. "local_l10n"
-        # allows us to cat these additional strings to the translations,
-        # too.
+        # and then merged and manually translated. Except for the manual
+        # translation this is automated with the gen-local-l10n.sh script.
+        # "local_l10n" allows us to cat these additional strings to the
+        # translations, too.
         # Requires custom_l10n to be also set.
-#        local_l10n="kleopatra-24.05-de-full-translation.po"
+#        local_l10n='kleopatra-24.05-${lang}-full-translation.po'
         ;;
     libkleo)
         repo=https://invent.kde.org/pim/${package}.git
 #        branch="gpg4win/24.05"
 #        custom_l10n="libkleo/libkleopatra6.po"
-#        local_l10n="libkleopatra-24.05-de-full-translation.po"
+#        local_l10n='libkleopatra-24.05-${lang}-full-translation.po'
         ;;
     okular)
         repo=https://invent.kde.org/graphics/${package}.git
@@ -296,9 +298,10 @@ else
             if ! msgcat --use-first po/$lang/${poname}_main.po po/$lang/${poname}.po > po/$lang/${poname}_new.po ; then
                   echo "WARN: error from msgcat ignored" >&2
             fi
-            # For german we go the extra mile to be 100% and add even
+            # For German (and a few other languages) we go the extra mile to be 100 % and add even
             # more local strings if this is required
-            if [ "$lang" = "de" -a "$local_l10n" != "" ]; then
+            eval local_l10n_file="${local_l10n}"
+            if [ "$local_l10n" != "" -a -f "$olddir/$local_l10n_file" ]; then
                 # get rid of obsolete messages because msgcat --use-first would drop non-obsolete messages from
                 # the local_l10n file that match obsolete messages from the *_new.po file
                 if msgattrib --no-obsolete po/$lang/${poname}_new.po > po/$lang/${poname}_new_noobsolete.po ; then
@@ -306,9 +309,9 @@ else
                 else
                     echo "WARN: error from msgattrib ignored" >&2
                 fi
-                echo "Adding local l10n file $local_l10n which contains:"
-                msgfmt --statistics "$olddir/$local_l10n"
-                if ! msgcat --use-first po/$lang/${poname}_new.po "$olddir/$local_l10n" > po/$lang/${poname}.po ; then
+                echo "Adding local l10n file $local_l10n_file which contains:"
+                msgfmt --statistics "$olddir/$local_l10n_file"
+                if ! msgcat --use-first po/$lang/${poname}_new.po "$olddir/$local_l10n_file" > po/$lang/${poname}.po ; then
                   echo "WARN: error from msgcat ignored" >&2
                 fi
             else
