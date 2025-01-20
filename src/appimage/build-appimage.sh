@@ -154,7 +154,7 @@ for f in dirmngr_ldap gpg-check-pattern \
 done
 
 # linuxdeploy also doesn't know about non-Qt plugins
-for d in iconengines kauth kf5 okular pim5 plasma; do
+for d in iconengines kauth kf5 okular plasma; do
     for f in $(find /build/AppDir/usr/plugins/${d}/ -mindepth 1 -maxdepth 1 -type f); do
         /opt/linuxdeploy/usr/bin/patchelf --set-rpath '$ORIGIN/../../lib' $f
     done

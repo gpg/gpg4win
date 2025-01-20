@@ -89,7 +89,6 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches-appimage/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
              patches-appimage/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
              patches-appimage/kwidgetsaddons/fix-height-of-text-after-update.patch \
-             patches-appimage/libkleo/gpg4win-check.patch \
              patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
              patches-appimage/okular/0001-Add-support-to-customize-about-data.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
