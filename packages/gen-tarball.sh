@@ -105,26 +105,43 @@ case ${package} in
         package=${package%.git}
         ;;
     gnupg | gpgme | libassuan | libgcrypt | libgpg-error | \
-        libksba | npth | pinentry | scute | ntbtls)
+        libksba | npth | pinentry | scute | ntbtls | \
+        gpgol | gpgex | gpg4win-tools | gpgpass)
         repo=git://git.gnupg.org/${package}.git
+        ;;
+    mimetreeparser | kleopatra | libkleo)
+        repo=https://invent.kde.org/pim/${package}.git
+        ;;
+    okular)
+        repo=https://invent.kde.org/graphics/${package}.git
+        ;;
+    poppler)
+        #repo=https://anongit.freedesktop.org/git/poppler/poppler.git
+        repo=https://gitlab.freedesktop.org/svuorela/${package}.git
+        ;;
+    *)
+        echo "$PGM: error: Unsupported package '${package}'"
+        exit 1
+        ;;
+esac
+
+case ${package} in
+    gnupg | gpgme | libassuan | libgcrypt | libgpg-error | \
+        libksba | npth | pinentry | scute | ntbtls)
         is_gpg="yes"
         ;;
     gpgol | gpgex)
-        repo=git://git.gnupg.org/${package}.git
         is_gpg="yes"
         is_w32="yes"
         ;;
     gpg4win-tools | gpgpass)
-        repo=git://git.gnupg.org/${package}.git
         ;;
     mimetreeparser)
-        repo=https://invent.kde.org/pim/${package}.git
         branch="gpg4win/24.05"
         custom_l10n="mimetreeparser/mimetreeparser6.po"
         local_l10n='mimetreeparser-24.05-${lang}-full-translation.po'
         ;;
     kleopatra)
-        repo=https://invent.kde.org/pim/${package}.git
         branch="gpg4win/24.05"
         custom_l10n="kleopatra/kleopatra.po"
         # When we are really far from upstream we might have strings
@@ -139,18 +156,14 @@ case ${package} in
         local_l10n='kleopatra-24.05-${lang}-full-translation.po'
         ;;
     libkleo)
-        repo=https://invent.kde.org/pim/${package}.git
         branch="gpg4win/24.05"
         custom_l10n="libkleo/libkleopatra6.po"
         local_l10n='libkleopatra-24.05-${lang}-full-translation.po'
         ;;
     okular)
-        repo=https://invent.kde.org/graphics/${package}.git
         branch="work/sune/WORK"
         ;;
     poppler)
-        #repo=https://anongit.freedesktop.org/git/poppler/poppler.git
-        repo=https://gitlab.freedesktop.org/svuorela/${package}.git
         branch="WORK"
         ;;
     *)
