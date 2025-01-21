@@ -3963,9 +3963,7 @@ msgid "OpenPGP Keyserver"
 msgstr "Serveur de clés « OpenPGP »"
 
 #: src/conf/dirservconfigpage.cpp:131
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Please note that only one OpenPGP keyserver can be configured."
+#, kde-format
 msgid "Please note that only one OpenPGP keyserver can be configured."
 msgstr ""
 "Veuillez noter qu'un seul serveur de clés « OpenPGP » peut être configuré."
@@ -5041,16 +5039,13 @@ msgid "<b>Decryption canceled.</b>"
 msgstr "<b>Déchiffrement annulé.</b>"
 
 #: src/crypto/decryptverifytask.cpp:488
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "The data was not encrypted for any secret key in your certificate list."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "<b>Decryption not possible: %1</b><br />The data was not encrypted for any "
 "secret key in your certificate list."
 msgstr ""
-"Les données n'ont pas été chiffrées pour aucune clé secrète de votre liste "
+"<b>Dechiffrement impossible: %1</b><br />Les données n'ont pas été chiffrées pour aucune clé secrète de votre liste "
 "de certificats."
 
 #: src/crypto/decryptverifytask.cpp:491
@@ -7864,18 +7859,15 @@ msgstr ""
 "vous sera demandée durant la génération de la clé."
 
 #: src/dialogs/newopenpgpcertificatedetailsdialog.cpp:104
-#, fuzzy, kde-format
-#| msgid "Show advanced options"
+#, kde-format
 msgid "Advanced options"
-msgstr "Afficher les options avancées"
+msgstr "Options avancées"
 
 #: src/dialogs/newopenpgpcertificatedetailsdialog.cpp:111
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Key Material"
+#, kde-format
 msgctxt "The algorithm and strength of encryption key"
 msgid "Key Material"
-msgstr "Clé matérielle"
+msgstr "Matériau de la clé"
 
 #: src/dialogs/newopenpgpcertificatedetailsdialog.cpp:155
 #, kde-format
@@ -8261,13 +8253,7 @@ msgid "Add ADSK"
 msgstr "Ajouter ADSK"
 
 #: src/dialogs/subkeyswidget.cpp:188
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Add the ADSK specified in the GnuPG configuration to your certificate. By "
-#| "adding an ADSK to your certificate, you allow the owner of the ADSK to "
-#| "decrypt all new messages that are encrypted for your certificate, if the "
-#| "client encrypting the message supports this functionality."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Add the ADSK specified in the GnuPG configuration to your certificate. "
@@ -11493,20 +11479,16 @@ msgid "Decrypt/Verify..."
 msgstr "Déchiffrer / vérifier..."
 
 #: src/utils/expiration.cpp:103
-#, fuzzy, kde-format
-#| msgctxt "Valid until DATE"
-#| msgid "Valid until %1"
+#, kde-format
 msgctxt "@label Valid until (<a date>):"
 msgid "Valid until (%1):"
-msgstr "Valide jusqu'à %1"
+msgstr "Valide jusqu'à (%1)"
 
 #: src/utils/expiration.cpp:106
-#, fuzzy, kde-format
-#| msgctxt "The placeholders are dates"
-#| msgid "Valid until (between %1 and %2):"
+#, kde-format
 msgctxt "@label ... (between <a date> and <another date>):"
 msgid "Valid until (between %1 and %2):"
-msgstr "Valable jusqu'à (Entre %1 et %2) :"
+msgstr "Valable jusqu'à (entre %1 et %2) :"
 
 #: src/utils/expiration.cpp:117
 #, kde-format
