@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kleopatra\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-01-20 15:00+0100\n"
-"PO-Revision-Date: 2025-01-14 10:46+0900\n"
+"PO-Revision-Date: 2025-01-22 09:16+0900\n"
 "Last-Translator: NIIBE Yutaka <gniibe@fsij.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
 "Language: ja\n"
@@ -3559,7 +3559,7 @@ msgstr "無期限"
 msgctxt "@item:valuesuffix"
 msgid " day"
 msgid_plural " days"
-msgstr[0] ""
+msgstr[0] "日"
 
 #: src/conf/appearanceconfigwidget.cpp:390
 #, kde-format
@@ -3784,9 +3784,7 @@ msgid "OpenPGP Keyserver"
 msgstr "OpenPGP 鍵サーバ"
 
 #: src/conf/dirservconfigpage.cpp:131
-#, fuzzy, kde-format
-#| msgctxt "@label:textbox"
-#| msgid "Please note that only one OpenPGP keyserver can be configured."
+#, kde-format
 msgid "Please note that only one OpenPGP keyserver can be configured."
 msgstr "ただ一つだけのOpenPGP 鍵サーバが設定できることに注意ください。"
 
@@ -4818,15 +4816,14 @@ msgid "<b>Decryption canceled.</b>"
 msgstr "<b>復号がキャンセルされました。</b>"
 
 #: src/crypto/decryptverifytask.cpp:488
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid ""
-#| "The data was not encrypted for any secret key in your certificate list."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "<b>Decryption not possible: %1</b><br />The data was not encrypted for any "
 "secret key in your certificate list."
-msgstr "証明書リストのどの鍵にたいしてもこのデータは暗号化されませんでした。"
+msgstr ""
+"<b>復号できません: %1</b><br />"
+"証明書リストのどの鍵にたいしてもこのデータは暗号化されていません。"
 
 #: src/crypto/decryptverifytask.cpp:491
 #, kde-format
@@ -6902,6 +6899,8 @@ msgid ""
 "Check this option, if you want to upload your certifications to a "
 "certificate directory after successful certification."
 msgstr ""
+"保証が成功した後に証明書ディレクトリにあなたの証明書をアップロードしたい場合、"
+"このオプションをチェックしてください。"
 
 #: src/dialogs/certifywidget.cpp:256
 #, kde-format
@@ -7528,15 +7527,12 @@ msgstr ""
 "を聞かれます。"
 
 #: src/dialogs/newopenpgpcertificatedetailsdialog.cpp:104
-#, fuzzy, kde-format
-#| msgid "Show advanced options"
+#, kde-format
 msgid "Advanced options"
-msgstr "高度なオプションを表示"
+msgstr "高度なオプション"
 
 #: src/dialogs/newopenpgpcertificatedetailsdialog.cpp:111
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Key Material"
+#, kde-format
 msgctxt "The algorithm and strength of encryption key"
 msgid "Key Material"
 msgstr "鍵マテリアル"
@@ -7915,13 +7911,7 @@ msgid "Add ADSK"
 msgstr "ADSKを追加"
 
 #: src/dialogs/subkeyswidget.cpp:188
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid ""
-#| "Add the ADSK specified in the GnuPG configuration to your certificate. By "
-#| "adding an ADSK to your certificate, you allow the owner of the ADSK to "
-#| "decrypt all new messages that are encrypted for your certificate, if the "
-#| "client encrypting the message supports this functionality."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid ""
 "Add the ADSK specified in the GnuPG configuration to your certificate. "
@@ -11014,56 +11004,43 @@ msgid "Decrypt/Verify..."
 msgstr "復号/検証..."
 
 #: src/utils/expiration.cpp:103
-#, fuzzy, kde-format
-#| msgctxt "Valid until DATE"
-#| msgid "Valid until %1"
+#, kde-format
 msgctxt "@label Valid until (<a date>):"
 msgid "Valid until (%1):"
-msgstr "有効期間期限 %1"
+msgstr "有効期間期限 (%1):"
 
 #: src/utils/expiration.cpp:106
-#, fuzzy, kde-format
-#| msgctxt "The placeholders are dates"
-#| msgid "Valid until (between %1 and %2):"
+#, kde-format
 msgctxt "@label ... (between <a date> and <another date>):"
 msgid "Valid until (between %1 and %2):"
 msgstr "有効期間 (%1 から %2 の間):"
 
 #: src/utils/expiration.cpp:117
-#, fuzzy, kde-format
-#| msgid "The validity period cannot be changed."
+#, kde-format
 msgctxt "@info"
 msgid "The date cannot be changed."
-msgstr "有効期間は変更できません。"
+msgstr "日付は変更できません。"
 
 #: src/utils/expiration.cpp:120 src/utils/expiration.cpp:126
-#, fuzzy, kde-format
-#| msgctxt "... between <a date> and <another date>."
-#| msgid "The validity period must end between %1 and %2."
+#, kde-format
 msgctxt "@info ... between <a date> and <another date>."
 msgid "Enter a date between %1 and %2."
-msgstr "有効期間は %1 から %2 の間でないといけません。"
+msgstr "%1 から %2 の間の日付を入力してください。"
 
 #: src/utils/expiration.cpp:148
-#, fuzzy, kde-format
-#| msgctxt "Date for expiration of certification"
-#| msgid "Two years from now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Three years from now"
-msgstr "今から 2 年間"
+msgstr "今から 3 年間"
 
 #: src/utils/expiration.cpp:149
-#, fuzzy, kde-format
-#| msgctxt "Date for expiration of certification"
-#| msgid "Two years from now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Two years from now"
 msgstr "今から 2 年間"
 
 #: src/utils/expiration.cpp:150
-#, fuzzy, kde-format
-#| msgctxt "Date for expiration of certification"
-#| msgid "One year from now"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "One year from now"
 msgstr "今から 1 年間"
