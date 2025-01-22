@@ -31,6 +31,8 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-gettext.nsi	   uninst-gettext.nsi	      \
         inst-gnupg-w32.nsi	   uninst-gnupg-w32.nsi	      \
         inst-gpgme.nsi		   uninst-gpgme.nsi	      \
+        inst-gpgmepp.nsi	   uninst-gpgmepp.nsi	      \
+        inst-qgpgme.nsi		   uninst-qgpgme.nsi	      \
         inst-paperkey.nsi	   uninst-paperkey.nsi	      \
         inst-gpgol.nsi		   uninst-gpgol.nsi	      \
         inst-gpgex.nsi		   uninst-gpgex.nsi	      \
@@ -149,7 +151,8 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 gpg4win_qtpkgs = qtbase qttools qtwinextras qtsvg qttranslations
 
 # Source packages following the KDE pattern
-gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
+gpg4win_kdepkgs = gpgmepp qgpgme \
+                  kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
                   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
                   kiconthemes kleopatra breeze-icons kitemmodels karchive \
@@ -163,7 +166,7 @@ gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
                  gpgme
 
 # Supported CMake packages to build in an additional architecture
-gpg4win_excmkpkgs =
+gpg4win_excmkpkgs = gpgmepp
 
 # Some variables
 WINE = wine
@@ -262,7 +265,7 @@ gpg4win_pkg_pinentry_configure = \
 gpg4win_pkg_gpgme_configure = --silent \
   --with-gpg-error-prefix=$(idir) --enable-static \
   LDFLAGS=-L$(idir)/lib \
-  --enable-languages=qt,cpp \
+  --enable-languages="" \
   --disable-gpg-test \
   --disable-gpgsm-test
 
@@ -270,9 +273,17 @@ gpg4win_pkg_gpgme_ex_configure = --silent \
   --with-gpg-error-prefix=$(ex_idir) --enable-static \
   --with-libassuan-prefix=$(ex_idir) \
   LDFLAGS=-L$(ex_idir)/lib \
-  --enable-languages=cpp \
+  --enable-languages="" \
   --disable-gpg-test \
   --disable-gpgsm-test
+
+gpg4win_pkg_gpgmepp_configure = -DENABLE_STATIC=ON \
+  -DPKGCONFIG_HOST=$(host)
+
+gpg4win_pkg_gpgmepp_ex_configure = -DENABLE_STATIC=ON \
+  -DPKGCONFIG_HOST=$(GPGEX_ADD_HOST)
+
+gpg4win_pkg_qgpgme_configure = -DBUILD_WITH_QT6=OFF
 
 gpg4win_pkg_gpgol_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir) \
