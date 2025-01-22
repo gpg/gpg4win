@@ -103,11 +103,19 @@ case ${package} in
         repo=${package%/}
         package=$(basename ${repo})
         package=${package%.git}
+        if [ "${package}" == "gpgmeqt" ]; then
+            package=qgpgme
+        fi
         ;;
     gnupg | gpgme | libassuan | libgcrypt | libgpg-error | \
-        libksba | npth | pinentry | scute | ntbtls | \
+        libksba | npth | pinentry | scute | ntbtls | gpgmepp | \
         gpgol | gpgex | gpg4win-tools | gpgpass)
         repo=git://git.gnupg.org/${package}.git
+        ;;
+    gpgmeqt | qgpgme)
+        # the repo is named gpgmeqt, but the tarball/library is named qgpgme
+        package=qgpgme
+        repo=git://git.gnupg.org/gpgmeqt.git
         ;;
     mimetreeparser | kleopatra | libkleo)
         repo=https://invent.kde.org/pim/${package}.git
@@ -124,11 +132,13 @@ case ${package} in
         exit 1
         ;;
 esac
-
 case ${package} in
     gnupg | gpgme | libassuan | libgcrypt | libgpg-error | \
         libksba | npth | pinentry | scute | ntbtls)
         is_gpg="yes"
+        ;;
+    gpgmepp | qgpgme)
+        is_g10_cmake="yes"
         ;;
     gpgol | gpgex)
         is_gpg="yes"
@@ -193,6 +203,17 @@ if [ "${is_gpg}" == "yes" ]; then
     make dist-xz >&2
     tarball=$(ls -t *.tar.xz | head -1)
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
+    cd ${olddir}
+elif [ "${is_g10_cmake}" == "yes" ]; then
+    git clone ${repo} ${tmpdir}/${snapshotdir}
+    olddir=$(pwd)
+    cd ${tmpdir}/${snapshotdir}
+    mkdir build
+    cd build
+    cmake .. >&2
+    make dist >&2
+    tarball=$(ls -t *.tar.xz | head -1)
+    cp ${tarball} ${olddir}
     cd ${olddir}
 else
     git clone --depth=1 --branch $branch ${repo} ${tmpdir}/${snapshotdir}
