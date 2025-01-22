@@ -31,10 +31,7 @@ Section "-un.gpgme"
   Call un.SourceDelete
 !else
   Delete /REBOOTOK "$INSTDIR\bin\libgpgme-11.dll"
-  Delete /REBOOTOK "$INSTDIR\bin\libqgpgmeqt6-15.dll"
-  Delete /REBOOTOK "$INSTDIR\bin\libgpgmepp-6.dll"
 ${If} ${RunningX64}
-  Delete /REBOOTOK "$INSTDIR\${EX_BINDIR}\libgpgmepp-6.dll"
   Delete /REBOOTOK "$INSTDIR\${EX_BINDIR}\libgpgme-11.dll"
   Delete /REBOOTOK "$INSTDIR\${EX_BINDIR}\gpgme-json.exe"
   Delete "$INSTDIR\${EX_BINDIR}\gpgme-w32spawn.exe"

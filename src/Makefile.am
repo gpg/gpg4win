@@ -135,6 +135,7 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 
 # Source packages following the KDE pattern
 gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
+                  gpgmepp qgpgme \
                   kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
                   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
@@ -153,7 +154,7 @@ gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
                  gpgme
 
 # Supported CMake packages to build in an additional architecture
-gpg4win_excmkpkgs =
+gpg4win_excmkpkgs = gpgmepp
 
 # The packages that should also be compiled natively
 gpg4win_nativepkgs = qtbase breeze-icons kconfig extra-cmake-modules \
@@ -246,15 +247,25 @@ gpg4win_pkg_pinentry_configure = \
 
 gpg4win_pkg_gpgme_configure = \
   --enable-static \
-  --enable-languages=qt,cpp \
+  --enable-languages= \
   --disable-gpg-test \
   --disable-gpgsm-test
 
 gpg4win_pkg_gpgme_ex_configure = \
   --enable-static \
-  --enable-languages=cpp \
+  --enable-languages= \
   --disable-gpg-test \
   --disable-gpgsm-test
+
+gpg4win_pkg_gpgmepp_configure = \
+  -DENABLE_STATIC=ON \
+  -DPKGCONFIG_HOST=$(host)
+
+gpg4win_pkg_gpgmepp_ex_configure = \
+  -DENABLE_STATIC=ON \
+  -DPKGCONFIG_HOST=$(GPGEX_ADD_HOST)
+
+gpg4win_pkg_qgpgme_configure = -DBUILD_WITH_QT5=OFF
 
 gpg4win_pkg_openjpeg_configure = -DBUILD_CODEC=OFF
 

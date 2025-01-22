@@ -32,6 +32,8 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-gpgex.nsi         uninst-gpgex.nsi                     \
              inst-gpgme-browser.nsi                                      \
              inst-gpgme.nsi         uninst-gpgme.nsi                     \
+             inst-gpgmepp.nsi       uninst-gpgmepp.nsi                   \
+             inst-qgpgme.nsi        uninst-qgpgme.nsi                    \
              inst-gpgoljs.nsi uninst-gpgoljs.nsi                         \
              inst-gpgol.nsi         uninst-gpgol.nsi                     \
              inst-gpgpass.nsi uninst-gpgpass.nsi                         \

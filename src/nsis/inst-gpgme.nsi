@@ -49,8 +49,6 @@ Section "-gpgme" SEC_gpgme
   ClearErrors
   SetOverwrite try
 
-  File "${prefix}/bin/libqgpgmeqt6-15.dll"
-  File "${prefix}/bin/libgpgmepp-6.dll"
   File "${prefix}/libexec/gpgme-w32spawn.exe"
   File "${prefix}/bin/gpgme-json.exe"
 
@@ -71,12 +69,6 @@ ${If} ${RunningX64}
   ifErrors 0 +3
       File /oname=libgpgme-11.dll.tmp "${exprefix}/bin/libgpgme-11.dll"
       Rename /REBOOTOK libgpgme-11.dll.tmp libgpgme-11.dll
-  SetOverwrite try
-  File ${exprefix}/bin/libgpgmepp-6.dll
-  SetOverwrite lastused
-  ifErrors 0 +3
-      File /oname=libgpgmepp-6.dll.tmp "${exprefix}/bin/libgpgmepp-6.dll"
-      Rename /REBOOTOK libgpgmepp-6.dll.tmp libgpgmepp-6.dll
   File ${exprefix}/bin/gpgme-json.exe
   File "${prefix}/libexec/gpgme-w32spawn.exe"
 

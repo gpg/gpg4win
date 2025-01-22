@@ -65,6 +65,14 @@
 !define gpg4win_pkg_gpgme @gpg4win_pkg_gpgme@
 !define gpg4win_pkg_gpgme_version @gpg4win_pkg_gpgme_version@
 
+@HAVE_PKG_GPGMEPP@
+!define gpg4win_pkg_gpgmepp @gpg4win_pkg_gpgmepp@
+!define gpg4win_pkg_gpgmepp_version @gpg4win_pkg_gpgmepp_version@
+
+@HAVE_PKG_QGPGME@
+!define gpg4win_pkg_qgpgme @gpg4win_pkg_qgpgme@
+!define gpg4win_pkg_qgpgme_version @gpg4win_pkg_qgpgme_version@
+
 @HAVE_PKG_GNUPG_W32@
 !define gpg4win_pkg_gnupg_w32 @gpg4win_pkg_gnupg_w32@
 !define gpg4win_pkg_gnupg_w32_version @gpg4win_pkg_gnupg_w32_version@
