@@ -1307,7 +1307,7 @@ msi: $(stampdir)/stamp-versions-all-signed \
 		echo "######################"; \
 	fi
 
-$(stampdir)/stamp-msi-all-signed: gnupg-vsd/sign.mk \
+$(stampdir)/stamp-msi-all-signed: \
 	$(addsuffix .msi,$(addprefix signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-,$(msi_targets)))
 	touch $(stampdir)/stamp-msi-all-signed
 
