@@ -39,6 +39,12 @@ to Version 3.2.3 / 3.2.4 (of VSD)
 (en) Kleopatra: Respect the default expiration date for key generation also
      when generating certificates for smart cards. [T7481]
 
+--- not included/not active although in version 4.4.0 ---
+(en) Kleopatra: The Help menu contains a link to the GnuPG manual. [T7064]
+(en) Kleopatra: disable/enable certificates in Kleopatra [T7234]
+(en) Kleopatra: Automatically initiate the most likely operation (encryption,
+     decryption or import) when a file is dropped on Kleopatra. [T6894]
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.46
 Kleopatra:      3.3.0
@@ -57,7 +63,6 @@ Noteworthy changes in Version 4.4.0 (2024-11-27)
 --- Features ---
 
 (en) File encryption/decryption and signing/verification
-
 (en) Kleopatra: Encryption and decryption of large files is much faster.
      [T6351]
 (en) Kleopatra: It is now possible to change the name of a decrypted
