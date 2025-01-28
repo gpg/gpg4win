@@ -159,6 +159,8 @@ case ${package} in
         package=${package%.git}
         if [ "${package}" == "gpgmeqt" ]; then
             package=qgpgme
+        elif [ "${package}" == "gpgol.js" ]; then
+            package=gpgoljs
         fi
         ;;
     gnupg | gpgme | libassuan | libgcrypt | libgpg-error | \
