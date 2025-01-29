@@ -40,7 +40,8 @@ appimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
 appimage_qtpkgs = qtbase qttools qtx11extras qtwayland qtsvg qttranslations
 
 # KDE packages for the AppImage
-appimage_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
+appimage_kdepkgs = gpgmepp qgpgme \
+		   kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
 		   kmime kmbox kconfigwidgets kxmlgui kguiaddons kitemviews \
 		   kiconthemes kleopatra breeze-icons kitemmodels karchive \
@@ -53,9 +54,11 @@ appimage_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
 # Binary packages for the AppImage
 # appimage_bpkgs =
 
-appimage_pkg_gpgme_configure = --enable-languages=cpp,qt \
+appimage_pkg_gpgme_configure = --enable-languages="" \
   --disable-gpg-test \
   --disable-gpgsm-test
+
+appimage_pkg_qgpgme_configure = -DBUILD_WITH_QT6=OFF
 
 # TODO: Disable Qt Sql?
 # TODO: Disable Qt Testlib?
