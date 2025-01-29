@@ -22,26 +22,42 @@
 
 FROM centos:7
 
+# add updated package repo definitions pointing to vault.centos.org
+COPY *.repo /root/
+
 # Import the CentOS 7 package signing key after verifying its fingerprint.
 # Then add the software collections repository from the CentOS SCLo SIG and
 # import its package signing key after verifying the fingerprint.
 # Ditto for the EPEL 7 package signing key.
-RUN test $(gpg --with-colons --with-fingerprint < /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 | grep ^pub: | wc -l) = 1 \
+RUN echo "Removing obsolete package repository definitions..." \
+    && rm -f /etc/yum.repos.d/CentOS-*.repo \
+    && mv /root/CentOS.repo /etc/yum.repos.d \
+    && test $(gpg --with-colons --with-fingerprint < /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 | grep ^pub: | wc -l) = 1 \
     && gpg --with-colons --with-fingerprint < /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 | grep -q ^fpr:::::::::6341AB2753D78A78A7C27BB124C6A8A7F4A80EB5 \
     && rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 \
     && yum -y update \
+    && echo "Removing obsolete package repository definitions installed by the update..." \
+    && rm -f /etc/yum.repos.d/CentOS-*.repo \
     && yum -y install \
         centos-release-scl \
+    && echo "Removing obsolete CentOS SCLo package repository definitions..." \
+    && rm -f /etc/yum.repos.d/CentOS-*.repo \
+    && mv /root/CentOS_SCLo.repo /etc/yum.repos.d \
     && test $(gpg --with-colons --with-fingerprint < /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo | grep ^pub: | wc -l) = 1 \
     && gpg --with-colons --with-fingerprint < /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo | grep -q ^fpr:::::::::C4DBD535B1FBBA14F8BA64A84EB84E71F2EE9D55 \
     && rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo \
     && yum -y update \
     && yum -y install \
         epel-release \
+    && echo "Removing obsolete EPEL package repository definitions..." \
+    && rm -f /etc/yum.repos.d/epel*.repo \
+    && mv /root/epel.repo /etc/yum.repos.d \
     && test $(gpg --with-colons --with-fingerprint < /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 | grep ^pub: | wc -l) = 1 \
     && gpg --with-colons --with-fingerprint < /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 | grep -q ^fpr:::::::::91E97D7C4A5E96F17F3E888F6A2FAEA2352C64E5 \
     && rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 \
     && yum -y update \
+    && echo "Removing obsolete EPEL package repository definitions..." \
+    && rm -f /etc/yum.repos.d/epel.repo.rpmnew /etc/yum.repos.d/epel-testing.repo \
     && rm -rf /root/.gnupg
 
 RUN yum -y install \
