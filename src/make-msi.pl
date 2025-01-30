@@ -2178,13 +2178,16 @@ print <<EOF;
        Win64='no'/>
     </Property>
 
+    <!-- Do not show the note to uninstall gpg4win if VSD is already
+         installed or if gpg4win is not installed.  -->
     <Condition Message="!(loc.gpg4winInstalled)">
         <![CDATA[VSDINSTALLED OR (NOT GPG4WININSTALLED)]]>
     </Condition>
 
-    <!-- Turn on logging
+    <!-- Uncomment to turn on logging
         <Property Id="MsiLogging" Value="gnupg-desktop"/>
     -->
+
     <Icon Id="shield.ico" SourceFile="\$(var.SrcDir)/icons/shield.ico"/>
     <Property Id="ARPPRODUCTICON" Value="shield.ico"/>
 
@@ -2194,12 +2197,15 @@ print <<EOF;
     <WixVariable Id="WixUIInfoBmp" Value="info.bmp" />
 
     <Property Id="ARPHELPLINK" Value="https://gnupg.com" />
-    <!-- We leave repair Property Id="ARPNOREPAIR" Value="yes" Secure="yes" /> -->
-    <!-- We leave modify <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" /> -->
+    <!--
+         We leave repair <Property Id="ARPNOREPAIR" Value="yes" Secure="yes" />
+         We leave modify <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" />
+     -->
 
     <!-- We allow Downgrades
-    <MajorUpgrade DowngradeErrorMessage="!(loc.T_FoundExistingVersion)" AllowDowngrades="yes" AllowSameVersionUpgrades="yes" />
-    -->
+         <MajorUpgrade DowngradeErrorMessage="!(loc.T_FoundExistingVersion)"
+                       AllowDowngrades="yes" AllowSameVersionUpgrades="yes" />
+     -->
     <MajorUpgrade AllowDowngrades="yes"/>
 
     <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
@@ -2273,81 +2279,120 @@ print <<EOF;
 
     <Property Id="MODE">default</Property>
 
-    <!-- Kill processes on update that don't listen to Window Messages.
-    This makes the package less descriptive
-    but should smooth out the update process for most. -->
+    <!-- Kill processes on update that do not listen to Window Messages.
+         This makes the package less descriptive
+         but should smooth out the update process for most.
+      -->
 
     <!-- We need to set the property accordingly so ICE does not error out -->
     <Property Id="TASKKILLFILEPATH" Value="taskkill"/>
-    <CustomAction Id='SetTASKKILLFILEPATH32' Property='TASKKILLFILEPATH' Value='[SystemFolder]\\taskkill.exe' Return='check' />
-    <CustomAction Id='SetTASKKILLFILEPATH64' Property='TASKKILLFILEPATH' Value='[System64Folder]\\taskkill.exe' Return='check' />
+    <CustomAction Id='SetTASKKILLFILEPATH32' Property='TASKKILLFILEPATH'
+             Value='[SystemFolder]\\taskkill.exe' Return='check' />
+    <CustomAction Id='SetTASKKILLFILEPATH64' Property='TASKKILLFILEPATH'
+             Value='[System64Folder]\\taskkill.exe' Return='check' />
     <Property Id="WixQuietExecCmdLine" Value='foo'/>
 
-    <!-- Okular is not included here because it handles the window message and might
-    ask the user to save some open work or modifications when closed through a window
-    message. -->
+    <!-- Noet that Okular is not included here because it handles the
+         window message and might ask the user to save some open work
+         or modifications when closed through a window message.  -->
+
+    <!-- Although Kleopatra responds nicely to being killed by the MSI
+         installer we need to kill it first so it does not restart the
+         background processes. We also kill gpg and gpgsm in case
+         there are some running processes from other users on the
+         system. -->
+
+    <CustomAction Id="PrepareKillKleo" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM kleopatra.exe'/>
+    <CustomAction Id="TaskKillKleo" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+
+    <CustomAction Id="PrepareKillGPG" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM gpg.exe'/>
+    <CustomAction Id="TaskKillGPG" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+
+    <CustomAction Id="PrepareKillGPGSM" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM gpgsm.exe'/>
+    <CustomAction Id="TaskKillGPGSM" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+
+    <CustomAction Id="PrepareKillAgent" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM gpg-agent.exe'/>
+    <CustomAction Id="TaskKillAgent" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+
+    <CustomAction Id="PrepareKillDirmngr" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM dirmngr.exe'/>
+    <CustomAction Id="TaskKillDirmngr" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+
+    <CustomAction Id="PrepareKillKeyboxd" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM keyboxd.exe'/>
+    <CustomAction Id="TaskKillKeyboxd" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+
+    <!-- Well the next thing should have been handled by killing the
+         agent but you never know.  -->
+    <CustomAction Id="PrepareKillScd" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM scdaemon.exe'/>
+    <CustomAction Id="TaskKillScd" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
 
 
-    <!-- Although Kleopatra responds nicely to being killed by the
-         MSI installer we need to kill it first so it does not restart
-         the background processes. We also kill gpg and gpgsm in case
-         there are some running processes from other users on the system. -->
-    <CustomAction Id="PrepareKillKleo" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM kleopatra.exe'/>
-    <CustomAction Id="TaskKillKleo" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+    <CustomAction Id="PrepareKillKleoDeferred" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM kleopatra.exe'/>
+    <CustomAction Id="TaskKillKleoDeferred" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
 
-    <CustomAction Id="PrepareKillGPG" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM gpg.exe'/>
-    <CustomAction Id="TaskKillGPG" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+    <CustomAction Id="PrepareKillGPGDeferred" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM gpg.exe'/>
+    <CustomAction Id="TaskKillGPGDeferred" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
 
-    <CustomAction Id="PrepareKillGPGSM" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM gpgsm.exe'/>
-    <CustomAction Id="TaskKillGPGSM" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+    <CustomAction Id="PrepareKillGPGSMDeferred" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM gpgsm.exe'/>
+    <CustomAction Id="TaskKillGPGSMDeferred" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
 
-    <CustomAction Id="PrepareKillAgent" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM gpg-agent.exe'/>
-    <CustomAction Id="TaskKillAgent" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+    <CustomAction Id="PrepareKillAgentDeferred" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM gpg-agent.exe'/>
+    <CustomAction Id="TaskKillAgentDeferred" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
 
-    <CustomAction Id="PrepareKillDirmngr" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM dirmngr.exe'/>
-    <CustomAction Id="TaskKillDirmngr" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+    <CustomAction Id="PrepareKillDirmngrDeferred" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM dirmngr.exe'/>
+    <CustomAction Id="TaskKillDirmngrDeferred" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
 
-    <!-- Well this should have been handled by killing the agents but you never know. -->
-    <CustomAction Id="PrepareKillScd" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM scdaemon.exe'/>
-    <CustomAction Id="TaskKillScd" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+    <CustomAction Id="PrepareKillKeyboxdDeferred" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM keyboxd.exe'/>
+    <CustomAction Id="TaskKillKeyboxdDeferred" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
 
-    <CustomAction Id="PrepareKillKeyboxd" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM keyboxd.exe'/>
-    <CustomAction Id="TaskKillKeyboxd" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
-
-
-    <CustomAction Id="PrepareKillKleoDeferred" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM kleopatra.exe'/>
-    <CustomAction Id="TaskKillKleoDeferred" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
-
-    <CustomAction Id="PrepareKillGPGDeferred" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM gpg.exe'/>
-    <CustomAction Id="TaskKillGPGDeferred" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
-
-    <CustomAction Id="PrepareKillGPGSMDeferred" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM gpgsm.exe'/>
-    <CustomAction Id="TaskKillGPGSMDeferred" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
-
-    <CustomAction Id="PrepareKillAgentDeferred" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM gpg-agent.exe'/>
-    <CustomAction Id="TaskKillAgentDeferred" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
-
-    <CustomAction Id="PrepareKillDirmngrDeferred" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM dirmngr.exe'/>
-    <CustomAction Id="TaskKillDirmngrDeferred" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
-
-    <!-- Well this should have been handled by killing the agents but you never know. -->
-    <CustomAction Id="PrepareKillScdDeferred" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM scdaemon.exe'/>
-    <CustomAction Id="TaskKillScdDeferred" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
-
-    <CustomAction Id="PrepareKillKeyboxdDeferred" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM keyboxd.exe'/>
-    <CustomAction Id="TaskKillKeyboxdDeferred" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
+    <CustomAction Id="PrepareKillScdDeferred" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM scdaemon.exe'/>
+    <CustomAction Id="TaskKillScdDeferred" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
 
     <InstallExecuteSequence>
-        <Custom Action='SetTASKKILLFILEPATH64' After='AppSearch'>VersionNT64</Custom>
-        <Custom Action='SetTASKKILLFILEPATH32' After='AppSearch'>Not VersionNT64</Custom>
 
+        <Custom Action='SetTASKKILLFILEPATH64'
+             After='AppSearch'>VersionNT64</Custom>
+        <Custom Action='SetTASKKILLFILEPATH32'
+             After='AppSearch'>Not VersionNT64</Custom>
 
-        <!-- This sequence is run with Exceute="immediate". This will run it with user
-             permissions and only kill the tasks of the current user. It needs to come
-             in early to avoid the first "Close running applications" window. -->
+        <!-- This sequence is run with Exceute="immediate". This will
+             run it with user permissions and only kill the tasks of
+             the current user. It needs to come in early to avoid the
+             first "Close running applications" window. -->
+
         <Custom Action="PrepareKillKleo" Before="InstallValidate">1</Custom>
         <Custom Action="TaskKillKleo" After="PrepareKillKleo">1</Custom>
-        <!-- Users on the system might have hanging or long running gpg / gpgsm processes -->
+
+        <!-- Users on the system might have hanging or long running
+             gpg or gpgsm processes. -->
+
         <Custom Action="PrepareKillGPG" After="TaskKillKleo">1</Custom>
         <Custom Action="TaskKillGPG" After="PrepareKillGPG">1</Custom>
         <Custom Action="PrepareKillGPGSM" After="TaskKillGPG">1</Custom>
@@ -2356,34 +2401,53 @@ print <<EOF;
         <Custom Action="TaskKillAgent" After="PrepareKillAgent">1</Custom>
         <Custom Action="PrepareKillDirmngr" After="TaskKillAgent">1</Custom>
         <Custom Action="TaskKillDirmngr" After="PrepareKillDirmngr">1</Custom>
-        <Custom Action="PrepareKillScd" After="TaskKillDirmngr">1</Custom>
-        <Custom Action="TaskKillScd" After="PrepareKillScd">1</Custom>
         <Custom Action="PrepareKillKeyboxd" After="TaskKillScd">1</Custom>
         <Custom Action="TaskKillKeyboxd" After="PrepareKillKeyboxd">1</Custom>
+        <Custom Action="PrepareKillScd" After="TaskKillDirmngr">1</Custom>
+        <Custom Action="TaskKillScd" After="PrepareKillScd">1</Custom>
 
-        <!-- This sequence is run with Exceute="deferred". This will kill all
-             processes from all users. This may only be done after InstallInitialize
-             so in the the main installer script. But if we would only do the
-             deferred kill an interactively installing user would already have generated
-             a failure to close all running apps during the InstallValidate stage. -->
-        <Custom Action="PrepareKillKleoDeferred" After="InstallInitialize">1</Custom>
-        <Custom Action="TaskKillKleoDeferred" After="PrepareKillKleoDeferred">1</Custom>
-        <Custom Action="PrepareKillGPGDeferred" After="TaskKillKleoDeferred">1</Custom>
-        <Custom Action="TaskKillGPGDeferred" After="PrepareKillGPGDeferred">1</Custom>
-        <Custom Action="PrepareKillGPGSMDeferred" After="TaskKillGPGDeferred">1</Custom>
-        <Custom Action="TaskKillGPGSMDeferred" After="PrepareKillGPGSMDeferred">1</Custom>
-        <Custom Action="PrepareKillAgentDeferred" After="TaskKillGPGSMDeferred">1</Custom>
-        <Custom Action="TaskKillAgentDeferred" After="PrepareKillAgentDeferred">1</Custom>
-        <Custom Action="PrepareKillDirmngrDeferred" After="TaskKillAgentDeferred">1</Custom>
-        <Custom Action="TaskKillDirmngrDeferred" After="PrepareKillDirmngrDeferred">1</Custom>
-        <Custom Action="PrepareKillScdDeferred" After="TaskKillDirmngrDeferred">1</Custom>
-        <Custom Action="TaskKillScdDeferred" After="PrepareKillScdDeferred">1</Custom>
-        <Custom Action="PrepareKillKeyboxdDeferred" After="TaskKillScdDeferred">1</Custom>
-        <Custom Action="TaskKillKeyboxdDeferred" After="PrepareKillKeyboxdDeferred">1</Custom>
+        <!-- This sequence is run with Exceute="deferred". This will
+             kill all processes from all users. This may only be done
+             after InstallInitialize so in the the main installer
+             script. But if we would only do the deferred kill an
+             interactively installing user would already have
+             generated a failure to close all running apps during the
+             InstallValidate stage. -->
+
+        <Custom Action="PrepareKillKleoDeferred"
+                 After="InstallInitialize">1</Custom>
+        <Custom Action="TaskKillKleoDeferred"
+                 After="PrepareKillKleoDeferred">1</Custom>
+        <Custom Action="PrepareKillGPGDeferred"
+                 After="TaskKillKleoDeferred">1</Custom>
+        <Custom Action="TaskKillGPGDeferred"
+                 After="PrepareKillGPGDeferred">1</Custom>
+        <Custom Action="PrepareKillGPGSMDeferred"
+                 After="TaskKillGPGDeferred">1</Custom>
+        <Custom Action="TaskKillGPGSMDeferred"
+                After="PrepareKillGPGSMDeferred">1</Custom>
+        <Custom Action="PrepareKillAgentDeferred"
+                 After="TaskKillGPGSMDeferred">1</Custom>
+        <Custom Action="TaskKillAgentDeferred"
+                 After="PrepareKillAgentDeferred">1</Custom>
+        <Custom Action="PrepareKillDirmngrDeferred"
+                 After="TaskKillAgentDeferred">1</Custom>
+        <Custom Action="TaskKillDirmngrDeferred"
+                 After="PrepareKillDirmngrDeferred">1</Custom>
+        <Custom Action="PrepareKillScdDeferred"
+                 After="TaskKillDirmngrDeferred">1</Custom>
+        <Custom Action="TaskKillScdDeferred"
+                 After="PrepareKillScdDeferred">1</Custom>
+        <Custom Action="PrepareKillKeyboxdDeferred"
+                 After="TaskKillScdDeferred">1</Custom>
+        <Custom Action="TaskKillKeyboxdDeferred"
+                 After="PrepareKillKeyboxdDeferred">1</Custom>
+
     </InstallExecuteSequence>
 
 
-    <!-- Launch Kleopatra after setup exits
+    <!-- Disabled: Launch Kleopatra after setup exits
+
     <CustomAction Id            = "StartAppOnExit"
                   FileKey       = "kleopatra.exe"
                   ExeCommand    = ""
@@ -2393,27 +2457,35 @@ print <<EOF;
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT"
       Value="Launch Kleopatra" />
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
- -->
+
+    -->
 
     <Feature Id="Feature_GnuPG"
          Title="GnuPG"
          Level="1"
          Absent='disallow'>
       <ComponentGroupRef Id="CMP_GnuPG" />
-      <Component Win64="$::win64" Id="gpg4win_reg_cmp" Guid="7F122F29-DB6A-4DE5-9DD2-0DAF1A24B62F" Directory="APPLICATIONFOLDER">
-        <RegistryValue Id="r_gpg4win_01" Root="HKMU" Key="Software\\Gpg4win" Name="Install Directory" Action="write"
-                       Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes"/>
-        <RegistryValue Id="r_gpg4win_02" Root="HKMU" Key="Software\\Gpg4win" Name="VS-Desktop-Version" Action="write"
-                       Type="string" Value="$::build_version" KeyPath="no"/>
+      <Component Win64="$::win64" Id="gpg4win_reg_cmp"
+                 Guid="7F122F29-DB6A-4DE5-9DD2-0DAF1A24B62F"
+                 Directory="APPLICATIONFOLDER">
+        <RegistryValue Id="r_gpg4win_01" Root="HKMU" Key="Software\\Gpg4win"
+                     Name="Install Directory" Action="write"
+                     Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes"/>
+        <RegistryValue Id="r_gpg4win_02" Root="HKMU" Key="Software\\Gpg4win"
+                     Name="VS-Desktop-Version" Action="write"
+                     Type="string" Value="$::build_version" KeyPath="no"/>
       </Component>
       <Feature Id='p_homedir' Title='p_homedir' Level='1000'
         Display='hidden' InstallDefault='followParent'>
         <Condition Level='1'>HOMEDIR</Condition>
-        <Component Win64="$::win64" Id='homedir_non_default_cmp' Guid='2C11476C-747D-4CA9-9A53-A64445761A4C' Directory='APPLICATIONFOLDER'>
-        <RegistryValue Root='HKMU' Key='Software\\GNU\\GnuPG' Name='HomeDir'
-         Type='expandable' Value='[HOMEDIR]' KeyPath='yes'/>
+        <Component Win64="$::win64" Id='homedir_non_default_cmp'
+                   Guid='2C11476C-747D-4CA9-9A53-A64445761A4C'
+                   Directory='APPLICATIONFOLDER'>
+          <RegistryValue Root='HKMU' Key='Software\\GNU\\GnuPG' Name='HomeDir'
+                         Type='expandable' Value='[HOMEDIR]' KeyPath='yes'/>
         </Component>
       </Feature>
+
       <!-- Hardcode some components that always should be installed -->
 EOF
 
@@ -2451,6 +2523,7 @@ print <<EOF;
 
     </Feature>
 EOF
+
 
 foreach my $pkgname (@{$parser->{pkg_list}})
 {
