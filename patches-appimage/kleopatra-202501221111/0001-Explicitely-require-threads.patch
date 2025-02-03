@@ -1,0 +1,53 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From d6eb643737e510dba3f103ad8e1a73b6668913a8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Mon, 3 Feb 2025 13:38:49 +0100
+Subject: [PATCH] Explicitely require threads
+
+For the AppImage we need to build with pthreads explicitly because it
+uses a very old libc which does not yet have pthreads included.
+
+GnuPG-bug-id: 7499
+---
+ CMakeLists.txt     | 3 +++
+ src/CMakeLists.txt | 1 +
+ 2 files changed, 4 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 01a898b8b..f47721b16 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -59,6 +59,7 @@ endif ()
+
+ set(CMAKE_CXX_STANDARD 20)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
++set(THREADS_PREFER_PTHREAD_FLAG ON)
+
+ find_package(ECM ${KF5_WANT_VERSION} CONFIG REQUIRED)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+@@ -89,6 +90,8 @@ else()
+     set(KF_MAJOR_VERSION "5")
+ endif()
+
++find_package(Threads REQUIRED)
++
+ # Find KF5 packages
+ find_package(KF${KF_MAJOR_VERSION} ${KF5_WANT_VERSION}
+     REQUIRED COMPONENTS
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 9a16cd22e..67e1afe95 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -625,6 +625,7 @@ target_link_libraries(kleopatra_bin
+   KF${KF_MAJOR_VERSION}::XmlGui
+   Qt::Network
+   Qt::PrintSupport # Printing secret keys
++  Threads::Threads
+   kleopatraclientcore
+   ${_kleopatra_extra_libs}
+   ${_kleopatra_mail_libs}
+--
+2.48.1
