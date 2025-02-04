@@ -161,11 +161,11 @@ chk 91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9
 file bzip2/bzip2-1.0.6-g10.tar.gz
 chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 
-# last changed 2024-02-23
-# by wk
-# verified: build tree
-file libgpg-error/libgpg-error-1.50.tar.bz2
-chk  69405349e0a633e444a28c5b35ce8f14484684518a508dc48a089992fe93e20a
+# last changed 2025-02-04
+# by ik
+# verified: swdb
+file libgpg-error/libgpg-error-1.51.tar.bz2
+chk  be0f1b2db6b93eed55369cdf79f19f72750c8c7c39fc20b577e724545427e6b2
 
 # last-changed: 2024-07-03
 # by: wk
@@ -174,18 +174,18 @@ file libassuan/libassuan-3.0.1.tar.bz2
 chk  c8f0f42e6103dea4b1a6a483cb556654e97302c7465308f58363778f95f194b1
 
 
-# last changed 2024-02-23
-# by wk
-# verified: build tree
-file npth/npth-1.7.tar.bz2
-chk  8589f56937b75ce33b28d312fccbf302b3b71ec3f3945fde6aaa74027914ad05
+# last changed 2025-02-04
+# by ik
+# verified: swdb
+file npth/npth-1.8.tar.bz2
+chk  8bd24b4f23a3065d6e5b26e98aba9ce783ea4fd781069c1b35d149694e90ca3e
 
 
-# last changed 2024-02-23
-# by wk
-# verified: build tree
-file libksba/libksba-1.6.6.tar.bz2
-chk  5dec033d211559338838c0c4957c73dfdc3ee86f73977d6279640c9cd08ce6a4
+# last changed 2025-02-04
+# by ik
+# verified: swdb
+file libksba/libksba-1.6.7.tar.bz2
+chk  cf72510b8ebb4eb6693eef765749d83677a03c79291a311040a5bfd79baab763
 
 
 # last changed 2024-01-12
