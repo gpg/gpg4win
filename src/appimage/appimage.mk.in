@@ -127,7 +127,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 for pfile in "$$$${pkgpatbdir}"/*.patch "$$$${pkgpatdir}"/*.patch ; do  \
-	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
+	   (cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}")		\
 	 done)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
@@ -277,7 +277,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 		sed -i 's/set(KPIM_MBOX_VERSION.*)/set(KPIM_MBOX_VERSION "6.1.0")/' CMakeLists.txt; \
 	 fi; \
 	 for pfile in "$$$${pkgpatbdir}"/*.patch "$$$${pkgpatdir}"/*.patch ; do  \
-	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
+	   (cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}")		\
 	 done)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
