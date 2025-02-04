@@ -37,6 +37,7 @@ RUN zypper --non-interactive update && \
     cups-devel \
     boost-devel \
 #    fontconfig-devel \
+    hunspell-devel \
     openssl-devel \
     libtiff-devel \
     libusb-devel \
@@ -96,3 +97,6 @@ RUN mkdir -p /tmp/download \
     && rm -rf /tmp/download \
     && mkdir -p /opt \
     && mv /tmp/squashfs-root /opt/linuxdeploy
+
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
