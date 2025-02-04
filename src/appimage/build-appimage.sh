@@ -24,36 +24,35 @@
 set -e
 
 BUILDROOT=/build
-SRCDIR=${BUILDROOT}/src
-APPDIR=${SRCDIR}/playground/AppDir
-INSTDIR=${SRCDIR}/playground/install
-VSD_DIR=${SRCDIR}/gnupg-vsd
+SRCDIR=/src
+APPDIR=${BUILDROOT}/AppDir
+INSTDIR=${BUILDROOT}/install
+VSD_DIR=${SRCDIR}/src/gnupg-vsd
 
-cd ${BUILDROOT}
 # Check for the buildtype and existence of required files
 # early
-BUILDTYPE=$(cat ${BUILDROOT}/packages/BUILDTYPE || echo default)
-if [ $BUILDTYPE != default ] && [ ! -f ${SRCDIR}/gnupg-vsd/custom.mk ]; then
+BUILDTYPE=$(cat ${SRCDIR}/packages/BUILDTYPE || echo default)
+if [ $BUILDTYPE != default ] && [ ! -f ${VSD_DIR}/custom.mk ]; then
     echo "ERROR: Non default build without custom file."
-    echo "Check that src/gnupg-vsd/custom.mk exists or "
-    echo "change the BUILDTYPE in packages/BUILDTYPE"
+    echo "Check that ${VSD_DIR}/custom.mk exists or "
+    echo "change the BUILDTYPE in ${SRCDIR}/packages/BUILDTYPE"
     exit 2
 fi
-if [ $BUILDTYPE vsd ] && \
-    [ ! -f ${SRCDIR}/gnupg-vsd/Standard/VERSION ]; then
+if [ $BUILDTYPE = vsd ] && \
+    [ ! -f ${VSD_DIR}/Standard/VERSION ]; then
     echo "No VERSION file in Standard dir."
     exit 2
 fi
-if [ $BUILDTYPE gpd ] && \
-    [ ! -f ${SRCDIR}/gnupg-vsd/Desktop/VERSION ]; then
+if [ $BUILDTYPE = gpd ] && \
+    [ ! -f ${VSD_DIR}/Desktop/VERSION ]; then
     echo "No VERSION file in Desktop dir."
     exit 2
 fi
 
 # The actual build
-./autogen.sh --force
-./configure --enable-appimage --enable-maintainer-mode
-make
+cd ${BUILDROOT}
+${SRCDIR}/configure --enable-appimage --with-playground=${BUILDROOT}
+make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT}
 
 echo 'rootdir = $APPDIR/usr' >${APPDIR}/usr/bin/gpgconf.ctl
 if [ $BUILDTYPE = vsd ]; then
@@ -63,14 +62,14 @@ else
 fi
 
 # Copy the start-shell helper for use AppRun
-cp ${SRCDIR}/appimage/start-shell ${APPDIR}/
+cp ${SRCDIR}/src/appimage/start-shell ${APPDIR}/
 chmod +x ${APPDIR}/start-shell
 
 # Copy standard global configuration
 if [ $BUILDTYPE = vsd ]; then
     mkdir -p ${APPDIR}/usr/share/gnupg/conf/gnupg-vsd
     rsync -aLv --delete --omit-dir-times \
-          ${SRCDIR}/gnupg-vsd/Standard/etc/gnupg/ \
+          ${VSD_DIR}/Standard/etc/gnupg/ \
           ${APPDIR}/usr/share/gnupg/conf/gnupg-vsd/
 fi
 
@@ -88,18 +87,16 @@ export QMAKE=${INSTDIR}/bin/qmake
 mkdir -p ${INSTDIR}/plugins/sqldrivers
 
 # copy KDE plugins
-for d in kiconthemes6 kf6 pim6; do
+for d in kiconthemes6 kf6; do
     mkdir -p ${APPDIR}/usr/plugins/${d}/
     rsync -av --delete --omit-dir-times ${INSTDIR}/lib64/plugins/${d}/ ${APPDIR}/usr/plugins/${d}/
 done
-mkdir -p ${APPDIR}/usr/plugins/okular_generators/
 
+# copy okular generator plugin okularGenerator_poppler.so and its dependencies
 mkdir -p ${APPDIR}/usr/lib
-# copy okular generator plugins and dependcies
-# okularGenerator_*.so
 cp -av ${INSTDIR}/lib/libfreetype* ${APPDIR}/usr/lib
-# okularGenerator_poppler.so
 cp -av ${INSTDIR}/lib64/libpoppler* ${APPDIR}/usr/lib
+mkdir -p ${APPDIR}/usr/plugins/okular_generators/
 cp -av ${INSTDIR}/lib64/plugins/okular_generators/okularGenerator_poppler.so ${APPDIR}/usr/plugins/okular_generators/
 
 # copy other libraries that are loaded dynamically
@@ -119,7 +116,7 @@ rm -f ${APPDIR}/GnuPG-VS-Desktop-VERSION 2>/dev/null
 rm -f ${APPDIR}/GnuPG-Desktop-VERSION    2>/dev/null
 rm -f ${APPDIR}/Gpg4win-VERSION        2>/dev/null
 
-myversion=$(grep PACKAGE_VERSION ${SRCDIR}/../config.h|sed -n 's/.*"\(.*\)"$/\1/p')
+myversion=$(grep PACKAGE_VERSION ${BUILDROOT}/config.h|sed -n 's/.*"\(.*\)"$/\1/p')
 if [ $BUILDTYPE = vsd ]; then
     OUTPUT=gnupg-vs-desktop-${myversion}-x86_64.AppImage
     echo "Packaging GnuPG VS-Desktop Appimage: $myversion"
@@ -180,7 +177,7 @@ done
 linuxdeploy --appdir ${APPDIR} \
             --desktop-file ${APPDIR}/usr/share/applications/org.kde.kleopatra.desktop \
             --icon-file ${APPDIR}/usr/share/icons/hicolor/256x256/apps/kleopatra.png \
-            --custom-apprun ${SRCDIR}/appimage/AppRun \
+            --custom-apprun ${SRCDIR}/src/appimage/AppRun \
             --plugin qt \
             --output appimage \
     2>&1 | tee /build/logs/linuxdeploy-gnupg-desktop.log

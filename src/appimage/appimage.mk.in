@@ -265,7 +265,8 @@ $(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$
 	touch $(stampdir)/stamp-$(1)-00-unpack
 
 $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
-	(shopt -s nullglob;				\
+	(set -x;						\
+	 shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 cd "$$$${pkgsdir}";				\
 	 if [ -e "CMakeLists.txt" ]; then \

@@ -283,7 +283,7 @@ fi
 
 # Determine the needed docker image
 if [ "$appimage" = "yes" ]; then
-    cmd=/build/src/appimage/build-appimage.sh
+    cmd=/src/src/appimage/build-appimage.sh
     docker_image=g10-build-appimage:sles15
     dockerfile=${srcdir}/docker/appimage
 else
