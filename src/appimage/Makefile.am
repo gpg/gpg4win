@@ -24,8 +24,47 @@ EXTRA_DIST = AppRun start-shell build-appimage.sh
 
 SUBDIRS = rsync-filters
 
-root := /build/src/playground
-stampdir := $(root)/stamps
+# Define macros for the various directories.  These directory names
+# must be absolute, as we switch pretty often between them and don't
+# want to track relative names.  The directories are created as needed
+# by the $(stampdir)/stamp-directories target.  tsdir is used instead
+# of the predefined top_srcdir so that we can override it using make
+# variables.
+#
+# tsdir    :: The top source directory.
+# root     :: Our build root.  The make variable PLAYGROUND can be used
+#             to override the default.
+# stampdir :: The directory to hold stamp files.
+# logdir   :: The directory for the build logs.
+# bdir     :: The build dir for the individual packages.
+# idir     :: The directory with the installed files from the packages.
+# ipdir    :: A subdir of the install directory to hold the installed
+#             packages which will be stowed to other subdirs of $(idir).
+# appdir   :: The directory for preparing the content of the AppImage.
+# patdir   :: The source directory patches-appimage/ below tsdir.
+# rsyncfilterdir :: The source directory with the package-specific
+#                   rsync filters (rsync replaces stow in the AppImage
+#                   build).
+
+tsdir     := $(TOPSRCDIR)
+root      := $(PLAYGROUND)
+stampdir  := $(root)/stamps
+logdir    := $(root)/logs
+bdir      := $(root)/build
+idir      := $(root)/install
+ipdir     := $(root)/install/pkgs
+appdir    := $(root)/AppDir
+patdir    := $(tsdir)/patches-appimage
+rsyncfilterdir := $(tsdir)/src/appimage/rsync-filters
+
+$(info -------------------------------------------------)
+$(info Topsource ....: $(tsdir))
+$(info Playground ...: $(root))
+$(info Stamps at ....: $(stampdir))
+$(info Building at ..: $(bdir))
+$(info Logs at ......: $(logdir))
+$(info -------------------------------------------------)
+
 
 # Source packages for the AppImage (see also ../src/Makefile.am)
 appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
@@ -173,6 +212,19 @@ appimage_pkg_zstd_conf_subdir = /build/cmake
 appimage_pkg_zstd_configure = -DZSTD_BUILD_PROGRAMS=OFF
 
 ########################################################################
+
+# The build area is our scratch area, where we unpack, build and
+# install the packages.
+$(stampdir)/stamp-directories:
+	$(MKDIR) -p $(root)
+	$(MKDIR) -p $(stampdir)
+	$(MKDIR) -p $(logdir)
+	$(MKDIR) -p $(bdir)
+	$(MKDIR) -p $(idir)
+	$(MKDIR) -p $(ipdir)
+	$(MKDIR) -p $(appdir)/usr
+	touch $(bdir)/versioninfo.txt
+	touch $(stampdir)/stamp-directories
 
 # Now do the bunch of the work.  This is a bunch of dirty magic to
 # integrate our special makefile into automake, while not actually
