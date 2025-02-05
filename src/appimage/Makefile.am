@@ -93,7 +93,7 @@ appimage_bpkgs = wayland-protocols
 define appimage_pkg_wayland_protocols_post_install
 ( \
 	cd ..; \
-	mv $$$${pkgidir}/* $$$${pkgsdir};\
+	mv $$$${pkgidir}/$$$${pkg_version} $$$${pkgsdir};\
 	cd $$$${pkgsdir}; \
 	meson setup --prefix $$$${pkgidir} build; \
 	cd build; \
