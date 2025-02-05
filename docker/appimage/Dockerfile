@@ -36,7 +36,7 @@ RUN zypper --non-interactive update && \
     at-spi2-core-devel \
     cups-devel \
     boost-devel \
-#    fontconfig-devel \
+    fontconfig-devel \
     hunspell-devel \
     openssl-devel \
     libtiff-devel \
