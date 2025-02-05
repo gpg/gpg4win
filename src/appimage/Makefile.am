@@ -145,6 +145,8 @@ appimage_pkg_kconfigwidgets_configure = \
 
 appimage_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
 
+appimage_pkg_kcrash_configure = -DWITH_OPENGL=OFF
+
 appimage_pkg_kguiaddons_configure = -DWITH_WAYLAND=OFF
 
 appimage_pkg_sonnet_configure = -DSONNET_USE_QML=OFF
