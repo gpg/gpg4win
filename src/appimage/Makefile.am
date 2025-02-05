@@ -132,6 +132,19 @@ appimage_pkg_qtbase_configure = \
         -DCMAKE_MESSAGE_LOG_LEVEL=STATUS \
         -DCMAKE_VERBOSE_MAKEFILE=ON
 
+appimage_pkg_qttools_configure = \
+	-DFEATURE_assistant=OFF \
+	-DFEATURE_qdoc=OFF \
+	-DFEATURE_designer=OFF \
+	-DFEATURE_distancefieldgenerator=OFF \
+	-DFEATURE_kmap2qmap=OFF \
+	-DFEATURE_pixeltool=OFF \
+	-DFEATURE_qdbus=OFF \
+	-DFEATURE_qev=OFF \
+	-DFEATURE_qtattributionsscanner=OFF \
+	-DFEATURE_qtdiag=OFF \
+	-DFEATURE_qtplugininfo=OFF
+
 # do not create the huge icon resource files
 appimage_pkg_breeze_icons_configure = -DBINARY_ICONS_RESOURCE=OFF
 
