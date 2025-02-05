@@ -537,7 +537,7 @@ if test "$build_appimage" = yes ; then
 
     # Gpgpass
     APPIMAGE_KDEPKG([prison], [qtbase extra-cmake-modules qrencode])
-    APPIMAGE_KDEPKG([gpgpass], [prison kconfigwidgets kiconthemes ki18n gpgme])
+    APPIMAGE_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n gpgme])
     APPIMAGE_FINALIZE
 fi
 
