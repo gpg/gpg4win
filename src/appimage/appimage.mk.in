@@ -214,6 +214,7 @@ pkg_files += $(call GETVAR,appimage_pkg_$(1))
 
 $(stampdir)/stamp-$(1)-00-install: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	($(call SETVARS,$(1));				\
+	 set -x; \
 	 test -d "$$$${pkgidir}" || $(MKDIR) "$$$${pkgidir}";\
 	 cd $$$${pkgidir};				\
 	 $(call DEFLATE_macro,$$$${pkg}); \
