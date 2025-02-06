@@ -22,65 +22,65 @@
 # SPDX-License-Identifier: GPL-2.0+
 
 FROM registry.suse.com/suse/sle15:latest
-RUN zypper --non-interactive update && \
-    zypper --non-interactive install \
-    # Build basics
-    flex bison gperf awk patch wget automake rsync xz bzip2 \
-    gettext gettext-tools gettext-runtime meson ninja \
-    which file git-core cmake gcc13 gcc13-c++ glibc-devel-static pkg-config \
-    glibc-locale-base \
-    # Python
-    python311 python311-lxml \
-    # Libraries
-    alsa-devel \
-    at-spi2-core-devel \
-    cups-devel \
-    boost-devel \
-    fontconfig-devel \
-    hunspell-devel \
-    openssl-devel \
-    libtiff-devel \
-    libusb-devel \
-    libicu-devel \
-    libmount-devel \
-    libudev-devel \
-    libSM-devel \
-    libX11-devel \
-    libX11-xcb1 \
-    libxcb-devel \
-    libXcomposite-devel \
-    libXcursor-devel \
-    libXi-devel \
-    libxkbcommon-devel \
-    libxkbcommon-x11-devel \
-    libXrandr-devel \
-    libXtst-devel \
-#   Mesa-libEGL-devel \
-    Mesa-libGL-devel \
-    openjpeg2-devel \
-    openldap2-devel \
-    readline-devel \
-    vulkan-devel \
-    vulkan-headers \
-    wayland-devel \
-    xcb-util-image-devel \
-    xcb-util-keysyms-devel \
-    xcb-util-renderutil-devel \
-    xcb-util-wm-devel \
-    xcb-proto-devel \
-    xkbcomp-devel \
-    xz-devel \
-    zlib-devel
+RUN zypper --non-interactive update \
+    && zypper --non-interactive install \
+        # Build basics
+        flex bison gperf awk patch wget automake rsync xz bzip2 \
+        gettext gettext-tools gettext-runtime meson ninja \
+        which file git-core cmake gcc13 gcc13-c++ glibc-devel-static pkg-config \
+        glibc-locale-base \
+        # Python
+        python311 python311-lxml \
+        # Libraries
+        alsa-devel \
+        at-spi2-core-devel \
+        cups-devel \
+        boost-devel \
+        fontconfig-devel \
+        hunspell-devel \
+        openssl-devel \
+        libtiff-devel \
+        libusb-devel \
+        libicu-devel \
+        libmount-devel \
+        libudev-devel \
+        libSM-devel \
+        libX11-devel \
+        libX11-xcb1 \
+        libxcb-devel \
+        libXcomposite-devel \
+        libXcursor-devel \
+        libXi-devel \
+        libxkbcommon-devel \
+        libxkbcommon-x11-devel \
+        libXrandr-devel \
+        libXtst-devel \
+#         Mesa-libEGL-devel \
+        Mesa-libGL-devel \
+        openjpeg2-devel \
+        openldap2-devel \
+        readline-devel \
+        vulkan-devel \
+        vulkan-headers \
+        wayland-devel \
+        xcb-util-image-devel \
+        xcb-util-keysyms-devel \
+        xcb-util-renderutil-devel \
+        xcb-util-wm-devel \
+        xcb-proto-devel \
+        xkbcomp-devel \
+        xz-devel \
+        zlib-devel
 
 # cleanup to ensure we don't leave behind anything that doesn't need to be in the image
-RUN zypper --non-interactive clean -a && \
+RUN zypper --non-interactive clean -a \
     # make sure the appropriate gcc/python versions are the defaults
-    alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 1 && \
-    alternatives --install /usr/bin/cc cc /usr/bin/gcc-13 1 && \
-    alternatives --install /usr/bin/cpp cpp /usr/bin/g++-13 1 && \
-    alternatives --install /usr/bin/g++ gcc++ /usr/bin/g++-13 1 && \
-    alternatives --install /usr/bin/python python /usr/bin/python3.11 1 && \
-    alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
+    && alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 1 \
+    && alternatives --install /usr/bin/cc cc /usr/bin/gcc-13 1 \
+    && alternatives --install /usr/bin/cpp cpp /usr/bin/g++-13 1 \
+    && alternatives --install /usr/bin/g++ gcc++ /usr/bin/g++-13 1 \
+    && alternatives --install /usr/bin/python python /usr/bin/python3.11 1 \
+    && alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
 
 # download the necessary linuxdeploy AppImages and extract them because we have no fuse in the container
 RUN mkdir -p /tmp/download \
