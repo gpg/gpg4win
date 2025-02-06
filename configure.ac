@@ -468,8 +468,9 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([gnupg], [libgpg-error libassuan npth libgcrypt libksba sqlite ntbtls])
     APPIMAGE_SPKG([pinentry], [qtbase])
 
-    #  Note that GPGME needs Qt
-    APPIMAGE_SPKG([gpgme], [libgpg-error libassuan qtbase])
+    APPIMAGE_SPKG([gpgme], [libgpg-error libassuan])
+    APPIMAGE_KDEPKG([gpgmepp], [gpgme])
+    APPIMAGE_KDEPKG([qgpgme], [gpgmepp qtbase])
     APPIMAGE_SPKG([paperkey])
 
     # Qt related stuff.
@@ -527,17 +528,17 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmime kcodecs kcalendarcore kmbox])
     APPIMAGE_KDEPKG([kmime], [kcodecs ki18n])
     APPIMAGE_KDEPKG([kmbox], [kmime])
-    APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion gpgme])
+    APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion qgpgme])
 
-    APPIMAGE_KDEPKG([kleopatra], [mimetreeparser gnupg gpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
+    APPIMAGE_KDEPKG([kleopatra], [mimetreeparser gnupg qgpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
 
     # Okular/Poppler
-    APPIMAGE_KDEPKG([poppler], [gpgme kio qtbase freetype])
-    APPIMAGE_KDEPKG([okular], [kparts gpgme kio poppler threadweaver qtsvg])
+    APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype])
+    APPIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
 
     # Gpgpass
     APPIMAGE_KDEPKG([prison], [qtbase extra-cmake-modules qrencode])
-    APPIMAGE_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n gpgme])
+    APPIMAGE_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n qgpgme])
     APPIMAGE_FINALIZE
 fi
 

@@ -84,6 +84,7 @@ appimage_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   kjobwidgets libical kcalendarcore mimetreeparser \
 		   kcolorscheme sonnet ktextwidgets kauth kstatusnotifieritem \
 		   threadweaver kparts poppler okular \
+		   gpgmepp qgpgme \
 		   prison gpgpass zstd pcre2 \
 		   qtbase qttools qtsvg qttranslations qtwayland \
 		   plasma-wayland-protocols
@@ -102,9 +103,12 @@ define appimage_pkg_wayland_protocols_post_install
 )
 endef
 
-appimage_pkg_gpgme_configure = --enable-languages=cpp,qt \
-  --disable-gpg-test \
-  --disable-gpgsm-test
+appimage_pkg_gpgme_configure = \
+    --enable-languages= \
+    --disable-gpg-test \
+    --disable-gpgsm-test
+
+appimage_pkg_qgpgme_configure = -DBUILD_WITH_QT5=OFF
 
 appimage_pkg_qtbase_configure = \
         -DQT_BUILD_EXAMPLES=OFF \
