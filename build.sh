@@ -36,7 +36,8 @@ Options:
         --clean         Remove a pre-existing build directory
         --shell         Start a shell instead of starting the build script
         --builddir=DIR  Directory where the build should take place
-                        (default is ../b/foo-playground)
+                        (default is ~/b/SRCDIRNAME-playground for gpg4win
+                         and ~/b/SRCDIRNAME-appimage for the AppImage)
         --force         Force configure run
         --update-image  Update the docker image before build
         --msi           Building MSI packages
@@ -90,7 +91,6 @@ download="no"
 runcmd="no"
 fromgit="no"
 withmsi="no"
-builddir="${HOME}/b/$(basename "$srcdir")-playground"
 force=no
 ftpuser=
 verbose=
@@ -135,6 +135,14 @@ while [ $# -gt 0 ]; do
 done
 
 [ -z "$verbose" ] && quiet="--quiet"
+
+if [ -z "$builddir" ]; then
+    if [ "$appimage" = "yes" ]; then
+        builddir="${HOME}/b/$(basename "$srcdir")-appimage"
+    else
+        builddir="${HOME}/b/$(basename "$srcdir")-playground"
+    fi
+fi
 
 # Check whether we are running in the docker container.
 if [ -d /src/src -a -d /src/patches -a -d /build ]; then
