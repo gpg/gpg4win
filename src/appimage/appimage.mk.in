@@ -190,6 +190,8 @@ $(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
 $(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-06-copy-to-appdir
 	touch $(stampdir)/stamp-final-$(1)
 
+$(1): $(stampdir)/stamp-final-$(1)
+
 .PHONY : clean-$(1)
 clean-$(1):
 	($(call SETVARS,$(1));				\
@@ -238,6 +240,8 @@ $(stampdir)/stamp-$(1)-02-copy-to-appdir: $(stampdir)/stamp-$(1)-01-rsync
 
 $(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-02-copy-to-appdir
 	touch $(stampdir)/stamp-final-$(1)
+
+$(1): $(stampdir)/stamp-final-$(1)
 
 .PHONY : clean-$(1)
 clean-$(1):
@@ -335,6 +339,8 @@ $(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
 
 $(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-06-copy-to-appdir
 	touch $(stampdir)/stamp-final-$(1)
+
+$(1): $(stampdir)/stamp-final-$(1)
 
 .PHONY : clean-$(1)
 clean-$(1):
