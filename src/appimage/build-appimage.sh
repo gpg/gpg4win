@@ -86,22 +86,15 @@ export QMAKE=${INSTDIR}/bin/qmake
 # ERROR: Failed to run plugin: qt (exit code: 6)
 mkdir -p ${INSTDIR}/plugins/sqldrivers
 
-# copy KDE plugins
+# copy KDE plugins to ${APPDIR}/usr/lib/plugins/
+# copying the plugins to a subfolder of ${APPDIR}/usr/lib (instead of to
+# ${APPDIR}/usr/plugins/ as linuxdeploy does for the Qt plugins) ensures that
+# linuxdeploy copies the dependencies of the plugins to APPDIR so that
+# we don't have to take care of this ourselves
 for d in kiconthemes6 kf6; do
-    mkdir -p ${APPDIR}/usr/plugins/${d}/
-    rsync -av --delete --omit-dir-times ${INSTDIR}/lib64/plugins/${d}/ ${APPDIR}/usr/plugins/${d}/
+    mkdir -p ${APPDIR}/usr/lib/plugins/${d}/
+    rsync -av --delete --omit-dir-times ${INSTDIR}/lib64/plugins/${d}/ ${APPDIR}/usr/lib/plugins/${d}/
 done
-
-# copy okular generator plugin okularGenerator_poppler.so and its dependencies
-mkdir -p ${APPDIR}/usr/lib
-cp -av ${INSTDIR}/lib/libfreetype* ${APPDIR}/usr/lib
-cp -av ${INSTDIR}/lib64/libpoppler* ${APPDIR}/usr/lib
-mkdir -p ${APPDIR}/usr/plugins/okular_generators/
-cp -av ${INSTDIR}/lib64/plugins/okular_generators/okularGenerator_poppler.so ${APPDIR}/usr/plugins/okular_generators/
-
-# copy other libraries that are loaded dynamically
-mkdir -p ${APPDIR}/usr/lib
-cp -av ${INSTDIR}/lib64/libOkular6Core.so* ${APPDIR}/usr/lib
 
 cd /build
 # Remove existing AppRun and wrapped AppRun, that may be left over
@@ -157,20 +150,19 @@ for f in dirmngr_ldap gpg-check-pattern \
          keyboxd gpg-pair-tool; do
 # Ignore errors because some files might not exist depending
 # on GnuPG Version
-    /opt/linuxdeploy/usr/bin/patchelf \
+    /opt/linuxdeploy/usr/bin/patchelf --debug \
               --set-rpath '$ORIGIN/../lib' ${APPDIR}/usr/libexec/$f || true
 done
 
 # linuxdeploy also doesn't know about non-Qt plugins
-for f in $(find ${APPDIR}/usr/plugins/ -mindepth 1 -maxdepth 1 -type f); do
-    # Okularpart
-    /opt/linuxdeploy/usr/bin/patchelf --set-rpath '$ORIGIN/../../lib' $
+for f in $(find ${APPDIR}/usr/lib/plugins/ -mindepth 2 -maxdepth 2 -type f); do
+    /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../..' $f
 done
-for f in $(find ${APPDIR}/usr/plugins/ -mindepth 2 -maxdepth 2 -type f); do
-    /opt/linuxdeploy/usr/bin/patchelf --set-rpath '$ORIGIN/../../../lib' $f
+for f in $(find ${APPDIR}/usr/lib/plugins/ -mindepth 3 -maxdepth 3 -type f); do
+    /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../../..' $f
 done
-for f in $(find ${APPDIR}/usr/plugins/ -mindepth 3 -maxdepth 3 -type f); do
-    /opt/linuxdeploy/usr/bin/patchelf --set-rpath '$ORIGIN/../../../../lib' $f
+for f in $(find ${APPDIR}/usr/lib/plugins/ -mindepth 4 -maxdepth 4 -type f); do
+    /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../../../..' $f
 done
 
 # Fix up everything and build the file system
