@@ -70,10 +70,9 @@ RUN zypper --non-interactive update \
         xcb-proto-devel \
         xkbcomp-devel \
         xz-devel \
-        zlib-devel
-
-# cleanup to ensure we don't leave behind anything that doesn't need to be in the image
-RUN zypper --non-interactive clean -a \
+        zlib-devel \
+    # cleanup to ensure we don't leave behind anything that doesn't need to be in the image
+    && zypper --non-interactive clean -a \
     # make sure the appropriate gcc/python versions are the defaults
     && alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 1 \
     && alternatives --install /usr/bin/cc cc /usr/bin/gcc-13 1 \
