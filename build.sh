@@ -350,9 +350,10 @@ create_fifos() {
 }
 
 
-# Make sure we have a build directory and the fifos so that docker
-# does not create it with root as owner.
+# Make sure we have an absolute build directory and the fifos
+# so that docker does not create it with root as owner.
 [ -d "${builddir}" ] || mkdir -p "${builddir}"
+builddir=$(cd "${builddir}"; pwd)
 [ -d "${builddir}/po" ] || mkdir -p "${builddir}/po"
 create_fifos
 
