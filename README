@@ -47,7 +47,7 @@ you should do this in the source directory.
 
 1. If you don't have a ~/.gnupg-autogen.sh file use
 
-     build-aux/gpg-authcode-sign.sh --template >~/~/.gnupg-autogen.sh
+     build-aux/gpg-authcode-sign.sh --template >~/.gnupg-autogen.sh
 
    and adjust the file for your setup.
 
@@ -122,8 +122,8 @@ this accordingly.  This has to be done for both `APPIMAGE_` and
 `GPG4WIN_`.
 
 Define the build targets by adding foo to one of the package list
-variables like `gpg4win_spkgs` in `src/Makefile.am` and
-`src/appimage/Makefile.am`. And if required, also add any required
+variables like `gpg4win_spkgs` in `src/Makefile.am` and `appimage_spkgs`
+in `src/appimage/Makefile.am`. And if required, also add any required
 configure flags, etc. See existing packages for examples.
 
 If your package is only for the AppImage, you are now done. Optionally,

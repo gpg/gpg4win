@@ -45,7 +45,7 @@ Options:
         --runcmd CMD    Run a command via a pair of FIFOs
         --git-pkgs      Use latest git versions for the frontend
                         packages:
-                        gpgme libkleo kleopatra gpgol gpgol.js
+                        libkleo kleopatra gpgol gpgol.js
                         gpgpass gpg4win-tools mimetreeparser
 
 
