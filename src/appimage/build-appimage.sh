@@ -85,6 +85,11 @@ for d in iconengines kauth kf5 okular plasma; do
 done
 cp -av /build/install/lib64/plugins/okularpart.so /build/AppDir/usr/lib/plugins/
 
+# copy Wayland plugins
+rsync -av --delete /build/install/plugins/platforms/libqwayland-*.so /build/AppDir/usr/lib/plugins/platforms/
+for d in wayland-decoration-client wayland-graphics-integration-client wayland-shell-integration; do
+    rsync -av --delete --omit-dir-times /build/install/plugins/${d}/ /build/AppDir/usr/lib/plugins/${d}/
+done
 
 cd /build
 # Remove existing AppRun and wrapped AppRun, that may be left over
