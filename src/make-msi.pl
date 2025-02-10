@@ -1981,6 +1981,8 @@ fetch_guids ();
 $::build_version = '';
 $::product_name = '';
 $::win64 = 'no';
+$::platform = 'x86';
+$::pfilesfolder = 'ProgramFilesFolder';
 $::instdirkey = '';
 $::instdirname = "Install Directory";
 
@@ -2020,6 +2022,8 @@ while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
     elsif ($opt =~ m/^--win64$/)
     {
         $::win64 = 'yes';
+        $::platform = 'x64';
+        $::pfilesfolder = 'ProgramFiles64Folder';
     }
     elsif ($opt eq '--usage')
     {
@@ -2129,6 +2133,10 @@ my $lcid = lang_to_lcid ($::lang);
 
 # Some hints
 #
+# The [foo] thingies in the XML are described at
+# https://learn.microsoft.com/en-us/windows/win32/msi/formatted
+#
+# Mapping of versions to variables.
 #  | Var name      | Option name | Remark              |
 #  |---------------+-------------+---------------------|
 #  | product_name  | --name      |                     |
@@ -2149,9 +2157,10 @@ print <<EOF;
            Version='$::build_version'
            Manufacturer='GnuPG.com'>
     <Package Description='$::product_name'
-             Comments='http://www.gnupg.com/'
+             Comments='https://gnupg.com/'
              Compressed='yes'
              InstallerVersion='200'
+             Platform="$::platform"
              Manufacturer='GnuPG.com'
              Languages='1033'
              SummaryCodepage='1252'/>
@@ -2174,6 +2183,18 @@ print <<EOF;
 
     <Property Id="ApplicationFolderName" Value="$::product_name" />
     <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+EOF
+
+# The following is according to
+# https://stackoverflow.com/questions/5479790/wix-how-to-override-c-program-files-x86-on-x64-machine-in-wixui-advanced-s
+#
+($::win64 eq 'yes') && print <<EOF;
+    <SetDirectory Id="APPLICATIONFOLDER"
+               Value="[$::pfilesfolder][ApplicationFolderName]"
+                    >APPLICATIONFOLDER=""</SetDirectory>
+EOF
+
+print <<EOF;
     <Property Id="APPLICATIONFOLDER">
       <RegistrySearch Id='gpg4win_instdir_registry' Type='raw'
        Root='HKLM' Key="$::instdirkey" Name="$::instdirname" />
@@ -2217,6 +2238,7 @@ print <<EOF;
     -->
 
     <Icon Id="shield.ico" SourceFile="\$(var.SrcDir)/icons/shield.ico"/>
+    <!-- FWIW: "ARP" stands for "Add/Remove Programs" -->
     <Property Id="ARPPRODUCTICON" Value="shield.ico"/>
 
     <WixVariable Id="WixUIBannerBmp" Value="header.bmp" />
@@ -2251,34 +2273,59 @@ print <<EOF;
          during an upgrade but not actually reinstalled.
          https://stackoverflow.com/questions/70882621/msi-with-wix-setting-reinstallmode-amus-triggers-lght1076-ice40-reinstallm
     -->
-    <SetProperty Id="REINSTALLMODE" Value="amus" Before="FindRelatedProducts" Sequence="first">NOT REINSTALLMODE</SetProperty>
+    <SetProperty Id="REINSTALLMODE" Value="amus"
+             Before="FindRelatedProducts"
+           Sequence="first">NOT REINSTALLMODE</SetProperty>
 
-    <!-- This is the main installer sequence run when the product is actually installed -->
-    <InstallExecuteSequence>
+    <!-- This is the main installer sequence run when the product is
+         actually installed -->
 
-       <!-- Determine the install location after the install path has been validated by the installer -->
-       <Custom Action="SetARPINSTALLLOCATION" After="InstallValidate"></Custom>
+    <CustomAction Id="OverwriteWixSetDefaultPerMachineFolder"
+            Property="WixPerMachineFolder"
+               Value="[APPLICATIONFOLDER]"
+             Execute="immediate"
+    />
 
-    </InstallExecuteSequence>
+    <CustomAction Id="SetARPINSTALLLOCATION"
+            Property="ARPINSTALLLOCATION"
+               Value="[APPLICATIONFOLDER]" />
 
-    <!-- Set up ARPINSTALLLOCATION property (http://blogs.technet.com/b/alexshev/archive/2008/02/09/from-msi-to-wix-part-2.aspx) -->
-    <CustomAction Id="SetARPINSTALLLOCATION" Property="ARPINSTALLLOCATION" Value="[APPLICATIONFOLDER]" />
+    <!-- Save the command line value INSTALLDIR and restore it later
+         in the sequence or it will be overwritten by the value saved
+         to the registry during an upgrade
+         (http://robmensching.com/blog/posts/2010/5/2/the-wix-toolsets-remember-property-pattern/)
+      -->
+    <CustomAction Id='SaveCmdLineValueINSTALLDIR'
+            Property='CMDLINE_INSTALLDIR'
+               Value='[APPLICATIONFOLDER]'
+             Execute='firstSequence' />
+    <CustomAction Id='SetFromCmdLineValueINSTALLDIR'
+            Property='INSTALLDIR'
+               Value='[CMDLINE_INSTALLDIR]'
+             Execute='firstSequence' />
 
-    <!-- Save the command line value INSTALLDIR and restore it later in the sequence or it will be overwritten by the value saved to the registry during an upgrade -->
-    <!-- http://robmensching.com/blog/posts/2010/5/2/the-wix-toolsets-remember-property-pattern/ -->
-    <CustomAction Id='SaveCmdLineValueINSTALLDIR' Property='CMDLINE_INSTALLDIR' Value='[APPLICATIONFOLDER]' Execute='firstSequence' />
-    <CustomAction Id='SetFromCmdLineValueINSTALLDIR' Property='INSTALLDIR' Value='[CMDLINE_INSTALLDIR]' Execute='firstSequence' />
     <InstallUISequence>
-       <Custom Action='SaveCmdLineValueINSTALLDIR' Before='AppSearch' />
-       <Custom Action='SetFromCmdLineValueINSTALLDIR' After='AppSearch'>
-          CMDLINE_INSTALLDIR
-       </Custom>
+       <Custom Action="OverwriteWixSetDefaultPerMachineFolder"
+                After="WixSetDefaultPerMachineFolder" />
+       <Custom Action='SaveCmdLineValueINSTALLDIR'
+               Before='AppSearch' />
+       <Custom Action='SetFromCmdLineValueINSTALLDIR'
+                After='AppSearch'
+                    >CMDLINE_INSTALLDIR</Custom>
     </InstallUISequence>
+
     <InstallExecuteSequence>
-       <Custom Action='SaveCmdLineValueINSTALLDIR' Before='AppSearch' />
-       <Custom Action='SetFromCmdLineValueINSTALLDIR' After='AppSearch'>
-          CMDLINE_INSTALLDIR
-       </Custom>
+       <Custom Action="OverwriteWixSetDefaultPerMachineFolder"
+                After="WixSetDefaultPerMachineFolder" />
+       <!-- Determine the install location after the install path has
+            been validated by the installer -->
+       <Custom Action="SetARPINSTALLLOCATION"
+                After="InstallValidate" />
+       <Custom Action='SaveCmdLineValueINSTALLDIR'
+               Before='AppSearch' />
+       <Custom Action='SetFromCmdLineValueINSTALLDIR'
+                After='AppSearch'
+                    >CMDLINE_INSTALLDIR</Custom>
     </InstallExecuteSequence>
 
     <Property Id="INSTALLDIR">
@@ -2592,7 +2639,7 @@ EOF
 
 print <<EOF;
     <Directory Id='TARGETDIR' Name='SourceDir'>
-      <Directory Id='ProgramFilesFolder' Name='PFiles'>
+      <Directory Id="$::pfilesfolder" Name='PFiles'>
         <!-- DIR_GnuPG is used by the GnuPG wixlib -->
         <Directory Id='APPLICATIONFOLDER' Name='$::product_name'>
           <Directory Id="KleopatraDataFolder" Name="share">
