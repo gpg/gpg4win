@@ -74,25 +74,17 @@ export QMAKE=/build/install/bin/qmake
 # ERROR: Failed to run plugin: qt (exit code: 6)
 mkdir -p /build/install/plugins/sqldrivers
 
-# copy KDE plugins
+# copy KDE plugins to /build/AppDir/usr/lib/plugins/
+# copying the plugins to a subfolder of AppDir/usr/lib (instead of to
+# AppDir/usr/plugins/ as linuxdeploy does for the Qt plugins) ensures that
+# linuxdeploy copies the dependencies of the plugins to AppDir so that
+# we don't have to take care of this ourselves
 for d in iconengines kauth kf5 okular plasma; do
-    mkdir -p /build/AppDir/usr/plugins/${d}/
-    rsync -av --delete --omit-dir-times /build/install/lib64/plugins/${d}/ /build/AppDir/usr/plugins/${d}/
+    mkdir -p /build/AppDir/usr/lib/plugins/${d}/
+    rsync -av --delete --omit-dir-times /build/install/lib64/plugins/${d}/ /build/AppDir/usr/lib/plugins/${d}/
 done
-cp -av /build/install/lib64/plugins/okularpart.so /build/AppDir/usr/plugins/
+cp -av /build/install/lib64/plugins/okularpart.so /build/AppDir/usr/lib/plugins/
 
-mkdir -p /build/AppDir/usr/lib
-# copy dependencies of the plugins
-# okularGenerator_*.so
-cp -av /build/install/lib/libfreetype* /build/AppDir/usr/lib
-# okularGenerator_poppler.so
-cp -av /build/install/lib64/libpoppler* /build/AppDir/usr/lib
-# okularGenerator_tiff.so
-cp -av /usr/lib64/libtiff.so* /build/AppDir/usr/lib
-
-# copy other libraries that are loaded dynamically
-mkdir -p /build/AppDir/usr/lib
-cp -av /build/install/lib64/libOkular5Core.so* /build/AppDir/usr/lib
 
 cd /build
 # Remove existing AppRun and wrapped AppRun, that may be left over
@@ -149,21 +141,22 @@ for f in dirmngr_ldap gpg-check-pattern \
          keyboxd gpg-pair-tool; do
 # Ignore errors because some files might not exist depending
 # on GnuPG Version
-    /opt/linuxdeploy/usr/bin/patchelf \
+    /opt/linuxdeploy/usr/bin/patchelf --debug \
               --set-rpath '$ORIGIN/../lib' /build/AppDir/usr/libexec/$f || true
 done
 
 # linuxdeploy also doesn't know about non-Qt plugins
-for d in iconengines kauth kf5 okular plasma; do
-    for f in $(find /build/AppDir/usr/plugins/${d}/ -mindepth 1 -maxdepth 1 -type f); do
-        /opt/linuxdeploy/usr/bin/patchelf --set-rpath '$ORIGIN/../../lib' $f
-    done
-    for f in $(find /build/AppDir/usr/plugins/${d}/ -mindepth 2 -maxdepth 2 -type f); do
-        /opt/linuxdeploy/usr/bin/patchelf --set-rpath '$ORIGIN/../../../lib' $f
-    done
+for f in $(find /build/AppDir/usr/lib/plugins/ -mindepth 2 -maxdepth 2 -type f); do
+    /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../..' $f
 done
-/opt/linuxdeploy/usr/bin/patchelf \
-        --set-rpath '$ORIGIN/../lib' /build/AppDir/usr/plugins/okularpart.so
+for f in $(find /build/AppDir/usr/lib/plugins/ -mindepth 3 -maxdepth 3 -type f); do
+    /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../../..' $f
+done
+for f in $(find /build/AppDir/usr/lib/plugins/ -mindepth 4 -maxdepth 4 -type f); do
+    /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../../../..' $f
+done
+/opt/linuxdeploy/usr/bin/patchelf --debug \
+        --set-rpath '$ORIGIN/..' /build/AppDir/usr/lib/plugins/okularpart.so
 
 # Fix up everything and build the file system
 linuxdeploy --appdir /build/AppDir \
