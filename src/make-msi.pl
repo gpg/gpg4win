@@ -1981,6 +1981,8 @@ fetch_guids ();
 $::build_version = '';
 $::product_name = '';
 $::win64 = 'no';
+$::instdirkey = '';
+$::instdirname = "Install Directory";
 
 while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
 {
@@ -2050,6 +2052,20 @@ while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
     }
 }
 
+if ($::win64 eq 'yes' && $::product_name eq 'GnuPG VS-Desktop')
+{
+    $::instdirkey = "Software\\GnuPG";
+    $::instdirname = "VSD Install Directory";
+}
+elsif ($::win64 eq 'yes')
+{
+    $::instdirkey = "Software\\GnuPG";
+}
+else
+{
+    # Legacy values
+    $::instdirkey = "Software\\Gpg4win";
+}
 
 $::vsddir = nsis_fetch ($parser, 'VSDDIR');
 
@@ -2158,14 +2174,14 @@ print <<EOF;
 
     <Property Id="ApplicationFolderName" Value="$::product_name" />
     <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
-
     <Property Id="APPLICATIONFOLDER">
       <RegistrySearch Id='gpg4win_instdir_registry' Type='raw'
-       Root='HKLM' Key='Software\\Gpg4win' Name='Install Directory'/>
+       Root='HKLM' Key="$::instdirkey" Name="$::instdirname" />
       <IniFileSearch Id='gpg4win_instdir_ini' Type='raw'
        Name='gpg4win.ini' Section='gpg4win' Key='instdir'/>
     </Property>
 
+    <!-- NB. Here we cannot use $::instdirkey and ...name  -->
     <Property Id="GPG4WININSTALLED">
       <RegistrySearch Id='gpg4win_instdir_registry2' Type='raw'
        Root='HKLM' Key='Software\\Gpg4win' Name='Install Directory'
@@ -2178,12 +2194,24 @@ print <<EOF;
        Win64='no'/>
     </Property>
 
-    <!-- Do not show the note to uninstall gpg4win if VSD is already
-         installed or if gpg4win is not installed.  -->
+    <Property Id="VSD64INSTALLED">
+      <RegistrySearch Id='vsd64installed' Type='raw'
+       Root='HKLM' Key='Software\\GnuPG' Name='VSD Install Directory'
+       Win64='no'/>
+    </Property>
+
+EOF
+
+# Only for 32bit: Do not show the note to uninstall gpg4win if an old
+#                 32 bit VSD is already installed or if gpg4win is not
+#                 installed.
+($::win64 ne 'yes') && print <<EOF;
     <Condition Message="!(loc.gpg4winInstalled)">
         <![CDATA[VSDINSTALLED OR (NOT GPG4WININSTALLED)]]>
     </Condition>
+EOF
 
+print <<EOF;
     <!-- Uncomment to turn on logging
         <Property Id="MsiLogging" Value="gnupg-desktop"/>
     -->
@@ -2254,7 +2282,8 @@ print <<EOF;
     </InstallExecuteSequence>
 
     <Property Id="INSTALLDIR">
-      <RegistrySearch Win64='no' Id="DetermineInstallLocation" Type="raw" Root="HKLM" Key="Software\\Gpg4win" Name="Install Directory" />
+      <RegistrySearch Win64='no' Id="DetermineInstallLocation" Type="raw"
+           Root="HKLM" Key="$::instdirkey" Name="$::instdirname" />
     </Property>
 
     <Property Id="INST_DESKTOP">
@@ -2292,7 +2321,7 @@ print <<EOF;
              Value='[System64Folder]\\taskkill.exe' Return='check' />
     <Property Id="WixQuietExecCmdLine" Value='foo'/>
 
-    <!-- Noet that Okular is not included here because it handles the
+    <!-- Note that Okular is not included here because it handles the
          window message and might ask the user to save some open work
          or modifications when closed through a window message.  -->
 
@@ -2468,12 +2497,20 @@ print <<EOF;
       <Component Win64="$::win64" Id="gpg4win_reg_cmp"
                  Guid="7F122F29-DB6A-4DE5-9DD2-0DAF1A24B62F"
                  Directory="APPLICATIONFOLDER">
-        <RegistryValue Id="r_gpg4win_01" Root="HKMU" Key="Software\\Gpg4win"
-                     Name="Install Directory" Action="write"
+        <RegistryValue Id="r_gpg4win_01" Root="HKMU" Key="$::instdirkey"
+                     Name="$::instdirname" Action="write"
                      Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes"/>
+EOF
+if ($::win64 eq 'no')
+{
+    printf <<EOF;
         <RegistryValue Id="r_gpg4win_02" Root="HKMU" Key="Software\\Gpg4win"
                      Name="VS-Desktop-Version" Action="write"
                      Type="string" Value="$::build_version" KeyPath="no"/>
+EOF
+}
+
+print <<EOF;
       </Component>
       <Feature Id='p_homedir' Title='p_homedir' Level='1000'
         Display='hidden' InstallDefault='followParent'>
