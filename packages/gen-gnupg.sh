@@ -95,6 +95,7 @@ done
 ln -f "${prefix}-w32-${version}_${date}.tar.xz" "${prefix}-w32-${version}_${date}-src.tar.xz"
 ln -f "${prefix}-w32-${version}_${date}.exe" "${prefix}-w32-${version}_${date}-bin.exe"
 if [ -n "$wixlib" ]; then
+  ln -f "${prefix}-w32-${version}_${date}.tar.xz" "${prefix}-msi-${version}_${date}-src.tar.xz"
   ln -f "${prefix}-w32-${version}_${date}.wixlib" "${prefix}-msi-${version}_${date}-bin.wixlib"
 fi
 
