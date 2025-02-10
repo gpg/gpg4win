@@ -91,10 +91,11 @@ mkdir -p ${INSTDIR}/plugins/sqldrivers
 # ${APPDIR}/usr/plugins/ as linuxdeploy does for the Qt plugins) ensures that
 # linuxdeploy copies the dependencies of the plugins to APPDIR so that
 # we don't have to take care of this ourselves
+mkdir -p ${APPDIR}/usr/lib/plugins
 for d in kiconthemes6 kf6; do
-    mkdir -p ${APPDIR}/usr/lib/plugins/${d}/
     rsync -av --delete --omit-dir-times ${INSTDIR}/lib64/plugins/${d}/ ${APPDIR}/usr/lib/plugins/${d}/
 done
+rsync -av --delete --omit-dir-times ${INSTDIR}/lib64/plugins/okular_generators/okularGenerator_poppler.so ${APPDIR}/usr/lib/plugins/okular_generators/
 
 cd /build
 # Remove existing AppRun and wrapped AppRun, that may be left over
