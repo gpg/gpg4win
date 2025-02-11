@@ -87,7 +87,7 @@ appimage_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   gpgmepp qgpgme \
 		   prison gpgpass zstd pcre2 \
 		   qtbase qttools qtsvg qttranslations qtwayland \
-		   plasma-wayland-protocols
+		   plasma-wayland-protocols breeze
 
 appimage_bpkgs = wayland-protocols
 
@@ -151,6 +151,12 @@ appimage_pkg_qttools_configure = \
 
 # do not create the huge icon resource files
 appimage_pkg_breeze_icons_configure = -DBINARY_ICONS_RESOURCE=OFF
+
+appimage_pkg_breeze_configure = \
+    -DBUILD_QT6=ON \
+    -DBUILD_QT5=OFF \
+    -DWITH_DECORATIONS=OFF \
+    -DCMAKE_DISABLE_FIND_PACKAGE_KF6KCMUtils=ON
 
 appimage_pkg_karchive_configure = -DWITH_BZIP2=OFF
 

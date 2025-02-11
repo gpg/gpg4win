@@ -485,6 +485,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([qtwayland], [qtbase])
     APPIMAGE_KDEPKG([wayland-protocols], [qtwayland])
     APPIMAGE_KDEPKG([plasma-wayland-protocols], [wayland-protocols])
+    APPIMAGE_KDEPKG([breeze], [qtbase kcoreaddons kconfig kconfigwidgets kguiaddons kiconthemes kwindowsystem])
 
     # KDE Frameworks Tier 1
     APPIMAGE_KDEPKG([extra-cmake-modules], [qttools])
@@ -516,7 +517,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
     APPIMAGE_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
     APPIMAGE_KDEPKG([ktextwidgets], [sonnet kcompletion kconfig kconfigwidgets ki18n kwidgetsaddons])
-    APPIMAGE_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews ktextwidgets])
+    APPIMAGE_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews ktextwidgets breeze])
     APPIMAGE_KDEPKG([kbookmarks], [kconfig kxmlgui kcoreaddons kconfigwidgets kwidgetsaddons kcodecs])
     APPIMAGE_KDEPKG([kservice], [kconfig kcoreaddons ki18n])
     APPIMAGE_KDEPKG([kio], [kcrash kjobwidgets solid kservice kbookmarks kwidgetsaddons kxmlgui kwindowsystem karchive kconfig kcoreaddons ki18n kauth])

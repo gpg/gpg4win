@@ -92,7 +92,7 @@ mkdir -p ${INSTDIR}/plugins/sqldrivers
 # linuxdeploy copies the dependencies of the plugins to APPDIR so that
 # we don't have to take care of this ourselves
 mkdir -p ${APPDIR}/usr/lib/plugins
-for d in kiconthemes6 kf6; do
+for d in kf6 kiconthemes6 styles; do
     rsync -av --delete --omit-dir-times ${INSTDIR}/lib64/plugins/${d}/ ${APPDIR}/usr/lib/plugins/${d}/
 done
 rsync -av --delete --omit-dir-times ${INSTDIR}/lib64/plugins/okular_generators/okularGenerator_poppler.so ${APPDIR}/usr/lib/plugins/okular_generators/
