@@ -736,24 +736,24 @@ file libgcrypt/libgcrypt-1.11.0.tar.bz2
 chk  09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c
 
 
-# last changed 2025-01-09
+# last changed 2025-02-12
 # by builder
 # verified: [taken from buildtree]
-name gnupg-2.5.3.tar.bz2
-file gnupg/gnupg-2.5.3.tar.bz2
-chk  23128b136aed4e5121e793d1b6c60ee50c8007a9d926c1313e524d05386b54ac
+name gnupg-2.5.4.tar.bz2
+file gnupg/gnupg-2.5.4.tar.bz2
+chk  f8cb2ac6c9f17f81e3541c62158764910fad5c3a0765e00b398c41a32bc4e0ea
 
-name gnupg-w32-2.5.3_20250109-bin.exe
-file binary/gnupg-w32-2.5.3_20250109.exe
-chk  882dd034a10495e579653f278e02c83d2af9d037ad0ef7eed0e1d67cf04a896c
+name gnupg-w32-2.5.4_20250212-bin.exe
+file binary/gnupg-w32-2.5.4_20250212.exe
+chk  a9fc4b49a42ef36b1c412bea529d0ce07a356a0d024c5591ce9fdbcb58076816
 
-name gnupg-w32-2.5.3_20250109-src.tar.xz
-file gnupg/gnupg-w32-2.5.3_20250109.tar.xz
-link gnupg-msi-2.5.3_20250109-src.tar.xz
-chk  8f0beffbec4d8bc5209452267c261b700e4eef57e0d487177058c54a330ee882
+name gnupg-w32-2.5.4_20250212-src.tar.xz
+file gnupg/gnupg-w32-2.5.4_20250212.tar.xz
+link gnupg-msi-2.5.4_20250212-src.tar.xz
+chk  510d003dc9e331a72ab4911fea6048b9315db0f2eee0ceb009ff6c7986364ee4
 
-name gnupg-msi-2.5.3_20250109-bin.wixlib
-file binary/gnupg-w32-2.5.3_20250109.wixlib
-chk  ba56fdb1008f80601fc8d9df28cb8141be9cd614ce47f29088ebeea8665c61ec
+name gnupg-msi-2.5.4_20250212-bin.wixlib
+file binary/gnupg-w32-2.5.4_20250212.wixlib
+chk  961a13e7d80c1f308c488fbc26258e1042216843b8d9153dd55bd9d98739de1d
 
 # eof

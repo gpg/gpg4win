@@ -288,7 +288,6 @@ if [ $withmsi = yes ]; then
     [ $die = yes ] && exit 1
 fi
 
-
 # Determine the needed docker image
 if [ "$appimage" = "yes" ]; then
     cmd=/src/src/appimage/build-appimage.sh
@@ -317,6 +316,11 @@ if [ -z "$(docker images | grep $drep | grep $dtag)" \
     docker build -t $docker_image $dockerfile 2>&1
 fi
 
+# Make sure we have a BUILDTYPE file
+if [ ! -e packages/BUILDTYPE ]; then
+    echo >&2 "PGM: packages/BUILDTYPE not found - see README"
+    return 1
+fi
 
 # If --shell was used override the command for docker.
 # if not used try to download first.
