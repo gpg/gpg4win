@@ -124,6 +124,7 @@ if [ $BUILDTYPE = vsd ]; then
         mkdir -p ${APPDIR}/usr/etc/xdg
         cp ${VSD_DIR}/Standard/kleopatrarc ${APPDIR}/usr/etc/xdg
     fi
+    kleopatra_icon=${SRCDIR}/src/icons/kleopatra-vsd.svg
 elif [ $BUILDTYPE = gpd ]; then
     OUTPUT=gnupg-desktop-${myversion}-x86_64.AppImage
     echo "Packaging GnuPG Desktop Appimage: $myversion"
@@ -137,12 +138,29 @@ elif [ $BUILDTYPE = gpd ]; then
         mkdir -p ${APPDIR}/usr/etc/xdg
         cp ${VSD_DIR}/Desktop/kleopatrarc ${APPDIR}/usr/etc/xdg
     fi
+    kleopatra_icon=${SRCDIR}/src/icons/kleopatra-gpd.svg
 else
     OUTPUT=gpg4win-${myversion}-x86_64.AppImage
     echo "Packaging Gpg4win Appimage: $myversion"
     echo $myversion >${APPDIR}/Gpg4win-VERSION
 fi
 export OUTPUT
+
+if [ -n "${kleopatra_icon}" ]; then
+    # Replace Breeze icons for kleopatra with our icon
+    find ${APPDIR}/usr/share/icons/breeze -name 'kleopatra*.svg' -delete
+    find ${APPDIR}/usr/share/icons/breeze-dark -name 'kleopatra*.svg' -delete
+    cp -av ${kleopatra_icon} ${APPDIR}/usr/share/icons/breeze/apps/22/kleopatra-symbolic.svg
+    cp -av ${kleopatra_icon} ${APPDIR}/usr/share/icons/breeze/apps/48/kleopatra.svg
+    cp -av ${kleopatra_icon} ${APPDIR}/usr/share/icons/breeze-dark/apps/22/kleopatra-symbolic.svg
+    cp -av ${kleopatra_icon} ${APPDIR}/usr/share/icons/breeze-dark/apps/48/kleopatra.svg
+else
+    # Restore the Breeze icons that may have been replaced in a previous build
+    for f in breeze/apps/22/kleopatra-symbolic.svg breeze/apps/48/kleopatra.svg \
+             breeze-dark/apps/22/kleopatra-symbolic.svg breeze-dark/apps/48/kleopatra.svg; do
+        cp -av ${INSTDIR}/share/icons/$f ${APPDIR}/usr/share/icons/$f
+    done
+fi
 
 # Hack around that linuxdeploy does not know libexec
 for f in dirmngr_ldap gpg-check-pattern \
