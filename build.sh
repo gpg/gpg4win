@@ -319,7 +319,7 @@ fi
 # Make sure we have a BUILDTYPE file
 if [ ! -e packages/BUILDTYPE ]; then
     echo >&2 "PGM: packages/BUILDTYPE not found - see README"
-    return 1
+    exit 1
 fi
 
 # If --shell was used override the command for docker.
