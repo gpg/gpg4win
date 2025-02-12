@@ -43,34 +43,45 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              docker/appimage/Dockerfile \
              docker/appimage/Dockerfile-CentOS7 \
              docker/gpg4win-bookworm/Dockerfile \
+             patches/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
+             patches/breeze/0002-fix-ifdef-windows-qmenu.patch \
              patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools.patch \
              patches/breeze-icons/add-the-nose.patch \
-             patches/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
              patches/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
+             patches/gpgoljs-202412051138/0001-Make-gpgme-include-future-proof.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
+             patches/kguiaddons/0001-DRAFT-There-is-no-dark-mode-on-old-Windows.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/kjobwidgets/0001-Remove-knotification.patch \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
              patches/ktextaddons/0001-Remove-unused-QDbus-includes.patch \
-	     patches/mimetreeparser-202412051138/fix-build-error-in-202412051138.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
+             patches/mimetreeparser-202412051138/fix-build-error-in-202412051138.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
+             patches/okular/0001-Add-support-to-customize-about-data.sik \
              patches/okular/lower-cmake-requirement.patch \
              patches/pcre2/cross-build-cmake.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
-             patches/qtbase/qt_use_share_instead_of_data.patch \
              patches/qtbase/configurable-windowstheme.patch \
+             patches/qtbase/qt_use_share_instead_of_data.patch \
+             patches-appimage/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
+             patches-appimage/breeze/0002-fix-ifdef-windows-qmenu.patch \
              patches-appimage/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
+             patches-appimage/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
+             patches-appimage/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
              patches-appimage/kcrash/0001-Add-option-to-disable-OpenGL-support.patch \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
+             patches-appimage/mimetreeparser-202412051138/fix-build-error-in-202412051138.patch \
              patches-appimage/okular/0001-Make-KF6Pty-dependency-optional.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
+             patches-appimage/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches-appimage/qtbase/add-kleopatras-mime-types.patch \
-             patches-appimage/kcalendarcore/0001-Add-option-to-build-without-QML.patch
+             patches-appimage/qtbase/configurable-windowstheme.patch \
+             patches-appimage/qtbase/qt_use_share_instead_of_data.patch
 
 dist-hook: gen-ChangeLog pack_packages_tarballs
 
