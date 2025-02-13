@@ -34,6 +34,8 @@ EXTRA_DIST =  config.site                                      \
               slideshow/slide3-kleopatra.png                   \
               slideshow/slide4-summary.png                     \
               icons/file-ext.ico                               \
+              icons/kleopatra-gpd.svg                          \
+              icons/kleopatra-vsd.svg                          \
               icons/mail-ext.ico                               \
               icons/shield.ico                                 \
               kdeglobals qtlogging.ini                         \
