@@ -34,6 +34,8 @@ Options:
         --v3            Use packages.3 instead of the default
         --w32           Use 32 bit Windows as primary host arch
         --clean         Remove a pre-existing build directory
+        --dist          Create a distributable tarball
+        --nighly        Do a complete automated run
         --shell         Start a shell instead of starting the build script
         --builddir=DIR  Directory where the build should take place
                         (default is ~/b/SRCDIRNAME-playground for gpg4win
@@ -82,6 +84,8 @@ indocker="no"
 gpg22="no"
 shell="no"
 clean="no"
+dist="no"
+nightly="no"
 branch="master"
 srcdir=$(cd $(dirname $0); pwd)
 is_tmpbuild="no"
@@ -117,6 +121,8 @@ while [ $# -gt 0 ]; do
         --v3) gpg22="yes";;
         --shell) shell="yes";;
         --clean|-c) clean="yes";;
+        --dist) dist="yes";;
+        --nightly) nightly="yes";;
         --update-image|--update-img|-u) update_image="yes";;
         --w32) w64="no";;
         --w64) w64="yes";;
@@ -156,7 +162,7 @@ echo >&2 "$PGM: source directory: $srcdir"
 echo >&2 "$PGM: build  directory: $builddir"
 
 
-# The main GUI packages.  check the gen-tarball script to see which
+# The main GUI packages.  Check the gen-tarball script to see which
 # branches are used.
 FRONTEND_PKGS="
 libkleo
@@ -225,7 +231,7 @@ if [ "$runcmd" = yes ]; then
 fi
 
 
-# Check whether we are in the docker image run appropriate commands.
+# Check whether we are in the docker image and run appropriate commands.
 # Note that this script is used to start the docker container and also
 # within the docker container to run the desired commands.
 if [ "$indocker" = yes ]; then
@@ -244,9 +250,13 @@ if [ "$indocker" = yes ]; then
         /src/autogen.sh --build-w32
     fi
     export CMAKE_COLOR_DIAGNOSTICS=OFF
-    make TOPSRCDIR=/src PLAYGROUND=/build
-    if [ $? = 0 -a $withmsi = yes ]; then
-        make TOPSRCDIR=/src PLAYGROUND=/build msi
+    if [ $dist = yes ]; then
+        make dist TOPSRCDIR=/src PLAYGROUND=/build
+    else
+        make TOPSRCDIR=/src PLAYGROUND=/build
+        if [ $? = 0 -a $withmsi = yes ]; then
+            make TOPSRCDIR=/src PLAYGROUND=/build msi
+        fi
     fi
     exit $?
 fi # (end of script use inside the docker container) #
@@ -300,6 +310,7 @@ else
     else
         cmd="/src/build.sh --w32"
     fi
+    [ $dist = yes ] && cmd="$cmd --dist"
     [ $force = yes ] && cmd="$cmd --force"
     [ $withmsi = yes -a $shell = no ] && cmd="$cmd --msi"
     docker_image=g10-build-gpg4win:bookworm

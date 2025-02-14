@@ -25,7 +25,7 @@
 
 EXTRA_DIST = README.nsis LINGUAS POTFILES \
 	     $(POFILES) gpg4win-de.wxl gpg4win-en.wxl \
-	     nsis-msgfmt.c nsis-xgettext.awk nsis-xgettext.sh \
+	     nsis-msgfmt.c nsis-xgettext.awk \
 	     remove-potcdate.sin
 
 # Note: LINGUAS, POTFILES, NSIFILES and POFILES variables are created
