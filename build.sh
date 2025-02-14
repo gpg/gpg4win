@@ -683,7 +683,10 @@ fi
 
 if [ "$err" = "0" ]; then
     mkdir -p "${builddir}/artifacts"
-    if [ "$appimage" = "yes" ]; then
+    if [ "$dist" = "yes" ]; then
+        results=$(find "${builddir}" -maxdepth 1 -name \*.tar.xz \
+                  -a -type f -printf '%p ')
+    elif [ "$appimage" = "yes" ]; then
         results=$(find "${builddir}" -maxdepth 1 -iname \*.appimage \
                   -a -type f -printf '%p ')
     else
