@@ -43,7 +43,6 @@ XGETTEXT = xgettext
 XGETTEXT_OPTIONS = -L c
 COPYRIGHT_HOLDER = g10 Code GmbH
 MSGMERGE = msgmerge --no-location
-MSGMERGE_UPDATE = msgmerge --update --no-location
 MSGCONV = msgconv --no-location
 MSGFILTER = msgfilter --no-location
 
@@ -83,10 +82,12 @@ gpg4win.pot-update: $(POTFILES) remove-potcdate.sed
 	        rm -f gpg4win.1po gpg4win.2po gpg4win.po; \
 	    else \
 	        rm -f gpg4win.1po gpg4win.2po $(srcdir)/gpg4win.pot ;\
-	        mv gpg4win.po $(srcdir)/gpg4win.pot; \
+	        mv gpg4win.po gpg4win.pot; \
+                echo "Note: gpg4win.pot updated - please commit." ;\
 	    fi; \
 	  else \
-	    mv gpg4win.po $(srcdir)/gpg4win.pot; \
+	    mv gpg4win.po gpg4win.pot; \
+            echo "Note: gpg4win.pot created - please commit." ;\
 	  fi; \
 	fi )
 
@@ -99,14 +100,19 @@ $(srcdir)/gpg4win.pot:
 # This target rebuilds a PO file if gpg4win.pot has changed.
 # Note that a PO file is not touched if it doesn't need to be changed.
 $(POFILES): gpg4win.pot
-	@lang=`echo $@ | sed -e 's,.*/,,' -e 's/\.po$$//'`; \
-	if test -f "$(srcdir)/$${lang}.po"; then \
-	  test "$(srcdir)" = . && cdcmd="" || cdcmd="cd $(srcdir) && "; \
-	  echo "$${cdcmd}$(MSGMERGE_UPDATE) $${lang}.po $<"; \
-	  cd $(srcdir) && $(MSGMERGE_UPDATE) $${lang}.po $<; \
-	else \
-	  $(MAKE) $${lang}.po-create; \
-	fi
+	(set -e; lang=`echo $@ | sed -e 's,.*/,,' -e 's/\.po$$//'`; \
+	 if test -f "$(srcdir)/$${lang}.po"; then \
+           cp $(srcdir)/$${lang}.po $${lang}.po-tmp ;\
+	   $(MSGMERGE) --update $${lang}.po-tmp $< ; \
+	   if cmp $(srcdir)/$${lang}.po $${lang}.po-tmp >/dev/null; then \
+              rm $(srcdir)/$${lang}.po-tmp ;\
+           else \
+              mv -f $${lang}.po-tmp $${lang}.po ;\
+              echo "Note: $${lang}.po updated - please commit." ;\
+           fi ;\
+	 else \
+	   $(MAKE) $${lang}.po-create; \
+	 fi)
 
 
 # We build this little utility on the BUILD architecture!
@@ -123,3 +129,11 @@ catalogs.nsi: $(NSIFILES)
 
 
 $(NSIFILES): nsis-msgfmt
+
+
+# Copy a create POT and PO files into the tarball
+dist-hook:
+	(for f in gpg4win.pot *.po ; do \
+         if [ -f "$$f" -a "$ff" -nt "$(srcdir)/$ff" ]; then \
+	    cp "$$f" "$(distdir)/$$f" ;\
+	 fi; done)

@@ -339,7 +339,7 @@ AC_SUBST(PLAYGROUND)
 
 #
 # Prepare variables for po/Makefile.am
-# Note that we do not use the ususal GNU getetxt make system.
+# Note that we do not use the ususal GNU gettext make system.
 #
 # LINGUAS  := The list of all translated languages taken from po/LINGUAS
 # POTFILES := The list of NSI files with translatable strings taken from
@@ -348,15 +348,20 @@ AC_SUBST(PLAYGROUND)
 # NSIFILES := The to-be generated translation files in the NSI format.
 #             (w/o directory)
 #
-LINGUAS=$(sed -e "/^#/d" -e "s/#.*//" "$TOPSRCDIR/po/LINGUAS" | xargs -- )
-POTFILES=$(for f in $(sed -e "/^#/d" -e "s/#.*//" "$TOPSRCDIR/po/POTFILES");\
-           do echo "$TOPSRCDIR/$f"; done | xargs -- )
+if test $dockerbuild = yes ; then
+  posrcdir=/src/po
+else
+  posrcdir="$TOPSRCDIR/po"
+fi
+LINGUAS=$(sed -e "/^#/d" -e "s/#.*//" "$posrcdir/LINGUAS" | xargs -- )
+POTFILES=$(for f in $(sed -e "/^#/d" -e "s/#.*//" "$posrcdir/POTFILES");\
+           do echo "$posrcdir/$f"; done | xargs -- )
 AC_SUBST(LINGUAS)
 AC_SUBST(POTFILES)
 POFILES=
 NSIFILES=
 for lang in $LINGUAS; do
-   if test -f "$TOPSRCDIR/po/$lang.po" ; then
+   if test -f "$posrcdir/$lang.po" ; then
        POFILES="$POFILES $lang.po"
        NSIFILES="$NSIFILES $lang.nsi"
    fi
