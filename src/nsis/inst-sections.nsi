@@ -228,26 +228,14 @@
 !ifdef HAVE_PKG_QTHTTPSERVER
 !include "inst-qthttpserver.nsi"
 !endif
-!ifdef HAVE_PKG_QTKEYCHAIN
-!include "inst-qtkeychain.nsi"
-!endif
 !ifdef HAVE_PKG_QTWEBSOCKETS
 !include "inst-qtwebsockets.nsi"
-!endif
-!ifdef HAVE_PKG_SYNTAX_HIGHLIGHTING
-!include "inst-syntax-highlighting.nsi"
 !endif
 !ifdef HAVE_PKG_KCONTACTS
 !include "inst-kcontacts.nsi"
 !endif
 !ifdef HAVE_PKG_LIBKDEPIM
 !include "inst-libkdepim.nsi"
-!endif
-!ifdef HAVE_PKG_KPIMTEXTEDIT
-!include "inst-kpimtextedit.nsi"
-!endif
-!ifdef HAVE_PKG_KTEXTADDONS
-!include "inst-ktextaddons.nsi"
 !endif
 !ifdef HAVE_PKG_GPGPASS
 !include "inst-gpgpass.nsi"
@@ -491,29 +479,17 @@
 !ifdef HAVE_PKG_QTHTTPSERVER
 !include "uninst-qthttpserver.nsi"
 !endif
-!ifdef HAVE_PKG_QTKEYCHAIN
-!include "uninst-qtkeychain.nsi"
-!endif
 !ifdef HAVE_PKG_QTWEBSOCKETS
 !include "uninst-qtwebsockets.nsi"
 !endif
 !ifdef HAVE_PKG_KSTATUSNOTIFIERITEM
 !include "uninst-kstatusnotifieritem.nsi"
 !endif
-!ifdef HAVE_PKG_SYNTAX_HIGHLIGHTING
-!include "uninst-syntax-highlighting.nsi"
-!endif
 !ifdef HAVE_PKG_KCONTACTS
 !include "uninst-kcontacts.nsi"
 !endif
 !ifdef HAVE_PKG_LIBKDEPIM
 !include "uninst-libkdepim.nsi"
-!endif
-!ifdef HAVE_PKG_KPIMTEXTEDIT
-!include "uninst-kpimtextedit.nsi"
-!endif
-!ifdef HAVE_PKG_KTEXTADDONS
-!include "uninst-ktextaddons.nsi"
 !endif
 !ifdef HAVE_PKG_GPGPASS
 !include "uninst-gpgpass.nsi"
@@ -842,20 +818,8 @@ Function CalcDepends
 !ifdef HAVE_PKG_QTWEBSOCKETS
   !insertmacro UnselectSection ${SEC_qtwebsockets}
 !endif
-!ifdef HAVE_PKG_QTKEYCHAIN
-  !insertmacro UnselectSection ${SEC_qtkeychain}
-!endif
-!ifdef HAVE_PKG_SYNTAX_HIGHLIGHTING
-  !insertmacro UnselectSection ${SEC_syntax-highlighting}
-!endif
 !ifdef HAVE_PKG_LIBKDEPIM
   !insertmacro UnselectSection ${SEC_libkdepim}
-!endif
-!ifdef HAVE_PKG_KPIMTEXTEDIT
-  !insertmacro UnselectSection ${SEC_kpimtextedit}
-!endif
-!ifdef HAVE_PKG_KTEXTADDONS
-  !insertmacro UnselectSection ${SEC_ktextaddons}
 !endif
 !ifdef HAVE_PKG_KCONTACTS
   !insertmacro UnselectSection ${SEC_kcontacts}
@@ -995,12 +959,8 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_libkleo}
   !insertmacro SelectSection ${SEC_qthttpserver}
   !insertmacro SelectSection ${SEC_qtwebsockets}
-  !insertmacro SelectSection ${SEC_qtkeychain}
   !insertmacro SelectSection ${SEC_kstatusnotifieritem}
-  !insertmacro SelectSection ${SEC_syntax-highlighting}
   !insertmacro SelectSection ${SEC_libkdepim}
-  !insertmacro SelectSection ${SEC_kpimtextedit}
-  !insertmacro SelectSection ${SEC_ktextaddons}
   !insertmacro SelectSection ${SEC_kcontacts}
   !insertmacro SelectSection ${SEC_breeze}
 

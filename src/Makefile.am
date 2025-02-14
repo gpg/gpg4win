@@ -155,8 +155,7 @@ gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
                   kparts tiff openjpeg sonnet ktextwidgets mimetreeparser \
                   libical kcalendarcore kmbox pcre2 prison gpgpass \
                   knotifications kcolorscheme zstd kstatusnotifieritem \
-                  gpgoljs libkdepim syntax-highlighting ktextaddons \
-                  kpimtextedit qtkeychain kcontacts qtwebsockets \
+                  gpgoljs libkdepim kcontacts qtwebsockets \
                   breeze
 
 # Supported source packages to build in an additional architecture
@@ -302,10 +301,6 @@ gpg4win_pkg_kcoreaddons_configure = -DKCOREADDONS_USE_QML=OFF
 gpg4win_pkg_kwindowsystem_configure = -DKWINDOWSYSTEM_QML=OFF
 
 gpg4win_pkg_ktextwidgets_configure = -DWITH_TEXT_TO_SPEECH=OFF
-
-gpg4win_pkg_qtkeychain_configure = -DBUILD_WITH_QT6=ON
-
-gpg4win_pkg_ktextaddons_configure = -DFORCE_DISABLE_MULTIMEDIA=ON
 
 gpg4win_pkg_kcalendarcore_configure = -DUSE_QML=OFF
 

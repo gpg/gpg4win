@@ -61,10 +61,8 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-kmbox.nsi uninst-kmbox.nsi                             \
              inst-kmime.nsi uninst-kmime.nsi                             \
              inst-kparts.nsi uninst-kparts.nsi                           \
-             inst-kpimtextedit.nsi uninst-kpimtextedit.nsi               \
              inst-kservice.nsi uninst-kservice.nsi                       \
              inst-kstatusnotifieritem.nsi uninst-kstatusnotifieritem.nsi \
-             inst-ktextaddons.nsi uninst-ktextaddons.nsi                 \
              inst-ktextwidgets.nsi uninst-ktextwidgets.nsi               \
              inst-kwidgetsaddons.nsi uninst-kwidgetsaddons.nsi           \
              inst-kwindowsystem.nsi uninst-kwindowsystem.nsi             \
@@ -88,7 +86,6 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-qrencode.nsi uninst-qrencode.nsi                       \
              inst-qtbase.nsi uninst-qtbase.nsi                           \
              inst-qthttpserver.nsi uninst-qthttpserver.nsi               \
-             inst-qtkeychain.nsi uninst-qtkeychain.nsi                   \
              inst-qtsvg.nsi uninst-qtsvg.nsi                             \
              inst-qttools.nsi uninst-qttools.nsi                         \
              inst-qttranslations.nsi uninst-qttranslations.nsi           \

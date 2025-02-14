@@ -63,7 +63,6 @@ FRAMEWORKS="extra-cmake-modules
     prison
     kcolorscheme
     kstatusnotifieritem
-    syntax-highlighting
     kcontacts"
 
 if [ -n "$2" ]; then

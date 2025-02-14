@@ -333,17 +333,9 @@
 !define gpg4win_pkg_qthttpserver @gpg4win_pkg_qthttpserver@
 !define gpg4win_pkg_qthttpserver_version @gpg4win_pkg_qthttpserver_version@
 
-@HAVE_PKG_QTKEYCHAIN@
-!define gpg4win_pkg_qtkeychain @gpg4win_pkg_qtkeychain@
-!define gpg4win_pkg_qtkeychain_version @gpg4win_pkg_qtkeychain_version@
-
 @HAVE_PKG_QTWEBSOCKETS@
 !define gpg4win_pkg_qtwebsockets @gpg4win_pkg_qtwebsockets@
 !define gpg4win_pkg_qtwebsockets_version @gpg4win_pkg_qtwebsockets_version@
-
-@HAVE_PKG_SYNTAX_HIGHLIGHTING@
-!define gpg4win_pkg_syntax_highlighting @gpg4win_pkg_syntax_highlighting@
-!define gpg4win_pkg_syntax_highlighting_version @gpg4win_pkg_syntax_highlighting_version@
 
 @HAVE_PKG_KCONTACTS@
 !define gpg4win_pkg_kcontacts @gpg4win_pkg_kcontacts@
@@ -352,14 +344,6 @@
 @HAVE_PKG_LIBKDEPIM@
 !define gpg4win_pkg_libkdepim @gpg4win_pkg_libkdepim@
 !define gpg4win_pkg_libkdepim_version @gpg4win_pkg_libkdepim_version@
-
-@HAVE_PKG_KPIMTEXTEDIT@
-!define gpg4win_pkg_kpimtextedit @gpg4win_pkg_kpimtextedit@
-!define gpg4win_pkg_kpimtextedit_version @gpg4win_pkg_kpimtextedit_version@
-
-@HAVE_PKG_KTEXTADDONS@
-!define gpg4win_pkg_ktextaddons @gpg4win_pkg_ktextaddons@
-!define gpg4win_pkg_ktextaddons_version @gpg4win_pkg_ktextaddons_version@
 
 @HAVE_PKG_GPGOLJS@
 !define gpg4win_pkg_gpgoljs @gpg4win_pkg_gpgoljs@
