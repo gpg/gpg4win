@@ -26,12 +26,13 @@
 EXTRA_DIST = README.nsis LINGUAS POTFILES \
 	     $(POFILES) gpg4win-de.wxl gpg4win-en.wxl \
 	     nsis-msgfmt.c nsis-xgettext.awk \
-	     remove-potcdate.sin
+	     remove-potcdate.sin gpg4win.pot
 
 # Note: LINGUAS, POTFILES, NSIFILES and POFILES variables are created
 # by configure from the LINGUAS and POTFILES files.
 
-CLEANFILES = nsis-msgfmt $(NSIFILES) catalogs.nsi remove-potcdate.sed
+CLEANFILES = nsis-msgfmt $(NSIFILES) catalogs.nsi \
+             remove-potcdate.sed *.po-tmp~
 
 
 all: catalogs.nsi
@@ -51,7 +52,7 @@ MSGFILTER = msgfilter --no-location
 	mv t-$@ $@
 
 .po.nsi:
-	(set -e;\
+	@(set -e;\
 	lang=`echo $* | sed -e 's,.*/,,'`; \
 	test "$(srcdir)" = . && dir="" || dir="$(srcdir)/"; \
 	echo "rm -f $${dir}$${lang}.nsi && ./nsis-msgfmt $${dir}$${lang}.po > $${dir}$${lang}.nsi"; \
@@ -64,7 +65,7 @@ MSGFILTER = msgfilter --no-location
 # This target rebuilds gpg4win.pot; it is an expensive operation.
 # Note that gpg4win.pot is not touched if it doesn't need to be changed.
 gpg4win.pot-update: $(POTFILES) remove-potcdate.sed
-	(set -e; rm -f gpg4win.po; \
+	@(set -e; rm -f gpg4win.po; \
 	(for f in $(POTFILES); do \
             $(AWK) -f ${srcdir}/nsis-xgettext.awk \
                    -v "file=$${f##*/}" "$$f";\
@@ -99,17 +100,20 @@ $(srcdir)/gpg4win.pot:
 
 # This target rebuilds a PO file if gpg4win.pot has changed.
 # Note that a PO file is not touched if it doesn't need to be changed.
-$(POFILES): gpg4win.pot
-	(set -e; lang=`echo $@ | sed -e 's,.*/,,' -e 's/\.po$$//'`; \
+$(POFILES): gpg4win.pot remove-potcdate.sed
+	@(set -e; lang=`echo $@ | sed -e 's,.*/,,' -e 's/\.po$$//'`; \
 	 if test -f "$(srcdir)/$${lang}.po"; then \
            cp $(srcdir)/$${lang}.po $${lang}.po-tmp ;\
 	   $(MSGMERGE) --update $${lang}.po-tmp $< ; \
-	   if cmp $(srcdir)/$${lang}.po $${lang}.po-tmp >/dev/null; then \
-              rm $(srcdir)/$${lang}.po-tmp ;\
+           sed -f remove-potcdate.sed < $(srcdir)/$${lang}.po > $${lang}.po-t1;\
+           sed -f remove-potcdate.sed < $${lang}.po-tmp       > $${lang}.po-t2;\
+	   if cmp $${lang}.po-t1 $${lang}.po-t2 >/dev/null; then \
+              rm $${lang}.po-tmp ;\
            else \
               mv -f $${lang}.po-tmp $${lang}.po ;\
               echo "Note: $${lang}.po updated - please commit." ;\
            fi ;\
+           rm $${lang}.po-t1 $${lang}.po-t2 ;\
 	 else \
 	   $(MAKE) $${lang}.po-create; \
 	 fi)
