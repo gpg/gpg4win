@@ -20,12 +20,9 @@ stamp-h1
 /gpg4win-2.*
 doc/manual/version.tex
 src/config.nsi
-po/POTFILES
 po/*.nsi
-po/*.gmo
 po/gpg4win.pot
 po/remove-potcdate.sed
-po/stamp-po
 po/nsis-msgfmt
 patches/gnupg2/01-version.patch
 src/gpg4win.mk
@@ -63,7 +60,6 @@ src/signed_installers
 
 /web/
 
-/po/build-cc
 /src/license.blurb
 /src/toolchain.cmake
 /VERSION

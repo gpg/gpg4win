@@ -103,10 +103,6 @@ AM_MAINTAINER_MODE
 AC_CANONICAL_HOST
 AC_CONFIG_HEADERS([config.h])
 
-# Language support
-# Take care when updating; see the comments in po/Makefile.in.in
-AM_PO_SUBDIRS
-
 
 AC_SUBST(PRODUCT_NAME)
 AC_SUBST(COMPANY_NAME)
@@ -208,6 +204,7 @@ AM_CONDITIONAL(BUILD_W64_COND, test "$BUILD_W64" = "yes")
 AC_PROG_CC
 AC_PROG_CPP
 AC_PROG_RANLIB
+AC_PROG_AWK
 AC_CHECK_TOOL(AR, ar, :)
 AC_CHECK_TOOLS(STRIP, strip)
 AC_CHECK_TOOLS(DLLTOOL, dlltool)
@@ -340,7 +337,37 @@ AC_SUBST(TOPSRCDIR)
 AC_SUBST(PLAYGROUND)
 
 
+#
+# Prepare variables for po/Makefile.am
+# Note that we do not use the ususal GNU getetxt make system.
+#
+# LINGUAS  := The list of all translated languages taken from po/LINGUAS
+# POTFILES := The list of NSI files with translatable strings taken from
+#             po/POTFILES
+# POFILES  := The actual available translations (w/o directory)
+# NSIFILES := The to-be generated translation files in the NSI format.
+#             (w/o directory)
+#
+LINGUAS=$(sed -e "/^#/d" -e "s/#.*//" "$TOPSRCDIR/po/LINGUAS" | xargs -- )
+POTFILES=$(for f in $(sed -e "/^#/d" -e "s/#.*//" "$TOPSRCDIR/po/POTFILES");\
+           do echo "$TOPSRCDIR/$f"; done | xargs -- )
+AC_SUBST(LINGUAS)
+AC_SUBST(POTFILES)
+POFILES=
+NSIFILES=
+for lang in $LINGUAS; do
+   if test -f "$TOPSRCDIR/po/$lang.po" ; then
+       POFILES="$POFILES $lang.po"
+       NSIFILES="$NSIFILES $lang.nsi"
+   fi
+done
+AC_SUBST(POFILES)
+AC_SUBST(NSIFILES)
+
+
+#
 # Packages for Gpg4Win.
+#
 if test "$build_gpg4win" = yes ; then
     gpg4win_dup_sources=""
 
@@ -602,7 +629,7 @@ fi
 # Finalize.
 
 AC_CONFIG_FILES(Makefile)
-AC_CONFIG_FILES(packages/Makefile src/Makefile po/Makefile.in)
+AC_CONFIG_FILES(packages/Makefile src/Makefile po/Makefile)
 AC_CONFIG_FILES(src/nsis/config.nsi src/gpg4win.mk)
 AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)

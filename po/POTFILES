@@ -1,4 +1,6 @@
-# List of source files which contain translatable strings.
+# List of NSIS files with translatable strings.
+# The files are locate below top_srcdir.
+
 src/nsis/g4wihelp.nsi
 src/nsis/gpg4win.nsi
 src/nsis/gpg4win-src.nsi
