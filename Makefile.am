@@ -57,7 +57,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/kjobwidgets/0001-Remove-knotification.patch \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
-             patches/ktextaddons/0001-Remove-unused-QDbus-includes.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
              patches/mimetreeparser-202412051138/fix-build-error-in-202412051138.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \

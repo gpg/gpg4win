@@ -33,8 +33,7 @@ fi
 
 GEARS="kmime
     kmbox
-    libkdepim
-    kpimtextedit"
+    libkdepim"
 
 fullversion=$1
 case ${fullversion} in

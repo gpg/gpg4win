@@ -424,7 +424,6 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([qtsvg], [qtbase])
     GPG4WIN_KDEPKG([qthttpserver], [qtbase])
     GPG4WIN_KDEPKG([qtwebsockets], [qtbase])
-    GPG4WIN_KDEPKG([qtkeychain], [qtbase])
     GPG4WIN_KDEPKG([tiff])
     GPG4WIN_KDEPKG([pcre2])
     GPG4WIN_KDEPKG([breeze], [qtbase kcoreaddons kconfig kconfigwidgets kguiaddons kiconthemes kwindowsystem])
@@ -472,11 +471,8 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
     GPG4WIN_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n qgpgme])
     GPG4WIN_KDEPKG([libkdepim], [kcompletion ki18n kwidgetsaddons])
-    GPG4WIN_KDEPKG([syntax-highlighting], [extra-cmake-modules qtbase qttools qttranslations])
-    GPG4WIN_KDEPKG([ktextaddons], [qtkeychain syntax-highlighting kio ki18n kcoreaddons kconfigwidgets sonnet karchive])
-    GPG4WIN_KDEPKG([kpimtextedit], [sonnet kconfig kxmlgui kwidgetsaddons kcoreaddons kio ki18n kiconthemes ktextaddons syntax-highlighting])
     GPG4WIN_KDEPKG([kcontacts], [kcoreaddons qtbase ki18n kconfig kcodecs])
-    GPG4WIN_KDEPKG([gpgoljs],[qtwebsockets kcontacts qthttpserver mimetreeparser libkleo libkdepim kpimtextedit])
+    GPG4WIN_KDEPKG([gpgoljs],[qtwebsockets kcontacts qthttpserver mimetreeparser libkleo libkdepim sonnet])
 
     GPG4WIN_FINALIZE
 fi

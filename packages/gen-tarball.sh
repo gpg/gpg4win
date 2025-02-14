@@ -193,9 +193,6 @@ case ${package} in
     kio)
         repo=https://invent.kde.org/frameworks/${package}.git
         ;;
-    ktextaddons)
-        repo=https://invent.kde.org/libraries/${package}.git
-        ;;
     *)
         echo "$PGM: error: Unsupported package '${package}'"
         exit 1
@@ -251,8 +248,6 @@ case ${package} in
         branch=v6.1.3
         ;;
     kio)
-        ;;
-    ktextaddons)
         ;;
     *)
         echo "$PGM: error: Unsupported package '${package}'"
