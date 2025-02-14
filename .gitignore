@@ -21,7 +21,6 @@ stamp-h1
 doc/manual/version.tex
 src/config.nsi
 po/*.nsi
-po/gpg4win.pot
 po/remove-potcdate.sed
 po/nsis-msgfmt
 patches/gnupg2/01-version.patch
