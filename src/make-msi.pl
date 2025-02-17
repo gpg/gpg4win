@@ -1264,12 +1264,16 @@ sub dump_all
             }
             elsif ($sourcefull =~ /^\/src\// )
             {
-                $sourcefull =~ s,^/src/src/,\$(var.SrcDir)/,;
+                $sourcefull =~ s,^/src/,\$(var.SrcDir)/,;
+            }
+            elsif ($sourcefull =~ /^\/build\// )
+            {
+                $sourcefull =~ s,^/build/,\$(var.BldDir)/,;
             }
             else
             {
-                $sourcefull =~ s,^./,\$(var.BldDir)/,;
-                $sourcefull =~ s,^../,\$(var.BldDir)/../,;
+                $sourcefull =~ s,^\./,\$(var.BldDir)/src/,;
+                $sourcefull =~ s,^\.\./,\$(var.BldDir)/,;
             }
             $sourcefull =~ s,/,\\,g;
 
@@ -1736,18 +1740,16 @@ sub dump_help {
 
         my $guid = get_tmp_guid ($file);
 
+        $sourcefull = $file;
         if ($file =~ /^\/src\// )
         {
-            $sourcefull = "\$(var.SrcDir)/" . $file;
-            $sourcefull =~ s,.*/src/,\$(var.SrcDir)/,;
+            $sourcefull =~ s,^/src/,\$(var.SrcDir)/,;
         }
         else
         {
-            $sourcefull = "\$(var.BldDir)/" . $file;
-            $sourcefull =~ s,.*/src/,\$(var.BldDir)/,;
+            $sourcefull =~ s,^/build/,\$(var.BldDir)/,;
         }
         $sourcefull =~ s,/,\\,g;
-        # print STDERR "dump_help:   file='$file' fullsrc='$sourcefull'\n";
 
         my $custom_name_us=$custom_name;
         $custom_name_us =~ s/-/_/;
@@ -1857,18 +1859,22 @@ EOF
 
         my $guid = get_tmp_guid ($file);
 
+        $sourcefull = $file;
         if ($file =~ /^\/src\// )
         {
-            $sourcefull = "\$(var.SrcDir)/" . $file;
-            $sourcefull =~ s,.*/src/,\$(var.SrcDir)/,;
+            $sourcefull =~ s,^/src/,\$(var.SrcDir)/,;
+        }
+        elsif ($file =~ /^\/build\// )
+        {
+            $sourcefull =~ s,^/build/,\$(var.BldDir)/,;
         }
         else
         {
-            $sourcefull = "\$(var.BldDir)/" . $file;
             $sourcefull =~ s,.*/src/,\$(var.BldDir)/,;
         }
         $sourcefull =~ s,/,\\,g;
         # print STDERR "dump_single_custom:   file='$file' fullsrc='$sourcefull'\n";
+
 
         my $mode = "";
 
@@ -2237,7 +2243,7 @@ print <<EOF;
         <Property Id="MsiLogging" Value="gnupg-desktop"/>
     -->
 
-    <Icon Id="shield.ico" SourceFile="\$(var.SrcDir)/icons/shield.ico"/>
+    <Icon Id="shield.ico" SourceFile="\$(var.SrcDir)/src/icons/shield.ico"/>
     <!-- FWIW: "ARP" stands for "Add/Remove Programs" -->
     <Property Id="ARPPRODUCTICON" Value="shield.ico"/>
 
@@ -2631,7 +2637,7 @@ EOF
                Directory="dirAA72FFDDFA224FB221D53750596B0142"
                Guid="73C39745-06F6-43A6-9B0F-7A7BF0C66DE9">
       <File Id="f_gpgconfctl_0" Name="gpgconf.ctl" KeyPath="yes"
-            Source="\$(var.SrcDir)\\vsd-gpgconf.ctl">
+            Source="\$(var.SrcDir)\\src\\vsd-gpgconf.ctl">
       </File>
     </Component>
 

@@ -1028,9 +1028,8 @@ $(MSI_FNAME_PREFIX)-$(VERSION).wxs: $(common_nsi) $(stampdir)/stamp-final \
 		--manifest gpg4win-$(VERSION).files \
 		--version $(VSD_VERSION) \
 		--name "$(MSI_PRODUCT_NAME)" \
-		--win64 \
-		-DBUILD_DIR=. -DTOP_SRCDIR=$(tsdir) -DVSDDIR=$(vsddir) \
-		-DSRCDIR=$(sdir) \
+		--win64 -DTOP_SRCDIR=$(tsdir) -DTOP_BLDDIR=$(root) \
+		-DSRCDIR=$(tsdir)/src -DBLDDIR=$(root) -DVSDDIR=$(vsddir) \
                 $(sdir)/nsis/gpg4win.nsi > $(MSI_FNAME_PREFIX)-$(VERSION).wxs
 
 $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib: \
@@ -1139,9 +1138,9 @@ $(msidir)/$(1)/$(1).wxs: $(msidir)/$(1)/VERSION.sig \
 		--manifest gpg4win-$(VERSION).files \
 		--version $(VSD_VERSION) \
 		--name "$(MSI_PRODUCT_NAME)" \
-		--win64 \
-		-DBUILD_DIR=. -DTOP_SRCDIR=$(tsdir) -DVSDDIR=$(vsddir) \
-		-DSRCDIR=$(sdir) $(sdir)/nsis/gpg4win.nsi > /dev/null
+		--win64 -DTOP_SRCDIR=$(tsdir) -DTOP_BLDDIR=$(root) \
+		-DSRCDIR=$(tsdir)/src -DBLDDIR=$(root) -DVSDDIR=$(vsddir) \
+		$(sdir)/nsis/gpg4win.nsi > /dev/null
 
 $(msidir)/$(1)/VERSION.sig: $(msidir)/$(1)/VERSION
 	echo "----------SIGNING----------"

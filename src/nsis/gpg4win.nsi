@@ -97,9 +97,9 @@ SetCompressor /SOLID lzma
 !endif
 
 # The installation directory.
-!define ipdir "../install/pkgs"
-!define exipdir "../install-ex/pkgs"
-!define bpdir "../build"
+!define ipdir "${TOP_BLDDIR}/install/pkgs"
+!define exipdir "${TOP_BLDDIR}/install-ex/pkgs"
+!define bpdir "${TOP_BLDDIR}/build"
 
 # Variables
 VAR is_minimal

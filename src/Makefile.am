@@ -678,7 +678,7 @@ installers/gpg4win-$(VERSION)$(W64SUFFIX).exe: \
                     -DTOP_SRCDIR=$(tsdir) \
                     -DSRCDIR=$(sdir) $(EXTRA_MAKENSIS_FLAGS) \
                     $(sdir)/nsis/gpg4win.nsi \
-	  && mv gpg4win-$(VERSION).exe \
+	  && mv $(root)/gpg4win-$(VERSION).exe \
                 installers/gpg4win-$(VERSION)$(W64SUFFIX).exe
 
 $(stampdir)/stamp-dist-self: versioninfo.txt

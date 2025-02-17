@@ -569,8 +569,8 @@ runner_cmd_litcandle() {
         $WINE "$WIXPREFIX/candle.exe" \
 	      -dInstDir=k: \
 	      -dInstDirEx=j: \
-	      -dSrcDir=i:\\src \
-	      -dBldDir=l:\\src \
+	      -dSrcDir=i:\\ \
+	      -dBldDir=l:\\ \
 	      -dVersion="$version" \
 	      -dWin64="yes" \
 	      -out k:\\"$fwixobj" \
@@ -582,8 +582,8 @@ runner_cmd_litcandle() {
         $WINE "$WIXPREFIX/candle.exe" \
 	      -dInstDir=k: \
 	      -dInstDirEx=j: \
-	      -dSrcDir=i:\\src \
-	      -dBldDir=l:\\src \
+	      -dSrcDir=i:\\ \
+	      -dBldDir=l:\\ \
 	      -dVersion="$version" \
 	      -dWin64="yes" \
 	      -out "$fextraobj" \
