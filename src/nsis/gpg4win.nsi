@@ -19,13 +19,13 @@
 
 Unicode true
 
-!cd "${BUILD_DIR}"
+!cd "${TOP_BLDDIR}"
 !addincludedir "${TOP_SRCDIR}"
-!addincludedir "${BUILD_DIR}/po"
+!addincludedir "${TOP_BLDDIR}/po"
 !addincludedir "${TOP_SRCDIR}/po"
-!addincludedir "${BUILD_DIR}/nsis"
-!addincludedir "${SRCDIR}/nsis"
-!addplugindir "${BUILD_DIR}"
+!addincludedir "${TOP_BLDDIR}/src/nsis"
+!addincludedir "${TOP_SRCDIR}/src/nsis"
+!addplugindir "${TOP_BLDDIR}/src"
 !include "config.nsi"
 
 

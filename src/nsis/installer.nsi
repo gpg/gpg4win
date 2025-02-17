@@ -210,7 +210,7 @@ LangString T_RunKleopatra ${LANG_ENGLISH} \
 !undef PO_HEADER
 
 !insertmacro MUI_RESERVEFILE_LANGDLL
-ReserveFile "${BUILD_DIR}\g4wihelp.dll"
+ReserveFile "${TOP_BLDDIR}\src\g4wihelp.dll"
 !ifdef SOURCES
 ReserveFile "${TOP_SRCDIR}\doc\logo\gpg4win-logo-400px.bmp"
 ReserveFile "${TOP_SRCDIR}\src\gpg4win-splash.wav"

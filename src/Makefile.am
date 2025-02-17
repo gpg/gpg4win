@@ -673,7 +673,8 @@ installers/gpg4win-$(VERSION)$(W64SUFFIX).exe: \
 		        $(foosum_exe) \
 			$(HOWTO_files) \
 	                license.blurb versioninfo.txt
-	$(MAKENSIS) -V3 -DBUILD_W64=$(BUILD_W64) -DBUILD_DIR=`pwd` \
+	$(MAKENSIS) -V3 -DBUILD_W64=$(BUILD_W64) \
+                    -DTOP_BLDDIR=$(root) \
                     -DTOP_SRCDIR=$(tsdir) \
                     -DSRCDIR=$(sdir) $(EXTRA_MAKENSIS_FLAGS) \
                     $(sdir)/nsis/gpg4win.nsi \

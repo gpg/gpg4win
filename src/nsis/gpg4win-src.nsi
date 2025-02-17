@@ -19,11 +19,11 @@
 
 Unicode true
 
-!cd "${BUILD_DIR}"
+!cd "${TOP_BLDDIR}"
 !addincludedir "${TOP_SRCDIR}"
 !addincludedir "${TOP_SRCDIR}/po"
 !addincludedir "${SRCDIR}"
-!addplugindir "${BUILD_DIR}"
+!addplugindir "${TOP_BLDDIR}"
 !include "config.nsi"
 
 # We need StrRep.
