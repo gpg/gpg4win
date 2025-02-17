@@ -85,10 +85,12 @@ gpg4win.pot-update: $(POTFILES) remove-potcdate.sed
 	        rm -f gpg4win.1po gpg4win.2po $(srcdir)/gpg4win.pot ;\
 	        mv gpg4win.po gpg4win.pot; \
                 echo "Note: gpg4win.pot updated - please commit." ;\
+		echo "po/gpg4win.pot" >> $(PLAYGROUND)/files-to-commit.lst ;\
 	    fi; \
 	  else \
 	    mv gpg4win.po gpg4win.pot; \
             echo "Note: gpg4win.pot created - please commit." ;\
+	    echo "po/gpg4win.pot" >> $(PLAYGROUND)/files-to-commit.lst ;\
 	  fi; \
 	fi )
 
@@ -112,6 +114,7 @@ $(POFILES): gpg4win.pot remove-potcdate.sed
            else \
               mv -f $${lang}.po-tmp $${lang}.po ;\
               echo "Note: $${lang}.po updated - please commit." ;\
+	      echo "po/$${lang}.po" >> $(PLAYGROUND)/files-to-commit.lst ;\
            fi ;\
            rm $${lang}.po-t1 $${lang}.po-t2 ;\
 	 else \

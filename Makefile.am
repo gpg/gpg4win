@@ -145,7 +145,7 @@ rebuild:
 
 clean-local:
 	-rm -rf artifacts
-	-rm -f $(RELEASE_NAME).tar.xz
+	-rm -f $(RELEASE_NAME).tar.xz files-to-commit.lst
 
 distclean-local:
 	-rm -f $(RELEASE_NAME).swdb
