@@ -270,16 +270,16 @@ if [ $withmsi = yes ]; then
     fi
     [ -z "$WINEPREFIX" ] && WINEPREFIX="$HOME/.wine"
     if [ ! -e "$WINEPREFIX/dosdevices" ]; then
-	echo 2>&1 "PGM: error: No value for WINEPREFIX found"
+	echo >&2 "PGM: error: No value for WINEPREFIX found"
 	exit 1
     fi
     if [ -z "$WIXPREFIX" ]; then
         tmp="$(readlink -f ~/w32root/wixtools)"
 	if [ -d "$tmp" ]; then
 	    WIXPREFIX="$tmp"
-	    echo 2>&1 "$PGM: Using $WIXPREFIX as WIXPREFIX"
+	    echo >&2 "$PGM: Using $WIXPREFIX as WIXPREFIX"
 	else
-	    echo 2>&1 "$PGM: error: You must set WIXPREFIX" \
+	    echo >&2 "$PGM: error: You must set WIXPREFIX" \
                  " to an installation of wixtools"
 	    exit 1
 	fi
@@ -291,7 +291,7 @@ if [ $withmsi = yes ]; then
     die=no
     for f in "$WINEINST" "$WINESRC" "$WINEINSTEX" "$WINEBLD" ; do
 	if [ -e "$f" -a ! -h "$f" ]; then
-	    echo 2>&1 "$PGM: error: '$f' already exists. Please remove."
+	    echo >&2 "$PGM: error: '$f' already exists. Please remove."
             die=yes
 	fi
     done
@@ -482,7 +482,7 @@ runner_cmd_cptowinhost() {
         files="$files $(transform_dir "$f")"
     done
     set +e
-    echo 2>&1 "$PGM: running scp $files  $target"
+    echo >&2 "$PGM: running scp $files  $target"
     scp $files  "$target"
     rc=$?
     set -e
@@ -524,7 +524,7 @@ runner_cmd_lightwinhost() {
     set -e
     [ -n "$verbose" ] && set +x
     # FIXME:
-    echo 2>&1 "$PGM(runner): cmd lightwinhost exited with $rc - forcing 0"
+    echo >&2 "$PGM(runner): cmd lightwinhost exited with $rc - forcing 0"
     rc=0
 
     return 0
@@ -538,7 +538,7 @@ runner_cmd_litcandle() {
     local dwixobj fwxs
 
     if [ $withmsi = no ]; then
-        echo 2>&1 "$PGM(runner): litcandle requires --with-msi option"
+        echo >&2 "$PGM(runner): litcandle requires --with-msi option"
         rc=2
         return 0
     fi
@@ -557,6 +557,12 @@ runner_cmd_litcandle() {
     fi
 
     # Create symlinks into the Wine dosdevices directory
+    if [ -n "$verbose" ]; then
+        echo >&2 "$PGM(runner): idir    : $WINEINST"
+        echo >&2 "$PGM(runner): exidir  : $WINEINSTEX"
+        echo >&2 "$PGM(runner): srcdir  : $WINESRC"
+        echo >&2 "$PGM(runner): builddir: $WINEBLD"
+    fi
     ln -sf "$idir"   "$WINEINST"
     ln -sf "$exidir" "$WINEINSTEX"
     ln -sf "$srcdir" "$WINESRC"
