@@ -389,8 +389,7 @@ gpg4win_pkg_kleopatra_configure = \
 
 gpg4win_pkg_kxmlgui_configure = \
     -DFORCE_DISABLE_KGLOBALACCEL=ON \
-    -DFORCE_DISABLE_DBUS=ON \
-    -DXMLGUI_COMPILER_VERSION="$(CC)"
+    -DFORCE_DISABLE_DBUS=ON
 
 gpg4win_pkg_kio_configure = \
     -DFORCE_DISABLE_DBUS=ON \
