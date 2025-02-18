@@ -112,11 +112,11 @@ file pkg-config_0.23-3_win32.zip
 chk  677d6055494e24cad6c49eab33eee618ddc6ed65da827c8b5b7da761b4063278
 
 server https://download.savannah.gnu.org/releases/
-# last-changed: 2023-04-19
+# last-changed: 2025-02-18
 # by: ah
 # verified: SIG E30674707856409FF1948010BE6C3AAC63AD8E3F
-file freetype/freetype-2.13.0.tar.xz
-chk  5ee23abd047636c24b2d43c6625dcafc66661d1aca64dec9e0d05df29592624c
+file freetype/freetype-2.13.3.tar.xz
+chk  0550350666d427c74daeb85d5ac7bb353acba5f76956395995311a9c6f063289
 
 #
 # SQLite
