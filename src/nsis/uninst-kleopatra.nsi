@@ -172,9 +172,6 @@ Section "-un.kleopatra"
 #  Delete "$INSTDIR\share\apps\kwatchgnupg\pics\kwatchgnupg.png"
 #  Delete "$INSTDIR\share\apps\kwatchgnupg\kwatchgnupgui.rc"
   Delete "$INSTDIR\share\kleopatra\kleopatra.rc"
-  Delete "$INSTDIR\bin\libkleopatraclientgui.dll"
-  Delete "$INSTDIR\bin\libkleopatraclientcore.dll"
-  Delete "$INSTDIR\bin\libkleopatraclientgui.dll"
 
 
   Delete "$INSTDIR\share\gpg4win\mail-ext.ico"
