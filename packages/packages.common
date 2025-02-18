@@ -243,58 +243,58 @@ server http://download.qt.io/official_releases/qt/
 # qtbase
 # last changed: 2025-02-14
 # by: carl
-# verified: HTTPS https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qtbase-everywhere-src-6.8.2.tar.xz.sha256
-name qtbase-6.8.2.tar.xz
-file 6.8/6.8.2/submodules/qtbase-everywhere-src-6.8.2.tar.xz
-chk 012043ce6d411e6e8a91fdc4e05e6bedcfa10fcb1347d3c33908f7fdd10dfe05
+# verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qtbase-everywhere-src-6.7.3.tar.xz.sha256
+name qtbase-6.7.3.tar.xz
+file 6.7/6.7.3/submodules/qtbase-everywhere-src-6.7.3.tar.xz
+chk 8ccbb9ab055205ac76632c9eeddd1ed6fc66936fc56afc2ed0fd5d9e23da3097
 
 # qttools
 # last changed: 2025-02-14
 # by: carl
-# verified: HTTPS https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qttools-everywhere-src-6.8.2.tar.xz.sha256
-name qttools-6.8.2.tar.xz
-file 6.8/6.8.2/submodules/qttools-everywhere-src-6.8.2.tar.xz
-chk 326381b7d43f07913612f291abc298ae79bd95382e2233abce982cff2b53d2c0
+# verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qttools-everywhere-src-6.7.3.tar.xz.sha256
+name qttools-6.7.3.tar.xz
+file 6.7/6.7.3/submodules/qttools-everywhere-src-6.7.3.tar.xz
+chk f03bb7df619cd9ac9dba110e30b7bcab5dd88eb8bdc9cc752563b4367233203f
 
 # qtsvg
 # last changed: 2025-02-14
 # by: carl
-# verified: HTTPS https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qtsvg-everywhere-src-6.8.2.tar.xz.sha256
-name qtsvg-6.8.2.tar.xz
-file 6.8/6.8.2/submodules/qtsvg-everywhere-src-6.8.2.tar.xz
-chk aa2579f21ca66d19cbcf31d87e9067e07932635d36869c8239d4decd0a9dc1fa
+# verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qtsvg-everywhere-src-6.7.3.tar.xz.sha256
+name qtsvg-6.7.3.tar.xz
+file 6.7/6.7.3/submodules/qtsvg-everywhere-src-6.7.3.tar.xz
+chk 40142cb71fb1e07ad612bc361b67f5d54cd9367f9979ae6b86124a064deda06b
 
 # qttranslations
 # last changed: 2025-02-14
 # by: carl
-# verified: HTTPS https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qttranslations-everywhere-src-6.8.2.tar.xz.sha256
-name qttranslations-6.8.2.tar.xz
-file 6.8/6.8.2/submodules/qttranslations-everywhere-src-6.8.2.tar.xz
-chk d2106e8a580bfd77702c4c1840299288d344902b0e2c758ca813ea04c6d6a3d1
+# verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qttranslations-everywhere-src-6.7.3.tar.xz.sha256
+name qttranslations-6.7.3.tar.xz
+file 6.7/6.7.3/submodules/qttranslations-everywhere-src-6.7.3.tar.xz
+chk dcc762acac043b9bb5e4d369b6d6f53e0ecfcf76a408fe0db5f7ef071c9d6dc8
 
 # qthttpserver
 # last changed: 2025-02-14
 # by: carl
-# verified: HTTPS https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qthttpserver-everywhere-src-6.8.2.tar.xz.sha256
-name qthttpserver-6.8.2.tar.xz
-file 6.8/6.8.2/submodules/qthttpserver-everywhere-src-6.8.2.tar.xz
-chk 2d9517c1049a5b330831f7adc1de26d8db5357fdebe616c0a29e9ae1d8900692
+# verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qthttpserver-everywhere-src-6.7.3.tar.xz.sha256
+name qthttpserver-6.7.3.tar.xz
+file 6.7/6.7.3/submodules/qthttpserver-everywhere-src-6.7.3.tar.xz
+chk 7f2317c7e52b6b634a5be9a9c917066fb707b905ec618f047cc57b8093f4deff
 
 # qtwebsockets
 # last changed: 2025-02-14
 # by: carl
-# verified: HTTPS https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qtwebsockets-everywhere-src-6.8.2.tar.xz.sha256
-name qtwebsockets-6.8.2.tar.xz
-file 6.8/6.8.2/submodules/qtwebsockets-everywhere-src-6.8.2.tar.xz
-chk 919df562ba3446c8393992d112085ad2d96d23aaf802b1cd7a30bf3ba2fe8cbe
+# verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qtwebsockets-everywhere-src-6.7.3.tar.xz.sha256
+name qtwebsockets-6.7.3.tar.xz
+file 6.7/6.7.3/submodules/qtwebsockets-everywhere-src-6.7.3.tar.xz
+chk ba03007db7ee68a5bc3e3bd1d71e11f3e1f84e470bcb8c54cd7c01bbe1c5990e
 
 # qtwayland
 # last changed: 2025-02-14
 # by: carl
-# verified: HTTPS https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qtwayland-everywhere-src-6.8.2.tar.xz.sha256
-name qtwayland-6.8.2.tar.xz
-file 6.8/6.8.2/submodules/qtwayland-everywhere-src-6.8.2.tar.xz
-chk 5e46157908295f2bf924462d8c0855b0508ba338ced9e810891fefa295dc9647
+# verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qtwayland-everywhere-src-6.7.3.tar.xz.sha256
+name qtwayland-6.7.3.tar.xz
+file 6.7/6.7.3/submodules/qtwayland-everywhere-src-6.7.3.tar.xz
+chk e326c7ceb628f503bfc20577d5d2df9690ee10db08eb940cb80c759a6972b2b5
 
 # wayland-protocols
 # last changed: 2025-02-14
