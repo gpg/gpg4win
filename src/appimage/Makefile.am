@@ -185,8 +185,7 @@ appimage_pkg_kwidgetsaddons_configure = \
 # FIXME: Uses spaces in distribution text
 appimage_pkg_kxmlgui_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF \
-    -DFORCE_DISABLE_KGLOBALACCEL=ON \
-    -DXMLGUI_DISTRIBUTION_TEXT=g10_Code_GmbH_AppImage
+    -DFORCE_DISABLE_KGLOBALACCEL=ON
 
 appimage_pkg_libkleo_configure = \
     -DBOOST_INCLUDEDIR=/usr/include/boost169 \
