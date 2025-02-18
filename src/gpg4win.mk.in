@@ -797,6 +797,7 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	 mkdir -p "$$$${pkgbdir}";				\
 	 cd "$$$${pkgbdir}";				\
 	 $(CMAKE)					\
+		--fresh \
 		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
 		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
 		-DQT_MAJOR_VERSION="6" \
@@ -875,6 +876,7 @@ $(stampdir)/stamp-$(1)-ex-02-configure: $(stampdir)/stamp-$(1)-ex-01-patch
 	 mkdir -p "$$$${pkgbdir}";				\
 	 cd "$$$${pkgbdir}";				\
 	 $(CMAKE)					\
+		--fresh \
 		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
 		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
 		-DQT_MAJOR_VERSION="6" \
@@ -959,6 +961,7 @@ $(stampdir)/stamp-$(1)-native-02-configure: $(stampdir)/stamp-$(1)-native-01-pat
 	 mkdir -p "$$$${pkgbdir}";				\
 	 cd "$$$${pkgbdir}";				\
 	 $(CMAKE)					\
+		--fresh \
 		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
 		-DCMAKE_PREFIX_PATH="$(nat_idir)" \
 		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_builddir)/src/toolchain-native.cmake \
