@@ -371,6 +371,8 @@ gpg4win_pkg_qtbase_configure = \
         -DFEATURE_system_harfbuzz=OFF \
         -DFEATURE_schannel=ON \
         -DFEATURE_use_gold_linker_alias=OFF \
+        -DFEATURE_stack_clash_protection=OFF \
+        -DFEATURE_stack_protector=OFF \
         -DCMAKE_VERBOSE_MAKEFILE=ON
 
 # copy moc and rcc from the tools into the target tree
