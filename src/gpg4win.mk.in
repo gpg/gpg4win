@@ -989,7 +989,7 @@ $(stampdir)/stamp-$(1)-native-04-install: $(stampdir)/stamp-$(1)-native-03-make
 	  cd "$$$${pkgbdir}";				\
 	  cd "$$$${pkgmkdir_inst}";			\
 	  $(MAKETOOL) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
-	  $(call STRIP_macro,"$$$${pkgidir}");		\
+	  test -d "$$$${pkgidir}" && $(call STRIP_macro,"$$$${pkgidir}"); \
 	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_native_post_install))
 	touch $(stampdir)/stamp-$(1)-native-04-install
 
