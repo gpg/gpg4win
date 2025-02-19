@@ -1,0 +1,60 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 99d55f56749af359a7d7a982d0d3355a3c2b51f9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 12 Feb 2025 15:22:25 +0100
+Subject: [PATCH] Also install the scalable kleopatra icon
+
+Call ecm_install_icons the same way as for kwatchgnupg.
+
+GnuPG-bug-id: 7509
+---
+ src/CMakeLists.txt                                          | 4 ++--
+ src/icons/CMakeLists.txt                                    | 6 ------
+ .../{hisc-apps-kleopatra.svg => sc-apps-kleopatra.svg}      | 0
+ 3 files changed, 2 insertions(+), 8 deletions(-)
+ delete mode 100644 src/icons/CMakeLists.txt
+ rename src/icons/{hisc-apps-kleopatra.svg => sc-apps-kleopatra.svg} (100%)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 8f03dec23..59dc6747e 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,6 +1,5 @@
+ # SPDX-FileCopyrightText: none
+ # SPDX-License-Identifier: BSD-3-Clause
+-add_subdirectory(icons)
+ add_subdirectory(mimetypes)
+
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+@@ -582,8 +581,9 @@ kconfig_add_kcfg_files(_kleopatra_SRCS
+   kcfg/tooltippreferences.kcfgc
+ )
+
+-file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/*-apps-kleopatra.png")
++file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/*-apps-kleopatra.*")
+ ecm_add_app_icon(_kleopatra_SRCS ICONS ${ICONS_SRCS})
++ecm_install_icons(ICONS ${ICONS_SRCS} DESTINATION ${KDE_INSTALL_ICONDIR})
+
+ add_executable(kleopatra_bin ${_kleopatra_SRCS} ${_kleopatra_uiserver_SRCS})
+
+diff --git a/src/icons/CMakeLists.txt b/src/icons/CMakeLists.txt
+deleted file mode 100644
+index 4666358d6..000000000
+--- a/src/icons/CMakeLists.txt
++++ /dev/null
+@@ -1,6 +0,0 @@
+-# SPDX-FileCopyrightText: none
+-# SPDX-License-Identifier: BSD-3-Clause
+-########### install files ###############
+-
+-ecm_install_icons( ICONS 128-apps-kleopatra.png  16-apps-kleopatra.png  22-apps-kleopatra.png  256-apps-kleopatra.png  32-apps-kleopatra.png  48-apps-kleopatra.png  64-apps-kleopatra.png DESTINATION ${KDE_INSTALL_ICONDIR} THEME hicolor )
+-
+diff --git a/src/icons/hisc-apps-kleopatra.svg b/src/icons/sc-apps-kleopatra.svg
+similarity index 100%
+rename from src/icons/hisc-apps-kleopatra.svg
+rename to src/icons/sc-apps-kleopatra.svg
+--
+2.48.1

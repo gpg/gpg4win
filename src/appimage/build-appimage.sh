@@ -138,7 +138,7 @@ elif [ $BUILDTYPE = gpd ]; then
         mkdir -p ${APPDIR}/usr/etc/xdg
         cp ${VSD_DIR}/Desktop/kleopatrarc ${APPDIR}/usr/etc/xdg
     fi
-    kleopatra_icon=${SRCDIR}/src/icons/kleopatra-gpd.svg
+    kleopatra_icon=${SRCDIR}/src/icons/gpd/sc-apps-kleopatra.svg
 else
     OUTPUT=gpg4win-${myversion}-x86_64.AppImage
     echo "Packaging Gpg4win Appimage: $myversion"

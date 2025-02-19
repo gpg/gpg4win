@@ -1,0 +1,124 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 6c38e090a7a63508101ee2579b85d32f079ffc45 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Mon, 17 Feb 2025 16:27:18 +0100
+Subject: [PATCH 1/2] Make it possible to run different flavors of Kleopatra at
+ the same time
+
+By using different application names multiple instances of Kleopatra
+can be run at the same time although each flavor is a unique service.
+
+GnuPG-bug-id: 7528
+---
+ CMakeLists.txt        | 4 ++++
+ config-kleopatra.h.in | 2 ++
+ src/CMakeLists.txt    | 3 ++-
+ src/aboutdata.cpp     | 2 +-
+ src/kleopatra.qrc     | 7 -------
+ src/kleopatra.qrc.in  | 6 ++++++
+ src/main.cpp          | 1 +
+ 7 files changed, 16 insertions(+), 9 deletions(-)
+ delete mode 100644 src/kleopatra.qrc
+ create mode 100644 src/kleopatra.qrc.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fe39337f4..717344219 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,6 +28,10 @@ if (NOT KLEOPATRA_DISTRIBUTION_TEXT)
+     # This is only used on Windows for the file attributes of Kleopatra
+     set(KLEOPATRA_DISTRIBUTION_TEXT "KDE")
+ endif()
++if (NOT KLEOPATRA_APPLICATION_NAME)
++    # This is used to allow multiple flavors of Kleopatra to run at the same time on Windows
++    set(KLEOPATRA_APPLICATION_NAME "kleopatra")
++endif()
+
+ project(kleopatra VERSION ${kleopatra_version})
+
+diff --git a/config-kleopatra.h.in b/config-kleopatra.h.in
+index e312aa45d..aa7fe6070 100644
+--- a/config-kleopatra.h.in
++++ b/config-kleopatra.h.in
+@@ -1,3 +1,5 @@
++#cmakedefine KLEOPATRA_APPLICATION_NAME "@KLEOPATRA_APPLICATION_NAME@"
++
+ /* DBus available */
+ #cmakedefine01 HAVE_QDBUS
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 59dc6747e..4afab7b59 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -68,6 +68,7 @@ endif()
+
+ ki18n_wrap_ui(_kleopatra_uiserver_SRCS crypto/gui/signingcertificateselectionwidget.ui)
+
++configure_file(kleopatra.qrc.in kleopatra.qrc @ONLY)
+ set(_kleopatra_SRCS
+   ${_kleopatra_extra_SRCS}
+
+@@ -531,7 +532,7 @@ set(_kleopatra_SRCS
+
+   aboutdata.cpp
+   aboutdata.h
+-  kleopatra.qrc
++  ${CMAKE_CURRENT_BINARY_DIR}/kleopatra.qrc
+   kleopatraapplication.cpp
+   kleopatraapplication.h
+   main.cpp
+diff --git a/src/aboutdata.cpp b/src/aboutdata.cpp
+index b2d3ab123..b0df614db 100644
+--- a/src/aboutdata.cpp
++++ b/src/aboutdata.cpp
+@@ -120,7 +120,7 @@ static void loadCustomAboutData(KAboutData &about)
+ }
+
+ AboutData::AboutData()
+-    : KAboutData(QStringLiteral("kleopatra"),
++    : KAboutData(QStringLiteral(KLEOPATRA_APPLICATION_NAME),
+                  i18n("Kleopatra"),
+                  QLatin1StringView(KLEOPATRA_VERSION_STRING),
+                  i18n("Certificate manager and cryptography app"),
+diff --git a/src/kleopatra.qrc b/src/kleopatra.qrc
+deleted file mode 100644
+index 33e440191..000000000
+--- a/src/kleopatra.qrc
++++ /dev/null
+@@ -1,7 +0,0 @@
+-<!DOCTYPE RCC>
+-<RCC version="1.0">
+-    <qresource prefix="/kxmlgui5/kleopatra">
+-        <file>kleopatra.rc</file>
+-    </qresource>
+-</RCC>
+-
+diff --git a/src/kleopatra.qrc.in b/src/kleopatra.qrc.in
+new file mode 100644
+index 000000000..32d50057e
+--- /dev/null
++++ b/src/kleopatra.qrc.in
+@@ -0,0 +1,6 @@
++<!DOCTYPE RCC>
++<RCC version="1.0">
++    <qresource prefix="/kxmlgui5/@KLEOPATRA_APPLICATION_NAME@">
++        <file alias="kleopatra.rc">@CMAKE_CURRENT_SOURCE_DIR@/kleopatra.rc</file>
++    </qresource>
++</RCC>
+diff --git a/src/main.cpp b/src/main.cpp
+index 66fba9db5..e29585d86 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -102,6 +102,7 @@ int main(int argc, char **argv)
+     KleopatraApplication app(argc, argv);
+     // Set OrganizationDomain early as this is used to generate the service
+     // name that will be registered on the bus.
++    app.setApplicationName(QStringLiteral(KLEOPATRA_APPLICATION_NAME));
+     app.setOrganizationDomain(QStringLiteral("kde.org"));
+
+     STARTUP_TIMING << "Application created";
+--
+2.48.1

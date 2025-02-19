@@ -151,37 +151,37 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 #  File ${prefix}/share/doc/HTML/en/kleopatra/menuview.html
 #  File ${prefix}/share/doc/HTML/en/kleopatra/menuwindow.html
 
-  SetOutPath "$INSTDIR\share\icons\hicolor\128x128\apps"
-
-  File ${prefix}/share/icons/hicolor/128x128/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\hicolor\16x16\apps"
-
-  File ${prefix}/share/icons/hicolor/16x16/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\hicolor\22x22\apps"
-
-  File ${prefix}/share/icons/hicolor/22x22/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\hicolor\256x256\apps"
-
-  File ${prefix}/share/icons/hicolor/256x256/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\hicolor\32x32\apps"
-
-  File ${prefix}/share/icons/hicolor/32x32/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\hicolor\48x48\apps"
-
-  File ${prefix}/share/icons/hicolor/48x48/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\hicolor\64x64\apps"
-
-  File ${prefix}/share/icons/hicolor/64x64/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\hicolor"
-  File ${prefix}/share/icons/hicolor/icon-theme.cache
-  File ${SRCDIR}/index.theme
+#  SetOutPath "$INSTDIR\share\icons\hicolor\128x128\apps"
+#
+#  File ${prefix}/share/icons/hicolor/128x128/apps/kleopatra.png
+#
+#  SetOutPath "$INSTDIR\share\icons\hicolor\16x16\apps"
+#
+#  File ${prefix}/share/icons/hicolor/16x16/apps/kleopatra.png
+#
+#  SetOutPath "$INSTDIR\share\icons\hicolor\22x22\apps"
+#
+#  File ${prefix}/share/icons/hicolor/22x22/apps/kleopatra.png
+#
+#  SetOutPath "$INSTDIR\share\icons\hicolor\256x256\apps"
+#
+#  File ${prefix}/share/icons/hicolor/256x256/apps/kleopatra.png
+#
+#  SetOutPath "$INSTDIR\share\icons\hicolor\32x32\apps"
+#
+#  File ${prefix}/share/icons/hicolor/32x32/apps/kleopatra.png
+#
+#  SetOutPath "$INSTDIR\share\icons\hicolor\48x48\apps"
+#
+#  File ${prefix}/share/icons/hicolor/48x48/apps/kleopatra.png
+#
+#  SetOutPath "$INSTDIR\share\icons\hicolor\64x64\apps"
+#
+#  File ${prefix}/share/icons/hicolor/64x64/apps/kleopatra.png
+#
+#  SetOutPath "$INSTDIR\share\icons\hicolor"
+#  File ${prefix}/share/icons/hicolor/icon-theme.cache
+#  File ${SRCDIR}/index.theme
 
   # In KDE 4.10 the locale detection in kdelibs is broken so we
   # install a kdeglobals with the language setting chosen in the

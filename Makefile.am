@@ -46,7 +46,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
              patches/breeze/0002-fix-ifdef-windows-qmenu.patch \
              patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools.patch \
-             patches/breeze-icons/add-the-nose.patch \
+             patches/breeze-icons/remove-kleopatra-icons.patch \
              patches/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/gpgoljs-202412051138/0001-Make-gpgme-include-future-proof.patch \
@@ -56,6 +56,10 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kguiaddons/0001-DRAFT-There-is-no-dark-mode-on-old-Windows.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/kjobwidgets/0001-Remove-knotification.patch \
+             patches/kleopatra-202501091104/0000-Also-install-the-scalable-kleopatra-icon.patch \
+             patches/kleopatra-202501091104/0001-Make-it-possible-to-run-different-flavors-of-Kleopat.patch \
+             patches/kleopatra-202501091104/0002-Allow-to-use-different-icons-for-a-customized-build.patch \
+             patches/kleopatra-202501091104/0003-On-Windows-embed-our-app-icon-as-Breeze-icon.patch \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
              patches/ktextaddons/0001-Remove-unused-QDbus-includes.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \

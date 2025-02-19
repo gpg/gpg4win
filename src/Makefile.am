@@ -34,7 +34,15 @@ EXTRA_DIST =  config.site                                      \
               slideshow/slide3-kleopatra.png                   \
               slideshow/slide4-summary.png                     \
               icons/file-ext.ico                               \
-              icons/kleopatra-gpd.svg                          \
+              icons/gpd/16-apps-kleopatra.png                  \
+              icons/gpd/22-apps-kleopatra.png                  \
+              icons/gpd/24-apps-kleopatra.png                  \
+              icons/gpd/32-apps-kleopatra.png                  \
+              icons/gpd/48-apps-kleopatra.png                  \
+              icons/gpd/64-apps-kleopatra.png                  \
+              icons/gpd/128-apps-kleopatra.png                 \
+              icons/gpd/1024-apps-kleopatra.png                \
+              icons/gpd/sc-apps-kleopatra.svg                  \
               icons/kleopatra-vsd.svg                          \
               icons/mail-ext.ico                               \
               icons/shield.ico                                 \
@@ -385,7 +393,8 @@ endef
 gpg4win_pkg_kleopatra_configure = \
     -DFORCE_DISABLE_KCMUTILS=ON \
     -DDISABLE_KWATCHGNUPG=ON \
-    -DRELEASE_SERVICE_VERSION=Gpg4win-$(VERSION)
+    -DRELEASE_SERVICE_VERSION=Gpg4win-$(VERSION) \
+    -DKLEOPATRA_ICON_DIR=$(kleo_icon_dir)
 
 gpg4win_pkg_kxmlgui_configure = \
     -DFORCE_DISABLE_KGLOBALACCEL=ON \

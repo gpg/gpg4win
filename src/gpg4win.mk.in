@@ -169,9 +169,11 @@ endif
 ifeq ($(IS_GPD_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-Desktop
   MSI_PRODUCT_NAME := GnuPG Desktop
+  kleo_icon_dir := $(tsdir)/src/icons/gpd
 else
   MSI_FNAME_PREFIX := GnuPG-VS-Desktop
   MSI_PRODUCT_NAME := GnuPG VS-Desktop
+  kleo_icon_dir :=
 endif
 
 
