@@ -264,13 +264,15 @@ if [ "$myhost" = "find-version" ]; then
       if [ -n "$tmp" ]; then
           tmp=$(echo "$tmp" | sed s/^"$package"// \
                     | awk -F- '$3!=0 && $3 !~ /^beta/ {print"-beta"$3}')
-      else
+      fi
+      if [ -z "$tmp" ]; then
           # (due tof "-base" in the tag we need to take the 4th field)
           tmp=$(git describe --match "${matchstr2}" --long 2>/dev/null)
           if [ -n "$tmp" ]; then
               tmp=$(echo "$tmp" | sed s/^"$package"// \
                         | awk -F- '$4!=0 && $4 !~ /^beta/ {print"-beta"$4}')
-          elif [ -n "${matchstr3}" ]; then
+          fi
+          if [ -z "$tmp" -a -n "${matchstr3}" ]; then
               tmp=$(git describe --match "${matchstr3}" --long 2>/dev/null)
               if [ -n "$tmp" ]; then
                   tmp=$(echo "$tmp" | sed s/^"$package"// \
