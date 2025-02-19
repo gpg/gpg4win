@@ -416,9 +416,9 @@ define gpg4win_pkg_breeze_icons_native_post_install
  ( mkdir -p $$$${pkgidir}/bin/ && cp $$$${pkgbdir}/bin/* $$$${pkgidir}/bin )
 endef
 
-#gpg4win_pkg_breeze_icons_configure = \
-#    -DBINARY_ICONS_RESOURCE=ON \
-#    -DICON_SUBSET_INCLUDE_FILE=$(abs_srcdir)/included-icons.txt
+gpg4win_pkg_breeze_icons_configure = \
+    -DWITH_ICON_GENERATION=OFF \
+    -DSKIP_INSTALL_ICONS=ON
 
 gpg4win_pkg_breeze_configure = \
     -DBUILD_QT6=ON \
