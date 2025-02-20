@@ -155,11 +155,13 @@ endif
 ifeq ($(IS_GPD_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-Desktop
   MSI_PRODUCT_NAME := GnuPG Desktop
-  kleo_icon_dir := $(tsdir)/src/icons/gpd
-else
+  KLEOPATRA_APPLICATION_NAME := kleopatra-gpd
+  KLEOPATRA_ICON_DIR := $(tsdir)/src/icons/gpd
+else ifeq ($(IS_VSD_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-VS-Desktop
   MSI_PRODUCT_NAME := GnuPG VS-Desktop
-  kleo_icon_dir :=
+  KLEOPATRA_APPLICATION_NAME := kleopatra-vsd
+  KLEOPATRA_ICON_DIR :=
 endif
 
 
