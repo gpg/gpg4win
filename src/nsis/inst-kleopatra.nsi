@@ -35,8 +35,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/bin/kleopatra.exe
   #File ${prefix}/bin/kwatchgnupg.exe
 
-  File ${prefix}/bin/libkleopatraclientcore.dll
-  File ${prefix}/bin/libkleopatraclientgui.dll
 
 #  SetOutPath "$INSTDIR\share\apps\kwatchgnupg\pics"
 
