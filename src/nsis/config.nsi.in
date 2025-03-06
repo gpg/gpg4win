@@ -44,7 +44,7 @@
 @GPG4WIN_DEBUG@
 
 # The package build list, in order.
-!define gpg4win_build_list "@gpg4win_build_list@"
+!define gpg4win_nsis_list "@gpg4win_nsis_list@"
 
 
 # The default packages source directory.

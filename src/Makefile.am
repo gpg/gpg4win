@@ -629,8 +629,8 @@ $(stampdir)/stamp-rtlib-files: Makefile
 common_nsi = $(stampdir)/stamp-rtlib-files \
   nsis/inst-sections.nsi nsis/installer.nsi \
   nsis/installer-finish.nsi nsis/gpg4win.nsi \
-  $(addsuffix .nsi,$(addprefix nsis/inst-,$(gpg4win_build_list))) \
-  $(addsuffix .nsi,$(addprefix nsis/uninst-,$(gpg4win_build_list)))
+  $(addsuffix .nsi,$(addprefix nsis/inst-,$(gpg4win_nsis_list))) \
+  $(addsuffix .nsi,$(addprefix nsis/uninst-,$(gpg4win_nsis_list)))
 
 # Sign additional files as per signing setup
 # Exit in case of error because that usually means that AUTHENTICODE_FILES

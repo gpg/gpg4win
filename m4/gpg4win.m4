@@ -175,41 +175,6 @@ AC_DEFUN([GPG4WIN_FIND],
         [$6])
 ])
 
-AC_DEFUN([GPG4WIN_CHECK_NATIVEDEPS],
-[
-  AC_REQUIRE([GPG4WIN_CHECK_EXDEPS])
-
-  AC_MSG_CHECKING([additional tools build list])
-
-  gpg4win_build_native_list=`echo $_gpg4win_native_deps | tsort`
-  # Remove newlines.
-  gpg4win_build_native_list=`echo $gpg4win_build_native_list`
-  AC_MSG_RESULT($gpg4win_build_native_list)
-  AC_SUBST(gpg4win_build_native_list)
-
-  # Check each dependency.
-  _gpg4win_not_found=
-  _gpg4win_d=
-  _gpg4win_p=
-  for _gpg4win_p in $_gpg4win_native_deps; do
-    AS_IF([test -z $_gpg4win_d], [_gpg4win_d=$_gpg4win_p],
-          [
-            _gpg4win_found=
-            for _gpg4win_i in $_gpg4win_pkgs; do
-              AS_IF([test $_gpg4win_d = $_gpg4win_i],
-                    _gpg4win_found=yes
-                    break)
-            done
-            AS_IF([test -z $_gpg4win_found],
-                  AC_MSG_WARN(could not find native variant of package $_gpg4win_d required by package $_gpg4win_p)
-                  _gpg4win_not_found=yes)
-            _gpg4win_d=
-          ])
-  done
-  AS_IF([test ! -z "$_gpg4win_not_found"],
-        AC_MSG_ERROR([could not find some required packages]))
-])
-
 
 AC_DEFUN([GPG4WIN_CHECK_EXDEPS],
 [
@@ -254,6 +219,10 @@ AC_DEFUN([GPG4WIN_CHECK_DEPS],
   gpg4win_build_list=`echo $gpg4win_build_list`
   AC_MSG_RESULT($gpg4win_build_list)
   AC_SUBST(gpg4win_build_list)
+  # Get list of packages for NSIS.
+  gpg4win_nsis_list=`echo $_gpg4win_deps | tsort | grep -v ^native-`
+  gpg4win_nsis_list=`echo $gpg4win_nsis_list`
+  AC_SUBST(gpg4win_nsis_list)
 
   # Check each dependency.
   _gpg4win_not_found=
@@ -281,7 +250,7 @@ AC_DEFUN([GPG4WIN_CHECK_DEPS],
 
 AC_DEFUN([GPG4WIN_FINALIZE],
 [
-  AC_REQUIRE([GPG4WIN_CHECK_NATIVEDEPS])
+  AC_REQUIRE([GPG4WIN_CHECK_EXDEPS])
 
   _gpg4win_debug=no
   AC_ARG_ENABLE([debug],
@@ -504,13 +473,13 @@ AC_DEFUN([GPG4WIN_NATIVEPKG],
 
   GPG4WIN_DEFINE(HAVE_PKG_[]m4_translit([$1],[a-z+-],[A-Z__])_NATIVE)
 
-  gpg4win_native_pkgs="$gpg4win_native_pkgs $1"
+  _gpg4win_pkgs="$_gpg4win_pkgs native-$1"
 
   # Record dependencies.  Also enter every package as node.
-  _gpg4win_native_deps="$_gpg4win_native_deps $1 $1"
+  _gpg4win_deps="$_gpg4win_deps native-$1 native-$1"
   AS_IF([test ! -z "$2"],
         for _gpg4win_i in $2; do
-          _gpg4win_native_deps="$_gpg4win_native_deps $_gpg4win_i $1"
+          _gpg4win_deps="$_gpg4win_deps native-$_gpg4win_i native-$1"
         done)
 ])
 

@@ -20,7 +20,7 @@
 
 # The order of installation must be the same as the build order.  You
 # can use tsort on the info in configure.ac, or just check out
-# gpg4win_build_list in config.nsi.  The order determines also the
+# gpg4win_nsis_list in config.nsi.  The order determines also the
 # order in the packages selection dialog.
 
 !ifdef HAVE_PKG_BZIP2
