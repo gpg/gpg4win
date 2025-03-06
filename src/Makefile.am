@@ -382,6 +382,35 @@ define gpg4win_pkg_qtbase_post_install
 	 cp $(nat_idir)/libexec/rcc $$$${pkgidir}/bin   )
 endef
 
+# Build only linguist which includes Qt's translation CLI tools.
+gpg4win_pkg_qttools_native_configure = \
+        -DFEATURE_linguist=ON \
+        -DFEATURE_assistant=OFF \
+        -DFEATURE_qdoc=OFF \
+        -DFEATURE_designer=OFF \
+        -DFEATURE_distancefieldgenerator=OFF \
+        -DFEATURE_kmap2qmap=OFF \
+        -DFEATURE_pixeltool=OFF \
+        -DFEATURE_qdbus=OFF \
+        -DFEATURE_qev=OFF \
+        -DFEATURE_qtattributionsscanner=OFF \
+        -DFEATURE_qtdiag=OFF \
+        -DFEATURE_qtplugininfo=OFF
+
+# Build only linguist which qttranslations look for.
+gpg4win_pkg_qttools_configure = \
+        -DFEATURE_linguist=ON \
+        -DFEATURE_assistant=OFF \
+        -DFEATURE_qdoc=OFF \
+        -DFEATURE_designer=OFF \
+        -DFEATURE_distancefieldgenerator=OFF \
+        -DFEATURE_kmap2qmap=OFF \
+        -DFEATURE_pixeltool=OFF \
+        -DFEATURE_qdbus=OFF \
+        -DFEATURE_qev=OFF \
+        -DFEATURE_qtattributionsscanner=OFF \
+        -DFEATURE_qtdiag=OFF \
+        -DFEATURE_qtplugininfo=OFF
 
 define gpg4win_pkg_okular_post_install
         (rm $$$${pkgidir}/share/icons/hicolor/icon-theme.cache)
