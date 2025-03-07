@@ -93,7 +93,6 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-scute.nsi uninst-scute.nsi                             \
              inst-solid.nsi uninst-solid.nsi                             \
              inst-sonnet.nsi uninst-sonnet.nsi                           \
-             inst-syntax-highlighting.nsi uninst-syntax-highlighting.nsi \
              inst-threadweaver.nsi uninst-threadweaver.nsi               \
              inst-tiff.nsi uninst-tiff.nsi                               \
              inst-zlib.nsi              uninst-zlib.nsi                  \
