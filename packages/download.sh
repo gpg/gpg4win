@@ -110,7 +110,7 @@ while [ $# -gt 0 ]; do
 done
 
 
-CURL="curl $ipvx"
+WGET="wget $ipvx"
 
 # We used to download the packages.current list but it turned out that
 # this is too problematic: As there is no history of these files it is
@@ -122,7 +122,7 @@ CURL="curl $ipvx"
 #url="http://www.gpg4win.org"
 #if [ "$keep_list" = "no" ]; then
 #  echo "downloading packages list from \`$url'."
-#  if ! ${CURL} -N -s $url/packages.current{,.sig} ; then
+#  if ! ${WGET} -N -q $url/packages.current{,.sig} ; then
 #      echo "download of packages list failed." >&2
 #      exit 1
 #  fi
@@ -215,7 +215,7 @@ while read key value ; do
                fi
            fi
            echo -n "downloading \`$url' ..."
-           if ${CURL} -s -L "$url" -o "$name" ; then
+           if ${WGET} -c -q "$url" -O "$name" ; then
                if [ $(stat -c'%s' "$name" 2>/dev/null || echo 0) -eq 0 ]; then
                  echo " FAILED (line $lnr)"
                  echo "line $lnr: $url has zero length" >> '.#download.failed'
