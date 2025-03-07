@@ -41,6 +41,7 @@ Options:
                         (default is ~/b/SRCDIRNAME-playground for gpg4win
                          and ~/b/SRCDIRNAME-appimage for the AppImage)
         --force         Force configure run
+        --no-sign       Do not authenticode sign packages
         --update-image  Update the docker image before build
         --msi           Building MSI packages
         --user=name     Use NAME as FTP server user
@@ -96,6 +97,7 @@ runcmd="no"
 fromgit="no"
 withmsi="no"
 force=no
+nosign=no
 ftpuser=
 verbose=
 quiet=
@@ -127,6 +129,7 @@ while [ $# -gt 0 ]; do
         --w32) w64="no";;
         --w64) w64="yes";;
         --force) force="yes";;
+        --no-sign) nosign="yes" ;;
         --download) download="yes";;
         --runcmd)   runcmd="yes";;
         --git|-g|--git-pkgs)     fromgit="yes";;
@@ -421,6 +424,8 @@ runner_cmd_gpg() {
 # Run the gpg-authcode-sign command
 runner_cmd_gpg_authcode_sign() {
     local cmd="$1"
+
+    [ $nosign = yes ] && cmd="--dry-run $cmd"
 
     printf >&2 -- "$PGM(runner): gpg-authcode-sign.sh --stamp $cmd\n"
     set +e
