@@ -626,11 +626,11 @@ chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
 
 
 # gpg4win-tools
-# last changed: 2025-01-09
+# last changed: 2025-03-07
 # by: builder
 # verified: Tarball created by builder.
-file gpg4win-tools/gpg4win-tools-202501091105.tar.xz
-chk 71230b40eaf94a54d718a09a00188e80087df213e108442a94c83bde0944ec35
+file gpg4win-tools/gpg4win-tools-202503070928.tar.xz
+chk 27db40d5a5bc7b482312e8849e6b82a102e0c58c2ab13120ec9ef24c950829a2
 
 # Okular and dependencies
 # poppler
@@ -650,11 +650,11 @@ chk 62481c44c72d42da6c8baf6d09ee83ae6722cf09f4a4cf9e80d5b4ae478f5b2d
 server https://gnupg.net/snapshots/
 
 # gpgpass
-# last changed: 2025-02-14
-# by: carl
-# verified: Tarball created by carl.
-file gpgpass/gpgpass-202502141555.tar.xz
-chk 08f01fdeb3454f7f9fb0c086b7ac16f54f29101c4cd582f2430080aa2353c55e
+# last changed: 2025-03-07
+# by: builder
+# verified: Tarball created by builder.
+file gpgpass/gpgpass-202503070927.tar.xz
+chk a84ad835fb6c86f603f7053c16411185d7ee8d67ac8ab3201f13e429abcb1d3a
 
 # mimetreeparser
 # last changed: 2025-02-14
@@ -663,26 +663,27 @@ chk 08f01fdeb3454f7f9fb0c086b7ac16f54f29101c4cd582f2430080aa2353c55e
 file mimetreeparser/mimetreeparser-202502141555.tar.xz
 chk 7958e15dfafb7f24959cefe6ad10d9880566ab94e9489fcc1fc54386412b9f7b
 
+
 # libkleo
-# last changed: 2025-02-14
-# by: carl
-# verified: Tarball created by carl.
-file libkleo/libkleo-202502141555.tar.xz
-chk fb83a5f1469a10a58166c340486aa26cf07dd3103d94d853a7e044b40c1da49c
+# last changed: 2025-03-07
+# by: builder
+# verified: Tarball created by builder.
+file libkleo/libkleo-202503070923.tar.xz
+chk 6c9b03f59c90e188bace6a64bd18e3163af8bb17ba05fd6f0647c6bbf4ef0cdc
 
 # kleopatra
-# last changed: 2025-02-14
-# by: carl
-# verified: Tarball created by carl.
-file kleopatra/kleopatra-202502141555.tar.xz
-chk 30e31b2c2ef125cc9c7e9ec9080cb1d6922c804a8c086eb1e4a919c26ccbcaec
+# last changed: 2025-03-07
+# by: builder
+# verified: Tarball created by builder.
+file kleopatra/kleopatra-202503070924.tar.xz
+chk 8a179c14b75ab280ed361414fbdf3580588a82fe096ca8e47be28bc671ced2a2
 
 # gpgoljs
-# last changed: 2025-02-18
-# by: carl
-# verified: Tarball created by carl.
-file gpgoljs/gpgoljs-202502182345.tar.xz
-chk 1ac5474e6a01447dfd959da04d3ce748c897b50b4c7c265017f14d017dd79df5
+# last changed: 2025-03-07
+# by: builder
+# verified: Tarball created by builder.
+file gpgoljs/gpgoljs-202503070927.tar.xz
+chk 5494914a8fab90dc3b87d766d3df80fcdcf00815d48e28cb427f51048170e237
 
 #
 # GnuPG proper
@@ -701,24 +702,24 @@ file libgcrypt/libgcrypt-1.11.0.tar.bz2
 chk  09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c
 
 
-# last changed 2025-02-12
+# last changed 2025-03-07
 # by builder
 # verified: [taken from buildtree]
-name gnupg-2.5.4.tar.bz2
-file gnupg/gnupg-2.5.4.tar.bz2
-chk  f8cb2ac6c9f17f81e3541c62158764910fad5c3a0765e00b398c41a32bc4e0ea
+name gnupg-2.5.5.tar.bz2
+file gnupg/gnupg-2.5.5.tar.bz2
+chk  7afa71d72ff9aaff75a6810b87b486bc492fd752e4f77b07c41759ce4ef36b31
 
-name gnupg-w32-2.5.4_20250212-bin.exe
-file binary/gnupg-w32-2.5.4_20250212.exe
-chk  a9fc4b49a42ef36b1c412bea529d0ce07a356a0d024c5591ce9fdbcb58076816
+name gnupg-w32-2.5.5_20250307-bin.exe
+file binary/gnupg-w32-2.5.5_20250307.exe
+chk  2d2c8deedf3397b9d75cfb8f5ad46b5217e847e0a1ba0f1405b9aebddcd733f4
 
-name gnupg-w32-2.5.4_20250212-src.tar.xz
-file gnupg/gnupg-w32-2.5.4_20250212.tar.xz
-link gnupg-msi-2.5.4_20250212-src.tar.xz
-chk  510d003dc9e331a72ab4911fea6048b9315db0f2eee0ceb009ff6c7986364ee4
+name gnupg-w32-2.5.5_20250307-src.tar.xz
+file binary/gnupg-w32-2.5.5_20250307.tar.xz
+link gnupg-msi-2.5.5_20250307-src.tar.xz
+chk  268fa3e7e01e0622af1086c0873e7065aa7687a8d66dcfaf41fd77238d9e36f4
 
-name gnupg-msi-2.5.4_20250212-bin.wixlib
-file binary/gnupg-w32-2.5.4_20250212.wixlib
-chk  961a13e7d80c1f308c488fbc26258e1042216843b8d9153dd55bd9d98739de1d
+name gnupg-msi-2.5.5_20250307-bin.wixlib
+file binary/gnupg-w32-2.5.5_20250307.wixlib
+chk  5181ae9e764a6dcc475ba06790b90534e1bca1a9d797b148d17f0209acc269da
 
 # eof
