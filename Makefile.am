@@ -57,10 +57,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kguiaddons/0001-DRAFT-There-is-no-dark-mode-on-old-Windows.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/kjobwidgets/0001-Remove-knotification.patch \
-             patches/kleopatra-202501091104/0000-Also-install-the-scalable-kleopatra-icon.patch \
-             patches/kleopatra-202501091104/0001-Make-it-possible-to-run-different-flavors-of-Kleopat.patch \
-             patches/kleopatra-202501091104/0002-Allow-to-use-different-icons-for-a-customized-build.patch \
-             patches/kleopatra-202501091104/0003-On-Windows-embed-our-app-icon-as-Breeze-icon.patch \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
