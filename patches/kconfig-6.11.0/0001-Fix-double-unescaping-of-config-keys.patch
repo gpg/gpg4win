@@ -35,7 +35,7 @@ index d2169ad0..41b60e84 100644
              }
 
 -            if (!(entryOptions & KEntryMap::EntryRawKey)) {
--                printableToString(&aKey, file, lineNo);
+-                printableToString(aKey, file, lineNo);
 -            }
 -
              if (options & ParseGlobal) {
