@@ -714,7 +714,7 @@ file binary/gnupg-w32-2.5.5_20250307.exe
 chk  2d2c8deedf3397b9d75cfb8f5ad46b5217e847e0a1ba0f1405b9aebddcd733f4
 
 name gnupg-w32-2.5.5_20250307-src.tar.xz
-file binary/gnupg-w32-2.5.5_20250307.tar.xz
+file gnupg/gnupg-w32-2.5.5_20250307.tar.xz
 link gnupg-msi-2.5.5_20250307-src.tar.xz
 chk  268fa3e7e01e0622af1086c0873e7065aa7687a8d66dcfaf41fd77238d9e36f4
 

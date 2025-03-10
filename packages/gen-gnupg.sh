@@ -128,7 +128,7 @@ orgfile="${prefix}-w32-${version}_${date}.tar.xz"
 file="${prefix}-w32-${version}_${date}-src.tar.xz"
 msifile="$(echo $file | sed s/-w32-/-msi-/)"
 echo >>$outfile "name $file"
-echo >>$outfile "file $bindir/${orgfile}"
+echo >>$outfile "file gnupg/${orgfile}"
 echo >>$outfile "link $msifile"
 echo >>$outfile "chk  $(sha256sum < $orgfile | cut -d ' ' -f1)"
 echo >>$outfile
