@@ -419,10 +419,10 @@ fi
 # if not used try to download first.
 if [ "$shell" = "yes" ]; then
     cmd="bash"
-elif [ "$download" = yes ]; then
-    download_packages
 elif [ "$release" = yes ]; then
     build_from_tarball
+elif [ "$download" = yes ]; then
+    download_packages
 else
     echo >&2 "$PGM: package download skipped"
 fi
