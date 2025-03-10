@@ -105,7 +105,6 @@ distcheck-hook:
 
 # Names of to help the release target.
 RELEASE_NAME = $(PACKAGE_TARNAME)-$(PACKAGE_VERSION)
-OUTDIR="$(abs_top_srcdir)/artifacts/$(RELEASE_NAME)-nightly-$(BUILD_DATETIME)"
 
 gen_start_date = 2012-03-26T00:00:00
 .PHONY: gen-ChangeLog

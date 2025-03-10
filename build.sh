@@ -35,11 +35,12 @@ Options:
         --w32           Use 32 bit Windows as primary host arch
         --clean         Remove a pre-existing build directory
         --dist          Create a distributable tarball
-        --nighly        Do a complete automated run
+        --release       Create a tarball and then build this tarball
         --shell         Start a shell instead of starting the build script
         --builddir=DIR  Directory where the build should take place
                         (default is ~/b/SRCDIRNAME-playground for gpg4win
                          and ~/b/SRCDIRNAME-appimage for the AppImage)
+        --logfile=file  Change default build log file to FILE
         --force         Force configure run
         --no-sign       Do not authenticode sign packages
         --update-image  Update the docker image before build
@@ -76,8 +77,9 @@ WINLIGHT=c:/wix/light.exe
 # WIXPREFIX  - determined at runtime or passed by caller
 
 
-# Store the original command line
+# Store the original script and the command line
 # for diagnostic reasons
+myself="$0"
 commandline="$0 $@"
 
 # Preset variables.
@@ -86,7 +88,7 @@ gpg22="no"
 shell="no"
 clean="no"
 dist="no"
-nightly="no"
+release="no"
 branch="master"
 srcdir=$(cd $(dirname $0); pwd)
 is_tmpbuild="no"
@@ -100,6 +102,7 @@ force=no
 nosign=no
 ftpuser=
 verbose=
+logfile=
 quiet=
 # Get UID for use by docker.
 userid=$(id -u)
@@ -124,7 +127,7 @@ while [ $# -gt 0 ]; do
         --shell) shell="yes";;
         --clean|-c) clean="yes";;
         --dist) dist="yes";;
-        --nightly) nightly="yes";;
+        --release) release="yes";;
         --update-image|--update-img|-u) update_image="yes";;
         --w32) w64="no";;
         --w64) w64="yes";;
@@ -134,6 +137,7 @@ while [ $# -gt 0 ]; do
         --runcmd)   runcmd="yes";;
         --git|-g|--git-pkgs)     fromgit="yes";;
         --builddir|--builddir=*) builddir="${optarg}" ;;
+        --logfile|--logfile=*)   logfile="${optarg}"  ;;
         --user|--user=*)         ftpuser="${optarg}"  ;;
         --msi|--with-msi)        withmsi=yes          ;;
         --verbose|-v)            verbose=yes          ;;
@@ -146,7 +150,9 @@ done
 [ -z "$verbose" ] && quiet="--quiet"
 
 if [ -z "$builddir" ]; then
-    if [ "$appimage" = "yes" ]; then
+    if [ "$release" = "yes" ]; then
+        builddir="${HOME}/b/$(basename "$srcdir")-mill"
+    elif [ "$appimage" = "yes" ]; then
         builddir="${HOME}/b/$(basename "$srcdir")-appimage"
     else
         builddir="${HOME}/b/$(basename "$srcdir")-playground"
@@ -163,6 +169,79 @@ fi
 
 echo >&2 "$PGM: source directory: $srcdir"
 echo >&2 "$PGM: build  directory: $builddir"
+
+
+# First build  a tarball and then build from that tarball
+build_from_tarball() {
+    local milldir
+    local tarballname
+    local extraopt
+
+    if [ "$indocker" = yes ]; then
+        echo >&2 "$PGM: error: option --release may not be used from docker"
+        exit 2
+    fi
+
+    [ -d "${builddir}" ] || mkdir -p "${builddir}"
+    milldir=$(cd "${builddir}"; pwd)
+
+    # Use a common log file in the top directory.
+    logfile="${milldir}/build-log.txt"
+
+    ( echo "$PGM: *"
+      echo "$PGM: * Building release in $milldir"
+      echo "$PGM: *" ) | tee -a ${logfile} >&2
+
+    rm -rf "$milldir/tarball" || true
+    rm -rf "$milldir/source" || true
+    rm -rf "$milldir/binary" || true
+    mkdir "$milldir/tarball"
+    mkdir "$milldir/source"
+    mkdir "$milldir/binary"
+
+    extraopt="--logfile=$logfile"
+    [ -n "$verbose" ] && extraopt="$extraopt --verbose"
+    [ "$download" = yes ] && extraopt="$extraopt --download"
+    $myself --builddir="$milldir/tarball" --dist $extraopt
+    if [ $? != 0 ]; then
+        ( echo "$PGM: *"
+          echo "$PGM: * ERROR: creating tarball failed"
+          echo "$PGM: *" ) | tee -a ${logfile} >&2
+        exit 2
+    fi
+
+    tarballname=$(ls "$milldir/tarball/artifacts/"gpg4win*xz)
+
+    cd "$milldir/source"
+    tar --strip-components=1 -xJf "$tarballname"
+    if [ $? != 0 ]; then
+        ( echo "$PGM: *"
+          echo "$PGM: * ERROR: failed to extract tarball"
+          echo "$PGM: *" ) | tee -a ${logfile} >&2
+        exit 2
+    fi
+
+    extraopt="--logfile=$logfile"
+    [ -n "$verbose" ] && extraopt="$extraopt --verbose"
+    [ $withmsi = yes ] && extraopt="$extraopt --msi"
+    [ $nosign = yes ] && extraopt="$extraopt --no-sign"
+    $myself --builddir="$milldir/binary" $extraopt
+    if [ $? != 0 ]; then
+        ( echo "$PGM: *"
+          echo "$PGM: * ERROR: building release failed"
+          echo "$PGM: *" ) | tee -a ${logfile} >&2
+        exit 2
+    fi
+
+    ( cd "$milldir/binary/artifacts"
+      ln -s "$tarballname" . )
+
+    ( echo "$PGM: *"
+      echo "$PGM: * READY"
+      echo "$PGM: *"  ) | tee -a ${logfile} >&2
+    exit 0
+}
+
 
 
 # The main GUI packages.  Check the gen-tarball script to see which
@@ -254,7 +333,7 @@ if [ "$indocker" = yes ]; then
     fi
     export CMAKE_COLOR_DIAGNOSTICS=OFF
     if [ $dist = yes ]; then
-        make dist TOPSRCDIR=/src PLAYGROUND=/build
+        make dist XZ_OPT=-2 TOPSRCDIR=/src PLAYGROUND=/build
     else
         make TOPSRCDIR=/src PLAYGROUND=/build
         if [ $? = 0 -a $withmsi = yes ]; then
@@ -342,12 +421,14 @@ if [ "$shell" = "yes" ]; then
     cmd="bash"
 elif [ "$download" = yes ]; then
     download_packages
+elif [ "$release" = yes ]; then
+    build_from_tarball
 else
     echo >&2 "$PGM: package download skipped"
 fi
 
 start_time=$(date +"%s")
-log_file="${builddir}/build-log.txt"
+[ -z "$logfile" ] && logfile="${builddir}/build-log.txt"
 
 # Kill the given process and all its descendants
 killtree() {
@@ -676,7 +757,7 @@ docker_cmdline="$docker_cmdline -v "${builddir}":/build:rw"
 docker_cmdline="$docker_cmdline -v "$HOME/.gnupg-autogen.rc":/.gnupg-autogen.rc:ro"
 docker_cmdline="$docker_cmdline $docker_image $cmd"
 echo >&2 "$PGM: running: docker $docker_cmdline"
-docker $docker_cmdline 2>&1 | tee -a ${log_file}
+docker $docker_cmdline 2>&1 | tee -a ${logfile}
 err="${PIPESTATUS[0]}"
 echo >&2 "$PGM: docker finished. rc=$err"
 
@@ -713,7 +794,7 @@ else
     echo >&2 "$PGM: ############### Failure 😪 ####################"
 fi
 
-echo >&2 "$PGM: Logfile: ${log_file}"
+echo >&2 "$PGM: Logfile: ${logfile}"
 echo >&2 "$PGM: Build command: ${commandline}"
 echo >&2 "$PGM: Build time: $buildtime"
 echo >&2 "$PGM: ##############################################"
