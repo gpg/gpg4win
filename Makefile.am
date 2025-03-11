@@ -57,7 +57,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kguiaddons/0001-DRAFT-There-is-no-dark-mode-on-old-Windows.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/kjobwidgets/0001-Remove-knotification.patch \
-	     patches/mimetreeparser/fix-build-error-in-202412051138.patch \
+             patches/mimetreeparser/fix-build-error-in-202412051138.patch \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
@@ -75,7 +75,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
              patches-appimage/kcrash/0001-Add-option-to-disable-OpenGL-support.patch \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
-	     patches/mimetreeparser/fix-build-error-in-202412051138.patch \
+             patches-appimage/mimetreeparser/fix-build-error-in-202412051138.patch \
              patches-appimage/okular/0001-Make-KF6Pty-dependency-optional.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
