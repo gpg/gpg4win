@@ -1,0 +1,42 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From fc2c9e2c77b6027a1b772e51b410a4965848a37b Mon Sep 17 00:00:00 2001
+From: Carl Schwan <carl.schwan@gnupg.com>
+Date: Tue, 11 Mar 2025 11:21:21 +0100
+Subject: [PATCH] Fix build without QML
+
+QTP0001 is declared in Qt Declarative and is only needed for the QML
+version, so put it in the if BUILD_MOBILE block.
+
+The error was:
+QTP0001 is not a known Qt policy.  Did you include the necessary Qt module?
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c443d2469..7e9d429a4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -147,8 +147,6 @@ else()
+     set(HAVE_JS 0)
+ endif()
+
+-qt_policy(SET QTP0001 NEW)
+-
+ if (BUILD_DESKTOP)
+     # shall we use DBus?
+     # enabled per default on Linux & BSD systems
+@@ -198,6 +196,8 @@ if (BUILD_MOBILE)
+         PURPOSE "Required at runtime by the mobile app"
+         TYPE RUNTIME
+     )
++
++    qt_policy(SET QTP0001 NEW)
+ endif()
+
+ if(NOT WIN32 AND NOT ANDROID AND NOT APPLE AND NOT HAIKU)
+--
+GitLab

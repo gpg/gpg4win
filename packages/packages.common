@@ -632,22 +632,22 @@ chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
 file gpg4win-tools/gpg4win-tools-202503070928.tar.xz
 chk 27db40d5a5bc7b482312e8849e6b82a102e0c58c2ab13120ec9ef24c950829a2
 
+server https://gnupg.net/snapshots/
+
 # Okular and dependencies
 # poppler
-# last changed: 2024-12-05
-# by: builder
-# verified: Tarball created by builder.
-file poppler/poppler-202412051140.tar.xz
-chk 07f68560fddbca3a83e4fe30bf75d9fcc3537aa1815c7525db7e97816ec59b7a
+# last changed: 2025-03-10
+# by: carl
+# verified: Tarball created by carl.
+file poppler/poppler-202503101125.tar.xz
+chk e4b18e4e829b62587e3d24d065702d6be69f5f07397bfbdff66ef4b4e6dc6bbc
 
 # okular
-# last changed: 2024-12-05
-# by: builder
-# verified: Tarball created by builder.
-file okular/okular-202412051140.tar.xz
-chk 62481c44c72d42da6c8baf6d09ee83ae6722cf09f4a4cf9e80d5b4ae478f5b2d
-
-server https://gnupg.net/snapshots/
+# last changed: 2025-03-10
+# by: carl
+# verified: Tarball created by carl.
+file okular/okular-202503101125.tar.xz
+chk 67d2121f39d106348be2c72de335a89ba81f4e49c6c65e8136dae5a06f833cf0
 
 # gpgpass
 # last changed: 2025-03-07
