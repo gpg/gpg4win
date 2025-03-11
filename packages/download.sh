@@ -27,6 +27,9 @@
 # line will be appended to the current base URL (with a / as
 # delimiter). Checksums are sha256 sums.
 #
+# A simple conditionals mechanism is impleted using the keywords if
+# and fi with the operators = and !=.
+#
 # Example:
 #
 #    # GnuPG stuff.
@@ -49,6 +52,9 @@ Options:
         [--dry-run]  Do not download - just check
         [--clean]    Do not download but remove downloaded files.
         [--update]   Remove old files with the same name.
+        [--gnupg22]  Build using GnuPG 2.2
+        [--gnupg24]  Build using GnuPG 2.4
+        [--gnupg26]  Build using GnuPG 2.6 (default)
 EOF
     exit $1
 }
@@ -60,6 +66,7 @@ ipvx=
 clean=no
 dryrun=no
 update=no
+gnupgtag=gnupg26
 #keep_list=no
 #sig_check=yes
 while [ $# -gt 0 ]; do
@@ -102,6 +109,15 @@ while [ $# -gt 0 ]; do
         --update|-u)
             update=yes
             ;;
+        --gnupg22)
+            gnupgtag=gnupg22
+            ;;
+        --gnupg24)
+            gnupgtag=gnupg24
+            ;;
+        --gnupg26)
+            gnupgtag=gnupg26
+            ;;
 	*)
 	    usage 1 1>&2
 	    ;;
@@ -138,35 +154,36 @@ WGET="wget $ipvx"
 
 packages="packages.common"
 
-# Not anymore used for GPD-5 and VSD-4
-# if [ "$version4" = "yes" ] && [ "$version3" = "yes" ]; then
-#     echo "Invalid arguments. Both -v4 and -v3 set."
-#     exit 1;
-# elif [ "$version4" = "yes" ]; then
-#     echo "Downloading packages for version 4.x"
-#     rm -f '.#download.v3'
-#     packages="$packages packages.4"
-# elif [ "$version3" = "yes" ] || [ -f '.#download.v3' ]; then
-#     echo "Downloading packages for version 3.x"
-#     packages="$packages packages.3"
-#     touch '.#download.v3'
-# else
-#     echo "Downloading packages for version 4.x"
-#     packages="$packages packages.4"
-# fi
-
 
 lnr=0
 name=
+condfalse=
 [ $clean = yes ] && rm -f '.#download.v*'
 [ -f '.#download.failed' ] && rm '.#download.failed'
 cat $packages | \
-while read key value ; do
-    : $(( lnr = lnr + 1 ))
+while read key value valuetwo valuethree; do
+    : $(( lnr = lnr + 1 ))/read
     [ -z "$key" ] && continue
+    if [ "$key" = "fi" ]; then
+        condfalse=
+        key="#"
+    fi
+    [ -n "$condfalse" ] && continue
     case "$key" in
-     \#*)    ;;
-    server)
+     \#*)
+        ;;
+     "if")
+       if [ "$value" = "gnupg" -a "$valuetwo" = "=" ]; then
+           if [ "$valuethree" != "$gnupgtag" ]; then
+               condfalse=yes
+           fi
+       elif [ "$value" = "gnupg" -a "$valuetwo" = "!=" ]; then
+           if [ "$valuethree" = "$gnupgtag" ]; then
+               condfalse=yes
+           fi
+       fi
+       ;;
+     server)
        server="$value"
        name=
        ;;
@@ -287,7 +304,7 @@ while read key value ; do
        name=
        ;;
      *)
-       echo "syntax error in \`packages.current', line $lnr." >&2
+       echo "syntax error in \`$packages', line $lnr." >&2
        exit 1
      esac
 done
