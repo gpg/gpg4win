@@ -75,7 +75,6 @@ AUTHENTICODE_FILES = \
 	 bin/libKF6WidgetsAddons.dll \
 	 bin/libKF6WindowSystem.dll \
 	 bin/libKF6XmlGui.dll \
-	 bin/libKPim6Libkdepim.dll \
 	 bin/libKPim6Libkleo.dll \
 	 bin/libKPim6Mbox.dll \
 	 bin/libKPim6Mime.dll \

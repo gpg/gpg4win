@@ -234,9 +234,6 @@
 !ifdef HAVE_PKG_KCONTACTS
 !include "inst-kcontacts.nsi"
 !endif
-!ifdef HAVE_PKG_LIBKDEPIM
-!include "inst-libkdepim.nsi"
-!endif
 !ifdef HAVE_PKG_GPGPASS
 !include "inst-gpgpass.nsi"
 !endif
@@ -487,9 +484,6 @@
 !endif
 !ifdef HAVE_PKG_KCONTACTS
 !include "uninst-kcontacts.nsi"
-!endif
-!ifdef HAVE_PKG_LIBKDEPIM
-!include "uninst-libkdepim.nsi"
 !endif
 !ifdef HAVE_PKG_GPGPASS
 !include "uninst-gpgpass.nsi"
@@ -818,9 +812,6 @@ Function CalcDepends
 !ifdef HAVE_PKG_QTWEBSOCKETS
   !insertmacro UnselectSection ${SEC_qtwebsockets}
 !endif
-!ifdef HAVE_PKG_LIBKDEPIM
-  !insertmacro UnselectSection ${SEC_libkdepim}
-!endif
 !ifdef HAVE_PKG_KCONTACTS
   !insertmacro UnselectSection ${SEC_kcontacts}
 !endif
@@ -960,7 +951,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_qthttpserver}
   !insertmacro SelectSection ${SEC_qtwebsockets}
   !insertmacro SelectSection ${SEC_kstatusnotifieritem}
-  !insertmacro SelectSection ${SEC_libkdepim}
   !insertmacro SelectSection ${SEC_kcontacts}
   !insertmacro SelectSection ${SEC_breeze}
 

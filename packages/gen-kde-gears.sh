@@ -32,8 +32,7 @@ if [ -z "$1" ]; then
 fi
 
 GEARS="kmime
-    kmbox
-    libkdepim"
+    kmbox"
 
 fullversion=$1
 case ${fullversion} in

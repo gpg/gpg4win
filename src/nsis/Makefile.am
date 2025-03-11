@@ -71,7 +71,6 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-libgpg-error.nsi      uninst-libgpg-error.nsi          \
              inst-libical.nsi uninst-libical.nsi                         \
              inst-libiconv.nsi      uninst-libiconv.nsi                  \
-             inst-libkdepim.nsi uninst-libkdepim.nsi                     \
              inst-libkleo.nsi uninst-libkleo.nsi                         \
              inst-libpng.nsi uninst-libpng.nsi                           \
              inst-mimetreeparser.nsi uninst-mimetreeparser.nsi           \

@@ -155,7 +155,7 @@ gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
                   kparts tiff openjpeg sonnet ktextwidgets mimetreeparser \
                   libical kcalendarcore kmbox pcre2 prison gpgpass \
                   knotifications kcolorscheme zstd kstatusnotifieritem \
-                  gpgoljs libkdepim kcontacts qtwebsockets \
+                  gpgoljs kcontacts qtwebsockets \
                   breeze
 
 # Supported source packages to build in an additional architecture
@@ -486,9 +486,6 @@ gpg4win_pkg_poppler_configure = \
 
 gpg4win_pkg_kcontacts_configure = \
     -DKCONTACTS_USE_QML=OFF
-
-gpg4win_pkg_libkdepim_configure = \
-    -DFORCE_NOT_REQUIRED_DEPENDENCIES="Qt6DBus"
 
 # Supported make-only source packages.
 gpg4win_mpkgs = bzip2 zlib

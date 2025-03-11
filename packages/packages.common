@@ -573,14 +573,6 @@ chk 1b584682bcee9fa4e2c6b404babd9ef3d9116467ed0cc005f15d9e965f303ee3
 file 24.12.2/src/kmbox-24.12.2.tar.xz
 chk da33971bf49ffcaecef8a2f57dd6c434301b2d31ed1b761ef5e21258a39214e5
 
-# libkdepim
-# last changed: 2025-02-14
-# by: carl
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
-file 24.12.2/src/libkdepim-24.12.2.tar.xz
-chk fe2986ab9a4ccf2af56d6b91a27e391202c4629877b94caa0c8d8efe0a16af74
-
-
 #
 # Snapshots stored on the GnuPG server
 #
@@ -650,40 +642,39 @@ file okular/okular-202503101125.tar.xz
 chk 67d2121f39d106348be2c72de335a89ba81f4e49c6c65e8136dae5a06f833cf0
 
 # gpgpass
-# last changed: 2025-03-07
-# by: builder
-# verified: Tarball created by builder.
-file gpgpass/gpgpass-202503070927.tar.xz
-chk a84ad835fb6c86f603f7053c16411185d7ee8d67ac8ab3201f13e429abcb1d3a
-
-# mimetreeparser
-# last changed: 2025-02-14
+# last changed: 2025-03-11
 # by: carl
 # verified: Tarball created by carl.
-file mimetreeparser/mimetreeparser-202502141555.tar.xz
-chk 7958e15dfafb7f24959cefe6ad10d9880566ab94e9489fcc1fc54386412b9f7b
+file gpgpass/gpgpass-202503111153.tar.xz
+chk 558c74f5c58ec35c2e820534e4ecb0b0e610ba4ba03e2eaa4896ef2547073303
 
+# mimetreeparser
+# last changed: 2025-03-11
+# by: carl
+# verified: Tarball created by carl.
+file mimetreeparser/mimetreeparser-202503111152.tar.xz
+chk af8336ed42f50d5fe51679438ac659e70105bbc44f62fb779d50721f96024e90
 
 # libkleo
-# last changed: 2025-03-07
-# by: builder
-# verified: Tarball created by builder.
-file libkleo/libkleo-202503070923.tar.xz
-chk 6c9b03f59c90e188bace6a64bd18e3163af8bb17ba05fd6f0647c6bbf4ef0cdc
+# last changed: 2025-03-10
+# by: carl
+# verified: Tarball created by carl.
+file libkleo/libkleo-202503101126.tar.xz
+chk 2399361d271432d1e6ff2d30248e28fa5f0a06b74fdd24dd26eda7c946debb65
 
 # kleopatra
-# last changed: 2025-03-07
-# by: builder
-# verified: Tarball created by builder.
-file kleopatra/kleopatra-202503070924.tar.xz
-chk 8a179c14b75ab280ed361414fbdf3580588a82fe096ca8e47be28bc671ced2a2
+# last changed: 2025-03-10
+# by: carl
+# verified: Tarball created by carl.
+file kleopatra/kleopatra-202503101126.tar.xz
+chk b00c15aca86b87b08c360203b8c7d518740e1ecb05a7d48960185a67d337b376
 
 # gpgoljs
-# last changed: 2025-03-07
-# by: builder
-# verified: Tarball created by builder.
-file gpgoljs/gpgoljs-202503070927.tar.xz
-chk 5494914a8fab90dc3b87d766d3df80fcdcf00815d48e28cb427f51048170e237
+# last changed: 2025-03-10
+# by: carl
+# verified: Tarball created by carl.
+file gpgoljs/gpgoljs-202503101124.tar.xz
+chk e68cc0f3dbecad150dcd15dd2b491e2cd1ceb12e971c7392fd05f4425985cc28
 
 #
 # GnuPG proper

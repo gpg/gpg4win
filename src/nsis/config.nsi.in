@@ -341,10 +341,6 @@
 !define gpg4win_pkg_kcontacts @gpg4win_pkg_kcontacts@
 !define gpg4win_pkg_kcontacts_version @gpg4win_pkg_kcontacts_version@
 
-@HAVE_PKG_LIBKDEPIM@
-!define gpg4win_pkg_libkdepim @gpg4win_pkg_libkdepim@
-!define gpg4win_pkg_libkdepim_version @gpg4win_pkg_libkdepim_version@
-
 @HAVE_PKG_GPGOLJS@
 !define gpg4win_pkg_gpgoljs @gpg4win_pkg_gpgoljs@
 !define gpg4win_pkg_gpgoljs_version @gpg4win_pkg_gpgoljs_version@
