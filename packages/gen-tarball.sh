@@ -394,11 +394,11 @@ echo "------------------------------ >8 ------------------------------"
 cat "${tmpdir}/snippet"
 echo "------------------------------ >8 ------------------------------"
 if [ "${autoupload}" = "yes" ]; then
-    echo "$PGM: uploading to ${ftpuser_at}trithemius.gnupg.org" >&2
-    rsync -vP ${tarball} ${ftpuser_at}trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/
+    echo "$PGM: uploading to ${ftpuser_at}gnupg.net" >&2
+    rsync -vP ${tarball} ${ftpuser_at}gnupg.net:/var/www/gnupg.net/snapshots/${package}/
 else
     echo "$PGM: info: To upload:" >&2
-    echo "rsync -vP ${tarball} trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/" >&2
+    echo "rsync -vP ${tarball} gnupg.net:/var/www/gnupg.net/snapshots/${package}/" >&2
 fi;
 rm -fr ${tmpdir}
 done

@@ -575,9 +575,9 @@ chk da33971bf49ffcaecef8a2f57dd6c434301b2d31ed1b761ef5e21258a39214e5
 
 
 #
-# Snapshots stored on the GnuPG server
+# Snapshots stored on a GnuPG server
 #
-server https://gnupg.org/ftp/gcrypt/snapshots
+server https://gnupg.net/snapshots
 
 # gpgmepp
 # last changed: 2025-01-30
