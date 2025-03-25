@@ -220,7 +220,7 @@ while read key value valuetwo valuethree; do
            if [ "$update" = "yes" ]; then
                pkg=$(echo "$name" | cut -d- -f1)
                pkg2=$(echo "$name" | cut -d- -f2)
-               if [ "$pkg2" = "w32" -o "$pkg2" = "msi" ]; then
+               if [ "$pkg2" = "w32" -o "$pkg2" = "msi" -o "$pkg2" = "icons" ]; then
                    pkg=$(echo $pkg-$pkg2);
                fi
                pkgsuffix=$(echo "$name" | rev | cut -d. -f1 | rev)
@@ -263,7 +263,7 @@ while read key value valuetwo valuethree; do
            if [ "$update" = "yes" ]; then
                pkg=$(echo "$value" | cut -d- -f1)
                pkg2=$(echo "$value" | cut -d- -f2)
-               if [ "$pkg2" = "w32" -o "$pkg2" = "msi" ]; then
+               if [ "$pkg2" = "w32" -o "$pkg2" = "msi" -o "$pkg2" = "icons" ]; then
                    pkg=$(echo $pkg-$pkg2);
                fi
                pkgsuffix=$(echo "$name" | rev | cut -d. -f1 | rev)

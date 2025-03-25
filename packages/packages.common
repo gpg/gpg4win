@@ -432,13 +432,6 @@ chk 398dc4e3c5c44461350a20ac234055bafc2b184284ddea91563134ef62f5d6a6
 file 6.11/kiconthemes-6.11.0.tar.xz
 chk 1671ab3fd9b1e0753a7062bab80f5489f3ac750ecb30b91db99a6689988afb87
 
-# breeze-icons
-# last changed: 2025-02-14
-# by: carl
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/breeze-icons-6.11.0.tar.xz
-chk f9cd9ec1b6a4111467cba31a7eed50ee5f03846fb1f5c32b3abdbf68877f8a4e
-
 # karchive
 # last changed: 2025-02-14
 # by: carl
@@ -725,6 +718,23 @@ file okular/okular-202503101125.tar.xz
 chk 67d2121f39d106348be2c72de335a89ba81f4e49c6c65e8136dae5a06f833cf0
 
 fi # !gnupg22 - Okular et al.
+
+
+#
+# breeze-icons
+# This package must be listed *after* breeze. Otherwise, `./download.sh --update`
+# will remove the breeze-icons package when the breeze package needs to be
+# downloaded.
+#
+
+server https://download.kde.org/stable/frameworks
+
+# breeze-icons
+# last changed: 2025-02-14
+# by: carl
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
+file 6.11/breeze-icons-6.11.0.tar.xz
+chk f9cd9ec1b6a4111467cba31a7eed50ee5f03846fb1f5c32b3abdbf68877f8a4e
 
 
 #
