@@ -19,7 +19,7 @@ EOF
     exit $1
 }
 
-
+gnupgtag=gnupg26
 forversion=common
 bindir="binary"
 wixlib=wixlib
@@ -85,6 +85,10 @@ if [ -z "$base" -o -z "$prefix" -o -z "$version" -o -z "$date" ]; then
   exit 1
 fi
 
+echo "${version}" | grep '^2.[56].' && gnupgtag=gnupg26
+echo "${version}" | grep '^2.4.'    && gnupgtag=gnupg24
+echo "${version}" | grep '^2.2.'    && gnupgtag=gnupg22
+
 
 cp "$dir/${prefix}-${version}.tar.bz2"            "${prefix}-${version}.tar.bz2"
 
@@ -104,10 +108,11 @@ echo >>$outfile
 echo >>$outfile "# last changed $(date +%Y-%m-%d)"
 echo >>$outfile "# by $LOGNAME"
 echo >>$outfile "# verified: [taken from buildtree]"
+echo >>$outfile "if gnupg = $gnupgtag"
 
 if [ $snapshot = yes ]; then
     echo >>$outfile
-    echo >>$outfile "server https://gnupg.org/ftp/gcrypt/snapshots"
+    echo >>$outfile "server https://gnupg.net/snapshots"
     echo >>$outfile
 fi
 
@@ -141,5 +146,8 @@ echo >>$outfile "file $bindir/${orgfile}"
 echo >>$outfile "chk  $(sha256sum < $orgfile | cut -d ' ' -f1)"
 echo >>$outfile
 fi
+
+echo >>$outfile "fi # $gnupgtag"
+echo >>$outfile
 
 echo >>$outfile "# eof"
