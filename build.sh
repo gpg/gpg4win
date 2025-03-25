@@ -271,6 +271,11 @@ download_packages() {
     cd packages
 
     if [ "$fromgit" = yes ]; then
+        # FIXME: We should check at least the commits from the gpg4win
+        # repo before doing this.  But well, this very scripts is a
+        # catch22 so that we need to have an external installed test
+        # script before running this script from an updated repo.  Or
+        # well, we could use us to check our next version.
         echo >&2 "$PGM: Creating new tarballs and updating packages file ... "
         myargs=
         [ -n "$ftpuser" ]  && myargs="$myargs --user=$ftpuser"
@@ -279,7 +284,7 @@ download_packages() {
     fi
 
     echo "$PGM: Downloading packages"
-    ./download.sh $quiet --$gnupgtag
+    ./download.sh $quiet --$gnupgtag --update
     echo >&2 "$PGM: downloading done"
 
     cd ..
