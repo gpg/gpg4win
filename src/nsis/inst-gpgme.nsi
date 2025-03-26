@@ -39,12 +39,12 @@ Section "-gpgme" SEC_gpgme
   SetOutPath "$INSTDIR\bin"
   ClearErrors
   SetOverwrite try
-  File "${prefix}/bin/libgpgme-11.dll"
+  File "${prefix}/bin/libgpgme-45.dll"
 
   SetOverwrite lastused
   ifErrors 0 +3
-      File /oname=libgpgme-11.dll.tmp "${prefix}/bin/libgpgme-11.dll"
-      Rename /REBOOTOK libgpgme-11.dll.tmp libgpgme-11.dll
+      File /oname=libgpgme-45.dll.tmp "${prefix}/bin/libgpgme-45.dll"
+      Rename /REBOOTOK libgpgme-45.dll.tmp libgpgme-45.dll
 
   ClearErrors
   SetOverwrite try
@@ -64,11 +64,11 @@ ${If} ${RunningX64}
   SetOutPath "$INSTDIR\${EX_BINDIR}"
   ClearErrors
   SetOverwrite try
-  File ${exprefix}/bin/libgpgme-11.dll
+  File ${exprefix}/bin/libgpgme-45.dll
   SetOverwrite lastused
   ifErrors 0 +3
-      File /oname=libgpgme-11.dll.tmp "${exprefix}/bin/libgpgme-11.dll"
-      Rename /REBOOTOK libgpgme-11.dll.tmp libgpgme-11.dll
+      File /oname=libgpgme-45.dll.tmp "${exprefix}/bin/libgpgme-45.dll"
+      Rename /REBOOTOK libgpgme-45.dll.tmp libgpgme-45.dll
   File ${exprefix}/bin/gpgme-json.exe
   File "${prefix}/libexec/gpgme-w32spawn.exe"
 

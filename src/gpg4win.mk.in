@@ -31,8 +31,8 @@ AUTHENTICODE_FILES = \
 	 bin/libassuan-9.dll \
 	 bin/libfreetype.dll \
 	 bin/libgpg-error-0.dll \
-	 bin/libgpgme-11.dll \
-	 bin/libgpgmepp-6.dll \
+	 bin/libgpgme-45.dll \
+	 bin/libgpgmepp-7.dll \
 	 bin/libical.dll \
 	 bin/libicalss.dll \
 	 bin/libicalvcal.dll \

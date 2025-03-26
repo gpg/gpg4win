@@ -39,7 +39,7 @@ Section "-gpgmepp" SEC_gpgmepp
   SetOutPath "$INSTDIR\bin"
   ClearErrors
   SetOverwrite try
-  File "${prefix}/bin/libgpgmepp-6.dll"
+  File "${prefix}/bin/libgpgmepp-7.dll"
 
 ${If} ${RunningX64}
 
@@ -47,11 +47,11 @@ ${If} ${RunningX64}
   SetOutPath "$INSTDIR\${EX_BINDIR}"
   ClearErrors
   SetOverwrite try
-  File ${exprefix}/bin/libgpgmepp-6.dll
+  File ${exprefix}/bin/libgpgmepp-7.dll
   SetOverwrite lastused
   ifErrors 0 +3
-      File /oname=libgpgmepp-6.dll.tmp "${exprefix}/bin/libgpgmepp-6.dll"
-      Rename /REBOOTOK libgpgmepp-6.dll.tmp libgpgmepp-6.dll
+      File /oname=libgpgmepp-7.dll.tmp "${exprefix}/bin/libgpgmepp-7.dll"
+      Rename /REBOOTOK libgpgmepp-7.dll.tmp libgpgmepp-7.dll
 
 ${EndIf}
 
