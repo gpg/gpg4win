@@ -201,11 +201,11 @@ file pinentry/pinentry-1.3.1.tar.bz2
 chk bc72ee27c7239007ab1896c3c2fae53b076e2c9bd2483dc2769a16902bce8c04
 
 # gpgme
-# last changed: 2025-02-10
-# by: wk
-# verified: buildtree
-file gpgme/gpgme-1.24.2.tar.bz2
-chk e11b1a0e361777e9e55f48a03d89096e2abf08c63d84b7017cfe1dce06639581
+# last changed: 2025-03-25
+# by: builder
+# verified: Tarball created by builder.
+file gpgme/gpgme-2.0.0-beta13.tar.xz
+chk 91991ddc181bebd645c4e469e8668bf92e26a326eedc2a635f05729ac46f8f54
 
 ## GpgOL
 ## last-changed: 2025-01-07
@@ -432,6 +432,13 @@ chk 398dc4e3c5c44461350a20ac234055bafc2b184284ddea91563134ef62f5d6a6
 file 6.11/kiconthemes-6.11.0.tar.xz
 chk 1671ab3fd9b1e0753a7062bab80f5489f3ac750ecb30b91db99a6689988afb87
 
+# breeze-icons
+# last changed: 2025-02-14
+# by: carl
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
+file 6.11/breeze-icons-6.11.0.tar.xz
+chk f9cd9ec1b6a4111467cba31a7eed50ee5f03846fb1f5c32b3abdbf68877f8a4e
+
 # karchive
 # last changed: 2025-02-14
 # by: carl
@@ -572,26 +579,29 @@ chk da33971bf49ffcaecef8a2f57dd6c434301b2d31ed1b761ef5e21258a39214e5
 #
 server https://gnupg.net/snapshots
 
+
 # gpgmepp
-# last changed: 2025-01-30
+# last changed: 2025-03-26
 # by: ingo
 # verified: Tarball created by ingo.
-file gpgmepp/gpgmepp-2.0.0-beta21.tar.xz
-chk 51be7f22184d64b0e8be0662221d5be4f149d3ed3a35f975459355d948135c27
+file gpgmepp/gpgmepp-2.0.0-beta26.tar.xz
+chk b485a1d145d0800314c2205173fe0ccde87d31e11d73a51e80c77540332177e9
 
 # qgpgme
-# last changed: 2025-01-30
+# last changed: 2025-03-26
 # by: ingo
 # verified: Tarball created by ingo.
-file qgpgme/qgpgme-2.0.0-beta25.tar.xz
-chk 1e2526b1d53b11ea6ab2d03ea7da547c91828de5300a833f66aae00c362c1c45
+file qgpgme/qgpgme-2.0.0-beta28.tar.xz
+chk 98ddc46a3124af74acd409c128ce1dc88b5c2c36af633e2ac4af9814bb5ec761
+
 
 # gpgol
-# last-changed: 2025-01-28
-# by: ingo
-# verified: Tarball created by ingo.
+# last changed: 2025-03-25
+# by: builder
+# verified: Tarball created by builder.
 file gpgol/gpgol-2.5.16-beta3.tar.xz
-chk bd4b9011453b2d5ee25180f835c49b8078d5fbb8ea49988ce7e81981c7fde786
+chk 3d511591608e838e5538b59306796110c597a4ea0b3fea0d6017845849643f2a
+
 
 # This is a respin of the release tag without the wallpapers and
 # cursor themes to avoid including a huge source package.
@@ -612,32 +622,32 @@ chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
 
 
 # gpg4win-tools
-# last changed: 2025-03-07
+# last changed: 2025-03-25
 # by: builder
 # verified: Tarball created by builder.
-file gpg4win-tools/gpg4win-tools-202503070928.tar.xz
-chk 27db40d5a5bc7b482312e8849e6b82a102e0c58c2ab13120ec9ef24c950829a2
+file gpg4win-tools/gpg4win-tools-202503251134.tar.xz
+chk 221c1bf9c8389189fc5e31f0c3a5e1ed1279d9102541d57784e3de2894c8545a
 
 # libkleo
-# last changed: 2025-03-10
-# by: carl
-# verified: Tarball created by carl.
-file libkleo/libkleo-202503101126.tar.xz
-chk 2399361d271432d1e6ff2d30248e28fa5f0a06b74fdd24dd26eda7c946debb65
+# last changed: 2025-03-25
+# by: builder
+# verified: Tarball created by builder.
+file libkleo/libkleo-202503251133.tar.xz
+chk 96b2c6d88ccd255caafd49f51494188777bf0cbc0fa95f605dbdf380ba9749fc
 
 # kleopatra
-# last changed: 2025-03-10
-# by: carl
-# verified: Tarball created by carl.
-file kleopatra/kleopatra-202503101126.tar.xz
-chk b00c15aca86b87b08c360203b8c7d518740e1ecb05a7d48960185a67d337b376
+# last changed: 2025-03-26
+# by: builder
+# verified: Tarball created by builder.
+file kleopatra/kleopatra-202503261155.tar.xz
+chk d8da50aff09293149f51ee069613de7a5cf8b19f8e553ff5952425434b875454
 
 # gpgoljs
-# last changed: 2025-03-10
-# by: carl
-# verified: Tarball created by carl.
-file gpgoljs/gpgoljs-202503101124.tar.xz
-chk e68cc0f3dbecad150dcd15dd2b491e2cd1ceb12e971c7392fd05f4425985cc28
+# last changed: 2025-03-25
+# by: builder
+# verified: Tarball created by builder.
+file gpgoljs/gpgoljs-202503251144.tar.xz
+chk 933ea9919e63ede22b7c8790932271ab3768842e057f80a8f37bb19bd180f219
 
 
 #
@@ -671,11 +681,11 @@ fi # !gnupg22 - mimetreeparser
 if gnupg != gnupg22
 
 # gpgpass
-# last changed: 2025-03-11
-# by: carl
-# verified: Tarball created by carl.
-file gpgpass/gpgpass-202503111153.tar.xz
-chk 558c74f5c58ec35c2e820534e4ecb0b0e610ba4ba03e2eaa4896ef2547073303
+# last changed: 2025-03-25
+# by: builder
+# verified: Tarball created by builder.
+file gpgpass/gpgpass-202503251134.tar.xz
+chk bf42dbedc65902f02ba124ae2ddd2dd7156979bfe3ec46b05dc84381d7d28be0
 
 fi # gnupg22 - gpgpass
 
@@ -718,23 +728,6 @@ file okular/okular-202503101125.tar.xz
 chk 67d2121f39d106348be2c72de335a89ba81f4e49c6c65e8136dae5a06f833cf0
 
 fi # !gnupg22 - Okular et al.
-
-
-#
-# breeze-icons
-# This package must be listed *after* breeze. Otherwise, `./download.sh --update`
-# will remove the breeze-icons package when the breeze package needs to be
-# downloaded.
-#
-
-server https://download.kde.org/stable/frameworks
-
-# breeze-icons
-# last changed: 2025-02-14
-# by: carl
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/breeze-icons-6.11.0.tar.xz
-chk f9cd9ec1b6a4111467cba31a7eed50ee5f03846fb1f5c32b3abdbf68877f8a4e
 
 
 #
@@ -833,29 +826,30 @@ fi # gnupg24
 #
 # This is the GnuPG used for gpg4win 5.x and vsd 4.x
 #
-# last changed 2025-03-07
+# last changed 2025-03-25
 # by builder
 # verified: [taken from buildtree]
 if gnupg = gnupg26
 
-name gnupg-2.5.5.tar.bz2
-file gnupg/gnupg-2.5.5.tar.bz2
-chk  7afa71d72ff9aaff75a6810b87b486bc492fd752e4f77b07c41759ce4ef36b31
+server https://gnupg.net/snapshots
 
-name gnupg-w32-2.5.5_20250307-bin.exe
-file binary/gnupg-w32-2.5.5_20250307.exe
-chk  2d2c8deedf3397b9d75cfb8f5ad46b5217e847e0a1ba0f1405b9aebddcd733f4
+name gnupg-2.5.6-beta16.tar.bz2
+file gnupg/gnupg-2.5.6-beta16.tar.bz2
+chk  f609e4fa963c408f7c60a8c7f106c2c4884cb068ccb8d7282e1f09aa7c20a85d
 
-name gnupg-w32-2.5.5_20250307-src.tar.xz
-file gnupg/gnupg-w32-2.5.5_20250307.tar.xz
-link gnupg-msi-2.5.5_20250307-src.tar.xz
-chk  268fa3e7e01e0622af1086c0873e7065aa7687a8d66dcfaf41fd77238d9e36f4
+name gnupg-w32-2.5.6-beta16_20250325-bin.exe
+file gnupg/gnupg-w32-2.5.6-beta16_20250325.exe
+chk  e450da30a883077df35a69e0c5b6feea41a6ac320ffc858c729ac2fb5a3b8558
 
-name gnupg-msi-2.5.5_20250307-bin.wixlib
-file binary/gnupg-w32-2.5.5_20250307.wixlib
-chk  5181ae9e764a6dcc475ba06790b90534e1bca1a9d797b148d17f0209acc269da
+name gnupg-w32-2.5.6-beta16_20250325-src.tar.xz
+file gnupg/gnupg-w32-2.5.6-beta16_20250325.tar.xz
+link gnupg-msi-2.5.6-beta16_20250325-src.tar.xz
+chk  df7aa6a0c298ccf33408dd946c55b075288913fee219a3bf06061e58b723be8e
+
+name gnupg-msi-2.5.6-beta16_20250325-bin.wixlib
+file gnupg/gnupg-w32-2.5.6-beta16_20250325.wixlib
+chk  55a1ff427bcda042c19eae5ea02012a72b0aa05384f36337e9f76e0739576447
 
 fi # gnupg26
-
 
 # eof
