@@ -200,13 +200,6 @@ chk  bdfcb99024acec9c6c4b998ad63bb3921df4cfee4a772ad6c0ca324dbbf2b07c
 file pinentry/pinentry-1.3.1.tar.bz2
 chk bc72ee27c7239007ab1896c3c2fae53b076e2c9bd2483dc2769a16902bce8c04
 
-# gpgme
-# last changed: 2025-03-25
-# by: builder
-# verified: Tarball created by builder.
-file gpgme/gpgme-2.0.0-beta13.tar.xz
-chk 91991ddc181bebd645c4e469e8668bf92e26a326eedc2a635f05729ac46f8f54
-
 ## GpgOL
 ## last-changed: 2025-01-07
 ## by: wk
@@ -572,6 +565,13 @@ chk da33971bf49ffcaecef8a2f57dd6c434301b2d31ed1b761ef5e21258a39214e5
 #
 server https://gnupg.net/snapshots
 
+
+# gpgme
+# last changed: 2025-03-25
+# by: builder
+# verified: Tarball created by builder.
+file gpgme/gpgme-2.0.0-beta13.tar.xz
+chk 91991ddc181bebd645c4e469e8668bf92e26a326eedc2a635f05729ac46f8f54
 
 # gpgmepp
 # last changed: 2025-03-26
