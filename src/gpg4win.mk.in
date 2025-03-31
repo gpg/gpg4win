@@ -111,8 +111,8 @@ AUTHENTICODE_FILES = \
 	../install-ex/bin/gpgol.dll \
 	../install-ex/bin/libassuan-9.dll \
 	../install-ex/bin/libgpg-error-0.dll \
-	../install-ex/bin/libgpgme-11.dll \
-	../install-ex/bin/libgpgmepp-6.dll \
+	../install-ex/bin/libgpgme-45.dll \
+	../install-ex/bin/libgpgmepp-7.dll \
 	../install-ex/libexec/gpgme-w32spawn.exe \
 	libexec/gpgme-w32spawn.exe \
 	lib/plugins/kf6/kio/kio_file.dll \
