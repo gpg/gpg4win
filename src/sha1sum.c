@@ -1,4 +1,4 @@
-/* sha1sum.c - print SHA-1 Message-Digest Algorithm 
+/* sha1sum.c - print SHA-1 Message-Digest Algorithm
  * Copyright (C) 1998, 1999, 2000, 2001 Free Software Foundation, Inc.
  * Copyright (C) 2004, 2009 g10 Code GmbH
  *
@@ -16,13 +16,13 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-/* 
+/*
    To build this tool as md5sum    use -DBUILD_MD5SUM
    To build this tool as sha256sum use -DBUILD_SHA256SUM
 
-   SHA-1 code taken from gnupg 1.3.92. 
+   SHA-1 code taken from gnupg 1.3.92.
    MD-5 and SHA-256 code taken from libgcrypt 1.5.0.
-   
+
    Note that this is a simple tool to be used for MS Windows.
    However, it has been written with portability in mind and thus it
    should work on any C-99 system and also on 32 bit C-89 systems.
@@ -30,6 +30,7 @@
    2009-10-21 wk  Added -c option.  Switch to GPL-3.  Escape filenames.
    2009-10-22 wk  Support MD5 and SHA256.
    2010-04-16 wk  Add option -0.
+   2025-04-01 wk  Fix hashing for data >= 256 GiB
 */
 
 #include <stdio.h>
@@ -103,7 +104,7 @@ ror(u32 x, int n)
 #endif /*BUILD_SHA256SUM*/
 
 
-typedef struct 
+typedef struct
 {
 #if defined(BUILD_MD5SUM)
   u32 A,B,C,D;
@@ -112,7 +113,7 @@ typedef struct
 #else /*BUILD_SHA1SUM*/
   u32  h0,h1,h2,h3,h4;
 #endif
-  u32  nblocks;
+  u32  nblocks, nblocks_high;
   unsigned char buf[64];
   int  count;
 } DIGEST_CONTEXT;
@@ -144,6 +145,7 @@ digest_init (DIGEST_CONTEXT *hd)
   hd->h4 = 0xc3d2e1f0;
 #endif
   hd->nblocks = 0;
+  hd->nblocks_high = 0;
   hd->count = 0;
 }
 
@@ -169,9 +171,9 @@ transform (DIGEST_CONTEXT *hd, unsigned char *data )
   u32 C = hd->C;
   u32 D = hd->D;
   u32 *cwp = correct_words;
-    
+
   if (big_endian_host)
-    { 
+    {
       int i;
       unsigned char *p2, *p1;
       for(i=0, p1=data, p2=(unsigned char*)correct_words;
@@ -321,7 +323,7 @@ transform (DIGEST_CONTEXT *hd, unsigned char *data)
     0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
     0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
     0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
-    0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174, 
+    0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
     0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc,
     0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
     0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7,
@@ -340,7 +342,7 @@ transform (DIGEST_CONTEXT *hd, unsigned char *data)
   u32 x[16];
   u32 w[64];
   int i;
-  
+
   a = hd->h0;
   b = hd->h1;
   c = hd->h2;
@@ -349,14 +351,14 @@ transform (DIGEST_CONTEXT *hd, unsigned char *data)
   f = hd->h5;
   g = hd->h6;
   h = hd->h7;
-  
+
   if (big_endian_host)
     memcpy (x, data, 64);
   else
-    { 
+    {
       unsigned char *p2;
-      
-      for (i=0, p2=(unsigned char*)x; i < 16; i++, p2 += 4 ) 
+
+      for (i=0, p2=(unsigned char*)x; i < 16; i++, p2 += 4 )
         {
           p2[3] = *data++;
           p2[2] = *data++;
@@ -399,7 +401,7 @@ transform (DIGEST_CONTEXT *hd, unsigned char *data )
 {
   u32 a,b,c,d,e,tm;
   u32 x[16];
-  
+
   /* Get values from the chaining vars. */
   a = hd->h0;
   b = hd->h1;
@@ -410,10 +412,10 @@ transform (DIGEST_CONTEXT *hd, unsigned char *data )
   if (big_endian_host)
     memcpy (x, data, 64);
   else
-    { 
+    {
       int i;
       unsigned char *p2;
-      
+
       for (i=0, p2=(unsigned char*)x; i < 16; i++, p2 += 4 )
         {
           p2[3] = *data++;
@@ -422,7 +424,7 @@ transform (DIGEST_CONTEXT *hd, unsigned char *data )
           p2[0] = *data++;
         }
     }
-  
+
 #define K1  0x5A827999L
 #define K2  0x6ED9EBA1L
 #define K3  0x8F1BBCDCL
@@ -545,11 +547,12 @@ digest_write (DIGEST_CONTEXT *hd, void *data, size_t datalen)
     {
       transform ( hd, hd->buf );
       hd->count = 0;
-      hd->nblocks++;
+      if (!++hd->nblocks)
+        hd->nblocks_high++;
     }
   if ( !inbuf )
     return;
-  if ( hd->count ) 
+  if ( hd->count )
     {
       for ( ; datalen && hd->count < 64; datalen-- )
         hd->buf[hd->count++] = *inbuf++;
@@ -557,12 +560,13 @@ digest_write (DIGEST_CONTEXT *hd, void *data, size_t datalen)
       if ( !datalen )
         return;
     }
-  
-  while( datalen >= 64 ) 
+
+  while( datalen >= 64 )
     {
       transform( hd, inbuf );
       hd->count = 0;
-      hd->nblocks++;
+      if (!++hd->nblocks)
+        hd->nblocks_high++;
       datalen -= 64;
       inbuf += 64;
     }
@@ -581,15 +585,16 @@ digest_write (DIGEST_CONTEXT *hd, void *data, size_t datalen)
 static void
 digest_final(DIGEST_CONTEXT *hd)
 {
-  u32 t, msb, lsb;
+  u32 t, th, msb, lsb;
   unsigned char *p;
-  
+
   digest_write(hd, NULL, 0); /* Flush */;
-  
+
   t = hd->nblocks;
+  th = hd->nblocks_high;
   /* Multiply by 64 to make a byte count.  */
   lsb = t << 6;
-  msb = t >> 26;
+  msb = (th << 6) | (t >> 26);
   /* Add the count.  */
   t = lsb;
   if ( (lsb += hd->count) < t )
@@ -652,7 +657,7 @@ digest_final(DIGEST_CONTEXT *hd)
   X(2);
   X(3);
   X(4);
-# if defined(BUILD_SHA256SUM) 
+# if defined(BUILD_SHA256SUM)
   X(5);
   X(6);
   X(7);
@@ -709,7 +714,7 @@ escapefname (const char *fname, int *escaped)
   for (s = fname; *s; s++)
     {
       if (*s == '\n')
-        { 
+        {
           *d++ = '\\';
           *d++ = 'n' ;
           *escaped = 1;
@@ -817,7 +822,7 @@ hash_file (const char *fname, const char *expected)
   digest_final (&ctx);
   if (fp != stdin)
     fclose (fp);
-  
+
   fnamebuf = escapefname (fname, &escaped);
   fname = fnamebuf;
 
@@ -851,7 +856,7 @@ check_file (const char *fname)
   size_t n;
   int rc = 0;
   int escaped;
-      
+
   if (*fname == '-' && !fname[1])
     fp = stdin;
   else
@@ -865,7 +870,7 @@ check_file (const char *fname)
 
   while ( fgets (linebuf, sizeof (linebuf)-1, fp) )
     {
-      escaped = (*linebuf == '\\'); 
+      escaped = (*linebuf == '\\');
       line = linebuf + escaped;
       n = strlen(line);
       if (!n || line[n-1] != '\n')
@@ -887,7 +892,7 @@ check_file (const char *fname)
           rc = -1;
           continue;
         }
-      
+
       /* Note that we ignore the binary flag ('*') used by GNU
          versions of this tool: It does not make sense to compute a
          digest over some transformation of a file - we always want a
@@ -918,7 +923,7 @@ check_file (const char *fname)
     }
   if (fp != stdin)
     fclose (fp);
-  
+
   return rc;
 }
 
@@ -948,7 +953,7 @@ hash_list (void)
               rc = -1;
               break;
             }
-          /* Note: The Nul is a delimter and not a terminator.  */
+          /* Note: The Nul is a delimiter and not a terminator.  */
           c = 0;
           ready = 1;
         }
@@ -971,7 +976,7 @@ hash_list (void)
         }
     }
   while (!ready);
-  
+
   return rc;
 }
 
@@ -983,7 +988,7 @@ usage (void)
   exit (1);
 }
 
-int 
+int
 main (int argc, char **argv)
 {
   int check = 0;
@@ -999,7 +1004,7 @@ main (int argc, char **argv)
 
   if (argc)
     {
-      argc--; argv++; 
+      argc--; argv++;
     }
 
   if (argc && !strcmp (*argv, "--version"))
