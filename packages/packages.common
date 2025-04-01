@@ -589,11 +589,11 @@ chk 98ddc46a3124af74acd409c128ce1dc88b5c2c36af633e2ac4af9814bb5ec761
 
 
 # gpgol
-# last changed: 2025-03-25
+# last changed: 2025-04-01
 # by: builder
 # verified: Tarball created by builder.
-file gpgol/gpgol-2.5.16-beta3.tar.xz
-chk 3d511591608e838e5538b59306796110c597a4ea0b3fea0d6017845849643f2a
+file gpgol/gpgol-2.6.0-beta9.tar.xz
+chk 52c81ce29b4fd92b66abc4e24fbe841e476236edfe2bd42003a816b5cbfb0c77
 
 
 # This is a respin of the release tag without the wallpapers and
