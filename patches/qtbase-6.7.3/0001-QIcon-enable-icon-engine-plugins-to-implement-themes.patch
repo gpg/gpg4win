@@ -1,0 +1,297 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 87896c03c1baccff0049b582dcbf512716aeb8bc Mon Sep 17 00:00:00 2001
+From: Volker Hilsheimer <volker.hilsheimer@qt.io>
+Date: Thu, 23 May 2024 18:53:04 +0200
+Subject: [PATCH] QIcon: enable icon engine plugins to implement themes
+
+So far, the keys of icon engine plugins were only interpreted as the
+suffix of icon files, loaded via QIcon(filename). However, an icon
+engine could provide a lot more flexibility if it could implement an
+entire theme.
+
+Match the list of keys a plugin can register itself with also against
+the current theme name. If a matching plugin is found, use that plugin
+to create the icon engine. Store the factory from the plugin to avoid
+costly lookups for each icon.
+
+Extend the QIcon test case by adding a custom plugin that supports two
+themes. Since the plugin and icon engine creation infrastructure
+doesn't communicate which theme the plugin was created for, use
+QIcon::themeName to record the current theme when the engine gets
+created.
+
+[ChangeLog][QtGui][QIconEnginePlugin] The keys registered by an
+QIconEnginePlugin implementation are now also matched against the
+current theme (system or user theme), allowing engine providers
+to implement entire themes through a plugin.
+
+Change-Id: I8a5e30ff8b5bb7c78b5204e82760e4328671e4c1
+Reviewed-by: Axel Spoerl <axel.spoerl@qt.io>
+---
+ src/gui/image/qiconloader.cpp                 | 17 ++++-
+ src/gui/image/qiconloader_p.h                 |  4 +
+ tests/auto/gui/image/qicon/CMakeLists.txt     |  5 ++
+ .../gui/image/qicon/plugin/CMakeLists.txt     | 20 +++++
+ tests/auto/gui/image/qicon/plugin/main.cpp    | 73 +++++++++++++++++++
+ tests/auto/gui/image/qicon/plugin/plugin.json |  3 +
+ tests/auto/gui/image/qicon/tst_qicon.cpp      | 29 ++++++++
+ 7 files changed, 150 insertions(+), 1 deletion(-)
+ create mode 100644 tests/auto/gui/image/qicon/plugin/CMakeLists.txt
+ create mode 100644 tests/auto/gui/image/qicon/plugin/main.cpp
+ create mode 100644 tests/auto/gui/image/qicon/plugin/plugin.json
+
+diff --git a/src/gui/image/qiconloader.cpp b/src/gui/image/qiconloader.cpp
+index bacb30a1032..97735e4af63 100644
+--- a/src/gui/image/qiconloader.cpp
++++ b/src/gui/image/qiconloader.cpp
+@@ -137,6 +137,10 @@ void QIconLoader::invalidateKey()
+     // recreating the actual engine the next time the icon is used.
+     // We don't need to clear the QIcon cache itself.
+     m_themeKey++;
++
++    // invalidating the factory results in us looking once for
++    // a plugin that provides icon for the new themeName()
++    m_factory = std::nullopt;
+ }
+
+ QString QIconLoader::themeName() const
+@@ -650,7 +654,18 @@ QIconEngine *QIconLoader::iconEngine(const QString &iconName) const
+     qCDebug(lcIconLoader) << "Resolving icon engine for icon" << iconName;
+
+     std::unique_ptr<QIconEngine> iconEngine;
+-    if (hasUserTheme())
++
++    if (!m_factory) {
++        qCDebug(lcIconLoader) << "Finding a plugin for theme" << themeName();
++        // try to find a plugin that supports the current theme
++        const int factoryIndex = qt_iconEngineFactoryLoader()->indexOf(themeName());
++        if (factoryIndex >= 0)
++            m_factory = qobject_cast<QIconEnginePlugin *>(qt_iconEngineFactoryLoader()->instance(factoryIndex));
++    }
++    if (m_factory && *m_factory)
++        iconEngine.reset(m_factory.value()->create(iconName));
++
++    if (hasUserTheme() && (!iconEngine || iconEngine->isNull()))
+         iconEngine.reset(new QIconLoaderEngine(iconName));
+     if (!iconEngine || iconEngine->isNull()) {
+         qCDebug(lcIconLoader) << "Icon is not available from theme or fallback theme.";
+diff --git a/src/gui/image/qiconloader_p.h b/src/gui/image/qiconloader_p.h
+index 3cfa9381d1a..4a8079a3e98 100644
+--- a/src/gui/image/qiconloader_p.h
++++ b/src/gui/image/qiconloader_p.h
+@@ -30,6 +30,7 @@
+
+ #include <vector>
+ #include <memory>
++#include <optional>
+
+ QT_BEGIN_NAMESPACE
+
+@@ -161,6 +162,8 @@ public:
+     QList<QSharedPointer<QIconCacheGtkReader>> m_gtkCaches;
+ };
+
++class QIconEnginePlugin;
++
+ class Q_GUI_EXPORT QIconLoader
+ {
+ public:
+@@ -195,6 +198,7 @@ private:
+     QThemeIconInfo lookupFallbackIcon(const QString &iconName) const;
+
+     uint m_themeKey;
++    mutable std::optional<QIconEnginePlugin *> m_factory;
+     bool m_supportsSvg;
+     bool m_initialized;
+
+diff --git a/tests/auto/gui/image/qicon/CMakeLists.txt b/tests/auto/gui/image/qicon/CMakeLists.txt
+index c693c559cc3..93f75741c0e 100644
+--- a/tests/auto/gui/image/qicon/CMakeLists.txt
++++ b/tests/auto/gui/image/qicon/CMakeLists.txt
+@@ -37,11 +37,14 @@ file(GLOB_RECURSE test_data_glob
+     *.svgz)
+ list(APPEND test_data ${test_data_glob})
+
++add_subdirectory(plugin)
++
+ qt_internal_add_test(tst_qicon
+     SOURCES
+         tst_qicon.cpp
+     LIBRARIES
+         Qt::Gui
++        TestIconPlugin
+     TESTDATA ${test_data}
+ )
+
+@@ -105,3 +108,5 @@ qt_internal_extend_target(tst_qicon CONDITION TARGET Qt::Widgets
+     LIBRARIES
+         Qt::Widgets
+ )
++
++add_dependencies(tst_qicon TestIconPlugin)
+diff --git a/tests/auto/gui/image/qicon/plugin/CMakeLists.txt b/tests/auto/gui/image/qicon/plugin/CMakeLists.txt
+new file mode 100644
+index 00000000000..cae49b2df17
+--- /dev/null
++++ b/tests/auto/gui/image/qicon/plugin/CMakeLists.txt
+@@ -0,0 +1,20 @@
++# Copyright (C) 2024 The Qt Company Ltd.
++# SPDX-License-Identifier: BSD-3-Clause
++
++#####################################################################
++## TestIconEngine Plugin:
++#####################################################################
++
++qt_internal_add_plugin(TestIconPlugin
++    STATIC
++    OUTPUT_NAME qtesticonplugin
++    OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
++    SKIP_INSTALL
++    PLUGIN_TYPE iconengines
++    DEFAULT_IF TRUE
++    SOURCES
++        main.cpp
++    LIBRARIES
++        Qt::Core
++        Qt::Gui
++)
+diff --git a/tests/auto/gui/image/qicon/plugin/main.cpp b/tests/auto/gui/image/qicon/plugin/main.cpp
+new file mode 100644
+index 00000000000..58d9807142c
+--- /dev/null
++++ b/tests/auto/gui/image/qicon/plugin/main.cpp
+@@ -0,0 +1,73 @@
++// Copyright (C) 2024 The Qt Company Ltd.
++// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
++
++#include <qiconengineplugin.h>
++#include <qiconengine.h>
++
++QT_BEGIN_NAMESPACE
++
++class TestIconPlugin : public QIconEnginePlugin
++{
++    Q_OBJECT
++    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QIconEngineFactoryInterface" FILE "plugin.json")
++
++public:
++    QIconEngine *create(const QString &icon) override;
++};
++
++class TestIconEngine : public QIconEngine
++{
++public:
++    TestIconEngine(const QString &icon)
++        : m_iconName(QIcon::themeName() + "/" + icon)
++    {
++    }
++
++    ~TestIconEngine()
++    {}
++
++    QIconEngine *clone() const override
++    {
++        return new TestIconEngine(m_iconName);
++    }
++
++    QString key() const override
++    {
++        return QStringLiteral("TestIconEngine");
++    }
++
++    QString iconName() override
++    {
++        return m_iconName;
++    }
++
++    bool isNull() override
++    {
++        return m_iconName.isNull();
++    }
++
++    QList<QSize> availableSizes(QIcon::Mode, QIcon::State) override
++    {
++        return {{16, 16}, {48, 48}, {64, 64}};
++    }
++
++    void paint(QPainter *painter, const QRect &rect, QIcon::Mode mode, QIcon::State state) override
++    {
++        Q_UNUSED(painter);
++        Q_UNUSED(rect);
++        Q_UNUSED(mode);
++        Q_UNUSED(state);
++    }
++
++private:
++    const QString m_iconName;
++};
++
++QIconEngine *TestIconPlugin::create(const QString &icon)
++{
++    return new TestIconEngine(icon);
++}
++
++QT_END_NAMESPACE
++
++#include "main.moc"
+diff --git a/tests/auto/gui/image/qicon/plugin/plugin.json b/tests/auto/gui/image/qicon/plugin/plugin.json
+new file mode 100644
+index 00000000000..96b59aa79e1
+--- /dev/null
++++ b/tests/auto/gui/image/qicon/plugin/plugin.json
+@@ -0,0 +1,3 @@
++{
++    "Keys": [ "plugintheme", "SpecialTheme" ]
++}
+diff --git a/tests/auto/gui/image/qicon/tst_qicon.cpp b/tests/auto/gui/image/qicon/tst_qicon.cpp
+index 99b4a0589ef..d95ee66fb68 100644
+--- a/tests/auto/gui/image/qicon/tst_qicon.cpp
++++ b/tests/auto/gui/image/qicon/tst_qicon.cpp
+@@ -48,6 +48,9 @@ private slots:
+ #endif
+     void task223279_inconsistentAddFile();
+
++    void themeFromPlugin_data();
++    void themeFromPlugin();
++
+ private:
+     bool haveImageFormat(QByteArray const&);
+
+@@ -872,6 +875,32 @@ void tst_QIcon::task223279_inconsistentAddFile()
+     QCOMPARE(pm1.size(), pm2.size());
+ }
+
++Q_IMPORT_PLUGIN(TestIconPlugin)
++
++void tst_QIcon::themeFromPlugin_data()
++{
++    QTest::addColumn<QString>("themeName");
++
++    QTest::addRow("plugintheme") << "plugintheme";
++    QTest::addRow("specialtheme") << "specialTheme"; // deliberately not matching case
++}
++
++void tst_QIcon::themeFromPlugin()
++{
++    QFETCH(const QString, themeName);
++    auto restoreTheme = qScopeGuard([oldTheme = QIcon::themeName()]{
++        QIcon::setThemeName(oldTheme);
++    });
++
++    QIcon icon = QIcon::fromTheme("icon1");
++    QVERIFY(icon.isNull());
++
++    QIcon::setThemeName(themeName);
++
++    icon = QIcon::fromTheme("icon1");
++    QVERIFY(!icon.isNull());
++    QCOMPARE(icon.name(), themeName + "/icon1");
++}
+
+ QTEST_MAIN(tst_QIcon)
+ #include "tst_qicon.moc"
+--
+2.49.0

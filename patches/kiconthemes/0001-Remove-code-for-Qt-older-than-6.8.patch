@@ -1,0 +1,36 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 5cbb2fa8b9f70598ed86740562785c4f7bf3663c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 2 Apr 2025 11:05:04 +0200
+Subject: [PATCH] Remove code for Qt older than 6.8
+
+We backported the required changes to our Qt 6.7.
+---
+ src/kicontheme.cpp | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/src/kicontheme.cpp b/src/kicontheme.cpp
+index 6fd318c..f477cc4 100644
+--- a/src/kicontheme.cpp
++++ b/src/kicontheme.cpp
+@@ -104,15 +104,10 @@ static void initThemeHelper()
+     // if not set, use Breeze
+     const QString themeToUse = KConfigGroup(config, "Icons").readEntry("Theme", QStringLiteral("breeze"));
+
+-#if QT_VERSION < QT_VERSION_CHECK(6, 8, 0)
+-    // set our theme, Qt internally will still not fully use our engine and lookup
+-    QIcon::setThemeName(themeToUse);
+-#else
+     // use Qt API to really fully override the engine, if we set KIconEngine the Key in our plugin will
+     // enforce that our engine is used
+     // https://codereview.qt-project.org/c/qt/qtbase/+/563241
+     QIcon::setThemeName(QStringLiteral("KIconEngine"));
+-#endif
+
+     // Tell KIconTheme about the theme, in case KIconLoader is used directly
+     *_themeOverride() = themeToUse;
+--
+2.49.0
