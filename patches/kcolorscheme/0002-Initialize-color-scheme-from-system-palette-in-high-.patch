@@ -1,0 +1,162 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From e8333669c32e90581c3250292b46c7a37031f274 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Thu, 27 Mar 2025 16:37:45 +0100
+Subject: [PATCH 2/2] Initialize color scheme from system palette in
+ high-contrast mode
+
+---
+ src/kcolorscheme.cpp        | 66 ++++++++++++++++++++++++++++++++++++-
+ src/kcolorschemehelpers_p.h | 22 +++++++++++++
+ 2 files changed, 87 insertions(+), 1 deletion(-)
+
+diff --git a/src/kcolorscheme.cpp b/src/kcolorscheme.cpp
+index 60de57b..999edd4 100644
+--- a/src/kcolorscheme.cpp
++++ b/src/kcolorscheme.cpp
+@@ -16,6 +16,8 @@
+
+ #include <QBrush>
+ #include <QColor>
++#include <QGuiApplication>
++#include <QPalette>
+
+ // BEGIN StateEffects
+ StateEffects::StateEffects(QPalette::ColorGroup state, const KSharedConfigPtr &config)
+@@ -225,6 +227,8 @@ public:
+     {
+     }
+
++    void initFromSystemPalette(QPalette::ColorGroup state, KColorScheme::ColorSet set);
++
+     QBrush background(KColorScheme::BackgroundRole) const;
+     QBrush foreground(KColorScheme::ForegroundRole) const;
+     QBrush decoration(KColorScheme::DecorationRole) const;
+@@ -275,6 +279,10 @@ static DecorationColors loadDecorationColors(const KConfigGroup &group, const De
+
+ KColorSchemePrivate::KColorSchemePrivate(const KSharedConfigPtr &config, QPalette::ColorGroup state, KColorScheme::ColorSet set)
+ {
++    if (!config) {
++        initFromSystemPalette(state, set);
++        return;
++    }
+     QString groupName;
+     SerializedColors defaultColors;
+     DecorationColors defaultDecoColors = defaultDecorationColors;
+@@ -400,6 +408,58 @@ KColorSchemePrivate::KColorSchemePrivate(const KSharedConfigPtr &config, QPalett
+                           _brushes.fg[KColorScheme::PositiveText].color());
+ }
+
++void KColorSchemePrivate::initFromSystemPalette(QPalette::ColorGroup state, KColorScheme::ColorSet set)
++{
++    const QPalette systemPalette = qApp->palette();
++
++    QColor foreground;
++    QColor background;
++    switch (set) {
++    case KColorScheme::Button:
++        foreground = systemPalette.color(state, QPalette::ButtonText);
++        background = systemPalette.color(state, QPalette::Button);
++        break;
++    case KColorScheme::Selection:
++        foreground = systemPalette.color(state, QPalette::HighlightedText);
++        background = systemPalette.color(state, QPalette::Highlight);
++        break;
++    case KColorScheme::NColorSets:
++        qCWarning(KCOLORSCHEME) << "ColorSet::NColorSets is not a valid color set value to pass to KColorScheme::KColorScheme";
++        [[fallthrough]];
++    case KColorScheme::Window:
++    case KColorScheme::Tooltip:
++    case KColorScheme::Complementary:
++    case KColorScheme::Header:
++    case KColorScheme::View:
++        foreground = systemPalette.color(state, QPalette::WindowText);
++        background = systemPalette.color(state, QPalette::Window);
++        break;
++    }
++
++    _contrast = KColorScheme::contrastF({});
++
++    _brushes.fg[KColorScheme::NormalText] = foreground;
++    _brushes.fg[KColorScheme::InactiveText] = systemPalette.color(state, QPalette::PlaceholderText);
++    _brushes.fg[KColorScheme::ActiveText] = foreground;
++    _brushes.fg[KColorScheme::LinkText] = systemPalette.color(state, QPalette::Link);
++    _brushes.fg[KColorScheme::VisitedText] = systemPalette.color(state, QPalette::LinkVisited);
++    _brushes.fg[KColorScheme::NegativeText] = foreground;
++    _brushes.fg[KColorScheme::NeutralText] = foreground;
++    _brushes.fg[KColorScheme::PositiveText] = foreground;
++
++    _brushes.bg[KColorScheme::NormalBackground] = background;
++    _brushes.bg[KColorScheme::AlternateBackground] = background;
++    _brushes.bg[KColorScheme::ActiveBackground] = background;
++    _brushes.bg[KColorScheme::LinkBackground] = background;
++    _brushes.bg[KColorScheme::VisitedBackground] = background;
++    _brushes.bg[KColorScheme::NegativeBackground] = background;
++    _brushes.bg[KColorScheme::NeutralBackground] = background;
++    _brushes.bg[KColorScheme::PositiveBackground] = background;
++
++    _brushes.deco[KColorScheme::FocusColor] = systemPalette.color(state, QPalette::Highlight);
++    _brushes.deco[KColorScheme::HoverColor] = systemPalette.color(state, QPalette::Highlight);
++}
++
+ QBrush KColorSchemePrivate::background(KColorScheme::BackgroundRole role) const
+ {
+     if (role >= KColorScheme::NormalBackground && role < KColorScheme::NBackgroundRoles) {
+@@ -456,7 +516,11 @@ bool KColorScheme::operator==(const KColorScheme &other) const
+ // static
+ qreal KColorScheme::contrastF(const KSharedConfigPtr &config)
+ {
+-    KConfigGroup g(config ? config : defaultConfig(), QStringLiteral("KDE"));
++    KSharedConfigPtr conf = config ? config : defaultConfig();
++    if (!conf) {
++        return 0.7;
++    }
++    KConfigGroup g(conf, QStringLiteral("KDE"));
+     return 0.1 * g.readEntry("contrast", 7);
+ }
+
+diff --git a/src/kcolorschemehelpers_p.h b/src/kcolorschemehelpers_p.h
+index bc9ec1c..f8bceac 100644
+--- a/src/kcolorschemehelpers_p.h
++++ b/src/kcolorschemehelpers_p.h
+@@ -14,6 +14,22 @@
+
+ #include <array>
+
++#ifdef Q_OS_WIN
++#include "windows.h"
++#endif
++
++#ifdef Q_OS_WIN
++static bool isHighContrastModeActive()
++{
++    HIGHCONTRAST result;
++    result.cbSize = sizeof(HIGHCONTRAST);
++    if (SystemParametersInfo(SPI_GETHIGHCONTRAST, result.cbSize, &result, 0)) {
++        return (result.dwFlags & HCF_HIGHCONTRASTON);
++    }
++    return false;
++}
++#endif
++
+ static KSharedConfigPtr defaultConfig()
+ {
+     // cache the value we'll return, since usually it's going to be the same value
+@@ -21,6 +37,12 @@ static KSharedConfigPtr defaultConfig()
+     // Read from the application's color scheme file (as set by KColorSchemeManager).
+     // If unset, this is equivalent to openConfig() and the system scheme is used.
+     const auto colorSchemePath = qApp->property("KDE_COLOR_SCHEME_PATH").toString();
++#ifdef Q_OS_WIN
++    // If no color scheme is set and high-contrast is active then use the system colors
++    if (colorSchemePath.isEmpty() && isHighContrastModeActive()) {
++        return {};
++    }
++#endif
+     if (!config || config->name() != colorSchemePath) {
+         config = KSharedConfig::openConfig(colorSchemePath);
+     }
+--
+2.49.0

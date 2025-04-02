@@ -1,0 +1,98 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From bcf598d3ac92f297ab313aed5f62e85bb0815768 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Thu, 27 Mar 2025 10:28:19 +0100
+Subject: [PATCH 1/2] Add support for high-contrast mode
+
+If the user activated a high-contrast mode then the app should use the
+system-provided high-contrast color scheme instead of a light/dark color
+scheme.
+---
+ src/kcolorschememanager.cpp | 27 +++++++++++++++++++++++----
+ src/kcolorschememanager_p.h |  6 ++++++
+ 2 files changed, 29 insertions(+), 4 deletions(-)
+
+diff --git a/src/kcolorschememanager.cpp b/src/kcolorschememanager.cpp
+index 0b77cc3..7c9bc17 100644
+--- a/src/kcolorschememanager.cpp
++++ b/src/kcolorschememanager.cpp
+@@ -24,6 +24,7 @@
+ #include <QPointer>
+ #include <QStandardPaths>
+
++#include <kcolorschemewatcher.h>
+ #include <private/qguiapplication_p.h>
+ #include <qpa/qplatformtheme.h>
+
+@@ -63,17 +64,35 @@ void KColorSchemeManagerPrivate::activateSchemeInternal(const QString &colorSche
+     }
+ }
+
++QString KColorSchemeManagerPrivate::automaticColorSchemeId() const
++{
++    if (!m_colorSchemeWatcher) {
++        return QString();
++    }
++
++    switch (m_colorSchemeWatcher->systemPreference()) {
++    case KColorSchemeWatcher::PreferHighContrast:
++        return getDefaultColorScheme();
++    case KColorSchemeWatcher::PreferDark:
++        return getDarkColorScheme();
++    case KColorSchemeWatcher::PreferLight:
++    case KColorSchemeWatcher::NoPreference:
++        return getLightColorScheme();
++    };
++    return QString();
++}
++
+ // The meaning of the Default entry depends on the platform
+ // On KDE we apply a default KColorScheme
+ // On other platforms we automatically apply Breeze/Breeze Dark depending on the system preference
+ QString KColorSchemeManagerPrivate::automaticColorSchemePath() const
+ {
+-    if (!m_colorSchemeWatcher) {
++    const QString colorSchemeId = automaticColorSchemeId();
++    if (colorSchemeId.isEmpty()) {
+         return QString();
++    } else {
++        return indexForSchemeId(colorSchemeId).data(KColorSchemeModel::PathRole).toString();
+     }
+-
+-    const QString colorSchemeId = m_colorSchemeWatcher->systemPreference() == KColorSchemeWatcher::PreferDark ? getDarkColorScheme() : getLightColorScheme();
+-    return indexForSchemeId(colorSchemeId).data(KColorSchemeModel::PathRole).toString();
+ }
+
+ QIcon KColorSchemeManagerPrivate::createPreview(const QString &path)
+diff --git a/src/kcolorschememanager_p.h b/src/kcolorschememanager_p.h
+index 623f51d..d39026a 100644
+--- a/src/kcolorschememanager_p.h
++++ b/src/kcolorschememanager_p.h
+@@ -27,9 +27,14 @@ public:
+
+     static QIcon createPreview(const QString &path);
+     void activateSchemeInternal(const QString &colorSchemePath);
++    QString automaticColorSchemeId() const;
+     QString automaticColorSchemePath() const;
+     QModelIndex indexForSchemeId(const QString &id) const;
+
++    const QString &getDefaultColorScheme() const
++    {
++        return m_defaultColorScheme;
++    }
+     const QString &getLightColorScheme() const
+     {
+         return m_lightColorScheme;
+@@ -39,6 +44,7 @@ public:
+         return m_darkColorScheme;
+     }
+
++    QString m_defaultColorScheme = QStringLiteral("Default");
+     QString m_lightColorScheme = QStringLiteral("BreezeLight");
+     QString m_darkColorScheme = QStringLiteral("BreezeDark");
+     std::optional<KColorSchemeWatcher> m_colorSchemeWatcher;
+--
+2.49.0
