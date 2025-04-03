@@ -74,6 +74,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase-6.7.3/0001-QIcon-enable-icon-engine-plugins-to-implement-themes.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/0001-Make-queryHighContrast-a-file-static.patch \
+             patches/qtbase/0002-Use-correct-tool-tip-colors-for-high-contrast-modes.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/configurable-windowstheme.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
