@@ -97,11 +97,12 @@ file pkg-config_0.23-3_win32.zip
 chk  677d6055494e24cad6c49eab33eee618ddc6ed65da827c8b5b7da761b4063278
 
 server https://download.savannah.gnu.org/releases/
-# last-changed: 2023-04-19
+# last-changed: 2025-02-18
 # by: ah
 # verified: SIG E30674707856409FF1948010BE6C3AAC63AD8E3F
-file freetype/freetype-2.13.0.tar.xz
-chk  5ee23abd047636c24b2d43c6625dcafc66661d1aca64dec9e0d05df29592624c
+file freetype/freetype-2.13.3.tar.xz
+chk  0550350666d427c74daeb85d5ac7bb353acba5f76956395995311a9c6f063289
+
 
 #
 # SQLite
@@ -186,11 +187,11 @@ file pinentry/pinentry-1.3.1.tar.bz2
 chk bc72ee27c7239007ab1896c3c2fae53b076e2c9bd2483dc2769a16902bce8c04
 
 # gpgme
-# last changed: 2025-01-20
+# last changed: 2025-04-02
 # by: wk
 # verified: swdb
-file gpgme/gpgme-1.24.1.tar.bz2
-chk ea05d0258e71061d61716584ec34cef59330a91340571edc46b78374973ba85f
+file gpgme/gpgme-1.24.2.tar.bz2
+chk  e11b1a0e361777e9e55f48a03d89096e2abf08c63d84b7017cfe1dce06639581
 
 
 # last changed: 2021-01-07
@@ -202,8 +203,8 @@ chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
 # last-changed: 2025-01-07
 # by: wk
 # verified: swdb
-file gpgol/gpgol-2.5.15.tar.bz2
-chk  92b47bb657960a147a80753ec2c128fd4cfbf85bbb5c135acbc4a75a1c482e84
+#file gpgol/gpgol-2.5.15.tar.bz2
+#chk  92b47bb657960a147a80753ec2c128fd4cfbf85bbb5c135acbc4a75a1c482e84
 
 #
 # GpgEX
@@ -544,6 +545,12 @@ server https://gnupg.org/ftp/gcrypt/snapshots
 # verified: Tarball created by aheinecke.
 #file gpgol/gpgol-2.5.13-beta15.tar.xz
 #chk dae2fa2ecce6791ffa90fa2460200c746b48dfef2fc0f7821c77071a98e42799
+# gpgol
+# last changed: 2025-04-01
+# by: builder
+# verified: Tarball created by builder.
+file gpgol/gpgol-2.6.0-beta9.tar.xz
+chk 52c81ce29b4fd92b66abc4e24fbe841e476236edfe2bd42003a816b5cbfb0c77
 
 
 # gpg4win-tools
@@ -571,18 +578,18 @@ file mimetreeparser/mimetreeparser-202501221112.tar.xz
 chk 03f168008d9d8a7b37b23b8ce429fecd2c2798b41be571b699e536942029d8d3
 
 # libkleo
-# last changed: 2025-01-22
+# last changed: 2025-04-03
 # by: builder
 # verified: Tarball created by builder.
-file libkleo/libkleo-202501221112.tar.xz
-chk b6555298314a6c95c46f1f5e800b4c17e6dbda631f04163a9550212c3972ac16
+file libkleo/libkleo-202504030814.tar.xz
+chk 8ea0996b6cf1e74ad1d6358cba206bdeaf346c1bad296ed2b7b669afc2e39434
 
 # kleopatra
-# last changed: 2025-01-22
+# last changed: 2025-04-03
 # by: builder
 # verified: Tarball created by builder.
-file kleopatra/kleopatra-202501221111.tar.xz
-chk 69dc2a42d99c63fafcc8fd8b039ea09065ad89bbe07df5268a23c5cde908ed18
+file kleopatra/kleopatra-202504030813.tar.xz
+chk 0f266a099b37b1fd8710c843acce606408a0577b4d74d94da93fd5b5f4005f3b
 
 # Okular and dependencies
 # poppler
