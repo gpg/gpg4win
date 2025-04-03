@@ -33,8 +33,8 @@ endif
 
 SUBDIRS = ${po} packages ${doc} src
 
-# find patches -type f | sort | sed 's/$/ \\/' | sed 's/^/             /'
-# find -L patches-appimage -type f | sort | sed 's/$/ \\/' | sed 's/^/             /'
+# git ls-files patches | sed 's/$/ \\/' | sed 's/^/             /'
+# git ls-files patches-appimage | sed 's/$/ \\/' | sed 's/^/             /'
 
 EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              doc/license-page doc/GPLv3 build.sh \
@@ -43,12 +43,12 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              docker/appimage/Dockerfile \
              docker/appimage/Dockerfile-CentOS7 \
              docker/gpg4win-bookworm/Dockerfile \
-             patches/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
-             patches/breeze/0001-Fix-toolbar-colors-in-high-contrast-mode.patch \
-             patches/breeze/0002-fix-ifdef-windows-qmenu.patch \
              patches/breeze-icons/0001-Allow-to-disable-building-of-the-icon-library-native.patch \
              patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools.patch \
              patches/breeze-icons/remove-kleopatra-icons.patch \
+             patches/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
+             patches/breeze/0001-Fix-toolbar-colors-in-high-contrast-mode.patch \
+             patches/breeze/0002-fix-ifdef-windows-qmenu.patch \
              patches/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/jpeg/fix-redefine.patch \
@@ -63,18 +63,18 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kiconthemes/0001-Remove-code-for-Qt-older-than-6.8.patch \
              patches/kjobwidgets/0001-Remove-knotification.patch \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
-             patches/libkleo/0001-Revert-Explicitly-use-Boost-s-cmake-config-file-for-.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
+             patches/libkleo/0001-Revert-Explicitly-use-Boost-s-cmake-config-file-for-.patch \
+             patches/okular-202503101125/qtpolicy-mr-1143.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Add-support-to-customize-about-data.sik \
              patches/okular/lower-cmake-requirement.patch \
-             patches/okular-202503101125/qtpolicy-mr-1143.patch \
              patches/pcre2/cross-build-cmake.patch \
+             patches/qtbase-6.7.3/0001-QIcon-enable-icon-engine-plugins-to-implement-themes.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/configurable-windowstheme.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
-             patches/qtbase-6.7.3/0001-QIcon-enable-icon-engine-plugins-to-implement-themes.patch \
              patches-appimage/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
              patches-appimage/breeze/0002-fix-ifdef-windows-qmenu.patch \
              patches-appimage/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
