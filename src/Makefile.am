@@ -583,7 +583,7 @@ $(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
        fi;\
      done; \
      for f in $(AUTHENTICODE_FILES); do \
-       $(abs_top_srcdir)/build-aux/authenticode-sign.sh --stamp "$$f" "$$f" ;\
+       $(call AUTHENTICODE_sign,"$$f","$$f"); \
      done \
      )
 	touch $(stampdir)/stamp-additional-signedfiles
