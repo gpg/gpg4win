@@ -1,0 +1,149 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 61a954d3a63bace3069eb4757f51bfaa1fc14304 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 2 Apr 2025 17:44:37 +0200
+Subject: [PATCH] Fix toolbar colors in high-contrast mode
+
+---
+ kstyle/breezetoolsareamanager.cpp | 48 ++++++++++++++++++++++++++++++-
+ kstyle/breezetoolsareamanager.h   |  2 ++
+ 2 files changed, 49 insertions(+), 1 deletion(-)
+
+diff --git a/kstyle/breezetoolsareamanager.cpp b/kstyle/breezetoolsareamanager.cpp
+index 4ba9f834..504c4424 100644
+--- a/kstyle/breezetoolsareamanager.cpp
++++ b/kstyle/breezetoolsareamanager.cpp
+@@ -11,13 +11,30 @@
+
+ #include <KColorUtils>
+
++#ifdef Q_OS_WIN
++#include "windows.h"
++#endif
++
+ const char *colorProperty = "KDE_COLOR_SCHEME_PATH";
+
++#ifdef Q_OS_WIN
++static bool isHighContrastModeActive()
++{
++    HIGHCONTRAST result;
++    result.cbSize = sizeof(HIGHCONTRAST);
++    if (SystemParametersInfo(SPI_GETHIGHCONTRAST, result.cbSize, &result, 0)) {
++        return (result.dwFlags & HCF_HIGHCONTRASTON);
++    }
++    return false;
++}
++#endif
++
+ namespace Breeze
+ {
+ ToolsAreaManager::ToolsAreaManager()
+     : QObject()
+ {
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+     if (qApp && qApp->property(colorProperty).isValid()) {
+         auto path = qApp->property(colorProperty).toString();
+         _config = KSharedConfig::openConfig(path);
+@@ -26,6 +43,7 @@ ToolsAreaManager::ToolsAreaManager()
+     }
+     _watcher = KConfigWatcher::create(_config);
+     connect(_watcher.data(), &KConfigWatcher::configChanged, this, &ToolsAreaManager::configUpdated);
++#endif
+     configUpdated();
+ }
+
+@@ -48,12 +66,14 @@ void ToolsAreaManager::registerApplication(QApplication *application)
+ {
+     _listener = new AppListener(this);
+     _listener->manager = this;
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+     if (application->property(colorProperty).isValid()) {
+         auto path = application->property(colorProperty).toString();
+         _config = KSharedConfig::openConfig(path);
+         _watcher = KConfigWatcher::create(_config);
+         connect(_watcher.data(), &KConfigWatcher::configChanged, this, &ToolsAreaManager::configUpdated);
+     }
++#endif
+     application->installEventFilter(_listener);
+     configUpdated();
+ }
+@@ -110,11 +130,31 @@ void ToolsAreaManager::tryUnregisterToolBar(QPointer<QMainWindow> window, QPoint
+
+ void ToolsAreaManager::configUpdated()
+ {
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++    if (qApp->property(colorProperty).isValid()) {
++        const auto colorSchemePath = qApp->property(colorProperty).toString();
++#ifdef Q_OS_WIN
++        // If no color scheme is set and high-contrast is active then use the system colors
++        if (colorSchemePath.isEmpty() && isHighContrastModeActive()) {
++            _config.reset();
++        } else
++#endif
++        {
++            if (!_config || _config->name() != colorSchemePath) {
++                _config = KSharedConfig::openConfig(colorSchemePath);
++            }
++        }
++    }
++#endif
+     auto active = KColorScheme(QPalette::Active, KColorScheme::Header, _config);
+     auto inactive = KColorScheme(QPalette::Inactive, KColorScheme::Header, _config);
+     auto disabled = KColorScheme(QPalette::Disabled, KColorScheme::Header, _config);
+
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++    _palette = qApp->palette();
++#else
+     _palette = KColorScheme::createApplicationPalette(_config);
++#endif
+
+     _palette.setBrush(QPalette::Active, QPalette::Window, active.background());
+     _palette.setBrush(QPalette::Active, QPalette::WindowText, active.foreground());
+@@ -131,7 +171,7 @@ void ToolsAreaManager::configUpdated()
+         }
+     }
+
+-    _colorSchemeHasHeaderColor = KColorScheme::isColorSetSupported(_config, KColorScheme::Header);
++    _colorSchemeHasHeaderColor = _config ? KColorScheme::isColorSetSupported(_config, KColorScheme::Header) : false;
+ }
+
+ bool AppListener::eventFilter(QObject *watched, QEvent *event)
+@@ -139,6 +179,11 @@ bool AppListener::eventFilter(QObject *watched, QEvent *event)
+     Q_ASSERT(watched);
+     Q_ASSERT(event);
+
++#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
++    if (event->type() == QEvent::ApplicationPaletteChange && watched == qApp) {
++        manager->configUpdated();
++    }
++#else
+     if (watched != qApp) {
+         return false;
+     }
+@@ -160,6 +205,7 @@ bool AppListener::eventFilter(QObject *watched, QEvent *event)
+             manager->configUpdated();
+         }
+     }
++#endif
+
+     return false;
+ }
+diff --git a/kstyle/breezetoolsareamanager.h b/kstyle/breezetoolsareamanager.h
+index 63155464..95ca519a 100644
+--- a/kstyle/breezetoolsareamanager.h
++++ b/kstyle/breezetoolsareamanager.h
+@@ -33,7 +33,9 @@ class ToolsAreaManager : public QObject
+ private:
+     QHash<const QMainWindow *, QVector<QPointer<QToolBar>>> _windows;
+     KSharedConfigPtr _config;
++#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+     KConfigWatcher::Ptr _watcher;
++#endif
+     QPalette _palette = QPalette();
+     AppListener *_listener;
+     bool _colorSchemeHasHeaderColor;
+--
+2.49.0

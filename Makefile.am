@@ -44,6 +44,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              docker/appimage/Dockerfile-CentOS7 \
              docker/gpg4win-bookworm/Dockerfile \
              patches/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
+             patches/breeze/0001-Fix-toolbar-colors-in-high-contrast-mode.patch \
              patches/breeze/0002-fix-ifdef-windows-qmenu.patch \
              patches/breeze-icons/0001-Allow-to-disable-building-of-the-icon-library-native.patch \
              patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools.patch \
