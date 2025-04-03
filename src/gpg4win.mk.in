@@ -524,7 +524,7 @@ clean-$(1):
 	  ($(STOW) -D "$$$${pkg_version}" || true;	\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
-	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-0*
 
 endef
 
@@ -593,7 +593,7 @@ clean-$(1):
 	  ($(STOW) -D "$$$${pkg_version}" || true;	\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}")
-	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-0*
 
 endef
 
@@ -653,7 +653,7 @@ clean-$(1):
 	 ($(STOW) -D "$$$${pkg_version}" || true;	\
 	  $(STOW) -D "$$$${pkg_version_dev}" || true;	\
 	  rm -fR "$$$${pkg_version}" "$$$${pkg_version_dev}"))
-	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-0*
 
 endef
 # (end BPKG_template_)
@@ -727,7 +727,7 @@ clean-$(1):
 	  ($(STOW) -D "$$$${pkg_version}" || true;	\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
-	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-0*
 
 endef
 # (end QTPKG_template_)
@@ -834,7 +834,7 @@ clean-$(1):
 	  ($(STOW) -D "$$$${pkg_version}" || true;	\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
-	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-0*
 
 endef
 # (end KDEPKG_template_)
