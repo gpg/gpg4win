@@ -41,7 +41,7 @@ index 8b40c48..ad396d2 100644
      if (isHighContrastModeActive()) {
          return KColorSchemeWatcher::PreferHighContrast;
 -    } else if (m_settings.value(QStringLiteral("AppsUseLightTheme"), true).value<bool>()) {
-+    } else if (queryDarkMode()) {
++    } else if (!queryDarkMode()) {
          return KColorSchemeWatcher::PreferLight;
      }
      return KColorSchemeWatcher::PreferDark;
