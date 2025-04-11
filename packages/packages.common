@@ -590,7 +590,7 @@ chk 8ea0996b6cf1e74ad1d6358cba206bdeaf346c1bad296ed2b7b669afc2e39434
 # verified: Tarball created by builder.
 # remark: repackaged with de/kleopatra.po replaced from 3.3.0
 file kleopatra/kleopatra-202504030813a.tar.xz
-chk 6740c715c92f1df6d614f29193843ee014bb9e8a322e0d60eb6b208a43668240
+chk  b476bf36bbcce84dbb98445aef97ee126e94612b19b0f0b11c74dfcd8a13dfd6
 
 
 # Okular and dependencies
