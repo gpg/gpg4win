@@ -1,0 +1,67 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+From a4945675ece2c1e915fc49298adfd927737ede3d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Fri, 11 Apr 2025 10:26:31 +0200
+Subject: [PATCH 1/2] cpp: Ensure that all transitions go from one state to a
+ different state
+
+* src/gpgsignkeyeditinteractor.cpp (makeTable): Replace transitions from
+CONFIRM to CONFIRM with transitions from CONFIRM to CONFIRM2 and vice
+versa. Add transitions from CONFIRM2 to some other state for all
+transitions from CONFIRM to some other state.
+--
+
+The state machine gets stuck if a transition doesn't change the state
+but an action is required. To avoid this situation the CONFIRM2 state
+was introduced, but it was not used correctly.
+
+GnuPG-bug-id: 7600
+
+Taken from gpgmepp commit aee2b30482406e677dbddf1a68b2a11a5dc70adf
+---
+ lang/cpp/src/gpgsignkeyeditinteractor.cpp | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/lang/cpp/src/gpgsignkeyeditinteractor.cpp b/lang/cpp/src/gpgsignkeyeditinteractor.cpp
+index 164cfc03..f2e0ba04 100644
+--- a/lang/cpp/src/gpgsignkeyeditinteractor.cpp
++++ b/lang/cpp/src/gpgsignkeyeditinteractor.cpp
+@@ -196,7 +196,7 @@ static GpgSignKeyEditInteractor_Private::TransitionMap makeTable()
+     addEntry(COMMAND, GET_BOOL, "keyedit.sign_all.okay", UIDS_ANSWER_SIGN_ALL);
+     addEntry(COMMAND, GET_BOOL, "sign_uid.expired_okay", REJECT_SIGN_EXPIRED);
+     addEntry(COMMAND, GET_BOOL, "sign_uid.okay", CONFIRM);
+-    addEntry(COMMAND, GET_BOOL, "sign_uid.local_promote_okay", CONFIRM2);
++    addEntry(COMMAND, GET_BOOL, "sign_uid.local_promote_okay", CONFIRM);
+     addEntry(COMMAND, GET_BOOL, "sign_uid.dupe_okay", DUPE_OK);
+     addEntry(COMMAND, GET_LINE, "trustsig_prompt.trust_value", SET_TRUST_VALUE);
+     addEntry(UIDS_ANSWER_SIGN_ALL, GET_BOOL, "sign_uid.okay", CONFIRM);
+@@ -209,17 +209,22 @@ static GpgSignKeyEditInteractor_Private::TransitionMap makeTable()
+     addEntry(SET_TRUST_REGEXP, GET_BOOL, "sign_uid.okay", CONFIRM);
+     addEntry(SET_CHECK_LEVEL, GET_BOOL, "sign_uid.okay", CONFIRM);
+     addEntry(SET_EXPIRE, GET_BOOL, "sign_uid.class", SET_CHECK_LEVEL);
+-    addEntry(CONFIRM, GET_BOOL, "sign_uid.local_promote_okay", CONFIRM);
++    addEntry(CONFIRM, GET_BOOL, "sign_uid.local_promote_okay", CONFIRM2);
++    addEntry(CONFIRM2, GET_BOOL, "sign_uid.local_promote_okay", CONFIRM);
+     addEntry(DUPE_OK, GET_BOOL, "sign_uid.okay", CONFIRM);
+     addEntry(DUPE_OK2, GET_BOOL, "sign_uid.okay", CONFIRM);
+     addEntry(DUPE_OK, GET_LINE, "trustsig_prompt.trust_value", SET_TRUST_VALUE);
+     addEntry(DUPE_OK2, GET_LINE, "trustsig_prompt.trust_value", SET_TRUST_VALUE);
+-    addEntry(CONFIRM, GET_BOOL, "sign_uid.okay", CONFIRM);
++    addEntry(CONFIRM, GET_BOOL, "sign_uid.okay", CONFIRM2);
+     addEntry(CONFIRM2, GET_BOOL, "sign_uid.okay", CONFIRM);
+     addEntry(CONFIRM, GET_LINE, "keyedit.prompt", COMMAND);
++    addEntry(CONFIRM2, GET_LINE, "keyedit.prompt", COMMAND);
+     addEntry(CONFIRM, GET_LINE, "trustsig_prompt.trust_value", SET_TRUST_VALUE);
++    addEntry(CONFIRM2, GET_LINE, "trustsig_prompt.trust_value", SET_TRUST_VALUE);
+     addEntry(CONFIRM, GET_LINE, "sign_uid.expire", SET_EXPIRE);
++    addEntry(CONFIRM2, GET_LINE, "sign_uid.expire", SET_EXPIRE);
+     addEntry(CONFIRM, GET_LINE, "sign_uid.class", SET_CHECK_LEVEL);
++    addEntry(CONFIRM2, GET_LINE, "sign_uid.class", SET_CHECK_LEVEL);
+     addEntry(UIDS_LIST_SEPARATELY_DONE, GET_BOOL, "sign_uid.local_promote_okay", CONFIRM);
+     addEntry(UIDS_LIST_SEPARATELY_DONE, GET_LINE, "keyedit.prompt", COMMAND);
+     addEntry(UIDS_LIST_SEPARATELY_DONE, GET_LINE, "trustsig_prompt.trust_value", SET_TRUST_VALUE);
+--
+2.39.2

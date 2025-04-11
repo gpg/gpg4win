@@ -1,0 +1,40 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+
+From 64bb704a25ea1384666d5f0d5202363f4271d948 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Fri, 11 Apr 2025 10:28:20 +0200
+Subject: [PATCH 2/2] cpp: Validate the transition map
+
+* lang/cpp/src/gpgsignkeyeditinteractor.cpp (makeTable): Assert that
+all transitions go from one state to a different state.
+--
+
+The state machine gets stuck if a transition doesn't change the state.
+Make sure that this cannot happen again by mistake.
+
+GnuPG-bug-id: 7600
+Taken from gpgmepp commit 6f2e91d4d25afa6934ceaf1563a4d826a904d644
+---
+ lang/cpp/src/gpgsignkeyeditinteractor.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lang/cpp/src/gpgsignkeyeditinteractor.cpp b/lang/cpp/src/gpgsignkeyeditinteractor.cpp
+index f2e0ba04..b1ecad3b 100644
+--- a/lang/cpp/src/gpgsignkeyeditinteractor.cpp
++++ b/lang/cpp/src/gpgsignkeyeditinteractor.cpp
+@@ -239,6 +239,10 @@ static GpgSignKeyEditInteractor_Private::TransitionMap makeTable()
+     addEntry(ERROR, GET_LINE, "keyedit.prompt", QUIT);
+     addEntry(QUIT, GET_BOOL, "keyedit.save.okay", SAVE);
+ #undef addEntry
++    // validate the transition map; there must not be a transition without state change
++    for (auto it = tab.cbegin(); it != tab.cend(); ++it) {
++        assert(std::get<0>(it->first) != it->second);
++    }
+     return tab;
+ }
+
+--
+2.39.2

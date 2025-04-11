@@ -51,6 +51,8 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/breeze-icons/azz-Make-all-breeze-icons-available-in-breeze-dark.patch \
              patches/breeze-icons/subset-crossbuild.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
+             patches/gpgme-1.24.2/0002-cpp-Validate-the-transition-map.patch \
+             patches/gpgme-1.24.2/0001-cpp-Ensure-that-all-transitions-go-from-one-state-to.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
              patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
@@ -86,6 +88,8 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
              patches/qttools/disable-most-tools.patch \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
+             patches-appimage/gpgme-1.24.2/0002-cpp-Validate-the-transition-map.patch \
+             patches-appimage/gpgme-1.24.2/0001-cpp-Ensure-that-all-transitions-go-from-one-state-to.patch \
              patches-appimage/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
              patches-appimage/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
              patches-appimage/kwidgetsaddons/fix-height-of-text-after-update.patch \
