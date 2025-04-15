@@ -2,19 +2,19 @@
 patch -p1 -l -f $* < $0
 exit $?
 
-From e8333669c32e90581c3250292b46c7a37031f274 Mon Sep 17 00:00:00 2001
+From 6a11925d46caf8cea0edd1202307babcbf91b038 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
 Date: Thu, 27 Mar 2025 16:37:45 +0100
-Subject: [PATCH 2/2] Initialize color scheme from system palette in
- high-contrast mode
+Subject: [PATCH 2/3] Initialize color scheme from system palette if
+ high-contrast is active
 
 ---
- src/kcolorscheme.cpp        | 66 ++++++++++++++++++++++++++++++++++++-
- src/kcolorschemehelpers_p.h | 22 +++++++++++++
- 2 files changed, 87 insertions(+), 1 deletion(-)
+ src/kcolorscheme.cpp        | 83 ++++++++++++++++++++++++++++++++++++-
+ src/kcolorschemehelpers_p.h | 22 ++++++++++
+ 2 files changed, 103 insertions(+), 2 deletions(-)
 
 diff --git a/src/kcolorscheme.cpp b/src/kcolorscheme.cpp
-index 60de57b..999edd4 100644
+index 60de57b..1496ad6 100644
 --- a/src/kcolorscheme.cpp
 +++ b/src/kcolorscheme.cpp
 @@ -16,6 +16,8 @@
@@ -26,32 +26,40 @@ index 60de57b..999edd4 100644
 
  // BEGIN StateEffects
  StateEffects::StateEffects(QPalette::ColorGroup state, const KSharedConfigPtr &config)
-@@ -225,6 +227,8 @@ public:
+@@ -225,6 +227,9 @@ public:
      {
      }
 
++    void initFromConfig(const KSharedConfigPtr &config, QPalette::ColorGroup state, KColorScheme::ColorSet set);
 +    void initFromSystemPalette(QPalette::ColorGroup state, KColorScheme::ColorSet set);
 +
      QBrush background(KColorScheme::BackgroundRole) const;
      QBrush foreground(KColorScheme::ForegroundRole) const;
      QBrush decoration(KColorScheme::DecorationRole) const;
-@@ -275,6 +279,10 @@ static DecorationColors loadDecorationColors(const KConfigGroup &group, const De
+@@ -274,6 +279,15 @@ static DecorationColors loadDecorationColors(const KConfigGroup &group, const De
+ }
 
  KColorSchemePrivate::KColorSchemePrivate(const KSharedConfigPtr &config, QPalette::ColorGroup state, KColorScheme::ColorSet set)
- {
-+    if (!config) {
++{
++    if (config) {
++        initFromConfig(config, state, set);
++    } else {
 +        initFromSystemPalette(state, set);
-+        return;
 +    }
++}
++
++void KColorSchemePrivate::initFromConfig(const KSharedConfigPtr &config, QPalette::ColorGroup state, KColorScheme::ColorSet set)
+ {
      QString groupName;
      SerializedColors defaultColors;
-     DecorationColors defaultDecoColors = defaultDecorationColors;
-@@ -400,6 +408,58 @@ KColorSchemePrivate::KColorSchemePrivate(const KSharedConfigPtr &config, QPalett
+@@ -400,6 +414,66 @@ KColorSchemePrivate::KColorSchemePrivate(const KSharedConfigPtr &config, QPalett
                            _brushes.fg[KColorScheme::PositiveText].color());
  }
 
 +void KColorSchemePrivate::initFromSystemPalette(QPalette::ColorGroup state, KColorScheme::ColorSet set)
 +{
++    // Initialize the color scheme from the system palette. This is supposed
++    // to be done if high-contrast mode is active (on Windows).
 +    const QPalette systemPalette = qApp->palette();
 +
 +    QColor foreground;
@@ -61,18 +69,24 @@ index 60de57b..999edd4 100644
 +        foreground = systemPalette.color(state, QPalette::ButtonText);
 +        background = systemPalette.color(state, QPalette::Button);
 +        break;
++    case KColorScheme::Tooltip:
++        foreground = systemPalette.color(state, QPalette::ToolTipText);
++        background = systemPalette.color(state, QPalette::ToolTipBase);
++        break;
 +    case KColorScheme::Selection:
 +        foreground = systemPalette.color(state, QPalette::HighlightedText);
 +        background = systemPalette.color(state, QPalette::Highlight);
++        break;
++    case KColorScheme::View:
++        foreground = systemPalette.color(state, QPalette::Text);
++        background = systemPalette.color(state, QPalette::Base);
 +        break;
 +    case KColorScheme::NColorSets:
 +        qCWarning(KCOLORSCHEME) << "ColorSet::NColorSets is not a valid color set value to pass to KColorScheme::KColorScheme";
 +        [[fallthrough]];
 +    case KColorScheme::Window:
-+    case KColorScheme::Tooltip:
 +    case KColorScheme::Complementary:
 +    case KColorScheme::Header:
-+    case KColorScheme::View:
 +        foreground = systemPalette.color(state, QPalette::WindowText);
 +        background = systemPalette.color(state, QPalette::Window);
 +        break;
@@ -81,7 +95,7 @@ index 60de57b..999edd4 100644
 +    _contrast = KColorScheme::contrastF({});
 +
 +    _brushes.fg[KColorScheme::NormalText] = foreground;
-+    _brushes.fg[KColorScheme::InactiveText] = systemPalette.color(state, QPalette::PlaceholderText);
++    _brushes.fg[KColorScheme::InactiveText] = foreground;
 +    _brushes.fg[KColorScheme::ActiveText] = foreground;
 +    _brushes.fg[KColorScheme::LinkText] = systemPalette.color(state, QPalette::Link);
 +    _brushes.fg[KColorScheme::VisitedText] = systemPalette.color(state, QPalette::LinkVisited);
@@ -90,7 +104,7 @@ index 60de57b..999edd4 100644
 +    _brushes.fg[KColorScheme::PositiveText] = foreground;
 +
 +    _brushes.bg[KColorScheme::NormalBackground] = background;
-+    _brushes.bg[KColorScheme::AlternateBackground] = background;
++    _brushes.bg[KColorScheme::AlternateBackground] = systemPalette.color(state, QPalette::AlternateBase);
 +    _brushes.bg[KColorScheme::ActiveBackground] = background;
 +    _brushes.bg[KColorScheme::LinkBackground] = background;
 +    _brushes.bg[KColorScheme::VisitedBackground] = background;
@@ -105,7 +119,7 @@ index 60de57b..999edd4 100644
  QBrush KColorSchemePrivate::background(KColorScheme::BackgroundRole role) const
  {
      if (role >= KColorScheme::NormalBackground && role < KColorScheme::NBackgroundRoles) {
-@@ -456,7 +516,11 @@ bool KColorScheme::operator==(const KColorScheme &other) const
+@@ -456,7 +530,11 @@ bool KColorScheme::operator==(const KColorScheme &other) const
  // static
  qreal KColorScheme::contrastF(const KSharedConfigPtr &config)
  {
@@ -118,6 +132,23 @@ index 60de57b..999edd4 100644
      return 0.1 * g.readEntry("contrast", 7);
  }
 
+@@ -579,7 +657,7 @@ bool KColorScheme::isColorSetSupported(const KSharedConfigPtr &config, KColorSch
+
+ QPalette KColorScheme::createApplicationPalette(const KSharedConfigPtr &config)
+ {
+-    QPalette palette;
++    Q_ASSERT(config);
+
+     static const QPalette::ColorGroup states[QPalette::NColorGroups] = {
+         QPalette::Active, QPalette::Inactive, QPalette::Disabled
+@@ -588,6 +666,7 @@ QPalette KColorScheme::createApplicationPalette(const KSharedConfigPtr &config)
+     // TT thinks tooltips shouldn't use active, so we use our active colors for all states
+     KColorScheme schemeTooltip(QPalette::Active, KColorScheme::Tooltip, config);
+
++    QPalette palette;
+     for (auto state : states) {
+         KColorScheme schemeView(state, KColorScheme::View, config);
+         KColorScheme schemeWindow(state, KColorScheme::Window, config);
 diff --git a/src/kcolorschemehelpers_p.h b/src/kcolorschemehelpers_p.h
 index bc9ec1c..f8bceac 100644
 --- a/src/kcolorschemehelpers_p.h

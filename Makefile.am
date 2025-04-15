@@ -54,8 +54,9 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
-             patches/kcolorscheme/0001-Add-support-for-high-contrast-mode.patch \
-             patches/kcolorscheme/0002-Initialize-color-scheme-from-system-palette-in-high-.patch \
+             patches/kcolorscheme/0001-Add-support-for-high-contrast-color-themes-on-Window.patch \
+             patches/kcolorscheme/0002-Initialize-color-scheme-from-system-palette-if-high-.patch \
+             patches/kcolorscheme/0003-Remove-assert-in-createApplicationPalette.patch \
              patches/kconfig-6.11.0/0001-Fix-double-unescaping-of-config-keys.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
              patches/kguiaddons/0001-Add-support-for-high-contrast-mode-on-Windows.patch \
