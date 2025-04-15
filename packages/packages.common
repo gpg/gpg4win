@@ -200,11 +200,11 @@ file scute/scute-1.7.0.tar.bz2
 chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
 
 # GpgOL
-# last-changed: 2025-01-07
+# last-changed: 2025-04-14
 # by: wk
 # verified: swdb
-#file gpgol/gpgol-2.5.15.tar.bz2
-#chk  92b47bb657960a147a80753ec2c128fd4cfbf85bbb5c135acbc4a75a1c482e84
+file gpgol/gpgol-2.6.0.tar.bz2
+chk  4e8307d672d86ab576b91fc93eeb6dd053a7cd435d7bf1c5ff81d1fb2b361b38
 
 #
 # GpgEX
@@ -537,20 +537,6 @@ chk 441bbb3c13cb535a216feb411ffe5925f4ca668a679c3cc1c4260c2bf406baec
 # Snapshots stored on the GnuPG server
 #
 server https://gnupg.org/ftp/gcrypt/snapshots
-
-
-# gpgol
-# last changed: 2024-08-15
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-#file gpgol/gpgol-2.5.13-beta15.tar.xz
-#chk dae2fa2ecce6791ffa90fa2460200c746b48dfef2fc0f7821c77071a98e42799
-# last changed: 2025-04-09
-# by: builder
-# verified: Tarball created by builder.
-file gpgol/gpgol-2.6.0-beta12.tar.xz
-chk a610a2c7f32b8a84f3132015bb9526c3b669d1470eafe13918b9b27fd3905437
-
 
 
 # gpg4win-tools
