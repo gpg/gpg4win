@@ -141,8 +141,8 @@ chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 # last changed 2025-04-09
 # by wk
 # verified: swdb
-file libgpg-error/libgpg-error-1.53.tar.bz2
-chk  6a0721b52027415f53abcbf63b5c37776a0f774d9126d560a3ce76c0eb42903f
+file libgpg-error/libgpg-error-1.54.tar.bz2
+chk  607dcadfd722120188eca5cd07193158b9dd906b578a557817ec779bd5e16d0e
 
 # last-changed: 2024-07-03
 # by: wk
