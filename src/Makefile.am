@@ -636,8 +636,17 @@ installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-f
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi && \
 		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION).exe
 
+# Note: We run a "make dist-xz" only if either the .git subdirectory
+# exists or the tarball does not exists.  This way we do not build a
+# (different) tarball again after extraction of the entire source.
+# The assumption here is that a tarball with all packages is first
+# build, then extracted and the tarball copied to the directory.  We
+# also assume that the tarball has been build from a git checkout.
 $(stampdir)/stamp-dist-self: versioninfo.txt
-	(set -e; cd ..; make dist-xz)
+	(set -e; cd ..; \
+	 if [ -d ./.git -o ! -f "$(PACKAGE)-$(VERSION).tar.xz" ]; then \
+	    make dist-xz; \
+         fi)
 	touch $(stampdir)/stamp-dist-self
 
 installers/gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsii) \
