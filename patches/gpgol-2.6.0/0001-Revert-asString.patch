@@ -1,0 +1,293 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+From f8cf350a2263b42d622368f5a12c0cca229dbf66 Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Fri, 25 Apr 2025 11:44:38 +0200
+Subject: [PATCH 1/2] Revert "Replace usage of deprecated Error::asString()"
+
+--
+This reverts commit 623b0a478217824bba2a6ca61ba857c25c6d2758.
+---
+ src/addin-options.cpp   |  2 +-
+ src/addressbook.cpp     |  2 +-
+ src/common.cpp          |  2 +-
+ src/cryptcontroller.cpp | 15 +++++++--------
+ src/keycache.cpp        | 16 ++++++++--------
+ src/mail.cpp            |  8 ++++----
+ src/parsecontroller.cpp |  2 +-
+ src/wks-helper.cpp      |  8 ++++----
+ 8 files changed, 27 insertions(+), 28 deletions(-)
+
+diff --git a/src/addin-options.cpp b/src/addin-options.cpp
+index 5cae2a0..0283b99 100644
+--- a/src/addin-options.cpp
++++ b/src/addin-options.cpp
+@@ -277,7 +277,7 @@ open_gpgolconfig (LPVOID arg)
+   if (err)
+     {
+       log_error ("%s:%s: Err code: %i asString: %s",
+-                 SRCNAME, __func__, err.code(), err.asStdString().c_str());
++                 SRCNAME, __func__, err.code(), err.asString());
+     }
+   dlg_open = false;
+
+diff --git a/src/addressbook.cpp b/src/addressbook.cpp
+index 7f08a73..8de852e 100644
+--- a/src/addressbook.cpp
++++ b/src/addressbook.cpp
+@@ -228,7 +228,7 @@ open_keyadder (LPVOID arg)
+   if (err)
+     {
+       log_error ("%s:%s: Err code: %i asString: %s",
+-                 SRCNAME, __func__, err.code(), err.asStdString().c_str());
++                 SRCNAME, __func__, err.code(), err.asString());
+       TRETURN 0;
+     }
+
+diff --git a/src/common.cpp b/src/common.cpp
+index 4c1dbed..08a4317 100644
+--- a/src/common.cpp
++++ b/src/common.cpp
+@@ -1046,7 +1046,7 @@ in_de_vs_mode()
+   if (err)
+     {
+       log_error ("%s:%s: Failed to get gpgconf components: %s",
+-                 SRCNAME, __func__, err.asStdString().c_str());
++                 SRCNAME, __func__, err.asString ());
+       vs_mode = false;
+       return vs_mode;
+     }
+diff --git a/src/cryptcontroller.cpp b/src/cryptcontroller.cpp
+index f1a61bc..dff6c83 100644
+--- a/src/cryptcontroller.cpp
++++ b/src/cryptcontroller.cpp
+@@ -942,7 +942,7 @@ CryptController::resolve_keys ()
+   if (err)
+     {
+       log_debug ("%s:%s: Resolver spawn finished Err code: %i asString: %s",
+-                 SRCNAME, __func__, err.code(), err.asStdString().c_str());
++                 SRCNAME, __func__, err.code(), err.asString());
+     }
+
+   int ret = parse_output (mystdout);
+@@ -1130,9 +1130,8 @@ CryptController::do_crypto (GpgME::Error &err, std::string &r_diag, bool force)
+       if (err1 || err2)
+         {
+           log_error ("%s:%s: Encrypt / Sign error %s %s.",
+-                     SRCNAME, __func__,
+-                     result_pair.first.error().asStdString().c_str(),
+-                     result_pair.second.error().asStdString().c_str());
++                     SRCNAME, __func__, result_pair.first.error().asString(),
++                     result_pair.second.error().asString());
+           err = err1 ? err1 : err2;
+           GpgME::Data log;
+           const auto err3 = ctx->getAuditLog (log,
+@@ -1161,7 +1160,7 @@ CryptController::do_crypto (GpgME::Error &err, std::string &r_diag, bool force)
+       if (err)
+         {
+           log_error ("%s:%s: Signing error %s.",
+-                     SRCNAME, __func__, sigResult.error().asStdString().c_str());
++                     SRCNAME, __func__, sigResult.error().asString());
+           GpgME::Data log;
+           const auto err3 = ctx->getAuditLog (log,
+                                               GpgME::Context::DiagnosticAuditLog);
+@@ -1210,7 +1209,7 @@ CryptController::do_crypto (GpgME::Error &err, std::string &r_diag, bool force)
+       if (err)
+         {
+           log_error ("%s:%s: Encryption error %s.",
+-                     SRCNAME, __func__, err.asStdString().c_str());
++                     SRCNAME, __func__, err.asString());
+           GpgME::Data log;
+           const auto err3 = ctx->getAuditLog (log,
+                                               GpgME::Context::DiagnosticAuditLog);
+@@ -1238,7 +1237,7 @@ CryptController::do_crypto (GpgME::Error &err, std::string &r_diag, bool force)
+       if (err)
+         {
+           log_error ("%s:%s: Encryption error %s.",
+-                     SRCNAME, __func__, err.asStdString().c_str());
++                     SRCNAME, __func__, err.asString());
+           GpgME::Data log;
+           const auto err3 = ctx->getAuditLog (log,
+                                               GpgME::Context::DiagnosticAuditLog);
+@@ -1264,7 +1263,7 @@ CryptController::do_crypto (GpgME::Error &err, std::string &r_diag, bool force)
+       if (err)
+         {
+           log_error ("%s:%s: Signing error %s.",
+-                     SRCNAME, __func__, err.asStdString().c_str());
++                     SRCNAME, __func__, err.asString());
+           GpgME::Data log;
+           const auto err3 = ctx->getAuditLog (log,
+                                               GpgME::Context::DiagnosticAuditLog);
+diff --git a/src/keycache.cpp b/src/keycache.cpp
+index 55e8efe..d098c02 100644
+--- a/src/keycache.cpp
++++ b/src/keycache.cpp
+@@ -175,7 +175,7 @@ do_update (LPVOID arg)
+     {
+       log_debug ("%s:%s Failed to find key for %s err: %s",
+                  SRCNAME, __func__, anonstr (args->first.c_str()),
+-                 err.asStdString().c_str());
++                 err.asString ());
+     }
+   KeyCache::instance ()->onUpdateJobDone (args->first.c_str(),
+                                           newKey);
+@@ -233,7 +233,7 @@ do_import (LPVOID arg)
+       if (import.error())
+         {
+           log_debug ("%s:%s Error importing: %s",
+-                     SRCNAME, __func__, import.error().asStdString().c_str());
++                     SRCNAME, __func__, import.error().asString());
+           continue;
+         }
+       const char *fpr = import.fingerprint ();
+@@ -291,7 +291,7 @@ do_populate_protocol (GpgME::Protocol proto, bool secret)
+    if ((err = ctx->startKeyListing ((const char*)nullptr, secret)))
+     {
+       log_error ("%s:%s: Failed to start keylisting err: %i: %s",
+-                 SRCNAME, __func__, err.code (), err.asStdString().c_str());
++                 SRCNAME, __func__, err.code (), err.asString());
+       TRETURN;
+     }
+
+@@ -364,7 +364,7 @@ gpgsm_learn ()
+   if (err)
+     {
+       log_debug ("%s:%s: gpgsm learn spawn code: %i asString: %s",
+-                 SRCNAME, __func__, err.code(), err.asStdString().c_str());
++                 SRCNAME, __func__, err.code(), err.asString());
+     }
+   if ((opt.enable_debug & DBG_DATA))
+     {
+@@ -394,7 +394,7 @@ do_populate_smartcards (GpgME::Protocol proto)
+   if (err)
+     {
+       log_dbg ("Failed to create assuan engine. %s",
+-               err.asStdString().c_str());
++               err.asString ());
+       TRETURN;
+     }
+   const auto serials = gpgagent_transact (ctx, "scd serialno");
+@@ -1430,7 +1430,7 @@ get_extern_smime_keys (const std::string &addr, bool import)
+       const GpgME::ImportResult res = ctx->importKeys(keys);
+       log_debug ("%s:%s: Import result for %s: err: %s",
+                  SRCNAME, __func__, anonstr (addr.c_str()),
+-                 res.error ().asStdString().c_str());
++                 res.error ().asString ());
+
+     }
+
+@@ -1850,7 +1850,7 @@ KeyCache::import_pgp_key_data (const GpgME::Data &data)
+       std::stringstream ss;
+       ss << result;
+       log_debug ("%s:%s: Import result: %s details:\n %s",
+-                 SRCNAME, __func__, result.error ().asStdString().c_str(),
++                 SRCNAME, __func__, result.error ().asString (),
+                  ss.str().c_str());
+       if (result.error())
+         {
+@@ -1870,7 +1870,7 @@ KeyCache::import_pgp_key_data (const GpgME::Data &data)
+   else
+     {
+       log_debug ("%s:%s: Import result: %s",
+-                 SRCNAME, __func__, result.error ().asStdString().c_str());
++                 SRCNAME, __func__, result.error ().asString ());
+     }
+   TRETURN !result.error();
+ }
+diff --git a/src/mail.cpp b/src/mail.cpp
+index f3865e7..c0dc051 100644
+--- a/src/mail.cpp
++++ b/src/mail.cpp
+@@ -1176,7 +1176,7 @@ do_crypt (LPVOID arg)
+         {
+           char *buf = nullptr;
+           gpgrt_asprintf (&buf, _("Crypto operation failed:\n%s"),
+-                          err.asStdString().c_str());
++                          err.asString());
+           std::string msg = buf;
+           memdbg_alloc (buf);
+           xfree (buf);
+@@ -1221,7 +1221,7 @@ do_crypt (LPVOID arg)
+         {
+           char *buf = nullptr;
+           gpgrt_asprintf (&buf, _("Crypto operation failed:\n%s"),
+-                          err.asStdString().c_str());
++                          err.asString());
+           std::string msg = buf;
+           memdbg_alloc (buf);
+           xfree (buf);
+@@ -3667,7 +3667,7 @@ Mail::getCryptoDetails_o ()
+       message += "\n\n";
+       message += _("The message was signed but the verification failed with:");
+       message += "\n";
+-      message += m_verify_result.error().asStdString();
++      message += m_verify_result.error().asString();
+       TRETURN message;
+     }
+   /* No crypo, what are we doing here? */
+@@ -3820,7 +3820,7 @@ Mail::getCryptoDetails_o ()
+           const auto err = m_sig.status ();
+           if (err)
+             {
+-              message += err.asStdString() + std::string ("\n");
++              message += err.asString () + std::string ("\n");
+             }
+         }
+       else if (m_sig.summary() & Signature::Summary::SigExpired)
+diff --git a/src/parsecontroller.cpp b/src/parsecontroller.cpp
+index 9961802..3a31c2a 100644
+--- a/src/parsecontroller.cpp
++++ b/src/parsecontroller.cpp
+@@ -262,7 +262,7 @@ format_error(GpgME::DecryptionResult result, Protocol protocol)
+         }
+       else
+         {
+-          msg += result.error().asStdString();
++          msg += result.error().asString();
+         }
+     }
+
+diff --git a/src/wks-helper.cpp b/src/wks-helper.cpp
+index c7de080..fe7c55c 100644
+--- a/src/wks-helper.cpp
++++ b/src/wks-helper.cpp
+@@ -189,7 +189,7 @@ check_published (const std::string &mbox)
+   if (err)
+     {
+       log_debug ("%s:%s: WKS client spawn code: %i asString: %s",
+-                 SRCNAME, __func__, err.code(), err.asStdString().c_str());
++                 SRCNAME, __func__, err.code(), err.asString());
+       return false;
+     }
+   auto data = mystdout.toString ();
+@@ -239,7 +239,7 @@ do_check (LPVOID arg)
+   if (err)
+     {
+       log_debug ("%s:%s: WKS client spawn code: %i asString: %s",
+-                 SRCNAME, __func__, err.code(), err.asStdString().c_str());
++                 SRCNAME, __func__, err.code(), err.asString());
+       return 0;
+     }
+
+@@ -498,7 +498,7 @@ WKSHelper::start_publish (const std::string &mbox) const
+   if (err)
+     {
+       log_debug ("%s:%s: WKS client spawn code: %i asString: %s",
+-                 SRCNAME, __func__, err.code(), err.asStdString().c_str());
++                 SRCNAME, __func__, err.code(), err.asString());
+       return;
+     }
+   const auto data = mystdout.toString ();
+@@ -756,7 +756,7 @@ WKSHelper::handle_confirmation_notify (const std::string &mbox) const
+   if (err)
+     {
+       log_debug ("%s:%s: WKS client spawn code: %i asString: %s",
+-                 SRCNAME, __func__, err.code(), err.asStdString().c_str());
++                 SRCNAME, __func__, err.code(), err.asString());
+       return;
+     }
+   const auto data = mystdout.toString ();
+--
+2.39.2

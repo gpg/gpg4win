@@ -2,10 +2,10 @@
 patch -p1 -f $* < $0
 exit $?
 
-From 7b954530dcf20fa60f65cc3c76fe820222697849 Mon Sep 17 00:00:00 2001
+From f6cc1369ff2d00896ab4d9cdd6028d15b39c99c6 Mon Sep 17 00:00:00 2001
 From: Markus Montkowski <markus.montkowski@gnupg.com>
 Date: Thu, 24 Apr 2025 16:43:14 +0200
-Subject: [PATCH] Add Disable addr book check workaround
+Subject: [PATCH 2/2] Add Disable addr book check workaround
 
 * common_indep.h: Add disableAddressBookSupport to opts
 * main.c: set new disableAddressBookSupport from regisitry

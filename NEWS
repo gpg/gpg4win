@@ -13,7 +13,7 @@ compared to Version 4.4.0 (of Gpg4win).
 (en) Kleopatra: Keyresolver GpgOL, groups are resolved again [T7484]
 
 
-Noteworthy changes in Version 3.3.2 (2025-04-22)
+Noteworthy changes in Version 3.3.2 (2025-04-25)
 ------------------------------------------------
 
 (en) Libgpg-error updated to version 1.54 to fix the UNC regression.
