@@ -24,5 +24,8 @@ Section "-un.gpgoljs"
   Delete "$INSTDIR\share\kxmlgui5\gpgol-client\composerui.rc"
   RmDir "$INSTDIR\share\kxmlgui5\gpgol-client"
   RmDir "$INSTDIR\share\kxmlgui5"
+
+  Delete "$INSTDIR\share\gpgol-client\manifest.xml"
+  RmDir "$INSTDIR\share\gpgol-client"
   RmDir "$INSTDIR\share"
 SectionEnd

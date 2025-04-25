@@ -30,6 +30,9 @@ ${MementoUnselectedSection} "Web based Oulook plugin" SEC_gpgoljs
   SetOutPath "$INSTDIR\share\kxmlgui5\gpgol-client"
   File ${prefix}/share/kxmlgui5/gpgol-client/composerui.rc
 
+  SetOutPath "$INSTDIR\share\gpgol-client"
+  File ${prefix}/share/gpgol/manifest.xml
+
 ${MementoSectionEnd}
 
 LangString DESC_SEC_gpgoljs ${LANG_ENGLISH} \
