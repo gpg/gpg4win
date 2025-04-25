@@ -54,8 +54,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/gpgme-1.24.2/0002-cpp-Validate-the-transition-map.patch \
              patches/gpgme-1.24.2/0001-cpp-Ensure-that-all-transitions-go-from-one-state-to.patch \
              patches/gpgme-1.24.2/0003-cpp-Add-missing-transition-remove-two-ignored.patch \
-             patches/gpgol-2.6.0/0001-Revert-asString.patch \
-             patches/gpgol-2.6.0/0002-Add-Disable-addr-book.patch \
+             patches/gpgol-2.6.0/0001-Fix-fixing-T6646.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
              patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
