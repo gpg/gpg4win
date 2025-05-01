@@ -26,6 +26,19 @@ ${MementoUnselectedSection} "Web based Oulook plugin" SEC_gpgoljs
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/gpgol-client.exe
   File ${prefix}/bin/gpgol-server.exe
+  File ${prefix}/share/gpgol-web/dist/index.html
+  File ${prefix}/share/gpgol-web/dist/assets/index-*.css
+  File ${prefix}/share/gpgol-web/dist/assets/index-*.js
+  File ${prefix}/share/gpgol-web/dist/assets/document-decrypt-32.png
+  File ${prefix}/share/gpgol-web/dist/assets/document-decrypt-64.png
+  File ${prefix}/share/gpgol-web/dist/assets/document-decrypt-80.png
+  File ${prefix}/share/gpgol-web/dist/assets/icon-128.png
+  File ${prefix}/share/gpgol-web/dist/assets/icon-16.png
+  File ${prefix}/share/gpgol-web/dist/assets/icon-32.png
+  File ${prefix}/share/gpgol-web/dist/assets/icon-64.png
+  File ${prefix}/share/gpgol-web/dist/assets/icon-80.png
+  File ${prefix}/share/gpgol-web/dist/assets/logo.png
+
 
   SetOutPath "$INSTDIR\share\kxmlgui5\gpgol-client"
   File ${prefix}/share/kxmlgui5/gpgol-client/composerui.rc
