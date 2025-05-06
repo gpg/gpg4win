@@ -26,7 +26,11 @@ ${MementoUnselectedSection} "Web based Oulook plugin" SEC_gpgoljs
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/gpgol-client.exe
   File ${prefix}/bin/gpgol-server.exe
+
+  SetOutPath "$INSTDIR\share\gpgol-web\dist"
   File ${prefix}/share/gpgol-web/dist/index.html
+
+  SetOutPath "$INSTDIR\share\gpgol-web\dist\assets"
   File ${prefix}/share/gpgol-web/dist/assets/index-*.css
   File ${prefix}/share/gpgol-web/dist/assets/index-*.js
   File ${prefix}/share/gpgol-web/dist/assets/document-decrypt-32.png
