@@ -758,11 +758,11 @@ fi
 
 # last changed 2024-09-20
 # by wk
-# verified: swdb.lst
+# verified: [taken from buildtree]
 if gnupg != gnupg22
 
-file libgcrypt/libgcrypt-1.11.0.tar.bz2
-chk  09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c
+file libgcrypt/libgcrypt-1.11.1.tar.bz2
+chk  24e91c9123a46c54e8371f3a3a2502f1198f2893fbfbf59af95bc1c21499b00e
 
 fi
 
