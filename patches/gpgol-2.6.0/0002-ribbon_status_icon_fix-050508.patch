@@ -1,0 +1,74 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+
+diff --git a/src/explorer-events.cpp b/src/explorer-events.cpp
+index 3389bf6..9f7c7d8 100644
+--- a/src/explorer-events.cpp
++++ b/src/explorer-events.cpp
+@@ -110,11 +110,37 @@ hasSelection (LPDISPATCH explorer)
+     }
+
+   int count = get_oom_int (selection, "Count");
+-  gpgol_release (selection);
+
+   if (count)
+     {
+-      return true;
++      LPDISPATCH selectitem = NULL, mailitem = NULL;
++      bool selected = true;
++      if (count == 1)
++        {
++          // If we call this on a selection with more items
++          // Outlook sends an ItemLoad event for each mail
++          // in that selection.
++          selectitem = get_oom_object (selection, "Item(1)");
++          mailitem = get_object_by_id (selectitem, IID_MailItem);
++          if (!mailitem)
++            {
++              log_debug ("%s:%s: New selection is no mail.",
++                SRCNAME, __func__);
++              selected = false;
++            }
++
++          gpgol_release (mailitem);
++          gpgol_release (selectitem);
++        }
++      else
++        {
++          selected = false; // We can't show the security level for more than one => show insecure
++        }
++
++      gpgol_release (selection);
++      return selected;
+     }
++
++  gpgol_release (selection);
+   return false;
+ }
+diff --git a/src/ribbon-callbacks.cpp b/src/ribbon-callbacks.cpp
+index 8bfa2ce..09a8298 100644
+--- a/src/ribbon-callbacks.cpp
++++ b/src/ribbon-callbacks.cpp
+@@ -562,15 +562,18 @@ get_mail_from_control (LPDISPATCH ctrl, bool *none_selected)
+       }
+     else
+       {
+-        log_error ("%s:%s: Failed to find mail %p in map.",
++        log_debug ("%s:%s: Failed to find mail %p in map.",
+                   SRCNAME, __func__, mailitem);
+       }
++      TRACEPOINT;
+   }
++  TRACEPOINT;
+   xfree (uid);
+-
++  TRACEPOINT;
+   /* This release may have killed the Mail object we obtained earlier
+    * if it was just a leftover mail in the ribbon. */
+   gpgol_release (mailitem);
++  TRACEPOINT;
+   if (!Mail::isValidPtr (ret))
+     {
+       log_err ("Mail was only valid for this context.");
