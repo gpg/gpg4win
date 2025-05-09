@@ -1,0 +1,34 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+commit 4e83f7c8036a5de9ad6ce865b5952c58ab888f6c
+Author: Carl Schwan <carl@carlschwan.eu>
+Date:   Fri May 9 08:53:07 2025 +0200
+
+    encryptionjob: Propagate encryption flags
+
+    Summary:
+    Otherwise `job->setEncryptionFlags(GpgME::Context::AddRecipient);` is a
+    nullopt.
+    --
+
+    Test Plan: Compiles and a reencryption job now works correctly
+
+    Differential Revision: https://dev.gnupg.org/D608
+
+diff --git a/src/qgpgmeencryptjob.cpp b/src/qgpgmeencryptjob.cpp
+index eb91f2c..77a94f2 100644
+--- a/src/qgpgmeencryptjob.cpp
++++ b/src/qgpgmeencryptjob.cpp
+@@ -204,8 +204,9 @@ static QGpgMEEncryptJob::result_type encrypt_to_filename(Context *ctx,
+
+ Error QGpgMEEncryptJob::start(const std::vector<Key> &recipients, const QByteArray &plainText, bool alwaysTrust)
+ {
+-    run(std::bind(&encrypt_qba, std::placeholders::_1, recipients, plainText,
+-                  alwaysTrust ? Context::AlwaysTrust : Context::None, mOutputIsBase64Encoded, inputEncoding(), fileName()));
++    const auto flags = static_cast<Context::EncryptionFlags>(alwaysTrust ? Context::AlwaysTrust : Context::None | encryptionFlags() & ~Context::EncryptFile);
++
++    run(std::bind(&encrypt_qba, std::placeholders::_1, recipients, plainText, flags , mOutputIsBase64Encoded, inputEncoding(), fileName()));
+     return Error();
+ }

@@ -644,11 +644,11 @@ file kleopatra/kleopatra-202505081346.tar.xz
 chk 367df9a32c795e15bbff75d06664e201994e1182a898b2a00386893f66085490
 
 # gpgoljs
-# last changed: 2025-04-30
+# last changed: 2025-05-09
 # by: carl
 # verified: Tarball created by carl.
-file gpgoljs/gpgoljs-202504301658.tar.xz
-chk da206e53e12dbf93809b276cf4eda89fbe85ea4968df8adf7e14ac8f54161492
+file gpgoljs/gpgoljs-202505090818.tar.xz
+chk 5439265536f42a67ef399dacf75b1cbac52c15787066f35990831c5f0faabbf6
 
 
 #
