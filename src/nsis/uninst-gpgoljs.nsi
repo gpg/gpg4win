@@ -19,6 +19,7 @@
 Section "-un.gpgoljs"
   Delete "$INSTDIR\bin\gpgol-client.exe"
   Delete "$INSTDIR\bin\gpgol-server.exe"
+  Delete "$INSTDIR\bin\install.ps1"
   RmDir "$INSTDIR\bin"
 
   Delete "$INSTDIR\share\gpgol-web\dist\index.html"

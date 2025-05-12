@@ -27,6 +27,6 @@ Section "-poppler" SEC_poppler
 !endif
   SetOutPath "$INSTDIR"
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libpoppler-147.dll
+  File ${prefix}/bin/libpoppler-149.dll
   File ${prefix}/bin/libpoppler-qt6-3.dll
 SectionEnd

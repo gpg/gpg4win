@@ -622,25 +622,25 @@ file gpg4win-tools/gpg4win-tools-202503251134.tar.xz
 chk 221c1bf9c8389189fc5e31f0c3a5e1ed1279d9102541d57784e3de2894c8545a
 
 # libkleo
-# last changed: 2025-03-25
+# last changed: 2025-05-08
 # by: builder
 # verified: Tarball created by builder.
-file libkleo/libkleo-202503251133.tar.xz
-chk 96b2c6d88ccd255caafd49f51494188777bf0cbc0fa95f605dbdf380ba9749fc
+file libkleo/libkleo-202505081346.tar.xz
+chk ea2bde71ea7979d950fb8412bafcb7fd4976dbdc05efcfef9c8a8953c36a73fa
 
 # kleopatra
-# last changed: 2025-03-26
+# last changed: 2025-05-08
 # by: builder
 # verified: Tarball created by builder.
-file kleopatra/kleopatra-202503261155.tar.xz
-chk d8da50aff09293149f51ee069613de7a5cf8b19f8e553ff5952425434b875454
+file kleopatra/kleopatra-202505081346.tar.xz
+chk 367df9a32c795e15bbff75d06664e201994e1182a898b2a00386893f66085490
 
 # gpgoljs
-# last changed: 2025-04-30
+# last changed: 2025-05-09
 # by: carl
 # verified: Tarball created by carl.
-file gpgoljs/gpgoljs-202504301658.tar.xz
-chk da206e53e12dbf93809b276cf4eda89fbe85ea4968df8adf7e14ac8f54161492
+file gpgoljs/gpgoljs-202505090818.tar.xz
+chk 5439265536f42a67ef399dacf75b1cbac52c15787066f35990831c5f0faabbf6
 
 
 #
@@ -689,18 +689,18 @@ fi # gnupg22 - gpgpass
 if gnupg = gnupg22
 
 # poppler
-# last changed: 2023-09-08
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file poppler/poppler-202309080910.tar.xz
-chk 2ca1273a6ef9ce00e9bc886b0864ef02b88f4df2525922e1ac322ce7360e6621
+# last changed: 2025-05-08
+# by: builder
+# verified: Tarball created by builder.
+file poppler/poppler-202505081551.tar.xz
+chk 1a04ff56ae646f91c3ed5a7a301d6a4ddb33ebfe141fb5aecf6965e429614b56
 
 # okular
-# last changed: 2023-11-22
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file okular/okular-202311221749.tar.xz
-chk 205df68c183900a1b21d1381d9a3d7554a642fa6dd3ef7e9bc5bbcfcd0aa8f1b
+# last changed: 2025-05-08
+# by: builder
+# verified: Tarball created by builder.
+file okular/okular-202505081551.tar.xz
+chk 9d713f46191136e843f884a9411ce082c076a7b1700bdc0e954b5d408fa79e73
 
 fi # gnupg22 - Okular et al.
 
@@ -758,11 +758,11 @@ fi
 
 # last changed 2024-09-20
 # by wk
-# verified: swdb.lst
+# verified: [taken from buildtree]
 if gnupg != gnupg22
 
-file libgcrypt/libgcrypt-1.11.0.tar.bz2
-chk  09120c9867ce7f2081d6aaa1775386b98c2f2f246135761aae47d81f58685b9c
+file libgcrypt/libgcrypt-1.11.1.tar.bz2
+chk  24e91c9123a46c54e8371f3a3a2502f1198f2893fbfbf59af95bc1c21499b00e
 
 fi
 
@@ -859,6 +859,31 @@ chk  df7aa6a0c298ccf33408dd946c55b075288913fee219a3bf06061e58b723be8e
 name gnupg-msi-2.5.6-beta16_20250325-bin.wixlib
 file gnupg/gnupg-w32-2.5.6-beta16_20250325.wixlib
 chk  55a1ff427bcda042c19eae5ea02012a72b0aa05384f36337e9f76e0739576447
+
+fi # gnupg26
+
+# eof
+
+# last changed 2025-05-08
+# by builder
+# verified: [taken from buildtree]
+if gnupg = gnupg26
+name gnupg-2.5.6.tar.bz2
+file gnupg/gnupg-2.5.6.tar.bz2
+chk  377f9d79af0ce494c0946dbe7c92197425bb522d7edd6f54acbc9869695131a8
+
+name gnupg-w32-2.5.6_20250508-bin.exe
+file binary/gnupg-w32-2.5.6_20250508.exe
+chk  5a024cbeca4082b80969d167b6ea23fad6c5d7f3d572e271214c4e4472cf1e6f
+
+name gnupg-w32-2.5.6_20250508-src.tar.xz
+file gnupg/gnupg-w32-2.5.6_20250508.tar.xz
+link gnupg-msi-2.5.6_20250508-src.tar.xz
+chk  caabf71b8ce7707215fecb2f86d5d2a66a9050bfbd1256b040a69f5944f0a368
+
+name gnupg-msi-2.5.6_20250508-bin.wixlib
+file binary/gnupg-w32-2.5.6_20250508.wixlib
+chk  2f91b406325718ccdb0d023333683283b152895ef16df5e29dee430c85c74a87
 
 fi # gnupg26
 

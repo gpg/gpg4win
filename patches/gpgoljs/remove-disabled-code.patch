@@ -1,0 +1,18 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/client/reencrypt/reencryptjob.cpp b/client/reencrypt/reencryptjob.cpp
+index 0c0db24..ff88c5d 100644
+--- a/client/reencrypt/reencryptjob.cpp
++++ b/client/reencrypt/reencryptjob.cpp
+@@ -159,9 +159,7 @@ void ReencryptJob::parseParts(const EwsItem &item, const KMime::Message::Ptr &me
+                         const auto encryptedContent = sibling->decodedContent();
+
+                         auto job = QGpgME::openpgp()->encryptJob(true, true);
+-#if 0 // requires unreleased code from gpgmepp
+                         job->setEncryptionFlags(GpgME::Context::AddRecipient);
+-#endif
+                         job->setProperty("message", QVariant::fromValue(message));
+                         job->setProperty("oldContent", QVariant::fromValue(encryptedContent));
+                         job->setProperty("oldPart", QVariant::fromValue(sibling));

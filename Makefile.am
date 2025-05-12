@@ -43,6 +43,8 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              docker/appimage/Dockerfile \
              docker/appimage/Dockerfile-CentOS7 \
              docker/gpg4win-bookworm/Dockerfile \
+             patches/gpgol-2.6.0/0001-Fix-fixing-T6646.patch \
+             patches/gpgol-2.6.0/0002-ribbon_status_icon_fix-050508.patch \
              patches/breeze-icons/0001-Allow-to-disable-building-of-the-icon-library-native.patch \
              patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools.patch \
              patches/breeze-icons/remove-kleopatra-icons.patch \

@@ -1,0 +1,32 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+  Fixes-commit: a95d340e478f8fb9529b49b0518a0fafa4d00bfe
+  GnuPG-bug-id: 6646
+
+
+diff --git a/src/ribbon-callbacks.cpp b/src/ribbon-callbacks.cpp
+index 06af440..32d5c87 100644
+--- a/src/ribbon-callbacks.cpp
++++ b/src/ribbon-callbacks.cpp
+@@ -556,12 +556,15 @@ get_mail_from_control (LPDISPATCH ctrl, bool *none_selected)
+   if (ret==NULL)
+   {
+     auto retV = Mail::searchMailsByUUID(uid);
+-    if (retV.empty())
++    if (!retV.empty())
++      {
++        ret = retV.front();
++      }
++    else
+       {
+         log_error ("%s:%s: Failed to find mail %p in map.",
+                   SRCNAME, __func__, mailitem);
+       }
+-    ret = retV.front();
+   }
+   xfree (uid);
+
+--
+2.39.2

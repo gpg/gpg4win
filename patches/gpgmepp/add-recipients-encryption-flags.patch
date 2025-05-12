@@ -1,0 +1,85 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+commit 7a82afe66309cb7aa9956586d11749be6c6dd6e5
+Author: Carl Schwan <carl@carlschwan.eu>
+Date:   Tue Mar 18 15:43:22 2025 +0100
+
+    Add missing Context::EncryptionFlags
+
+    * src/context.cpp: Add AddRecipient and ChangeRecipient enum value
+    --
+
+diff --git a/NEWS b/NEWS
+index c25fa14..10e3ddb 100644
+--- a/NEWS
++++ b/NEWS
+@@ -15,21 +15,25 @@ Noteworthy changes in version 2.0.0 (unreleased)
+  * New function Context::generateRandomValue to get a cryptographically
+    strong unsigned integer random value.  [T6694]
+
++ * New flag to re-encrypt OpenPGP data (requires GnuPG 2.5.1).  [D607]
++
+  * Removed the TrustItem listing functionality which used GpgME's trustlist
+    feature which worked only for a short period in 2003.  [T4834]
+
+  * Interface changes relative to the 1.24 branch of gpgme:
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Context::RandomMode                     NEW.
+- Context::generateRandomBytes            NEW.
+- Context::generateRandomValue            NEW.
+- RandomBytesResult                       NEW.
+- RandomValueResult                       NEW.
+- Context::startTrustItemListing          REMOVED.
+- Context::nextTrustItem                  REMOVED.
+- Context::endTrustItemListing            REMOVED.
+- EventLoopInteractor::nextTrustItemEvent REMOVED.
+- TrustItem                               REMOVED.
++ Context::RandomMode                         NEW.
++ Context::generateRandomBytes                NEW.
++ Context::generateRandomValue                NEW.
++ Context::EncryptionFlags::AddRecipient      NEW.
++ Context::EncryptionFlags::ChangeRecipient   NEW.
++ RandomBytesResult                           NEW.
++ RandomValueResult                           NEW.
++ Context::startTrustItemListing              REMOVED.
++ Context::nextTrustItem                      REMOVED.
++ Context::endTrustItemListing                REMOVED.
++ EventLoopInteractor::nextTrustItemEvent     REMOVED.
++ TrustItem                                   REMOVED.
+
+
+ Noteworthy changes in earlier versions can be found in the NEWS file of
+diff --git a/src/context.cpp b/src/context.cpp
+index 5ee1b84..0bd6aeb 100644
+--- a/src/context.cpp
++++ b/src/context.cpp
+@@ -1354,6 +1354,12 @@ static gpgme_encrypt_flags_t encryptflags2encryptflags(Context::EncryptionFlags
+     if (flags & Context::EncryptFile) {
+         result |= GPGME_ENCRYPT_FILE;
+     }
++    if (flags & Context::AddRecipient) {
++        result |= GPGME_ENCRYPT_ADD_RECP;
++    }
++    if (flags & Context::ChangeRecipient) {
++        result |= GPGME_ENCRYPT_CHG_RECP;
++    }
+     return static_cast<gpgme_encrypt_flags_t>(result);
+ }
+
+diff --git a/src/context.h b/src/context.h
+index 151ea8c..818ae88 100644
+--- a/src/context.h
++++ b/src/context.h
+@@ -469,7 +469,9 @@ public:
+         EncryptWrap = 128,
+         WantAddress = 256,
+         EncryptArchive = 512,
+-        EncryptFile = 1024
++        EncryptFile = 1024,
++        AddRecipient = 2048,
++        ChangeRecipient = 4096,
+     };
+     EncryptionResult encrypt(const std::vector<Key> &recipients, const Data &plainText, Data &cipherText, EncryptionFlags flags);
+     GpgME::Error encryptSymmetrically(const Data &plainText, Data &cipherText);

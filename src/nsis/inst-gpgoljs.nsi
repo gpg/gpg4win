@@ -26,6 +26,7 @@ ${MementoUnselectedSection} "Web based Oulook plugin" SEC_gpgoljs
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/gpgol-client.exe
   File ${prefix}/bin/gpgol-server.exe
+  File ${prefix}/bin/install.ps1
 
   SetOutPath "$INSTDIR\share\gpgol-web\dist"
   File ${prefix}/share/gpgol-web/dist/index.html
