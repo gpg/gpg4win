@@ -836,34 +836,6 @@ fi # gnupg24
 #
 # This is the GnuPG used for gpg4win 5.x and vsd 4.x
 #
-# last changed 2025-03-25
-# by builder
-# verified: [taken from buildtree]
-if gnupg = gnupg26
-
-server https://gnupg.net/snapshots
-
-name gnupg-2.5.6-beta16.tar.bz2
-file gnupg/gnupg-2.5.6-beta16.tar.bz2
-chk  f609e4fa963c408f7c60a8c7f106c2c4884cb068ccb8d7282e1f09aa7c20a85d
-
-name gnupg-w32-2.5.6-beta16_20250325-bin.exe
-file gnupg/gnupg-w32-2.5.6-beta16_20250325.exe
-chk  e450da30a883077df35a69e0c5b6feea41a6ac320ffc858c729ac2fb5a3b8558
-
-name gnupg-w32-2.5.6-beta16_20250325-src.tar.xz
-file gnupg/gnupg-w32-2.5.6-beta16_20250325.tar.xz
-link gnupg-msi-2.5.6-beta16_20250325-src.tar.xz
-chk  df7aa6a0c298ccf33408dd946c55b075288913fee219a3bf06061e58b723be8e
-
-name gnupg-msi-2.5.6-beta16_20250325-bin.wixlib
-file gnupg/gnupg-w32-2.5.6-beta16_20250325.wixlib
-chk  55a1ff427bcda042c19eae5ea02012a72b0aa05384f36337e9f76e0739576447
-
-fi # gnupg26
-
-# eof
-
 # last changed 2025-05-08
 # by builder
 # verified: [taken from buildtree]
