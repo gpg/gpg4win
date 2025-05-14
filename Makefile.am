@@ -148,7 +148,7 @@ pack_packages_tarballs:
            \) -print | xargs cp -t $(distdir)/packages/ )
 
 
-download: packages/packages.common
+download: packages/packages.list
 	(cd packages; ./download.sh)
 
 vsd-versions: src/stamps/stamp-versions-all-signed

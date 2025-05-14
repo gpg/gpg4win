@@ -21,7 +21,7 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 
 # Packages the current HEAD of a git repository as tarball and updates
-# the packages.common accordingly if the entry matches the exact pattern.
+# the packages.list accordingly if the entry matches the exact pattern.
 # For KDE this script also tries to integrate the translations even for
 # custom / stable branches which do not fit the upstream translation
 # workflow.
@@ -388,7 +388,7 @@ chk ${checksum}
 EOF
 
 perl -i -p0e "s@# ${package}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
-'@se" packages.common
+'@se" packages.list
 
 echo "------------------------------ >8 ------------------------------"
 cat "${tmpdir}/snippet"

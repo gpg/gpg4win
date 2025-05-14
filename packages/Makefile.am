@@ -19,7 +19,7 @@
 # Note that the top-level Makefile target dist-hooks takes care of
 # packaging the downloaded tarballs.
 EXTRA_DIST = \
-	download.sh packages.common BUILDTYPE \
+	download.sh packages.list BUILDTYPE \
 	gen-frameworks.sh gen-tarball.sh gen-kde-gears.sh gen-gnupg.sh \
 	distsigkey.gpg kde-release-keys.gpg \
 	gen-kde-l10n.sh

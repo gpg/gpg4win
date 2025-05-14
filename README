@@ -91,7 +91,7 @@ Adding New Packages to the Installer:
 
 This requires editing a couple of files. Here is a short run-up:
 
-Add the package download to `packages/packages.common`. Please add a
+Add the package download to `packages/packages.list`. Please add a
 comment with the current date and how you have verified the
 sources. For verification, PGP signatures using one of the trusted
 keys from the `distsigkey.gpg` file are preferable.

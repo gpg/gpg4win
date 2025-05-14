@@ -1,4 +1,4 @@
-#  packages.common - list of packages for use with gpg4win -*- sh -*-
+# packages.list - list of packages for use with gpg4win    -*- sh -*-
 #
 # The download script processes the statements here to
 # actually download the packages.  The syntax is trivial:

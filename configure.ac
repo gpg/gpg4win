@@ -587,11 +587,7 @@ fi
 # docker.  See also GPG4WIN_PACKAGES.
 packages_dirpfx=
 test -f /src/packages/BUILDTYPE && packages_dirpfx=/src/
-packages_files=${packages_dirpfx}packages/packages.common
-for f in ${packages_dirpfx}packages/packages.3 \
-         ${packages_dirpfx}packages/packages.4 ; do
-    test -f "$f" && packages_files="$packages_files $f"
-done
+packages_files=${packages_dirpfx}packages/packages.list
 if test -n "$gpg4win_dup_sources"; then
     tmp=
     for i in $gpg4win_dup_sources; do

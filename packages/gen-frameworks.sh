@@ -127,7 +127,7 @@ chk ${sha2}
 EOF
 
 perl -i -p0e "s@# ${fw}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
-'@se" packages.common
+'@se" packages.list
 done
 
 rm -r $tmpdir

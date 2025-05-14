@@ -152,7 +152,7 @@ WGET="wget $ipvx"
 # fi
 #fi
 
-packages="packages.common"
+packages="packages.list"
 
 
 lnr=0
