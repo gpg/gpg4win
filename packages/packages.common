@@ -654,6 +654,17 @@ chk da206e53e12dbf93809b276cf4eda89fbe85ea4968df8adf7e14ac8f54161492
 #
 # mimetreeparser
 #
+if gnupg != gnupg22
+
+# mimetreeparser
+# last changed: 2025-03-11
+# by: carl
+# verified: Tarball created by carl.
+file mimetreeparser/mimetreeparser-202503111152.tar.xz
+chk af8336ed42f50d5fe51679438ac659e70105bbc44f62fb779d50721f96024e90
+
+fi # !gnupg22 - mimetreeparser
+
 if gnupg = gnupg22
 
 # mimetreeparser
@@ -665,16 +676,6 @@ chk 03f168008d9d8a7b37b23b8ce429fecd2c2798b41be571b699e536942029d8d3
 
 fi #gnupg22
 
-if gnupg != gnupg22
-
-# mimetreeparser
-# last changed: 2025-03-11
-# by: carl
-# verified: Tarball created by carl.
-file mimetreeparser/mimetreeparser-202503111152.tar.xz
-chk af8336ed42f50d5fe51679438ac659e70105bbc44f62fb779d50721f96024e90
-
-fi # !gnupg22 - mimetreeparser
 
 #
 # Gpgpass  - not stable enough for vsd
@@ -694,7 +695,8 @@ fi # gnupg22 - gpgpass
 #
 # Okular and dependencies
 #
-if gnupg = gnupg22
+
+if gnupg != gnupg22
 
 # poppler
 # last changed: 2025-05-08
@@ -710,25 +712,29 @@ chk 1a04ff56ae646f91c3ed5a7a301d6a4ddb33ebfe141fb5aecf6965e429614b56
 file okular/okular-202505081551.tar.xz
 chk 9d713f46191136e843f884a9411ce082c076a7b1700bdc0e954b5d408fa79e73
 
-fi # gnupg22 - Okular et al.
+fi # !gnupg22 - Current Okular et al.
 
-if gnupg != gnupg22
+# And here comes the old poppler version as used by vsd 3.3.  This
+# comes after the current version due to the way the gen-tarball.sh
+# implements its --auto option.
+if gnupg = gnupg22
 
+# Okular and dependencies
 # poppler
-# last changed: 2025-03-10
-# by: carl
-# verified: Tarball created by carl.
-file poppler/poppler-202503101125.tar.xz
-chk e4b18e4e829b62587e3d24d065702d6be69f5f07397bfbdff66ef4b4e6dc6bbc
+# last changed: 2023-09-08
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file poppler/poppler-202309080910.tar.xz
+chk 2ca1273a6ef9ce00e9bc886b0864ef02b88f4df2525922e1ac322ce7360e6621
 
 # okular
-# last changed: 2025-03-10
-# by: carl
-# verified: Tarball created by carl.
-file okular/okular-202503101125.tar.xz
-chk 67d2121f39d106348be2c72de335a89ba81f4e49c6c65e8136dae5a06f833cf0
+# last changed: 2023-11-22
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file okular/okular-202311221749.tar.xz
+chk 205df68c183900a1b21d1381d9a3d7554a642fa6dd3ef7e9bc5bbcfcd0aa8f1b
 
-fi # !gnupg22 - Okular et al.
+fi # gnupg22 - Legacy Okular
 
 
 #
