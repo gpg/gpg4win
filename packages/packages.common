@@ -560,11 +560,11 @@ chk bd4b9011453b2d5ee25180f835c49b8078d5fbb8ea49988ce7e81981c7fde786
 
 
 # gpg4win-tools
-# last changed: 2025-01-22
+# last changed: 2025-05-14
 # by: builder
 # verified: Tarball created by builder.
-file gpg4win-tools/gpg4win-tools-202501221112.tar.xz
-chk 714ba3499b7d217d10ffcb8aa3acd8c6f2c344d74b757acdc4dc0c05a7b0dc70
+file gpg4win-tools/gpg4win-tools-202505141721.tar.xz
+chk 9a5bfc4f32915f28936b0650f7195e35feba9bbd836eda5be7c9e37bbe44df99
 
 
 # Disabled - not ready for a release on Windows.
@@ -587,15 +587,15 @@ chk 03f168008d9d8a7b37b23b8ce429fecd2c2798b41be571b699e536942029d8d3
 # last changed: 2025-05-14
 # by: builder
 # verified: Tarball created by builder.
-file libkleo/libkleo-202505141705.tar.xz
-chk f4defe02568dc3150d2c88a8995b52b27b751f6045fca24e4709117b933ae935
+file libkleo/libkleo-202505141720.tar.xz
+chk c0058af035886d82ccf8e403d46c11fcdca8c1fb0a5e51b472fb820bff7de200
 
 # kleopatra
 # last changed: 2025-05-14
 # by: builder
 # verified: Tarball created by builder.
-file kleopatra/kleopatra-202505141705.tar.xz
-chk 056d4901cdccb3363f05fe782fb414ea745c2ab80e567588f9174e5bcfa5fee9
+file kleopatra/kleopatra-202505141721.tar.xz
+chk a93c2500c08961e401c86fb59dedbbf0023c04fb46e8141dac8de36e38f9a545
 
 # Okular and dependencies
 # poppler
