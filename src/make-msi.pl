@@ -809,7 +809,11 @@ sub gpg4win_nsis_stubs
 
             my $outpath = $args[0];
             #       if (not $outpath =~ s/^"\$INSTDIR\\?(.*)"$/$1/)
-            if ($outpath =~ m/^"\$INSTDIR\\?(.*)"$/)
+            if ($outpath =~ m/^"\$INSTDIR\\\$\{EX_BINDIR\}"$/)
+            {
+                $parser->{outpath} = ($::win64 eq 'yes')? "bin_32" : "bin_64";
+            }
+            elsif ($outpath =~ m/^"\$INSTDIR\\?(.*)"$/)
             {
                 $parser->{outpath} = $1;
             }
@@ -1234,23 +1238,50 @@ sub dump_all
                 . "<Component Win64='yes' Id='c_$pkg->{name}_$fileidx' Guid='"
                 . get_guid ($targetfull) . "'>\n";
             }
-            else # 32 bit components
-            {
+            elsif ($targetfull eq 'bin_32\\gpgol.dll' or
+                $targetfull eq 'bin_32\\gpgex.dll')
+            {   # 32 bit components
                 print ' ' x $::level
                 . "<Component Win64='no' Id='c_$pkg->{name}_$fileidx' Guid='"
+                . get_guid ($targetfull) . "'>\n";
+            }
+            else # Component bitness depending on Candle's -arch option.
+            {
+                print ' ' x $::level
+                . "<Component Win64=\"$::win64\" Id='c_$pkg->{name}_$fileidx' Guid='"
                 . get_guid ($targetfull) . "'>\n";
             }
 
             my $sourcefull;
             $sourcefull = $file->{source};
-            $sourcefull =~ s/playground\/install-ex/\$(var.InstDirEx)/;
-            $sourcefull =~ s/playground\/install/\$(var.InstDir)/;
-            $sourcefull =~ s/\.\//\$(var.SrcDir)\//;
-            $sourcefull =~ s/\//\\/g;
+            # print STDERR "dump_all: file{source}='$sourcefull'\n";
+
+
+            if ($sourcefull =~ /^\.\.\/install/ )
+            {
+                $sourcefull =~ s,^\.\./install-ex/,\$(var.InstDirEx)/,;
+                $sourcefull =~ s,^\.\./install/,\$(var.InstDir)/,;
+            }
+            elsif ($sourcefull =~ /^\/src\// )
+            {
+                $sourcefull =~ s,^/src/,\$(var.SrcDir)/,;
+            }
+            elsif ($sourcefull =~ /^\/build\// )
+            {
+                $sourcefull =~ s,^/build/,\$(var.BldDir)/,;
+            }
+            else
+            {
+                $sourcefull =~ s,^\./,\$(var.BldDir)/src/,;
+                $sourcefull =~ s,^\.\./,\$(var.BldDir)/,;
+            }
+            $sourcefull =~ s,/,\\,g;
+
             print ' ' x $::level
             . "  <File Id='f_$pkg->{name}_$fileidx' Name='"
             . $file->{target} ."' KeyPath='yes'" . " Source='" .
             $sourcefull . "'";
+            # print STDERR "dump_all:       result='$sourcefull'\n";
 
             if ($targetfull eq 'bin_64\\gpgol.dll' or
                 $targetfull eq 'bin_64\\gpgex.dll')
@@ -1414,7 +1445,7 @@ EOF
             }
 
             print ' ' x $::level
-            . "<Component Win64='yes' Id='c_$pkg->{name}_r_$regidx' Guid='"
+            . "<Component Win64=\"$::win64\" Id='c_$pkg->{name}_r_$regidx' Guid='"
             . get_guid ($target) . "' KeyPath='yes'>\n";
             print ' ' x $::level
             . "  <RegistryValue Id='r_$pkg->{name}_$regidx' Root='"
@@ -1550,7 +1581,7 @@ sub dump_all2
             . " Display='hidden' InstallDefault='followParent'>\n"
             . "  <Condition Level='1'>DEFAULT_ALL_SMIME = \"true\"</Condition>\n"
             . "  <Condition Level='1000'>DEFAULT_ALL_SMIME = \"false\"</Condition>\n"
-            . "  <Component Win64='yes' Id='DefaultSmimeExt' Guid='9B63C4D2-50F1-4747-8D79-0621130B7318' KeyPath='yes' Directory='APPLICATIONFOLDER'>\n"
+            . "  <Component Win64=\"$::win64\" Id='DefaultSmimeExt' Guid='9B63C4D2-50F1-4747-8D79-0621130B7318' KeyPath='yes' Directory='APPLICATIONFOLDER'>\n"
             . "      <RegistryValue Id='r_kleopatra_default' Root='HKMU' Key='Software\\Classes\\gpg4win.AssocFile.Kleopatra.X509' Name='AllowSilentDefaultTakeOver' Action='write' Type='binary' Value='1'/>\n"
             . "      <RegistryValue Id='r_kleopatra_cer' Root='HKMU' Key='Software\\Classes\\.cer\\OpenWithProgIDs' Name='gpg4win.AssocFile.Kleopatra.X509'  Action='write' Type='binary' Value='0'/>\n"
             . "      <RegistryValue Id='r_kleopatra_cer_o' Root='HKMU' Key='Software\\Classes\\CERFile\\shell\\open\\command'  Action='write' Type='expandable' Value='\"[APPLICATIONFOLDER]bin\\kleopatra.exe\" -- \"%1\"'/>\n"
@@ -1581,7 +1612,7 @@ sub dump_all2
             . " Display='hidden' InstallDefault='followParent'>\n"
             . "  <Condition Level='1'>AUTOSTART= \"true\"</Condition>\n"
             . "  <Condition Level='1000'>AUTOSTART= \"false\"</Condition>\n"
-            . "  <Component Id='KleoAutostartRegKey' Guid='6520AE4C-E588-4CC9-B433-102F35C95B74' Directory='APPLICATIONFOLDER'>\n"
+            . "  <Component Win64=\"$::win64\" Id='KleoAutostartRegKey' Guid='6520AE4C-E588-4CC9-B433-102F35C95B74' Directory='APPLICATIONFOLDER'>\n"
             . "  <RegistryValue Root='HKMU' Key='Software\\Microsoft\\Windows\\CurrentVersion\\Run' Name='Kleopatra'\n"
             . "    Type='string' Value='[APPLICATIONFOLDER]bin\\kleopatra.exe --daemon' KeyPath='yes'/>\n"
             . "  </Component>\n"
@@ -1593,10 +1624,10 @@ sub dump_all2
             print <<EOF;
             <Feature Id='p_gpgol_autoload' Title='p_gpgol_autoload' Level='1' Display='hidden' InstallDefault='followParent'>
               <Condition Level='1000'>INST_GPGOL=\"inactive\"</Condition>
-              <Component Id='GpgOLActivateRegKey' Win64='yes' Guid='87765E51-3902-41F8-B624-4CCEBC731A13' Directory='APPLICATIONFOLDER'>
+              <Component Win64=\"$::win64\" Id='GpgOLActivateRegKey' Guid='87765E51-3902-41F8-B624-4CCEBC731A13' Directory='APPLICATIONFOLDER'>
                 <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="LoadBehavior" Value="3" Type="integer" Action="write" />
               </Component>
-              <Component Id='GpgOLActivateRegKey_32' Win64='no' Guid='87765E51-3902-41F8-B624-4CCEBC731A14' Directory='APPLICATIONFOLDER'>
+              <Component Win64=\"$::win64\" Id='GpgOLActivateRegKey_32' Guid='87765E51-3902-41F8-B624-4CCEBC731A14' Directory='APPLICATIONFOLDER'>
                 <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="LoadBehavior" Value="3" Type="integer" Action="write" />
               </Component>
             </Feature>
@@ -1629,6 +1660,10 @@ EOF
     }
 }
 
+
+# Scan the provided directory and return an array with all file names.
+# Also modify the absolute directory by replacing /build by /src and
+# do a listing there too.
 sub scan_dir {
     my ($workdir) = @_;
 
@@ -1637,6 +1672,9 @@ sub scan_dir {
     my ($startdir) = &cwd; # keep track of where we began
 
     chdir($workdir) or die "Unable to enter dir $workdir:$!\n";
+    my ($workdir2) = &cwd;
+    $workdir2 =~ s,/build/,/src/,;
+
     opendir(DIR, ".") or die "Unable to open $workdir:$!\n";
     my @names = readdir(DIR) or die "Unable to read $workdir:$!\n";
     closedir(DIR);
@@ -1656,6 +1694,27 @@ sub scan_dir {
         push (@ret, $abspath);
     }
 
+    chdir($workdir2) or die "Unable to enter dir $workdir2:$!\n";
+
+    opendir(DIR, ".") or die "Unable to open $workdir2:$!\n";
+    @names = readdir(DIR) or die "Unable to read $workdir2:$!\n";
+    closedir(DIR);
+
+    foreach my $name (@names){
+        next if ($name eq ".");
+        next if ($name eq "..");
+
+        my $abspath = "$workdir2/$name";
+
+        if (-d "$abspath") {
+            foreach my $subname (&scan_dir($name)) {
+                push (@ret, $subname);
+            }
+            next;
+        }
+        push (@ret, $abspath);
+    }
+
     chdir($startdir) or
         die "Unable to change to dir $startdir:$!\n";
     return @ret;
@@ -1665,26 +1724,37 @@ sub dump_help {
     my ($workdir) = @_;
     my $custom_name = basename($workdir);
     open (FILE, ">$workdir/$custom_name.wxs") or
-        die "Can't create $custom_name.wxs:$!\n";
+        die "Can't create $workdir/$custom_name.wxs:$!\n";
     my $fileidx = 0;
+
+    print STDERR "dump_help: workdir='$workdir' custom_name='$custom_name'\n";
 
     foreach my $file (&scan_dir($workdir)) {
         my $basename = basename($file);
         my $dirname = "HelpDataFolder";
+        my $sourcefull;
 
         if ($basename =~ /^\./) {
             next;
         }
 
         my $guid = get_tmp_guid ($file);
-        my $sourcefull = "\$(var.SrcDir)/" . $file;
-        $sourcefull =~ s/.*\/src\//\$(var.SrcDir)\//;
-        $sourcefull =~ s/\//\\/g;
+
+        $sourcefull = $file;
+        if ($file =~ /^\/src\// )
+        {
+            $sourcefull =~ s,^/src/,\$(var.SrcDir)/,;
+        }
+        else
+        {
+            $sourcefull =~ s,^/build/,\$(var.BldDir)/,;
+        }
+        $sourcefull =~ s,/,\\,g;
 
         my $custom_name_us=$custom_name;
         $custom_name_us =~ s/-/_/;
 
-        print FILE ' ' x 6 . '<Component Id="c_' . $custom_name_us . "_" . $fileidx
+        print FILE ' ' x 6 . '<Component Win64="' . $::win64 . '" Id="c_' . $custom_name_us . "_" . $fileidx
         . '" Directory="' . $dirname . '" Guid="' . $guid . '" KeyPath="yes">' . "\n";
 
         print FILE ' ' x 8
@@ -1696,6 +1766,7 @@ sub dump_help {
 
         $fileidx += 1;
     }
+
     close FILE;
 }
 
@@ -1706,6 +1777,9 @@ sub dump_single_custom {
 
     $fname = "$workdir/$custom_name.wxs";
     open (FILE, ">$fname" ) or die "creating '$fname' failed: $!\n";
+
+    # print STDERR "dump_single: workdir='$workdir' custom_name='$custom_name'\n";
+
     print FILE <<EOF;
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
@@ -1726,12 +1800,14 @@ sub dump_single_custom {
    <Fragment>
     <ComponentGroup Id="c_customization">
 EOF
+
    print STDERR "Including: help or desktop-help\n";
    if ($::product_name eq 'GnuPG Desktop') {
        $fname =  "$workdir/../desktop-help/desktop-help.wxs";
    } else {
        $fname =  "$workdir/../help/help.wxs";
    }
+
    open (INCFILE, "<$fname") or die "open '$fname' failed: $!\n";
    while (<INCFILE>)
    {
@@ -1744,6 +1820,7 @@ EOF
     foreach my $file (&scan_dir($workdir)) {
         my $basename = basename($file);
         my $dirname = dirname($file);
+        my $sourcefull;
 
         if ($basename eq "$custom_name.wxs") {
             next;
@@ -1770,8 +1847,8 @@ EOF
         }
 
         if ($basename =~ /.+\.wxs\.include$/) {
-           print STDERR "Including $basename for $custom_name\n";
-           $fname = "$workdir/$basename";
+           print STDERR "Including: $basename for $custom_name\n";
+           $fname = "$::vsddir/$workdir/$basename";
            open (INCFILE, "<$fname") or die "open '$fname' failed: $!\n";
            while (<INCFILE>)
            {
@@ -1781,9 +1858,24 @@ EOF
         }
 
         my $guid = get_tmp_guid ($file);
-        my $sourcefull = "\$(var.SrcDir)/" . $file;
-        $sourcefull =~ s/.*\/src\//\$(var.SrcDir)\//;
-        $sourcefull =~ s/\//\\/g;
+
+        $sourcefull = $file;
+        if ($file =~ /^\/src\// )
+        {
+            $sourcefull =~ s,^/src/,\$(var.SrcDir)/,;
+        }
+        elsif ($file =~ /^\/build\// )
+        {
+            $sourcefull =~ s,^/build/,\$(var.BldDir)/,;
+        }
+        else
+        {
+            $sourcefull =~ s,.*/src/,\$(var.BldDir)/,;
+        }
+        $sourcefull =~ s,/,\\,g;
+        # print STDERR "dump_single_custom:   file='$file' fullsrc='$sourcefull'\n";
+
+
         my $mode = "";
 
         if ($dirname =~ /trusted-certs$/) {
@@ -1810,7 +1902,7 @@ EOF
         my $custom_name_us=$custom_name;
         $custom_name_us =~ s/-/_/;
 
-        print FILE ' ' x 6 . '<Component Id="c_' . $custom_name_us . "_" . $fileidx
+        print FILE ' ' x 6 . '<Component Win64="' . $::win64 . '" Id="c_' . $custom_name_us . "_" . $fileidx
         . '" Directory="' . $dirname . '" Guid="' . $guid . '" KeyPath="yes">' . "\n";
 
         print FILE ' ' x 8
@@ -1894,6 +1986,11 @@ fetch_guids ();
 
 $::build_version = '';
 $::product_name = '';
+$::win64 = 'no';
+$::platform = 'x86';
+$::pfilesfolder = 'ProgramFilesFolder';
+$::instdirkey = '';
+$::instdirname = "Install Directory";
 
 while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
 {
@@ -1928,6 +2025,12 @@ while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
             exit 1;
         }
     }
+    elsif ($opt =~ m/^--win64$/)
+    {
+        $::win64 = 'yes';
+        $::platform = 'x64';
+        $::pfilesfolder = 'ProgramFiles64Folder';
+    }
     elsif ($opt eq '--usage')
     {
         print STDERR "Usage: $0 [-DNAME=VALUE...] NSIFILE\n";
@@ -1945,6 +2048,7 @@ while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
         print STDERR "       -LLANG           Build installer for language LANG (default: $::lang)\n";
         print STDERR "       --version        VERSION of the installer.\n";
         print STDERR "       --name           Product name to use in the installer.\n";
+        print STDERR "       --win64          Create for 64 bit Windows.\n";
         print STDERR "\n";
         print STDERR "       -h|--help        Print this help and exit\n";
         exit 0;
@@ -1957,6 +2061,23 @@ while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
         exit 1;
     }
 }
+
+if ($::win64 eq 'yes' && $::product_name eq 'GnuPG VS-Desktop')
+{
+    $::instdirkey = "Software\\GnuPG";
+    $::instdirname = "VSD Install Directory";
+}
+elsif ($::win64 eq 'yes')
+{
+    $::instdirkey = "Software\\GnuPG";
+}
+else
+{
+    # Legacy values
+    $::instdirkey = "Software\\Gpg4win";
+}
+
+$::vsddir = nsis_fetch ($parser, 'VSDDIR');
 
 dump_customs("gnupg-vsd");
 
@@ -2015,6 +2136,21 @@ my $lcid = lang_to_lcid ($::lang);
 # Replacement regex for components:
 # :'<,'>s/.*Component: \(.*\) does not.*/      <ComponentRef Id=\1 \/>/
 
+
+# Some hints
+#
+# The [foo] thingies in the XML are described at
+# https://learn.microsoft.com/en-us/windows/win32/msi/formatted
+#
+# Mapping of versions to variables.
+#  | Var name      | Option name | Remark              |
+#  |---------------+-------------+---------------------|
+#  | product_name  | --name      |                     |
+#  | product_id    | --version   | with '_' prefix     |
+#  | build_version | --version   |                     |
+#  | upgrade_code  |             | GUID of "UPGRADE/1" |
+#  | lcid          | -L<lang>    | Default is "en"     |
+#
 print <<EOF;
 <?xml version='1.0'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
@@ -2027,9 +2163,10 @@ print <<EOF;
            Version='$::build_version'
            Manufacturer='GnuPG.com'>
     <Package Description='$::product_name'
-             Comments='http://www.gnupg.com/'
+             Comments='https://gnupg.com/'
              Compressed='yes'
              InstallerVersion='200'
+             Platform="$::platform"
              Manufacturer='GnuPG.com'
              Languages='1033'
              SummaryCodepage='1252'/>
@@ -2052,14 +2189,26 @@ print <<EOF;
 
     <Property Id="ApplicationFolderName" Value="$::product_name" />
     <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+EOF
 
+# The following is according to
+# https://stackoverflow.com/questions/5479790/wix-how-to-override-c-program-files-x86-on-x64-machine-in-wixui-advanced-s
+#
+($::win64 eq 'yes') && print <<EOF;
+    <SetDirectory Id="APPLICATIONFOLDER"
+               Value="[$::pfilesfolder][ApplicationFolderName]"
+                    >APPLICATIONFOLDER=""</SetDirectory>
+EOF
+
+print <<EOF;
     <Property Id="APPLICATIONFOLDER">
       <RegistrySearch Id='gpg4win_instdir_registry' Type='raw'
-       Root='HKLM' Key='Software\\Gpg4win' Name='Install Directory'/>
+       Root='HKLM' Key="$::instdirkey" Name="$::instdirname" />
       <IniFileSearch Id='gpg4win_instdir_ini' Type='raw'
        Name='gpg4win.ini' Section='gpg4win' Key='instdir'/>
     </Property>
 
+    <!-- NB. Here we cannot use $::instdirkey and ...name  -->
     <Property Id="GPG4WININSTALLED">
       <RegistrySearch Id='gpg4win_instdir_registry2' Type='raw'
        Root='HKLM' Key='Software\\Gpg4win' Name='Install Directory'
@@ -2072,14 +2221,30 @@ print <<EOF;
        Win64='no'/>
     </Property>
 
+    <Property Id="VSD64INSTALLED">
+      <RegistrySearch Id='vsd64installed' Type='raw'
+       Root='HKLM' Key='Software\\GnuPG' Name='VSD Install Directory'
+       Win64='no'/>
+    </Property>
+
+EOF
+
+# Only for 32bit: Do not show the note to uninstall gpg4win if an old
+#                 32 bit VSD is already installed or if gpg4win is not
+#                 installed.
+($::win64 ne 'yes') && print <<EOF;
     <Condition Message="!(loc.gpg4winInstalled)">
         <![CDATA[VSDINSTALLED OR (NOT GPG4WININSTALLED)]]>
     </Condition>
+EOF
 
-    <!-- Turn on logging
+print <<EOF;
+    <!-- Uncomment to turn on logging
         <Property Id="MsiLogging" Value="gnupg-desktop"/>
     -->
-    <Icon Id="shield.ico" SourceFile="icons/shield.ico"/>
+
+    <Icon Id="shield.ico" SourceFile="\$(var.SrcDir)/src/icons/shield.ico"/>
+    <!-- FWIW: "ARP" stands for "Add/Remove Programs" -->
     <Property Id="ARPPRODUCTICON" Value="shield.ico"/>
 
     <WixVariable Id="WixUIBannerBmp" Value="header.bmp" />
@@ -2088,12 +2253,15 @@ print <<EOF;
     <WixVariable Id="WixUIInfoBmp" Value="info.bmp" />
 
     <Property Id="ARPHELPLINK" Value="https://gnupg.com" />
-    <!-- We leave repair Property Id="ARPNOREPAIR" Value="yes" Secure="yes" /> -->
-    <!-- We leave modify <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" /> -->
+    <!--
+         We leave repair <Property Id="ARPNOREPAIR" Value="yes" Secure="yes" />
+         We leave modify <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" />
+     -->
 
     <!-- We allow Downgrades
-    <MajorUpgrade DowngradeErrorMessage="!(loc.T_FoundExistingVersion)" AllowDowngrades="yes" AllowSameVersionUpgrades="yes" />
-    -->
+         <MajorUpgrade DowngradeErrorMessage="!(loc.T_FoundExistingVersion)"
+                       AllowDowngrades="yes" AllowSameVersionUpgrades="yes" />
+     -->
     <MajorUpgrade AllowDowngrades="yes"/>
 
     <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
@@ -2111,38 +2279,64 @@ print <<EOF;
          during an upgrade but not actually reinstalled.
          https://stackoverflow.com/questions/70882621/msi-with-wix-setting-reinstallmode-amus-triggers-lght1076-ice40-reinstallm
     -->
-    <SetProperty Id="REINSTALLMODE" Value="amus" Before="FindRelatedProducts" Sequence="first">NOT REINSTALLMODE</SetProperty>
+    <SetProperty Id="REINSTALLMODE" Value="amus"
+             Before="FindRelatedProducts"
+           Sequence="first">NOT REINSTALLMODE</SetProperty>
 
-    <!-- This is the main installer sequence run when the product is actually installed -->
-    <InstallExecuteSequence>
+    <!-- This is the main installer sequence run when the product is
+         actually installed -->
 
-       <!-- Determine the install location after the install path has been validated by the installer -->
-       <Custom Action="SetARPINSTALLLOCATION" After="InstallValidate"></Custom>
+    <CustomAction Id="OverwriteWixSetDefaultPerMachineFolder"
+            Property="WixPerMachineFolder"
+               Value="[APPLICATIONFOLDER]"
+             Execute="immediate"
+    />
 
-    </InstallExecuteSequence>
+    <CustomAction Id="SetARPINSTALLLOCATION"
+            Property="ARPINSTALLLOCATION"
+               Value="[APPLICATIONFOLDER]" />
 
-    <!-- Set up ARPINSTALLLOCATION property (http://blogs.technet.com/b/alexshev/archive/2008/02/09/from-msi-to-wix-part-2.aspx) -->
-    <CustomAction Id="SetARPINSTALLLOCATION" Property="ARPINSTALLLOCATION" Value="[APPLICATIONFOLDER]" />
+    <!-- Save the command line value INSTALLDIR and restore it later
+         in the sequence or it will be overwritten by the value saved
+         to the registry during an upgrade
+         (http://robmensching.com/blog/posts/2010/5/2/the-wix-toolsets-remember-property-pattern/)
+      -->
+    <CustomAction Id='SaveCmdLineValueINSTALLDIR'
+            Property='CMDLINE_INSTALLDIR'
+               Value='[APPLICATIONFOLDER]'
+             Execute='firstSequence' />
+    <CustomAction Id='SetFromCmdLineValueINSTALLDIR'
+            Property='INSTALLDIR'
+               Value='[CMDLINE_INSTALLDIR]'
+             Execute='firstSequence' />
 
-    <!-- Save the command line value INSTALLDIR and restore it later in the sequence or it will be overwritten by the value saved to the registry during an upgrade -->
-    <!-- http://robmensching.com/blog/posts/2010/5/2/the-wix-toolsets-remember-property-pattern/ -->
-    <CustomAction Id='SaveCmdLineValueINSTALLDIR' Property='CMDLINE_INSTALLDIR' Value='[APPLICATIONFOLDER]' Execute='firstSequence' />
-    <CustomAction Id='SetFromCmdLineValueINSTALLDIR' Property='INSTALLDIR' Value='[CMDLINE_INSTALLDIR]' Execute='firstSequence' />
     <InstallUISequence>
-       <Custom Action='SaveCmdLineValueINSTALLDIR' Before='AppSearch' />
-       <Custom Action='SetFromCmdLineValueINSTALLDIR' After='AppSearch'>
-          CMDLINE_INSTALLDIR
-       </Custom>
+       <Custom Action="OverwriteWixSetDefaultPerMachineFolder"
+                After="WixSetDefaultPerMachineFolder" />
+       <Custom Action='SaveCmdLineValueINSTALLDIR'
+               Before='AppSearch' />
+       <Custom Action='SetFromCmdLineValueINSTALLDIR'
+                After='AppSearch'
+                    >CMDLINE_INSTALLDIR</Custom>
     </InstallUISequence>
+
     <InstallExecuteSequence>
-       <Custom Action='SaveCmdLineValueINSTALLDIR' Before='AppSearch' />
-       <Custom Action='SetFromCmdLineValueINSTALLDIR' After='AppSearch'>
-          CMDLINE_INSTALLDIR
-       </Custom>
+       <Custom Action="OverwriteWixSetDefaultPerMachineFolder"
+                After="WixSetDefaultPerMachineFolder" />
+       <!-- Determine the install location after the install path has
+            been validated by the installer -->
+       <Custom Action="SetARPINSTALLLOCATION"
+                After="InstallValidate" />
+       <Custom Action='SaveCmdLineValueINSTALLDIR'
+               Before='AppSearch' />
+       <Custom Action='SetFromCmdLineValueINSTALLDIR'
+                After='AppSearch'
+                    >CMDLINE_INSTALLDIR</Custom>
     </InstallExecuteSequence>
 
     <Property Id="INSTALLDIR">
-      <RegistrySearch Win64='no' Id="DetermineInstallLocation" Type="raw" Root="HKLM" Key="Software\\Gpg4win" Name="Install Directory" />
+      <RegistrySearch Win64='no' Id="DetermineInstallLocation" Type="raw"
+           Root="HKLM" Key="$::instdirkey" Name="$::instdirname" />
     </Property>
 
     <Property Id="INST_DESKTOP">
@@ -2167,81 +2361,120 @@ print <<EOF;
 
     <Property Id="MODE">default</Property>
 
-    <!-- Kill processes on update that don't listen to Window Messages.
-    This makes the package less descriptive
-    but should smooth out the update process for most. -->
+    <!-- Kill processes on update that do not listen to Window Messages.
+         This makes the package less descriptive
+         but should smooth out the update process for most.
+      -->
 
     <!-- We need to set the property accordingly so ICE does not error out -->
     <Property Id="TASKKILLFILEPATH" Value="taskkill"/>
-    <CustomAction Id='SetTASKKILLFILEPATH32' Property='TASKKILLFILEPATH' Value='[SystemFolder]\\taskkill.exe' Return='check' />
-    <CustomAction Id='SetTASKKILLFILEPATH64' Property='TASKKILLFILEPATH' Value='[System64Folder]\\taskkill.exe' Return='check' />
+    <CustomAction Id='SetTASKKILLFILEPATH32' Property='TASKKILLFILEPATH'
+             Value='[SystemFolder]\\taskkill.exe' Return='check' />
+    <CustomAction Id='SetTASKKILLFILEPATH64' Property='TASKKILLFILEPATH'
+             Value='[System64Folder]\\taskkill.exe' Return='check' />
     <Property Id="WixQuietExecCmdLine" Value='foo'/>
 
-    <!-- Okular is not included here because it handles the window message and might
-    ask the user to save some open work or modifications when closed through a window
-    message. -->
+    <!-- Note that Okular is not included here because it handles the
+         window message and might ask the user to save some open work
+         or modifications when closed through a window message.  -->
+
+    <!-- Although Kleopatra responds nicely to being killed by the MSI
+         installer we need to kill it first so it does not restart the
+         background processes. We also kill gpg and gpgsm in case
+         there are some running processes from other users on the
+         system. -->
+
+    <CustomAction Id="PrepareKillKleo" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM kleopatra.exe'/>
+    <CustomAction Id="TaskKillKleo" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+
+    <CustomAction Id="PrepareKillGPG" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM gpg.exe'/>
+    <CustomAction Id="TaskKillGPG" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+
+    <CustomAction Id="PrepareKillGPGSM" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM gpgsm.exe'/>
+    <CustomAction Id="TaskKillGPGSM" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+
+    <CustomAction Id="PrepareKillAgent" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM gpg-agent.exe'/>
+    <CustomAction Id="TaskKillAgent" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+
+    <CustomAction Id="PrepareKillDirmngr" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM dirmngr.exe'/>
+    <CustomAction Id="TaskKillDirmngr" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+
+    <CustomAction Id="PrepareKillKeyboxd" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM keyboxd.exe'/>
+    <CustomAction Id="TaskKillKeyboxd" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+
+    <!-- Well the next thing should have been handled by killing the
+         agent but you never know.  -->
+    <CustomAction Id="PrepareKillScd" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM scdaemon.exe'/>
+    <CustomAction Id="TaskKillScd" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
 
 
-    <!-- Although Kleopatra responds nicely to being killed by the
-         MSI installer we need to kill it first so it does not restart
-         the background processes. We also kill gpg and gpgsm in case
-         there are some running processes from other users on the system. -->
-    <CustomAction Id="PrepareKillKleo" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM kleopatra.exe'/>
-    <CustomAction Id="TaskKillKleo" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+    <CustomAction Id="PrepareKillKleoDeferred" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM kleopatra.exe'/>
+    <CustomAction Id="TaskKillKleoDeferred" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
 
-    <CustomAction Id="PrepareKillGPG" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM gpg.exe'/>
-    <CustomAction Id="TaskKillGPG" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+    <CustomAction Id="PrepareKillGPGDeferred" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM gpg.exe'/>
+    <CustomAction Id="TaskKillGPGDeferred" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
 
-    <CustomAction Id="PrepareKillGPGSM" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM gpgsm.exe'/>
-    <CustomAction Id="TaskKillGPGSM" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+    <CustomAction Id="PrepareKillGPGSMDeferred" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM gpgsm.exe'/>
+    <CustomAction Id="TaskKillGPGSMDeferred" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
 
-    <CustomAction Id="PrepareKillAgent" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM gpg-agent.exe'/>
-    <CustomAction Id="TaskKillAgent" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+    <CustomAction Id="PrepareKillAgentDeferred" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM gpg-agent.exe'/>
+    <CustomAction Id="TaskKillAgentDeferred" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
 
-    <CustomAction Id="PrepareKillDirmngr" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM dirmngr.exe'/>
-    <CustomAction Id="TaskKillDirmngr" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+    <CustomAction Id="PrepareKillDirmngrDeferred" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM dirmngr.exe'/>
+    <CustomAction Id="TaskKillDirmngrDeferred" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
 
-    <!-- Well this should have been handled by killing the agents but you never know. -->
-    <CustomAction Id="PrepareKillScd" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM scdaemon.exe'/>
-    <CustomAction Id="TaskKillScd" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
+    <CustomAction Id="PrepareKillKeyboxdDeferred" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM keyboxd.exe'/>
+    <CustomAction Id="TaskKillKeyboxdDeferred" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
 
-    <CustomAction Id="PrepareKillKeyboxd" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM keyboxd.exe'/>
-    <CustomAction Id="TaskKillKeyboxd" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="immediate" Return="ignore"/>
-
-
-    <CustomAction Id="PrepareKillKleoDeferred" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM kleopatra.exe'/>
-    <CustomAction Id="TaskKillKleoDeferred" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
-
-    <CustomAction Id="PrepareKillGPGDeferred" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM gpg.exe'/>
-    <CustomAction Id="TaskKillGPGDeferred" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
-
-    <CustomAction Id="PrepareKillGPGSMDeferred" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM gpgsm.exe'/>
-    <CustomAction Id="TaskKillGPGSMDeferred" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
-
-    <CustomAction Id="PrepareKillAgentDeferred" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM gpg-agent.exe'/>
-    <CustomAction Id="TaskKillAgentDeferred" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
-
-    <CustomAction Id="PrepareKillDirmngrDeferred" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM dirmngr.exe'/>
-    <CustomAction Id="TaskKillDirmngrDeferred" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
-
-    <!-- Well this should have been handled by killing the agents but you never know. -->
-    <CustomAction Id="PrepareKillScdDeferred" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM scdaemon.exe'/>
-    <CustomAction Id="TaskKillScdDeferred" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
-
-    <CustomAction Id="PrepareKillKeyboxdDeferred" Property="WixQuietExecCmdLine" Value='"[TASKKILLFILEPATH]" /F /IM keyboxd.exe'/>
-    <CustomAction Id="TaskKillKeyboxdDeferred" BinaryKey="WixCA" DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
+    <CustomAction Id="PrepareKillScdDeferred" Property="WixQuietExecCmdLine"
+            Value='"[TASKKILLFILEPATH]" /F /IM scdaemon.exe'/>
+    <CustomAction Id="TaskKillScdDeferred" BinaryKey="WixCA"
+            DllEntry="WixQuietExec" Execute="deferred" Return="ignore"/>
 
     <InstallExecuteSequence>
-        <Custom Action='SetTASKKILLFILEPATH64' After='AppSearch'>VersionNT64</Custom>
-        <Custom Action='SetTASKKILLFILEPATH32' After='AppSearch'>Not VersionNT64</Custom>
 
+        <Custom Action='SetTASKKILLFILEPATH64'
+             After='AppSearch'>VersionNT64</Custom>
+        <Custom Action='SetTASKKILLFILEPATH32'
+             After='AppSearch'>Not VersionNT64</Custom>
 
-        <!-- This sequence is run with Exceute="immediate". This will run it with user
-             permissions and only kill the tasks of the current user. It needs to come
-             in early to avoid the first "Close running applications" window. -->
+        <!-- This sequence is run with Exceute="immediate". This will
+             run it with user permissions and only kill the tasks of
+             the current user. It needs to come in early to avoid the
+             first "Close running applications" window. -->
+
         <Custom Action="PrepareKillKleo" Before="InstallValidate">1</Custom>
         <Custom Action="TaskKillKleo" After="PrepareKillKleo">1</Custom>
-        <!-- Users on the system might have hanging or long running gpg / gpgsm processes -->
+
+        <!-- Users on the system might have hanging or long running
+             gpg or gpgsm processes. -->
+
         <Custom Action="PrepareKillGPG" After="TaskKillKleo">1</Custom>
         <Custom Action="TaskKillGPG" After="PrepareKillGPG">1</Custom>
         <Custom Action="PrepareKillGPGSM" After="TaskKillGPG">1</Custom>
@@ -2250,34 +2483,53 @@ print <<EOF;
         <Custom Action="TaskKillAgent" After="PrepareKillAgent">1</Custom>
         <Custom Action="PrepareKillDirmngr" After="TaskKillAgent">1</Custom>
         <Custom Action="TaskKillDirmngr" After="PrepareKillDirmngr">1</Custom>
-        <Custom Action="PrepareKillScd" After="TaskKillDirmngr">1</Custom>
-        <Custom Action="TaskKillScd" After="PrepareKillScd">1</Custom>
         <Custom Action="PrepareKillKeyboxd" After="TaskKillScd">1</Custom>
         <Custom Action="TaskKillKeyboxd" After="PrepareKillKeyboxd">1</Custom>
+        <Custom Action="PrepareKillScd" After="TaskKillDirmngr">1</Custom>
+        <Custom Action="TaskKillScd" After="PrepareKillScd">1</Custom>
 
-        <!-- This sequence is run with Exceute="deferred". This will kill all
-             processes from all users. This may only be done after InstallInitialize
-             so in the the main installer script. But if we would only do the
-             deferred kill an interactively installing user would already have generated
-             a failure to close all running apps during the InstallValidate stage. -->
-        <Custom Action="PrepareKillKleoDeferred" After="InstallInitialize">1</Custom>
-        <Custom Action="TaskKillKleoDeferred" After="PrepareKillKleoDeferred">1</Custom>
-        <Custom Action="PrepareKillGPGDeferred" After="TaskKillKleoDeferred">1</Custom>
-        <Custom Action="TaskKillGPGDeferred" After="PrepareKillGPGDeferred">1</Custom>
-        <Custom Action="PrepareKillGPGSMDeferred" After="TaskKillGPGDeferred">1</Custom>
-        <Custom Action="TaskKillGPGSMDeferred" After="PrepareKillGPGSMDeferred">1</Custom>
-        <Custom Action="PrepareKillAgentDeferred" After="TaskKillGPGSMDeferred">1</Custom>
-        <Custom Action="TaskKillAgentDeferred" After="PrepareKillAgentDeferred">1</Custom>
-        <Custom Action="PrepareKillDirmngrDeferred" After="TaskKillAgentDeferred">1</Custom>
-        <Custom Action="TaskKillDirmngrDeferred" After="PrepareKillDirmngrDeferred">1</Custom>
-        <Custom Action="PrepareKillScdDeferred" After="TaskKillDirmngrDeferred">1</Custom>
-        <Custom Action="TaskKillScdDeferred" After="PrepareKillScdDeferred">1</Custom>
-        <Custom Action="PrepareKillKeyboxdDeferred" After="TaskKillScdDeferred">1</Custom>
-        <Custom Action="TaskKillKeyboxdDeferred" After="PrepareKillKeyboxdDeferred">1</Custom>
+        <!-- This sequence is run with Exceute="deferred". This will
+             kill all processes from all users. This may only be done
+             after InstallInitialize so in the the main installer
+             script. But if we would only do the deferred kill an
+             interactively installing user would already have
+             generated a failure to close all running apps during the
+             InstallValidate stage. -->
+
+        <Custom Action="PrepareKillKleoDeferred"
+                 After="InstallInitialize">1</Custom>
+        <Custom Action="TaskKillKleoDeferred"
+                 After="PrepareKillKleoDeferred">1</Custom>
+        <Custom Action="PrepareKillGPGDeferred"
+                 After="TaskKillKleoDeferred">1</Custom>
+        <Custom Action="TaskKillGPGDeferred"
+                 After="PrepareKillGPGDeferred">1</Custom>
+        <Custom Action="PrepareKillGPGSMDeferred"
+                 After="TaskKillGPGDeferred">1</Custom>
+        <Custom Action="TaskKillGPGSMDeferred"
+                After="PrepareKillGPGSMDeferred">1</Custom>
+        <Custom Action="PrepareKillAgentDeferred"
+                 After="TaskKillGPGSMDeferred">1</Custom>
+        <Custom Action="TaskKillAgentDeferred"
+                 After="PrepareKillAgentDeferred">1</Custom>
+        <Custom Action="PrepareKillDirmngrDeferred"
+                 After="TaskKillAgentDeferred">1</Custom>
+        <Custom Action="TaskKillDirmngrDeferred"
+                 After="PrepareKillDirmngrDeferred">1</Custom>
+        <Custom Action="PrepareKillScdDeferred"
+                 After="TaskKillDirmngrDeferred">1</Custom>
+        <Custom Action="TaskKillScdDeferred"
+                 After="PrepareKillScdDeferred">1</Custom>
+        <Custom Action="PrepareKillKeyboxdDeferred"
+                 After="TaskKillScdDeferred">1</Custom>
+        <Custom Action="TaskKillKeyboxdDeferred"
+                 After="PrepareKillKeyboxdDeferred">1</Custom>
+
     </InstallExecuteSequence>
 
 
-    <!-- Launch Kleopatra after setup exits
+    <!-- Disabled: Launch Kleopatra after setup exits
+
     <CustomAction Id            = "StartAppOnExit"
                   FileKey       = "kleopatra.exe"
                   ExeCommand    = ""
@@ -2287,29 +2539,52 @@ print <<EOF;
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT"
       Value="Launch Kleopatra" />
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
- -->
+
+    -->
 
     <Feature Id="Feature_GnuPG"
          Title="GnuPG"
          Level="1"
          Absent='disallow'>
       <ComponentGroupRef Id="CMP_GnuPG" />
-      <Component Win64='no' Id="gpg4win_reg_cmp" Guid="7F122F29-DB6A-4DE5-9DD2-0DAF1A24B62F" Directory="APPLICATIONFOLDER">
-        <RegistryValue Id="r_gpg4win_01" Root="HKMU" Key="Software\\Gpg4win" Name="Install Directory" Action="write"
-                       Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes"/>
-        <RegistryValue Id="r_gpg4win_02" Root="HKMU" Key="Software\\Gpg4win" Name="VS-Desktop-Version" Action="write"
-                       Type="string" Value="$::build_version" KeyPath="no"/>
+      <Component Win64="$::win64" Id="gpg4win_reg_cmp"
+                 Guid="7F122F29-DB6A-4DE5-9DD2-0DAF1A24B62F"
+                 Directory="APPLICATIONFOLDER">
+        <RegistryValue Id="r_gpg4win_01" Root="HKMU" Key="$::instdirkey"
+                     Name="$::instdirname" Action="write"
+                     Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes"/>
+EOF
+if ($::win64 eq 'no')
+{
+    printf <<EOF;
+        <RegistryValue Id="r_gpg4win_02" Root="HKMU" Key="Software\\Gpg4win"
+                     Name="VS-Desktop-Version" Action="write"
+                     Type="string" Value="$::build_version" KeyPath="no"/>
+EOF
+}
+
+print <<EOF;
       </Component>
       <Feature Id='p_homedir' Title='p_homedir' Level='1000'
         Display='hidden' InstallDefault='followParent'>
         <Condition Level='1'>HOMEDIR</Condition>
-        <Component Win64='no' Id='homedir_non_default_cmp' Guid='2C11476C-747D-4CA9-9A53-A64445761A4C' Directory='APPLICATIONFOLDER'>
-        <RegistryValue Root='HKMU' Key='Software\\GNU\\GnuPG' Name='HomeDir'
-         Type='expandable' Value='[HOMEDIR]' KeyPath='yes'/>
+        <Component Win64="$::win64" Id='homedir_non_default_cmp'
+                   Guid='2C11476C-747D-4CA9-9A53-A64445761A4C'
+                   Directory='APPLICATIONFOLDER'>
+          <RegistryValue Root='HKMU' Key='Software\\GNU\\GnuPG' Name='HomeDir'
+                         Type='expandable' Value='[HOMEDIR]' KeyPath='yes'/>
         </Component>
       </Feature>
-      <!-- Hardcode some components that always should be installed -->
 
+      <!-- Hardcode some components that always should be installed -->
+EOF
+
+($::product_name ne 'GnuPG Desktop') && print <<EOF;
+      <!-- The gpgconf.ctl file to map gnupg to gnupg-vsd -->
+      <ComponentRef Id='c_gpgconfctl_0' />
+EOF
+
+print <<EOF;
       <!-- List comes from ICE21 and was transformed by see: comment above -->
       <!-- sha1sum.exe -->
       <ComponentRef Id='c_gpg4win_0' />
@@ -2339,6 +2614,7 @@ print <<EOF;
     </Feature>
 EOF
 
+
 foreach my $pkgname (@{$parser->{pkg_list}})
 {
     if (exists $parser->{pkgs}->{$pkgname}->{ini_inst})
@@ -2355,17 +2631,29 @@ EOF
     }
 }
 
+($::product_name ne 'GnuPG Desktop') && print <<EOF;
+    <!-- "dirAA72FF..." is defined by the GnuPG wixlib -->
+    <Component Win64="\$(var.Win64)" Id="c_gpgconfctl_0"
+               Directory="dirAA72FFDDFA224FB221D53750596B0142"
+               Guid="73C39745-06F6-43A6-9B0F-7A7BF0C66DE9">
+      <File Id="f_gpgconfctl_0" Name="gpgconf.ctl" KeyPath="yes"
+            Source="\$(var.SrcDir)\\src\\vsd-gpgconf.ctl">
+      </File>
+    </Component>
+
+EOF
+
 print <<EOF;
     <Directory Id='TARGETDIR' Name='SourceDir'>
-      <Directory Id='ProgramFilesFolder' Name='PFiles'>
-        <!-- DIR_GnuPG is used be the GnuPG wxlib -->
+      <Directory Id="$::pfilesfolder" Name='PFiles'>
+        <!-- DIR_GnuPG is used by the GnuPG wixlib -->
         <Directory Id='APPLICATIONFOLDER' Name='$::product_name'>
           <Directory Id="KleopatraDataFolder" Name="share">
             <Directory Id="ShareDocFolder" Name="doc">
               <Directory Id="HelpDataFolder" Name="gnupg-vsd"/>
             </Directory>
           </Directory>
-          <Directory Id='DIR_GnuPG' Name='GnuPG'/>
+          <Directory Id="DIR_GnuPG" Name="GnuPG"/>
 EOF
 
 $::level = 12;
@@ -2382,7 +2670,7 @@ print <<EOF;
     <Directory Id='ProgramMenuDir' Name='$::product_name'/>
   </Directory>
   <Directory Id='DesktopFolder' Name='Desktop' >
-    <Component Id='ApplicationShortcutDesktop' Guid='8FCEA457-D3AD-41CC-BD0B-3E071D6E70BE'>
+    <Component Win64="$::win64" Id='ApplicationShortcutDesktop' Guid='8FCEA457-D3AD-41CC-BD0B-3E071D6E70BE'>
       <Shortcut Id='ApplicationDesktopShortcut'
        Name='Kleopatra'
        Description='!(loc.DESC_Menu_kleopatra)'

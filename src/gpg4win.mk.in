@@ -17,122 +17,132 @@
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 AUTHENTICODE_FILES = \
-	bin/gpg-error.exe \
-	bin/gpgex.dll \
-	bin/gpgme-json.exe \
-	bin/gpgolconfig.exe \
-	bin/gpgol.dll \
-	bin/gpgolkeyadder.exe \
-	bin/kleopatra.exe \
-	bin/libassuan-9.dll \
-	bin/libfreetype.dll \
-	bin/libgpg-error-0.dll \
-	bin/libgpgme-11.dll \
-	bin/libgpgmepp-6.dll \
-	bin/libical.dll \
-	bin/libicalss.dll \
-	bin/libicalvcal.dll \
-	bin/libiconv-2.dll \
-	bin/libintl-8.dll \
-	bin/libjpeg-9.dll \
-	bin/libKF5Archive.dll \
-	bin/libKF5Bookmarks.dll \
-	bin/libKF5CalendarCore.dll \
-	bin/libKF5Codecs.dll \
-	bin/libKF5Completion.dll \
-	bin/libKF5ConfigCore.dll \
-	bin/libKF5ConfigGui.dll \
-	bin/libKF5ConfigWidgets.dll \
-	bin/libKF5CoreAddons.dll \
-	bin/libKF5Crash.dll \
-	bin/libKF5GuiAddons.dll \
-	bin/libKF5I18n.dll \
-	bin/libKF5IconThemes.dll \
-	bin/libKF5ItemModels.dll \
-	bin/libKF5ItemViews.dll \
-	bin/libKF5JobWidgets.dll \
-	bin/libKF5KIOCore.dll \
-	bin/libKF5KIOGui.dll \
-	bin/libKF5KIOWidgets.dll \
-	bin/libKF5Parts.dll \
-	bin/libKF5Service.dll \
-	bin/libKF5Solid.dll \
-	bin/libKF5SonnetCore.dll \
-	bin/libKF5SonnetUi.dll \
-	bin/libKF5TextWidgets.dll \
-	bin/libKF5ThreadWeaver.dll \
-	bin/libKF5WidgetsAddons.dll \
-	bin/libKF5WindowSystem.dll \
-	bin/libKF5XmlGui.dll \
-	bin/libkleopatraclientcore.dll \
-	bin/libkleopatraclientgui.dll \
-	bin/libKPim5Libkleo.dll \
-	bin/libKPim5Mbox.dll \
-	bin/libKPim5Mime.dll \
-	bin/libKPim5MimeTreeParserCore.dll \
-	bin/libKPim5MimeTreeParserWidgets.dll \
-	bin/libOkular5Core.dll \
-	bin/libopenjp2.dll \
-	bin/libpcre2-16.dll \
-	bin/libpng16-16.dll \
-	bin/libpoppler-130.dll \
-	bin/libpoppler-qt5-1.dll \
-	bin/libqgpgme-15.dll \
-	bin/libtiff.dll \
-	bin/okular.exe \
-	bin/overlayer.exe \
-	bin/paperkey.exe \
-	bin/pinentry.exe \
-	bin/pinentry-w32.exe \
-	bin/Qt5Core.dll \
-	bin/Qt5Gui.dll \
-	bin/Qt5Network.dll \
-	bin/Qt5PrintSupport.dll \
-	bin/Qt5Svg.dll \
-	bin/Qt5Widgets.dll \
-	bin/Qt5WinExtras.dll \
-	bin/Qt5Xml.dll \
-	bin/resolver.exe \
-	bin/zlib1.dll \
+	 bin/gpg-error.exe \
+	 bin/gpgex.dll \
+	 bin/gpgme-json.exe \
+	 bin/gpgol-client.exe \
+	 bin/gpgolconfig.exe \
+	 bin/gpgol.dll \
+	 bin/gpgolkeyadder.exe \
+	 bin/gpgol-server.exe \
+	 bin/gpgpass.exe \
+	 bin/libiconv-2.dll \
+	 bin/kleopatra.exe \
+	 bin/libassuan-9.dll \
+	 bin/libfreetype.dll \
+	 bin/libgpg-error-0.dll \
+	 bin/libgpgme-45.dll \
+	 bin/libgpgmepp-7.dll \
+	 bin/libical.dll \
+	 bin/libicalss.dll \
+	 bin/libicalvcal.dll \
+	 bin/libiconv-2.dll \
+	 bin/libintl-8.dll \
+	 bin/libjpeg-9.dll \
+	 bin/libKF6Archive.dll \
+	 bin/libKF6Bookmarks.dll \
+	 bin/libKF6BreezeIcons.dll \
+	 bin/libKF6CalendarCore.dll \
+	 bin/libKF6Codecs.dll \
+	 bin/libKF6ColorScheme.dll \
+	 bin/libKF6Completion.dll \
+	 bin/libKF6ConfigCore.dll \
+	 bin/libKF6ConfigGui.dll \
+	 bin/libKF6ConfigWidgets.dll \
+	 bin/libKF6Contacts.dll \
+	 bin/libKF6CoreAddons.dll \
+	 bin/libKF6Crash.dll \
+	 bin/libKF6GuiAddons.dll \
+	 bin/libKF6I18n.dll \
+	 bin/libKF6I18nLocaleData.dll \
+	 bin/libKF6IconThemes.dll \
+	 bin/libKF6IconWidgets.dll \
+	 bin/libKF6ItemModels.dll \
+	 bin/libKF6ItemViews.dll \
+	 bin/libKF6JobWidgets.dll \
+	 bin/libKF6KIOCore.dll \
+	 bin/libKF6KIOGui.dll \
+	 bin/libKF6KIOWidgets.dll \
+	 bin/libKF6Parts.dll \
+	 bin/libKF6Prison.dll \
+	 bin/libKF6Service.dll \
+	 bin/libKF6Solid.dll \
+	 bin/libKF6SonnetCore.dll \
+	 bin/libKF6SonnetUi.dll \
+	 bin/libKF6StatusNotifierItem.dll \
+	 bin/libKF6TextWidgets.dll \
+	 bin/libKF6ThreadWeaver.dll \
+	 bin/libKF6WidgetsAddons.dll \
+	 bin/libKF6WindowSystem.dll \
+	 bin/libKF6XmlGui.dll \
+	 bin/libKPim6Libkleo.dll \
+	 bin/libKPim6Mbox.dll \
+	 bin/libKPim6Mime.dll \
+	 bin/libKPim6MimeTreeParserCore.dll \
+	 bin/libKPim6MimeTreeParserWidgets.dll \
+	 bin/libOkular6Core.dll \
+	 bin/libopenjp2.dll \
+	 bin/libpcre2-16.dll \
+	 bin/libpng16-16.dll \
+	 bin/libpoppler-149.dll \
+	 bin/libpoppler-qt6-3.dll \
+	 bin/libqgpgmeqt6-15.dll \
+	 bin/libqrencode.dll \
+	 bin/libtiff.dll \
+	 bin/libzstd.dll \
+	 bin/okular.exe \
+	 bin/overlayer.exe \
+	 bin/paperkey.exe \
+	 bin/pinentry.exe \
+	 bin/pinentry-w32.exe \
+	 bin/Qt6Core.dll \
+	 bin/Qt6Gui.dll \
+	 bin/Qt6HttpServer.dll \
+	 bin/Qt6Network.dll \
+	 bin/Qt6PrintSupport.dll \
+	 bin/Qt6Svg.dll \
+	 bin/Qt6WebSockets.dll \
+	 bin/Qt6Widgets.dll \
+	 bin/Qt6Xml.dll \
+	 bin/resolver.exe \
+	 bin/zlib1.dll \
 	../install-ex/bin/gpgex.dll \
 	../install-ex/bin/gpgme-json.exe \
 	../install-ex/bin/gpgol.dll \
 	../install-ex/bin/libassuan-9.dll \
 	../install-ex/bin/libgpg-error-0.dll \
-	../install-ex/bin/libgpgme-11.dll \
-	../install-ex/bin/libgpgmepp-6.dll \
+	../install-ex/bin/libgpgme-45.dll \
+	../install-ex/bin/libgpgmepp-7.dll \
 	../install-ex/libexec/gpgme-w32spawn.exe \
 	libexec/gpgme-w32spawn.exe \
-	../../libgcc_s_dw2-1.dll-x \
-	lib/plugins/kf5/kio/kio_file.dll \
-	lib/plugins/kf5/sonnet/sonnet_ispellchecker.dll \
-	lib/plugins/okular/generators/okularGenerator_poppler.dll \
-	lib/plugins/okularpart.dll \
+	lib/plugins/kf6/kio/kio_file.dll \
+	lib/plugins/kf6/sonnet/sonnet_ispellchecker.dll \
+	lib/plugins/kf6/parts/okularpart.dll \
+	lib/plugins/okular_generators/okularGenerator_poppler.dll \
 	lib/scute.dll \
-	../../libstdc++-6.dll-x \
-	../../libwinpthread-1.dll-x \
-	../../libwinpthread-1.dll-x64 \
+	../src/libstdc++-6.dll-x \
+	../src/libwinpthread-1.dll-x \
 	plugins/iconengines/qsvgicon.dll \
 	plugins/imageformats/qsvg.dll \
 	plugins/platforms/qwindows.dll \
-	plugins/printsupport/windowsprintersupport.dll \
-	plugins/styles/qwindowsvistastyle.dll \
-	../../sha1sum.exe \
-	../../sha256sum.exe
+	plugins/styles/qmodernwindowsstyle.dll \
+	plugins/iconengines/qsvgicon.dll \
+	plugins/imageformats/qsvg.dll \
+	plugins/tls/qschannelbackend.dll \
+	../src/sha1sum.exe \
+	../src/sha256sum.exe
+
+# Not all of these dlls must exist as they are installed by nsis with
+# the /nonfatal option.
+AUTHENTICODE_FILES_OPTIONAL = \
+	../src/libgcc_s_dw2-1.dll-x \
+        ../src/libgcc_s_sjlj-1.dll-x \
+        ../src/libgcc_s_seh-1.dll-x  \
+	../src/libwinpthread-1.dll-ex
 
 
 # No servicable parts below this line :)
 
-
-# These paths must be absolute, as we switch directories pretty often.
-bdir := $(root)/build
-idir := $(root)/install
-ipdir := $(root)/install/pkgs
-tsdir := $(shell pwd)/${top_srcdir}
-pdir := $(shell pwd)/${top_srcdir}/patches
-ex_idir := $(root)/install-ex
-ex_ipdir := $(root)/install-ex/pkgs
-native_idir := $(root)/install-native
 
 ifdef GIT_BETASTRING
 	VSD_VERSION_FILE:=$(VSD_VERSION)-Beta
@@ -143,41 +153,40 @@ endif
 
 ifeq ($(IS_GPD_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-Desktop
-else
+  MSI_PRODUCT_NAME := GnuPG Desktop
+  KLEOPATRA_APPLICATION_NAME := kleopatra-gpd
+  KLEOPATRA_ICON_DIR := $(tsdir)/src/icons/gpd
+else ifeq ($(IS_VSD_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-VS-Desktop
+  MSI_PRODUCT_NAME := GnuPG VS-Desktop
+  KLEOPATRA_APPLICATION_NAME := kleopatra-vsd
+  KLEOPATRA_ICON_DIR :=
 endif
+
+
+# Common helpers
+empty :=
+space := $(empty) $(empty)
 
 # We collect the names of all pkg files used.
 pkg_files =
-
-# The playground area is our scratch area, where we unpack, build and
-# install the packages.
-#
-# Boost includes are only needed for the host and are linked in the
-# playground install tree
-$(stampdir)/stamp-directories:
-	$(MKDIR) -p $(stampdir)
-	$(MKDIR) -p $(root)
-	$(MKDIR) -p installers
-	$(MKDIR) -p $(bdir)
-	$(MKDIR) -p $(idir)/include
-	ln -s /usr/include/boost $(idir)/include/boost
-	$(MKDIR) -p $(ipdir)
-	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_idir))
-	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_ipdir))
-	$(MKDIR) -p $(native_idir)/bin
-	ln -s $(abs_srcdir)/gccwrap.sh $(native_idir)/bin/i686-w64-mingw32-gcc
-	ln -s $(abs_srcdir)/gccwrap.sh $(native_idir)/bin/x86_64-w64-mingw32-gcc
-	ln -s $(abs_srcdir)/gccwrap.sh $(native_idir)/bin/i686-w64-mingw32-g++
-	ln -s $(abs_srcdir)/gccwrap.sh $(native_idir)/bin/x86_64-w64-mingw32-g++
-	touch $(bdir)/versioninfo.txt
-	touch $(stampdir)/stamp-directories
 
 
 # Read signing information from ~/.gnupg-autogen.rc
 # See gnupg/build-aux/speedo.mk for a description of this file.
 define READ_AUTOGEN_template
-$(1) = $$(shell grep '^[[:blank:]]*$(1)[[:blank:]]*=' $$$$HOME/.gnupg-autogen.rc|cut -d= -f2|xargs)
+$(1) = $$(shell \
+    if test -f $$$${HOME}/.gnupg-autogen.rc; then \
+        grep '^[[:blank:]]*$(1)[[:blank:]]*=' $$$${HOME}/.gnupg-autogen.rc \
+            | cut -d= -f2 | xargs; \
+    elif test -f $(tsdir)/.gnupg-autogen.rc; then \
+        grep '^[[:blank:]]*$(1)[[:blank:]]*=' $(tsdir)/.gnupg-autogen.rc \
+            | cut -d= -f2 | xargs; \
+    else \
+        echo "Warning: .gnupg-autogen.rc not found in HOME or $(tsdir)" \
+             >&2; \
+        echo ""; \
+    fi)
 endef
 
 $(eval $(call READ_AUTOGEN_template,VERSION_SIGNKEY))
@@ -197,15 +206,17 @@ define GETVAR
 $($(call FROB_macro,$(1)))
 endef
 
-# Set a couple of common variables.
+# Set a couple of common variables for the standard build architecture.
+# Most of them describe package specific directories and are derived
+# from the the macros set in the Makefile.am.
 define SETVARS
 	set -e; \
 	pkg="$(call GETVAR,gpg4win_pkg_$(1))";				\
 	pkg_version="$(1)-$(call GETVAR,gpg4win_pkg_$(1)_version)";	\
 	pkgsdir="$(bdir)/$$$${pkg_version}";				\
 	pkgbdir="$(bdir)/$$$${pkg_version}-build";			\
-	pkgpdir="$(pdir)/$$$${pkg_version}";				\
-	pkgpbdir="$(pdir)/$(1)";	          			\
+	pkgpatdir="$(patdir)/$$$${pkg_version}";			\
+	pkgpatbdir="$(patdir)/$(1)";	          			\
 	pkgidir="$(ipdir)/$$$${pkg_version}";				\
 	pkg_dev="$(call GETVAR,gpg4win_pkg_$(1)_dev)";			\
 	pkg_version_dev="$(1)-dev-$(call GETVAR,gpg4win_pkg_$(1)_version)"; \
@@ -214,12 +225,13 @@ define SETVARS
 	pkgextracflags="$(call GETVAR,gpg4win_pkg_$(1)_extracflags)";	\
 	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_make_args)";          \
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_args_inst)";\
-	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";             \
-	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";        \
-	export PKG_CONFIG="$(tsdir)/src/pkg-config";			\
+	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";            \
+	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";       \
+	pkg_conf_subdir="$(call GETVAR,gpg4win_pkg_$(1)_conf_subdir)";  \
 	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
-	export PKG_CONFIG_LIBDIR="";					\
-	export PATH="$(idir)/bin:$${PATH}";				\
+	export PKG_CONFIG_LIBDIR="$(idir)/lib/pkgconfig";		\
+	export PATH="$(idir)/bin:$(nat_idir)/bin:$${PATH}";		\
+	export LD_LIBRARY_PATH=$(nat_idir)/lib:$(nat_idir)/lib64; \
 	export SYSROOT="$(idir)";					\
 	export CONFIG_SITE="$(tsdir)/src/config.site"
 endef
@@ -231,8 +243,8 @@ define SETVARS_EX
 	pkg_version="$(1)-$(call GETVAR,gpg4win_pkg_$(1)_version)";         \
 	pkgsdir="$(bdir)/$$$${pkg_version}";                                \
 	pkgbdir="$(bdir)/$$$${pkg_version}-ex-build";                       \
-	pkgpdir="$(pdir)/$$$${pkg_version}";                                \
-	pkgpbdir="$(pdir)/$(1)";                                            \
+	pkgpatdir="$(patdir)/$$$${pkg_version}";                            \
+	pkgpatbdir="$(patdir)/$(1)";                                        \
 	pkgidir="$(ex_ipdir)/$$$${pkg_version}";                            \
 	pkgidir_dev="$(ex_ipdir)/$$$${pkg_version_dev}";                    \
 	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_ex_configure)";              \
@@ -241,127 +253,72 @@ define SETVARS_EX
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_args_inst)"; \
 	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_dir)";             \
 	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_dir)";        \
-	export PKG_CONFIG="$(tsdir)/src/pkg-config";                        \
 	export PKG_CONFIG_PATH="$(ex_idir)/lib/pkgconfig";                  \
-	export PKG_CONFIG_LIBDIR="";                                        \
-	export PATH="$(ex_idir)/bin:$(native_idir)/bin:$${PATH}";           \
+	export PKG_CONFIG_LIBDIR="$(ex_idir)/lib/pkgconfig";                \
+	export PATH="$(ex_idir)/bin:$(nat_idir)/bin:$${PATH}";           \
+	export LD_LIBRARY_PATH=$(nat_idir)/lib:$(nat_idir)/lib64;     \
 	export SYSROOT="$(ex_idir)"
 endef
 
-define SETVARS_WINE
+# Set variables for building additional build tools for the native
+# (i.e. build system) architecture.
+define SETVARS_NATIVE
 	set -e; \
-	if [ -z "$$$$(which $(WINE))" ]; then \
-		echo "ERROR: For the msi-package wine needs to be installed."; \
-	exit 1; \
-	fi; \
-	if [ -z "$(WIXPREFIX)" ]; then \
-		if [ -d `readlink -f ~/w32root/wixtools` ]; then \
-			WIXPREFIX2=`readlink -f ~/w32root/wixtools`; \
-			echo "Using $$$$WIXPREFIX2 as WIXPREFIX"; \
-		else \
-			echo "ERROR: You must set WIXPREFIX to an installation of wixtools."; \
-			exit 1; \
-		fi; \
-	else \
-		WIXPREFIX2="$(WIXPREFIX)"; \
-	fi; \
-	if [ -z "$$$$WINEPREFIX" ]; then \
-		WINEPREFIX="$$$$HOME/.wine"; \
-		if [ ! -e "$$$$WINEPREFIX/dosdevices" ]; then \
-			echo "ERROR: No wine prefix found under $$WINEPREFIX"; \
-			exit 1; \
-		fi; \
-	fi; \
-	WINEINST=$$$$WINEPREFIX/dosdevices/k:; \
-	WINESRC=$$$$WINEPREFIX/dosdevices/i:; \
-	WINEINSTEX=$$$$WINEPREFIX/dosdevices/j:; \
-	if [ -e "$$$$WINEINST" ]; then \
-		echo "ERROR: $$$$WINEINST already exists. Please remove."; \
-		exit 1; \
-	fi; \
-	if [ -e "$$$$WINESRC" ]; then \
-		echo "ERROR: $$$$WINESRC already exists. Please remove."; \
-		exit 1; \
-	fi; \
-	if [ -e "$$$$WINEINSTEX" ]; then \
-		echo "ERROR: $$$$WINEINSTEX already exists. Please remove."; \
-		exit 1; \
-	fi; \
-	MSI_VERSION=$$$$(echo $(VSD_VERSION))
+	pkg="$(call GETVAR,gpg4win_pkg_$(1))";                              \
+	pkg_version="$(1)-$(call GETVAR,gpg4win_pkg_$(1)_version)";         \
+	pkgsdir="$(bdir)/$$$${pkg_version}";                                \
+	pkgbdir="$(bdir)/$$$${pkg_version}-native-build";                   \
+	pkgpatdir="$(patdir)/$$$${pkg_version}";                            \
+	pkgpatbdir="$(patdir)/$(1)";                                        \
+	pkgidir="$(nat_ipdir)/$$$${pkg_version}";                           \
+	pkgidir_dev="$(nat_ipdir)/$$$${pkg_version_dev}";                   \
+	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_native_configure)";           \
+	pkgextracflags="$(call GETVAR,gpg4win_pkg_$(1)_native_extracflags)"; \
+	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_native_make_args)";        \
+	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_native_make_args_inst)";\
+	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_native_make_dir)";          \
+	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_native_make_dir)";     \
+	export PKG_CONFIG_PATH="$(nat_idir)/lib/pkgconfig";               \
+	export PKG_CONFIG_LIBDIR="";                                         \
+	export PATH="$(nat_idir)/bin:$${PATH}";                           \
+	export LD_LIBRARY_PATH=$(nat_idir)/lib:$(nat_idir)/lib64;      \
+	export SYSROOT="$(nat_idir)"
 endef
 
-# Same as above
-define SETVARS_WINE_TWO_DOLLAR
-	set -e; \
-	if [ -z "$$(which $(WINE))" ]; then \
-		echo "ERROR: For the msi-package wine needs to be installed."; \
-	exit 1; \
-	fi; \
-	if [ -z "$(WIXPREFIX)" ]; then \
-		if [ -d `readlink -f ~/w32root/wixtools` ]; then \
-			WIXPREFIX2=`readlink -f ~/w32root/wixtools`; \
-			echo "Using $$WIXPREFIX2 as WIXPREFIX"; \
-		else \
-			echo "ERROR: You must set WIXPREFIX to an installation of wixtools."; \
-			exit 1; \
-		fi; \
-	else \
-		WIXPREFIX2="$(WIXPREFIX)"; \
-	fi; \
-	if [ -z "$$WINEPREFIX" ]; then \
-		WINEPREFIX="$$HOME/.wine"; \
-		if [ ! -e "$$WINEPREFIX/dosdevices" ]; then \
-			echo "ERROR: No wine prefix found under $$WINEPREFIX"; \
-			exit 1; \
-		fi; \
-	fi; \
-	WINEINST=$$WINEPREFIX/dosdevices/k:; \
-	WINESRC=$$WINEPREFIX/dosdevices/i:; \
-	WINEINSTEX=$$WINEPREFIX/dosdevices/j:; \
-	if [ -e "$$WINEINST" ]; then \
-		echo "ERROR: $$WINEINST already exists. Please remove."; \
-		exit 1; \
-	fi; \
-	if [ -e "$$WINESRC" ]; then \
-		echo "ERROR: $$WINESRC already exists. Please remove."; \
-		exit 1; \
-	fi; \
-	if [ -e "$$WINEINSTEX" ]; then \
-		echo "ERROR: $$WINEINSTEX already exists. Please remove."; \
-		exit 1; \
-	fi; \
-	MSI_VERSION=$$(echo $(VSD_VERSION))
-endef
 
 # Support macro.  Unpack the archive $(1).
 define DEFLATE_macro
 	if [ -L "$$$${pkgsdir}" ]; then \
-		echo "Not overwriting symlink $$$${pkgsdir}"; \
+	    echo "Not overwriting symlink $$$${pkgsdir}"; \
 	else \
-		rm -rf $$$${pkgsdir}; \
-		case "$(1)" in			\
-			  */qtbase*.*.tar.xz)          \
-				$(TAR) -xJ --transform='s,^qtbase-everywhere-src,qtbase,' -f "$(1)" ;; \
-			  */qttools*.*.tar.xz)          \
-				$(TAR) -xJ --transform='s,^qttools-everywhere-src,qttools,' -f "$(1)" ;; \
-			  */qtwinextras*.*.tar.xz)          \
-				$(TAR) -xJ --transform='s,^qtwinextras-everywhere-src,qtwinextras,' -f "$(1)" ;; \
-			  */qtsvg*.*.tar.xz)          \
-				$(TAR) -xJ --transform='s,^qtsvg-everywhere-src,qtsvg,' -f "$(1)" ;; \
-			  */qttranslations*.*.tar.xz)          \
-				$(TAR) -xJ --transform='s,^qttranslations-everywhere-src,qttranslations,' -f "$(1)" ;; \
-		  *.tar.gz | *.tgz)		\
-			$(TAR) xzf "$(1)" ;;	\
-		  *.tar.bz2 | *.tbz2 | *.tbz)	\
-			$(TAR) xjf "$(1)" ;;	\
-		  *.tar.xz )          		\
-			$(TAR) xJf "$(1)" ;;	\
-		  *.exe ) 	         		\
-			cp "$(1)" .       ;;	\
-		  *.zip)			\
-			$(UNZIP) -o "$(1)" ;;		\
-		esac; \
-	fi
+	    rm -rf $$$${pkgsdir}; \
+            tc=J; tf=""; \
+            case "$(1)" in \
+		*/qtbase*.*.tar.xz) \
+                    tf='s,^qtbase-everywhere-src,qtbase,' ;; \
+		*/qttools*.*.tar.xz) \
+                    tf='s,^qttools-everywhere-src,qttools,' ;; \
+		*/qtwinextras*.*.tar.xz) \
+		    tf='s,^qtwinextras-everywhere-src,qtwinextras,' ;; \
+		*/qtsvg*.*.tar.xz) \
+		    tf='s,^qtsvg-everywhere-src,qtsvg,' ;; \
+		*/qttranslations*.*.tar.xz) \
+		    tf='s,^qttranslations-everywhere-src,qttranslations,' ;; \
+		*/qthttpserver*.*.tar.xz) \
+		    tf='s,^qthttpserver-everywhere-src,qthttpserver,' ;; \
+		*/qtwebsockets*.*.tar.xz) \
+		    tf='s,^qtwebsockets-everywhere-src,qtwebsockets,' ;; \
+		*.tar.gz | *.tgz)            tc=z ;; \
+		*.tar.bz2 | *.tbz2 | *.tbz)  tc=j ;; \
+		*.tar.xz )          	     tc=J ;; \
+		*.exe )  cp "$(1)" .  ;      tc="" ;; \
+		*.zip)   $(UNZIP) -o "$(1)"; tc="" ;;\
+	    esac; \
+            [ -n "$$$$tf" ] && tf="--transform=$$$$tf"; \
+	    if [ -n "$$$$tc" -a -n "$(1)" ]; then \
+	        $(TAR) -x$$$$tc $$$$tf -f "$(1)" ; \
+            fi; \
+        fi
 endef
 
 # Support macro.  Strip all exe files below $(1).
@@ -369,8 +326,9 @@ define STRIP_macro
 	if test -z '$(DEBUG)'; then			\
 	  (cd $(1);					\
 	   for f in `find . -name \*.exe -o -name \*.dll`; do		\
-	   echo Calling $(STRIP) "$$$${pkg_version}/$$$${f}"; \
-	   $(STRIP) "$$$${f}"; done);			\
+	     echo Calling $(STRIP) "$$$${pkg_version}/$$$${f}"; \
+	     $(STRIP) "$$$${f}";\
+           done);\
 	fi
 endef
 
@@ -379,8 +337,9 @@ define STRIP_EX_macro
 	if test -z '$(DEBUG)'; then			\
 	  (cd $(1);					\
 	   for f in `find . -name \*.exe -o -name \*.dll`; do		\
-	   echo Calling $(STRIP_EX) "$$$${pkg_version}/$$$${f}"; \
-	   $(STRIP_EX) "$$$${f}"; done);			\
+	     echo Calling $(STRIP_EX) "$$$${pkg_version}/$$$${f}"; \
+	     $(STRIP_EX) "$$$${f}";\
+           done);			\
 	fi
 endef
 
@@ -392,16 +351,24 @@ define GETDEPS_EX
   $(addprefix $(stampdir)/stamp-final-ex-, $(call GETVAR,gpg4win_pkg_$(1)_ex_deps))
 endef
 
+define GETDEPS_NATIVE
+  $(addprefix $(stampdir)/stamp-final-native-, $(call GETVAR,gpg4win_pkg_$(1)_native_deps))
+endef
+
 # Template for source packages to build for an additional host
 
 define EXPKG_template_
 
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 
-$(stampdir)/stamp-$(1)-ex-00-unpack: $(stampdir)/stamp-$(1)-00-unpack $(call GETDEPS_EX,$(1))
+$(stampdir)/stamp-$(1)-ex-00-unpack: \
+		$(stampdir)/stamp-$(1)-00-unpack \
+                $(call GETDEPS_EX,$(1))
 	touch $(stampdir)/stamp-$(1)-ex-00-unpack
 
-$(stampdir)/stamp-$(1)-ex-01-patch: $(stampdir)/stamp-$(1)-ex-00-unpack $(stampdir)/stamp-$(1)-01-patch
+$(stampdir)/stamp-$(1)-ex-01-patch: \
+                $(stampdir)/stamp-$(1)-ex-00-unpack \
+                $(stampdir)/stamp-$(1)-01-patch
 	touch $(stampdir)/stamp-$(1)-ex-01-patch
 
 $(stampdir)/stamp-$(1)-ex-02-configure: $(stampdir)/stamp-$(1)-ex-01-patch
@@ -410,16 +377,18 @@ $(stampdir)/stamp-$(1)-ex-02-configure: $(stampdir)/stamp-$(1)-ex-01-patch
 	  cd "$$$${pkgbdir}";				\
 	 eval "../$$$${pkg_version}/configure"		\
 		--prefix="$$$${pkgidir}"		\
+		--libdir="$$$${pkgidir}/lib"    \
 		--host=$(GPGEX_ADD_HOST)		\
 		--build=$(build)			\
-		$$$${pkgcfg} CFLAGS=\"-mms-bitfields -fcommon $$$${pkgextracflags}\";\
+		$$$${pkgcfg} CFLAGS=\"-fcommon $$$${pkgextracflags}\"\
+           || exit 1; \
 	 shopt -s nullglob;					\
-	 for pfile in "$$$${pkgpbdir}"/*.postcfg       		\
-                       "$$$${pkgpdir}"/*.postcfg ; do  		\
+	 for pfile in "$$$${pkgpatbdir}"/*.postcfg       		\
+                       "$$$${pkgpatdir}"/*.postcfg ; do  	\
 	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		     	\
 	 done;                                               	\
-	 for pfile in "$$$${pkgpbdir}"/*.postcfg-build    	\
-                       "$$$${pkgpdir}"/*.postcfg-build ; do	\
+	 for pfile in "$$$${pkgpatbdir}"/*.postcfg-build    	\
+                       "$$$${pkgpatdir}"/*.postcfg-build ; do	\
 	   (cd "$$$${pkgbdir}"; "$$$${pfile}")			\
 	 done)
 	touch $(stampdir)/stamp-$(1)-ex-02-configure
@@ -452,7 +421,7 @@ $(stampdir)/stamp-$(1)-ex-05-stow: $(stampdir)/stamp-$(1)-ex-04-install
 $(stampdir)/stamp-final-ex-$(1): $(stampdir)/stamp-$(1)-ex-05-stow
 	touch $(stampdir)/stamp-final-ex-$(1)
 
-$(1): $(stampdir)/stamp-final-$(1)
+$(1)-ex: $(stampdir)/stamp-final-ex-$(1)
 
 .PHONY : clean-ex-$(1)
 clean-ex-$(1):
@@ -477,7 +446,8 @@ define SPKG_template_
 
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 
-$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
+$(stampdir)/stamp-$(1)-00-unpack: \
+		$(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	(cd $(bdir);					\
 	 $(call SETVARS,$(1));				\
 	 $(call DEFLATE_macro,$$$${pkg}))
@@ -487,39 +457,41 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
-		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-			(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
-		done \
+	    for pfile in "$$$${pkgpatbdir}"/*.patch \
+                         "$$$${pkgpatdir}"/*.patch; do \
+		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}";) \
+	    done \
 	else \
-		echo "Not patching symlinked $(1)"; \
+	    echo "Not patching symlinked $(1)"; \
 	fi)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
 $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	($(call SETVARS,$(1)); \
-	mkdir "$$$${pkgbdir}"; \
+	mkdir -p "$$$${pkgbdir}"; \
 	cd "$$$${pkgbdir}"; \
 	eval "../$$$${pkg_version}/configure" \
 		--prefix="$$$${pkgidir}" \
 		--host=$(host) \
 		--build=$(build) \
-	$$$${pkgcfg} CFLAGS=\"-mms-bitfields  -fcommon $$$${pkgextracflags}\";\
+		$$$${pkgcfg} CFLAGS=\"-fcommon $$$${pkgextracflags}\" \
+           || exit 1; \
 	shopt -s nullglob; \
-	for pfile in "$$$${pkgpbdir}"/*.postcfg \
-				"$$$${pkgpdir}"/*.postcfg ; do \
-			(cd "$$$${pkgsdir}"; "$$$${pfile}") \
-		done; \
-	for pfile in "$$$${pkgpbdir}"/*.postcfg-build \
-				 "$$$${pkgpdir}"/*.postcfg-build ; do \
-				(cd "$$$${pkgbdir}"; "$$$${pfile}") \
-	done;) && \
+	for pfile in "$$$${pkgpatbdir}"/*.postcfg \
+	             "$$$${pkgpatdir}"/*.postcfg ; do \
+	    (cd "$$$${pkgsdir}"; "$$$${pfile}") \
+	done; \
+	for pfile in "$$$${pkgpatbdir}"/*.postcfg-build \
+	             "$$$${pkgpatdir}"/*.postcfg-build ; do \
+            (cd "$$$${pkgbdir}"; "$$$${pfile}") \
+	done)
 	touch $(stampdir)/stamp-$(1)-02-configure
 
 $(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
-	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	      $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
 	touch $(stampdir)/stamp-$(1)-03-make
 
 # Note that post_install must come last because it may be empty and
@@ -552,7 +524,7 @@ clean-$(1):
 	  ($(STOW) -D "$$$${pkg_version}" || true;	\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
-	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-0*
 
 endef
 
@@ -579,11 +551,12 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
-		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do \
-			(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
-		done \
+	    for pfile in "$$$${pkgpatbdir}"/*.patch \
+                         "$$$${pkgpatdir}"/*.patch ; do \
+		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
+	    done \
 	else \
-		echo "Not patching symlinked $(1)"; \
+	    echo "Not patching symlinked $(1)"; \
 	fi)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
@@ -620,7 +593,7 @@ clean-$(1):
 	  ($(STOW) -D "$$$${pkg_version}" || true;	\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}")
-	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-0*
 
 endef
 
@@ -638,9 +611,10 @@ define BPKG_template_
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1)_dev)
 
-$(stampdir)/stamp-$(1)-00-install: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
+$(stampdir)/stamp-$(1)-00-install: \
+		$(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	($(call SETVARS,$(1));				\
-	 $(MKDIR) "$$$${pkgidir}";			\
+	 test -d "$$$${pkgidir}" || $(MKDIR) "$$$${pkgidir}";\
 	 cd $$$${pkgidir};				\
 	 $(call DEFLATE_macro,$$$${pkg}))
 	touch $(stampdir)/stamp-$(1)-00-install
@@ -649,7 +623,7 @@ $(stampdir)/stamp-$(1)-00-install: $(stampdir)/stamp-directories $(call GETDEPS,
 # "; ;" is a syntax error.
 $(stampdir)/stamp-$(1)-01-install-dev: $(stampdir)/stamp-$(1)-00-install
 	($(call SETVARS,$(1));				\
-	 $(MKDIR) "$$$${pkgidir_dev}";			\
+	 test -d "$$$${pkgidir_dev}" || $(MKDIR) "$$$${pkgidir_dev}";\
 	 (cd $$$${pkgidir_dev};				\
 	  $(call DEFLATE_macro,$$$${pkg_dev}));		\
 	 $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
@@ -679,16 +653,17 @@ clean-$(1):
 	 ($(STOW) -D "$$$${pkg_version}" || true;	\
 	  $(STOW) -D "$$$${pkg_version_dev}" || true;	\
 	  rm -fR "$$$${pkg_version}" "$$$${pkg_version_dev}"))
-	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-0*
 
 endef
+# (end BPKG_template_)
 
 define BPKG_template
 $(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
   $(call BPKG_template_,$1))
 endef
 
-# Template for qt packages.
+# Template for Qt packages.
 
 define QTPKG_template_
 
@@ -704,17 +679,18 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
-		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-			(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
-		done \
+	    for pfile in "$$$${pkgpatbdir}"/*.patch \
+                         "$$$${pkgpatdir}"/*.patch ; do  \
+	        (cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
+	    done \
 	else \
-		echo "Not patching symlinked $(1)"; \
+	    echo "Not patching symlinked $(1)"; \
 	fi)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
 $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	($(call SETVARS,$(1)); \
-	mkdir "$$$${pkgbdir}"; \
+	mkdir -p "$$$${pkgbdir}"; \
 	cd "$$$${pkgbdir}"; \
 	$$$${pkgcfg}) && \
 	touch $(stampdir)/stamp-$(1)-02-configure
@@ -751,29 +727,24 @@ clean-$(1):
 	  ($(STOW) -D "$$$${pkg_version}" || true;	\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
-	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-0*
 
 endef
+# (end QTPKG_template_)
+
 
 define QTPKG_template
 $(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
   $(call QTPKG_template_,$1))
 endef
 
-# Template for internal packages.
-
-define IPKG_template
-
-$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-directories $(call GETDEPS,$(1))
-	touch $(stampdir)/stamp-final-$(1)
-endef
 
 define HOWTO_template
-HOWTO-$(1).$(2).txt : $(top_srcdir)/doc/HOWTO-$(1).$(2).txt
+HOWTO-$(1).$(2).txt : $(tsdir)/doc/HOWTO-$(1).$(2).txt
 	sed -e '/^;.*/d' \
         -e 's,!VERSION!,$(VERSION),g' \
 	-e 's,!BUILD_ISODATE!,$(BUILD_ISODATE),g' \
-	   < $(top_srcdir)/doc/HOWTO-$(1).$(2).txt \
+	   < $(tsdir)/doc/HOWTO-$(1).$(2).txt \
         | awk '{printf "%s\r\n", $$$$0}' > HOWTO-$(1).$(2).txt
 endef
 
@@ -792,13 +763,18 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
-		cd "$$$${pkgsdir}";				\
-		sed -i 's/set(KF5_MIN_VERSION.*)/set(KF5_MIN_VERSION "5.109.0")/' CMakeLists.txt; \
-		sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "5.109.0")/' CMakeLists.txt; \
-		sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.109.0")/' CMakeLists.txt; \
-		sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.24.0")/' CMakeLists.txt; \
-		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
+		cd "$$$${pkgsdir}"; \
+		if [ -e "CMakeLists.txt" ]; then \
+			sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "6.3.0")/' CMakeLists.txt; \
+			sed -i 's/find_package(ECM .* NO_MODULE)/find_package(ECM 6.3.0 NO_MODULE)/' CMakeLists.txt; \
+			sed -i 's/set(KF_DEP_VERSION.*)/set(KF_DEP_VERSION "6.3.0")/' CMakeLists.txt; \
+			sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "6.1.0")/' CMakeLists.txt; \
+			sed -i 's/set(KPIM_MIME_VERSION.*)/set(KPIM_MIME_VERSION "6.1.0")/' CMakeLists.txt; \
+			sed -i 's/set(KPIM_MBOX_VERSION.*)/set(KPIM_MBOX_VERSION "6.1.0")/' CMakeLists.txt; \
+		fi; \
+		for pfile in "$$$${pkgpatbdir}"/*.patch \
+                             "$$$${pkgpatdir}"/*.patch ; do  \
+		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
 		done \
 	else \
 		echo "Not patching symlinked $(1)"; \
@@ -807,24 +783,26 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 
 $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	($(call SETVARS,$(1));				\
-	 mkdir "$$$${pkgbdir}";				\
+	 mkdir -p "$$$${pkgbdir}";				\
 	 cd "$$$${pkgbdir}";				\
 	 $(CMAKE)					\
+		--fresh \
 		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
 		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
-		-DQT_MAJOR_VERSION="5" \
-		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_srcdir)/src/toolchain.cmake \
-		-DPKG_CONFIG_EXECUTABLE=$(abs_top_srcdir)/src/pkg-config \
+		-DQT_MAJOR_VERSION="6" \
+		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_builddir)/src/toolchain.cmake \
 		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 		-DBUILD_TESTING=False \
-		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}") && \
+                -DUSE_QML=off \
+		$(CMAKE_GENERATOR_FLAGS) \
+		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}$$$${pkg_conf_subdir}") && \
 	touch $(stampdir)/stamp-$(1)-02-configure
 
 $(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
-	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
 	touch $(stampdir)/stamp-$(1)-03-make
 
 # Note that post_install must come last because it may be empty and
@@ -833,7 +811,7 @@ $(stampdir)/stamp-$(1)-04-install: $(stampdir)/stamp-$(1)-03-make
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  cd "$$$${pkgmkdir_inst}";			\
-	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
 	  $(call STRIP_macro,"$$$${pkgidir}");		\
 	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
 	touch $(stampdir)/stamp-$(1)-04-install
@@ -856,9 +834,10 @@ clean-$(1):
 	  ($(STOW) -D "$$$${pkg_version}" || true;	\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
-	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-0*
 
 endef
+# (end KDEPKG_template_)
 
 define KDEPKG_template
 $(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
@@ -871,32 +850,37 @@ define EXCMKPKG_template_
 
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 
-$(stampdir)/stamp-$(1)-ex-00-unpack: $(stampdir)/stamp-$(1)-00-unpack $(call GETDEPS_EX,$(1))
+$(stampdir)/stamp-$(1)-ex-00-unpack: \
+		$(stampdir)/stamp-$(1)-00-unpack \
+		$(call GETDEPS_EX,$(1))
 	touch $(stampdir)/stamp-$(1)-ex-00-unpack
 
-$(stampdir)/stamp-$(1)-ex-01-patch: $(stampdir)/stamp-$(1)-ex-00-unpack $(stampdir)/stamp-$(1)-01-patch
+$(stampdir)/stamp-$(1)-ex-01-patch: \
+		$(stampdir)/stamp-$(1)-ex-00-unpack \
+		$(stampdir)/stamp-$(1)-01-patch
 	touch $(stampdir)/stamp-$(1)-ex-01-patch
 
 $(stampdir)/stamp-$(1)-ex-02-configure: $(stampdir)/stamp-$(1)-ex-01-patch
 	($(call SETVARS_EX,$(1));				\
-	 mkdir "$$$${pkgbdir}";				\
+	 mkdir -p "$$$${pkgbdir}";				\
 	 cd "$$$${pkgbdir}";				\
 	 $(CMAKE)					\
+		--fresh \
 		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
 		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
-		-DQT_MAJOR_VERSION="5" \
-		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_srcdir)/src/toolchain-ex.cmake \
-		-DPKG_CONFIG_EXECUTABLE=$(abs_top_srcdir)/src/pkg-config \
+		-DQT_MAJOR_VERSION="6" \
+		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_builddir)/src/toolchain-ex.cmake \
 		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 		-DBUILD_TESTING=OFF \
-		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}") && \
+		$(CMAKE_GENERATOR_FLAGS) \
+		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}$$$${pkg_conf_subdir}") && \
 	touch $(stampdir)/stamp-$(1)-ex-02-configure
 
 $(stampdir)/stamp-$(1)-ex-03-make: $(stampdir)/stamp-$(1)-ex-02-configure
 	($(call SETVARS_EX,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
-	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
 	touch $(stampdir)/stamp-$(1)-ex-03-make
 
 # Note that post_install must come last because it may be empty and
@@ -905,7 +889,7 @@ $(stampdir)/stamp-$(1)-ex-04-install: $(stampdir)/stamp-$(1)-ex-03-make
 	($(call SETVARS_EX,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  cd "$$$${pkgmkdir_inst}";			\
-	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
 	  $(call STRIP_EX_macro,"$$$${pkgidir}");		\
 	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_ex_post_install))
 	touch $(stampdir)/stamp-$(1)-ex-04-install
@@ -919,7 +903,7 @@ $(stampdir)/stamp-$(1)-ex-05-stow: $(stampdir)/stamp-$(1)-ex-04-install
 $(stampdir)/stamp-final-ex-$(1): $(stampdir)/stamp-$(1)-ex-05-stow
 	touch $(stampdir)/stamp-final-ex-$(1)
 
-$(1): $(stampdir)/stamp-final-$(1)
+$(1)-ex: $(stampdir)/stamp-final-ex-$(1)
 
 .PHONY : clean-ex-$(1)
 clean-ex-$(1):
@@ -931,377 +915,349 @@ clean-ex-$(1):
 	rm -f $(stampdir)/stamp-final-ex-$(1) $(stampdir)/stamp-$(1)-ex-*
 
 endef
+# (end EXCMKPKG_template_)
 
 define EXCMKPKG_template
 $(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
   $(call EXCMKPKG_template_,$1))
 endef
 
+# Template for tools which should be compiled natively on
+# the build system
+define NATIVEPKG_template
+$(stampdir)/stamp-$(1)-native-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS_NATIVE,$(1))
+	(cd $(bdir);					\
+	 $(call SETVARS_NATIVE,$(1));				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch $(stampdir)/stamp-$(1)-native-00-unpack
 
+$(stampdir)/stamp-$(1)-native-01-patch: $(stampdir)/stamp-$(1)-native-00-unpack
+	(shopt -s nullglob;				\
+	$(call SETVARS_NATIVE,$(1));				\
+	if [ ! -L "$$$${pkgsdir}" ]; then \
+		cd "$$$${pkgsdir}"; \
+		for pfile in "$$$${pkgpatbdir}"/*-native.patch \
+                             "$$$${pkgpatdir}"/*-native.patch ; do  \
+		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
+		done \
+	else \
+		echo "Not patching symlinked $(1)"; \
+	fi)
+	touch $(stampdir)/stamp-$(1)-native-01-patch
+
+$(stampdir)/stamp-$(1)-native-02-configure: $(stampdir)/stamp-$(1)-native-01-patch
+	($(call SETVARS_NATIVE,$(1));				\
+	 mkdir -p "$$$${pkgbdir}";				\
+	 cd "$$$${pkgbdir}";				\
+	 $(CMAKE)					\
+		--fresh \
+		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
+		-DCMAKE_PREFIX_PATH="$(nat_idir)" \
+		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_builddir)/src/toolchain-native.cmake \
+		-DQT_MAJOR_VERSION="6" \
+		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
+		-DBUILD_TESTING=False \
+                -DUSE_QML=off \
+		$(CMAKE_GENERATOR_FLAGS) \
+		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}$$$${pkg_conf_subdir}") && \
+	touch $(stampdir)/stamp-$(1)-native-02-configure
+
+$(stampdir)/stamp-$(1)-native-03-make: $(stampdir)/stamp-$(1)-native-02-configure
+	($(call SETVARS_NATIVE,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	touch $(stampdir)/stamp-$(1)-native-03-make
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+$(stampdir)/stamp-$(1)-native-04-install: $(stampdir)/stamp-$(1)-native-03-make
+	($(call SETVARS_NATIVE,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  cd "$$$${pkgmkdir_inst}";			\
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  test -d "$$$${pkgidir}" && $(call STRIP_macro,"$$$${pkgidir}"); \
+	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_native_post_install))
+	touch $(stampdir)/stamp-$(1)-native-04-install
+
+$(stampdir)/stamp-$(1)-native-05-stow: $(stampdir)/stamp-$(1)-native-04-install
+	($(call SETVARS_NATIVE,$(1));				\
+	 cd $(nat_ipdir);					\
+	 $(STOW) "$$$${pkg_version}")
+	touch $(stampdir)/stamp-$(1)-native-05-stow
+
+$(stampdir)/stamp-final-native-$(1): $(stampdir)/stamp-$(1)-native-05-stow
+	touch $(stampdir)/stamp-final-native-$(1)
+
+$(1)-native: $(stampdir)/stamp-final-native-$(1)
+
+.PHONY : clean-$(1)-native
+clean-$(1)-native:
+	($(call SETVARS_NATIVE,$(1));				\
+	 (cd $(nat_ipdir) &&				\
+	  ($(STOW) -D "$$$${pkg_version}" || true;	\
+	   rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
+	rm -f $(stampdir)/stamp-final-native-$(1) $(stampdir)/stamp-$(1)-native-*
+endef
+
+#
+# End Template definitions
+#
+
+# Sign the file $1 and save the result as $2
+define AUTHENTICODE_sign
+	$(RUNCMD) gpg-authcode-sign "$(1)" "$(2)"
+endef
+
+# Generic MSI targets (same for each flavor)
+$(MSI_FNAME_PREFIX)-$(VERSION).wxs: $(common_nsi) $(stampdir)/stamp-final \
+    $(foosum_exe) gpgwrap.exe \
+    $(sdir)/make-msi.pl \
+    $(addsuffix /VERSION.sig,$(addprefix $(msidir)/,$(msi_targets)))
+	cp $(sdir)/make-msi.guids make-msi.guids
+	perl $(sdir)/make-msi.pl --guids make-msi.guids \
+		--manifest gpg4win-$(VERSION).files \
+		--version $(VSD_VERSION) \
+		--name "$(MSI_PRODUCT_NAME)" \
+		--win64 -DTOP_SRCDIR=$(tsdir) -DTOP_BLDDIR=$(root) \
+		-DSRCDIR=$(tsdir)/src -DBLDDIR=$(root) -DVSDDIR=$(vsddir) \
+                $(sdir)/nsis/gpg4win.nsi > $(MSI_FNAME_PREFIX)-$(VERSION).wxs
+
+$(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib: \
+	      $(stampdir)/stamp-final \
+	      $(foosum_exe) \
+	      license.blurb \
+	      WixUI_Gpg4win.wxs \
+	      $(MSI_FNAME_PREFIX)-$(VERSION).wxs \
+	      $(stampdir)/stamp-additional-signedfiles
+	echo "Gpg4win" > $(root)/VERSION; \
+	echo "$(VERSION)" >> $(root)/VERSION; \
+	$(RUNCMD) litcandle std \
+                  $(VERSION) $(MSI_FNAME_PREFIX) $(idir) $(ex_idir)
+
+# Custom targets for each msi_target flavor.
 # Processed via eval as most other templates.
 define MSI_template
 
-$(1)_PRODUCT := $(msi_target_$(1)_PRODUCT)
-ifeq ($$($(1)_PRODUCT),)
-	$(1)_PRODUCT := $(VSD_PRODUCT)
-endif
-ifeq ($$($(1)_PRODUCT),)
-	$(1)_PRODUCT := Gpg4win
-endif
+$(1)-package: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 
-$(1)_PRODUCT_PRETTY := $(msi_target_$(1)_PRODUCT_PRETTY)
-ifeq ($$($(1)_PRODUCT_PRETTY),)
-	$(1)_PRODUCT_PRETTY := $(VSD_PRODUCT_PRETTY)
-endif
-ifeq ($$($(1)_PRODUCT_PRETTY),)
-	$(1)_PRODUCT_PRETTY := Gpg4win
-endif
-
-$(1)-package: installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
-
-$$($(1)_PRODUCT)-$(VERSION).wxs: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-final \
-		        $(foosum_exe) gpgwrap.exe \
-				make-msi.pl \
-	$(addsuffix /VERSION.sig,$(addprefix gnupg-vsd/,$(msi_targets)))
-	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
-		--manifest gpg4win-$(VERSION).files \
-		--version $(VSD_VERSION) \
-		--name "$$($(1)_PRODUCT_PRETTY)" \
-		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
-		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $$($(1)_PRODUCT)-$(VERSION).wxs
-
-$(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib: \
-      $(stampdir)/stamp-final \
-      $(foosum_exe) \
-      license.blurb \
-      WixUI_Gpg4win.wxs \
-      $$($(1)_PRODUCT)-$(VERSION).wxs \
-      $(stampdir)/stamp-additional-signedfiles
-	($(call SETVARS_WINE,); \
-	echo "Gpg4win" > $(root)/VERSION; \
-	echo "$(VERSION)" >> $(root)/VERSION; \
-	(ln -s $(idir) $$$$WINEINST; \
-	 ln -s $(ex_idir) $$$$WINEINSTEX; \
-	 ln -s `readlink -f $(top_srcdir)` $$$$WINESRC; \
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
-		-out k:\\$$($(1)_PRODUCT)-$(VERSION).wixobj \
-		-pedantic -wx i:\\src\\$$($(1)_PRODUCT)-$(VERSION).wxs \
-		-arch x64 || exit 1;\
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
-		-out k:\\gpg4win-ui.wixobj \
-		-arch x64 \
-		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
-		\
-		$(WINE) $$$$WIXPREFIX2/lit.exe \
-		-out k:\\$$($(1)_PRODUCT)-$(VERSION).wixlib \
-		-bf \
-		-wx \
-		-pedantic \
-		k:\\$$($(1)_PRODUCT)-$(VERSION).wixobj k:\\gpg4win-ui.wixobj || exit 1; \
-		\
-	) || ERR=1; (rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
-	if [ -n "$$$$ERR" ]; then \
-		exit 1; \
-	fi)
-
-$(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib: \
-      $(stampdir)/stamp-final \
-      $(foosum_exe) \
-      license.blurb \
-      WixUI_Gpg4win.wxs \
-      $$($(1)_PRODUCT)-$(VERSION).wxs \
-      $(stampdir)/stamp-additional-signedfiles
-	($(call SETVARS_WINE,); \
-	echo "Gpg4win" > $(root)/VERSION; \
-	echo "$(VERSION)" >> $(root)/VERSION; \
-	(ln -s $(idir) $$$$WINEINST; \
-	 ln -s $(ex_idir) $$$$WINEINSTEX; \
-	 ln -s `readlink -f $(top_srcdir)` $$$$WINESRC; \
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
-		-arch x86 \
-		-out k:\\$$($(1)_PRODUCT)-$(VERSION)-x86.wixobj \
-		-pedantic -wx i:\\src\\$$($(1)_PRODUCT)-$(VERSION).wxs || exit 1;\
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
-		-arch x86 \
-		-out k:\\gpg4win-ui-x86.wixobj \
-		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
-		\
-		$(WINE) $$$$WIXPREFIX2/lit.exe \
-		-out k:\\$$$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib \
-		-bf \
-		-wx \
-		-pedantic \
-		k:\\$$($(1)_PRODUCT)-$(VERSION)-x86.wixobj k:\\gpg4win-ui-x86.wixobj || exit 1; \
-		\
-	) || ERR=1; (rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
-	if [ -n "$$$$ERR" ]; then \
-		exit 1; \
-	fi)
-
-$(idir)/$(1)-x86.wixlib: gnupg-vsd/$(1)/$(1).wxs
-	($(call SETVARS_WINE,); \
-	( \
-	ln -s $(idir) $$$$WINEINST; \
-	ln -s $(ex_idir) $$$$WINEINSTEX; \
-	ln -s `readlink -f $(top_srcdir)` $$$$WINESRC; \
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
-		-arch x86 \
-		-out k:\\$(1)-$(VERSION)-x86.wixobj \
-		-pedantic -wx i:\\src\\gnupg-vsd\\$(1)\\$(1).wxs || exit 1;\
-		$(WINE) $$$$WIXPREFIX2/lit.exe \
-		-out k:\\$(1)-x86.wixlib \
-		-bf \
-		-wx \
-		-pedantic \
-		k:\\$(1)-$(VERSION)-x86.wixobj || exit 1; \
-		\
-	) || ERR=1; \
-		(rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
-	if [ -n "$$$$ERR" ]; then \
-		exit 1; \
-	fi \
-	)
-
-$(idir)/$(1).wixlib: gnupg-vsd/$(1)/$(1).wxs
-	($(call SETVARS_WINE,); \
-	( \
-	ln -s $(idir) $$$$WINEINST; \
-	ln -s $(ex_idir) $$$$WINEINSTEX; \
-	ln -s `readlink -f $(top_srcdir)` $$$$WINESRC; \
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
-		-out k:\\$(1)-$(VERSION).wixobj \
-		-arch x64 \
-		-pedantic -wx i:\\src\\gnupg-vsd\\$(1)\\$(1).wxs || exit 1;\
-		$(WINE) $$$$WIXPREFIX2/lit.exe \
-		-out k:\\$(1).wixlib \
-		-bf \
-		-wx \
-		-pedantic \
-		k:\\$(1)-$(VERSION).wixobj || exit 1; \
-		\
-	) || ERR=1; \
-		(rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
-	if [ -n "$$$$ERR" ]; then \
-		exit 1; \
-	fi \
-	)
-
-# This is generated by make-msi.pl
-gnupg-vsd/$(1)/$(1).wxs: gnupg-vsd/$(1)/VERSION.sig make-msi.pl $$($(1)_PRODUCT)-$(VERSION).wxs
-	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
-		--manifest gpg4win-$(VERSION).files \
-		--version $(VSD_VERSION) \
-		--name "$$($(1)_PRODUCT_PRETTY)" \
-		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
-		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > /dev/null
-
-gnupg-vsd/$(1)/VERSION.sig: gnupg-vsd/$(1)/VERSION
-	echo "----------SIGNING----------"
-	echo "using key: $(VERSION_SIGNKEY)"
-	cat gnupg-vsd/$(1)/VERSION
-	gpg --yes -o gnupg-vsd/$(1)/VERSION.sig -bau $(VERSION_SIGNKEY) gnupg-vsd/$(1)/VERSION
-
-gnupg-vsd/$(1)/VERSION: gnupg-vsd/custom.mk $(stampdir)/stamp-betanum
-	echo "[Kleopatra]" > gnupg-vsd/$(1)/VERSION
-	if [ "$(call GETVAR,msi_target_$(1)_VERSION)" = "VS-Desktop-$(VSD_VERSION)" ]; then \
-		echo "version=VS-Desktop-$(VSD_VERSION_FILE)" >> gnupg-vsd/$(1)/VERSION; \
-	else \
-		echo "version=$(call GETVAR,msi_target_$(1)_VERSION)" >> gnupg-vsd/$(1)/VERSION;\
-	fi
-	echo "shortDescription=$(call GETVAR,msi_target_$(1)_DESC)" >> gnupg-vsd/$(1)/VERSION
-	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> gnupg-vsd/$(1)/VERSION
-	echo "bugAddress=$(VSD_BUG_REPORT)" >> gnupg-vsd/$(1)/VERSION
-	echo "homepage=$(VSD_HOMEPAGE)" >> gnupg-vsd/$(1)/VERSION
-	echo "copyrightStatement=<pre><pre/>" >> gnupg-vsd/$(1)/VERSION
-	if [ -n "$(call GETVAR,msi_target_$(1)_statusline)" ]; then \
-		echo "statusline=$(call GETVAR,msi_target_$(1)_statusline)" >> gnupg-vsd/$(1)/VERSION; \
-	fi
-	if [ -n "$(call GETVAR,msi_target_$(1)_uidcomment)" ]; then \
-		echo "uidcomment=$(call GETVAR,msi_target_$(1)_uidcomment)" >> gnupg-vsd/$(1)/VERSION; \
-	fi
-	echo "" >> gnupg-vsd/$(1)/VERSION
-	echo "[Okular]" >> gnupg-vsd/$(1)/VERSION
-	if [ "$(call GETVAR,msi_target_$(1)_VERSION)" = "VS-Desktop-$(VSD_VERSION)" ]; then \
-		echo "version=VS-Desktop-$(VSD_VERSION_FILE)" >> gnupg-vsd/$(1)/VERSION; \
-	else \
-		echo "version=$(call GETVAR,msi_target_$(1)_VERSION)" >> gnupg-vsd/$(1)/VERSION;\
-	fi
-	echo "shortDescription=$(call GETVAR,msi_target_$(1)_DESC)" >> gnupg-vsd/$(1)/VERSION
-	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> gnupg-vsd/$(1)/VERSION
-	echo "bugAddress=$(VSD_BUG_REPORT)" >> gnupg-vsd/$(1)/VERSION
-	echo "homepage=$(VSD_HOMEPAGE)" >> gnupg-vsd/$(1)/VERSION
-	echo "displayName=$(OKULAR_DISPLAY_NAME)" >> gnupg-vsd/$(1)/VERSION
-	echo "" >> gnupg-vsd/$(1)/VERSION
-	echo "[Build]" >> gnupg-vsd/$(1)/VERSION
-	echo "cidInstaller=$(BUILD_COMMITID)" >> gnupg-vsd/$(1)/VERSION
-	echo "cidConfig=$$$$(cd gnupg-vsd && git rev-parse --verify HEAD)" >> gnupg-vsd/$(1)/VERSION
+# Copy the reqquired files to the Windows Host, run light.exe on that host
+# and copy the result into the installers directory.
+installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: \
+     $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
+     $(vsddir)/$(1)/license.rtf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
+	$(RUNCMD) cptowinhost $(VERSION) $(vsddir)/$(1)/license.rtf \
+                  $(idir)/$(1)-$(VERSION).wixlib \
+                  $(vsddir)/../$(call GETVAR,msi_target_$(1)_branding)/*.bmp \
+                  $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
+	$(RUNCMD) lightwinhost $(VERSION) $(MSI_FNAME_PREFIX) $(1) \
+                  $(subst $(space),%20,$(call GETVAR,msi_target_$(1)_l10n)) \
+                  $(gpg4win_pkg_gnupg_msi_version)
+	$(RUNCMD) cpfromwinhost $(VERSION) $(MSI_FNAME_PREFIX) $(1) \
+                  $(VSD_VERSION_FILE)
 
 
-gnupg-vsd/$(1)/announcement.txt: gnupg-vsd/custom.mk gnupg-vsd/announcement.de.in gnupg-vsd/announcement.en.in
-	cat gnupg-vsd/$(call GETVAR,msi_target_$(1)_announcement) | \
-		sed 's/VSD_VERSION/$(VSD_VERSION)/' | \
-		sed 's@GNUPG_VSD_CUSTOMER_LINK@https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi@' | \
-		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.xz@' > gnupg-vsd/$(1)/announcement.txt
+# Running light.exe in WINE triggers the error:
+# 12627.235:0024:err:msidb:msi_commit_streams failed to write stream
+# L"\430b\4131\4735\443e\4336\41ac\47a8\43e7\482f" (hr = 0x80030102)
+#
+# Below code does not work with wine 9.14 and wixtools 3.11 / 3.14
+# See T7248 for details. The default MSI targets still require a
+# WINHOST this is only optional to assist in debugging.
+$(1)-wine: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1)-wine.msi
 
-installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi: $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
-	gnupg-vsd/$(1)/license.rtf $(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib
-	scp gnupg-vsd/$(1)/license.rtf \
-		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp $(idir)/$(1).wixlib \
-		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp $(call GETVAR,msi_target_$(1)_branding)/*.bmp \
-		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp $(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	ssh $(WINHOST) "cd AppData/Local/Temp/gpg4win-$(VERSION) && $(WINLIGHT) \
+installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1)-wine.msi: $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
+	$(vsddir)/$(1)/license.rtf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
+	(
+	( set -x; set -e;\
+	workdir="$(idir)/$(1)-msi" || exit 1; \
+	mkdir -p $$$$workdir || exit 1; \
+	cp $(tsdir)/packages/gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
+	   $$$$workdir || exit 1; \
+	cp $(tsdir)/src/icons/shield.ico $$$$workdir || exit 1; \
+	cp $(tsdir)/doc/logo/gpg4win-msi-header_install-493x58.bmp \
+	   $$$$workdir/header.bmp || exit 1; \
+	cp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+	   $$$$workdir/dialog.bmp || exit 1; \
+	cp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+	   $$$$workdir/dialog.bmp || exit 1; \
+	cp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
+	   $$$$workdir/info.bmp || exit 1; \
+	cp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
+	   $$$$workdir/exclamation.bmp || exit 1; \
+	cp $(tsdir)/po/gpg4win-en.wxl $$$$workdir || exit 1; \
+	cp $(tsdir)/po/gpg4win-de.wxl $$$$workdir || exit 1; \
+	cp $(call GETVAR,msi_target_$(1)_branding)/*.bmp . || exit 1;\
+	cp WixUI_Gpg4win.wxs $$$$workdir || exit 1; \
+	ln -sf $$$$workdir $$$$WINEINST || exit 1; \
+	cd $$$$workdir || exit 1; \
+	ln -sf $(idir)/$(1).wixlib || exit 1; \
+	ln -sf $(vsddir)/$(1)/license.rtf || exit 1;\
+	ln -sf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib || exit 1; \
+	LC_ALL=C WINEDEBUG=+timestamp,+loaddll,+debugstr,msi+all $(WINE) $$$$WIXPREFIX2/light.exe \
 	-cc . \
+	-ct 1 \
 	-reusecab \
 	-spdb \
 	-ext WixUIExtension \
 	-ext WixUtilExtension \
-	-out $$($(1)_PRODUCT)-$(VERSION)-$(1).msi \
+	-out k:\\$(MSI_FNAME_PREFIX)-$(VERSION)-$(1).msi\
 	 $(call GETVAR,msi_target_$(1)_l10n) \
-	-dcl:high \
+	-dcl:none\
 	-pedantic \
 	 \
-	 $$($(1)_PRODUCT)-$(VERSION).wixlib \
-	 gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
-	 $(1).wixlib" | grep -v "ICE80" | grep -v "ICE57" ; \
-	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/$$($(1)_PRODUCT)-$(VERSION)-$(1).msi \
-	 installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi;
+	 k:\\$(MSI_FNAME_PREFIX)-$(VERSION).wixlib \
+	 k:\\gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
+	 k:\\$(1).wixlib | grep -v "ICE80" | grep -v "ICE57"  || exit 1; \
+	 cd $(abs_top_builddir)/src/installers || exit 1; \
+	 ln -sf $$$$workdir/$(MSI_FNAME_PREFIX)-$(VERSION)-$(1).msi || exit 1; \
+	) || ERR=1; rm -f $$$$WINEINST; \
+	if [ -n "$$$$ERR" ]; then \
+		exit 1; \
+	fi \
+	)
 
-installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi: $(stampdir)/stamp-msi-base $(idir)/$(1)-x86.wixlib \
-	gnupg-vsd/$(1)/license.rtf \
-	$(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib
-	scp gnupg-vsd/$(1)/license.rtf \
-		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp $(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib \
-		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp $(idir)/$(1)-x86.wixlib \
-		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp $(call GETVAR,msi_target_$(1)_branding)/*.bmp \
-		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp $(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	ssh $(WINHOST) "cd AppData/Local/Temp/gpg4win-$(VERSION) && $(WINLIGHT) \
-	-cc . \
-	-reusecab \
-	-spdb \
-	-ext WixUIExtension \
-	-ext WixUtilExtension \
-	-out $$($(1)_PRODUCT)-$(VERSION)-$(1)-x86.msi \
-	 $(call GETVAR,msi_target_$(1)_l10n) \
-	-dcl:high \
-	-v -pedantic \
-	 \
-	 $$($(1)_PRODUCT)-$(VERSION)-x86.wixlib \
-	 gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
-	 $(1)-x86.wixlib"; \
-	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/$$($(1)_PRODUCT)-$(VERSION)-$(1)-x86.msi \
-	 installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi;
+$(idir)/$(1).wixlib: $(msidir)/$(1)/$(1).wxs
+	$(RUNCMD) litcandle ui $(VERSION) $(1) $(idir) $(ex_idir)
 
-signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi: installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
+# This is generated by make-msi.pl
+$(msidir)/$(1)/$(1).wxs: $(msidir)/$(1)/VERSION.sig \
+                         $(sdir)/make-msi.pl \
+                         $(MSI_FNAME_PREFIX)-$(VERSION).wxs
+	cp $(sdir)/make-msi.guids make-msi.guids
+	perl $(sdir)/make-msi.pl --guids make-msi.guids \
+		--manifest gpg4win-$(VERSION).files \
+		--version $(VSD_VERSION) \
+		--name "$(MSI_PRODUCT_NAME)" \
+		--win64 -DTOP_SRCDIR=$(tsdir) -DTOP_BLDDIR=$(root) \
+		-DSRCDIR=$(tsdir)/src -DBLDDIR=$(root) -DVSDDIR=$(vsddir) \
+		$(sdir)/nsis/gpg4win.nsi > /dev/null
+
+$(msidir)/$(1)/VERSION.sig: $(msidir)/$(1)/VERSION
+	echo "----------SIGNING----------"
+	echo "using key: $(VERSION_SIGNKEY)"
+	cat $(msidir)/$(1)/VERSION
+	$(RUNCMD) gpg --yes -o $(msidir)/$(1)/VERSION.sig -bau $(VERSION_SIGNKEY) $(msidir)/$(1)/VERSION
+
+$(msidir)/$(1)/VERSION: $(vsddir)/custom.mk $(stampdir)/stamp-betanum
+	[ -d $(msidir)/$(1) ] || mkdir -p $(msidir)/$(1)
+	echo "[Kleopatra]" > $(msidir)/$(1)/VERSION
+	if [ "$(call GETVAR,msi_target_$(1)_VERSION)" = "VS-Desktop-$(VSD_VERSION)" ]; then \
+		echo "version=VS-Desktop-$(VSD_VERSION_FILE)" >> $(msidir)/$(1)/VERSION; \
+	else \
+		echo "version=$(call GETVAR,msi_target_$(1)_VERSION)" >> $(msidir)/$(1)/VERSION;\
+	fi
+	echo "shortDescription=$(call GETVAR,msi_target_$(1)_DESC)" >> $(msidir)/$(1)/VERSION
+	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> $(msidir)/$(1)/VERSION
+	echo "bugAddress=$(VSD_BUG_REPORT)" >> $(msidir)/$(1)/VERSION
+	echo "homepage=$(VSD_HOMEPAGE)" >> $(msidir)/$(1)/VERSION
+	echo "copyrightStatement=<pre><pre/>" >> $(msidir)/$(1)/VERSION
+	if [ -n "$(call GETVAR,msi_target_$(1)_statusline)" ]; then \
+		echo "statusline=$(call GETVAR,msi_target_$(1)_statusline)" >> $(msidir)/$(1)/VERSION; \
+	fi
+	if [ -n "$(call GETVAR,msi_target_$(1)_uidcomment)" ]; then \
+		echo "uidcomment=$(call GETVAR,msi_target_$(1)_uidcomment)" >> $(msidir)/$(1)/VERSION; \
+	fi
+	echo "" >> $(msidir)/$(1)/VERSION
+	echo "[Okular]" >> $(msidir)/$(1)/VERSION
+	if [ "$(call GETVAR,msi_target_$(1)_VERSION)" = "VS-Desktop-$(VSD_VERSION)" ]; then \
+		echo "version=VS-Desktop-$(VSD_VERSION_FILE)" >> $(msidir)/$(1)/VERSION; \
+	else \
+		echo "version=$(call GETVAR,msi_target_$(1)_VERSION)" >> $(msidir)/$(1)/VERSION;\
+	fi
+	echo "shortDescription=$(call GETVAR,msi_target_$(1)_DESC)" >> $(msidir)/$(1)/VERSION
+	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> $(msidir)/$(1)/VERSION
+	echo "bugAddress=$(VSD_BUG_REPORT)" >> $(msidir)/$(1)/VERSION
+	echo "homepage=$(VSD_HOMEPAGE)" >> $(msidir)/$(1)/VERSION
+	echo "displayName=$(OKULAR_DISPLAY_NAME)" >> $(msidir)/$(1)/VERSION
+	echo "" >> $(msidir)/$(1)/VERSION
+	echo "[Build]" >> $(msidir)/$(1)/VERSION
+	echo "cidInstaller=$(BUILD_COMMITID)" >> $(msidir)/$(1)/VERSION
+	echo "cidConfig=$$$$(cd $(vsddir) && git rev-parse --verify HEAD)" >> $(msidir)/$(1)/VERSION
+
+$(msidir)/$(1)/announcement.txt: $(vsddir)/custom.mk $(vsddir)/announcement.de.in $(vsddir)/announcement.en.in
+	cat $(vsddir)/$(call GETVAR,msi_target_$(1)_announcement) | \
+		sed 's/VSD_VERSION/$(VSD_VERSION)/' | \
+		sed 's@GNUPG_VSD_CUSTOMER_LINK@https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi@' | \
+		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.xz@' > $(msidir)/$(1)/announcement.txt
+
+signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 	mkdir -p signed_installers
-	$$(abs_top_srcdir)/build-aux/authenticode-sign.sh --stamp \
-           --desc="$$($(1)_PRODUCT_PRETTY)" \
-           "installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi" \
-           "signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi"
+	$$(tsdir)/build-aux/authenticode-sign.sh --stamp \
+           --desc="$(MSI_PRODUCT_NAME)" \
+           "installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi" \
+           "signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi"
 
-$(stampdir)/stamp-$(1)-upload: signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi \
+$(stampdir)/stamp-$(1)-upload: signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi \
 	$(stampdir)/stamp-dist-self
 	@(set -e; cd signed_installers; \
-          sha256sum $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi > \
-		$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.sha256; \
-	  if [ -f "../gnupg-vsd/$(1)/customer-enc-key.asc" ]; then \
+          sha256sum $(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi > \
+		$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi.sha256; \
+	  if [ -f "$(vsddir)/$(1)/customer-enc-key.asc" ]; then \
 		echo "Encrypting installer"; \
-	        k="-f ../gnupg-vsd/$(1)/customer-enc-key.asc" ; \
+	        k="-f $(vsddir)/$(1)/customer-enc-key.asc" ; \
                 for i in 2 3 4 5 6 7 8 9; do \
-	          if [ -f "../gnupg-vsd/$(1)/customer-enc-key$$$${i}.asc" ]; then \
-                    k="$$$${k} -f ../gnupg-vsd/$(1)/customer-enc-key$$$${i}.asc";\
+	          if [ -f "$(vsddir)/$(1)/customer-enc-key$$$${i}.asc" ]; then \
+                    k="$$$${k} -f $(vsddir)/$(1)/customer-enc-key$$$${i}.asc";\
 		  fi; \
 	        done; \
 		gpg --no-options --batch --yes -seu $(msi_signkey) \
 			$$$${k} \
-			-f "../gnupg-vsd/general-enc-key.asc" \
-                        -o $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.gpg \
-			$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi;\
-		sha256sum $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.gpg > \
-		   $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.gpg.sha256; \
-		scp $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.gpg \
-		   $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.gpg.sha256 \
+			-f "$(vsddir)/general-enc-key.asc" \
+                        -o $(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi.gpg \
+			$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi;\
+		sha256sum $(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi.gpg > \
+		   $(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi.gpg.sha256; \
+		scp $(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi.gpg \
+		   $(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi.gpg.sha256 \
 		   $(VSD_PUBLISH_HOST)/$(call GETVAR,msi_target_$(1)_directory); \
-		echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.gpg" \
+		echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi.gpg" \
 		> $(stampdir)/stamp-$(1)-upload; \
 	  else \
-		gpg --yes -o $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.sig -bu $(msi_signkey) \
-			$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi; \
-		scp $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi \
-			$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.sha256 \
-			$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.sig \
+		gpg --yes -o $(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi.sig -bu $(msi_signkey) \
+			$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi; \
+		scp $(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi \
+			$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi.sha256 \
+			$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi.sig \
 			$(VSD_PUBLISH_HOST)/$(call GETVAR,msi_target_$(1)_directory); \
 		ssh `echo $(VSD_PUBLISH_HOST) | cut -d ":" -f 1` \
-			echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi" \
+			echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi" \
 				> $(stampdir)/stamp-$(1)-upload; \
-			echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.sig" \
+			echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi.sig" \
 			>> $(stampdir)/stamp-$(1)-upload; \
 	  fi)
 
 .phony : $(1)
-$(1): installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
-
-.PHONY : $(1)-x86
-$(1)-x86: installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi
-	echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-	echo "XXXX FIXME: x86 Registration of GpgOL and GpgEX does not work! XXXX"
-	echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-
+$(1): installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 
 .PHONY : $(1)-upload
 $(1)-upload: $(stampdir)/stamp-$(1)-upload $(stampdir)/stamp-dist-self
-	gpg --yes -o gnupg-vsd-$(VERSION).tar.xz.sig -bau $(msi_signkey) \
+	gpg --yes -o $(msidir)-$(VERSION).tar.xz.sig -bau $(msi_signkey) \
 		../gpg4win-$(VERSION).tar.xz
-	rsync -vP ../gpg4win-$(VERSION).tar.xz $(VSD_PUBLISH_HOST)/src/$$($(1)_PRODUCT)-$(VERSION).tar.xz
-	rsync -vP gnupg-vsd-$(VERSION).tar.xz.sig $(VSD_PUBLISH_HOST)/src/$$($(1)_PRODUCT)-$(VERSION).tar.xz.sig
+	rsync -vP ../gpg4win-$(VERSION).tar.xz $(VSD_PUBLISH_HOST)/src/$(MSI_FNAME_PREFIX)-$(VERSION).tar.xz
+	rsync -vP $(msidir)-$(VERSION).tar.xz.sig $(VSD_PUBLISH_HOST)/src/$(MSI_FNAME_PREFIX)-$(VERSION).tar.xz.sig
 	echo "Upload URLs:"
 	cat $(stampdir)/stamp-$(1)-upload
 	echo "Source links:"
-	echo "https://download.gnupg.com/files/src/$$($(1)_PRODUCT)-$(VERSION).tar.xz"
-	echo "https://download.gnupg.com/files/src/$$($(1)_PRODUCT)-$(VERSION).tar.xz.sig"
+	echo "https://download.gnupg.com/files/src/$(MSI_FNAME_PREFIX)-$(VERSION).tar.xz"
+	echo "https://download.gnupg.com/files/src/$(MSI_FNAME_PREFIX)-$(VERSION).tar.xz.sig"
 
-$(1)-signed: signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
+$(1)-signed: signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 
-$(1)-announce: gnupg-vsd/$(1)/announcement.txt
+$(1)-announce: $(msidir)/$(1)/announcement.txt
 	set -x
 	echo "-------- Announcement for $(1) ---------"
-	cat gnupg-vsd/$(1)/announcement.txt
+	cat $(msidir)/$(1)/announcement.txt
 	echo "-----------------------------"
 	echo "Send to: $(call GETVAR,msi_target_$(1)_contact)"
 	echo "Ticket: $(call GETVAR,msi_target_$(1)_ticket)"
 	echo "-----------------------------"
 
 endef
+
+# Insert the template for each build tool package.
+$(foreach npkg, $(gpg4win_nativepkgs), $(eval $(call NATIVEPKG_template,$(npkg))))
 
 # Insert the template for each source package.
 $(foreach spkg, $(gpg4win_spkgs), $(eval $(call SPKG_template,$(spkg))))
@@ -1340,7 +1296,7 @@ $(stampdir)/stamp-final: $(stampdir)/stamp-directories $(stampdir)/stamp-additio
 $(bdir)/versioninfo.txt: $(stampdir)/stamp-final
 	touch $(bdir)/versioninfo.txt
 
-$(stampdir)/stamp-betanum: $(top_srcdir)/config.log
+$(stampdir)/stamp-betanum: ../config.log
 	if [ ! -e "$(stampdir)/stamp-betanum" -o "$$(cat "$(stampdir)/stamp-betanum")" != "$(BUILD_BETANUM)" ]; then \
 		echo -n "$(BUILD_BETANUM)" > "$(stampdir)/stamp-betanum"; \
 	fi
@@ -1355,7 +1311,7 @@ clean-gpg4win:
 	$(RM) -fR $(root) $(stampdir)
 
 $(stampdir)/stamp-versions-all-signed: $(stampdir)/stamp-directories \
-	$(addsuffix /VERSION.sig, $(addprefix gnupg-vsd/,$(msi_targets)))
+	$(addsuffix /VERSION.sig, $(addprefix $(msidir)/,$(msi_targets)))
 	touch $(stampdir)/stamp-versions-all-signed
 
 $(stampdir)/stamp-all-upload: $(stampdir)/stamp-dist-self \
@@ -1383,7 +1339,7 @@ msi: $(stampdir)/stamp-versions-all-signed \
 		echo "######################"; \
 	fi
 
-$(stampdir)/stamp-msi-all-signed: \
+$(stampdir)/stamp-msi-all-signed: $(vsddir)/sign.mk \
 	$(addsuffix .msi,$(addprefix signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-,$(msi_targets)))
 	touch $(stampdir)/stamp-msi-all-signed
 

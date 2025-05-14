@@ -1,0 +1,56 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+Subject: [PATCH] Revert "Explicitly use Boost's cmake config file for finding
+ it"
+
+--
+This reverts commit 27f8413d7414bab184999bab9083aa1926c013e9.
+
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7cdbe5d3..b99e435a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -73,12 +73,8 @@ set_package_properties(LibGpgError PROPERTIES
+   TYPE REQUIRED
+ )
+
+-find_package(Boost 1.70.0 CONFIG)
+-set_package_properties(Boost PROPERTIES
+-    TYPE REQUIRED
+-    DESCRIPTION "Boost C++ Libraries"
+-    URL "https://www.boost.org")
+-
++find_package(Boost 1.34.0)
++set_package_properties(Boost PROPERTIES DESCRIPTION "Boost C++ Libraries" URL "https://www.boost.org" TYPE REQUIRED PURPOSE "Boost is required for building most KDEPIM applications")
+ ecm_setup_version(PROJECT VARIABLE_PREFIX LIBKLEO
+                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/libkleo_version.h"
+                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KPim6LibkleoConfigVersion.cmake"
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index a3aafb74..aea012da 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -2,6 +2,7 @@
+ # SPDX-FileCopyrightText: none
+ # target_include_directories does not handle empty include paths
+ include_directories(
++    ${Boost_INCLUDE_DIRS}
+     ${GPGME_INCLUDES}
+ )
+ add_definitions(-DTRANSLATION_DOMAIN=\"libkleopatra6\")
+@@ -220,7 +221,10 @@ target_link_libraries(KPim6Libkleo PUBLIC Gpgmepp PRIVATE Qt::Widgets
+                                                 LibGpgError::LibGpgError)
+
+ target_link_libraries(KPim6Libkleo PUBLIC QGpgmeQt6)
+-target_link_libraries(KPim6Libkleo PRIVATE Boost::headers)
++# Boost::headers may not be available for old versions of Boost
++if(TARGET Boost::headers)
++  target_link_libraries(KPim6Libkleo PRIVATE Boost::headers)
++endif()
+
+ if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
+     set_target_properties(KPim6Libkleo PROPERTIES UNITY_BUILD ON)
+--
+2.39.2

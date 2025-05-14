@@ -33,98 +33,92 @@ endif
 
 SUBDIRS = ${po} packages ${doc} src
 
-# find patches -type f | sort | sed 's/$/ \\/' | sed 's/^/             /'
-# find patches-appimage -type f | sort | sed 's/$/ \\/' | sed 's/^/             /'
+# git ls-files patches | sed 's/$/ \\/' | sed 's/^/             /'
+# git ls-files patches-appimage | sed 's/$/ \\/' | sed 's/^/             /'
 
-EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
-             doc/license-page doc/GPLv3 \
+EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
+             doc/license-page doc/GPLv3 build.sh \
              build-aux/git-log-footer build-aux/git-log-fix \
-	     build-aux/authenticode-sign.sh \
+             build-aux/gpg-authcode-sign.sh \
              docker/appimage/Dockerfile \
-             docker/build-appimage-docker-image.sh \
-             docker/build-gpg4win-docker-image.sh \
-             docker/gpg4win-bullseye/Dockerfile \
-             docker/run-appimage-build.sh \
-             docker/run-gpg4win-build.sh \
-             patches/breeze-icons/0001-Add-folder-edit-sign-encrypt-icon.patch \
-             patches/breeze-icons/add-the-nose.patch \
-             patches/breeze-icons/azz-Make-all-breeze-icons-available-in-breeze-dark.patch \
-             patches/breeze-icons/subset-crossbuild.patch \
+             docker/appimage/Dockerfile-CentOS7 \
+             docker/gpg4win-bookworm/Dockerfile \
+             patches/gpgol-2.6.0/0001-Fix-fixing-T6646.patch \
+             patches/gpgol-2.6.0/0002-ribbon_status_icon_fix-050508.patch \
+             patches/breeze-icons/0001-Allow-to-disable-building-of-the-icon-library-native.patch \
+             patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools.patch \
+             patches/breeze-icons/remove-kleopatra-icons.patch \
+             patches/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
+             patches/breeze/0001-Fix-toolbar-colors-in-high-contrast-mode.patch \
+             patches/breeze/0002-fix-ifdef-windows-qmenu.patch \
+             patches/breeze/0002-kstyle-Support-registering-QMainWindow-in-tools-area.patch \
+             patches/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/jpeg/fix-redefine.patch \
-             patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
-             patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
-             patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
+             patches/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
+             patches/kcolorscheme/0001-Add-support-for-high-contrast-color-themes-on-Window.patch \
+             patches/kcolorscheme/0002-Initialize-color-scheme-from-system-palette-if-high-.patch \
+             patches/kcolorscheme/0003-Remove-assert-in-createApplicationPalette.patch \
+             patches/kconfig-6.11.0/0001-Fix-double-unescaping-of-config-keys.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
-             patches/kguiaddons/0001-DRAFT-There-is-no-dark-mode-on-old-Windows.patch \
+             patches/kguiaddons/0001-Add-support-for-high-contrast-mode-on-Windows.patch \
+             patches/kguiaddons/0002-DRAFT-There-is-no-dark-mode-on-old-Windows.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
-             patches/kiconthemes/0001-Make-DBus-optional.patch \
-             patches/kiconthemes/dark-mode-detection.patch \
-             patches/kio/0001-WIP-Remove-dependency-to-dbus.patch \
-             patches/kio/FileManagerWindowJob.patch \
-             patches/kleopatra/set-windows-registry.patch \
-             patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
-             patches/kparts/disable-jobuidelegate.patch \
-             patches/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
-             patches/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
-             patches/kwidgetsaddons/fix-height-of-text-after-update.patch \
-             patches/kxmlgui/0001-make-qdbus-optional.patch \
-             patches/kxmlgui/0002-stretch-aboutpage.patch \
-             patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
+             patches/kiconthemes/0001-Remove-code-for-Qt-older-than-6.8.patch \
+             patches/kjobwidgets/0001-Remove-knotification.patch \
+             patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
+             patches/libkleo/0001-Revert-Explicitly-use-Boost-s-cmake-config-file-for-.patch \
+             patches/okular-202503101125/qtpolicy-mr-1143.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
-             patches/okular/0001-Add-support-to-customize-about-data.patch \
+             patches/okular/0001-Add-support-to-customize-about-data.sik \
              patches/okular/lower-cmake-requirement.patch \
+             patches/pcre2/cross-build-cmake.patch \
+             patches/qtbase-6.7.3/0001-QIcon-enable-icon-engine-plugins-to-implement-themes.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
-             patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
+             patches/qtbase/0001-Make-queryHighContrast-a-file-static.patch \
+             patches/qtbase/0002-Use-correct-tool-tip-colors-for-high-contrast-modes.patch \
+             patches/qtbase/0003-Use-system-colors-if-high-contrast-mode-is-active.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
-             patches/qtbase/CVE-2023-32763-qtbase-5.15.patch \
-             patches/qtbase/CVE-2023-37369-qtbase-5.15.patch \
-             patches/qtbase/CVE-2023-43114-5.15.patch \
-             patches/qtbase/fix-high-contrast-item-view-selection-color.patch \
-             patches/qtbase/fix-tooltip-text-color-with-dark-theme.patch \
-             patches/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
-             patches/qttools/disable-most-tools.patch \
-             patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
-             patches-appimage/kleopatra-202501221111/0001-Explicitely-require-threads.patch \
-             patches-appimage/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
-             patches-appimage/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
-             patches-appimage/kwidgetsaddons/fix-height-of-text-after-update.patch \
-             patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
-             patches-appimage/okular/0001-Add-support-to-customize-about-data.patch \
+             patches/qtbase/configurable-windowstheme.patch \
+             patches/qtbase/qt_use_share_instead_of_data.patch \
+             patches-appimage/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
+             patches-appimage/breeze/0002-fix-ifdef-windows-qmenu.patch \
+             patches-appimage/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
+             patches-appimage/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
+             patches-appimage/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
+             patches-appimage/kcrash/0001-Add-option-to-disable-OpenGL-support.patch \
+             patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
+             patches-appimage/okular/0001-Make-KF6Pty-dependency-optional.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
-             patches-appimage/poppler/fix-gpg-error-include.patch \
-             patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.patch \
-             patches-appimage/qtbase/CVE-2023-37369-qtbase-5.15.patch \
-             patches-appimage/qtbase/CVE-2023-43114-5.15.patch \
+             patches-appimage/okular-202503101125/qtpolicy-mr-1143.patch \
+             patches-appimage/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches-appimage/qtbase/add-kleopatras-mime-types.patch \
-             patches-appimage/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
-             patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch
+             patches-appimage/qtbase/configurable-windowstheme.patch \
+             patches-appimage/qtbase/qt_use_share_instead_of_data.patch
 
-copy-news:
-	cp NEWS doc/website/NEWS.last
+dist-hook: gen-ChangeLog pack_packages_tarballs
 
+if BUILD_W64_COND
+w64_extraargs=" --w64"
+endif
 
-copy-release: gpg4win-$(VERSION).tar.bz2 installers/gpg4win-$(VERSION).exe \
-	      installers/gpg4win-light-$(VERSION).exe \
-	      installers/gpg4win-vanilla-$(VERSION).exe
-	@echo Copying $(VERSION) to $(RELEASEHOST) >&2
-	@set -e;\
-	if ssh "$$(echo $(RELEASEHOST)|cut -d: -f -1)" \
-        test -f "$$(echo $(RELEASEHOST)/gpg4win-$(VERSION).exe|cut -d: -f2-)";\
-	then echo "This release has already been copied to the server" >&2 ;\
-	else scp gpg4win-$(VERSION).tar.bz2 \
-	         installers/gpg4win-$(VERSION).exe \
-	         installers/gpg4win-light-$(VERSION).exe \
-	         installers/gpg4win-vanilla-$(VERSION).exe \
-	         installers/gpg4win-src-$(VERSION).exe  $(RELEASEHOST)/ ;\
-	     for f in en de ; do \
-	       scp src/README.$$f.txt \
-	             $(RELEASEHOST)/README-$(VERSION).$$f.txt; \
-	     done;\
-	fi
+distcheck-hook:
+	set -e; ( \
+	pref="#+macro: gpg4win_" ;\
+	reldate="$$(date -u +%Y-%m-%d)" ;\
+        echo "$${pref}ver  $(PACKAGE_VERSION)"  ;\
+        echo "$${pref}date $${reldate}" ;\
+        list='$(DIST_ARCHIVES)'; for i in $$list; do \
+	  case "$$i" in *.tar.bz2) \
+            echo "$${pref}size $$(wc -c <$$i|awk '{print int($$1/1024)}')k" ;\
+	    echo "$${pref}sha1 $$(sha1sum <$$i|cut -d' ' -f1)" ;\
+	    echo "$${pref}sha2 $$(sha256sum <$$i|cut -d' ' -f1)" ;;\
+	  esac;\
+	done ) | tee $(distdir).swdb
 
-dist-hook: gen-ChangeLog
+# Names of to help the release target.
+RELEASE_NAME = $(PACKAGE_TARNAME)-$(PACKAGE_VERSION)
 
 gen_start_date = 2012-03-26T00:00:00
 .PHONY: gen-ChangeLog
@@ -140,14 +134,44 @@ gen-ChangeLog:
 	  mv $(distdir)/cl-t $(distdir)/ChangeLog;			\
 	fi
 
-download: packages/packages.common packages/packages.4 packages/packages.3
+# We also need to package all tarballs.  Actually it would be better
+# to pack only those which are listed in packages.current but for this
+# wen need to extend the script and also handle the package list for
+# appimages.  Note further that we can't use ln(1) because /src and
+# /build are on different partitions inside docker.
+.PHONY: pack_packages_tarballs
+pack_packages_tarballs:
+	(find $(top_srcdir)/packages -type f \
+           \( -name '*.tar.gz' -o -name '*.tar.bz2' \
+           -o -name '*.tar.xz' -o -name '*.zip' \
+           -o -name '*.exe' -o -name '*.wixlib' \
+           \) -print | xargs cp -t $(distdir)/packages/ )
+
+
+download: packages/packages.common
 	(cd packages; ./download.sh)
 
+vsd-versions: src/stamps/stamp-versions-all-signed
+
+rebuild:
+	./build.sh --update-img --inplace $(w64_extraargs)
+
+clean-local:
+	-rm -rf artifacts
+	-rm -f $(RELEASE_NAME).tar.xz files-to-commit.lst
+
+distclean-local:
+	-rm -f $(RELEASE_NAME).swdb
+
+
 msi:
-	$(MAKE) $(AM_MAKEFLAGS) -C src msi
+	$(MAKE) $(AM_MAKEFLAGS) -C src \
+		TOPSRCDIR=/src PLAYGROUND=/build msi
 
 msi-signed:
-	$(MAKE) $(AM_MAKEFLAGS) -C src msi-signed
+	$(MAKE) $(AM_MAKEFLAGS) -C src \
+		TOPSRCDIR=/src PLAYGROUND=/build msi-signed
 
 msi-upload:
-	$(MAKE) $(AM_MAKEFLAGS) -C src msi-upload
+	$(MAKE) $(AM_MAKEFLAGS) -C src \
+		TOPSRCDIR=/src PLAYGROUND=/build msi-upload

@@ -1,0 +1,136 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From cf6ba6ba4614f3060aa9ebeb279e580121ad7d66 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Thu, 27 Mar 2025 10:20:21 +0100
+Subject: [PATCH 1/2] Add support for high-contrast mode on Windows
+
+This adds a color preference for the high-contrast mode (currently only
+for Windows). If the user activated the high-contrast mode then the app
+should use the system-provided high-contrast color scheme instead of a
+light/dark color scheme.
+---
+ src/colors/kcolorschemewatcher.h       |  9 ++++++++
+ src/colors/kcolorschemewatcher_win.cpp | 31 +++++++++++++++++++++-----
+ src/colors/kcolorschemewatcher_win.h   |  5 ++++-
+ 3 files changed, 39 insertions(+), 6 deletions(-)
+
+diff --git a/src/colors/kcolorschemewatcher.h b/src/colors/kcolorschemewatcher.h
+index cebd613..f64a6d2 100644
+--- a/src/colors/kcolorschemewatcher.h
++++ b/src/colors/kcolorschemewatcher.h
+@@ -23,10 +23,19 @@ class KGUIADDONS_EXPORT KColorSchemeWatcher : public QObject
+ {
+     Q_OBJECT
+ public:
++    /**
++     * Encodes the color preference of the user to be used by applications
++     * as configured in the system settings. On some systems not all values
++     * are returned, e.g. @c PreferHighContrast is currently only returned
++     * on Windows.
++     * @see systemPreference
++     */
+     enum ColorPreference {
+         NoPreference = 0, /** No preference available */
+         PreferDark, /** The user prefers a dark color scheme */
+         PreferLight, /** The user prefers a light color scheme */
++        PreferHighContrast, /** The user prefers a system-provided high-contrast color scheme
++                                @since 6.13 */
+     };
+     Q_ENUM(ColorPreference)
+
+diff --git a/src/colors/kcolorschemewatcher_win.cpp b/src/colors/kcolorschemewatcher_win.cpp
+index db6ca97..8b40c48 100644
+--- a/src/colors/kcolorschemewatcher_win.cpp
++++ b/src/colors/kcolorschemewatcher_win.cpp
+@@ -5,6 +5,7 @@
+  */
+
+ #include "kcolorschemewatcher_win.h"
++#include "kcolorschemewatcher.h"
+
+ #include <windows.h>
+
+@@ -12,11 +13,21 @@
+
+ #include <QDebug>
+
++static bool isHighContrastModeActive()
++{
++    HIGHCONTRAST result;
++    result.cbSize = sizeof(HIGHCONTRAST);
++    if (SystemParametersInfo(SPI_GETHIGHCONTRAST, result.cbSize, &result, 0)) {
++        return (result.dwFlags & HCF_HIGHCONTRASTON);
++    }
++    return false;
++}
++
+ KColorSchemeWatcherWin::KColorSchemeWatcherWin()
+ {
+     QAbstractEventDispatcher::instance()->installNativeEventFilter(this);
+
+-    m_preferDarkMode = !(m_settings.value(QStringLiteral("AppsUseLightTheme"), true).value<bool>());
++    m_preference = getCurrentSystemPreference();
+ }
+
+ bool KColorSchemeWatcherWin::nativeEventFilter(const QByteArray &eventType, void *message, qintptr *)
+@@ -25,9 +36,9 @@ bool KColorSchemeWatcherWin::nativeEventFilter(const QByteArray &eventType, void
+     switch (msg->message) {
+     case WM_SETTINGCHANGE: {
+         m_settings.sync();
+-        const bool preferDarkModeNow = !(m_settings.value(QStringLiteral("AppsUseLightTheme"), true).value<bool>());
+-        if (m_preferDarkMode != preferDarkModeNow) {
+-            m_preferDarkMode = preferDarkModeNow;
++        const auto currentPreference = getCurrentSystemPreference();
++        if (m_preference != currentPreference) {
++            m_preference = currentPreference;
+             Q_EMIT systemPreferenceChanged();
+         }
+
+@@ -41,7 +52,17 @@ bool KColorSchemeWatcherWin::nativeEventFilter(const QByteArray &eventType, void
+
+ KColorSchemeWatcher::ColorPreference KColorSchemeWatcherWin::systemPreference() const
+ {
+-    return m_preferDarkMode ? KColorSchemeWatcher::PreferDark : KColorSchemeWatcher::PreferLight;
++    return m_preference;
++}
++
++KColorSchemeWatcher::ColorPreference KColorSchemeWatcherWin::getCurrentSystemPreference() const
++{
++    if (isHighContrastModeActive()) {
++        return KColorSchemeWatcher::PreferHighContrast;
++    } else if (m_settings.value(QStringLiteral("AppsUseLightTheme"), true).value<bool>()) {
++        return KColorSchemeWatcher::PreferLight;
++    }
++    return KColorSchemeWatcher::PreferDark;
+ }
+
+ #include "moc_kcolorschemewatcher_win.cpp"
+diff --git a/src/colors/kcolorschemewatcher_win.h b/src/colors/kcolorschemewatcher_win.h
+index 2926263..acff45e 100644
+--- a/src/colors/kcolorschemewatcher_win.h
++++ b/src/colors/kcolorschemewatcher_win.h
+@@ -10,6 +10,7 @@
+ #include <QAbstractNativeEventFilter>
+ #include <QSettings>
+
++#include "kcolorschemewatcher.h"
+ #include "kcolorschemewatcherbackend.h"
+
+ class KColorSchemeWatcherWin : public KColorSchemeWatcherBackend, public QAbstractNativeEventFilter
+@@ -22,8 +23,10 @@ public:
+     bool nativeEventFilter(const QByteArray &eventType, void *message, qintptr *) override;
+
+ private:
++    KColorSchemeWatcher::ColorPreference getCurrentSystemPreference() const;
++
+     QSettings m_settings{QStringLiteral("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"), QSettings::NativeFormat};
+-    bool m_preferDarkMode = false;
++    KColorSchemeWatcher::ColorPreference m_preference = KColorSchemeWatcher::NoPreference;
+ };
+
+ #endif
+--
+2.49.0

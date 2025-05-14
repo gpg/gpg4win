@@ -22,31 +22,9 @@
 
 # No servicable parts below this line :)
 
-# These paths must be absolute, as we switch directories pretty often.
-logdir := $(root)/logs
-bdir := $(root)/build
-appdir := $(root)/AppDir
-idir := $(root)/install
-ipdir := $(root)/install/pkgs
-tsdir := $(shell pwd)/${top_srcdir}
-pdir := $(shell pwd)/${top_srcdir}/patches-appimage
-rsyncfilterdir := $(tsdir)/src/appimage/rsync-filters
-
 # We collect the names of all pkg files used.
 pkg_files =
 
-# The build area is our scratch area, where we unpack, build and
-# install the packages.
-$(stampdir)/stamp-directories:
-	$(MKDIR) -p $(root)
-	$(MKDIR) -p $(stampdir)
-	$(MKDIR) -p $(logdir)
-	$(MKDIR) -p $(bdir)
-	$(MKDIR) -p $(idir)
-	$(MKDIR) -p $(ipdir)
-	$(MKDIR) -p $(appdir)/usr
-	touch $(bdir)/versioninfo.txt
-	touch $(stampdir)/stamp-directories
 
 # Frob the name $1 by converting all '-' and '+' characters to '_'.
 define FROB_macro
@@ -59,6 +37,8 @@ $($(call FROB_macro,$(1)))
 endef
 
 # Set a couple of common variables.
+# Most of them describe package specific directories and are derived
+# from the the macros set in the Makefile.am.
 define SETVARS
 	set -e; \
 	set -o pipefail; \
@@ -67,8 +47,8 @@ define SETVARS
 	pkglogdir="$(logdir)/$$$${pkg_version}";				\
 	pkgsdir="$(bdir)/$$$${pkg_version}";				\
 	pkgbdir="$(bdir)/$$$${pkg_version}-build";			\
-	pkgpdir="$(pdir)/$$$${pkg_version}";				\
-	pkgpbdir="$(pdir)/$(1)";	          			\
+	pkgpatdir="$(patdir)/$$$${pkg_version}";				\
+	pkgpatbdir="$(patdir)/$(1)";	          			\
 	pkgidir="$(ipdir)/$$$${pkg_version}";				\
 	pkginstallroot="/tmp/$$$${pkg_version}";			\
 	pkgbladir="/tmp/$$$${pkg_version}/$(idir)";			\
@@ -79,6 +59,7 @@ define SETVARS
 	pkgmkdir="$(call GETVAR,appimage_pkg_$(1)_make_dir)";             \
 	pkgmkdir_inst="$(call GETVAR,appimage_pkg_$(1)_make_dir)"; \
 	pkgrsyncfilter="$(rsyncfilterdir)/$(1).rsync-filter"; \
+	pkg_conf_subdir="$(call GETVAR,appimage_pkg_$(1)_conf_subdir)"; \
 	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig:$(idir)/lib64/pkgconfig";	\
 	export FREETYPE_DIR="$(idir)"					\
 	export PATH="$(idir)/bin:$${PATH}"
@@ -145,8 +126,8 @@ $(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$
 $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
-	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
+	 for pfile in "$$$${pkgpatbdir}"/*.patch "$$$${pkgpatdir}"/*.patch ; do  \
+	   (cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}")		\
 	 done)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
@@ -159,15 +140,15 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	 eval "../$$$${pkg_version}/configure" \
 			--prefix="$$$${pkgidir}" \
 			$$$${pkgcfg} \
-			CFLAGS=\"-mms-bitfields $$$${pkgextracflags}\" | \
+			CFLAGS=\"$$$${pkgextracflags}\" | \
 		tee "$$$${pkglogdir}/configure.log"; \
 	 shopt -s nullglob; \
-	 for pfile in "$$$${pkgpbdir}"/*.postcfg \
-		      "$$$${pkgpdir}"/*.postcfg ; do \
+	 for pfile in "$$$${pkgpatbdir}"/*.postcfg \
+		      "$$$${pkgpatdir}"/*.postcfg ; do \
 		(cd "$$$${pkgsdir}"; "$$$${pfile}") \
 	 done; \
-	 for pfile in "$$$${pkgpbdir}"/*.postcfg-build \
-		      "$$$${pkgpdir}"/*.postcfg-build ; do \
+	 for pfile in "$$$${pkgpatbdir}"/*.postcfg-build \
+		      "$$$${pkgpatdir}"/*.postcfg-build ; do \
 		(cd "$$$${pkgbdir}"; "$$$${pfile}") \
 	 done)
 	touch $(stampdir)/stamp-$(1)-02-configure
@@ -209,6 +190,8 @@ $(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
 $(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-06-copy-to-appdir
 	touch $(stampdir)/stamp-final-$(1)
 
+$(1): $(stampdir)/stamp-final-$(1)
+
 .PHONY : clean-$(1)
 clean-$(1):
 	($(call SETVARS,$(1));				\
@@ -233,9 +216,11 @@ pkg_files += $(call GETVAR,appimage_pkg_$(1))
 
 $(stampdir)/stamp-$(1)-00-install: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	($(call SETVARS,$(1));				\
-	 $(MKDIR) "$$$${pkgidir}";			\
+	 set -x; \
+	 test -d "$$$${pkgidir}" || $(MKDIR) "$$$${pkgidir}";\
 	 cd $$$${pkgidir};				\
-	 $(call DEFLATE_macro,$$$${pkg}))
+	 $(call DEFLATE_macro,$$$${pkg}); \
+	 $(call appimage_pkg_$(call FROB_macro,$(1))_post_install))
 	touch $(stampdir)/stamp-$(1)-00-install
 
 $(stampdir)/stamp-$(1)-01-rsync: $(stampdir)/stamp-$(1)-00-install
@@ -256,6 +241,8 @@ $(stampdir)/stamp-$(1)-02-copy-to-appdir: $(stampdir)/stamp-$(1)-01-rsync
 $(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-02-copy-to-appdir
 	touch $(stampdir)/stamp-final-$(1)
 
+$(1): $(stampdir)/stamp-final-$(1)
+
 .PHONY : clean-$(1)
 clean-$(1):
 	($(call SETVARS,$(1));				\
@@ -271,86 +258,6 @@ $(if $(filter-out no, $(call GETVAR,appimage_pkg_$(1))),
 endef
 
 
-# Template for Qt packages.
-
-define QTPKG_template_
-
-pkg_files += $(call GETVAR,appimage_pkg_$(1))
-
-$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
-	(cd $(bdir);					\
-	 $(call SETVARS,$(1));				\
-	 $(call DEFLATE_macro,$$$${pkg}))
-	touch $(stampdir)/stamp-$(1)-00-unpack
-
-$(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
-	(shopt -s nullglob;				\
-	 $(call SETVARS,$(1));				\
-	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
-	 done)
-	touch $(stampdir)/stamp-$(1)-01-patch
-
-$(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
-	($(call SETVARS,$(1)); \
-	 set -x; \
-	 mkdir -p "$$$${pkglogdir}"; \
-	 mkdir -p "$$$${pkgbdir}"; \
-	 cd "$$$${pkgbdir}"; \
-	 $$$${pkgcfg} | \
-		tee "$$$${pkglogdir}/configure.log")
-	touch $(stampdir)/stamp-$(1)-02-configure
-
-$(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
-	($(call SETVARS,$(1));				\
-	  cd "$$$${pkgbdir}";				\
-	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
-	  export LD_LIBRARY_PATH=$(idir)/lib; \
-	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
-	touch $(stampdir)/stamp-$(1)-03-make
-
-# Note that post_install must come last because it may be empty and
-# "; ;" is a syntax error.
-$(stampdir)/stamp-$(1)-04-install: $(stampdir)/stamp-$(1)-03-make
-	($(call SETVARS,$(1)); \
-	set -x; \
-	$(call appimage_pkg_$(call FROB_macro,$(1))_post_install))
-	touch $(stampdir)/stamp-$(1)-04-install
-
-$(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
-	($(call SETVARS,$(1));				\
-	 set -x;					\
-	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/" )
-	touch $(stampdir)/stamp-$(1)-05-rsync
-
-$(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
-	($(call SETVARS,$(1));				\
-	 set -x;					\
-	 if test -f "$$$${pkgrsyncfilter}"; then \
-	   cp "$$$${pkgrsyncfilter}" "$$$${pkgidir}/.rsync-filter"; \
-	   $(RSYNC) -av -FF --omit-dir-times --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(appdir)/usr/"; \
-	 fi )
-	touch $(stampdir)/stamp-$(1)-06-copy-to-appdir
-
-$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-06-copy-to-appdir
-	touch $(stampdir)/stamp-final-$(1)
-
-.PHONY : clean-$(1)
-clean-$(1):
-	($(call SETVARS,$(1));				\
-	 (cd $(ipdir) &&				\
-	  (rm -fR "$$$${pkg_version}"));		\
-	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
-	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
-
-endef
-
-define QTPKG_template
-$(if $(filter-out no, $(call GETVAR,appimage_pkg_$(1))),
-  $(call QTPKG_template_,$1))
-endef
-
-
 # Template for KDE packages.
 define KDEPKG_template_
 
@@ -363,14 +270,20 @@ $(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$
 	touch $(stampdir)/stamp-$(1)-00-unpack
 
 $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
-	(shopt -s nullglob;				\
+	(set -x;						\
+	 shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 cd "$$$${pkgsdir}";				\
-	 sed -i 's/set(KF5_MIN_VERSION.*)/set(KF5_MIN_VERSION "5.109.0")/' CMakeLists.txt; \
-	 sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.109.0")/' CMakeLists.txt; \
-	 sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.24.0")/' CMakeLists.txt; \
-	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
+	 if [ -e "CMakeLists.txt" ]; then \
+		sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "6.3.0")/' CMakeLists.txt; \
+		sed -i 's/find_package(ECM .* NO_MODULE)/find_package(ECM 6.3.0 NO_MODULE)/' CMakeLists.txt; \
+		sed -i 's/set(KF_DEP_VERSION.*)/set(KF_DEP_VERSION "6.3.0")/' CMakeLists.txt; \
+		sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "6.1.0")/' CMakeLists.txt; \
+		sed -i 's/set(KPIM_MIME_VERSION.*)/set(KPIM_MIME_VERSION "6.1.0")/' CMakeLists.txt; \
+		sed -i 's/set(KPIM_MBOX_VERSION.*)/set(KPIM_MBOX_VERSION "6.1.0")/' CMakeLists.txt; \
+	 fi; \
+	 for pfile in "$$$${pkgpatbdir}"/*.patch "$$$${pkgpatdir}"/*.patch ; do  \
+	   (cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}")		\
 	 done)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
@@ -382,10 +295,11 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	 cd "$$$${pkgbdir}";				\
 	 $(CMAKE) 		\
 			-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
-			-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
+			-DCMAKE_PREFIX_PATH="$(idir)" \
 			-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 			-DBUILD_TESTING=False \
-			$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}" | \
+			$$$${pkgcfg} $$$${pkgextracflags} \
+			"../$$$${pkg_version}$$$${pkg_conf_subdir}" | \
 		tee "$$$${pkglogdir}/configure.log")
 	touch $(stampdir)/stamp-$(1)-02-configure
 
@@ -425,6 +339,8 @@ $(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
 
 $(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-06-copy-to-appdir
 	touch $(stampdir)/stamp-final-$(1)
+
+$(1): $(stampdir)/stamp-final-$(1)
 
 .PHONY : clean-$(1)
 clean-$(1):

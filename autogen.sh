@@ -15,7 +15,7 @@
 # configure it for the respective package.  It is maintained as part of
 # GnuPG and source copied by other packages.
 #
-# Version: 2024-11-21
+# Version: 2025-03-10
 
 configure_ac="configure.ac"
 
@@ -137,6 +137,7 @@ die_p
 configure_opts=
 extraoptions=
 # List of optional variables sourced from autogen.rc and ~/.gnupg-autogen.rc
+maintainer_mode_option=
 w32_toolprefixes=
 w32_extraoptions=
 w64_toolprefixes=
@@ -255,22 +256,23 @@ if [ "$myhost" = "find-version" ]; then
       matchstr3="$package-$major-base"
       vers="$major.$minor.$micro"
     fi
+    matchexcl="--exclude $package-*beta*"
 
     beta=no
     if [ -e .git ]; then
       ingit=yes
-      tmp=$(git describe --match "${matchstr1}" --long 2>/dev/null)
+      tmp=$(git describe --match "${matchstr1}" $matchexcl --long 2>/dev/null)
       if [ -n "$tmp" ]; then
           tmp=$(echo "$tmp" | sed s/^"$package"// \
                     | awk -F- '$3!=0 && $3 !~ /^beta/ {print"-beta"$3}')
       else
           # (due tof "-base" in the tag we need to take the 4th field)
-          tmp=$(git describe --match "${matchstr2}" --long 2>/dev/null)
+          tmp=$(git describe --match "${matchstr2}" $matchexcl --long 2>/dev/null)
           if [ -n "$tmp" ]; then
               tmp=$(echo "$tmp" | sed s/^"$package"// \
                         | awk -F- '$4!=0 && $4 !~ /^beta/ {print"-beta"$4}')
           elif [ -n "${matchstr3}" ]; then
-              tmp=$(git describe --match "${matchstr3}" --long 2>/dev/null)
+              tmp=$(git describe --match "${matchstr3}" $matchexcl --long 2>/dev/null)
               if [ -n "$tmp" ]; then
                   tmp=$(echo "$tmp" | sed s/^"$package"// \
                           | awk -F- '$4!=0 && $4 !~ /^beta/ {print"-beta"$4}')
@@ -334,6 +336,7 @@ if [ "$myhost" = "w32" ]; then
           extraoptions="$extraoptions $w32_extraoptions"
           ;;
     esac
+    w32root=$(echo "$w32root" | sed s,^//,/,)
     info "Using $w32root as standard install directory"
     replace_sysroot
 
@@ -366,7 +369,7 @@ if [ "$myhost" = "w32" ]; then
         fi
     fi
 
-    $tsdir/configure --enable-maintainer-mode ${SILENT} \
+    $tsdir/configure "${maintainer_mode_option}" ${SILENT} \
              --prefix=${w32root}  \
              --host=${host} --build=${build} SYSROOT=${w32root} \
              PKG_CONFIG_LIBDIR=${w32root}/lib/pkgconfig \
@@ -411,7 +414,7 @@ if [ "$myhost" = "amd64" ]; then
         fi
     fi
 
-    $tsdir/configure --enable-maintainer-mode ${SILENT} \
+    $tsdir/configure "${maintainer_mode_option}" ${SILENT} \
              --prefix=${amd64root}  \
              --host=${host} --build=${build} \
              ${configure_opts} ${extraoptions} "$@"

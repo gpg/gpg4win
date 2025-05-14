@@ -15,17 +15,6 @@ diff --git a/src/lib/util/kmemoryinfo.cpp b/src/lib/util/kmemoryinfo.cpp
 index 009e4743..83fb17c5 100644
 --- a/src/lib/util/kmemoryinfo.cpp
 +++ b/src/lib/util/kmemoryinfo.cpp
-@@ -15,8 +15,8 @@ Q_LOGGING_CATEGORY(LOG_KMEMORYINFO, "kf.coreaddons.kmemoryinfo", QtWarningMsg)
-
- // clang-format off
- #if defined(Q_OS_WINDOWS)
--    #include <Windows.h>    // Windows.h must stay above Pspapi.h
--    #include <Psapi.h>
-+    #include <windows.h>    // Windows.h must stay above Pspapi.h
-+    #include <psapi.h>
- #elif defined(Q_OS_LINUX) || defined(Q_OS_ANDROID)
-     #include <QByteArray>
-     #include <QFile>
 @@ -167,7 +167,7 @@ bool KMemoryInfo::update()
      }
 

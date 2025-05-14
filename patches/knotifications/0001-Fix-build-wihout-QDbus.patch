@@ -1,0 +1,55 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From e4418c3f107bfab0da014bb9f605f15bdec1a837 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Fri, 22 Mar 2024 12:15:31 +0100
+Subject: [PATCH] Fix build wihout QDbus
+
+This additionally adds an option to disable Canberra as
+Canberra implicitly pulls in DBus as a required dependency.
+---
+ CMakeLists.txt               | 4 +++-
+ src/knotificationmanager.cpp | 4 ++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 85930cc..da3d73c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -68,7 +68,9 @@ endif()
+
+ find_package(KF6Config ${KF_DEP_VERSION} REQUIRED)
+
+-if (NOT APPLE AND NOT ANDROID AND NOT WIN32 OR (WIN32 AND NOT WITH_SNORETOAST))
++option(FORCE_DISABLE_CANBERRA "Force building without audio notification support. [default=OFF]" OFF)
++
++if (NOT FORCE_DISABLE_CANBERRA AND (NOT APPLE AND NOT ANDROID AND NOT WIN32 OR (WIN32 AND NOT WITH_SNORETOAST)))
+     find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
+     find_package(Canberra REQUIRED)
+     set_package_properties(Canberra PROPERTIES
+diff --git a/src/knotificationmanager.cpp b/src/knotificationmanager.cpp
+index 2be67e4..9e447fe 100644
+--- a/src/knotificationmanager.cpp
++++ b/src/knotificationmanager.cpp
+@@ -32,7 +32,7 @@
+ #include "notifybymacosnotificationcenter.h"
+ #elif defined(WITH_SNORETOAST)
+ #include "notifybysnore.h"
+-#else
++#elif defined(QT_DBUS_LIB)
+ #include "notifybypopup.h"
+ #include "notifybyportal.h"
+ #endif
+@@ -115,7 +115,7 @@ KNotificationPlugin *KNotificationManager::pluginForAction(const QString &action
+         plugin = new NotifyBySnore(this);
+ #elif defined(Q_OS_MACOS)
+         plugin = new NotifyByMacOSNotificationCenter(this);
+-#else
++#elif defined(QT_DBUS_LIB)
+         if (d->portalDBusServiceExists) {
+             plugin = new NotifyByPortal(this);
+         } else {
+--
+2.43.2

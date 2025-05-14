@@ -1,9 +1,9 @@
 #!/bin/sh
 # Build an AppImage of GnuPG (VS-)Desktop
-# Copyright (C) 2021 g10 Code GmbH
+# Copyright (C) 2021, 2024 g10 Code GmbH
 #
-# Software engineering by Ingo Klöcker <dev@ingo-kloecker.de>
-#
+# Software engineering by: Ingo Klöcker <dev@ingo-kloecker.de>
+#                          Andre Heinecke <aheinecke@gnupg.org>
 # This file is part of GnuPG.
 #
 # GnuPG is free software; you can redistribute it and/or modify
@@ -23,121 +23,144 @@
 
 set -e
 
-. /opt/rh/devtoolset-10/enable
+BUILDROOT=/build
+SRCDIR=/src
+APPDIR=${BUILDROOT}/AppDir
+INSTDIR=${BUILDROOT}/install
+VSD_DIR=${SRCDIR}/src/gnupg-vsd
 
-cd /src
-./configure --enable-appimage --enable-maintainer-mode --disable-manuals
-
-cd /src
-make
-
-if [ -f /src/src/gnupg-vsd/custom.mk ]; then
-    if ls /src/packages/gnupg-2.2* >/dev/null 2>&1 ; then
-        GNUPG_BUILD_VSD=yes
-    else
-        GNUPG_BUILD_VSD=desktop
-    fi
-else
-    GNUPG_BUILD_VSD=no
+# Check for the buildtype and existence of required files
+# early
+BUILDTYPE=$(cat ${SRCDIR}/packages/BUILDTYPE || echo default)
+if [ $BUILDTYPE != default ] && [ ! -f ${VSD_DIR}/custom.mk ]; then
+    echo "ERROR: Non default build without custom file."
+    echo "Check that ${VSD_DIR}/custom.mk exists or "
+    echo "change the BUILDTYPE in ${SRCDIR}/packages/BUILDTYPE"
+    exit 2
 fi
-export GNUPG_BUILD_VSD
+if [ $BUILDTYPE = vsd ] && \
+    [ ! -f ${VSD_DIR}/Standard/VERSION ]; then
+    echo "No VERSION file in Standard dir."
+    exit 2
+fi
+if [ $BUILDTYPE = gpd ] && \
+    [ ! -f ${VSD_DIR}/Desktop/VERSION ]; then
+    echo "No VERSION file in Desktop dir."
+    exit 2
+fi
 
-echo 'rootdir = $APPDIR/usr' >/build/AppDir/usr/bin/gpgconf.ctl
-if [ $GNUPG_BUILD_VSD = yes ]; then
-    echo 'sysconfdir = /etc/gnupg-vsd' >>/build/AppDir/usr/bin/gpgconf.ctl
+# The actual build
+cd ${BUILDROOT}
+${SRCDIR}/configure --enable-appimage --with-playground=${BUILDROOT}
+make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT}
+
+echo 'rootdir = $APPDIR/usr' >${APPDIR}/usr/bin/gpgconf.ctl
+if [ $BUILDTYPE = vsd ]; then
+    echo 'sysconfdir = /etc/gnupg-vsd' >>${APPDIR}/usr/bin/gpgconf.ctl
 else
-    echo 'sysconfdir = /etc/gnupg' >>/build/AppDir/usr/bin/gpgconf.ctl
+    echo 'sysconfdir = /etc/gnupg' >>${APPDIR}/usr/bin/gpgconf.ctl
 fi
 
 # Copy the start-shell helper for use AppRun
-cp /src/src/appimage/start-shell /build/AppDir/
-chmod +x /build/AppDir/start-shell
+cp ${SRCDIR}/src/appimage/start-shell ${APPDIR}/
+chmod +x ${APPDIR}/start-shell
 
 # Copy standard global configuration
-if [ $GNUPG_BUILD_VSD = yes ]; then
-    mkdir -p /build/AppDir/usr/share/gnupg/conf/gnupg-vsd
+if [ $BUILDTYPE = vsd ]; then
+    mkdir -p ${APPDIR}/usr/share/gnupg/conf/gnupg-vsd
     rsync -aLv --delete --omit-dir-times \
-          /src/src/gnupg-vsd/Standard/etc/gnupg/ \
-          /build/AppDir/usr/share/gnupg/conf/gnupg-vsd/
+          ${VSD_DIR}/Standard/etc/gnupg/ \
+          ${APPDIR}/usr/share/gnupg/conf/gnupg-vsd/
 fi
 
 export PATH=/opt/linuxdeploy/usr/bin:$PATH
-export LD_LIBRARY_PATH=/build/install/lib:/build/install/lib64
+export LD_LIBRARY_PATH=${INSTDIR}/lib:${INSTDIR}/lib64
 
 # tell the linuxdeploy qt-plugin where to find qmake
-export QMAKE=/build/install/bin/qmake
+export QMAKE=${INSTDIR}/bin/qmake
 
 # create plugin directories expected by linuxdeploy qt-plugin
 # workaround for
 # [qt/stdout] Deploy[qt/stderr] terminate called after throwing an instance of 'boost::filesystem::filesystem_error'
 # [qt/stderr]   what():  boost::filesystem::directory_iterator::construct: No such file or directory: "/build/AppDir/usr/plugins/sqldrivers"
 # ERROR: Failed to run plugin: qt (exit code: 6)
-mkdir -p /build/install/plugins/sqldrivers
+mkdir -p ${INSTDIR}/plugins/sqldrivers
 
-# copy KDE plugins to /build/AppDir/usr/lib/plugins/
-# copying the plugins to a subfolder of AppDir/usr/lib (instead of to
-# AppDir/usr/plugins/ as linuxdeploy does for the Qt plugins) ensures that
-# linuxdeploy copies the dependencies of the plugins to AppDir so that
+# copy KDE plugins to ${APPDIR}/usr/lib/plugins/
+# copying the plugins to a subfolder of ${APPDIR}/usr/lib (instead of to
+# ${APPDIR}/usr/plugins/ as linuxdeploy does for the Qt plugins) ensures that
+# linuxdeploy copies the dependencies of the plugins to APPDIR so that
 # we don't have to take care of this ourselves
-for d in iconengines kauth kf5 okular plasma; do
-    mkdir -p /build/AppDir/usr/lib/plugins/${d}/
-    rsync -av --delete --omit-dir-times /build/install/lib64/plugins/${d}/ /build/AppDir/usr/lib/plugins/${d}/
+mkdir -p ${APPDIR}/usr/lib/plugins
+for d in kf6 kiconthemes6 styles; do
+    rsync -av --delete --omit-dir-times ${INSTDIR}/lib64/plugins/${d}/ ${APPDIR}/usr/lib/plugins/${d}/
 done
-cp -av /build/install/lib64/plugins/okularpart.so /build/AppDir/usr/lib/plugins/
-
-# copy Wayland plugins
-rsync -av --delete /build/install/plugins/platforms/libqwayland-*.so /build/AppDir/usr/lib/plugins/platforms/
-for d in wayland-decoration-client wayland-graphics-integration-client wayland-shell-integration; do
-    rsync -av --delete --omit-dir-times /build/install/plugins/${d}/ /build/AppDir/usr/lib/plugins/${d}/
-done
+rsync -av --delete --omit-dir-times ${INSTDIR}/lib64/plugins/okular_generators/okularGenerator_poppler.so ${APPDIR}/usr/lib/plugins/okular_generators/
 
 cd /build
 # Remove existing AppRun and wrapped AppRun, that may be left over
 # from a previous run of linuxdeploy, to ensure that our custom AppRun
 # is deployed
-rm -f /build/AppDir/AppRun /build/AppDir/AppRun.wrapped 2>/dev/null
+rm -f ${APPDIR}/AppRun ${APPDIR}/AppRun.wrapped 2>/dev/null
 # Remove existing translations that may be left over from a previous
 # run of linuxdeploy
-rm -rf /build/AppDir/usr/translations
+rm -rf ${APPDIR}/usr/translations
 # Remove the version files to make sure that only one will be created.
-rm -f /build/AppDir/GnuPG-VS-Desktop-VERSION 2>/dev/null
-rm -f /build/AppDir/GnuPG-Desktop-VERSION    2>/dev/null
-rm -f /build/AppDir/GnuPG-Foo-VERSION        2>/dev/null
+rm -f ${APPDIR}/GnuPG-VS-Desktop-VERSION 2>/dev/null
+rm -f ${APPDIR}/GnuPG-Desktop-VERSION    2>/dev/null
+rm -f ${APPDIR}/Gpg4win-VERSION        2>/dev/null
 
-# Extract gnupg version or (for VSD builds) gpg4win version for use
-# as filename of the AppImage
-if [ $GNUPG_BUILD_VSD = yes ]; then
-    myversion=$(grep PACKAGE_VERSION /src/config.h|sed -n 's/.*"\(.*\)"$/\1/p')
+myversion=$(grep PACKAGE_VERSION ${BUILDROOT}/config.h|sed -n 's/.*"\(.*\)"$/\1/p')
+if [ $BUILDTYPE = vsd ]; then
     OUTPUT=gnupg-vs-desktop-${myversion}-x86_64.AppImage
     echo "Packaging GnuPG VS-Desktop Appimage: $myversion"
-    echo $myversion >/build/AppDir/GnuPG-VS-Desktop-VERSION
-    cp /src/src/gnupg-vsd/Standard/VERSION* /build/AppDir/usr/
+    echo $myversion >${APPDIR}/GnuPG-VS-Desktop-VERSION
+    cp ${VSD_DIR}/Standard/VERSION* ${APPDIR}/usr/
     echo "Packaging help files"
-    mkdir -p /build/AppDir/usr/share/doc/gnupg-vsd
-    cp /src/src/gnupg-vsd/help/*.pdf /build/AppDir/usr/share/doc/gnupg-vsd
-    echo "Packaging kleopatrarc"
-    mkdir -p /build/AppDir/usr/etc/xdg
-    cp /src/src/gnupg-vsd/Standard/kleopatrarc /build/AppDir/usr/etc/xdg
-elif [ $GNUPG_BUILD_VSD = desktop ]; then
-    myversion=$(ls /src/packages/gnupg-2.*tar.* \
-                    | sed -n 's,.*/gnupg-\(2.*\).tar.bz2,\1,p')
+    mkdir -p ${APPDIR}/usr/share/doc/gnupg-vsd
+    cp ${VSD_DIR}/help/*.pdf ${APPDIR}/usr/share/doc/gnupg-vsd
+    if [ -f ${VSD_DIR}/Standard/kleopatrarc ]; then
+        echo "Packaging kleopatrarc"
+        mkdir -p ${APPDIR}/usr/etc/xdg
+        cp ${VSD_DIR}/Standard/kleopatrarc ${APPDIR}/usr/etc/xdg
+    fi
+    kleopatra_icon=${SRCDIR}/src/icons/kleopatra-vsd.svg
+elif [ $BUILDTYPE = gpd ]; then
     OUTPUT=gnupg-desktop-${myversion}-x86_64.AppImage
     echo "Packaging GnuPG Desktop Appimage: $myversion"
-    echo $myversion >/build/AppDir/GnuPG-Desktop-VERSION
-    cp /src/src/gnupg-vsd/Desktop/VERSION* /build/AppDir/usr/
-    if [ -f /src/src/gnupg-vsd/Desktop/kleopatrarc ]; then
+    echo $myversion >${APPDIR}/GnuPG-Desktop-VERSION
+    cp ${VSD_DIR}/Desktop/VERSION* ${APPDIR}/usr/
+    echo "Packaging help files"
+    mkdir -p ${APPDIR}/usr/share/doc/gnupg-vsd
+    cp ${VSD_DIR}/help/*.pdf ${APPDIR}/usr/share/doc/gnupg-vsd
+    if [ -f ${VSD_DIR}/Desktop/kleopatrarc ]; then
         echo "Packaging kleopatrarc"
-        mkdir -p /build/AppDir/usr/etc/xdg
-        cp /src/src/gnupg-vsd/Desktop/kleopatrarc /build/AppDir/usr/etc/xdg
+        mkdir -p ${APPDIR}/usr/etc/xdg
+        cp ${VSD_DIR}/Desktop/kleopatrarc ${APPDIR}/usr/etc/xdg
     fi
+    kleopatra_icon=${SRCDIR}/src/icons/gpd/sc-apps-kleopatra.svg
 else
-    myversion=$(ls /src/packages/gnupg-2.*tar.bz2 \
-                    | sed -n 's,.*/gnupg-\(2.*\).tar.*,\1,p')
-    OUTPUT=gnupg-foo-${myversion}-x86_64.AppImage
+    OUTPUT=gpg4win-${myversion}-x86_64.AppImage
     echo "Packaging Gpg4win Appimage: $myversion"
-    echo $myversion >/build/AppDir/GnuPG-Foo-VERSION
+    echo $myversion >${APPDIR}/Gpg4win-VERSION
 fi
 export OUTPUT
+
+if [ -n "${kleopatra_icon}" ]; then
+    # Replace Breeze icons for kleopatra with our icon
+    find ${APPDIR}/usr/share/icons/breeze -name 'kleopatra*.svg' -delete
+    find ${APPDIR}/usr/share/icons/breeze-dark -name 'kleopatra*.svg' -delete
+    cp -av ${kleopatra_icon} ${APPDIR}/usr/share/icons/breeze/apps/22/kleopatra-symbolic.svg
+    cp -av ${kleopatra_icon} ${APPDIR}/usr/share/icons/breeze/apps/48/kleopatra.svg
+    cp -av ${kleopatra_icon} ${APPDIR}/usr/share/icons/breeze-dark/apps/22/kleopatra-symbolic.svg
+    cp -av ${kleopatra_icon} ${APPDIR}/usr/share/icons/breeze-dark/apps/48/kleopatra.svg
+else
+    # Restore the Breeze icons that may have been replaced in a previous build
+    for f in breeze/apps/22/kleopatra-symbolic.svg breeze/apps/48/kleopatra.svg \
+             breeze-dark/apps/22/kleopatra-symbolic.svg breeze-dark/apps/48/kleopatra.svg; do
+        cp -av ${INSTDIR}/share/icons/$f ${APPDIR}/usr/share/icons/$f
+    done
+fi
 
 # Hack around that linuxdeploy does not know libexec
 for f in dirmngr_ldap gpg-check-pattern \
@@ -147,29 +170,28 @@ for f in dirmngr_ldap gpg-check-pattern \
 # Ignore errors because some files might not exist depending
 # on GnuPG Version
     /opt/linuxdeploy/usr/bin/patchelf --debug \
-              --set-rpath '$ORIGIN/../lib' /build/AppDir/usr/libexec/$f || true
+              --set-rpath '$ORIGIN/../lib' ${APPDIR}/usr/libexec/$f || true
 done
 
 # linuxdeploy also doesn't know about non-Qt plugins
-for f in $(find /build/AppDir/usr/lib/plugins/ -mindepth 2 -maxdepth 2 -type f); do
+for f in $(find ${APPDIR}/usr/lib/plugins/ -mindepth 2 -maxdepth 2 -type f); do
     /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../..' $f
 done
-for f in $(find /build/AppDir/usr/lib/plugins/ -mindepth 3 -maxdepth 3 -type f); do
+for f in $(find ${APPDIR}/usr/lib/plugins/ -mindepth 3 -maxdepth 3 -type f); do
     /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../../..' $f
 done
-for f in $(find /build/AppDir/usr/lib/plugins/ -mindepth 4 -maxdepth 4 -type f); do
+for f in $(find ${APPDIR}/usr/lib/plugins/ -mindepth 4 -maxdepth 4 -type f); do
     /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../../../..' $f
 done
-/opt/linuxdeploy/usr/bin/patchelf --debug \
-        --set-rpath '$ORIGIN/..' /build/AppDir/usr/lib/plugins/okularpart.so
 
 # Fix up everything and build the file system
-linuxdeploy --appdir /build/AppDir \
-            --desktop-file /build/AppDir/usr/share/applications/org.kde.kleopatra.desktop \
-            --icon-file /build/AppDir/usr/share/icons/hicolor/256x256/apps/kleopatra.png \
-            --custom-apprun /src/src/appimage/AppRun \
+linuxdeploy --appdir ${APPDIR} \
+            --desktop-file ${APPDIR}/usr/share/applications/org.kde.kleopatra.desktop \
+            --icon-file ${APPDIR}/usr/share/icons/hicolor/256x256/apps/kleopatra.png \
+            --custom-apprun ${SRCDIR}/src/appimage/AppRun \
             --plugin qt \
             --output appimage \
     2>&1 | tee /build/logs/linuxdeploy-gnupg-desktop.log
 
 echo ready
+exit 0

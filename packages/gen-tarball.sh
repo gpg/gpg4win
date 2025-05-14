@@ -18,7 +18,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <https://www.gnu.org/licenses/>.
 #
-# SPDX-License-Identifier: GPL-2.0+
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 # Packages the current HEAD of a git repository as tarball and updates
 # the packages.common accordingly if the entry matches the exact pattern.
@@ -34,15 +34,30 @@ translation_langs="bg bs ca cs da de el eo es et eu fi fr gl hu ia it ja km ko l
 
 set -e
 
+FRONTEND_PKGS="
+gpgme
+libkleo
+kleopatra
+gpgol
+gpgoljs
+gpgpass
+gpg4win-tools
+mimetreeparser"
+
 usage()
 {
     cat <<EOF
-Usage: $PGM [OPTIONS]  PACKAGE
+Usage: $PGM [OPTIONS]  PACKAGE ...
 Generate a tarball from a repository.
 
 Options:
-        --auto                 Upload to ftp server
+        -a|--auto              Upload to ftp server
+        -u|--update            Remove the old package locally
         --user=name            Use NAME as FTP server user
+        -f                     Update frontend packages en block.
+
+Frontend packages are:
+$FRONTEND_PKGS
 
 PACKAGE is either the name of a supported library or application,
 e.g. 'kleopatra', or the path of a local Git repository,
@@ -56,9 +71,8 @@ EOF
 
 autoupload=no
 ftpuser_at=""
-is_gpg="no"
-is_w32="no"
 do_auto="no"
+update="no"
 branch="master"
 custom_l10n="no"
 while [ $# -gt 0 ]; do
@@ -71,32 +85,72 @@ while [ $# -gt 0 ]; do
 	    ;;
     esac
 
-    case $1 in
-	--auto)
-	    autoupload=yes
-	    ;;
-        --user|--user=*)
-            ftpuser_at="${optarg}@"
-            ;;
-	--help|-h)
-	    usage 0
-	    ;;
-	--*)
-	    usage 1 1>&2
-	    ;;
-	*)
-	    break
-	    ;;
+    case "$1" in
+    --auto|-a)
+        autoupload="yes"
+        ;;
+    --user|--user=*)
+        ftpuser_at="${optarg}@"
+        ;;
+    --update|-u)
+        update="yes"
+        ;;
+    -f)
+        update="full"
+        ;;
+    --help|-h)
+        usage 0
+        ;;
+    --*)
+        usage 1 1>&2
+        ;;
+    -*)
+        # Handle combined short options
+        for (( i=1; i<${#1}; i++ )); do
+            char="${1:i:1}"
+            case "$char" in
+                a)
+                    autoupload="yes"
+                    ;;
+                u)
+                    update="yes"
+                    ;;
+                f)
+                    update="full"
+                    ;;
+                h)
+                    usage 0
+                    ;;
+                *)
+                    usage 1 1>&2
+                    ;;
+            esac
+        done
+        ;;
+    *)
+        break
+        ;;
     esac
     shift
 done
 
-if [  $# -ne 1 ]; then
+if [ $# -eq 0 ] && [ "$update" != "full" ]; then
     usage 1 1>&2
 fi
-package="$1"
-shift
 
+PACKAGES="$@"
+
+if [ "$update" == "full" ]; then
+    PACKAGES="$PACKAGES $FRONTEND_PKGS"
+fi
+
+for package in $PACKAGES; do
+
+# Reset variables
+branch="master"
+is_gpg="no"
+is_w32="no"
+custom_l10n="no"
 
 case ${package} in
     */*)
@@ -105,6 +159,8 @@ case ${package} in
         package=${package%.git}
         if [ "${package}" == "gpgmeqt" ]; then
             package=qgpgme
+        elif [ "${package}" == "gpgol.js" ]; then
+            package=gpgoljs
         fi
         ;;
     gnupg | gpgme | libassuan | libgcrypt | libgpg-error | \
@@ -117,6 +173,10 @@ case ${package} in
         package=qgpgme
         repo=git://git.gnupg.org/gpgmeqt.git
         ;;
+    gpgol.js|gpgoljs)
+        repo=git://git.gnupg.org/gpgol.js.git
+        package=gpgoljs
+        ;;
     mimetreeparser | kleopatra | libkleo)
         repo=https://invent.kde.org/pim/${package}.git
         ;;
@@ -124,8 +184,14 @@ case ${package} in
         repo=https://invent.kde.org/graphics/${package}.git
         ;;
     poppler)
-        #repo=https://anongit.freedesktop.org/git/poppler/poppler.git
-        repo=https://gitlab.freedesktop.org/svuorela/${package}.git
+        repo=https://anongit.freedesktop.org/git/poppler/poppler.git
+        #repo=https://gitlab.freedesktop.org/svuorela/${package}.git
+        ;;
+    breeze)
+        repo=https://invent.kde.org/plasma/${package}.git
+        ;;
+    kio)
+        repo=https://invent.kde.org/frameworks/${package}.git
         ;;
     *)
         echo "$PGM: error: Unsupported package '${package}'"
@@ -146,14 +212,16 @@ case ${package} in
         ;;
     gpg4win-tools | gpgpass)
         ;;
+    gpgol.js|gpgoljs)
+        ;;
     mimetreeparser)
-        branch="gpg4win/24.05"
-        custom_l10n="mimetreeparser/mimetreeparser6.po"
-        local_l10n='mimetreeparser-24.05-${lang}-full-translation.po'
+#        branch="gpg4win/24.05"
+#        custom_l10n="mimetreeparser/mimetreeparser6.po"
+#        local_l10n='mimetreeparser-24.05-${lang}-full-translation.po'
         ;;
     kleopatra)
-        branch="gpg4win/24.05"
-        custom_l10n="kleopatra/kleopatra.po"
+#        branch="gpg4win/24.05"
+#        custom_l10n="kleopatra/kleopatra.po"
         # When we are really far from upstream we might have strings
         # in our custom branch which are neither in summit nor in the
         # original branch. So they have to be manually extracted using
@@ -163,18 +231,23 @@ case ${package} in
         # "local_l10n" allows us to cat these additional strings to the
         # translations, too.
         # Requires custom_l10n to be also set.
-        local_l10n='kleopatra-24.05-${lang}-full-translation.po'
+#        local_l10n='kleopatra-24.05-${lang}-full-translation.po'
         ;;
     libkleo)
-        branch="gpg4win/24.05"
-        custom_l10n="libkleo/libkleopatra6.po"
-        local_l10n='libkleopatra-24.05-${lang}-full-translation.po'
+#        branch="gpg4win/24.05"
+#        custom_l10n="libkleo/libkleopatra6.po"
+#        local_l10n='libkleopatra-24.05-${lang}-full-translation.po'
         ;;
     okular)
-        branch="work/sune/WORK"
+  #      branch="work/sune/WORK"
         ;;
     poppler)
-        branch="WORK"
+        #branch="WORK"
+        ;;
+    breeze)
+        branch=v6.1.3
+        ;;
+    kio)
         ;;
     *)
         echo "$PGM: error: Unsupported package '${package}'"
@@ -196,12 +269,14 @@ if [ "${is_gpg}" == "yes" ]; then
     ./autogen.sh --force >&2
     if [ "${is_w32}" == "yes" ]; then
         ./autogen.sh --build-w32 >&2
-#        ./autogen.sh --build-w32 --with-libassuan-prefix=/home/aheinecke/w64root/ >&2
     else
         ./configure >&2
     fi
     make dist-xz >&2
     tarball=$(ls -t *.tar.xz | head -1)
+    if [ "$update" != "no" ]; then
+        find "${olddir}" -name ${package}\* -print0 | xargs -0 rm -f
+    fi
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
     cd ${olddir}
 elif [ "${is_g10_cmake}" == "yes" ]; then
@@ -287,7 +362,16 @@ else
         done
         git commit -m "Add latest translations"
     fi
-    git archive --format tar.xz --prefix=${snapshotdir}/ "${branch}" > ${tarball}
+    if [ "${package}" == "breeze" ]; then
+        git rm -r wallpapers cursors
+        sed -i '/add_subdirectory(wallpapers)/d' CMakeLists.txt
+        sed -i '/add_subdirectory(cursors)/d' CMakeLists.txt
+        git commit -a -m "Escort the elephants out of the room"
+    fi
+    git archive --format tar.xz --prefix=${snapshotdir}/ HEAD > ${tarball}
+    if [ "$update" != "no" ]; then
+        find "${olddir}" -name ${package}\* -print0 | xargs -0 rm -f
+    fi
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
     cd ${olddir}
 fi
@@ -303,17 +387,18 @@ file ${package}/${tarball}
 chk ${checksum}
 EOF
 
-if [ "${autoupload}" = "yes" ]; then
-    perl -i -p0e "s@# ${package}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
+perl -i -p0e "s@# ${package}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
 '@se" packages.common
 
-    echo "$PGM: uploading to ${ftpuser_at}trithemius.gnupg.org" >&2
-    rsync -vP ${tarball} ${ftpuser_at}trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/
+echo "------------------------------ >8 ------------------------------"
+cat "${tmpdir}/snippet"
+echo "------------------------------ >8 ------------------------------"
+if [ "${autoupload}" = "yes" ]; then
+    echo "$PGM: uploading to ${ftpuser_at}gnupg.net" >&2
+    rsync -vP ${tarball} ${ftpuser_at}gnupg.net:/var/www/gnupg.net/snapshots/${package}/
 else
-    echo "------------------------------ >8 ------------------------------"
-    cat "${tmpdir}/snippet"
-    echo "------------------------------ >8 ------------------------------"
     echo "$PGM: info: To upload:" >&2
-    echo "rsync -vP ${tarball} trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/" >&2
+    echo "rsync -vP ${tarball} gnupg.net:/var/www/gnupg.net/snapshots/${package}/" >&2
 fi;
 rm -fr ${tmpdir}
+done

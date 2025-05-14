@@ -1,3 +1,7 @@
+*~
+.#*
+\#*#
+
 Makefile
 Makefile.in
 aclocal.m4
@@ -16,12 +20,8 @@ stamp-h1
 /gpg4win-2.*
 doc/manual/version.tex
 src/config.nsi
-po/POTFILES
 po/*.nsi
-po/*.gmo
-po/gpg4win.pot
 po/remove-potcdate.sed
-po/stamp-po
 po/nsis-msgfmt
 patches/gnupg2/01-version.patch
 src/gpg4win.mk
@@ -39,6 +39,7 @@ src/mingwm10.dll
 /src/stamps
 /src/appimage/appimage.mk
 
+installers
 src/installers
 src/signed_installers
 
@@ -50,32 +51,19 @@ src/signed_installers
 /src/README.fr.txt
 /src/README.pt.txt
 /src/README.ru.txt
-/src/g4wihelp.dll
-/src/gpgwrap-2.exe
-/src/gpgwrap.exe
 /src/installer-options.ini
-/src/md5sum.exe
-/src/sha1sum.exe
-/src/sha256sum.exe
 /src/versioninfo.txt
-/src/kleowrap.exe
-/src/gpg4win-*.exe
 /src/HOWTO-SMIME.de.txt
 /src/HOWTO-SMIME.en.txt
 /src/COMPONENTS-list.tmp
 
 /web/
 
-/src/libgcc_s_sjlj-1.dll-x
-/src/libstdc++-6.dll-x
-/po/build-cc
 /src/license.blurb
-/src/mkportable.exe
-/src/libgcc_s_dw2-1.dll-x
-/src/libwinpthread-1.dll-x
-/src/libwinpthread-1.dll-x64
 /src/toolchain.cmake
-
+/VERSION
 /src/gccwrap.sh
 /src/gpg4win.w32-manifest.in
+/src/nsis/config.nsi
+/src/toolchain-native.cmake
 /src/versioninfo.rc.in

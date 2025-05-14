@@ -30,19 +30,25 @@ min_automake_version="1.9.3"
 m4_define([mym4_package],[gpg4win])
 m4_define([mym4_isvsd],[no])
 m4_define([mym4_isgpd],[no])
+m4_define([mym4_isv3build], m4_if(m4_esyscmd([ls packages/gnupg-2.*.tar.* | \
+                                             head -1 | cut -d. -f2 | \
+                                             tr -d '\n']),
+                                             [2],  [yes], [no]))
 m4_define([mym4_buildtype],
            m4_chomp_all(m4_esyscmd([(cat packages/BUILDTYPE 2>/dev/null\
                                                       || echo default)])))
-m4_if(mym4_buildtype,[vsd],[m4_define([mym4_isvsd],[yes])])
+m4_if(mym4_buildtype,[vsd],[m4_define([mym4_isvsd],[yes])
+                            m4_define([mym4_isv3build],[yes]]))
 
-# For VSD we use a different version number.
-m4_if(mym4_isvsd,yes,
-      [m4_define([mym4_major],[3])
-       m4_define([mym4_minor],[3])
-       m4_define([mym4_micro],[0])],
+# For VSD with GnuPG 2.6 we will use version 4.x
+# For GPD and Gpg4win with GnuPG 2.6 we use version 5.x
+m4_if(mym4_buildtype,vsd,
       [m4_define([mym4_major],[4])
-       m4_define([mym4_minor],[4])
-       m4_define([mym4_micro],[1])])
+       m4_define([mym4_minor],[0])
+       m4_define([mym4_micro],[0])],
+      [m4_define([mym4_major],[5])
+       m4_define([mym4_minor],[0])
+       m4_define([mym4_micro],[0])])
 
 
 # We need to set isgpd only after having set the version number.
@@ -54,6 +60,7 @@ m4_if(mym4_buildtype,[gpd],[m4_define([mym4_isvsd],[yes])
 # the decimalized short revision number, a beta version string and a
 # flag indicating a development version (mym4_isbeta).  Note that the
 # m4 processing is done by autoconf and not during the configure run.
+m4_define([mym4_tsdir], m4_chomp_all(m4_esyscmd([./autogen.sh --print-tsdir])))
 m4_define([mym4_verslist], m4_split(m4_esyscmd([./autogen.sh --find-version] \
                           mym4_package mym4_major mym4_minor mym4_micro),[:]))
 m4_define([mym4_isbeta],       m4_argn(2, mym4_verslist))
@@ -87,7 +94,7 @@ COMPANY_NAME=m4_if(mym4_buildtype, [default],
                 ["Gpg4win Community"], ["g10 Code GmbH"])
 
 # Early sanity checks and dirs
-AC_CONFIG_SRCDIR(src/config.nsi.in)
+AC_CONFIG_SRCDIR(src/nsis/config.nsi.in)
 AC_CONFIG_MACRO_DIR(m4)
 
 AC_CONFIG_AUX_DIR([build-aux])
@@ -95,9 +102,6 @@ AM_INIT_AUTOMAKE([tar-ustar])
 AM_MAINTAINER_MODE
 AC_CANONICAL_HOST
 AC_CONFIG_HEADERS([config.h])
-
-# Language support
-AM_PO_SUBDIRS
 
 
 AC_SUBST(PRODUCT_NAME)
@@ -114,6 +118,7 @@ AC_SUBST(BUILD_COMMITID)
 # must not translate the dots to commas in the BUILD_FILEVERSION.
 BUILD_TIMESTAMP=`date --iso-8601=minutes`
 BUILD_ISODATE=`date --iso-8601`
+BUILD_DATETIME=`date +%Y%m%d%H%M`
 changequote(,)dnl
 BUILD_FILEVERSION=`echo "$VERSION" | sed 's/\([0-9.]*\).*/\1./'`
 changequote([,])dnl
@@ -174,16 +179,32 @@ if test "$use_fast_makensis" = yes; then
 fi
 AC_SUBST(EXTRA_MAKENSIS_FLAGS)
 
+# Use ninja instead of make for cmake projects
+AC_ARG_ENABLE(ninja,
+    AS_HELP_STRING([--enable-ninja],
+                   [Use ninja instead of make]),
+                    use_ninja=$enableval,
+                    use_ninja=no)
+
 #
 # Set variables for use by automake makefiles.
 #
+if test -f /src/packages/BUILDTYPE ; then
+   dockerbuild=yes
+else
+   dockerbuild=no
+fi
+AM_CONDITIONAL(DOCKERBUILD,    test "$dockerbuild" = "yes")
 AM_CONDITIONAL(BUILD_GPG4WIN,  test "$build_gpg4win" = "yes")
 AM_CONDITIONAL(BUILD_APPIMAGE, test "$build_appimage" = "yes")
+AM_CONDITIONAL(BUILD_W64_COND, test "$BUILD_W64" = "yes")
+
 
 # Required tools.
 AC_PROG_CC
 AC_PROG_CPP
 AC_PROG_RANLIB
+AC_PROG_AWK
 AC_CHECK_TOOL(AR, ar, :)
 AC_CHECK_TOOLS(STRIP, strip)
 AC_CHECK_TOOLS(DLLTOOL, dlltool)
@@ -207,6 +228,16 @@ AC_CHECK_PROGS(GITLOG_TO_CHANGELOG, gitlog-to-changelog,
 AC_CHECK_PROGS(BUILD_CC, gcc cc)
 AC_CHECK_PROGS(CMAKE, cmake3 cmake)
 AC_CHECK_PROGS(RSYNC, rsync)
+if test "${use_ninja}" = "yes"; then
+    AC_CHECK_PROGS(NINJA, ninja)
+    MAKETOOL=${NINJA}
+    CMAKE_GENERATOR_FLAGS="-G Ninja -DCMAKE_GENERATOR=Ninja"
+    AC_MSG_NOTICE([Using ${NINJA} in cmake projects])
+else
+    MAKETOOL=${MAKE}
+fi
+AC_SUBST(CMAKE_GENERATOR_FLAGS)
+AC_SUBST(MAKETOOL)
 
 AC_PROG_INSTALL
 
@@ -238,36 +269,38 @@ for i in $required_tools; do
 done
 
 if test "$build_gpg4win" = yes ; then
-    # Try to find the KF5ConfigConfig to set up host tooling
-    # variable for the kconfig compiler.
-    # A variable path here would probably be better but we cant
-    # use $libdir to avoid it beeing required to configure gpg4win
-    # build with a multiarch libdir set.
-    kf5_host_tooling_candidates="/usr/lib/x86_64-linux-gnu/cmake /usr/lib64/cmake"
-    for i in $kf5_host_tooling_candidates; do
-        if test -f "$i/KF5Config/KF5ConfigConfig.cmake"; then
-            kf5_host_tooling="$i"
-            break;
-        fi
-    done
-    if test ! -f "$kf5_host_tooling/KF5Config/KF5ConfigConfig.cmake"; then
-        missing_tools="$missing_tools libkf5config-dev"
-    fi
-    AC_SUBST(kf5_host_tooling)
+
+    case "${host}" in
+    x86_64*-mingw32*)
+        BUILD_W64=yes
+        # Since we use 32 makensis we need to compile our plugin
+        # for NSIS also for 32bit so we hardcode this here.
+        # Otherwise for 64 bit builds --with-additional-gpgex-host
+        # is then 32 bit to take care of that.
+        AC_CHECK_PROGS(W32CC32, i686-w64-mingw32-gcc)
+        GPG4WIN_RUNTIME_LIBRARY(libgcc_s_seh-1)
+        ;;
+    *)
+        W32CC32=${CC}
+        BUILD_W64=no
+        ;;
+    esac
+    AC_SUBST(BUILD_W64)
 
     GPG4WIN_RUNTIME_LIBRARY(libstdc++-6, REQUIRED)
     GPG4WIN_RUNTIME_LIBRARY(libwinpthread-1, REQUIRED)
 
-    # This is only required if you also use the pthread flavor for x64
-    GPG4WIN_RUNTIME_LIBRARY_X64(libwinpthread-1)
+    GPG4WIN_RUNTIME_LIBRARY_EX(libwinpthread-1)
 
     # One of these is required
     GPG4WIN_RUNTIME_LIBRARY(libgcc_s_dw2-1)
     GPG4WIN_RUNTIME_LIBRARY(libgcc_s_sjlj-1)
 
-    if [ ! test -s "src/libgcc_s_dw2-1.dll-x" -o -s "src/libgcc_s_sjlj-1.dll-x" ]; then
+    if test "${gpg4win_rtlib_libgcc_s_dw2_1}" = no \
+         -a "${gpg4win_rtlib_libgcc_s_sjlj_1}" = no \
+         -a "${gpg4win_rtlib_libgcc_s_seh_1}" = no ; then
         AC_MSG_ERROR(No exception library found. Please check what your system
-                     uses and see above message about either dw2 or sjlj
+                     uses and see above message about either dw2- sjlj- or seh-
                      dlls.)
     fi
 fi
@@ -275,7 +308,71 @@ fi
 AC_CHECK_PROGS(WGET, wget)
 
 
+#
+# Set source and build directory.
+#
+# They are always set to the directories seen outside of the
+# container.
+#
+TOPSRCDIR="mym4_tsdir"
+AC_ARG_WITH([playground],
+       AS_HELP_STRING([--with-playground=DIR],
+                      [Use DIR as the build directory]),
+       [PLAYGROUND="$withval"], [PLAYGROUND=""])
+
+if test -n "$PLAYGROUND" ; then
+    if test ! -d "$PLAYGROUND"; then
+        AC_MSG_ERROR([[
+***
+*** Given playground directory does not exist.
+*** Please create it first or use the default.
+***]])
+    fi
+    PLAYGROUND="$(cd "$PLAYGROUND" && pwd)"
+else
+    PLAYGROUND="${HOME}/b/$(basename "$TOPSRCDIR")-playground"
+fi
+PLAYGROUND=$(echo "$PLAYGROUND" | sed s,^//,/,)
+AC_SUBST(TOPSRCDIR)
+AC_SUBST(PLAYGROUND)
+
+
+#
+# Prepare variables for po/Makefile.am
+# Note that we do not use the ususal GNU gettext make system.
+#
+# LINGUAS  := The list of all translated languages taken from po/LINGUAS
+# POTFILES := The list of NSI files with translatable strings taken from
+#             po/POTFILES
+# POFILES  := The actual available translations (w/o directory)
+# NSIFILES := The to-be generated translation files in the NSI format.
+#             (w/o directory)
+#
+if test $dockerbuild = yes ; then
+  posrcdir=/src/po
+else
+  posrcdir="$TOPSRCDIR/po"
+fi
+LINGUAS=$(sed -e "/^#/d" -e "s/#.*//" "$posrcdir/LINGUAS" | xargs -- )
+POTFILES=$(for f in $(sed -e "/^#/d" -e "s/#.*//" "$posrcdir/POTFILES");\
+           do echo "$posrcdir/$f"; done | xargs -- )
+AC_SUBST(LINGUAS)
+AC_SUBST(POTFILES)
+POFILES=
+NSIFILES=
+for lang in $LINGUAS; do
+   if test -f "$posrcdir/$lang.po" ; then
+       POFILES="$POFILES $lang.po"
+       NSIFILES="$NSIFILES $lang.nsi"
+   fi
+done
+AC_SUBST(POFILES)
+AC_SUBST(NSIFILES)
+
+
+#
 # Packages for Gpg4Win.
+#
 if test "$build_gpg4win" = yes ; then
     gpg4win_dup_sources=""
 
@@ -308,60 +405,73 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_CMKPKGEX([gpgmepp], [gpgme])
     GPG4WIN_SPKGEX([gpgol], [gpgmepp])
 
-    GPG4WIN_IPKG([compendium])
-
     # The GnuPG Package.
     GPG4WIN_BPKG_BINSRC([gnupg-w32])
     GPG4WIN_BPKG_MSISRC([gnupg-msi])
 
+    # Tools required for cross compiling
+    GPG4WIN_NATIVEPKG([qtbase])
+    GPG4WIN_NATIVEPKG([extra-cmake-modules])
+    GPG4WIN_NATIVEPKG([breeze-icons], [qtbase extra-cmake-modules])
+    GPG4WIN_NATIVEPKG([qttools], [qtbase])
+    GPG4WIN_NATIVEPKG([kconfig], [qtbase qttools extra-cmake-modules])
+
     # Qt related stuff.
-    GPG4WIN_SPKG([qtbase], [jpeg zlib libpng freetype pcre2])
-    GPG4WIN_SPKG([qttools], [qtbase])
-    GPG4WIN_SPKG([qttranslations], [qtsvg qttools qtwinextras])
-    GPG4WIN_SPKG([qtwinextras], [qtbase])
-    GPG4WIN_SPKG([qtsvg], [qtbase])
+    GPG4WIN_KDEPKG([zstd])
+    GPG4WIN_KDEPKG([qtbase], [jpeg zlib zstd libpng freetype pcre2])
+    GPG4WIN_KDEPKG([qttools], [qtbase])
+    GPG4WIN_KDEPKG([qttranslations], [qtsvg qttools native-qttools])
+    GPG4WIN_KDEPKG([qtsvg], [qtbase])
+    GPG4WIN_KDEPKG([qthttpserver], [qtbase])
+    GPG4WIN_KDEPKG([qtwebsockets], [qtbase])
     GPG4WIN_KDEPKG([tiff])
     GPG4WIN_KDEPKG([pcre2])
+    GPG4WIN_KDEPKG([breeze], [qtbase kcoreaddons kconfig kconfigwidgets kguiaddons kiconthemes kwindowsystem native-kconfig])
+#   GPG4WIN_KDEPKG([snoretoast])
     GPG4WIN_KDEPKG([openjpeg], [tiff jpeg])
     GPG4WIN_KDEPKG([breeze-icons], [extra-cmake-modules qtbase])
-    GPG4WIN_KDEPKG([kleopatra], [mimetreeparser kio gnupg-w32 breeze-icons kxmlgui libkleo kitemmodels qttranslations ktextwidgets])
+    GPG4WIN_KDEPKG([kleopatra], [kstatusnotifieritem mimetreeparser kio gnupg-w32 breeze-icons kxmlgui libkleo kitemmodels qttranslations ktextwidgets native-kconfig])
     GPG4WIN_KDEPKG([extra-cmake-modules])
-    GPG4WIN_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
-    GPG4WIN_KDEPKG([ki18n], [qtbase gettext qttools extra-cmake-modules])
-    GPG4WIN_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
+    GPG4WIN_KDEPKG([kconfig], [qtbase native-qttools extra-cmake-modules])
+    GPG4WIN_KDEPKG([ki18n], [qtbase gettext native-qttools extra-cmake-modules])
+    GPG4WIN_KDEPKG([kwidgetsaddons], [kconfig native-qttools qtbase])
     GPG4WIN_KDEPKG([kcompletion], [kwidgetsaddons])
-    GPG4WIN_KDEPKG([kwindowsystem], [qtbase qtwinextras qttools])
-    GPG4WIN_KDEPKG([kcoreaddons], [qtbase qttools])
-    GPG4WIN_KDEPKG([kcodecs], [qtbase qttools])
-    GPG4WIN_KDEPKG([kguiaddons], [qtbase qttools])
+    GPG4WIN_KDEPKG([kwindowsystem], [qtbase native-qttools extra-cmake-modules])
+    GPG4WIN_KDEPKG([kcoreaddons], [qtbase native-qttools extra-cmake-modules])
+    GPG4WIN_KDEPKG([kcodecs], [qtbase native-qttools extra-cmake-modules])
+    GPG4WIN_KDEPKG([kguiaddons], [qtbase native-qttools extra-cmake-modules])
     GPG4WIN_KDEPKG([kmime], [kcodecs ki18n])
     GPG4WIN_KDEPKG([kmbox], [kmime])
-    GPG4WIN_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
-    GPG4WIN_KDEPKG([kitemviews], [qtbase qttools])
-    GPG4WIN_KDEPKG([kitemmodels], [qtbase qttools])
-    GPG4WIN_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
+    GPG4WIN_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig kcolorscheme])
+    GPG4WIN_KDEPKG([kitemviews], [qtbase native-qttools extra-cmake-modules])
+    GPG4WIN_KDEPKG([kitemmodels], [qtbase native-qttools extra-cmake-modules])
+    GPG4WIN_KDEPKG([karchive], [qtbase native-qttools extra-cmake-modules])
     GPG4WIN_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
-    GPG4WIN_KDEPKG([solid], [qttools qtbase extra-cmake-modules])
+    GPG4WIN_KDEPKG([solid], [native-qttools qtbase extra-cmake-modules])
     GPG4WIN_KDEPKG([kjobwidgets], [kwidgetsaddons kcoreaddons qtbase extra-cmake-modules])
     GPG4WIN_KDEPKG([kservice], [kconfig kcoreaddons ki18n])
     GPG4WIN_KDEPKG([kbookmarks], [kconfig kxmlgui kcoreaddons kconfigwidgets kwidgetsaddons kcodecs])
     GPG4WIN_KDEPKG([kio], [kcrash kjobwidgets solid kservice kbookmarks kwidgetsaddons kxmlgui kwindowsystem karchive kconfig kcoreaddons ki18n])
     GPG4WIN_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
-    GPG4WIN_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews ktextwidgets])
+    GPG4WIN_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews ktextwidgets breeze])
     GPG4WIN_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion qgpgme])
     GPG4WIN_KDEPKG([gpg4win-tools], [libkleo qgpgme])
     GPG4WIN_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
+    GPG4WIN_KDEPKG([kcolorscheme], [kconfig kguiaddons ki18n])
     GPG4WIN_KDEPKG([freetype], [zlib bzip2])
-    GPG4WIN_KDEPKG([sonnet], [qtbase qttools])
+    GPG4WIN_KDEPKG([sonnet], [qtbase native-qttools])
     GPG4WIN_KDEPKG([ktextwidgets], [sonnet kcompletion kconfig kconfigwidgets ki18n kwidgetsaddons])
     GPG4WIN_KDEPKG([poppler], [libpng openjpeg tiff gpgmepp kio qtbase freetype])
     GPG4WIN_KDEPKG([kparts], [kio kservice kxmlgui kconfigwidgets kwidgetsaddons ktextwidgets])
-    GPG4WIN_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
+    GPG4WIN_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg native-kconfig])
     GPG4WIN_KDEPKG([libical])
     GPG4WIN_KDEPKG([kcalendarcore], [qtbase libical extra-cmake-modules])
     GPG4WIN_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmbox kmime kcodecs kcalendarcore])
     GPG4WIN_KDEPKG([prison], [qtbase extra-cmake-modules qrencode])
-    GPG4WIN_KDEPKG([gpgpass], [prison kio kconfigwidgets kiconthemes ki18n qgpgme])
+    GPG4WIN_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
+    GPG4WIN_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n qgpgme native-kconfig])
+    GPG4WIN_KDEPKG([kcontacts], [kcoreaddons qtbase ki18n kconfig kcodecs])
+    GPG4WIN_KDEPKG([gpgoljs],[qtwebsockets kcontacts qthttpserver mimetreeparser libkleo sonnet kcompletion ki18n kwidgetsaddons kio])
 
     GPG4WIN_FINALIZE
 fi
@@ -372,6 +482,9 @@ if test "$build_appimage" = yes ; then
 
     APPIMAGE_SPKG([freetype])
     APPIMAGE_SPKG([sqlite])
+    APPIMAGE_SPKG([jpeg])
+    APPIMAGE_SPKG([qrencode])
+    APPIMAGE_SPKG([xcb-util-cursor])
 
     APPIMAGE_SPKG([libgpg-error])
     APPIMAGE_SPKG([libassuan], [libgpg-error])
@@ -380,9 +493,8 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([libksba], [libgpg-error])
     APPIMAGE_SPKG([ntbtls], [libgcrypt libksba])
     APPIMAGE_SPKG([gnupg], [libgpg-error libassuan npth libgcrypt libksba sqlite ntbtls])
-    APPIMAGE_SPKG([pinentry], [qtbase qtx11extras])
+    APPIMAGE_SPKG([pinentry], [qtbase])
 
-    #  Note that GPGME needs Qt
     APPIMAGE_SPKG([gpgme], [libgpg-error libassuan])
     APPIMAGE_KDEPKG([gpgmepp], [gpgme])
     APPIMAGE_KDEPKG([qgpgme], [gpgmepp qtbase])
@@ -391,12 +503,16 @@ if test "$build_appimage" = yes ; then
     # Qt related stuff.
     # (dependency on gnupg is only to make sure gnupg is build first so
     #  that we don't need to wait for the long running Qt builds)
-    APPIMAGE_SPKG([qtbase], [freetype gnupg])
-    APPIMAGE_SPKG([qttools], [qtbase])
-    APPIMAGE_SPKG([qttranslations], [qtsvg qttools qtx11extras])
-    APPIMAGE_SPKG([qtx11extras], [qtbase])
-    APPIMAGE_SPKG([qtwayland], [qtbase])
-    APPIMAGE_SPKG([qtsvg], [qtbase])
+    APPIMAGE_KDEPKG([zstd])
+    APPIMAGE_KDEPKG([pcre2])
+    APPIMAGE_KDEPKG([qtbase], [jpeg zstd freetype pcre2 gnupg xcb-util-cursor])
+    APPIMAGE_KDEPKG([qttools], [qtbase])
+    APPIMAGE_KDEPKG([qttranslations], [qtsvg qttools])
+    APPIMAGE_KDEPKG([qtsvg], [qtbase])
+    APPIMAGE_KDEPKG([qtwayland], [qtbase])
+    APPIMAGE_KDEPKG([wayland-protocols], [qtwayland])
+    APPIMAGE_KDEPKG([plasma-wayland-protocols], [wayland-protocols])
+    APPIMAGE_KDEPKG([breeze], [qtbase kcoreaddons kconfig kconfigwidgets kguiaddons kiconthemes kwindowsystem])
 
     # KDE Frameworks Tier 1
     APPIMAGE_KDEPKG([extra-cmake-modules], [qttools])
@@ -404,6 +520,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kauth], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kcodecs], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([kcolorscheme], [kconfig kguiaddons ki18n])
     APPIMAGE_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kcoreaddons], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kdbusaddons], [qtbase qttools extra-cmake-modules])
@@ -411,23 +528,23 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([ki18n], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kitemmodels], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kitemviews], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
-    APPIMAGE_KDEPKG([kwindowsystem], [qtbase qtx11extras extra-cmake-modules])
+    APPIMAGE_KDEPKG([kwindowsystem], [qtbase qtwayland extra-cmake-modules wayland-protocols plasma-wayland-protocols])
     APPIMAGE_KDEPKG([solid], [qtbase extra-cmake-modules])
     APPIMAGE_KDEPKG([sonnet], [qtbase extra-cmake-modules])
     APPIMAGE_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
 
     # KDE Frameworks Tier 2
-    APPIMAGE_KDEPKG([kactivities], [kwindowsystem])
     APPIMAGE_KDEPKG([kcompletion], [kwidgetsaddons])
     APPIMAGE_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
     APPIMAGE_KDEPKG([kjobwidgets], [kwidgetsaddons kcoreaddons qtbase extra-cmake-modules])
+    APPIMAGE_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
+    APPIMAGE_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
 
     # KDE Frameworks Tier 3
     APPIMAGE_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
     APPIMAGE_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
     APPIMAGE_KDEPKG([ktextwidgets], [sonnet kcompletion kconfig kconfigwidgets ki18n kwidgetsaddons])
-    APPIMAGE_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews ktextwidgets])
+    APPIMAGE_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews ktextwidgets breeze])
     APPIMAGE_KDEPKG([kbookmarks], [kconfig kxmlgui kcoreaddons kconfigwidgets kwidgetsaddons kcodecs])
     APPIMAGE_KDEPKG([kservice], [kconfig kcoreaddons ki18n])
     APPIMAGE_KDEPKG([kio], [kcrash kjobwidgets solid kservice kbookmarks kwidgetsaddons kxmlgui kwindowsystem karchive kconfig kcoreaddons ki18n kauth])
@@ -441,16 +558,15 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([kmbox], [kmime])
     APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion qgpgme])
 
-    APPIMAGE_KDEPKG([kleopatra], [mimetreeparser gnupg qgpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons])
+    APPIMAGE_KDEPKG([kleopatra], [mimetreeparser gnupg qgpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
 
     # Okular/Poppler
     APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype])
-    APPIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg kactivities])
+    APPIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
 
     # Gpgpass
-    APPIMAGE_SPKG([qrencode], [libpng libiconv])
     APPIMAGE_KDEPKG([prison], [qtbase extra-cmake-modules qrencode])
-    APPIMAGE_KDEPKG([gpgpass], [prison kconfigwidgets kiconthemes ki18n qgpgme])
+    APPIMAGE_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n qgpgme])
     APPIMAGE_FINALIZE
 fi
 
@@ -466,7 +582,16 @@ if test -n "$missing_tools"; then
 ***]])
 fi
 
-# Throw an error if any duplicate source packages have been found
+# Throw an error if any duplicate source packages have been found The
+# packages_dirpfx is set depending on whether we are running under
+# docker.  See also GPG4WIN_PACKAGES.
+packages_dirpfx=
+test -f /src/packages/BUILDTYPE && packages_dirpfx=/src/
+packages_files=${packages_dirpfx}packages/packages.common
+for f in ${packages_dirpfx}packages/packages.3 \
+         ${packages_dirpfx}packages/packages.4 ; do
+    test -f "$f" && packages_files="$packages_files $f"
+done
 if test -n "$gpg4win_dup_sources"; then
     tmp=
     for i in $gpg4win_dup_sources; do
@@ -476,7 +601,7 @@ $i"
     tmp2="
 You might remove them with:"
     for i in $gpg4win_rm_candidates; do
-        if ! grep -q $(basename $i) packages/packages.common packages/packages.3 packages/packages.4; then
+        if ! grep -q $(basename $i) $packages_files; then
             tmp2="$tmp2
 rm $i"
         fi
@@ -493,7 +618,7 @@ $i"
     tmp2="
 You might remove them with:"
     for i in $appimage_rm_candidates; do
-        if ! grep -q $(basename $i) packages/packages.common packages/packages.3 packages/packages.4; then
+        if ! grep -q $(basename $i) $packages_files; then
             tmp2="$tmp2
 rm $i"
         fi
@@ -504,20 +629,21 @@ fi
 # Finalize.
 
 AC_CONFIG_FILES(Makefile)
-AC_CONFIG_FILES(packages/Makefile src/Makefile po/Makefile.in)
-AC_CONFIG_FILES(po/build-cc)
-AC_CONFIG_FILES(src/config.nsi src/gpg4win.mk)
+AC_CONFIG_FILES(packages/Makefile src/Makefile po/Makefile)
+AC_CONFIG_FILES(src/nsis/config.nsi src/gpg4win.mk)
 AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)
 AC_CONFIG_FILES(src/toolchain.cmake)
 AC_CONFIG_FILES(src/toolchain-ex.cmake)
+AC_CONFIG_FILES(src/toolchain-native.cmake)
 AC_CONFIG_FILES(src/appimage/Makefile src/appimage/appimage.mk)
 AC_CONFIG_FILES(src/appimage/rsync-filters/Makefile)
+AC_CONFIG_FILES(src/nsis/Makefile)
 AC_CONFIG_FILES(src/versioninfo.rc.in)
 AC_CONFIG_FILES(src/gpg4win.w32-manifest.in)
 
 AC_CONFIG_FILES(src/gccwrap.sh)
-AC_OUTPUT_COMMANDS([chmod +x src/gccwrap.sh])
+AC_CONFIG_COMMANDS([chmod],[chmod +x src/gccwrap.sh])
 
 AC_OUTPUT
 
@@ -542,6 +668,8 @@ echo -n "
         Main platform : $host
         Extra platform: ${GPGEX_ADD_HOST}
         Distribution .: ${PRODUCT_NAME} (mym4_buildtype)
+        Source dir ...: ${TOPSRCDIR}
+        Build dir ....: ${PLAYGROUND}
 "
 if test -n "$JOBS"; then
     echo "        make jobs ....: ${JOBS}"

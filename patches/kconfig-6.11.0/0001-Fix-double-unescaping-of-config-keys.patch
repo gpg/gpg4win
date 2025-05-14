@@ -1,0 +1,45 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 0f8ddb05742b4ad2b752b2571484c597a6fd757a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 5 Mar 2025 13:32:54 +0100
+Subject: [PATCH] Fix double unescaping of config keys
+
+This fixes reading of config keys containing backslashes.
+---
+ autotests/kconfigtest.cpp | 2 +-
+ src/core/kconfigini.cpp   | 4 ----
+ 2 files changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/autotests/kconfigtest.cpp b/autotests/kconfigtest.cpp
+index 482473d8..92fe2d64 100644
+--- a/autotests/kconfigtest.cpp
++++ b/autotests/kconfigtest.cpp
+@@ -60,7 +60,7 @@ static const QString s_string_entry6{};
+ static const char s_utf8bit_entry[] = "Hello äöü";
+ static const QString s_translated_string_entry1{QStringLiteral("bonjour")};
+ static const QByteArray s_bytearray_entry{"\x00\xff\x7f\x3c abc\x00\x00", 10};
+-static const char s_escapekey[] = " []\0017[]==]";
++static const char s_escapekey[] = " []\0017[]==\\]";
+ static const char s_escape_entry[] = "[]\170[]]=3=]\\] ";
+ static const double s_double_entry{123456.78912345};
+ static const float s_float_entry{123.567f};
+diff --git a/src/core/kconfigini.cpp b/src/core/kconfigini.cpp
+index d2169ad0..41b60e84 100644
+--- a/src/core/kconfigini.cpp
++++ b/src/core/kconfigini.cpp
+@@ -253,10 +253,6 @@ KConfigIniBackend::ParseInfo KConfigIniBackend::parseConfig(const QByteArray &cu
+                 }
+             }
+
+-            if (!(entryOptions & KEntryMap::EntryRawKey)) {
+-                printableToString(aKey, file, lineNo);
+-            }
+-
+             if (options & ParseGlobal) {
+                 entryOptions |= KEntryMap::EntryGlobal;
+             }
+--
+2.48.1

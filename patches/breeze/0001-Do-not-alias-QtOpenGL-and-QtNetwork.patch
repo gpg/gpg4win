@@ -1,0 +1,30 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From b0063fbb97c9ec661898467b209b7bba336bb0cb Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Sun, 28 Jul 2024 11:59:35 +0200
+Subject: [PATCH] Do not alias QtOpenGL and QtNetwork
+
+It is not required and causes an error if QtOpenGL or
+QtNetwork is not installed.
+---
+ CMakeLists.txt | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 029677a5..2002ecc9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -155,8 +155,6 @@ function(build_Qt6)
+     # https://bugreports.qt.io/browse/QTBUG-114706
+     add_library(Qt::Core ALIAS Qt6::Core)
+     add_library(Qt::Gui ALIAS Qt6::Gui)
+-    add_library(Qt::OpenGL ALIAS Qt6::OpenGL)
+-    add_library(Qt::Network ALIAS Qt6::Network)
+     if(Qt6_VERSION_MINOR GREATER 6)
+         add_library(Qt::PlatformModuleInternal ALIAS Qt6::PlatformModuleInternal)
+     endif()
+--
+2.45.2

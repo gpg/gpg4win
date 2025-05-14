@@ -1,0 +1,56 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+From a208d65bf1e07f65264b1d56e0a227d32f7e66be Mon Sep 17 00:00:00 2001
+From: Carl Schwan <carl.schwan@gnupg.com>
+Date: Thu, 6 Jun 2024 15:16:54 +0200
+Subject: [PATCH] Remove knotifications
+
+---
+ CMakeLists.txt     | 1 -
+ src/CMakeLists.txt | 4 ----
+ 2 files changed, 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9a4ccc8..bf9aaf5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -35,7 +35,6 @@ endif()
+
+ find_package(KF6CoreAddons ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF6WidgetsAddons ${KF_DEP_VERSION} REQUIRED)
+-find_package(KF6Notifications ${KF_DEP_VERSION} REQUIRED)
+
+ set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 1c325fc..6a3b914 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -32,8 +32,6 @@ target_sources(KF6JobWidgets PRIVATE
+     kwidgetjobtracker.cpp
+     kwidgetjobtracker.h
+     kwidgetjobtracker_p.h
+-    knotificationjobuidelegate.cpp
+-    knotificationjobuidelegate.h
+
+     ${kjobwidgets_dbus_SRCS}
+ )
+@@ -75,7 +73,6 @@ target_link_libraries(KF6JobWidgets
+       KF6::CoreAddons    # KJob
+    PRIVATE
+       KF6::WidgetsAddons # KSqueezedTextLabel
+-      KF6::Notifications
+ )
+ if (HAVE_QTDBUS)
+     target_link_libraries(KF6JobWidgets PRIVATE Qt6::DBus)
+@@ -93,7 +90,6 @@ ecm_generate_headers(KJobWidgets_HEADERS
+   KUiServerV2JobTracker
+   KStatusBarJobTracker
+   KWidgetJobTracker
+-  KNotificationJobUiDelegate
+
+   REQUIRED_HEADERS KJobWidgets_HEADERS
+ )
+--
+2.44.0

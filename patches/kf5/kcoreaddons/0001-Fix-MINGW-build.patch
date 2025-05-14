@@ -1,0 +1,39 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 4fb4c886d2653b94745be1adf446c5a016db6320 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Wed, 7 Dec 2022 11:49:45 +0100
+Subject: [PATCH] Fix MINGW build
+
+---
+ src/lib/util/kmemoryinfo.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/lib/util/kmemoryinfo.cpp b/src/lib/util/kmemoryinfo.cpp
+index 009e4743..83fb17c5 100644
+--- a/src/lib/util/kmemoryinfo.cpp
++++ b/src/lib/util/kmemoryinfo.cpp
+@@ -15,8 +15,8 @@ Q_LOGGING_CATEGORY(LOG_KMEMORYINFO, "kf.coreaddons.kmemoryinfo", QtWarningMsg)
+
+ // clang-format off
+ #if defined(Q_OS_WINDOWS)
+-    #include <Windows.h>    // Windows.h must stay above Pspapi.h
+-    #include <Psapi.h>
++    #include <windows.h>    // Windows.h must stay above Pspapi.h
++    #include <psapi.h>
+ #elif defined(Q_OS_LINUX) || defined(Q_OS_ANDROID)
+     #include <QByteArray>
+     #include <QFile>
+@@ -167,7 +167,7 @@ bool KMemoryInfo::update()
+     }
+
+     SwapInfo si;
+-    if (!EnumPageFiles(pageInfo, &si)) {
++    if (!EnumPageFiles((PENUM_PAGE_FILE_CALLBACKW)pageInfo, &si)) {
+         return false;
+     }
+
+--
+2.38.1

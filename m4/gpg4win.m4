@@ -45,13 +45,19 @@ AC_DEFUN([GPG4WIN_BASH],
 
 
 # GPG4WIN_PACKAGES
-# Determines the path to the source and binary packages.
-# Default is the "packages" directory in the source directory.
-# The path is stored in the shell variable gpg4win_packages.
+
+# Determines the path to the source and binary packages.  Default is
+# the the "/src/packages" directory if that exists and has a file
+# named BUILDTYPE, otherwise the default is the "packages" directory
+# below the CWD.  The former is for the docker build system, the
+# latter for the classic build system.  The path is stored in the
+# shell variable gpg4win_packages.
 AC_DEFUN([GPG4WIN_PACKAGES],
 [
   AC_MSG_CHECKING(for packages directory)
-  _gpg4win_packages_default=packages
+  AS_IF([test -f /src/packages/BUILDTYPE],
+        [_gpg4win_packages_default=/src/packages],
+        [_gpg4win_packages_default=packages])
   AC_ARG_WITH([packages],
     AS_HELP_STRING([--with-packages=DIR],
                    [source and binary packages [[packages]]]),
@@ -169,6 +175,7 @@ AC_DEFUN([GPG4WIN_FIND],
         [$6])
 ])
 
+
 AC_DEFUN([GPG4WIN_CHECK_EXDEPS],
 [
   AC_REQUIRE([GPG4WIN_CHECK_DEPS])
@@ -212,6 +219,10 @@ AC_DEFUN([GPG4WIN_CHECK_DEPS],
   gpg4win_build_list=`echo $gpg4win_build_list`
   AC_MSG_RESULT($gpg4win_build_list)
   AC_SUBST(gpg4win_build_list)
+  # Get list of packages for NSIS.
+  gpg4win_nsis_list=`echo $_gpg4win_deps | tsort | grep -v ^native-`
+  gpg4win_nsis_list=`echo $gpg4win_nsis_list`
+  AC_SUBST(gpg4win_nsis_list)
 
   # Check each dependency.
   _gpg4win_not_found=
@@ -249,41 +260,6 @@ AC_DEFUN([GPG4WIN_FINALIZE],
   AS_IF([test "${_gpg4win_debug}" != no],
     GPG4WIN_DEFINE(GPG4WIN_DEBUG))
 ])
-
-
-# GPG4WIN_IPKG([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
-# Set up the internal package PKG.
-# It is provided in gpg4win_val.
-AC_DEFUN([GPG4WIN_IPKG],
-[
-  AC_REQUIRE([GPG4WIN_INIT])
-  AC_MSG_CHECKING([for internal package $1])
-  _gpg4win_pkg=maybe
-  AC_ARG_ENABLE([pkg-$1],
-    AS_HELP_STRING([--enable-pkg-$1[=DIR]],
-                   [include internal package $1]),
-    _gpg4win_pkg=$enableval,
-    _gpg4win_pkg=yes)
-
-  # gpg4win_pkg_PKGNAME_deps=DEPS
-  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
-  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
-
-  AC_MSG_RESULT($_gpg4win_pkg)
-
-  AS_IF([test "$_gpg4win_pkg" != no],
-    _gpg4win_pkgs="$_gpg4win_pkgs $1"
-    GPG4WIN_DEFINE(HAVE_PKG_[]m4_translit([$1],[a-z+-],[A-Z__]))
-    # Record dependencies.  Also enter every package as node.
-    _gpg4win_deps="$_gpg4win_deps $1 $1"
-    AS_IF([test ! -z "$2"],
-          for _gpg4win_i in $2; do
-            _gpg4win_deps="$_gpg4win_deps $_gpg4win_i $1"
-          done)
-      [$3],
-      [$4])
-])
-
 
 
 # GPG4WIN_SPKG([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
@@ -462,6 +438,49 @@ AC_DEFUN([GPG4WIN_CMKPKGEX],
             _gpg4win_ex_deps="$_gpg4win_ex_deps $_gpg4win_i $1"
           done)
   )
+])
+
+# GPG4WIN_NATIVEPKG([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
+# Set up the source package PKG to be additionally built
+# natively to provide additional tools on the build system.
+AC_DEFUN([GPG4WIN_NATIVEPKG],
+[
+  AC_REQUIRE([GPG4WIN_INIT])
+  _gpg4win_pkg=maybe
+  AC_ARG_ENABLE([pkg-$1],
+    AS_HELP_STRING([--enable-pkg-$1[=DIR]],
+                   [include package $1]),
+    _gpg4win_pkg=$enableval)
+  _gpg4win_spkg=no
+  _gpg4win_version=
+  AS_IF([test "$_gpg4win_pkg" != no],
+        [GPG4WIN_FIND($1,,, $_gpg4win_pkg,
+	 _gpg4win_spkg=$gpg4win_val
+	 _gpg4win_version=$gpg4win_version)])
+  # At this point, _gpg4win_spkg is no, or the actual package source file.
+
+  # gpg4win_pkg_PKGNAME=FILENAME_OF_SOURCE
+  gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]=$_gpg4win_spkg
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__]))
+
+  # gpg4win_pkg_PKGNAME_version=VERSION
+  gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version=$_gpg4win_version
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version)
+
+  # gpg4win_pkg_PKGNAME_deps=DEPS
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_native_deps="$2"
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_native_deps)
+
+  GPG4WIN_DEFINE(HAVE_PKG_[]m4_translit([$1],[a-z+-],[A-Z__])_NATIVE)
+
+  _gpg4win_pkgs="$_gpg4win_pkgs native-$1"
+
+  # Record dependencies.  Also enter every package as node.
+  _gpg4win_deps="$_gpg4win_deps native-$1 native-$1"
+  AS_IF([test ! -z "$2"],
+        for _gpg4win_i in $2; do
+          _gpg4win_deps="$_gpg4win_deps native-$_gpg4win_i native-$1"
+        done)
 ])
 
 # GPG4WIN_BPKG_GNUWIN32([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
@@ -886,8 +905,12 @@ AC_DEFUN([GPG4WIN_BPKG_BINSRC],
           [$4])
 ])
 
-# Add a runtime library argument 1 should be the dll
-# name without the .dll suffix
+
+# Add a runtime library.  Argument 1 should be the dll
+# name without the .dll suffix.  If argument 2 is "REQUIRED" the
+# function fails if the DLL was not found.  On success an
+# AC_SUBST(gpg4win_rtlib_$(1)) is done.
+#
 AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY],
 [
     dll_path="no"
@@ -926,20 +949,19 @@ AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY],
                      Use the --with-$1-dll option to set the path directly.
         )
     elif test "$dll_path" = no; then
-        AC_MSG_NOTICE(Using packaging dummy for $1.dll)
-        touch src/$1.dll-x
+        AC_MSG_NOTICE(Using dummy for $1.dll)
     else
         AC_MSG_NOTICE(Using $dll_path to provide $1.dll)
-        $CP "$dll_path" src/$1.dll-x
-        $STRIP src/$1.dll-x
     fi
+    gpg4win_rtlib_[]m4_translit([$1],[-+],[__])[]="$dll_path"
+    AC_SUBST(gpg4win_rtlib_[]m4_translit([$1],[-+],[__]))
 ])
 
-AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY_X64],
+AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY_EX],
 [
     dll_path="no"
     AC_ARG_WITH([$1],
-    AS_HELP_STRING([--with-x64-$1-dll[=FILE]],
+    AS_HELP_STRING([--with-ex-$1-dll[=FILE]],
                    [include FILE as runtime dependency for the installer.]),
                    [dll_path=$withval])
 
@@ -968,15 +990,42 @@ AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY_X64],
     fi
 
     if test "$2" = "REQUIRED" -a "$dll_path" = "no"; then
-        AC_MSG_ERROR(can not find the x64 runtime library $1.dll in the default locations.
-                     Use the --with-x64-$1-dll option to set the path directly.
+        AC_MSG_ERROR(can not find the ex runtime library $1.dll in the default locations.
+                     Use the --with-ex-$1-dll option to set the path directly.
         )
     elif test "$dll_path" = no; then
-        AC_MSG_NOTICE(Using packaging dummy for $1.dll for x64)
-        touch src/$1.dll-x64
+        AC_MSG_NOTICE(Using dummy for $1.dll for $gpgex_host)
     else
-        AC_MSG_NOTICE(Using $dll_path to provide $1.dll for x64)
-        $CP "$dll_path" src/$1.dll-x64
-        $STRIP_EX src/$1.dll-x64
+        AC_MSG_NOTICE(Using $dll_path to provide $1.dll for $gpgex_host)
     fi
+    gpg4win_rtlib_ex_[]m4_translit([$1],[-+],[__])[]="$dll_path"
+    AC_SUBST(gpg4win_rtlib_ex_[]m4_translit([$1],[-+],[__]))
 ])
+
+
+# GPG4WIN_BUILD_RELEASE(NAME,DEFAULT)
+# Add a --enable-NAME option to configure and set the shell variable
+# build_NAME either to "yes" or "no".  DEFAULT must either be "yes" or "no"
+# and decides on the default value for build_NAME and whether --enable-NAME
+# or --disable-NAME is shown with ./configure --help
+AC_DEFUN([GPG4WIN_BUILD_RELEASE],
+  [m4_define([my_build], [m4_bpatsubst(build_$1, [[^a-zA-Z0-9_]], [_])])
+   my_build=$2
+   m4_if([$2],[yes],[
+      AC_ARG_ENABLE([$1], AS_HELP_STRING([--disable-$1],
+                                         [do not build the $1 release]),
+                           my_build=$enableval, my_build=$2)
+    ],[
+      AC_ARG_ENABLE([$1], AS_HELP_STRING([--enable-$1],
+                                         [build the $1 release]),
+                           my_build=$enableval, my_build=$2)
+    ])
+   case "$my_build" in
+         no|yes)
+           ;;
+         *)
+           AC_MSG_ERROR([only yes or no allowed for feature --enable-$1])
+           ;;
+   esac
+   m4_undefine([my_build])
+  ])

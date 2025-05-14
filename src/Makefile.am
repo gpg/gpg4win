@@ -16,117 +16,112 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
-	config.site config.nsi.in \
-        libiconv.def libintl.def findicons.sh \
-        gpg4win-splash.wav exdll.h exdll.c g4wihelp.c desktopshellrun.cpp \
-        g4wihelp.nsi slideshow.cpp gpgwrap.c gccwrap.sh.in \
-        versioninfo.rc.in.in gpg4win.w32-manifest.in.in \
-        gpg-enable-keyboxd.bat gpg-disable-keyboxd.bat \
-        BreezeClassic.colors BreezeDark.colors \
-        inst-sections.nsi installer.nsi installer-finish.nsi  \
-	zlib.pc sha1sum.c \
-        potomo Memento.nsh mk-sbom.sh \
-        inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
-        inst-gettext.nsi	   uninst-gettext.nsi	      \
-        inst-gnupg-w32.nsi	   uninst-gnupg-w32.nsi	      \
-        inst-gpgme.nsi		   uninst-gpgme.nsi	      \
-        inst-gpgmepp.nsi	   uninst-gpgmepp.nsi	      \
-        inst-qgpgme.nsi		   uninst-qgpgme.nsi	      \
-        inst-paperkey.nsi	   uninst-paperkey.nsi	      \
-        inst-gpgol.nsi		   uninst-gpgol.nsi	      \
-        inst-gpgex.nsi		   uninst-gpgex.nsi	      \
-        inst-libassuan.nsi	   uninst-libassuan.nsi	      \
-        inst-libgpg-error.nsi	   uninst-libgpg-error.nsi    \
-        inst-libiconv.nsi	   uninst-libiconv.nsi	      \
-        inst-compendium.nsi	   uninst-compendium.nsi   \
-        inst-man_advanced_de.nsi   uninst-man_advanced_de.nsi \
-        inst-man_advanced_en.nsi   uninst-man_advanced_en.nsi \
-        inst-man_novice_de.nsi	   uninst-man_novice_de.nsi   \
-        inst-man_novice_en.nsi	   uninst-man_novice_en.nsi   \
-        inst-pcre2.nsi	           uninst-pcre2.nsi	      \
-        inst-pinentry.nsi	   uninst-pinentry.nsi	      \
-        inst-pkgconfig.nsi	   uninst-pkgconfig.nsi	      \
-        inst-zlib.nsi        	   uninst-zlib.nsi            \
-        inst-kconfig.nsi        uninst-kconfig.nsi              \
-        inst-kleopatra.nsi  	   uninst-kleopatra.nsi       \
-        inst-bzip2.nsi             uninst-bzip2.nsi           \
-        inst-qtbase.nsi uninst-qtbase.nsi \
-        inst-ki18n.nsi uninst-ki18n.nsi \
-        inst-kio.nsi uninst-kio.nsi \
-        inst-kbookmarks.nsi uninst-kbookmarks.nsi \
-        inst-kservice.nsi uninst-kservice.nsi \
-        inst-solid.nsi uninst-solid.nsi \
-        inst-kjobwidgets.nsi uninst-kjobwidgets.nsi \
-        inst-kwidgetsaddons.nsi uninst-kwidgetsaddons.nsi \
-        inst-kcompletion.nsi uninst-kcompletion.nsi \
-        inst-kwindowsystem.nsi uninst-kwindowsystem.nsi \
-        inst-ktextwidgets.nsi uninst-ktextwidgets.nsi \
-        inst-sonnet.nsi uninst-sonnet.nsi \
-        inst-libkleo.nsi uninst-libkleo.nsi \
-        inst-kcoreaddons.nsi uninst-kcoreaddons.nsi \
-        inst-kcodecs.nsi uninst-kcodecs.nsi \
-        inst-kconfigwidgets.nsi uninst-kconfigwidgets.nsi \
-        inst-kxmlgui.nsi uninst-kxmlgui.nsi \
-        inst-kiconthemes.nsi uninst-kiconthemes.nsi \
-        inst-breeze-icons.nsi uninst-breeze-icons.nsi \
-        inst-karchive.nsi uninst-karchive.nsi \
-        inst-kcrash.nsi uninst-kcrash.nsi \
-        inst-kitemviews.nsi uninst-kitemviews.nsi \
-        inst-kitemmodels.nsi uninst-kitemmodels.nsi \
-        inst-kguiaddons.nsi uninst-kguiaddons.nsi \
-        inst-kmbox.nsi uninst-kmbox.nsi \
-        inst-kmime.nsi uninst-kmime.nsi \
-        inst-kde-l10n.nsi uninst-kde-l10n.nsi \
-        inst-qtsvg.nsi uninst-qtsvg.nsi \
-        inst-qttools.nsi uninst-qttools.nsi \
-        inst-qttranslations.nsi uninst-qttranslations.nsi \
-        inst-qtwinextras.nsi uninst-qtwinextras.nsi \
-        inst-scute.nsi uninst-scute.nsi \
-        inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
-        inst-gpg4win-tools.nsi uninst-gpg4win-tools.nsi \
-        inst-gpgme-browser.nsi \
-        inst-poppler.nsi uninst-poppler.nsi \
-        inst-libpng.nsi uninst-libpng.nsi \
-        inst-openjpeg.nsi uninst-openjpeg.nsi \
-        inst-jpeg.nsi uninst-jpeg.nsi \
-        inst-tiff.nsi uninst-tiff.nsi \
-        inst-freetype.nsi uninst-freetype.nsi \
-        inst-threadweaver.nsi uninst-threadweaver.nsi \
-        inst-kparts.nsi uninst-kparts.nsi \
-        inst-okular.nsi uninst-okular.nsi \
-        inst-mimetreeparser.nsi uninst-mimetreeparser.nsi \
-        inst-kcalendarcore.nsi uninst-kcalendarcore.nsi \
-        inst-libical.nsi uninst-libical.nsi \
-        inst-qrencode.nsi uninst-qrencode.nsi \
-        inst-prison.nsi uninst-prison.nsi \
-        inst-gpgpass.nsi uninst-gpgpass.nsi \
-        inst-final.nsi index.theme \
-        slideshow/slides.dat \
-        slideshow/slide1-gpgol.png \
-        slideshow/slide2-gpgex.png \
-        slideshow/slide3-kleopatra.png \
-        slideshow/slide4-summary.png \
-        icons/file-ext.ico \
-        icons/mail-ext.ico \
-        kdeglobals qtlogging.ini \
-        make-msi.pl make-msi.guids \
-        build-gpg4win.sh \
-        WixUI_Gpg4win.wxs icons/shield.ico included-icons.txt
+
+EXTRA_DIST =  config.site                                      \
+              findicons.sh mk-sbom.sh                          \
+              exdll.h exdll.c                                  \
+              g4wihelp.c desktopshellrun.cpp                   \
+              slideshow.cpp gpgwrap.c gccwrap.sh.in            \
+              versioninfo.rc.in.in gpg4win.w32-manifest.in.in  \
+              gpg-enable-keyboxd.bat gpg-disable-keyboxd.bat   \
+              sha1sum.c                                        \
+              vsd-gpgconf.ctl                                  \
+              potomo                                           \
+              index.theme                                      \
+              slideshow/slides.dat                             \
+              slideshow/slide1-gpgol.png                       \
+              slideshow/slide2-gpgex.png                       \
+              slideshow/slide3-kleopatra.png                   \
+              slideshow/slide4-summary.png                     \
+              icons/file-ext.ico                               \
+              icons/gpd/16-apps-kleopatra.png                  \
+              icons/gpd/22-apps-kleopatra.png                  \
+              icons/gpd/24-apps-kleopatra.png                  \
+              icons/gpd/32-apps-kleopatra.png                  \
+              icons/gpd/48-apps-kleopatra.png                  \
+              icons/gpd/64-apps-kleopatra.png                  \
+              icons/gpd/128-apps-kleopatra.png                 \
+              icons/gpd/1024-apps-kleopatra.png                \
+              icons/gpd/sc-apps-kleopatra.svg                  \
+              icons/kleopatra-vsd.svg                          \
+              icons/mail-ext.ico                               \
+              icons/shield.ico                                 \
+              kdeglobals qtlogging.ini                         \
+              make-msi.pl make-msi.guids                       \
+              qt.conf                                          \
+              WixUI_Gpg4win.wxs included-icons.txt             \
+              zlib.pc
 
 if BUILD_APPIMAGE
 appimage = appimage
 else
 appimage =
 endif
+if BUILD_W64_COND
+w64_suffix="-x64"
+endif
 
-SUBDIRS = ${appimage}
+SUBDIRS = ${appimage} nsis
+
+# Define macros for the various directories.  These directory names
+# must be absolute, as we switch pretty often between them and don't
+# want to track relative names.  The directories are created as needed
+# by the $(stampdir)/stamp-directories target.  tsdir and sdir are
+# used instead of the predefined top_srcdir and srcdir so that we can
+# override them using make variables
+#
+# root     :: Our build root.  The make variable PLAYGROUND can be used
+#             to override the default.
+# stampdir :: The directory to hold stamp files.
+# bdir     :: The build dir for the individual packages.
+# idir     :: The directory with the installed files from the packages.
+# ipdir    :: A subdir of the install directory to hold the installed
+#             packages which will be stowed to other subdirs of $(idir).
+# ex_idir  :: Same as $(idir) but for packages which are build for the
+#             other bit size than the standard.
+# ex_ipdir :: Likewise for $(ipdir).
+# nat_idir :: Same as $(idir) but for packages which are build for
+#             build platform itself.
+# nat_ipdir:: Likewise for $(ipdir).
+# msidir   :: The directory to put generated files for MSIs
+# tsdir    :: The top source directory.
+# sdir     :: The source directory src/ below tsdir.
+# patdir   :: The source directory patches/ below tsdir.
+# vsddir   :: The source direcory with MSI configurations.
+
+tsdir     := $(TOPSRCDIR)
+root      := $(PLAYGROUND)
+stampdir  := $(root)/stamps
+bdir      := $(root)/build
+idir      := $(root)/install
+ipdir     := $(root)/install/pkgs
+ex_idir   := $(root)/install-ex
+ex_ipdir  := $(root)/install-ex/pkgs
+nat_idir  := $(root)/install-native
+nat_ipdir := $(root)/install-native/pkgs
+msidir    := $(root)/src/gnupg-vsd
+sdir      := $(tsdir)/src
+vsddir    := $(tsdir)/src/gnupg-vsd
+patdir    := $(tsdir)/patches
+
+$(info -------------------------------------------------)
+$(info Topsource ....: $(tsdir))
+$(info Source .......: $(sdir))
+$(info Playground ...: $(root))
+$(info Stamps at ....: $(stampdir))
+$(info Building at ..: $(bdir))
+$(info -------------------------------------------------)
 
 
+# Now we invoke commands on the host.
+RUNCMD=$(tsdir)/build.sh --runcmd
 
-# These paths must be absolute, as we switch directories pretty often.
-root := $(shell pwd)/playground
-stampdir := $(shell pwd)/stamps
+# This template is used to include standard GNU make files. See below
+# for a description.
+define INCLUDE_BY_MAKE
+include $(1)
+endef
+
 
 gpg4win_howto_smime_ll = en de
 
@@ -148,10 +143,9 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 		pinentry libassuan ntbtls pcre \
 		paperkey regex libiconv gettext scute qrencode
 
-gpg4win_qtpkgs = qtbase qttools qtwinextras qtsvg qttranslations
-
 # Source packages following the KDE pattern
-gpg4win_kdepkgs = gpgmepp qgpgme \
+gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
+                  gpgmepp qgpgme \
                   kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
                   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
@@ -159,7 +153,10 @@ gpg4win_kdepkgs = gpgmepp qgpgme \
                   gpg4win-tools kcrash kio kbookmarks kservice solid \
                   kjobwidgets poppler okular freetype threadweaver \
                   kparts tiff openjpeg sonnet ktextwidgets mimetreeparser \
-                  libical kcalendarcore kmbox pcre2 prison gpgpass
+                  libical kcalendarcore kmbox pcre2 prison gpgpass \
+                  knotifications kcolorscheme zstd kstatusnotifieritem \
+                  gpgoljs kcontacts qtwebsockets \
+                  breeze
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
@@ -167,6 +164,10 @@ gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
 
 # Supported CMake packages to build in an additional architecture
 gpg4win_excmkpkgs = gpgmepp
+
+# The packages that should also be compiled natively
+gpg4win_nativepkgs = qtbase breeze-icons kconfig extra-cmake-modules \
+                     qttools
 
 # Some variables
 WINE = wine
@@ -197,6 +198,9 @@ gpg4win_pkg_gettext_make_dir_inst = gettext-runtime
 gpg4win_pkg_gettext_ex_make_dir = gettext-runtime
 gpg4win_pkg_gettext_ex_make_dir_inst = gettext-runtime
 
+# CMakeList.txt does not live in the top level
+gpg4win_pkg_zstd_conf_subdir = /build/cmake
+gpg4win_pkg_zstd_configure = -DZSTD_BUILD_PROGRAMS=OFF
 
 # Paperkey comes with a man pages which we have to convert.
 define gpg4win_pkg_paperkey_post_install
@@ -214,17 +218,9 @@ define gpg4win_pkg_gpgol_post_install
 ( cd $$$${pkgbdir}/doc; make pdf )
 endef
 
-# We would like to use --with-libiconv-prefix and
-# --with-libintl-prefix, but these don't work with the cheesy
-# non-"libfoo.la" versions of iconv and gettext that we are using.
-#gpg4win_pkg_libgpg_error_configure = \
-#  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir)
-gpg4win_pkg_libgpg_error_configure = --silent \
-  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib \
-  --enable-static --enable-install-gpg-error-config
+gpg4win_pkg_libgpg_error_configure = --enable-static
 
-gpg4win_pkg_libgpg_error_ex_configure = --silent \
-  --enable-static --enable-install-gpg-error-config
+gpg4win_pkg_libgpg_error_ex_configure = --enable-static
 
 gpg4win_pkg_libgpg_error_extracflags = -D_WIN32_WINNT=0x0600
 
@@ -242,64 +238,43 @@ define gpg4win_pkg_libgpg_error_post_install
  done)
 endef
 
-gpg4win_pkg_libassuan_configure =  --silent --enable-static
+gpg4win_pkg_libassuan_configure = --enable-static
 
-gpg4win_pkg_libassuan_ex_configure = --with-gpg-error-prefix=$(ex_idir) --silent --enable-static
+gpg4win_pkg_libassuan_ex_configure = --enable-static
 
-gpg4win_pkg_libpng_configure = HAVE_SOLARIS_LD_FALSE=yes CPPFLAGS=\"-I$(idir)/include -DPNG_BUILD_DLL\" LDFLAGS=\"-L$(idir)/lib\" LIBPNG_DEFINES=\"-DPNG_BUILD_DLL\"
+gpg4win_pkg_libpng_configure = \
+      HAVE_SOLARIS_LD_FALSE=yes \
+      CPPFLAGS=\"-I$(idir)/include -DPNG_BUILD_DLL\" \
+      LDFLAGS=\"-L$(idir)/lib\" \
+      LIBPNG_DEFINES=\"-DPNG_BUILD_DLL\"
 
-# We would like to use --with-libiconv-prefix and
-# --with-libintl-prefix, but these don't work with the cheesy
-# non-"libfoo.la" versions of iconv and gettext that we are using.
 gpg4win_pkg_pinentry_configure = \
-  --enable-pinentry-qt5 \
-  --disable-pinentry-qt \
+  --enable-pinentry-qt \
   --disable-pinentry-fltk \
   --disable-pinentry-curses \
-  --disable-fallback-curses \
-  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
-#  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir)
+  --disable-fallback-curses
 
-# The LDFLAGS is needed for -lintl for glib.  The QT4 variables work
-# around the lack of cross compilation support in qt-dev.
-gpg4win_pkg_gpgme_configure = --silent \
-  --with-gpg-error-prefix=$(idir) --enable-static \
-  LDFLAGS=-L$(idir)/lib \
-  --enable-languages="" \
+gpg4win_pkg_gpgme_configure = \
+  --enable-static \
+  --enable-languages= \
   --disable-gpg-test \
   --disable-gpgsm-test
 
-gpg4win_pkg_gpgme_ex_configure = --silent \
-  --with-gpg-error-prefix=$(ex_idir) --enable-static \
-  --with-libassuan-prefix=$(ex_idir) \
-  LDFLAGS=-L$(ex_idir)/lib \
-  --enable-languages="" \
+gpg4win_pkg_gpgme_ex_configure = \
+  --enable-static \
+  --enable-languages= \
   --disable-gpg-test \
   --disable-gpgsm-test
 
-gpg4win_pkg_gpgmepp_configure = -DENABLE_STATIC=ON \
+gpg4win_pkg_gpgmepp_configure = \
+  -DENABLE_STATIC=ON \
   -DPKGCONFIG_HOST=$(host)
 
-gpg4win_pkg_gpgmepp_ex_configure = -DENABLE_STATIC=ON \
+gpg4win_pkg_gpgmepp_ex_configure = \
+  -DENABLE_STATIC=ON \
   -DPKGCONFIG_HOST=$(GPGEX_ADD_HOST)
 
-gpg4win_pkg_qgpgme_configure = -DBUILD_WITH_QT6=OFF
-
-gpg4win_pkg_gpgol_configure = --silent \
-  --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir) \
-  --with-libassuan-prefix=$(idir)
-
-gpg4win_pkg_gpgol_ex_configure = --silent \
-  --with-gpgme-prefix=$(ex_idir) --with-gpg-error-prefix=$(ex_idir) \
-  --with-libassuan-prefix=$(ex_idir)
-
-gpg4win_pkg_gpgex_configure = --silent \
-  --with-gpg-error-prefix=$(idir) \
-  --with-libassuan-prefix=$(idir)
-
-gpg4win_pkg_gpgex_ex_configure = --silent \
-  --with-gpg-error-prefix=$(ex_idir) \
-  --with-libassuan-prefix=$(ex_idir)
+gpg4win_pkg_qgpgme_configure = -DBUILD_WITH_QT5=OFF
 
 gpg4win_pkg_openjpeg_configure = -DBUILD_CODEC=OFF
 
@@ -311,124 +286,171 @@ gpg4win_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
 
 gpg4win_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
 
-gpg4win_pkg_pcre2_configure = -DPCRE2_BUILD_PCRE2_8=OFF -DPCRE2_BUILD_PCRE2_16=ON \
-                              -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF
+gpg4win_pkg_kconfig_native_configure = -DKCONFIG_USE_DBUS=OFF \
+                                       -DKCONFIG_USE_QML=OFF  \
+                                       -DKCONFIG_USE_GUI=OFF
 
+gpg4win_pkg_pcre2_configure = \
+		-DPCRE2_BUILD_PCRE2_8=OFF -DPCRE2_BUILD_PCRE2_16=ON \
+                -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF
+
+gpg4win_pkg_karchive_configure = -DWITH_LIBZSTD=ON -DWITH_LIBLZMA=OFF
+
+gpg4win_pkg_kcoreaddons_configure = -DKCOREADDONS_USE_QML=OFF
+
+gpg4win_pkg_kwindowsystem_configure = -DKWINDOWSYSTEM_QML=OFF
+
+gpg4win_pkg_ktextwidgets_configure = -DWITH_TEXT_TO_SPEECH=OFF
+
+gpg4win_pkg_kcalendarcore_configure = -DUSE_QML=OFF
+
+# Create a minmal build on the build system of the
+# same version before cross compiling.
+gpg4win_pkg_qtbase_native_configure = \
+        -DQT_BUILD_EXAMPLES=OFF \
+        -DQT_BUILD_TESTS=OFF \
+        -DBUILD_WITH_PCH=OFF \
+        -DFEATURE_assistant=ON \
+        -DFEATURE_linguist=ON \
+        -DFEATURE_eventfd=OFF \
+        -DFEATURE_harfbuzz=OFF \
+        -DFEATURE_icu=OFF \
+        -DFEATURE_zstd=OFF \
+        -DFEATURE_glib=OFF \
+        -DFEATURE_dynamicgl=OFF \
+        -DFEATURE_egl=OFF \
+        -DFEATURE_opengl_desktop=OFF \
+        -DFEATURE_opengl_dynamic=OFF \
+        -DFEATURE_opengles2=OFF \
+        -DINPUT_opengl=no \
+        -DFEATURE_openssl=OFF \
+        -DFEATURE_zstd=OFF \
+        -DFEATURE_sql_mysql=OFF \
+        -DFEATURE_sql_db2=OFF \
+        -DFEATURE_sql_psql=OFF \
+        -DFEATURE_sql_oci=OFF \
+        -DFEATURE_sql_odbc=OFF \
+        -DFEATURE_sql_sqlite=OFF \
+        -DFEATURE_sql_ibase=OFF \
+        -DCMAKE_VERBOSE_MAKEFILE=ON
+
+define gpg4win_pkg_qtbase_native_post_install
+	(set -e ; \
+         cd $$$${pkgidir}/bin; \
+	 cp qtpaths qtpaths_real; \
+	 unlink qtpaths; \
+	 echo "#!/bin/sh" > qtpaths; \
+	 echo "$$$${pkgidir}/bin/qtpaths_real \"\$$$$@\" | sed 's@/pkgs.*@/@'" \
+               >> qtpaths; \
+	 chmod u+x qtpaths; \
+	 cp qtpaths qtpaths6 )
+endef
 
 gpg4win_pkg_qtbase_configure = \
-            ../$$$${pkg_version}/configure \
-            -opensource \
-            -confirm-license \
-            -xplatform win32-g++ \
-            -device-option CROSS_COMPILE=$(host)- \
-            -no-use-gold-linker \
-            -release \
-            -shared \
-            -prefix $$$${pkgidir} \
-            -I "$(idir)/include" \
-            -L "$(idir)/lib" \
-            -no-icu \
-            -opengl desktop \
-            -no-glib \
-            -accessibility \
-            -nomake examples \
-            -nomake tests \
-            -no-sql-mysql \
-            -no-sql-sqlite \
-            -no-sql-odbc \
-            -no-sql-psql \
-            -no-sql-tds \
-            -system-zlib \
-            -system-libpng \
-            -system-libjpeg \
-            -system-freetype \
-            -system-pcre \
-            -no-openssl \
-            -no-dbus \
-            -v
+        -DQT_HOST_PATH=$(nat_idir) \
+        -DQt6HostInfo_DIR=$(nat_idir)/lib/cmake/Qt6HostInfo \
+        -DQT_QMAKE_DEVICE_OPTIONS='CROSS_COMPILE=$(host)-' \
+        -DQT_QMAKE_TARGET_MKSPEC=win32-g++ \
+        -DQT_BUILD_EXAMPLES=OFF \
+        -DQT_BUILD_TESTS=OFF \
+        -DBUILD_WITH_PCH=OFF \
+        -DFEATURE_accessibility=ON \
+        -DFEATURE_dbus=OFF \
+        -DFEATURE_fontconfig=OFF \
+        -DFEATURE_glib=OFF \
+        -DFEATURE_opengl_dynamic=ON \
+        -DFEATURE_openssl=OFF \
+        -DFEATURE_pkg_config=ON \
+        -DFEATURE_sql_mysql=OFF \
+        -DFEATURE_sql_odbc=OFF \
+        -DFEATURE_sql_psql=OFF \
+        -DFEATURE_system_zlib=ON \
+        -DFEATURE_system_zstd=ON \
+        -DFEATURE_system_pcre=ON \
+        -DFEATURE_system_freetype=ON \
+        -DFEATURE_system_harfbuzz=OFF \
+        -DFEATURE_schannel=ON \
+        -DFEATURE_use_gold_linker_alias=OFF \
+        -DFEATURE_stack_clash_protection=OFF \
+        -DFEATURE_stack_protector=OFF \
+        -DCMAKE_VERBOSE_MAKEFILE=ON
 
-# qtbase
-# invoke qmake with removed debug options as a workaround for
-# https://bugreports.qt-project.org/browse/QTBUG-30898
-gpg4win_pkg_qtbase_make_args = \
-    QMAKE='$$$${pkgbdir}/bin/qmake'
-
-# Make install step. Somehow qtprintsupport is now installed automatically.
+# copy moc and rcc from the tools into the target tree
+# so that pkg-config can find them.
 define gpg4win_pkg_qtbase_post_install
-	(cd $$$${pkgbdir}; \
-	 make install; \
-	 cd $$$${pkgbdir}/src/printsupport; \
-	 make install;)
+	(cp $(nat_idir)/libexec/moc $$$${pkgidir}/bin; \
+	 cp $(nat_idir)/libexec/rcc $$$${pkgidir}/bin   )
 endef
 
+# Build only linguist which includes Qt's translation CLI tools.
+gpg4win_pkg_qttools_native_configure = \
+        -DFEATURE_linguist=ON \
+        -DFEATURE_assistant=OFF \
+        -DFEATURE_qdoc=OFF \
+        -DFEATURE_designer=OFF \
+        -DFEATURE_distancefieldgenerator=OFF \
+        -DFEATURE_kmap2qmap=OFF \
+        -DFEATURE_pixeltool=OFF \
+        -DFEATURE_qdbus=OFF \
+        -DFEATURE_qev=OFF \
+        -DFEATURE_qtattributionsscanner=OFF \
+        -DFEATURE_qtdiag=OFF \
+        -DFEATURE_qtplugininfo=OFF
 
+# Build only linguist which qttranslations look for.
 gpg4win_pkg_qttools_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-define gpg4win_pkg_qttools_post_install
-	 (cd $$$${pkgbdir}; \
-	  mkdir -p $$$${pkgidir}; \
-	  cp -r bin lib include $$$${pkgidir})
-endef
-
-# Qmake does not support setting the installation path.
-# really https://bugreports.qt.io/browse/QTBUG-12341
-gpg4win_pkg_qtwinextras_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-define gpg4win_pkg_qtwinextras_post_install
- (cd $$$${pkgbdir}; \
-  mkdir -p $$$${pkgidir}/bin; \
-  cp -r lib include $$$${pkgidir}; \
-  mv $$$${pkgidir}/lib/*.dll $$$${pkgidir}/bin;)
-endef
-
-gpg4win_pkg_qtsvg_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-# XXX Adding the qtconf after qtsvg is a weird hack
-# because somhow (yay qmake) zlib is not linked if
-# the qt conf exists before that. The qt conf is
-# needed for qttranslations to find the correct path
-# of the translation tools.
-define gpg4win_pkg_qtsvg_post_install
- (cd $$$${pkgbdir}; \
-  mkdir -p $$$${pkgidir}; \
-  cp -r lib include plugins $$$${pkgidir}; \
-  mkdir -p $$$${pkgidir}/bin; \
-  mv $$$${pkgidir}/lib/*.dll $$$${pkgidir}/bin; \
-  echo "[Paths]" > $$$${pkgidir}/bin/qt.conf; \
-  echo "Prefix = .." >> $$$${pkgidir}/bin/qt.conf)
-endef
-
-gpg4win_pkg_qttranslations_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-define gpg4win_pkg_qttranslations_post_install
- ( rm -fR $$$${pkgidir}/qttranslations; \
-   mkdir -p $$$${pkgidir}; \
-   cp -r $$$${pkgbdir}/translations $$$${pkgidir}/qttranslations;)
-endef
+        -DFEATURE_linguist=ON \
+        -DFEATURE_assistant=OFF \
+        -DFEATURE_qdoc=OFF \
+        -DFEATURE_designer=OFF \
+        -DFEATURE_distancefieldgenerator=OFF \
+        -DFEATURE_kmap2qmap=OFF \
+        -DFEATURE_pixeltool=OFF \
+        -DFEATURE_qdbus=OFF \
+        -DFEATURE_qev=OFF \
+        -DFEATURE_qtattributionsscanner=OFF \
+        -DFEATURE_qtdiag=OFF \
+        -DFEATURE_qtplugininfo=OFF
 
 define gpg4win_pkg_okular_post_install
- ( rm $$$${pkgidir}/share/icons/hicolor/icon-theme.cache; )
+        (rm $$$${pkgidir}/share/icons/hicolor/icon-theme.cache)
 endef
 
 gpg4win_pkg_kleopatra_configure = \
     -DFORCE_DISABLE_KCMUTILS=ON \
     -DDISABLE_KWATCHGNUPG=ON \
     -DRELEASE_SERVICE_VERSION=Gpg4win-$(VERSION) \
-    -DKLEOPATRA_DISTRIBUTION_TEXT="$(DISTRIBUTION_TEXT)"
+    -DKLEOPATRA_APPLICATION_NAME=$(KLEOPATRA_APPLICATION_NAME) \
+    -DKLEOPATRA_ICON_DIR=$(KLEOPATRA_ICON_DIR)
 
 gpg4win_pkg_kxmlgui_configure = \
     -DFORCE_DISABLE_KGLOBALACCEL=ON \
+    -DFORCE_DISABLE_DBUS=ON
+
+gpg4win_pkg_kio_configure = \
     -DFORCE_DISABLE_DBUS=ON \
-    -DXMLGUI_COMPILER_VERSION="i686-w64-mingw32-gcc" \
-    -DXMLGUI_DISTRIBUTION_TEXT="$(DISTRIBUTION_TEXT)"
+    -DFORCE_DISABLE_KCRASH=ON
+
+gpg4win_pkg_knotifications_configure = \
+    -DFORCE_DISABLE_CANBERRA=ON
+
+gpg4win_pkg_breeze_icons_native_configure = \
+    -DWITH_ICON_GENERATION=OFF \
+    -DWITH_ICONS_LIBRARY=OFF \
+    -DSKIP_INSTALL_ICONS=ON
+
+define gpg4win_pkg_breeze_icons_native_post_install
+ ( mkdir -p $$$${pkgidir}/bin/ && cp $$$${pkgbdir}/bin/* $$$${pkgidir}/bin )
+endef
 
 gpg4win_pkg_breeze_icons_configure = \
-    -DBINARY_ICONS_RESOURCE=ON \
-    -DICON_SUBSET_INCLUDE_FILE=$(abs_srcdir)/included-icons.txt
+    -DWITH_ICON_GENERATION=OFF \
+    -DSKIP_INSTALL_ICONS=ON
+
+gpg4win_pkg_breeze_configure = \
+    -DBUILD_QT6=ON \
+    -DBUILD_QT5=OFF \
+    -DWITH_DECORATIONS=OFF
 
 gpg4win_pkg_kbookmarks_configure = \
     -DANDROID=ON
@@ -439,12 +461,31 @@ gpg4win_pkg_kservice_configure = \
 gpg4win_pkg_kjobwidgets_configure = \
     -DANDROID=ON
 
+gpg4win_pkg_kiconthemes_configure = \
+    -DKICONTHEMES_USE_QTQUICK=OFF
+
 gpg4win_pkg_okular_configure = \
-    -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Purpose\;Qt5TextToSpeech\;LibZip\;KF5Wallet\;KF5DocTools\;KF5JS\;Phonon4Qt5\;TIFF\;JPEG\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt5Qml\;Qt5DBus"
+    -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF6Purpose\;Qt6TextToSpeech\;LibZip\;KF6DocTools\;Phonon4Qt6\;TIFF\;JPEG\;LibSpectre\;KExiv2Qt6\;CHM\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt6Qml\;Qt6DBus"
 
 gpg4win_pkg_libical_configure = \
     -DICAL_GLIB=false \
     -DENABLE_GTK_DOC=false
+
+gpg4win_pkg_prison_configure = \
+    -DWITH_QUICK=OFF \
+    -DWITH_MULTIMEDIA=OFF
+
+gpg4win_pkg_poppler_configure = \
+    -DENABLE_NSS3=OFF \
+    -DENABLE_GLIB=OFF \
+    -DENABLE_GOBJECT_INTROSPECTION=OFF \
+    -DENABLE_QT5=OFF \
+    -DENABLE_LCMS=OFF \
+    -DENABLE_BOOST=OFF \
+    -DENABLE_LIBCURL=OFF
+
+gpg4win_pkg_kcontacts_configure = \
+    -DKCONTACTS_USE_QML=OFF
 
 # Supported make-only source packages.
 gpg4win_mpkgs = bzip2 zlib
@@ -464,101 +505,69 @@ gpg4win_pkg_zlib_make_args_inst = -fwin32/Makefile.gcc install \
 	BINARY_PATH=$$$${pkgidir}/bin INCLUDE_PATH=$$$${pkgidir}/include \
 	LIBRARY_PATH=$$$${pkgidir}/lib SHARED_MODE=1 IMPLIB=libz.dll.a
 
-# Supported binary packages.
-gpg4win_bpkgs = pkgconfig gnupg-w32 kde-l10n
-
-# libiconv needs some special magic to generate a usable import
-# library.
-# define gpg4win_pkg_libiconv_post_install
-# (cp $(srcdir)/libiconv.def $$$${pkgidir}/lib;		\
-# cd $$$${pkgidir}/lib;					\
-# $(DLLTOOL) --output-lib libiconv.dll.a --def libiconv.def)
-# endef
-
-# libiconv needs some special magic to generate a usable import
-# library.  Note that we include some internal symbols that are not
-# actually part of the DLL.  They are needed by the AM_GNU_GETTEXT
-# configure test, but not used otherwise.
-# define gpg4win_pkg_gettext_post_install
-# (cp $(srcdir)/libintl.def $$$${pkgidir}/lib;		\
-# cd $$$${pkgidir}/lib;					\
-# $(DLLTOOL) --output-lib libintl.dll.a --def libintl.def)
-# endef
-
-
 # Zlib needs some special magic to generate a libtool file.
 # We also install the pc file here.
 define gpg4win_pkg_zlib_post_install
 (mkdir $$$${pkgidir}/lib/pkgconfig || true;             \
 cp $(abs_srcdir)/zlib.pc $$$${pkgidir}/lib/pkgconfig/;  \
-cd $$$${pkgidir};					\
-echo "# Generated by libtool" > lib/libz.la		\
-echo "dlname='../bin/zlib1.dll'" >> lib/libz.la;	\
-echo "library_names='libz.dll.a'" >> lib/libz.la;	\
-echo "old_library='libz.a'" >> lib/libz.la;		\
-echo "dependency_libs=''" >> lib/libz.la;		\
-echo "current=1" >> lib/libz.la;			\
-echo "age=2" >> lib/libz.la;				\
-echo "revision=5" >> lib/libz.la;			\
-echo "installed=yes" >> lib/libz.la;			\
-echo "shouldnotlink=no" >> lib/libz.la;			\
-echo "dlopen=''" >> lib/libz.la;			\
-echo "dlpreopen=''" >> lib/libz.la;			\
+cd $$$${pkgidir};                                      \
+echo "# Generated by libtool" > lib/libz.la            \
+echo "dlname='../bin/zlib1.dll'" >> lib/libz.la;       \
+echo "library_names='libz.dll.a'" >> lib/libz.la;      \
+echo "old_library='libz.a'" >> lib/libz.la;            \
+echo "dependency_libs=''" >> lib/libz.la;              \
+echo "current=1" >> lib/libz.la;                       \
+echo "age=2" >> lib/libz.la;                           \
+echo "revision=5" >> lib/libz.la;                      \
+echo "installed=yes" >> lib/libz.la;                   \
+echo "shouldnotlink=no" >> lib/libz.la;                \
+echo "dlopen=''" >> lib/libz.la;                       \
+echo "dlpreopen=''" >> lib/libz.la;                    \
 echo "libdir=\"$$$${pkgidir}/lib\"" >> lib/libz.la)
 endef
 
-# We don't use khelpcenter in kleopatra so remove the help links and
-# point to the correct common folder
-# TODO Needs to be fixed with current doc
-#define gpg4win_pkg_kleopatra_post_install
-# (for i in de en ; do \
-#    (cd $$$${pkgidir}/share/doc/HTML/$$$${i}; \
-#     perl -pi -e 's/help:\///g' `find . -name \*.html`; \
-#     perl -pi -e 's@common/@../../common/@g' `find . -name \*.html`); \
-# done)
-#endef
-
-
-#define gpg4win_pkg_libiconv_post_install
-#(cp $(srcdir)/libiconv.def $$$${pkgidir}/lib;		\
-#cd $$$${pkgidir}/lib;					\
-#$(DLLTOOL) --output-lib libiconv.dll.a --def libiconv.def)
-#endef
-
-# Supported internal packages.  Internal packages do not require any
-# special support.  Thus, this variable is actually unused, and no
-# rules are added in gpg4win.mk.
-gpg4win_ipkgs = man_novice_de man_advanced_de man_novice_en man_advanced_en \
-		compendium
+# Supported binary packages.
+gpg4win_bpkgs = pkgconfig gnupg-w32
 
 # Default to same version.
 VSD_VERSION=$(VERSION)
 
 # Include installer targets for customized packages
--include gnupg-vsd/custom.mk
+-include $(vsddir)/custom.mk
 
 
-$(stampdir)/stamp-msi-base: icons/shield.ico Makefile.am \
-                       $(top_srcdir)/doc/logo/gpg4win-msi*.bmp \
-                       $(top_srcdir)/po/gpg4win-de.wxl \
-                       $(top_srcdir)/po/gpg4win-en.wxl
-	ssh $(WINHOST) "mkdir AppData\\Local\\Temp\\gpg4win-$(VERSION)" || true
-	scp $(top_srcdir)/packages/gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION);
-	scp $(top_srcdir)/src/icons/shield.ico $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	scp $(top_srcdir)/doc/logo/gpg4win-msi-header_install-493x58.bmp \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/header.bmp
-	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/dialog.bmp
-	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/dialog.bmp
-	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/info.bmp
-	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/exclamation.bmp
-	scp $(top_srcdir)/po/gpg4win-en.wxl $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	scp $(top_srcdir)/po/gpg4win-de.wxl $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	scp WixUI_Gpg4win.wxs $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+# The playground area is our scratch area, where we unpack, build and
+# install the packages.
+#
+# Boost includes are only needed during the build and are linked in the
+# playground install tree
+$(stampdir)/stamp-directories:
+	$(MKDIR) -p $(root)
+	$(MKDIR) -p $(stampdir)
+	$(MKDIR) -p installers
+	$(MKDIR) -p $(bdir)
+	$(MKDIR) -p $(idir)
+	$(MKDIR) -p $(idir)/include
+	ln -s /usr/include/boost $(idir)/include/boost || true
+	$(MKDIR) -p $(ipdir)
+	$(if $GPGEX_ADD_HOST, $(MKDIR) -p $(ex_idir))
+	$(if $GPGEX_ADD_HOST, $(MKDIR) -p $(ex_ipdir))
+	$(MKDIR) -p $(nat_idir)/bin
+	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/i686-w64-mingw32-gcc || true
+	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/x86_64-w64-mingw32-gcc || true
+	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/i686-w64-mingw32-g++ || true
+	ln -s $(abs_srcdir)/gccwrap.sh $(nat_idir)/bin/x86_64-w64-mingw32-g++ || true
+	$(MKDIR) -p $(nat_ipdir)
+	touch $(bdir)/versioninfo.txt
+	touch $(stampdir)/stamp-directories
+
+
+$(stampdir)/stamp-msi-base: $(sdir)/icons/shield.ico $(sdir)/Makefile.am \
+                       $(tsdir)/doc/logo/gpg4win-msi*.bmp \
+                       $(tsdir)/po/gpg4win-de.wxl \
+                       $(tsdir)/po/gpg4win-en.wxl
+	[ -d $(msidir)/help ] || mkdir -p $(msidir)/help
+	$(RUNCMD) msibase $(VERSION) $(gpg4win_pkg_gnupg_msi_version)
 	touch $(stampdir)/stamp-msi-base
 
 # Now do the bunch of the work.  This is a bunch of dirty magic to
@@ -567,10 +576,6 @@ $(stampdir)/stamp-msi-base: icons/shield.ico Makefile.am \
 # because automake can't deal with the elegant magic in the actual
 # Makefile.
 
-define INCLUDE_BY_MAKE
-include $(1)
-endef
-
 if BUILD_GPG4WIN
 $(eval $(call INCLUDE_BY_MAKE,gpg4win.mk))
 gpg4win_clean = clean-gpg4win
@@ -578,28 +583,79 @@ endif
 
 clean-local: $(gpg4win_clean)
 
-common_nsi = inst-sections.nsi installer.nsi installer-finish.nsi	\
-  $(addsuffix .nsi,$(addprefix inst-,$(gpg4win_build_list)))		\
-  $(addsuffix .nsi,$(addprefix uninst-,$(gpg4win_build_list)))
+
+# Copy the DLL files for NSIS.  We use a stamp because we need only
+# some of them.  The dependency on the Makefile is to avoid the need
+# for a clean in some situations.  The dummy files are required to
+# keep stable componentrefs in the Wix files.
+$(stampdir)/stamp-rtlib-files: Makefile
+	( \
+	 f=libwinpthread-1.dll-ex ; test -f "$$f" && rm -f "$$f" ; \
+	 if test "$(gpg4win_rtlib_ex_libwinpthread_1)" != no ; then \
+	   cp $(gpg4win_rtlib_ex_libwinpthread_1) "$$f"; $(STRIP_EX) "$$f";\
+	 else echo dummy > "$$f";\
+	 fi; \
+	 f=libwinpthread-1.dll-x ; test -f "$$f" && rm -f "$$f" ; \
+	 if test "$(gpg4win_rtlib_libwinpthread_1)" != no ; then \
+	   cp $(gpg4win_rtlib_libwinpthread_1)    "$$f"; $(STRIP) "$$f";\
+	 else echo dummy > "$$f";\
+	 fi; \
+         f=libstdc++-6.dll-x ; test -f "$$f" && rm -f "$$f" ; \
+	 if test "$(gpg4win_rtlib_libstdc___6)" != no ; then \
+	   cp $(gpg4win_rtlib_libstdc___6)        "$$f"; $(STRIP) "$$f";\
+	 else echo dummy > "$$f";\
+	 fi; \
+         f=libgcc_s_sjlj-1.dll-x ; test -f "$$f" && rm -f "$$f" ; \
+	 if test "$(gpg4win_rtlib_libgcc_s_sjlj_1)" != no ; then \
+	   cp $(gpg4win_rtlib_libgcc_s_sjlj_1)     "$$f"; $(STRIP) "$$f";\
+	 else echo dummy > "$$f";\
+	 fi; \
+         f=libgcc_s_dw2-1.dll-x ; test -f "$$f" && rm -f "$$f" ; \
+	 if test "$(gpg4win_rtlib_libgcc_s_dw2_1)" != no ; then \
+	   cp $(gpg4win_rtlib_libgcc_s_dw2_1)     "$$f"; $(STRIP) "$$f";\
+	 else echo dummy > "$$f";\
+	 fi; \
+         f=libgcc_s_seh-1.dll-x ; test -f "$$f" && rm -f "$$f" ; \
+	 if test "$(gpg4win_rtlib_libgcc_s_seh_1)" != no ; then \
+	   cp $(gpg4win_rtlib_libgcc_s_seh_1)     "$$f"; $(STRIP) "$$f";\
+	 else echo dummy > "$$f";\
+	 fi )
+	$(MKDIR) -p $(stampdir)
+	touch $(stampdir)/stamp-rtlib-files
+
+common_nsi = $(stampdir)/stamp-rtlib-files \
+  nsis/inst-sections.nsi nsis/installer.nsi \
+  nsis/installer-finish.nsi nsis/gpg4win.nsi \
+  $(addsuffix .nsi,$(addprefix nsis/inst-,$(gpg4win_nsis_list))) \
+  $(addsuffix .nsi,$(addprefix nsis/uninst-,$(gpg4win_nsis_list)))
 
 # Sign additional files as per signing setup
-# This is a bit of a hack.
-# Exit in case of error because that usually means that sign.mk
-# is not up to date.
+# Exit in case of error because that usually means that AUTHENTICODE_FILES
+# are not up to date.
 $(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
-    $(foosum_exe)
+                                          $(foosum_exe)
 	(set -e;\
-     cd "$(idir)"; \
-     for f in $(AUTHENTICODE_FILES); do \
-       if [ ! -f "$$f" ]; then \
-         echo "speedo: ERROR: file '$$f' not available for signing"; \
-         exit 1; \
-       fi;\
-     done; \
-     for f in $(AUTHENTICODE_FILES); do \
-       $(abs_top_srcdir)/build-aux/authenticode-sign.sh --stamp "$$f" "$$f" ;\
-     done \
-     )
+	 $(eval $(call READ_AUTOGEN_template,AUTHENTICODE_KEY)) \
+         cd "$(idir)"; \
+         for f in $(AUTHENTICODE_FILES); do \
+           if [ ! -f "$$f" ]; then \
+             echo "ERROR: file '$$f' not available for signing"; \
+             exit 1; \
+           fi;\
+         done; \
+         for f in $(AUTHENTICODE_FILES) $(AUTHENTICODE_FILES_OPTIONAL); do \
+           if [ ! -f "$$f" ]; then \
+             continue; \
+           fi; \
+           if [ ! -s "$$f" ]; then \
+             echo "Codesign: Skipping over empty file '$$f'"; \
+             continue; \
+           fi; \
+           if [ -n "$(AUTHENTICODE_KEY)" \
+                -a "$(AUTHENTICODE_KEY)" != "none" ]; then \
+             $(call AUTHENTICODE_sign,"$$f","$$f"); \
+           fi; \
+         done )
 	touch $(stampdir)/stamp-additional-signedfiles
 
 # Prepare the versioninfo file.  The pipeline extracts the last
@@ -608,72 +664,71 @@ $(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries \
 # duplicate entries in case one package has been rebuild (which is
 # common when developing a new version).
 versioninfo.txt:
-	$(srcdir)/mk-sbom.sh -- $(pkg_files) > versioninfo.tmp
+	$(sdir)/mk-sbom.sh -- $(pkg_files) > versioninfo.tmp
 	set -e; \
 	( while read a b c; do echo "$$a $$b $$c"; \
             done < versioninfo.tmp \
           | sort -k2 -sf | tac | uniq -f1 ; \
-          echo '=========== SHA-1 checksum ============= == package ==' \
+          echo '# Package version infos: SHA-1, name, commit-id' \
          ) | tac | awk '{printf "%s\r\n", $$0}' > versioninfo.txt
 	-rm versioninfo.tmp
 
-NEWS.tmp : $(top_srcdir)/NEWS
+NEWS.tmp : $(tsdir)/NEWS
 	 awk '/^#/ {next} /^\(de\)/ {skip=1;next} /^[^[:space:]]/ {skip=0} \
              !skip { sub(/^\(en\)/,"   *"); print }' \
-             <$(top_srcdir)/NEWS >NEWS.tmp
+             <$(tsdir)/NEWS >NEWS.tmp
 
-NEWS.de : $(top_srcdir)/NEWS
+NEWS.de : $(tsdir)/NEWS
 	 awk '/^#/ {next} /^\(en\)/ {skip=1;next} /^[^[:space:]]/ {skip=0} \
              !skip { sub(/^\(de\)/,"-"); print }' \
-             <$(top_srcdir)/NEWS >NEWS.de; \
+             <$(tsdir)/NEWS >NEWS.de; \
      sed -i 's/^     /  /' NEWS.de
 
-NEWS.en : $(top_srcdir)/NEWS
+NEWS.en : $(tsdir)/NEWS
 	 awk '/^#/ {next} /^\(de\)/ {skip=1;next} /^[^[:space:]]/ {skip=0} \
              !skip { sub(/^\(en\)/,"-"); print }'  \
-             <$(top_srcdir)/NEWS >NEWS.en; \
+             <$(tsdir)/NEWS >NEWS.en; \
      sed -i 's/^     /  /' NEWS.en
 
-COMPONENTS-list.tmp : $(top_srcdir)/NEWS
+COMPONENTS-list.tmp : $(tsdir)/NEWS
 	awk '/^~~~~~~~~~~~/ { ok++; next} ok==1 {print "    "$$0}' \
-            < $(top_srcdir)/NEWS > COMPONENTS-list.tmp
+            < $(tsdir)/NEWS > COMPONENTS-list.tmp
 
 # For some nut-crazy reason someone thought it would be a great idea
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
-installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-final \
+installers/gpg4win-$(VERSION)$(W64SUFFIX).exe: \
+                        $(common_nsi) \
+                        $(stampdir)/stamp-final \
                         g4wihelp.dll gpgwrap.exe \
 		        $(foosum_exe) \
-				 $(HOWTO_files) \
+			$(HOWTO_files) \
 	                license.blurb versioninfo.txt
-	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
-           -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi && \
-		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION).exe
+	$(MAKENSIS) -V3 -DBUILD_W64=$(BUILD_W64) \
+                    -DTOP_BLDDIR=$(root) \
+                    -DTOP_SRCDIR=$(tsdir) \
+                    -DSRCDIR=$(sdir) $(EXTRA_MAKENSIS_FLAGS) \
+                    $(sdir)/nsis/gpg4win.nsi \
+	  && mv $(root)/gpg4win-$(VERSION).exe \
+                installers/gpg4win-$(VERSION)$(W64SUFFIX).exe
 
 $(stampdir)/stamp-dist-self: versioninfo.txt
 	(set -e; cd ..; make dist-xz)
 	touch $(stampdir)/stamp-dist-self
 
-installers/gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsii) \
-                            $(stampdir)/stamp-final \
-                            $(stampdir)/stamp-dist-self \
-		            license.blurb
-	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
-	  -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win-src.nsi && \
-	mv gpg4win-src-$(VERSION).exe installers/gpg4win-src-$(VERSION).exe
-
-license.blurb: $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3
-	cat $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3 >$@
+license.blurb: $(tsdir)/doc/license-page $(tsdir)/doc/GPLv3
+	cat $(tsdir)/doc/license-page $(tsdir)/doc/GPLv3 >$@
 
 g4wihelp.dll: slideshow.cpp desktopshellrun.cpp g4wihelp.c exdll.h
-	$(CC) -DUNICODE -static-libgcc -I. -O2 -c \
-              -o exdll.o $(srcdir)/exdll.c
-	$(CC) -DUNICODE -static-libgcc -I. -O2 -c \
-              -o desktopshellrun.o $(srcdir)/desktopshellrun.cpp
-	$(CC) -DUNICODE -static-libgcc -I. -O2 -c \
-              -o slideshow.o $(srcdir)/slideshow.cpp
-	$(CC) -DUNICODE -DENABLE_SLIDE_SHOW -static-libgcc -I. -shared -O2 \
-              -o g4wihelp.dll $(srcdir)/g4wihelp.c \
+	$(W32CC32) -DUNICODE -static-libgcc -I. -O2 -c \
+              -o exdll.o $(sdir)/exdll.c
+	$(W32CC32) -DUNICODE -static-libgcc -I. -O2 -c \
+              -o desktopshellrun.o $(sdir)/desktopshellrun.cpp
+	$(W32CC32) -DUNICODE -static-libgcc -I. -O2 -c \
+              -o slideshow.o $(sdir)/slideshow.cpp
+	$(W32CC32) -DUNICODE -DENABLE_SLIDE_SHOW -static-libgcc \
+              -I. -shared -O2 \
+              -o g4wihelp.dll $(sdir)/g4wihelp.c \
 	      desktopshellrun.o slideshow.o exdll.o \
               -lwinmm -lgdi32 -luserenv -lshell32 \
               -lole32 -loleaut32 -lshlwapi -lmsimg32
@@ -696,7 +751,7 @@ sha256sum.exe: sha1sum.c
 	$(STRIP) $@
 
 if BUILD_GPG4WIN
-all_full = installers/gpg4win-$(VERSION).exe
+all_full = installers/gpg4win-$(VERSION)$(W64SUFFIX).exe
 endif
 
 all-local: $(all_full)
@@ -708,7 +763,7 @@ if BUILD_GPG4WIN
 endif
 
 clean-local:
-	-rm -f installers/gpg4win-$(VERSION).exe \
+	-rm -f installers/gpg4win-$(VERSION)$(W64SUFFIX).exe \
 		  installers/GnuPG-VS-Desktop-$(VERSION).msi \
 		  installers/GnuPG-Desktop-$(VERSION).msi
 

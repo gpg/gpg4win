@@ -1,0 +1,135 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From ec9c327d811b4a7c489d42ae45d0fb69443ab30f Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Wed, 22 Jul 2020 13:17:21 +0200
+Subject: [PATCH 1/2] Gpg4win-qstandardpaths-patch
+
+---
+ src/corelib/io/qstandardpaths.cpp     | 72 +++++++++++++++++++++++++++
+ src/corelib/io/qstandardpaths.h       |  2 +
+ src/corelib/io/qstandardpaths_win.cpp |  4 +-
+ 3 files changed, 77 insertions(+), 1 deletion(-)
+
+diff --git a/src/corelib/io/qstandardpaths.cpp b/src/corelib/io/qstandardpaths.cpp
+index 04aff3d1..deda4492 100644
+--- a/src/corelib/io/qstandardpaths.cpp
++++ b/src/corelib/io/qstandardpaths.cpp
+@@ -56,6 +56,14 @@
+ #include <unistd.h>
+ #endif
+
++#if !defined(QT_BUILD_QMAKE) && !defined(QT_NO_SETTINGS)  && !defined(QT_BOOTSTRAPPED)
++#include <qsettings.h>
++#include <qcoreapplication.h>
++#endif
++#ifdef Q_OS_WIN
++#include <windows.h>
++#endif
++
+ #ifndef QT_NO_STANDARDPATHS
+
+ QT_BEGIN_NAMESPACE
+@@ -624,6 +632,70 @@ bool QStandardPaths::isTestModeEnabled()
+     return qsp_testMode;
+ }
+
++#if !defined(QT_BUILD_QMAKE) && !defined(QT_NO_SETTINGS) && !defined(QT_BOOTSTRAPPED)
++static const char standardPathsSection[] = "StandardPaths";
++static QSettings *findConfiguration()
++{
++    QString qtconfig = QStringLiteral(":/qt/etc/qt.conf");
++    if (QFile::exists(qtconfig))
++        return new QSettings(qtconfig, QSettings::IniFormat);
++    if (QCoreApplication::instance()) {
++        QDir pwd(QCoreApplication::applicationDirPath());
++        qtconfig = pwd.filePath(QLatin1String("qt.conf"));
++        if (QFile::exists(qtconfig))
++            return new QSettings(qtconfig, QSettings::IniFormat);
++    }
++    return 0;     //no luck
++}
++#endif
++
++QString QStandardPaths::presetLocation(StandardLocation type)
++{
++#if !defined(QT_BUILD_QMAKE) && !defined(QT_NO_SETTINGS) && !defined(QT_BOOTSTRAPPED)
++    QStringList locations = QStringList()   << QStringLiteral("DesktopLocation")
++                                            << QStringLiteral("DocumentsLocation")
++                                            << QStringLiteral("FontsLocation")
++                                            << QStringLiteral("ApplicationsLocation")
++                                            << QStringLiteral("MusicLocation")
++                                            << QStringLiteral("MoviesLocation")
++                                            << QStringLiteral("PicturesLocation")
++                                            << QStringLiteral("TempLocation")
++                                            << QStringLiteral("HomeLocation")
++                                            << QStringLiteral("DataLocation")
++                                            << QStringLiteral("CacheLocation")
++                                            << QStringLiteral("GenericDataLocation")
++                                            << QStringLiteral("RuntimeLocation")
++                                            << QStringLiteral("ConfigLocation")
++                                            << QStringLiteral("DownloadLocation")
++                                            << QStringLiteral("GenericCacheLocation")
++                                            << QStringLiteral("GenericConfigLocation")
++                                            << QStringLiteral("AppDataLocation")
++                                            << QStringLiteral("AppConfigLocation")
++                                            << QStringLiteral("AppLocalDataLocation");
++
++    QScopedPointer<const QSettings> settings(findConfiguration());
++    if (!settings.isNull()) {
++        QString key = QLatin1String(standardPathsSection);
++        key += QLatin1Char('/');
++        key += locations[type];
++        const QString value = settings->value(key).toString();
++#ifdef Q_OS_WIN
++        if (value.isEmpty())
++#endif
++          return value;
++#ifdef Q_OS_WIN
++        wchar_t expandedPath[MAX_PATH] = {0};
++        if (ExpandEnvironmentStrings((wchar_t*)value.utf16(), expandedPath, MAX_PATH)) {
++            return QString::fromWCharArray(expandedPath).replace("\\", "/");
++        }
++        return value;
++#endif
++    }
++#endif // !QT_BUILD_QMAKE && !QT_NO_SETTINGS
++
++    return QString();
++}
++
+
+ QT_END_NAMESPACE
+
+diff --git a/src/corelib/io/qstandardpaths.h b/src/corelib/io/qstandardpaths.h
+index df76d73e..7b665519 100644
+--- a/src/corelib/io/qstandardpaths.h
++++ b/src/corelib/io/qstandardpaths.h
+@@ -103,6 +103,8 @@ public:
+     static bool isTestModeEnabled();
+
+ private:
++    static QString presetLocation(StandardLocation type);
++
+     // prevent construction
+     QStandardPaths();
+     ~QStandardPaths();
+diff --git a/src/corelib/io/qstandardpaths_win.cpp b/src/corelib/io/qstandardpaths_win.cpp
+index cbe4ccd0..c25abc3d 100644
+--- a/src/corelib/io/qstandardpaths_win.cpp
++++ b/src/corelib/io/qstandardpaths_win.cpp
+@@ -196,7 +196,9 @@ static QString sHGetKnownFolderPath(const GUID &clsid)
+
+ QString QStandardPaths::writableLocation(StandardLocation type)
+ {
+-    QString result;
++    QString result = QStandardPaths::presetLocation(type);
++    if (!result.isEmpty())
++        return result;
+     switch (type) {
+     case DownloadLocation:
+         result = sHGetKnownFolderPath(FOLDERID_Downloads);
+--
+2.20.1

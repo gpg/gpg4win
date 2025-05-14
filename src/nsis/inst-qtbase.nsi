@@ -1,0 +1,55 @@
+# inst-qtbase.nsi - Installer snippet for qt.     -*- coding: latin-1; -*-
+# Copyright (C) 2005, 2007, 2008 g10 Code GmbH
+#               2015 Intevation GmbH
+#
+# This file is part of GPG4Win.
+#
+# GPG4Win is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# GPG4Win is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+
+
+!ifdef prefix
+!undef prefix
+!endif
+!define prefix ${ipdir}/qtbase-${gpg4win_pkg_qtbase_version}
+
+!ifdef DEBUG
+Section "qtbase" SEC_qtbase
+!else
+Section "-qtbase" SEC_qtbase
+!endif
+  SetOutPath "$INSTDIR"
+!ifdef SOURCES
+  File "${gpg4win_pkg_qtbase}"
+!else
+  SetOutPath "$INSTDIR\bin"
+  File ${prefix}/bin/Qt6Core.dll
+  File ${prefix}/bin/Qt6Gui.dll
+  File ${prefix}/bin/Qt6Widgets.dll
+  File ${prefix}/bin/Qt6Network.dll
+  File ${prefix}/bin/Qt6PrintSupport.dll
+  File ${prefix}/bin/Qt6Xml.dll
+  File ${SRCDIR}/qt.conf
+
+  SetOutPath "$INSTDIR\bin\platforms"
+  File ${prefix}/plugins/platforms/qwindows.dll
+
+  SetOutPath "$INSTDIR\bin\tls"
+  File ${prefix}/plugins/tls/qschannelbackend.dll
+
+  SetOutPath "$INSTDIR\bin\styles"
+  File ${prefix}/plugins/styles/qmodernwindowsstyle.dll
+
+!endif
+SectionEnd

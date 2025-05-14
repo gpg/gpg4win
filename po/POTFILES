@@ -1,0 +1,16 @@
+# List of NSIS files with translatable strings.
+
+../src/nsis/g4wihelp.nsi
+../src/nsis/gpg4win.nsi
+../src/nsis/gpg4win-src.nsi
+../src/nsis/installer.nsi
+../src/nsis/inst-gnupg-w32.nsi
+../src/nsis/inst-gpg4win.nsi
+../src/nsis/inst-gpgex.nsi
+../src/nsis/inst-gpgol.nsi
+../src/nsis/inst-gpgme-browser.nsi
+../src/nsis/inst-kleopatra.nsi
+../src/nsis/inst-okular.nsi
+../src/nsis/inst-gpgpass.nsi
+../src/nsis/inst-compendium.nsi
+../src/nsis/installer-finish.nsi

@@ -12,15 +12,15 @@ usage()
 Usage: $PGM [OPTIONS]  WINDOWS_SOURCE_TARBALL
 Options:
         [--v4]         Append to packages.4
-        [--v3]         Append to packages.3 (default)
+        [--v3]         Append to packages.3
         [--snapshot]   Create for snapshot folder
 	[--no-wixlib]  Do not create a wixlib entry
 EOF
     exit $1
 }
 
-
-forversion=3
+gnupgtag=gnupg26
+forversion=common
 bindir="binary"
 wixlib=wixlib
 snapshot=no
@@ -85,6 +85,10 @@ if [ -z "$base" -o -z "$prefix" -o -z "$version" -o -z "$date" ]; then
   exit 1
 fi
 
+echo "${version}" | grep '^2.[56].' && gnupgtag=gnupg26
+echo "${version}" | grep '^2.4.'    && gnupgtag=gnupg24
+echo "${version}" | grep '^2.2.'    && gnupgtag=gnupg22
+
 
 cp "$dir/${prefix}-${version}.tar.bz2"            "${prefix}-${version}.tar.bz2"
 
@@ -95,6 +99,7 @@ done
 ln -f "${prefix}-w32-${version}_${date}.tar.xz" "${prefix}-w32-${version}_${date}-src.tar.xz"
 ln -f "${prefix}-w32-${version}_${date}.exe" "${prefix}-w32-${version}_${date}-bin.exe"
 if [ -n "$wixlib" ]; then
+  ln -f "${prefix}-w32-${version}_${date}.tar.xz" "${prefix}-msi-${version}_${date}-src.tar.xz"
   ln -f "${prefix}-w32-${version}_${date}.wixlib" "${prefix}-msi-${version}_${date}-bin.wixlib"
 fi
 
@@ -103,10 +108,11 @@ echo >>$outfile
 echo >>$outfile "# last changed $(date +%Y-%m-%d)"
 echo >>$outfile "# by $LOGNAME"
 echo >>$outfile "# verified: [taken from buildtree]"
+echo >>$outfile "if gnupg = $gnupgtag"
 
 if [ $snapshot = yes ]; then
     echo >>$outfile
-    echo >>$outfile "server https://gnupg.org/ftp/gcrypt/snapshots"
+    echo >>$outfile "server https://gnupg.net/snapshots"
     echo >>$outfile
 fi
 
@@ -127,7 +133,7 @@ orgfile="${prefix}-w32-${version}_${date}.tar.xz"
 file="${prefix}-w32-${version}_${date}-src.tar.xz"
 msifile="$(echo $file | sed s/-w32-/-msi-/)"
 echo >>$outfile "name $file"
-echo >>$outfile "file $bindir/${orgfile}"
+echo >>$outfile "file gnupg/${orgfile}"
 echo >>$outfile "link $msifile"
 echo >>$outfile "chk  $(sha256sum < $orgfile | cut -d ' ' -f1)"
 echo >>$outfile
@@ -140,5 +146,8 @@ echo >>$outfile "file $bindir/${orgfile}"
 echo >>$outfile "chk  $(sha256sum < $orgfile | cut -d ' ' -f1)"
 echo >>$outfile
 fi
+
+echo >>$outfile "fi # $gnupgtag"
+echo >>$outfile
 
 echo >>$outfile "# eof"

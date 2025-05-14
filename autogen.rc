@@ -2,24 +2,26 @@
 
 display_name="Gpg4win"
 patches_to="https://bugs.gnupg.org"
+# We don't want the maintainer mode due to the docker build
+# with the source directory mounted read-only
+maintainer_mode_option=off
 
 case "$myhost:$myhostsub" in
   w32:64)
-    extraoptions=
+    extraoptions="--with-additional-gpgex-host=i686-w64-mingw32"
     ;;
   w32:)
-    extraoptions=
+    extraoptions="--with-additional-gpgex-host=x86_64-w64-mingw32"
     ;;
 esac
 
 case "$myhost" in
   w32)
-    configure_opts="--enable-gpg4win --with-additional-gpgex-host=x86_64-w64-mingw32"
+    configure_opts="--enable-gpg4win"
     ;;
 esac
 
 extra_automake_flags="-Wno-portability"
 
-final_info="For building a Gpg4win installer:\
-  \"./autogen.sh --build-w32 && make\".
+final_info="For building a Gpg4win installer: \"./build.sh\".
   For building an AppImage: check the README."

@@ -24,20 +24,56 @@ EXTRA_DIST = AppRun start-shell build-appimage.sh
 
 SUBDIRS = rsync-filters
 
-root := /build
-stampdir := $(root)/stamps
+# Define macros for the various directories.  These directory names
+# must be absolute, as we switch pretty often between them and don't
+# want to track relative names.  The directories are created as needed
+# by the $(stampdir)/stamp-directories target.  tsdir is used instead
+# of the predefined top_srcdir so that we can override it using make
+# variables.
+#
+# tsdir    :: The top source directory.
+# root     :: Our build root.  The make variable PLAYGROUND can be used
+#             to override the default.
+# stampdir :: The directory to hold stamp files.
+# logdir   :: The directory for the build logs.
+# bdir     :: The build dir for the individual packages.
+# idir     :: The directory with the installed files from the packages.
+# ipdir    :: A subdir of the install directory to hold the installed
+#             packages which will be stowed to other subdirs of $(idir).
+# appdir   :: The directory for preparing the content of the AppImage.
+# patdir   :: The source directory patches-appimage/ below tsdir.
+# rsyncfilterdir :: The source directory with the package-specific
+#                   rsync filters (rsync replaces stow in the AppImage
+#                   build).
+
+tsdir     := $(TOPSRCDIR)
+root      := $(PLAYGROUND)
+stampdir  := $(root)/stamps
+logdir    := $(root)/logs
+bdir      := $(root)/build
+idir      := $(root)/install
+ipdir     := $(root)/install/pkgs
+appdir    := $(root)/AppDir
+patdir    := $(tsdir)/patches-appimage
+rsyncfilterdir := $(tsdir)/src/appimage/rsync-filters
+
+$(info -------------------------------------------------)
+$(info Topsource ....: $(tsdir))
+$(info Playground ...: $(root))
+$(info Stamps at ....: $(stampdir))
+$(info Building at ..: $(bdir))
+$(info Logs at ......: $(logdir))
+$(info -------------------------------------------------)
+
 
 # Source packages for the AppImage (see also ../src/Makefile.am)
 appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
-		 freetype qrencode
+		 freetype qrencode jpeg libpng xcb-util-cursor
 
 
 appimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
 
-
-# Qt packages for the AppImage
-appimage_qtpkgs = qtbase qttools qtx11extras qtwayland qtsvg qttranslations
 
 # KDE packages for the AppImage
 appimage_kdepkgs = gpgmepp qgpgme \
@@ -47,115 +83,83 @@ appimage_kdepkgs = gpgmepp qgpgme \
 		   kiconthemes kleopatra breeze-icons kitemmodels karchive \
 		   kcrash kdbusaddons kio kbookmarks kservice solid \
 		   kjobwidgets libical kcalendarcore mimetreeparser \
-		   sonnet ktextwidgets kauth \
-		   threadweaver kparts poppler okular kactivities \
-		   prison gpgpass
+		   kcolorscheme sonnet ktextwidgets kauth kstatusnotifieritem \
+		   threadweaver kparts poppler okular \
+		   gpgmepp qgpgme \
+		   prison gpgpass zstd pcre2 \
+		   qtbase qttools qtsvg qttranslations qtwayland \
+		   plasma-wayland-protocols breeze
 
-# Binary packages for the AppImage
-# appimage_bpkgs =
+appimage_bpkgs = wayland-protocols
 
-appimage_pkg_gpgme_configure = --enable-languages="" \
-  --disable-gpg-test \
-  --disable-gpgsm-test
-
-appimage_pkg_qgpgme_configure = -DBUILD_WITH_QT6=OFF
-
-# TODO: Disable Qt Sql?
-# TODO: Disable Qt Testlib?
-appimage_pkg_qtbase_configure = ../$$$${pkg_version}/configure -opensource \
-            -confirm-license \
-            -platform linux-g++ \
-            -release \
-            -shared \
-            -prefix $$$${pkgidir} \
-            -I '$(idir)/include' \
-            -L '$(idir)/lib' \
-            -opengl desktop \
-            -no-glib \
-            -accessibility \
-            -nomake examples \
-            -nomake tests \
-            -no-sql-mysql \
-            -no-sql-sqlite \
-            -no-sql-odbc \
-            -no-sql-psql \
-            -no-sql-tds \
-            -qt-harfbuzz \
-            -v \
-            -xcb \
-            OPENSSL_INCDIR=/usr/include/openssl11
-
-define appimage_pkg_qtbase_post_install
-	(cd $$$${pkgbdir}; \
-	 make install;)
+define appimage_pkg_wayland_protocols_post_install
+( \
+	cd ..; \
+	mv $$$${pkgidir}/$$$${pkg_version} $$$${pkgsdir};\
+	cd $$$${pkgsdir}; \
+	meson setup --prefix $$$${pkgidir} build; \
+	cd build; \
+	ninja && ninja install; \
+	cd $$$${pkgidir}; \
+)
 endef
+
+appimage_pkg_gpgme_configure = \
+    --enable-languages= \
+    --disable-gpg-test \
+    --disable-gpgsm-test
+
+appimage_pkg_qgpgme_configure = -DBUILD_WITH_QT5=OFF
+
+appimage_pkg_qtbase_configure = \
+        -DQT_BUILD_EXAMPLES=OFF \
+        -DQT_BUILD_TESTS=OFF \
+        -DBUILD_WITH_PCH=OFF \
+        -DFEATURE_accessibility=ON \
+        -DFEATURE_glib=OFF \
+        -DFEATURE_dynamicgl=OFF \
+        -DFEATURE_egl=OFF \
+        -DFEATURE_opengl_desktop=OFF \
+        -DFEATURE_opengl_dynamic=OFF \
+        -DFEATURE_opengles2=OFF \
+        -DFEATURE_opengl=OFF \
+        -DINPUT_opengl=no \
+        -DFEATURE_pkg_config=ON \
+        -DFEATURE_sql_mysql=OFF \
+        -DFEATURE_sql_odbc=OFF \
+        -DFEATURE_sql_psql=OFF \
+        -DFEATURE_qt_freetype=ON \
+        -DFEATURE_system_pcre=ON \
+        -DFEATURE_system_jpeg=ON \
+        -DFEATURE_system_zstd=ON \
+        -DFEATURE_xcb=ON \
+        -DFEATURE_use_gold_linker_alias=OFF \
+        -DCMAKE_MESSAGE_LOG_LEVEL=STATUS \
+        -DCMAKE_VERBOSE_MAKEFILE=ON
 
 appimage_pkg_qttools_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-define appimage_pkg_qttools_post_install
-	 (cd $$$${pkgbdir}; \
-	  mkdir -p $$$${pkgidir}; \
-	  cp -r bin lib include $$$${pkgidir})
-endef
-
-appimage_pkg_qtx11extras_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-define appimage_pkg_qtx11extras_post_install
-	 (cd $$$${pkgbdir}; \
-	  mkdir -p $$$${pkginstallroot}; \
-	  make install INSTALL_ROOT=$$$${pkginstallroot}; \
-	  mkdir -p $$$${pkgidir}; \
-	  mv $$$${pkgbladir}/* $$$${pkgidir}; \
-	  rm -rf $$$${pkginstallroot};)
-endef
-
-appimage_pkg_qtwayland_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-define appimage_pkg_qtwayland_post_install
-	 (cd $$$${pkgbdir}; \
-	  mkdir -p $$$${pkginstallroot}; \
-	  make install INSTALL_ROOT=$$$${pkginstallroot}; \
-	  mkdir -p $$$${pkgidir}; \
-	  mv $$$${pkgbladir}/* $$$${pkgidir}; \
-	  rm -rf $$$${pkginstallroot};)
-endef
-
-appimage_pkg_qtsvg_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-# XXX Adding the qtconf after qtsvg is a weird hack
-# because somhow (yay qmake) zlib is not linked if
-# the qt conf exists before that. The qt conf is
-# needed for qttranslations to find the correct path
-# of the translation tools.
-define appimage_pkg_qtsvg_post_install
- (cd $$$${pkgbdir}; \
-  mkdir -p $$$${pkgidir}; \
-  cp -r lib include plugins $$$${pkgidir}; \
-  mkdir -p $$$${pkgidir}/bin; \
-  echo "[Paths]" > $$$${pkgidir}/bin/qt.conf; \
-  echo "Prefix = .." >> $$$${pkgidir}/bin/qt.conf)
-endef
-
-appimage_pkg_qttranslations_configure = \
-	"$(idir)/bin/qmake" ../$$$${pkg_version}
-
-define appimage_pkg_qttranslations_post_install
- ( rm -rf $$$${pkgidir}/translations; \
-   mkdir -p $$$${pkgidir}; \
-   cp -r $$$${pkgbdir}/translations $$$${pkgidir}/translations;)
-endef
+	-DFEATURE_assistant=OFF \
+	-DFEATURE_qdoc=OFF \
+	-DFEATURE_designer=OFF \
+	-DFEATURE_distancefieldgenerator=OFF \
+	-DFEATURE_kmap2qmap=OFF \
+	-DFEATURE_pixeltool=OFF \
+	-DFEATURE_qdbus=OFF \
+	-DFEATURE_qev=OFF \
+	-DFEATURE_qtattributionsscanner=OFF \
+	-DFEATURE_qtdiag=OFF \
+	-DFEATURE_qtplugininfo=OFF
 
 # do not create the huge icon resource files
 appimage_pkg_breeze_icons_configure = -DBINARY_ICONS_RESOURCE=OFF
 
-appimage_pkg_kactivities_configure = \
-    -DBOOST_INCLUDEDIR=/usr/include/boost169 \
-    -DBOOST_LIBRARYDIR=/usr/lib64/boost169 \
-    -DKACTIVITIES_LIBRARY_ONLY=ON
+appimage_pkg_breeze_configure = \
+    -DBUILD_QT6=ON \
+    -DBUILD_QT5=OFF \
+    -DWITH_DECORATIONS=OFF \
+    -DCMAKE_DISABLE_FIND_PACKAGE_KF6KCMUtils=ON
+
+appimage_pkg_karchive_configure = -DWITH_BZIP2=OFF
 
 appimage_pkg_kcompletion_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
@@ -165,14 +169,13 @@ appimage_pkg_kconfigwidgets_configure = \
 
 appimage_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
 
+appimage_pkg_kcrash_configure = -DWITH_OPENGL=OFF
+
 appimage_pkg_kguiaddons_configure = -DWITH_WAYLAND=OFF
 
 appimage_pkg_sonnet_configure = -DSONNET_USE_QML=OFF
 
 appimage_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
-
-appimage_pkg_kiconthemes_configure = \
-    -DBUILD_DESIGNERPLUGIN=OFF
 
 appimage_pkg_kitemviews_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
@@ -183,8 +186,7 @@ appimage_pkg_kwidgetsaddons_configure = \
 # FIXME: Uses spaces in distribution text
 appimage_pkg_kxmlgui_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF \
-    -DFORCE_DISABLE_KGLOBALACCEL=ON \
-    -DXMLGUI_DISTRIBUTION_TEXT=g10_Code_GmbH_AppImage
+    -DFORCE_DISABLE_KGLOBALACCEL=ON
 
 appimage_pkg_libkleo_configure = \
     -DBOOST_INCLUDEDIR=/usr/include/boost169 \
@@ -198,17 +200,55 @@ appimage_pkg_kleopatra_configure = \
 
 appimage_pkg_poppler_configure = \
     -DENABLE_BOOST=OFF \
-    -DENABLE_NSS=OFF
-
+    -DENABLE_NSS3=OFF \
+    -DENABLE_GOBJECT_INTROSPECTION=OFF \
+    -DENABLE_QT5=OFF \
+    -DENABLE_LCMS=OFF \
+    -DENABLE_LIBCURL=OFF \
+    -DFONT_CONFIGURATION=generic
 
 appimage_pkg_okular_configure = \
-    -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Wallet\;KF5DocTools\;KF5JS\;KF5Purpose\;Qt5TextToSpeech\;Phonon4Qt5\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;LibZip\;DjVuLibre\;EPub\;QMobipocket\;Discount\;KF5Pty\;Qt5Qml"
+    -DFORCE_NOT_REQUIRED_DEPENDENCIES="PlasmaActivities\;KF6Wallet\;KF6Purpose\;Qt6TextToSpeech\;LibZip\;KF6DocTools\;Phonon4Qt6\;LibSpectre\;KExiv2Qt6\;CHM\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt6Qml\;Qt6DBus\;KF6Pty"
 
 appimage_pkg_libical_configure = \
     -DICAL_GLIB=false \
     -DENABLE_GTK_DOC=false
 
+appimage_pkg_prison_configure = \
+    -DWITH_QUICK=OFF \
+    -DWITH_MULTIMEDIA=OFF
+
+appimage_pkg_kiconthemes_configure = \
+    -DKICONTHEMES_USE_QTQUICK=OFF
+
+appimage_pkg_kcoreaddons_configure = -DKCOREADDONS_USE_QML=OFF
+appimage_pkg_kcalendarcore_configure = -DUSE_QML=OFF
+
+appimage_pkg_ktextwidgets_configure = -DWITH_TEXT_TO_SPEECH=OFF
+
+appimage_pkg_kio_configure = -DWITH_WAYLAND=OFF
+appimage_pkg_kwindowsystem_configure = -DKWINDOWSYSTEM_QML=OFF
+
+appimage_pkg_xcb_util_cursor_configure = --enable-static --disable-shared
+appimage_pkg_xcb_util_cursor_extracflags = -fPIC
+
+appimage_pkg_zstd_conf_subdir = /build/cmake
+appimage_pkg_zstd_configure = -DZSTD_BUILD_PROGRAMS=OFF
+
 ########################################################################
+
+# The build area is our scratch area, where we unpack, build and
+# install the packages.
+$(stampdir)/stamp-directories:
+	$(MKDIR) -p $(root)
+	$(MKDIR) -p $(stampdir)
+	$(MKDIR) -p $(logdir)
+	$(MKDIR) -p $(bdir)
+	$(MKDIR) -p $(idir)
+	$(MKDIR) -p $(ipdir)
+	$(MKDIR) -p $(appdir)/usr
+	touch $(bdir)/versioninfo.txt
+	touch $(stampdir)/stamp-directories
 
 # Now do the bunch of the work.  This is a bunch of dirty magic to
 # integrate our special makefile into automake, while not actually

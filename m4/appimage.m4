@@ -43,13 +43,14 @@ AC_DEFUN([APPIMAGE_BASH],
 
 
 # APPIMAGE_PACKAGES
+
 # Determines the path to the source and binary packages.
-# Default is the "packages" directory in the source directory.
+# Default is the "/src/packages" directory.
 # The path is stored in the shell variable appimage_packages.
 AC_DEFUN([APPIMAGE_PACKAGES],
 [
   AC_MSG_CHECKING(for packages directory)
-  _appimage_packages_default=packages
+  _appimage_packages_default=/src/packages
   AC_ARG_WITH([packages],
     AS_HELP_STRING([--with-packages=DIR],
                    [source and binary packages [[packages]]]),

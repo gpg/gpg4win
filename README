@@ -1,193 +1,172 @@
-This is gpg4win - the GUI Installer Builder for W32.
+This is Gpg4win - A distribution of GnuPG and user interfaces for it.
+=====================================================================
 
-See also the file doc/README.en.txt.
+See also https://gnupg.org and https://gpg4win.org
 
-For MSI Package instructions see src/README-msi.txt.
+This README is for the **GnuPG 2.6 based 64 bit Windows** version.
 
-Instructions:
-=============
 
-1. Download the source and binary packages that are required to build
-   the installer:
+About Gpg4win:
+--------------
 
-   $ cd packages
-   $ sh download.sh
-   [...]
-   $ cd ..
+The Gpg4win source code (this repository) consists of a list of
+source packages in the `packages` subdirectory and build rules
+in the files `build.sh`, `src/Makefile.am` and `src/gpg4win.mk.in`.
 
-2. Generate config files
+During the build, the packages will be compiled for a Windows host
+system using these build rules and then packaged according to the
+various `.nsi` files in the folder `src/nsis`.
 
-   $ ./autogen.sh
+To have the same software versions also available on Linux
+systems, independent of the distribution, Gpg4win can also be
+built for Linux as an AppImage. The rules for that can be found
+under `src/appimage`.
 
-3. Configure the source tree for cross compilation:
+Gpg4win can also be distributed as an MSI package in customized
+configurations. The MSI package description, using the WIX toolset,
+is generated from the NSIS files with the script `src/make-msi.pl`.
 
-   $ ./autogen.sh --build-w32
 
-4. Build the installer:
+Building:
+---------
 
-   $ make
+To achieve reproducible results independent of your system, Gpg4win
+utilizes Docker; see:
 
-The installer will be made available under src/installers:
+  $ ./build.sh --help
 
-src/installers/gpg4win-X.Y.Z.exe
+Executing
 
+  $ ./build.sh
 
-Instructions for AppImage:
-==========================
+without any arguments will create an installer based on the current
+version using a dedicated build directory.
 
-1. Download the source and binary packages that are required to build
-   the installer:
+If you want to build from a Git repository or using modified sources
+you should do this in the source directory.
 
-   $ cd packages
-   $ sh download.sh
-   [...]
-   $ cd ..
+1. If you don't have a ~/.gnupg-autogen.sh file use
 
-2. Generate config files
+     build-aux/gpg-authcode-sign.sh --template >~/.gnupg-autogen.sh
 
-   $ ./autogen.sh
+   and adjust the file for your setup.
 
-3. Build the Docker image that will be used for creating the AppImage:
+2. Check that packages/BUILDTYPE is what you want (usually "default").
 
-   $ docker/build-appimage-docker-image.sh
+3. Run
 
-4. Build the AppImage using the Docker image:
+     ./autogen.sh
 
-   $ docker/run-appimage-build.sh
+4. Do either this
 
-   During development is it often easier to use
+     cd packages
+     ./download.sh
+     cd ..
 
-   $ docker/run-appimage-build.sh --devel
+   or pass the --download option to the command below.
 
-   which does not delete the temporary directory.  Inside the
-   docker shell you start the build using
-      src/src/appimage/build-appimage.sh
+5. Run
 
+     ./build.sh
 
-Basic requirements
-==================
+   You may add certain options as show by the option --help.  For
+   example in case of a build problem you may enter the docker
+   container using
 
-A decent POSIX system is required for building this software as well
-as GNU make.  We are using Debian GNU/Linux 10 (buster), any other
-POSIX system should work as well but you may run into problems due to
-different toolchain versions. For MSI Packages you will additionally
-need the dependencies mentioned in src/README-msi.txt
+    ./build.sh --shell
 
-To satisfy all needs of configure at least the following packages need
-to be installed:
+   and then cd to /build.  The option --builddir can be used to
+   specify a non-default build directory.  To build an AppImage, add
+   the parameter `--appimage` to invocations of build.sh.
 
-    build-essential autoconf automake mingw-w64 mingw-w64-i686-dev \
-    mingw-w64-x86-64-dev nsis stow unzip icoutils \
-    libglib2.0-dev gettext docbook-utils ghostscript texinfo \
-    texinfo libgdk-pixbuf2.0-dev libqt4-dev-bin \
-    wget mingw-w64 cmake libgtk2.0-bin libxml2-utils \
-    gperf libgettextpo-dev automake-1.15 libkf5config-dev libkf5config-dev-bin \
-    libkf5coreaddons-dev gpgrt-tools imagemagick libboost-graph-dev icoutils
 
-Additionally on Debian Buster cmake has to be at least version 3.1.16 from
-debian backports.
+Building the Webpages:
+----------------------
 
-Note: That Gpg4win requires to be compiled with the -posix flavor of mingw
-so if you have both installed use update-alterantives to select the posix ones.
+The website is in a dedicated repository on https://git.gnupg.org
 
-To use update-alternatives:
-    update-alternatives --install /usr/bin/i686-w64-mingw32-gcc \
-        i686-w64-mingw32-gcc /usr/bin/i686-w64-mingw32-gcc-posix 100
 
-    update-alternatives --install /usr/bin/i686-w64-mingw32-g++ \
-        i686-w64-mingw32-g++ /usr/bin/i686-w64-mingw32-g++-posix 100
+Adding New Packages to the Installer:
+-------------------------------------
 
+This requires editing a couple of files. Here is a short run-up:
 
-Building on other platforms is not fully supported. Consider using docker:
+Add the package download to `packages/packages.common`. Please add a
+comment with the current date and how you have verified the
+sources. For verification, PGP signatures using one of the trusted
+keys from the `distsigkey.gpg` file are preferable.
 
-./autogen.sh
-./docker/build-gpg4win-docker-image.sh
-./docker/run-gpg4win-build.sh
-
-It is known that some developers compile Gpg4win also on other platforms
-
-For Fedora the required packages might be:
-
-yum install mingw64-gcc-c++ icoutils stow autoconf automake git cmake \
-    mingw32-gcc-c++ mingw32-libstdc++ mingw-nsis-base texinfo-tex \
-    ghostscript-tools-dvipdf kf5-kconfig-devel gettext gettext-devel \
-    patch flex bison gperf kf5-kcoreaddons-devel mingw32-nsis
-
-
-
-Building the Webpages
-=====================
-
-The website is in the dedicated branch "website" in the git reposity.
-Checkout that branch and read the instructions:
-
-  git checkout website
-
-
-Development Branches
-====================
-
-The old version of gpg4win (version < 1.2) is since 1.1.3 tracked by
-the GIT branch: gpg4win-1-branch.  Only important fixes will go into
-this version.  The current version in the GIT master starts as version
-1.9.
-
-
-
-Adding new packages to the installer:
-=====================================
-
-This requires editing a couple of files; we might eventually automate
-some of these tasks.  Here is a short run up:
-
-1. Add constants for the package FOO into src/config.nsi.in .
-
-2. Create 2 new installer scripts, named src/inst-foo.nsi and
-   uninst-foo.nsi and add them to EXTRA_DIST in src/Makefile.am.
-
-3. Add foo to one the variables gpg4win_bpgks (if foo should not be
-   build be the gpg4win) or gpg4win_spkgs (if foo should be build by
-   gpg4win) in src/Makefile.am .  Also add any required configure
-   flags etc.
-
-4. Add FOO to src/inst-sections.nsi.
-
-5. Add detection of packages to configure.ac.  Check out the available
-   macros in m4/gpg4win.m4.  Depending on the way an upstream package
-   is packaged, you might need to write a new macro.
-
-6. Add download information to packages/download.sh.
-
-7. If the package ships pkg-config (*.pc) support files, you need add
-   post install instructions to Makefile.am.  Note that *.pc files may
-   be in the "runtime" directory ${pkgidir} if the package is built
-   within gpg4win (or peculiarly shipped), or in the development
-   package ${pkgidir_dev}.
-
-Then run the usual "./autogen.sh" to create the actual configure file
-and run configure as described above.
-
-Kleopatra Locatization
-======================
-
-The kde-l10n package is generated with the script packages/gen-kde-l10n.sh
-execute it after a build to generate an updated l10n package which
-you can then upload and add to packages.common.
-The tarballs and the nsis scripts are located in the temp directory
-kde-l10n prints as output.
-
-
-Installer Slideshow
-===================
-
-During installation we are showing a slide show. If you want to
-change the contents shown add / modify files in the src/slideshow
-subfolder. Install them in inst-gpg4win.nsi (Add them to the list
-of files before g4wihelp::slide_show) and modify
-src/slideshow/slides.dat accordingly.
+If that is not available and upstream provides no other way to verify
+a checksum besides HTTPS, at least confirm the checksum from a second
+source and note that in the comment.  e.g.:
+
+```
+  # last-changed: 2023-05-03
+  # by ah
+  # verified: verification of checksum from both sf and freebsd.org
+  #           server https://downloads.sourceforge.net
+  file libfoo/foo16/1.6.40/foo-1.6.40.tar.xz
+  chk  535b479b2467ff231a3ec6d92a525906fb8ef27978be4f66dbe05d3f3a01b3a1
+```
+
+If the filename does not match the pattern:
+`pkgname-version.archive-suffix`
+you can use the `name` keyword to match this pattern.
+
+Add the package to `configure.ac` using the appropriate macro for the
+build system. `GPG4WIN_SPKG` is the macro for generic autotools based
+packages. Check out the available macros in `m4/gpg4win.m4`.  The
+macro call must include the required dependencies as the second
+parameter. If your package is a dependency of another package, add
+this accordingly.  This has to be done for both `APPIMAGE_` and
+`GPG4WIN_`.
+
+Define the build targets by adding foo to one of the package list
+variables like `gpg4win_spkgs` in `src/Makefile.am` and `appimage_spkgs`
+in `src/appimage/Makefile.am`. And if required, also add any required
+configure flags, etc. See existing packages for examples.
+
+If your package is only for the AppImage, you are now done. Optionally,
+add an rsync filter under `src/appimage/rsync-filters` to only package
+some of the installed files.
+
+
+NSIS Packaging:
+---------------
+
+To have the package included in a Windows installation:
+
+Add constants for the package FOO into `src/config.nsi.in` which
+are then configured by the build system automatically.
+
+  @HAVE_PKG_FOO@
+  !define gpg4win_pkg_foo @gpg4win_pkg_foo@
+  !define gpg4win_pkg_foo_version @gpg4win_pkg_foo_version@
+
+Create 2 new installer scripts, named `src/inst-foo.nsi` and
+`uninst-foo.nsi` and add them to `EXTRA_DIST` in `src/Makefile.am`.
+
+Add FOO to `src/inst-sections.nsi` by including the `inst-foo.nsi` and
+`uninst-foo.nsi` scripts depending on `HAVE_PKG_FOO`. Then modify
+`CalcDepends`. For a dependency, first use `UnselectSection` on the
+new package and then select it together with the component for which
+it is required.
+
+Then run the usual `./autogen.sh` to create the actual configure file
+and build the installer as described above.
+
+
+NSIS Installer Slideshow
+------------------------
+
+During installation we are showing a slide show. If you want to change
+the contents shown add / modify files in the src/slideshow
+subfolder. Install them in inst-gpg4win.nsi (Add them to the list of
+files before g4wihelp::slide_show) and modify src/slideshow/slides.dat
+accordingly.
 
 Version numbers
-===============
+---------------
 
 We use a specific order of version numbers.  This is best shown by an
 example:
@@ -203,40 +182,25 @@ This allows other software to use a configure check for the next to be
 released version of gpg4win.
 
 
-
 Copyright
-=========
+---------
 
-The entire Gpg4win package is
+A list of copyright noticed can be found in `doc/pkg-copyright.txt`.
+The **Gpg4win build system** is
 
-  Copyright (C) 2005, 2006, 2007, 2008, 2009, 2012, 2013 g10 Code GmbH
+Copyright (C) 2005-2013,2019-2025 g10 Code GmbH
+Copyright (C) 2013-2018 Intevation GmbH
+Copyright (C) 2015-2018 Bundesamt für Sicherheit in der Informationstechnik
 
-  GPG4Win is free software; you can redistribute it and/or modify it
-  under the terms of the GNU General Public License as published by
-  the Free Software Foundation; either version 2 of the License, or
-  (at your option) any later version.
+Gpg4win is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
-  GPG4Win is distributed in the hope that it will be useful, but
-  WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-  General Public License for more details.
+Gpg4win is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
 
-  You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
-  02110-1301, USA
-
-
-This file
-=========
-
-Copyright 2005, 2006, 2008 g10 Code GmbH
-
-This file is free software; as a special exception the author gives
-unlimited permission to copy and/or distribute it, with or without
-modifications, as long as this notice is preserved.
-
-This file is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
-implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
-PURPOSE.
+You should have received a copy of the GNU General Public License
+along with this program; if not, see <https://www.gnu.org/licenses/>.

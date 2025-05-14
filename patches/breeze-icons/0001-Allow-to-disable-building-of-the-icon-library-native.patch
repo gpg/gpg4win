@@ -1,0 +1,104 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 88bc82090e3e6a0869f62737d043fdf7bede6211 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 19 Feb 2025 16:24:59 +0100
+Subject: [PATCH] Allow to disable building of the icon library
+
+For cross-builds we only need the tools.
+---
+ CMakeLists.txt     | 64 ++++++++++++++++++++++++----------------------
+ src/CMakeLists.txt |  4 ++-
+ 2 files changed, 37 insertions(+), 31 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 105234d77..627570b8d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -65,36 +65,40 @@ option(SKIP_INSTALL_ICONS "Skip installing the icons files" OFF)
+ # FIXME: remove after e.g. Kexi is ported
+ option(BINARY_ICONS_RESOURCE "Install Qt binary resource file containing breeze icons (breeze-icons.rcc), should only be used if needed for compatibility" OFF)
+
+-set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6BreezeIcons")
+-
+-configure_package_config_file(
+-  "${CMAKE_CURRENT_SOURCE_DIR}/KF6BreezeIconsConfig.cmake.in"
+-  "${CMAKE_CURRENT_BINARY_DIR}/KF6BreezeIconsConfig.cmake"
+-  INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
+-  PATH_VARS  CMAKE_INSTALL_PREFIX
+-)
+-
+-install(FILES
+-  "${CMAKE_CURRENT_BINARY_DIR}/KF6BreezeIconsConfig.cmake"
+-  "${CMAKE_CURRENT_BINARY_DIR}/KF6BreezeIconsConfigVersion.cmake"
+-  DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
+-  COMPONENT Devel
+-)
+-
+-ecm_setup_version(PROJECT
+-  VARIABLE_PREFIX BREEZEICONS
+-  VERSION_HEADER ${CMAKE_CURRENT_BINARY_DIR}/breezeicons_version.h
+-  PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6BreezeIconsConfigVersion.cmake"
+-  SOVERSION 6)
+-
+-install(EXPORT KF6BreezeIconsTargets
+-  DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
+-  FILE KF6BreezeIconsTargets.cmake
+-  NAMESPACE KF6::
+-)
+-
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/breezeicons_version.h
+-  DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/BreezeIcons COMPONENT Devel)
++option(WITH_ICONS_LIBRARY "Build the Breeze icons library" ON)
++
++if(WITH_ICONS_LIBRARY)
++    set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6BreezeIcons")
++
++    configure_package_config_file(
++      "${CMAKE_CURRENT_SOURCE_DIR}/KF6BreezeIconsConfig.cmake.in"
++      "${CMAKE_CURRENT_BINARY_DIR}/KF6BreezeIconsConfig.cmake"
++      INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
++      PATH_VARS  CMAKE_INSTALL_PREFIX
++    )
++
++    install(FILES
++      "${CMAKE_CURRENT_BINARY_DIR}/KF6BreezeIconsConfig.cmake"
++      "${CMAKE_CURRENT_BINARY_DIR}/KF6BreezeIconsConfigVersion.cmake"
++      DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
++      COMPONENT Devel
++    )
++
++    ecm_setup_version(PROJECT
++      VARIABLE_PREFIX BREEZEICONS
++      VERSION_HEADER ${CMAKE_CURRENT_BINARY_DIR}/breezeicons_version.h
++      PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6BreezeIconsConfigVersion.cmake"
++      SOVERSION 6)
++
++    install(EXPORT KF6BreezeIconsTargets
++      DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
++      FILE KF6BreezeIconsTargets.cmake
++      NAMESPACE KF6::
++    )
++
++    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/breezeicons_version.h
++      DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/BreezeIcons COMPONENT Devel)
++endif()
+
+ add_subdirectory(autotests)
+ add_subdirectory(icons)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 56d860856..763f934fe 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -2,4 +2,6 @@
+ add_subdirectory(tools)
+
+ # library to use by apps to get Breeze icons via Qt resources
+-add_subdirectory(lib)
++if(WITH_ICONS_LIBRARY)
++    add_subdirectory(lib)
++endif()
+--
+2.48.1

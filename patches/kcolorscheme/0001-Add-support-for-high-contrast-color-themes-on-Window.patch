@@ -1,0 +1,113 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From fb159c5e017cf0c489501995424e1b40d45577fe Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Thu, 27 Mar 2025 10:28:19 +0100
+Subject: [PATCH 1/3] Add support for high-contrast color themes (on Windows)
+
+If a high-contrast color theme is active and the default color scheme is
+configured for an app then the system-provided high-contrast colors should
+be used instead of Breeze Light or Breeze Dark.
+---
+ src/kcolorschememanager.cpp | 37 ++++++++++++++++++++++++++++---------
+ src/kcolorschememanager_p.h |  1 +
+ 2 files changed, 29 insertions(+), 9 deletions(-)
+
+diff --git a/src/kcolorschememanager.cpp b/src/kcolorschememanager.cpp
+index 0b77cc3..e8aa7c4 100644
+--- a/src/kcolorschememanager.cpp
++++ b/src/kcolorschememanager.cpp
+@@ -8,13 +8,14 @@
+ #include "kcolorschememanager.h"
+ #include "kcolorschememanager_p.h"
+
++#include "kcolorscheme.h"
+ #include "kcolorschememodel.h"
+
++#include <KColorSchemeWatcher>
+ #include <KConfigGroup>
+ #include <KConfigGui>
+ #include <KLocalizedString>
+ #include <KSharedConfig>
+-#include <kcolorscheme.h>
+
+ #include <QDir>
+ #include <QFileInfo>
+@@ -63,17 +64,35 @@ void KColorSchemeManagerPrivate::activateSchemeInternal(const QString &colorSche
+     }
+ }
+
++QString KColorSchemeManagerPrivate::automaticColorSchemeId() const
++{
++    if (!m_colorSchemeWatcher) {
++        return QString();
++    }
++
++    switch (m_colorSchemeWatcher->systemPreference()) {
++    case KColorSchemeWatcher::PreferHighContrast:
++        return QString();
++    case KColorSchemeWatcher::PreferDark:
++        return getDarkColorScheme();
++    case KColorSchemeWatcher::PreferLight:
++    case KColorSchemeWatcher::NoPreference:
++        return getLightColorScheme();
++    };
++    return QString();
++}
++
+ // The meaning of the Default entry depends on the platform
+ // On KDE we apply a default KColorScheme
+ // On other platforms we automatically apply Breeze/Breeze Dark depending on the system preference
+ QString KColorSchemeManagerPrivate::automaticColorSchemePath() const
+ {
+-    if (!m_colorSchemeWatcher) {
++    const QString colorSchemeId = automaticColorSchemeId();
++    if (colorSchemeId.isEmpty()) {
+         return QString();
++    } else {
++        return indexForSchemeId(colorSchemeId).data(KColorSchemeModel::PathRole).toString();
+     }
+-
+-    const QString colorSchemeId = m_colorSchemeWatcher->systemPreference() == KColorSchemeWatcher::PreferDark ? getDarkColorScheme() : getLightColorScheme();
+-    return indexForSchemeId(colorSchemeId).data(KColorSchemeModel::PathRole).toString();
+ }
+
+ QIcon KColorSchemeManagerPrivate::createPreview(const QString &path)
+@@ -181,6 +200,10 @@ QAbstractItemModel *KColorSchemeManager::model() const
+
+ QModelIndex KColorSchemeManagerPrivate::indexForSchemeId(const QString &id) const
+ {
++    // Empty string is mapped to "reset to the system scheme"
++    if (id.isEmpty()) {
++        return model->index(defaultSchemeRow);
++    }
+     for (int i = 1; i < model->rowCount(); ++i) {
+         QModelIndex index = model->index(i);
+         if (index.data(KColorSchemeModel::IdRole).toString() == id) {
+@@ -197,10 +220,6 @@ void KColorSchemeManager::setAutosaveChanges(bool autosaveChanges)
+
+ QModelIndex KColorSchemeManager::indexForSchemeId(const QString &id) const
+ {
+-    // Empty string is mapped to "reset to the system scheme"
+-    if (id.isEmpty()) {
+-        return d->model->index(defaultSchemeRow);
+-    }
+     return d->indexForSchemeId(id);
+ }
+
+diff --git a/src/kcolorschememanager_p.h b/src/kcolorschememanager_p.h
+index 623f51d..69fd456 100644
+--- a/src/kcolorschememanager_p.h
++++ b/src/kcolorschememanager_p.h
+@@ -27,6 +27,7 @@ public:
+
+     static QIcon createPreview(const QString &path);
+     void activateSchemeInternal(const QString &colorSchemePath);
++    QString automaticColorSchemeId() const;
+     QString automaticColorSchemePath() const;
+     QModelIndex indexForSchemeId(const QString &id) const;
+
+--
+2.49.0

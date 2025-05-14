@@ -1,0 +1,4 @@
+#! /bin/sh
+
+rm icons/apps/22/kleopatra-symbolic.svg
+rm icons/apps/48/kleopatra.svg

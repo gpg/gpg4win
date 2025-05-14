@@ -1,0 +1,75 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 29c42867e4ff4ecae842c2ff196a935a700ee87b Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Wed, 2 Apr 2025 15:20:32 +0200
+Subject: [PATCH 2/2] DRAFT: There is no dark mode on old Windows
+
+This checks for the Operating System Version like
+Qt5 does, too. Before checking dark mode through
+the registry.
+
+This solves an issue where dark mode colors
+were loaded even though the style did not support
+it.
+
+A better fix will also include the high contrast
+detection which for Qt5 is patched into KIconThemes.
+
+GnuPG-Bug-Id: T6932
+---
+ src/colors/kcolorschemewatcher_win.cpp | 14 +++++++++++++-
+ src/colors/kcolorschemewatcher_win.h   |  1 +
+ 2 files changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/src/colors/kcolorschemewatcher_win.cpp b/src/colors/kcolorschemewatcher_win.cpp
+index 8b40c48..ad396d2 100644
+--- a/src/colors/kcolorschemewatcher_win.cpp
++++ b/src/colors/kcolorschemewatcher_win.cpp
+@@ -10,6 +10,7 @@
+ #include <windows.h>
+
+ #include <QAbstractEventDispatcher>
++#include <QOperatingSystemVersion>
+
+ #include <QDebug>
+
+@@ -59,10 +60,21 @@ KColorSchemeWatcher::ColorPreference KColorSchemeWatcherWin::getCurrentSystemPre
+ {
+     if (isHighContrastModeActive()) {
+         return KColorSchemeWatcher::PreferHighContrast;
+-    } else if (m_settings.value(QStringLiteral("AppsUseLightTheme"), true).value<bool>()) {
++    } else if (!queryDarkMode()) {
+         return KColorSchemeWatcher::PreferLight;
+     }
+     return KColorSchemeWatcher::PreferDark;
+ }
+
++bool KColorSchemeWatcherWin::queryDarkMode() const
++{
++    /* XXX This leaves out high contrast detection as this only
++     * for Qt5 and Gpg4win where it is handled in other places */
++    if (QOperatingSystemVersion::current() < QOperatingSystemVersion(QOperatingSystemVersion::Windows10_1809)) {
++        return false;
++    }
++
++    return !(m_settings.value(QStringLiteral("AppsUseLightTheme"), true).value<bool>());
++}
++
+ #include "moc_kcolorschemewatcher_win.cpp"
+diff --git a/src/colors/kcolorschemewatcher_win.h b/src/colors/kcolorschemewatcher_win.h
+index acff45e..31c83ad 100644
+--- a/src/colors/kcolorschemewatcher_win.h
++++ b/src/colors/kcolorschemewatcher_win.h
+@@ -23,6 +23,7 @@ public:
+     bool nativeEventFilter(const QByteArray &eventType, void *message, qintptr *) override;
+
+ private:
++    bool queryDarkMode() const;
+     KColorSchemeWatcher::ColorPreference getCurrentSystemPreference() const;
+
+     QSettings m_settings{QStringLiteral("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"), QSettings::NativeFormat};
+--
+2.49.0

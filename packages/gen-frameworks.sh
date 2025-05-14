@@ -27,12 +27,11 @@
 set -e
 
 if [ -z "$1" ]; then
-    echo "Usage $0 <Version> > snippet"
+    echo "Usage $0 <Version> [frameworks] > snippet"
     exit 1
 fi
 
 FRAMEWORKS="extra-cmake-modules
-    kactivities
     kauth
     kconfig
     ki18n
@@ -61,7 +60,14 @@ FRAMEWORKS="extra-cmake-modules
     ktextwidgets
     sonnet
     kcalendarcore
-    prison"
+    prison
+    kcolorscheme
+    kstatusnotifieritem
+    kcontacts"
+
+if [ -n "$2" ]; then
+    FRAMEWORKS="$2"
+fi
 
 fullversion=$1
 case ${fullversion} in
@@ -110,13 +116,18 @@ for fw in $FRAMEWORKS; do
 
     sha2=$(sha256sum $tmpdir/${tarfile} | cut -d ' ' -f 1)
 
-    echo "# $fw"
-    echo "# last changed: $curdate"
-    echo "# by: ah"
-    echo "# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-    echo "file $majorversion/${tarfile}"
-    echo "chk $sha2"
-    echo ""
+    cat > ${tmpdir}/snippet <<EOF
+# ${fw}
+# last changed: ${curdate}
+# by: $USER
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
+file ${majorversion}/${tarfile}
+chk ${sha2}
+
+EOF
+
+perl -i -p0e "s@# ${fw}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
+'@se" packages.common
 done
 
 rm -r $tmpdir
