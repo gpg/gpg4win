@@ -185,6 +185,8 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   # installer
   SetOutPath "$INSTDIR\share"
   File ${SRCDIR}/kdeglobals
+  File ${prefix}/etc/xdg/kleopatradebugcommandsrc
+
   SetOutPath "$INSTDIR\bin"
   File ${SRCDIR}/qtlogging.ini
 
