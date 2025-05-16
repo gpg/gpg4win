@@ -98,6 +98,14 @@ EOF
 # same as this script.
 echo >&2 "$PGM: Note: Please consider to use gpg-authcode-sign.sh in the future"
 
+for i in /usr/local /opt /usr; do
+    f="$i/bin/gpg-authcode-sign.sh"
+    if [ -x "$f" ]; then
+        echo >&2 "$PGM: Note: Diverting to $f"
+        exec "$f" "$@"
+    fi
+done
+
 
 autogenrc="$HOME/.gnupg-autogen.rc"
 dryrun=
