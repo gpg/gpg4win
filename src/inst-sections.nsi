@@ -64,12 +64,6 @@
 !ifdef HAVE_PKG_GPGME
 !include "inst-gpgme.nsi"
 !endif
-!ifdef HAVE_PKG_GPGMEPP
-!include "inst-gpgmepp.nsi"
-!endif
-!ifdef HAVE_PKG_QGPGME
-!include "inst-qgpgme.nsi"
-!endif
 !ifdef HAVE_PKG_QTTOOLS
 !include "inst-qttools.nsi"
 !endif
@@ -283,12 +277,6 @@
 
 !ifdef HAVE_PKG_GPGME
 !include "uninst-gpgme.nsi"
-!endif
-!ifdef HAVE_PKG_GPGMEPP
-!include "uninst-gpgmepp.nsi"
-!endif
-!ifdef HAVE_PKG_QGPGME
-!include "uninst-qgpgme.nsi"
 !endif
 !ifdef HAVE_PKG_GNUPG_W32
 !include "uninst-gnupg-w32.nsi"
@@ -686,12 +674,6 @@ Function CalcDepends
 !ifdef HAVE_PKG_GPGME
   !insertmacro UnselectSection ${SEC_gpgme}
 !endif
-!ifdef HAVE_PKG_GPGMEPP
-  !insertmacro UnselectSection ${SEC_gpgmepp}
-!endif
-!ifdef HAVE_PKG_QGPGME
-  !insertmacro UnselectSection ${SEC_qgpgme}
-!endif
 !ifdef HAVE_PKG_QTBASE
   !insertmacro UnselectSection ${SEC_qtbase}
 !endif
@@ -875,7 +857,6 @@ Function CalcDepends
 		${SF_SELECTED} have_gpgol skip_gpgol
   have_gpgol:
   !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_gpgmepp}
   !insertmacro SelectSection ${SEC_gpg4win_tools}
 
   # This is not a build dependency, but it is a run-time dependency.
@@ -892,7 +873,6 @@ Function CalcDepends
   !insertmacro SectionFlagIsSet ${SEC_okular} ${SF_SELECTED} have_okular skip_okular
   have_okular:
   !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_gpgmepp}
   !insertmacro SelectSection ${SEC_qtbase}
   !insertmacro SelectSection ${SEC_breeze_icons}
   !insertmacro SelectSection ${SEC_kconfig}
@@ -937,8 +917,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kde_l10n}
 
   !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_gpgmepp}
-  !insertmacro SelectSection ${SEC_qgpgme}
   !insertmacro SelectSection ${SEC_qtbase}
   !insertmacro SelectSection ${SEC_breeze_icons}
   !insertmacro SelectSection ${SEC_kconfig}
@@ -957,8 +935,6 @@ Function CalcDepends
   !insertmacro SectionFlagIsSet ${SEC_kleopatra} ${SF_SELECTED} have_kleopatra skip_kleopatra
   have_kleopatra:
   !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_gpgmepp}
-  !insertmacro SelectSection ${SEC_qgpgme}
   !insertmacro SelectSection ${SEC_compendium}
   !insertmacro SelectSection ${SEC_qtbase}
   !insertmacro SelectSection ${SEC_breeze_icons}
@@ -1013,24 +989,10 @@ skip_gpgme_browser:
   # actual application instead.
   !insertmacro SelectSection ${SEC_libgpg_error}
   !insertmacro SelectSection ${SEC_libassuan}
-   skip_gpgme:
-!endif
-
-!ifdef HAVE_PKG_GPGMEPP
-  !insertmacro SectionFlagIsSet ${SEC_gpgmepp} \
-		${SF_SELECTED} have_gpgmepp skip_gpgmepp
-  have_gpgmepp:
-  !insertmacro SelectSection ${SEC_gpgme}
-   skip_gpgmepp:
-!endif
-
-!ifdef HAVE_PKG_QGPGME
-  !insertmacro SectionFlagIsSet ${SEC_qgpgme} \
-		${SF_SELECTED} have_qgpgme skip_qgpgme
-  have_qgpgme:
-  !insertmacro SelectSection ${SEC_qgpgme}
+!ifdef HAVE_PKG_QTBASE
   !insertmacro SelectSection ${SEC_qtbase}
-   skip_qgpgme:
+!endif
+   skip_gpgme:
 !endif
 
 !ifdef HAVE_PKG_PINENTRY
