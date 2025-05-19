@@ -27,6 +27,6 @@
 ; Uninstaller section.
 Section "-un.libiconv"
   Delete /REBOOTOK "$INSTDIR\bin\libiconv-2.dll"
-  Delete /REBOOTOK "$INSTDIR\bin\iconv.dll
+  Delete /REBOOTOK "$INSTDIR\bin\iconv.dll"
   RMDir "$INSTDIR/bin"
 SectionEnd
