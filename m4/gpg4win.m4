@@ -341,15 +341,17 @@ AC_DEFUN([GPG4WIN_SPKGEX],
     gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_ex_deps="$2"
     AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_ex_deps)
 
-    gpg4win_ex_pkgs="$gpg4win_ex_pkgs $1"
+    AS_IF([test "$_gpg4win_spkg" != no],
+      gpg4win_ex_pkgs="$gpg4win_ex_pkgs $1"
 
-    GPG4WIN_DEFINE(HAVE_PKG_[]m4_translit([$1],[a-z+-],[A-Z__])_EX)
-    # Record dependencies.  Also enter every package as node.
-    _gpg4win_ex_deps="$_gpg4win_ex_deps $1 $1"
-    AS_IF([test ! -z "$2"],
-          for _gpg4win_i in $2; do
-            _gpg4win_ex_deps="$_gpg4win_ex_deps $_gpg4win_i $1"
-          done)
+      GPG4WIN_DEFINE(HAVE_PKG_[]m4_translit([$1],[a-z+-],[A-Z__])_EX)
+      # Record dependencies.  Also enter every package as node.
+      _gpg4win_ex_deps="$_gpg4win_ex_deps $1 $1"
+      AS_IF([test ! -z "$2"],
+            for _gpg4win_i in $2; do
+              _gpg4win_ex_deps="$_gpg4win_ex_deps $_gpg4win_i $1"
+            done)
+    )
   )
 ])
 
