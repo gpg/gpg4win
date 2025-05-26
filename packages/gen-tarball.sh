@@ -28,10 +28,6 @@
 
 PGM=gen-tarball.sh
 
-# Taken from the generated list which checked for languages
-# in which more then 500 strings for Kleopatra were translated
-translation_langs="bg bs ca cs da de el eo es et eu fi fr gl hu ia it ja km ko lv mk mr ms nb nds nl nn pl pt pt_BR ru sk sl sv tr uk zh_CN zh_TW"
-
 set -e
 
 FRONTEND_PKGS="
@@ -74,7 +70,6 @@ ftpuser_at=""
 do_auto="no"
 update="no"
 branch="master"
-custom_l10n="no"
 while [ $# -gt 0 ]; do
     case "$1" in
 	--*=*)
@@ -216,27 +211,12 @@ case ${package} in
         ;;
     mimetreeparser)
 #        branch="gpg4win/24.05"
-#        custom_l10n="mimetreeparser/mimetreeparser6.po"
-#        local_l10n='mimetreeparser-24.05-${lang}-full-translation.po'
         ;;
     kleopatra)
 #        branch="gpg4win/24.05"
-#        custom_l10n="kleopatra/kleopatra.po"
-        # When we are really far from upstream we might have strings
-        # in our custom branch which are neither in summit nor in the
-        # original branch. So they have to be manually extracted using
-        # git://invent.kde.org/sysadmin/l10n-scripty/extract_messages.sh
-        # and then merged and manually translated. Except for the manual
-        # translation this is automated with the gen-local-l10n.sh script.
-        # "local_l10n" allows us to cat these additional strings to the
-        # translations, too.
-        # Requires custom_l10n to be also set.
-#        local_l10n='kleopatra-24.05-${lang}-full-translation.po'
         ;;
     libkleo)
 #        branch="gpg4win/24.05"
-#        custom_l10n="libkleo/libkleopatra6.po"
-#        local_l10n='libkleopatra-24.05-${lang}-full-translation.po'
         ;;
     okular)
   #      branch="work/sune/WORK"
@@ -295,73 +275,6 @@ else
     olddir=$(pwd)
     echo "$PGM: Archiving branch $branch."
     cd ${tmpdir}/${snapshotdir}
-    if [ "$custom_l10n" != "no" ]; then
-        for lang in $translation_langs; do
-            if [ "$lang" = "de" ]; then
-                # Sorry but the development team is german centric
-                echo "##############################DE#######################################"
-            fi
-            echo "$PGM: Downloading $lang translations from svn."
-            poname=${package}
-            if [ "${package}" == "libkleo" ]; then
-                poname="libkleopatra"
-            fi
-            # First integrate any additions from custom l10n
-            if ! svn export --force svn://anonsvn.kde.org/home/kde/trunk/l10n-support/$lang/summit/messages/${custom_l10n} po/$lang/${poname}_main.po >/dev/null 2>&1; then
-                if ! svn export --force svn://anonsvn.kde.org/home/kde/trunk/l10n-kf6/$lang/messages/${custom_l10n} po/$lang/${poname}_main.po >/dev/null 2>&1; then
-                    echo "No translations for $package found in language $lang"
-                    continue
-                else
-                    echo "Using l10n-kf6 for $lang"
-                fi
-            else
-                echo "Using summit for $lang"
-            fi
-            if [ ! -e po/$lang/${poname}_main.po ]; then
-                echo "failed to download the custom l10n file $custom_l10n for language $lang"
-                continue
-            fi
-            # get rid of obsolete messages because msgcat --use-first would drop non-obsolete messages from
-            # the package's po file that match obsolete messages from the *_main.po file
-            if msgattrib --no-obsolete po/$lang/${poname}_main.po > po/$lang/${poname}_main_noobsolete.po ; then
-                mv po/$lang/${poname}_main_noobsolete.po po/$lang/${poname}_main.po
-            else
-                echo "WARN: error from msgattrib ignored" >&2
-            fi
-
-            echo "Adding translations to $lang with:"
-            msgfmt --statistics po/$lang/${poname}_main.po
-            if ! msgcat --use-first po/$lang/${poname}_main.po po/$lang/${poname}.po > po/$lang/${poname}_new.po ; then
-                  echo "WARN: error from msgcat ignored" >&2
-            fi
-            # For German (and a few other languages) we go the extra mile to be 100 % and add even
-            # more local strings if this is required
-            eval local_l10n_file="${local_l10n}"
-            if [ "$local_l10n" != "" -a -f "$olddir/$local_l10n_file" ]; then
-                # get rid of obsolete messages because msgcat --use-first would drop non-obsolete messages from
-                # the local_l10n file that match obsolete messages from the *_new.po file
-                if msgattrib --no-obsolete po/$lang/${poname}_new.po > po/$lang/${poname}_new_noobsolete.po ; then
-                    mv po/$lang/${poname}_new_noobsolete.po po/$lang/${poname}_new.po
-                else
-                    echo "WARN: error from msgattrib ignored" >&2
-                fi
-                echo "Adding local l10n file $local_l10n_file which contains:"
-                msgfmt --statistics "$olddir/$local_l10n_file"
-                if ! msgcat --use-first po/$lang/${poname}_new.po "$olddir/$local_l10n_file" > po/$lang/${poname}.po ; then
-                  echo "WARN: error from msgcat ignored" >&2
-                fi
-            else
-                mv po/$lang/${poname}_new.po po/$lang/${poname}.po
-            fi
-            echo "Final translation statistics for $lang: "
-            msgfmt --statistics po/$lang/${poname}.po
-            git add po/$lang/${poname}.po
-            if [ "$lang" = "de" ]; then
-                echo "#####################################################################"
-            fi
-        done
-        git commit -m "Add latest translations"
-    fi
     if [ "${package}" == "breeze" ]; then
         git rm -r wallpapers cursors
         sed -i '/add_subdirectory(wallpapers)/d' CMakeLists.txt
