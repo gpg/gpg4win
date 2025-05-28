@@ -1,0 +1,117 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 69390a554a0e15788e3e4b6dbeccb8a584059e13 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 28 May 2025 09:48:44 +0200
+Subject: [PATCH] Use gpgme_off_t and gpgme_ssize_t everywhere for GpgME++ 2.0
+
+* src/mail.cpp (copy_data_property): Use gpgme_off_t instead of off_t.
+* src/mimedataprovider.cpp, src/mimedataprovider.h
+(MimeDataProvider::read, MimeDataProvider::write,
+MimeDataProvider::seek): Use gpgme_off_t and gpgme_ssize_t instead of
+off_t and ssize_t.
+--
+
+We need to use gpgme_off_t and gpgme_ssize_t instead of off_t and
+ssize_t to avoid conflicting types for 64-bit builds.
+---
+ src/mimedataprovider.cpp | 18 ++++++++++++++++++
+ src/mimedataprovider.h   | 15 +++++++++++++++
+ 2 files changed, 33 insertions(+)
+
+diff --git a/src/mimedataprovider.cpp b/src/mimedataprovider.cpp
+index 308f870..077c994 100644
+--- a/src/mimedataprovider.cpp
++++ b/src/mimedataprovider.cpp
+@@ -773,12 +773,21 @@ MimeDataProvider::isSupported(GpgME::DataProvider::Operation op) const
+          op == GpgME::DataProvider::Release;
+ }
+
++#if GPGMEPP_VERSION >= 0x020000
++gpgme_ssize_t
++MimeDataProvider::read(void *buffer, size_t size)
++#else
+ ssize_t
+ MimeDataProvider::read(void *buffer, size_t size)
++#endif
+ {
+   log_data ("%s:%s: Reading: " SIZE_T_FORMAT "Bytes",
+                  SRCNAME, __func__, size);
++#if GPGMEPP_VERSION >= 0x020000
++  gpgme_ssize_t bRead = m_crypto_data.read (buffer, size);
++#else
+   ssize_t bRead = m_crypto_data.read (buffer, size);
++#endif
+   if ((opt.enable_debug & DBG_DATA) && bRead)
+     {
+       std::string buf ((char *)buffer, bRead);
+@@ -1251,7 +1260,11 @@ MimeDataProvider::collect_data(FILE *stream)
+   TRETURN;
+ }
+
++#if GPGMEPP_VERSION >= 0x020000
++gpgme_ssize_t MimeDataProvider::write(const void *buffer, size_t bufSize)
++#else
+ ssize_t MimeDataProvider::write(const void *buffer, size_t bufSize)
++#endif
+ {
+   TSTART;
+   if (m_collect_everything)
+@@ -1280,8 +1293,13 @@ ssize_t MimeDataProvider::write(const void *buffer, size_t bufSize)
+   TRETURN bufSize;
+ }
+
++#if GPGMEPP_VERSION >= 0x020000
++gpgme_off_t
++MimeDataProvider::seek(gpgme_off_t offset, int whence)
++#else
+ off_t
+ MimeDataProvider::seek(off_t offset, int whence)
++#endif
+ {
+   return m_crypto_data.seek (offset, whence);
+ }
+diff --git a/src/mimedataprovider.h b/src/mimedataprovider.h
+index ffbc187..5c9bfe4 100644
+--- a/src/mimedataprovider.h
++++ b/src/mimedataprovider.h
+@@ -24,6 +24,7 @@
+
+ #include <gpgme++/interfaces/dataprovider.h>
+ #include <gpgme++/data.h>
++#include <gpgme++/gpgmepp_version.h>
+ #include "rfc822parse.h"
+
+ #ifdef HAVE_W32_SYSTEM
+@@ -81,6 +82,19 @@ public:
+   /* Dataprovider interface */
+   bool isSupported(Operation) const;
+
++#if GPGMEPP_VERSION >= 0x020000
++  /** Read some data from the stream. This triggers
++    the conversion code interanally to convert mime
++    data into PGP/CMS Data that GpgME can work with. */
++  gpgme_ssize_t read(void *buffer, size_t bufSize);
++
++  gpgme_ssize_t write(const void *buffer, size_t bufSize);
++
++  /* Seek the underlying stream. This discards the internal
++     buffers as the offset is not mapped. Should not really
++     be used but can be used to reset the DataProvider. */
++  gpgme_off_t seek(gpgme_off_t offset, int whence);
++#else
+   /** Read some data from the stream. This triggers
+     the conversion code interanally to convert mime
+     data into PGP/CMS Data that GpgME can work with. */
+@@ -92,6 +106,7 @@ public:
+      buffers as the offset is not mapped. Should not really
+      be used but can be used to reset the DataProvider. */
+   off_t seek(off_t offset, int whence);
++#endif
+
+   /* Noop */
+   void release() {}
+--
+2.49.0
