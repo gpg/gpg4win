@@ -589,13 +589,6 @@ chk b485a1d145d0800314c2205173fe0ccde87d31e11d73a51e80c77540332177e9
 file qgpgme/qgpgme-2.0.0-beta28.tar.xz
 chk 98ddc46a3124af74acd409c128ce1dc88b5c2c36af633e2ac4af9814bb5ec761
 
-# qgpgme
-# last changed: 2025-01-30
-# by: ingo
-# verified: Tarball created by ingo.
-file qgpgme/qgpgme-2.0.0-beta25.tar.xz
-chk 1e2526b1d53b11ea6ab2d03ea7da547c91828de5300a833f66aae00c362c1c45
-
 # This is a respin of the release tag without the wallpapers and
 # cursor themes to avoid including a huge source package.
 # See gen-tarball.sh for details.
