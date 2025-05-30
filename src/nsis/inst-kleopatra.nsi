@@ -194,11 +194,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File "${SRCDIR}/icons/file-ext.ico"
   File "${SRCDIR}/icons/mail-ext.ico"
 
-  # Note that the uninst is done by uninst-libkleo because this is
-  # where the xdg directory is removed.
-  SetOutPath "$INSTDIR\etc\xdg"
-  File ${prefix}/etc/xdg/kleopatradebugcommandsrc
-
 #  SetRegView 64
   # Openpgp4fpr URI scheme
   WriteRegStr SHCTX "Software\Classes\openpgp4fpr" "" "URL:OpenPGP master key fingerprint"
