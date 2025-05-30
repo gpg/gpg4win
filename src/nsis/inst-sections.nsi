@@ -1184,6 +1184,16 @@ is_no_admin:
   no_gpgpass_menu:
 !endif
 
+!ifdef HAVE_PKG_GPGOLJS
+    SectionGetFlags ${SEC_gpgoljs} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
+    IntCmp $R0 ${SF_SELECTED} 0 no_gpgoljs_menu
+    CreateShortCut "$SMPROGRAMS\GpgOL-Web.lnk" \
+	"$INSTDIR\bin\gpgol-client.exe" \
+        "" "$INSTDIR\bin\gpgol-client.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_gpgoljs)
+  no_gpgoljs_menu:
+!endif
+
  no_start_menu:
 
   # Check if the desktop entries where requested.

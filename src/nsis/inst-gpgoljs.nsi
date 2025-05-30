@@ -52,3 +52,6 @@ ${MementoSectionEnd}
 
 LangString DESC_SEC_gpgoljs ${LANG_ENGLISH} \
    "An addon for the new, web based, Oulook."
+
+LangString DESC_Menu_gpgoljs ${LANG_ENGLISH} \
+   "Run the GpgOL/Web client"
