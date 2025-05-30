@@ -1180,7 +1180,7 @@ is_no_admin:
     IntCmp $R0 ${SF_SELECTED} 0 no_gpgpass_menu
     CreateShortCut "$SMPROGRAMS\GnuPG Password Manager.lnk" \
 	"$INSTDIR\bin\gpgpass.exe" \
-        "" "$INSTDIR\bin\gpgpass.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_okular)
+        "" "$INSTDIR\bin\gpgpass.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_gpgpass)
   no_gpgpass_menu:
 !endif
 
