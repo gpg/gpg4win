@@ -70,6 +70,7 @@ ftpuser_at=""
 do_auto="no"
 update="no"
 branch="master"
+add_version_file="no"
 while [ $# -gt 0 ]; do
     case "$1" in
 	--*=*)
@@ -214,6 +215,7 @@ case ${package} in
         ;;
     kleopatra)
 #        branch="gpg4win/24.05"
+        add_version_file="yes"
         ;;
     libkleo)
 #        branch="gpg4win/24.05"
@@ -281,7 +283,14 @@ else
         sed -i '/add_subdirectory(cursors)/d' CMakeLists.txt
         git commit -a -m "Escort the elephants out of the room"
     fi
-    git archive --format tar.xz --prefix=${snapshotdir}/ HEAD > ${tarball}
+    extrafiles=""
+    if [ "${add_version_file}" == "yes" ]; then
+        # write empty line as first line in VERSION file because we don't have a useful version number
+        echo >VERSION
+        git rev-parse --verify HEAD >>VERSION
+        extrafiles="--add-file=VERSION"
+    fi
+    git archive --format tar.xz --prefix=${snapshotdir}/ ${extrafiles} HEAD > ${tarball}
     if [ "$update" != "no" ]; then
         find "${olddir}" -name ${package}\* -print0 | xargs -0 rm -f
     fi
