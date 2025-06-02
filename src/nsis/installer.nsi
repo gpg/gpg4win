@@ -405,6 +405,8 @@ Function KillOtherAppsOrWarn
    g4wihelp::KillProc "gpgsm.exe"
    g4wihelp::KillProc "okular.exe"
    g4wihelp::KillProc "gpgpass.exe"
+   g4wihelp::KillProc "gpgol-server.exe"
+   g4wihelp::KillProc "gpgol-client.exe"
 goto leave
 # TODO check for running outlook and offer to kill it.
    print_warning:
@@ -426,6 +428,8 @@ Function un.CloseApps
    g4wihelp::KillProc "gpgsm.exe"
    g4wihelp::KillProc "okular.exe"
    g4wihelp::KillProc "gpgpass.exe"
+   g4wihelp::KillProc "gpgol-server.exe"
+   g4wihelp::KillProc "gpgol-client.exe"
 FunctionEnd
 
 # Called right before installation
@@ -768,6 +772,9 @@ FunctionEnd
 !endif
 !ifdef HAVE_PKG_GPGPASS
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgpass} $(DESC_SEC_gpgpass)
+!endif
+!ifdef HAVE_PKG_GPGOLJS
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgoljs} $(DESC_SEC_gpgoljs)
 !endif
 
 !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgme_browser} $(DESC_SEC_gpgme_browser)
