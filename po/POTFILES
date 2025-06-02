@@ -8,6 +8,7 @@
 ../src/nsis/inst-gpg4win.nsi
 ../src/nsis/inst-gpgex.nsi
 ../src/nsis/inst-gpgol.nsi
+../src/nsis/inst-gpgoljs.nsi
 ../src/nsis/inst-gpgme-browser.nsi
 ../src/nsis/inst-kleopatra.nsi
 ../src/nsis/inst-okular.nsi
