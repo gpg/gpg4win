@@ -417,7 +417,6 @@ define gpg4win_pkg_okular_post_install
 endef
 
 gpg4win_pkg_kleopatra_configure = \
-    -DFORCE_DISABLE_KCMUTILS=ON \
     -DDISABLE_KWATCHGNUPG=ON \
     -DKLEOPATRA_LIST_AS_COMPONENT=ON \
     -DKLEOPATRA_VERSION_STRING=Gpg4win-$(VERSION) \
