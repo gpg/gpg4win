@@ -267,7 +267,7 @@ elif [ "${is_g10_cmake}" == "yes" ]; then
     cd ${tmpdir}/${snapshotdir}
     mkdir build
     cd build
-    cmake .. >&2
+    cmake -DCONFIGURE_FOR_DISTRIBUTION=ON .. >&2
     make dist >&2
     tarball=$(ls -t *.tar.xz | head -1)
     cp ${tarball} ${olddir}
