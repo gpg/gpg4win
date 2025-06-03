@@ -1,0 +1,69 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+commit 3d06bbfb026e0ca1362ea87399140a4e77feeb77
+Author: Carl Schwan <carl@carlschwan.eu>
+Date:   Fri May 30 15:50:59 2025 +0200
+
+    Expose QWebSocketServer::originAuthenticationRequired signal
+
+    QWebSocketServer::originAuthenticationRequired is an important security
+    mechanism to make sure that the websocket port is not accessible from
+    any browser tab.
+
+    Change-Id: I3813eb5c300e6597265b1b6972dbc6ed07d34daa
+
+diff --git a/src/httpserver/qabstracthttpserver.cpp b/src/httpserver/qabstracthttpserver.cpp
+index 22226dc..69f24cd 100644
+--- a/src/httpserver/qabstracthttpserver.cpp
++++ b/src/httpserver/qabstracthttpserver.cpp
+@@ -164,6 +164,8 @@ QAbstractHttpServer::QAbstractHttpServer(QAbstractHttpServerPrivate &dd, QObject
+     Q_D(QAbstractHttpServer);
+     connect(&d->websocketServer, &QWebSocketServer::newConnection,
+             this, &QAbstractHttpServer::newWebSocketConnection);
++    connect(&d->websocketServer, &QWebSocketServer::originAuthenticationRequired,
++            this, &QAbstractHttpServer::webSocketOriginAuthenticationRequired);
+ #endif
+ }
+
+@@ -297,6 +299,19 @@ QList<QLocalServer *> QAbstractHttpServer::localServers() const
+     addWebSocketUpgradeVerifier()
+ */
+
++/*!
++    \fn void QAbstractHttpServer::webSocketOriginAuthenticationRequired(QWebSocketCorsAuthenticator *authenticator)
++    This signal is emitted when a new connection is requested.
++    The slot connected to this signal should indicate whether the origin
++    (which can be determined by the origin() call) is allowed in the \a authenticator object
++    (by issuing \l{QWebSocketCorsAuthenticator::}{setAllowed()}).
++
++    If no slot is connected to this signal, all origins will be accepted by default.
++
++    \note It is not possible to use a QueuedConnection to connect to
++    this signal, as the connection will always succeed.
++*/
++
+ /*!
+     Returns \c true if the server has pending WebSocket connections;
+     otherwise returns \c false.
+diff --git a/src/httpserver/qabstracthttpserver.h b/src/httpserver/qabstracthttpserver.h
+index 38b90a2..834041c 100644
+--- a/src/httpserver/qabstracthttpserver.h
++++ b/src/httpserver/qabstracthttpserver.h
+@@ -29,6 +29,7 @@ class QHttpServerRequest;
+ class QHttpServerResponder;
+ class QLocalServer;
+ class QTcpServer;
++class QWebSocketCorsAuthenticator;
+
+ class QAbstractHttpServerPrivate;
+ class Q_HTTPSERVER_EXPORT QAbstractHttpServer : public QObject
+@@ -61,6 +62,7 @@ public:
+ #if defined(QT_WEBSOCKETS_LIB)
+ Q_SIGNALS:
+     void newWebSocketConnection();
++    void webSocketOriginAuthenticationRequired(QWebSocketCorsAuthenticator *pAuthenticator);
+
+ private:
+     using WebSocketUpgradeVerifierPrototype =

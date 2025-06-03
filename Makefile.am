@@ -80,6 +80,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/configurable-windowstheme.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
+             patches/qthttpserver/originAuthenticationRequired.patch \
              patches/qgpgme-2.0.0-beta28/propagate-encryption-flags.patch \
              patches/gpgmepp-2.0.0-beta26/add-recipients-encryption-flags.patch \
              patches-appimage/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
