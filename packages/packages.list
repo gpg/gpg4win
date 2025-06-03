@@ -563,31 +563,37 @@ chk da33971bf49ffcaecef8a2f57dd6c434301b2d31ed1b761ef5e21258a39214e5
 
 
 #
-# Snapshots stored on a GnuPG server
+# GPGME is stored on the GnuPG server
 #
-server https://gnupg.net/snapshots
+server https://gnupg.org/ftp/gcrypt
 
 
 # gpgme
-# last changed: 2025-03-25
-# by: builder
-# verified: Tarball created by builder.
-file gpgme/gpgme-2.0.0-beta13.tar.xz
-chk 91991ddc181bebd645c4e469e8668bf92e26a326eedc2a635f05729ac46f8f54
+# last changed: 2025-06-03
+# by: wk
+# verified: swdb
+file gpgme/gpgme-2.0.0.tar.xz
+chk  ddf161d3c41ff6a3fcbaf4be6c6e305ca4ef1cc3f1ecdfce0c8c2a167c0cc36d
 
 # gpgmepp
-# last changed: 2025-03-26
-# by: ingo
-# verified: Tarball created by ingo.
-file gpgmepp/gpgmepp-2.0.0-beta26.tar.xz
-chk b485a1d145d0800314c2205173fe0ccde87d31e11d73a51e80c77540332177e9
+# last changed: 2025-06-03
+# by: wk
+# verified: swdb
+file gpgmepp/gpgmepp-2.0.0.tar.xz
+chk  d4796049c06708a26f3096f748ef095347e1a3c1e570561701fe952c3f565382
 
 # qgpgme
-# last changed: 2025-03-26
-# by: ingo
-# verified: Tarball created by ingo.
-file qgpgme/qgpgme-2.0.0-beta28.tar.xz
-chk 98ddc46a3124af74acd409c128ce1dc88b5c2c36af633e2ac4af9814bb5ec761
+# last changed: 2025-06-03
+# by: wk
+# verified: swdb
+file qgpgme/qgpgme-2.0.0.tar.xz
+chk  15645b2475cca6118eb2ed331b3a8d9442c9d4019c3846ba3f6d25321b4a61ad
+
+
+#
+# Snapshots stored on a GnuPG server
+#
+server https://gnupg.net/snapshots
 
 # This is a respin of the release tag without the wallpapers and
 # cursor themes to avoid including a huge source package.
