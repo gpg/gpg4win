@@ -20,7 +20,6 @@ EOF
 }
 
 gnupgtag=gnupg26
-forversion=common
 bindir="binary"
 wixlib=wixlib
 snapshot=no
@@ -35,12 +34,6 @@ while [ $# -gt 0 ]; do
     esac
 
     case $1 in
-	--v4)
-	    forversion=4
-	    ;;
-	--v3)
-	    forversion=3
-	    ;;
 	--snapshot|--snapshots)
             snapshot=yes
 	    bindir=gnupg
@@ -103,7 +96,7 @@ if [ -n "$wixlib" ]; then
   ln -f "${prefix}-w32-${version}_${date}.wixlib" "${prefix}-msi-${version}_${date}-bin.wixlib"
 fi
 
-outfile="packages.$forversion"
+outfile="packages.list"
 echo >>$outfile
 echo >>$outfile "# last changed $(date +%Y-%m-%d)"
 echo >>$outfile "# by $LOGNAME"
@@ -151,3 +144,7 @@ echo >>$outfile "fi # $gnupgtag"
 echo >>$outfile
 
 echo >>$outfile "# eof"
+
+echo >&2 '====================================================================='
+echo >&2 'Please use an editor to move the gnupg info block to the right place!'
+echo >&2 '====================================================================='
