@@ -636,10 +636,10 @@ chk 7efbb2c59911bc10f0ec9bccfda6f7e42c1ac2d8b3924d2dc14320a29db03a22
 
 # gpgoljs
 # last changed: 2025-06-04
-# by: wk
-# verified: Tarball created by builder.
-file gpgoljs/gpgoljs-202506040936.tar.xz
-chk 97124b5668b6428b4adc6e33d60f15f0ff4d585a3001a970b1284521913f9a04
+# by: carl
+# verified: Tarball created by carl.
+file gpgoljs/gpgoljs-202506041423.tar.xz
+chk 91b33916f20fcec454fede8ca7754095feb7413c20465188286bd975df624f2a
 
 
 #
