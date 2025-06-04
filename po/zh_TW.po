@@ -333,6 +333,14 @@ msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr ""
 
+msgctxt "DESC_SEC_gpgoljs"
+msgid "An addon for the new, web based, Oulook."
+msgstr ""
+
+msgctxt "DESC_Menu_gpgoljs"
+msgid "Run the GpgOL/Web client"
+msgstr ""
+
 msgctxt "DESC_SEC_gpgme_browser"
 msgid ""
 "Register GnuPG as native messaging service e.g. for the Mailvelope extension."
