@@ -1,4 +1,17 @@
 # List of NSIS files with translatable strings.
+# Updating the POT file needs manual work:
+#
+# 1. Run "/.configure" in the source dir to
+#    to create a Makefile.
+# 2. cd to "po"
+# 3. Run "make gpg4win.pot-update PLAYGROUND=." to greate gpg4win;pot
+# 4. Run "make PLAYGROUND=." to update the po files.
+# 5. Commit gpg4win.pot and the chnaged po files.
+#
+# Step 4 is optional can be run in the regular docker build which will
+# the create a file "files-to-commit.lst" so that one can update and
+# commit the read-only mounted source dir of the docker build.
+# Improvements are welcome.
 
 ../src/nsis/g4wihelp.nsi
 ../src/nsis/gpg4win.nsi
