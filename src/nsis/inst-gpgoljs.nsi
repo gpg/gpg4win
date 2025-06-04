@@ -28,21 +28,21 @@ ${MementoUnselectedSection} "Web based Oulook plugin" SEC_gpgoljs
   File ${prefix}/bin/gpgol-server.exe
   File ${prefix}/bin/install.ps1
 
-  SetOutPath "$INSTDIR\share\gpgol-web\dist"
-  File ${prefix}/share/gpgol-web/dist/index.html
+  SetOutPath "$INSTDIR\share\gpgol-web"
+  File ${prefix}/share/gpgol-web/index.html
 
-  SetOutPath "$INSTDIR\share\gpgol-web\dist\assets"
-  File ${prefix}/share/gpgol-web/dist/assets/index-*.css
-  File ${prefix}/share/gpgol-web/dist/assets/index-*.js
-  File ${prefix}/share/gpgol-web/dist/assets/document-decrypt-32.png
-  File ${prefix}/share/gpgol-web/dist/assets/document-decrypt-64.png
-  File ${prefix}/share/gpgol-web/dist/assets/document-decrypt-80.png
-  File ${prefix}/share/gpgol-web/dist/assets/icon-128.png
-  File ${prefix}/share/gpgol-web/dist/assets/icon-16.png
-  File ${prefix}/share/gpgol-web/dist/assets/icon-32.png
-  File ${prefix}/share/gpgol-web/dist/assets/icon-64.png
-  File ${prefix}/share/gpgol-web/dist/assets/icon-80.png
-  File ${prefix}/share/gpgol-web/dist/assets/logo.png
+  SetOutPath "$INSTDIR\share\gpgol-web\assets"
+  File ${prefix}/share/gpgol-web/assets/index-*.css
+  File ${prefix}/share/gpgol-web/assets/index-*.js
+  File ${prefix}/share/gpgol-web/assets/document-decrypt-32.png
+  File ${prefix}/share/gpgol-web/assets/document-decrypt-64.png
+  File ${prefix}/share/gpgol-web/assets/document-decrypt-80.png
+  File ${prefix}/share/gpgol-web/assets/icon-128.png
+  File ${prefix}/share/gpgol-web/assets/icon-16.png
+  File ${prefix}/share/gpgol-web/assets/icon-32.png
+  File ${prefix}/share/gpgol-web/assets/icon-64.png
+  File ${prefix}/share/gpgol-web/assets/icon-80.png
+  File ${prefix}/share/gpgol-web/assets/logo.png
 
   SetOutPath "$INSTDIR\share\icons\hicolor\scalable\apps"
   File /nonfatal ${prefix}/share/icons/hicolor/scalable/apps/com.gnupg.gpgolweb.svg
