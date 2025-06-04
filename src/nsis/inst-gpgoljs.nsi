@@ -45,19 +45,19 @@ ${MementoUnselectedSection} "Web based Oulook plugin" SEC_gpgoljs
   File ${prefix}/share/gpgol-web/dist/assets/logo.png
 
   SetOutPath "$INSTDIR\share\icons\hicolor\scalable\apps"
-  File ${prefix}/share/icons/hicolor/scalable/apps/com.gnupg.gpgolweb.svg
+  File /nonfatal ${prefix}/share/icons/hicolor/scalable/apps/com.gnupg.gpgolweb.svg
 
   SetOutPath "$INSTDIR\share\icons\hicolor\256x256\apps"
-  File ${prefix}/share/icons/hicolor/256x256/apps/com.gnupg.gpgolweb.png
+  File /nonfatal ${prefix}/share/icons/hicolor/256x256/apps/com.gnupg.gpgolweb.png
 
   SetOutPath "$INSTDIR\share\icons\hicolor\32x32\apps"
-  File ${prefix}/share/icons/hicolor/32x32/apps/com.gnupg.gpgolweb.png
+  File /nonfatal ${prefix}/share/icons/hicolor/32x32/apps/com.gnupg.gpgolweb.png
 
   SetOutPath "$INSTDIR\share\icons\hicolor\48x48\apps"
-  File ${prefix}/share/icons/hicolor/48x48/apps/com.gnupg.gpgolweb.png
+  File /nonfatal ${prefix}/share/icons/hicolor/48x48/apps/com.gnupg.gpgolweb.png
 
   SetOutPath "$INSTDIR\share\icons\hicolor\64x64\apps"
-  File ${prefix}/share/icons/hicolor/64x64/apps/com.gnupg.gpgolweb.png
+  File /nonfatal ${prefix}/share/icons/hicolor/64x64/apps/com.gnupg.gpgolweb.png
 
 
   SetOutPath "$INSTDIR\share\kxmlgui5\gpgol-client"

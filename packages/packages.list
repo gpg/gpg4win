@@ -614,11 +614,11 @@ chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
 
 
 # gpg4win-tools
-# last changed: 2025-03-25
+# last changed: 2025-06-04
 # by: wk
 # verified: Tarball created by builder.
-file gpg4win-tools/gpg4win-tools-202503251134.tar.xz
-chk 221c1bf9c8389189fc5e31f0c3a5e1ed1279d9102541d57784e3de2894c8545a
+file gpg4win-tools/gpg4win-tools-202506041012.tar.xz
+chk 473fa39a832f44716fff36fea0049ba66171df8e2a854cb03160efb724bd1faa
 
 # libkleo
 # last changed: 2025-06-03
@@ -636,10 +636,16 @@ chk 7efbb2c59911bc10f0ec9bccfda6f7e42c1ac2d8b3924d2dc14320a29db03a22
 
 # gpgoljs
 # last changed: 2025-06-04
-# by: carl
-# verified: Tarball created by carl.
-file gpgoljs/gpgoljs-202506041423.tar.xz
-chk 91b33916f20fcec454fede8ca7754095feb7413c20465188286bd975df624f2a
+# by: wk
+# verified: Tarball created by builder.
+file gpgoljs/gpgoljs-202506041049.tar.xz
+chk 81f883be30394a9d966837eeae392470620ddfd73c6805bba4dfb33ef08caeef
+#
+# Later update by which  is not in my current test build
+## by: carl
+## verified: Tarball created by carl.
+#file gpgoljs/gpgoljs-202506041423.tar.xz
+#chk 91b33916f20fcec454fede8ca7754095feb7413c20465188286bd975df624f2a
 
 
 #
