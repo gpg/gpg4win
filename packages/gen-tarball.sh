@@ -303,7 +303,7 @@ checksum=$(sha256sum ${tarball} | cut -d ' ' -f 1)
 cat > ${tmpdir}/snippet <<EOF
 # ${package}
 # last changed: ${curdate}
-# by: $USER
+# by: $(echo ${EMAIL-$USER}|sed 's/@.*//')
 # verified: Tarball created by $USER.
 file ${package}/${tarball}
 chk ${checksum}
