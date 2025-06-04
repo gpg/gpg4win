@@ -572,7 +572,7 @@ server https://gnupg.org/ftp/gcrypt
 # last changed: 2025-06-03
 # by: wk
 # verified: swdb
-file gpgme/gpgme-2.0.0.tar.xz
+file gpgme/gpgme-2.0.0.tar.bz2
 chk  ddf161d3c41ff6a3fcbaf4be6c6e305ca4ef1cc3f1ecdfce0c8c2a167c0cc36d
 
 # gpgmepp
