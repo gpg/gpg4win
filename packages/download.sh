@@ -154,12 +154,14 @@ WGET="wget $ipvx"
 
 packages="packages.list"
 
+actually_downloaded=
 
 lnr=0
 name=
 condfalse=
 [ $clean = yes ] && rm -f '.#download.v*'
 [ -f '.#download.failed' ] && rm '.#download.failed'
+[ -f '.#download.worked' ] && rm '.#download.worked'
 cat $packages | \
 while read key value valuetwo valuethree; do
     : $(( lnr = lnr + 1 ))/read
@@ -238,6 +240,7 @@ while read key value valuetwo valuethree; do
                  echo "line $lnr: $url has zero length" >> '.#download.failed'
                else
                  echo " okay"
+                 echo "$url" >> '.#download.worked'
                fi
            else
                echo " FAILED (line $lnr)"
@@ -309,6 +312,10 @@ while read key value valuetwo valuethree; do
      esac
 done
 [ $dryrun = yes ] && echo "Note: option --dry-run was used" >&2
+if [ -f '.#download.worked' ]; then
+    echo "Actually downloaded files:" >&2
+    cat '.#download.worked' >&2
+fi
 if [ -f '.#download.failed' ]; then
   cat '.#download.failed' >&2
   rm '.#download.failed'
