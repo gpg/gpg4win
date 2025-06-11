@@ -68,6 +68,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
              patches/libkleo/0001-Revert-Explicitly-use-Boost-s-cmake-config-file-for-.patch \
+             patches/mimetreeparser-202503111152/fix-multiple-connect.patch \
              patches/okular-202503101125/qtpolicy-mr-1143.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Add-support-to-customize-about-data.sik \
