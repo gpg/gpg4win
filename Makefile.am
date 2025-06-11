@@ -66,6 +66,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kiconthemes/dark-mode-detection.patch \
              patches/kio/0001-WIP-Remove-dependency-to-dbus.patch \
              patches/kio/FileManagerWindowJob.patch \
+             patches/kleopatra/0001-Revert-change-of-selection-of-own-keys-to-selection-.patch \
              patches/kleopatra/set-windows-registry.patch \
              patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
              patches/kparts/disable-jobuidelegate.patch \
