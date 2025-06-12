@@ -548,19 +548,32 @@ chk 2f0cd26b32bdbad14b6e5f3eff99e23aedf2425eacb0d4d6f44724dce6e26562
 server http://download.kde.org/stable/release-service/
 
 # kmime
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-06-12
+# by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
-file 24.12.2/src/kmime-24.12.2.tar.xz
-chk 1b584682bcee9fa4e2c6b404babd9ef3d9116467ed0cc005f15d9e965f303ee3
+file 25.04.2/src/kmime-25.04.2.tar.xz
+chk 6102c1191a34475af463f786e7407ee9f328bb75f93a1235e51ab3ef62500d3a
 
 # kmbox
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-06-12
+# by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
-file 24.12.2/src/kmbox-24.12.2.tar.xz
-chk da33971bf49ffcaecef8a2f57dd6c434301b2d31ed1b761ef5e21258a39214e5
+file 25.04.2/src/kmbox-25.04.2.tar.xz
+chk e348396fb8f1de1729d0415116b05f6220f0ebb4428c4607b98b56edd321f1aa
 
+# kmime
+# last changed: 2025-06-12
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
+file 25.04.2/src/kmime-25.04.2.tar.xz
+chk 6102c1191a34475af463f786e7407ee9f328bb75f93a1235e51ab3ef62500d3a
+
+# mimetreeparser
+# last changed: 2025-06-12
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
+file 25.04.2/src/mimetreeparser-25.04.2.tar.xz
+chk 9cdb04278f03c73c07ac0b840d44491460e3ab431133323d26a4c1ef084b6e37
 
 #
 # GPGME is stored on the GnuPG server
@@ -635,37 +648,12 @@ file kleopatra/kleopatra-202506031251.tar.xz
 chk 7efbb2c59911bc10f0ec9bccfda6f7e42c1ac2d8b3924d2dc14320a29db03a22
 
 # gpgoljs
-# last changed: 2025-06-11
-# by: m
-# verified: Tarball created by m.
-file gpgoljs/gpgoljs-202506111617.tar.xz
-chk 934f7511ef1f43179b6ec19cc9b90f83e9ed4ffa1677d1bd1c86b7932d246374
-
-
-#
-# mimetreeparser
-#
-if gnupg != gnupg22
-
-# mimetreeparser
-# last changed: 2025-03-11
+# last changed: 2025-06-12
 # by: carl
 # verified: Tarball created by carl.
-file mimetreeparser/mimetreeparser-202503111152.tar.xz
-chk af8336ed42f50d5fe51679438ac659e70105bbc44f62fb779d50721f96024e90
+file gpgoljs/gpgoljs-202506121051.tar.xz
+chk 2d86282ada2693a06365cf7cc7f42f0f50f26dc8e32f413b3d053300e80069fd
 
-fi # !gnupg22 - mimetreeparser
-
-if gnupg = gnupg22
-
-# mimetreeparser
-# last changed: 2025-01-22
-# by: builder
-# verified: Tarball created by builder.
-file mimetreeparser/mimetreeparser-202501221112.tar.xz
-chk 03f168008d9d8a7b37b23b8ce429fecd2c2798b41be571b699e536942029d8d3
-
-fi #gnupg22
 
 
 #

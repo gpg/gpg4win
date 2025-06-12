@@ -771,6 +771,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 			sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "6.1.0")/' CMakeLists.txt; \
 			sed -i 's/set(KPIM_MIME_VERSION.*)/set(KPIM_MIME_VERSION "6.1.0")/' CMakeLists.txt; \
 			sed -i 's/set(KPIM_MBOX_VERSION.*)/set(KPIM_MBOX_VERSION "6.1.0")/' CMakeLists.txt; \
+			sed -i 's/set(MIMETREEPARSER_VERSION.*)/set(MIMETREEPARSER_VERSION "6.1.0")/' CMakeLists.txt; \
 		fi; \
 		for pfile in "$$$${pkgpatbdir}"/*.patch \
                              "$$$${pkgpatdir}"/*.patch ; do  \

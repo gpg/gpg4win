@@ -37,8 +37,7 @@ kleopatra
 gpgol
 gpgoljs
 gpgpass
-gpg4win-tools
-mimetreeparser"
+gpg4win-tools"
 
 usage()
 {

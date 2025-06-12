@@ -32,7 +32,8 @@ if [ -z "$1" ]; then
 fi
 
 GEARS="kmime
-    kmbox"
+    kmbox
+    mimetreeparser"
 
 fullversion=$1
 case ${fullversion} in
