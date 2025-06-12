@@ -1,0 +1,165 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From ffb6d4797e3fd1b418f8be280f0bdca2cc7556da Mon Sep 17 00:00:00 2001
+From: Tobias Fella <tobias.fella@gnupg.com>
+Date: Tue, 10 Jun 2025 15:58:45 +0200
+Subject: [PATCH] Use RSAKeySizes and PGPKeyType again
+
+These were accidentally removed when reworking the dialog and are now added back for compatibility with existing configs.
+
+GnuPG-Bug-ID: 7674
+---
+ src/utils/compliance.cpp | 30 +++++++++++++-----
+ src/utils/gnupg.cpp      | 66 +++++++++++++++++++++++++++++++---------
+ 2 files changed, 75 insertions(+), 21 deletions(-)
+
+diff --git a/src/utils/compliance.cpp b/src/utils/compliance.cpp
+index 5aa30be4..4221f161 100644
+--- a/src/utils/compliance.cpp
++++ b/src/utils/compliance.cpp
+@@ -18,6 +18,7 @@
+ #include "keyhelpers.h"
+ #include "stringutils.h"
+ #include "systeminfo.h"
++#include "utils/compat.h"
+
+ #include <libkleo/debug.h>
+ #include <libkleo/keyfiltermanager.h>
+@@ -25,10 +26,15 @@
+ #include <libkleo_debug.h>
+
+ #include <KColorScheme>
++#include <KConfigGroup>
+ #include <KLocalizedString>
++#include <KSharedConfig>
+
+ #include <QPushButton>
+
++#include <QGpgME/CryptoConfig>
++#include <QGpgME/Protocol>
++
+ #include <gpgme++/key.h>
+
+ bool Kleo::DeVSCompliance::isActive()
+@@ -98,15 +104,25 @@ bool Kleo::DeVSCompliance::keyIsCompliant(const GpgME::Key &key)
+         && allSubkeysAreCompliant(key);
+ }
+
++static const QList<std::string> allCompliantAlgos = {
++    "brainpoolP256r1",
++    "brainpoolP384r1",
++    "brainpoolP512r1",
++    "rsa3072",
++    "rsa4096",
++};
++
+ const std::vector<std::string> &Kleo::DeVSCompliance::compliantAlgorithms()
+ {
+-    static const std::vector<std::string> compliantAlgos = {
+-        "brainpoolP256r1",
+-        "brainpoolP384r1",
+-        "brainpoolP512r1",
+-        "rsa3072",
+-        "rsa4096",
+-    };
++    static std::vector<std::string> compliantAlgos;
++    if (compliantAlgos.empty()) {
++        const auto availableAlgorithms = Kleo::availableAlgorithms();
++        std::set_intersection(allCompliantAlgos.begin(),
++                              allCompliantAlgos.end(),
++                              availableAlgorithms.begin(),
++                              availableAlgorithms.end(),
++                              std::back_inserter(compliantAlgos));
++    }
+     return isActive() ? compliantAlgos : Kleo::availableAlgorithms();
+ }
+
+diff --git a/src/utils/gnupg.cpp b/src/utils/gnupg.cpp
+index 4e081740..d2cb1d3f 100644
+--- a/src/utils/gnupg.cpp
++++ b/src/utils/gnupg.cpp
+@@ -25,7 +25,9 @@
+
+ #include <libkleo_debug.h>
+
++#include <KConfigGroup>
+ #include <KLocalizedString>
++#include <KSharedConfig>
+
+ #include <QGpgME/CryptoConfig>
+ #include <QGpgME/Protocol>
+@@ -603,20 +605,56 @@ void Kleo::restartGpgAgent()
+
+ const std::vector<std::string> &Kleo::availableAlgorithms()
+ {
+-    static const std::vector<std::string> algos = {
+-        "brainpoolP256r1",
+-        "brainpoolP384r1",
+-        "brainpoolP512r1",
+-        "curve25519",
+-        "curve448",
+-        "nistp256",
+-        "nistp384",
+-        "nistp521",
+-        "rsa2048",
+-        "rsa3072",
+-        "rsa4096",
+-        // "secp256k1", // Curve secp256k1 is explicitly ignored
+-    };
++    static std::vector<std::string> algos;
++
++    if (algos.empty()) {
++        KConfigGroup config(KSharedConfig::openConfig(QStringLiteral("kleopatrarc")), QStringLiteral("CertificateCreationWizard"));
++
++        if (config.isEntryImmutable("PGPKeyType")) {
++            QString defaultAlgo;
++            if (QGpgME::cryptoConfig()) {
++                if (auto pubkeyEntry = getCryptoConfigEntry(QGpgME::cryptoConfig(), "gpg", "default_pubkey_algo")) {
++                    defaultAlgo = pubkeyEntry->stringValue().split(QLatin1Char('/'))[0];
++                    if (defaultAlgo == QStringLiteral("ed25519")) {
++                        defaultAlgo = QStringLiteral("curve25519");
++                    } else if (defaultAlgo == QStringLiteral("ed448")) {
++                        defaultAlgo = QStringLiteral("curve448");
++                    }
++                }
++            }
++            if (config.readEntry("PGPKeyType", QString()).isEmpty() && !defaultAlgo.isEmpty()) {
++                algos = {defaultAlgo.toStdString()};
++            } else {
++                for (const auto size : config.readEntry("RSAKeySizes", QList<int>() << 2048 << -3072 << 4096)) {
++                    const auto abs = std::abs(size);
++                    if (abs == 2048 || abs == 3072 || abs == 4096) {
++                        algos.push_back("rsa" + std::to_string(abs));
++                    }
++                }
++            }
++        } else {
++            algos.reserve(13);
++            algos = {
++                "brainpoolP256r1",
++                "brainpoolP384r1",
++                "brainpoolP512r1",
++                "curve25519",
++                "curve448",
++                "nistp256",
++                "nistp384",
++                "nistp521",
++                // "secp256k1", // Curve secp256k1 is explicitly ignored
++            };
++
++            for (const auto size : config.readEntry("RSAKeySizes", QList<int>() << 2048 << -3072 << 4096)) {
++                const auto abs = std::abs(size);
++                if (abs == 2048 || abs == 3072 || abs == 4096) {
++                    algos.push_back("rsa" + std::to_string(abs));
++                }
++            }
++        }
++    }
++
+     return algos;
+ }
+
+--
+2.49.0

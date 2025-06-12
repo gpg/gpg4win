@@ -67,6 +67,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kio/0001-WIP-Remove-dependency-to-dbus.patch \
              patches/kio/FileManagerWindowJob.patch \
              patches/kleopatra/0001-Revert-change-of-selection-of-own-keys-to-selection-.patch \
+             patches/kleopatra/0002-Use-RSAKeySizes-and-PGPKeyType-again.patch \
              patches/kleopatra/set-windows-registry.patch \
              patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
              patches/kparts/disable-jobuidelegate.patch \
@@ -77,6 +78,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kxmlgui/0002-stretch-aboutpage.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
+             patches/libkleo/0001-Use-RSAKeySizes-and-PGPKeyType-again.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Add-support-to-customize-about-data.patch \
              patches/okular/lower-cmake-requirement.patch \

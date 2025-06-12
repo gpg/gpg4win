@@ -1,0 +1,50 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 34142fe76560cb2799e901c70c01d3882d40c8de Mon Sep 17 00:00:00 2001
+From: Tobias Fella <tobias.fella@gnupg.com>
+Date: Tue, 10 Jun 2025 15:47:38 +0200
+Subject: [PATCH 2/2] Use RSAKeySizes and PGPKeyType again
+
+These were accidentally removed when reworking the dialog and are now added back for compatibility with existing configs.
+
+GnuPG-Bug-ID: 7674
+---
+ .../newopenpgpcertificatedetailsdialog.cpp    | 21 +++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/src/dialogs/newopenpgpcertificatedetailsdialog.cpp b/src/dialogs/newopenpgpcertificatedetailsdialog.cpp
+index 30a8f7f72..992660176 100644
+--- a/src/dialogs/newopenpgpcertificatedetailsdialog.cpp
++++ b/src/dialogs/newopenpgpcertificatedetailsdialog.cpp
+@@ -217,6 +217,27 @@ public:
+             ui.keyAlgoCB->setCurrentIndex(0);
+         }
+
++        if (!config.readEntry("PGPKeyType", QString()).isEmpty()) {
++            for (auto i = 0; i < ui.keyAlgoCB->count(); ++i) {
++                if (ui.keyAlgoCB->itemData(i).toString().startsWith(QStringLiteral("rsa"))) {
++                    ui.keyAlgoCB->setCurrentIndex(i);
++                    break;
++                }
++            }
++        }
++
++        if (config.hasKey("RSAKeySizes")) {
++            for (const auto size : config.readEntry("RSAKeySizes", QList<int>())) {
++                if (size < 0) {
++                    auto index = ui.keyAlgoCB->findData(QStringLiteral("rsa%1").arg(std::abs(size)));
++                    if (index != -1) {
++                        ui.keyAlgoCB->setCurrentIndex(index);
++                    }
++                    break;
++                }
++            }
++        }
++
+         Kleo::setUpExpirationDateComboBox(ui.expiryDE);
+         ui.expiryCB->setEnabled(true);
+         setExpiryDate(defaultExpirationDate(ExpirationOnUnlimitedValidity::InternalDefaultExpiration));
+--
+2.49.0
