@@ -84,7 +84,7 @@ for package in $GEARS; do
 
     echo "# $package"
     echo "# last changed: $curdate"
-    echo "# by: ah"
+    echo "# by: $(echo ${EMAIL-$USER}|sed 's/@.*//')"
     echo "# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)"
     echo "file ${fullversion}/src/${tarfile}"
     echo "chk $sha2"

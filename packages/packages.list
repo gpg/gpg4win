@@ -549,28 +549,21 @@ server http://download.kde.org/stable/release-service/
 
 # kmime
 # last changed: 2025-06-12
-# by: ah
+# by: carl
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
 file 25.04.2/src/kmime-25.04.2.tar.xz
 chk 6102c1191a34475af463f786e7407ee9f328bb75f93a1235e51ab3ef62500d3a
 
 # kmbox
 # last changed: 2025-06-12
-# by: ah
+# by: carl
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
 file 25.04.2/src/kmbox-25.04.2.tar.xz
 chk e348396fb8f1de1729d0415116b05f6220f0ebb4428c4607b98b56edd321f1aa
 
-# kmime
-# last changed: 2025-06-12
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
-file 25.04.2/src/kmime-25.04.2.tar.xz
-chk 6102c1191a34475af463f786e7407ee9f328bb75f93a1235e51ab3ef62500d3a
-
 # mimetreeparser
 # last changed: 2025-06-12
-# by: ah
+# by: carl
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
 file 25.04.2/src/mimetreeparser-25.04.2.tar.xz
 chk 9cdb04278f03c73c07ac0b840d44491460e3ab431133323d26a4c1ef084b6e37
