@@ -1,0 +1,104 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 49989e844d711ffcd59557ed2673c5dffd6c067c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 17 Jun 2025 14:22:58 +0200
+Subject: [PATCH 1/3] Add helper for checking if high-contrast color scheme is
+ in use
+
+---
+ src/CMakeLists.txt         |  2 ++
+ src/highcontrasthelper.cpp | 36 ++++++++++++++++++++++++++++++++++++
+ src/highcontrasthelper_p.h | 21 +++++++++++++++++++++
+ 3 files changed, 59 insertions(+)
+ create mode 100644 src/highcontrasthelper.cpp
+ create mode 100644 src/highcontrasthelper_p.h
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 17872a82..f3950efd 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -15,6 +15,8 @@ target_sources(KF6WidgetsAddons PRIVATE
+     common_helpers.cpp
+     common_helpers_p.h
+     fonthelpers_p.h
++    highcontrasthelper.cpp
++    highcontrasthelper_p.h
+     kacceleratormanager.cpp
+     kacceleratormanager.h
+     kacceleratormanager_p.h
+diff --git a/src/highcontrasthelper.cpp b/src/highcontrasthelper.cpp
+new file mode 100644
+index 00000000..7f488813
+--- /dev/null
++++ b/src/highcontrasthelper.cpp
+@@ -0,0 +1,38 @@
++/*
++    This file is part of the KDE libraries
++    SPDX-FileCopyrightText: 2025 g10 Code GmbH
++    SPDX-FileContributor: Ingo Klöcker <dev@ingo-kloecker.de>
++
++    SPDX-License-Identifier: LGPL-2.0-or-later
++*/
++
++#include <QtCore/qsystemdetection.h>
++
++#ifdef Q_OS_WIN
++#include "highcontrasthelper_p.h"
++
++#include <QApplication>
++
++#include "windows.h"
++
++static bool isDefaultColorSchemeInUse()
++{
++    const QVariant colorSchemePathProperty = qApp->property("KDE_COLOR_SCHEME_PATH");
++    return !colorSchemePathProperty.isValid() || colorSchemePathProperty.toString().isEmpty();
++}
++
++static bool isHighContrastModeActive()
++{
++    HIGHCONTRAST result;
++    result.cbSize = sizeof(HIGHCONTRAST);
++    if (SystemParametersInfo(SPI_GETHIGHCONTRAST, result.cbSize, &result, 0)) {
++        return (result.dwFlags & HCF_HIGHCONTRASTON);
++    }
++    return false;
++}
++
++bool isHighContrastColorSchemeInUse()
++{
++    return isHighContrastModeActive() && isDefaultColorSchemeInUse();
++}
++#endif
+diff --git a/src/highcontrasthelper_p.h b/src/highcontrasthelper_p.h
+new file mode 100644
+index 00000000..ee599911
+--- /dev/null
++++ b/src/highcontrasthelper_p.h
+@@ -0,0 +1,21 @@
++/*
++    This file is part of the KDE libraries
++    SPDX-FileCopyrightText: 2025 g10 Code GmbH
++    SPDX-FileContributor: Ingo Klöcker <dev@ingo-kloecker.de>
++
++    SPDX-License-Identifier: LGPL-2.0-or-later
++*/
++
++#ifndef HIGHCONTRASTHELPER_P_H
++#define HIGHCONTRASTHELPER_P_H
++
++#ifdef Q_OS_WIN
++bool isHighContrastColorSchemeInUse();
++#else
++constexpr bool isHighContrastColorSchemeInUse()
++{
++    return false;
++}
++#endif
++
++#endif
+--
+2.49.0

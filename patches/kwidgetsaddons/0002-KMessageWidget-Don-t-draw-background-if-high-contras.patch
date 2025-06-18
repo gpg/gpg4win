@@ -1,0 +1,42 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From c07e15027a5cbff6af0107ff98ad5995e408ff3f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 11 Jun 2025 11:31:47 +0200
+Subject: [PATCH 2/3] KMessageWidget: Don't draw background if high contrast is
+ active
+
+The colored background might have too poor contrast to the text color.
+---
+ src/kmessagewidget.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/kmessagewidget.cpp b/src/kmessagewidget.cpp
+index 7a098ba9..012efb24 100644
+--- a/src/kmessagewidget.cpp
++++ b/src/kmessagewidget.cpp
+@@ -21,6 +21,9 @@
+ #include <QStyleOption>
+ #include <QTimeLine>
+ #include <QToolButton>
++
++#include "highcontrasthelper_p.h"
++
+ //---------------------------------------------------------------------
+ // KMessageWidgetPrivate
+ //---------------------------------------------------------------------
+@@ -371,7 +374,9 @@ void KMessageWidget::paintEvent(QPaintEvent *event)
+     const int newBlue = (color.blue() * alpha) + (parentWindowColor.blue() * (1 - alpha));
+
+     painter.setRenderHint(QPainter::Antialiasing);
+-    painter.setBrush(QColor(newRed, newGreen, newBlue));
++    if (!isHighContrastColorSchemeInUse()) {
++        painter.setBrush(QColor(newRed, newGreen, newBlue));
++    }
+     if (d->position == Position::Inline) {
+         painter.setPen(QPen(color, borderSize));
+         painter.drawRoundedRect(innerRect, radius, radius);
+--
+2.49.0
