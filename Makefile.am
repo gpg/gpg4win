@@ -81,7 +81,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
              patches/libkleo/0001-Revert-Explicitly-use-Boost-s-cmake-config-file-for-.patch \
              patches/mimetreeparser-25.04.2/fix-multiple-connect.patch \
-             patches/okular-202503101125/qtpolicy-mr-1143.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Add-support-to-customize-about-data.sik \
              patches/okular/lower-cmake-requirement.patch \
@@ -95,8 +94,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/configurable-windowstheme.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
              patches/qthttpserver/originAuthenticationRequired.patch \
-             patches/qgpgme-2.0.0-beta28/propagate-encryption-flags.patch \
-             patches/gpgmepp-2.0.0-beta26/add-recipients-encryption-flags.patch \
              patches-appimage/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
              patches-appimage/breeze/0002-fix-ifdef-windows-qmenu.patch \
              patches-appimage/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
