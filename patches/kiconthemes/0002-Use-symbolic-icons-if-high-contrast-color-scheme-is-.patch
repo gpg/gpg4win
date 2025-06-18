@@ -1,0 +1,64 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From dfc786d2cee0a67603630f4559527cc524ea8621 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 3 Jun 2025 11:45:45 +0200
+Subject: [PATCH 2/2] Use symbolic icons if high-contrast color scheme is in
+ use on Windows
+
+---
+ src/kiconloader.cpp | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/src/kiconloader.cpp b/src/kiconloader.cpp
+index d18cae0..f21b614 100644
+--- a/src/kiconloader.cpp
++++ b/src/kiconloader.cpp
+@@ -26,6 +26,7 @@
+
+ // kdeui
+ #include "debug.h"
++#include "highcontrasthelper_p.h"
+ #include "kiconcolors.h"
+ #include "kiconeffect.h"
+ #include "kicontheme.h"
+@@ -792,9 +793,14 @@ QString KIconLoaderPrivate::findMatchingIcon(const QString &name, int size, qrea
+
+     bool genericFallback = name.endsWith(QLatin1String("-x-generic"));
+     bool isSymbolic = name.endsWith(QLatin1String("-symbolic"));
++    QString actualName = name;
++    if (!isSymbolic && isHighContrastColorSchemeInUse()) {
++        actualName += QLatin1String("-symbolic");
++        isSymbolic = true;
++    }
+     QString path;
+     for (KIconThemeNode *themeNode : std::as_const(links)) {
+-        QString currentName = name;
++        QString currentName = actualName;
+
+         while (!currentName.isEmpty()) {
+             path = themeNode->theme->iconPathByName(currentName, size, KIconLoader::MatchBest, scale);
+@@ -868,11 +874,18 @@ QString KIconLoaderPrivate::findMatchingIcon(const QString &name, int size, qrea
+             const QString extensions[] = {QStringLiteral(".png"), QStringLiteral(".svg"), QStringLiteral(".svgz"), QStringLiteral(".xpm")};
+
+             for (const QString &ext : extensions) {
+-                const QString file = path + '/' + name + ext;
++                const QString file = path + '/' + actualName + ext;
+
+                 if (QFileInfo::exists(file)) {
+                     return file;
+                 }
++
++                if (actualName != name) {
++                    const QString file = path + '/' + name + ext;
++                    if (QFileInfo::exists(file)) {
++                        return file;
++                    }
++                }
+             }
+         }
+     }
+--
+2.49.0

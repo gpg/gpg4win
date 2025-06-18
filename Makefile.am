@@ -68,6 +68,8 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kguiaddons/0002-DRAFT-There-is-no-dark-mode-on-old-Windows.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/kiconthemes/0001-Remove-code-for-Qt-older-than-6.8.patch \
+             patches/kiconthemes/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
+             patches/kiconthemes/0002-Use-symbolic-icons-if-high-contrast-color-scheme-is-.patch \
              patches/kjobwidgets/0001-Remove-knotification.patch \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
