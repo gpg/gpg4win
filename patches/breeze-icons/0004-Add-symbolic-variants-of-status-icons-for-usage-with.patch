@@ -1,0 +1,175 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 9ae32c68d873748d5717cd5299fa188819819f19 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Thu, 12 Jun 2025 16:22:00 +0200
+Subject: [PATCH 4/4] Add symbolic variants of status icons for usage with high
+ contrast mode
+
+---
+ icons/status/16/data-error-symbolic.svg       | 8 ++++++++
+ icons/status/16/data-information-symbolic.svg | 8 ++++++++
+ icons/status/16/data-question-symbolic.svg    | 8 ++++++++
+ icons/status/16/data-success-symbolic.svg     | 8 ++++++++
+ icons/status/16/data-warning-symbolic.svg     | 8 ++++++++
+ icons/status/22/data-error-symbolic.svg       | 8 ++++++++
+ icons/status/22/data-information-symbolic.svg | 8 ++++++++
+ icons/status/22/data-question-symbolic.svg    | 8 ++++++++
+ icons/status/22/data-success-symbolic.svg     | 8 ++++++++
+ icons/status/22/data-warning-symbolic.svg     | 8 ++++++++
+ 10 files changed, 80 insertions(+)
+ create mode 100644 icons/status/16/data-error-symbolic.svg
+ create mode 100644 icons/status/16/data-information-symbolic.svg
+ create mode 100644 icons/status/16/data-question-symbolic.svg
+ create mode 100644 icons/status/16/data-success-symbolic.svg
+ create mode 100644 icons/status/16/data-warning-symbolic.svg
+ create mode 100644 icons/status/22/data-error-symbolic.svg
+ create mode 100644 icons/status/22/data-information-symbolic.svg
+ create mode 100644 icons/status/22/data-question-symbolic.svg
+ create mode 100644 icons/status/22/data-success-symbolic.svg
+ create mode 100644 icons/status/22/data-warning-symbolic.svg
+
+diff --git a/icons/status/16/data-error-symbolic.svg b/icons/status/16/data-error-symbolic.svg
+new file mode 100644
+index 000000000..09a708029
+--- /dev/null
++++ b/icons/status/16/data-error-symbolic.svg
+@@ -0,0 +1,8 @@
++<svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
++    <style type="text/css" id="current-color-scheme">
++        .ColorScheme-NegativeText {
++            color:#da4453;
++        }
++    </style>
++    <path class="ColorScheme-NegativeText" d="M 4 2 C 2.892 2 2 2.892 2 4 L 2 12 C 2 13.108 2.892 14 4 14 L 12 14 C 13.108 14 14 13.108 14 12 L 14 4 C 14 2.892 13.108 2 12 2 L 4 2 z M 5.4140625 4 L 8 6.5859375 L 10.585938 4 L 12 5.4140625 L 9.4140625 8 L 12 10.585938 L 10.585938 12 L 8 9.4140625 L 5.4140625 12 L 4 10.585938 L 6.5859375 8 L 4 5.4140625 L 5.4140625 4 z " fill="currentColor"/>
++</svg>
+diff --git a/icons/status/16/data-information-symbolic.svg b/icons/status/16/data-information-symbolic.svg
+new file mode 100644
+index 000000000..34387de2f
+--- /dev/null
++++ b/icons/status/16/data-information-symbolic.svg
+@@ -0,0 +1,8 @@
++<svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
++    <style type="text/css" id="current-color-scheme">
++        .ColorScheme-Text {
++            color:#232629;
++        }
++    </style>
++    <path class="ColorScheme-Text" d="m4 2c-1.108 0-2 0.892-2 2v8c0 1.108 0.892 2 2 2h8c1.108 0 2-0.892 2-2v-8c0-1.108-0.892-2-2-2h-8zm3 2h2v2h-2v-2zm0 3h2v5h-2v-5z" fill="currentColor"/>
++</svg>
+diff --git a/icons/status/16/data-question-symbolic.svg b/icons/status/16/data-question-symbolic.svg
+new file mode 100644
+index 000000000..130688e34
+--- /dev/null
++++ b/icons/status/16/data-question-symbolic.svg
+@@ -0,0 +1,8 @@
++<svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
++    <style type="text/css" id="current-color-scheme">
++        .ColorScheme-Text {
++            color:#232629;
++        }
++    </style>
++    <path class="ColorScheme-Text" d="m4 2c-1.108 0-2 0.892-2 2v8c0 1.108 0.892 2 2 2h8c1.108 0 2-0.892 2-2v-8c0-1.108-0.892-2-2-2h-8zm4 1c1.6450096 0 3 1.3549904 3 3 0 1.2951421-0.839913 2.4103144-2 2.8261719v1.1738281h-2v-1.1738281c4.7e-6 -0.0303357 0.0012583-0.0633028 0.0039062-0.0976563h0.0039063c0.0393441-0.8003696 0.5495709-1.5049882 1.3085937-1.78125l0.0019532 0.0039063c0.4023575-0.1285752 0.6816406-0.4985085 0.6816406-0.9511719 0-0.5641294-0.4358706-1-1-1s-1 0.4358706-1 1h-2c0-1.6450096 1.3549904-3 3-3zm-1 8h2v2h-2v-2z" fill="currentColor"/>
++</svg>
+diff --git a/icons/status/16/data-success-symbolic.svg b/icons/status/16/data-success-symbolic.svg
+new file mode 100644
+index 000000000..d4f88a1be
+--- /dev/null
++++ b/icons/status/16/data-success-symbolic.svg
+@@ -0,0 +1,8 @@
++<svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
++    <style type="text/css" id="current-color-scheme">
++        .ColorScheme-PositiveText {
++            color:#27ae60;
++        }
++    </style>
++    <path class="ColorScheme-PositiveText" d="M 4,2 C 2.892,2 2,2.892 2,4 v 8 c 0,1.108 0.892,2 2,2 h 8 c 1.108,0 2,-0.892 2,-2 V 4.9472656 L 6.5,12.447266 3,8.7949219 4.3476562,7.3574219 6.5,9.6191406 13.591797,2.7910156 C 13.22712,2.3111372 12.651901,2 12,2 Z" fill="currentColor"/>
++</svg>
+diff --git a/icons/status/16/data-warning-symbolic.svg b/icons/status/16/data-warning-symbolic.svg
+new file mode 100644
+index 000000000..1547c867b
+--- /dev/null
++++ b/icons/status/16/data-warning-symbolic.svg
+@@ -0,0 +1,8 @@
++<svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
++    <style type="text/css" id="current-color-scheme">
++        .ColorScheme-NeutralText {
++            color:#f67400;
++        }
++    </style>
++    <path class="ColorScheme-NeutralText" d="m8.0058594 2a0.75001881 0.74999832 0 0 0-0.6757813 0.4140625l-5.25 10.5a0.75001881 0.74999832 0 0 0 0.6699219 1.085938h10.5a0.75001881 0.74999832 0 0 0 0.671875-1.085938l-5.25-10.5a0.75001881 0.74999832 0 0 0-0.6660156-0.4140625zm-1.0058594 4h2v4h-2v-4zm0 5h2v2h-2v-2z" fill="currentColor"/>
++</svg>
+diff --git a/icons/status/22/data-error-symbolic.svg b/icons/status/22/data-error-symbolic.svg
+new file mode 100644
+index 000000000..5b94bce81
+--- /dev/null
++++ b/icons/status/22/data-error-symbolic.svg
+@@ -0,0 +1,8 @@
++<svg version="1.1" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
++    <style type="text/css" id="current-color-scheme">
++        .ColorScheme-NegativeText {
++            color:#da4453;
++        }
++    </style>
++    <path class="ColorScheme-NegativeText" d="M 5 3 C 3.892 3 3 3.892 3 5 L 3 17 C 3 18.108 3.892 19 5 19 L 17 19 C 18.108 19 19 18.108 19 17 L 19 5 C 19 3.892 18.108 3 17 3 L 5 3 z M 6.4140625 5 L 11 9.5859375 L 15.585938 5 L 17 6.4140625 L 12.414062 11 L 17 15.585938 L 15.585938 17 L 11 12.414062 L 6.4140625 17 L 5 15.585938 L 9.5859375 11 L 5 6.4140625 L 6.4140625 5 z " fill="currentColor"/>
++</svg>
+diff --git a/icons/status/22/data-information-symbolic.svg b/icons/status/22/data-information-symbolic.svg
+new file mode 100644
+index 000000000..393c27fcd
+--- /dev/null
++++ b/icons/status/22/data-information-symbolic.svg
+@@ -0,0 +1,8 @@
++<svg version="1.1" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
++    <style type="text/css" id="current-color-scheme">
++        .ColorScheme-Text {
++            color:#232629;
++        }
++    </style>
++    <path class="ColorScheme-Text" d="m5 3c-1.108 0-2 0.892-2 2v12c0 1.108 0.892 2 2 2h12c1.108 0 2-0.892 2-2v-12c0-1.108-0.892-2-2-2h-12zm5 3h2v2h-2v-2zm0 4h2v6h-2v-6z" fill="currentColor"/>
++</svg>
+diff --git a/icons/status/22/data-question-symbolic.svg b/icons/status/22/data-question-symbolic.svg
+new file mode 100644
+index 000000000..dff6bcee6
+--- /dev/null
++++ b/icons/status/22/data-question-symbolic.svg
+@@ -0,0 +1,8 @@
++<svg version="1.1" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
++    <style type="text/css" id="current-color-scheme">
++        .ColorScheme-Text {
++            color:#232629;
++        }
++    </style>
++    <path class="ColorScheme-Text" d="m5 3c-1.108 0-2 0.892-2 2v12c0 1.108 0.892 2 2 2h12c1.108 0 2-0.892 2-2v-12c0-1.108-0.892-2-2-2h-12zm6 2a4 4 0 0 1 4 4 4 4 0 0 1-3 3.867188v1.132812h-2v-3h1a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2h-2a4 4 0 0 1 4-4zm-1 10h2v2h-2v-2z" fill="currentColor"/>
++</svg>
+diff --git a/icons/status/22/data-success-symbolic.svg b/icons/status/22/data-success-symbolic.svg
+new file mode 100644
+index 000000000..9a7f07116
+--- /dev/null
++++ b/icons/status/22/data-success-symbolic.svg
+@@ -0,0 +1,8 @@
++<svg version="1.1" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
++    <style type="text/css" id="current-color-scheme">
++        .ColorScheme-PositiveText {
++            color:#27ae60;
++        }
++    </style>
++    <path class="ColorScheme-PositiveText" d="M 4.4550781 3 C 3.6492599 3 3 3.6492599 3 4.4550781 L 3 17.544922 C 3 18.35074 3.6492599 19 4.4550781 19 L 17.544922 19 C 18.35074 19 19 18.35074 19 17.544922 L 19 6.828125 L 9 16.828125 L 4.3847656 12.058594 L 5.7324219 10.623047 L 9 14 L 18.994141 4.3808594 L 18.998047 4.3828125 C 18.960347 3.6110357 18.326333 3 17.544922 3 L 4.4550781 3 z " fill="currentColor"/>
++</svg>
+diff --git a/icons/status/22/data-warning-symbolic.svg b/icons/status/22/data-warning-symbolic.svg
+new file mode 100644
+index 000000000..98f80384a
+--- /dev/null
++++ b/icons/status/22/data-warning-symbolic.svg
+@@ -0,0 +1,8 @@
++<svg version="1.1" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
++    <style type="text/css" id="current-color-scheme">
++        .ColorScheme-NeutralText {
++            color:#f67400;
++        }
++    </style>
++    <path class="ColorScheme-NeutralText" d="m11.005859 3a0.72728737 0.72727154 0 0 0-0.65625 0.4023438l-7.2734371 14.544922a0.72728737 0.72727154 0 0 0 0.6523437 1.052734h14.544922a0.72728737 0.72727154 0 0 0 0.65039-1.052734l-7.271484-14.544922a0.72728737 0.72727154 0 0 0-0.646485-0.4023438zm-1.005859 5h2v5h-2v-5zm0 7h2v2h-2v-2z" fill="currentColor"/>
++</svg>
+--
+2.49.0

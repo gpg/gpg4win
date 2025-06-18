@@ -1,0 +1,31 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From be2662fdc7eb49c53815cfb7c018877993c601d3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Thu, 5 Jun 2025 11:22:17 +0200
+Subject: [PATCH 1/4] Add 16x16 variant of data-success
+
+---
+ icons/status/16/data-success.svg | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+ create mode 100644 icons/status/16/data-success.svg
+
+diff --git a/icons/status/16/data-success.svg b/icons/status/16/data-success.svg
+new file mode 100644
+index 000000000..6d238bb9e
+--- /dev/null
++++ b/icons/status/16/data-success.svg
+@@ -0,0 +1,9 @@
++<svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
++    <style type="text/css" id="current-color-scheme">
++        .ColorScheme-PositiveText {
++            color:#27ae60;
++        }
++    </style>
++    <rect class="ColorScheme-PositiveText" x="2" y="2" width="12" height="12" rx="2" fill="currentColor"/>
++    <path d="m13.59375 2.7890625-7.09375 6.8300781-2.1523438-2.2617187-1.3476562 1.4375 3.5 3.6523441 7.5-7.5000004v-0.9472656c0-0.4555302-0.151683-0.8754031-0.40625-1.2109375z" fill="#fff"/>
++</svg>
+--
+2.49.0
