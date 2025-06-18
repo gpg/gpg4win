@@ -1,0 +1,98 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 00406d0c8d0886fcae746a0f9f2dcf8038d1b2dc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 17 Jun 2025 15:42:08 +0200
+Subject: [PATCH 3/5] Add helper for checking if high-contrast color scheme is
+ in use
+
+---
+ kstyle/CMakeLists.txt         |  1 +
+ kstyle/highcontrasthelper.cpp | 37 +++++++++++++++++++++++++++++++++++
+ kstyle/highcontrasthelper.h   | 17 ++++++++++++++++
+ 3 files changed, 55 insertions(+)
+ create mode 100644 kstyle/highcontrasthelper.cpp
+ create mode 100644 kstyle/highcontrasthelper.h
+
+diff --git a/kstyle/CMakeLists.txt b/kstyle/CMakeLists.txt
+index af7a9a15..f30ac9a2 100644
+--- a/kstyle/CMakeLists.txt
++++ b/kstyle/CMakeLists.txt
+@@ -52,6 +52,7 @@ set(breeze_PART_SRCS
+     breezetileset.cpp
+     breezewindowmanager.cpp
+     breezetoolsareamanager.cpp
++    highcontrasthelper.cpp
+ )
+
+ kconfig_add_kcfg_files(breeze_PART_SRCS ../kdecoration/breezesettings.kcfgc)
+diff --git a/kstyle/highcontrasthelper.cpp b/kstyle/highcontrasthelper.cpp
+new file mode 100644
+index 00000000..551f7e7d
+--- /dev/null
++++ b/kstyle/highcontrasthelper.cpp
+@@ -0,0 +1,37 @@
++/*
++ * SPDX-FileCopyrightText: 2025 g10 Code GmbH
++ * SPDX-FileContributor: Ingo Klöcker <dev@ingo-kloecker.de>
++ *
++ * SPDX-License-Identifier: LGPL-2.0-or-later
++ */
++
++#include <QtCore/qsystemdetection.h>
++
++#ifdef Q_OS_WIN
++#include "highcontrasthelper.h"
++
++#include <QApplication>
++
++#include "windows.h"
++
++static bool isDefaultColorSchemeInUse()
++{
++    const QVariant colorSchemePathProperty = qApp->property("KDE_COLOR_SCHEME_PATH");
++    return !colorSchemePathProperty.isValid() || colorSchemePathProperty.toString().isEmpty();
++}
++
++static bool isHighContrastModeActive()
++{
++    HIGHCONTRAST result;
++    result.cbSize = sizeof(HIGHCONTRAST);
++    if (SystemParametersInfo(SPI_GETHIGHCONTRAST, result.cbSize, &result, 0)) {
++        return (result.dwFlags & HCF_HIGHCONTRASTON);
++    }
++    return false;
++}
++
++bool isHighContrastColorSchemeInUse()
++{
++    return isHighContrastModeActive() && isDefaultColorSchemeInUse();
++}
++#endif
+diff --git a/kstyle/highcontrasthelper.h b/kstyle/highcontrasthelper.h
+new file mode 100644
+index 00000000..163b7011
+--- /dev/null
++++ b/kstyle/highcontrasthelper.h
+@@ -0,0 +1,17 @@
++/*
++ * SPDX-FileCopyrightText: 2025 g10 Code GmbH
++ * SPDX-FileContributor: Ingo Klöcker <dev@ingo-kloecker.de>
++ *
++ * SPDX-License-Identifier: LGPL-2.0-or-later
++ */
++
++#pragma once
++
++#ifdef Q_OS_WIN
++bool isHighContrastColorSchemeInUse();
++#else
++constexpr bool isHighContrastColorSchemeInUse()
++{
++    return false;
++}
++#endif
+--
+2.49.0

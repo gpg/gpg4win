@@ -55,6 +55,9 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/breeze/0001-Fix-toolbar-colors-in-high-contrast-mode.patch \
              patches/breeze/0002-fix-ifdef-windows-qmenu.patch \
              patches/breeze/0002-kstyle-Support-registering-QMainWindow-in-tools-area.patch \
+             patches/breeze/0003-Add-helper-for-checking-if-high-contrast-color-schem.patch \
+             patches/breeze/0004-For-high-contrast-draw-hovered-menu-bar-items-like-s.patch \
+             patches/breeze/0005-For-high-contrast-draw-hovered-menu-items-like-selec.patch \
              patches/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/jpeg/fix-redefine.patch \

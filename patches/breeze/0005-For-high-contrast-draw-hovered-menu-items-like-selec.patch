@@ -1,0 +1,112 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From bb3d967321527e592f066c58ffe7b54b6229d735 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Mon, 16 Jun 2025 17:07:50 +0200
+Subject: [PATCH 5/5] For high-contrast, draw hovered menu items like selected
+ items
+
+This avoids problems with some high-contrast color schemes where it was
+hard to see the hovered menu items.
+
+GnuPG-bug-id: 7415
+---
+ kstyle/breezestyle.cpp | 49 +++++++++++++++++++++++++-----------------
+ 1 file changed, 29 insertions(+), 20 deletions(-)
+
+diff --git a/kstyle/breezestyle.cpp b/kstyle/breezestyle.cpp
+index 7a4de4e1..1e701e00 100644
+--- a/kstyle/breezestyle.cpp
++++ b/kstyle/breezestyle.cpp
+@@ -5730,6 +5730,7 @@ bool Style::drawMenuItemControl(const QStyleOption *option, QPainter *painter, c
+     const bool sunken = enabled && (state & (State_Sunken));
+     const bool reverseLayout = option->direction == Qt::RightToLeft;
+     const bool useStrongFocus = StyleConfigData::menuItemDrawStrongFocus();
++    const bool isHighContrastActive = isHighContrastColorSchemeInUse();
+
+     // deal with separators
+     if (menuItemOption->menuItemType == QStyleOptionMenuItem::Separator) {
+@@ -5778,28 +5779,32 @@ bool Style::drawMenuItemControl(const QStyleOption *option, QPainter *painter, c
+     // render hover and focus
+     if (useStrongFocus && (selected || sunken)) {
+         auto color = _helper->focusColor(palette);
+-        color = _helper->alphaColor(color, 0.3);
+-        const auto outlineColor = _helper->focusOutlineColor(palette);
++        if (isHighContrastActive) {
++            _helper->renderFocusRect(painter, rect, color);
++        } else {
++            color = _helper->alphaColor(color, 0.3);
++            const auto outlineColor = _helper->focusOutlineColor(palette);
+
+-        Sides sides;
+-        if (!menuItemOption->menuRect.isNull()) {
+-            const auto seamlessEdges = _helper->menuSeamlessEdges(widget);
++            Sides sides;
++            if (!menuItemOption->menuRect.isNull()) {
++                const auto seamlessEdges = _helper->menuSeamlessEdges(widget);
+
+-            if (rect.top() <= menuItemOption->menuRect.top() && !seamlessEdges.testFlag(Qt::TopEdge)) {
+-                sides |= SideTop;
+-            }
+-            if (rect.bottom() >= menuItemOption->menuRect.bottom() && !seamlessEdges.testFlag(Qt::BottomEdge)) {
+-                sides |= SideBottom;
+-            }
+-            if (rect.left() <= menuItemOption->menuRect.left() && !seamlessEdges.testFlag(Qt::LeftEdge)) {
+-                sides |= SideLeft;
+-            }
+-            if (rect.right() >= menuItemOption->menuRect.right() && !seamlessEdges.testFlag(Qt::RightEdge)) {
+-                sides |= SideRight;
++                if (rect.top() <= menuItemOption->menuRect.top() && !seamlessEdges.testFlag(Qt::TopEdge)) {
++                    sides |= SideTop;
++                }
++                if (rect.bottom() >= menuItemOption->menuRect.bottom() && !seamlessEdges.testFlag(Qt::BottomEdge)) {
++                    sides |= SideBottom;
++                }
++                if (rect.left() <= menuItemOption->menuRect.left() && !seamlessEdges.testFlag(Qt::LeftEdge)) {
++                    sides |= SideLeft;
++                }
++                if (rect.right() >= menuItemOption->menuRect.right() && !seamlessEdges.testFlag(Qt::RightEdge)) {
++                    sides |= SideRight;
++                }
+             }
+-        }
+
+-        _helper->renderFocusRect(painter, rect, color, outlineColor, SideTop | SideBottom | SideLeft | SideRight);
++            _helper->renderFocusRect(painter, rect, color, outlineColor, SideTop | SideBottom | SideLeft | SideRight);
++        }
+     }
+
+     // get rect available for contents
+@@ -5860,6 +5865,9 @@ bool Style::drawMenuItemControl(const QStyleOption *option, QPainter *painter, c
+         QIcon::Mode mode;
+         if (enabled) {
+             mode = QIcon::Normal;
++            if (isHighContrastActive && useStrongFocus && (selected || sunken)) {
++                mode = QIcon::Selected;
++            }
+         } else {
+             mode = QIcon::Disabled;
+         }
+@@ -5886,7 +5894,8 @@ bool Style::drawMenuItemControl(const QStyleOption *option, QPainter *painter, c
+         const ArrowOrientation orientation(reverseLayout ? ArrowLeft : ArrowRight);
+
+         // color
+-        const QColor arrowColor = _helper->arrowColor(palette, QPalette::WindowText);
++        const QColor arrowColor =
++            _helper->arrowColor(palette, (isHighContrastActive && useStrongFocus && (selected || sunken)) ? QPalette::HighlightedText : QPalette::WindowText);
+
+         // render
+         _helper->renderArrow(painter, arrowRect, arrowColor, orientation);
+@@ -5904,7 +5913,7 @@ bool Style::drawMenuItemControl(const QStyleOption *option, QPainter *painter, c
+         painter->setFont(menuItemOption->font);
+
+         // color role
+-        const QPalette::ColorRole role = QPalette::WindowText;
++        const QPalette::ColorRole role = (isHighContrastActive && useStrongFocus && (selected || sunken)) ? QPalette::HighlightedText : QPalette::WindowText;
+
+         // locate accelerator and render
+         const int tabPosition(text.indexOf(QLatin1Char('\t')));
+--
+2.49.0

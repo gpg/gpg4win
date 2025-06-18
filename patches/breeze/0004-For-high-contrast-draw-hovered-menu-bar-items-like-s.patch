@@ -1,0 +1,42 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From ef269e067e486cf97b60c5a7740222bba93e8a56 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Mon, 16 Jun 2025 17:03:50 +0200
+Subject: [PATCH 4/5] For high-contrast, draw hovered menu bar items like
+ selected items
+
+This avoids problems with some high-contrast color schemes where hovered
+menu bar items had really bad contrast.
+
+GnuPG-bug-id: 7415
+---
+ kstyle/breezestyle.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/kstyle/breezestyle.cpp b/kstyle/breezestyle.cpp
+index f76b0c9b..7a4de4e1 100644
+--- a/kstyle/breezestyle.cpp
++++ b/kstyle/breezestyle.cpp
+@@ -20,6 +20,7 @@
+ #include "breezetoolsareamanager.h"
+ #include "breezewidgetexplorer.h"
+ #include "breezewindowmanager.h"
++#include "highcontrasthelper.h"
+
+ #include <KColorUtils>
+ #include <KIconLoader>
+@@ -5682,7 +5683,8 @@ bool Style::drawMenuBarItemControl(const QStyleOption *option, QPainter *painter
+         const auto textRect = option->fontMetrics.boundingRect(rect, textFlags, menuItemOption->text);
+
+         // render text
+-        const QPalette::ColorRole role = (useStrongFocus && sunken) ? QPalette::HighlightedText : QPalette::WindowText;
++        const QPalette::ColorRole role =
++            (useStrongFocus && (sunken || (selected && isHighContrastColorSchemeInUse()))) ? QPalette::HighlightedText : QPalette::WindowText;
+         drawItemText(painter, textRect, textFlags, palette, enabled, menuItemOption->text, role);
+
+         // render outline
+--
+2.49.0
