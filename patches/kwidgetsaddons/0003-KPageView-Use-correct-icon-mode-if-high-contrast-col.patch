@@ -1,0 +1,47 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 85478fa5e29bdd143b0eba50ca00aa23ce4865fb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 17 Jun 2025 14:40:49 +0200
+Subject: [PATCH 3/3] KPageView: Use correct icon mode if high-contrast color
+ scheme is in use
+
+If a high-contrast color scheme is in use then we need to use selected
+icon mode for selected list view items even if the list view doesn't have
+focus. This ensures that the correct color is used for icon recoloring
+to avoid bad contrast to the background used for selected items.
+
+This is only done for high-contrast color schemes because Breeze Light
+uses a light text color for selected list view items that have focus
+and a dark text color for selected list view items that don't have focus.
+---
+ src/kpageview_p.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/kpageview_p.cpp b/src/kpageview_p.cpp
+index a49b04ee..644e85b1 100644
+--- a/src/kpageview_p.cpp
++++ b/src/kpageview_p.cpp
+@@ -15,6 +15,7 @@
+ #include <QTextLayout>
+ #include <QVBoxLayout>
+
++#include "highcontrasthelper_p.h"
+ #include "kpagemodel.h"
+ #include "loggingcategory.h"
+
+@@ -391,7 +392,9 @@ void KPageListViewDelegate::paint(QPainter *painter, const QStyleOptionViewItem
+     opt.showDecorationSelected = true;
+     QStyle *style = opt.widget ? opt.widget->style() : QApplication::style();
+
+-    const QIcon::Mode iconMode = (option.state & QStyle::State_Selected) && (option.state & QStyle::State_Active) ? QIcon::Selected : QIcon::Normal;
++    const QIcon::Mode iconMode = (option.state & QStyle::State_Selected) && ((option.state & QStyle::State_Active) || isHighContrastColorSchemeInUse())
++        ? QIcon::Selected
++        : QIcon::Normal;
+     int iconSize = style->pixelMetric(QStyle::PM_IconViewIconSize);
+     const QString text = index.model()->data(index, Qt::DisplayRole).toString();
+     const QIcon icon = index.model()->data(index, Qt::DecorationRole).value<QIcon>();
+--
+2.49.0
