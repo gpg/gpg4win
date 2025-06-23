@@ -620,25 +620,25 @@ chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
 
 
 # gpg4win-tools
-# last changed: 2025-06-04
+# last changed: 2025-06-23
 # by: wk
 # verified: Tarball created by builder.
-file gpg4win-tools/gpg4win-tools-202506041012.tar.xz
-chk 473fa39a832f44716fff36fea0049ba66171df8e2a854cb03160efb724bd1faa
+file gpg4win-tools/gpg4win-tools-202506231515.tar.xz
+chk 24a334d87ce8afeb2b892773dfb5d9ce8614cd555488ac9d1986bfc0702f19ee
 
 # libkleo
-# last changed: 2025-06-03
+# last changed: 2025-06-23
 # by: wk
 # verified: Tarball created by builder.
-file libkleo/libkleo-202506031251.tar.xz
-chk ca6dc2138496ce2468240f3ca1c9a39c8dfb6bed6b0daaccc7b25c76a000cf3e
+file libkleo/libkleo-202506231515.tar.xz
+chk 29607f811248cb3c47ab406596042a4d164125468790543d3920475bcad4dc30
 
 # kleopatra
-# last changed: 2025-06-03
+# last changed: 2025-06-23
 # by: wk
 # verified: Tarball created by builder.
-file kleopatra/kleopatra-202506031251.tar.xz
-chk 7efbb2c59911bc10f0ec9bccfda6f7e42c1ac2d8b3924d2dc14320a29db03a22
+file kleopatra/kleopatra-202506231515.tar.xz
+chk 75af211b5df29cc3fd35f8e3f97f9920d62983a15996497c47041500607dd0bb
 
 # gpgoljs
 # last changed: 2025-06-12
@@ -822,26 +822,26 @@ fi # gnupg24
 #
 # This is the GnuPG used for gpg4win 5.x and vsd 4.x
 #
-# last changed 2025-06-03
+# last changed 2025-06-23
 # by builder
 # verified: [taken from buildtree]
 if gnupg = gnupg26
-name gnupg-2.5.7.tar.bz2
-file gnupg/gnupg-2.5.7.tar.bz2
-chk  bf1f4f51fda4863f6f2d461b33b83df6d8229e72e3e98f43013bf2127976414e
+name gnupg-2.5.8.tar.bz2
+file gnupg/gnupg-2.5.8.tar.bz2
+chk  1d38938f3be7d2b4e2018476172d310f7ab07b30f652d62b14d081f86bbcd673
 
-name gnupg-w32-2.5.7_20250602-bin.exe
-file binary/gnupg-w32-2.5.7_20250602.exe
-chk  af75346846a6e4a8b8907ee404942841788956f026e665fdb2720919c80a8d63
+name gnupg-w32-2.5.8_20250620-bin.exe
+file binary/gnupg-w32-2.5.8_20250620.exe
+chk  f67913f298cfb5b80637efb0fe398e425e298bba757234e0a3b2daa1c219bae4
 
-name gnupg-w32-2.5.7_20250602-src.tar.xz
-file gnupg/gnupg-w32-2.5.7_20250602.tar.xz
-link gnupg-msi-2.5.7_20250602-src.tar.xz
-chk  f806757eb0fdf0e69c90c7a8a81d05562a091eb78853c2c5f674cf2d92c5bf88
+name gnupg-w32-2.5.8_20250620-src.tar.xz
+file gnupg/gnupg-w32-2.5.8_20250620.tar.xz
+link gnupg-msi-2.5.8_20250620-src.tar.xz
+chk  4670c6bf574eefbe0f04beeda7566a7d743a2cb348f85496f549c334bbcdf34c
 
-name gnupg-msi-2.5.7_20250602-bin.wixlib
-file binary/gnupg-w32-2.5.7_20250602.wixlib
-chk  23ac432647d223703d58cdf9e0a074bbf146c9501cb57d91477d302416598095
+name gnupg-msi-2.5.8_20250620-bin.wixlib
+file binary/gnupg-w32-2.5.8_20250620.wixlib
+chk  f501ee1d2e058baf11aa319241fadcf17c0cbfa45980e394e067e315a38888cd
 
 fi # gnupg26
 
