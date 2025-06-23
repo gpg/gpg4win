@@ -102,7 +102,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
              patches-appimage/okular/0001-Make-KF6Pty-dependency-optional.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
-             patches-appimage/okular-202503101125/qtpolicy-mr-1143.patch \
              patches-appimage/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches-appimage/qtbase/add-kleopatras-mime-types.patch \
              patches-appimage/qtbase/configurable-windowstheme.patch \
