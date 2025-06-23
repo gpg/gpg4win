@@ -48,7 +48,7 @@ index 0000000..c485b2f
 +#ifdef Q_OS_WIN
 +#include "highcontrasthelper_p.h"
 +
-+#include <QApplication>
++#include <QGuiApplication>
 +
 +#include "windows.h"
 +
