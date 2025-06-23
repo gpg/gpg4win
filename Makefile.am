@@ -43,7 +43,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              docker/appimage/Dockerfile \
              docker/appimage/Dockerfile-CentOS7 \
              docker/gpg4win-bookworm/Dockerfile \
-	     patches/gpgol-2.6.1/0001-Use-gpgme_off_t-and-gpgme_ssize_t-everywhere-for-Gpg.patch \
 	     patches/breeze-icons/0001-Add-16x16-variant-of-data-success.patch \
 	     patches/breeze-icons/0002-Add-nicer-16x16-variant-of-dialog-question.patch \
 	     patches/breeze-icons/0003-Add-data-question-status-icon-similar-to-other-data-.patch \
