@@ -681,8 +681,9 @@ chk 949dcdfb8744c32e6ef0d61b60091190acae9000b49a59ee2494dc2b104d2a72
 # last changed: 2025-06-24
 # by: wk
 # verified: Tarball created by builder.
-file okular/okular-202506241122.tar.xz
-chk c38ba2f04f4b438b9b82c6b6cfcd370cb2da0c8319c003b9b6bccc9a921e2e3c
+file okular/okular-202506241413.tar.xz
+chk ce6535e56fef135befa936a7356e3c75771595a5fd993fca1cc775a7ca0cdd54
+
 
 fi # !gnupg22 - Current Okular et al.
 
