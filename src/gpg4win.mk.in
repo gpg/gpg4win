@@ -84,7 +84,7 @@ AUTHENTICODE_FILES = \
 	 bin/libopenjp2.dll \
 	 bin/libpcre2-16.dll \
 	 bin/libpng16-16.dll \
-	 bin/libpoppler-149.dll \
+	 bin/libpoppler-150.dll \
 	 bin/libpoppler-qt6-3.dll \
 	 bin/libqgpgmeqt6-15.dll \
 	 bin/libqrencode.dll \

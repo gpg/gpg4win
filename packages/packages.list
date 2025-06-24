@@ -671,18 +671,18 @@ fi # gnupg22 - gpgpass
 if gnupg != gnupg22
 
 # poppler
-# last changed: 2025-05-08
-# by: builder
+# last changed: 2025-06-24
+# by: wk
 # verified: Tarball created by builder.
-file poppler/poppler-202505081551.tar.xz
-chk 1a04ff56ae646f91c3ed5a7a301d6a4ddb33ebfe141fb5aecf6965e429614b56
+file poppler/poppler-202506241121.tar.xz
+chk 949dcdfb8744c32e6ef0d61b60091190acae9000b49a59ee2494dc2b104d2a72
 
 # okular
-# last changed: 2025-05-08
-# by: builder
+# last changed: 2025-06-24
+# by: wk
 # verified: Tarball created by builder.
-file okular/okular-202505081551.tar.xz
-chk 9d713f46191136e843f884a9411ce082c076a7b1700bdc0e954b5d408fa79e73
+file okular/okular-202506241122.tar.xz
+chk c38ba2f04f4b438b9b82c6b6cfcd370cb2da0c8319c003b9b6bccc9a921e2e3c
 
 fi # !gnupg22 - Current Okular et al.
 
