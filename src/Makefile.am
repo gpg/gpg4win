@@ -567,6 +567,7 @@ $(stampdir)/stamp-msi-base: $(sdir)/icons/shield.ico $(sdir)/Makefile.am \
                        $(tsdir)/po/gpg4win-de.wxl \
                        $(tsdir)/po/gpg4win-en.wxl
 	[ -d $(msidir)/help ] || mkdir -p $(msidir)/help
+	[ -d $(msidir)/desktop-help ] || mkdir -p $(msidir)/desktop-help
 	$(RUNCMD) msibase $(VERSION) $(gpg4win_pkg_gnupg_msi_version)
 	touch $(stampdir)/stamp-msi-base
 
