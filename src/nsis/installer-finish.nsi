@@ -24,7 +24,7 @@ System::Call 'Shell32::SHChangeNotify(i 0x8000000, i 0, i 0, i 0)'
 FunctionEnd
 
 
-Function MyCleanupRegistry
+Function un.MyCleanupRegistry
   DeleteRegValue SHCTX "Software\${PRETTY_PACKAGE_SHORT}" \
         "Install Directory"
   DeleteRegKey /ifempty SHCTX "Software\${PRETTY_PACKAGE_SHORT}"
@@ -103,8 +103,8 @@ no_desktop_delete:
   # Clean the registry.  We better cleanup both versions of the registry
   # Installing 32bit and 64bit versions concurrently  is not supported.
   SetRegView 64
-  call MyCleanupRegistry
+  Call un.MyCleanupRegistry
   SetRegView 32
-  call MyCleanupRegistry
+  Call un.MyCleanupRegistry
 
 SectionEnd
