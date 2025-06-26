@@ -32,8 +32,10 @@ ${MementoUnselectedSection} "Web based Oulook plugin" SEC_gpgoljs
   File ${prefix}/share/gpgol-web/index.html
 
   SetOutPath "$INSTDIR\share\gpgol-web\assets"
-  File ${prefix}/share/gpgol-web/assets/index-*.css
-  File ${prefix}/share/gpgol-web/assets/index-*.js
+  # Take care: we can't use wildcards for the filenames because the MSI
+  # building process won't be able to cope wit it.
+  File ${prefix}/share/gpgol-web/assets/index-C8C8AKuF.css
+  File ${prefix}/share/gpgol-web/assets/index-Drll8Pr4.js
   File ${prefix}/share/gpgol-web/assets/document-decrypt-32.png
   File ${prefix}/share/gpgol-web/assets/document-decrypt-64.png
   File ${prefix}/share/gpgol-web/assets/document-decrypt-80.png
