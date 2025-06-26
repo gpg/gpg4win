@@ -23,6 +23,21 @@ Function SetupExtensions
 System::Call 'Shell32::SHChangeNotify(i 0x8000000, i 0, i 0, i 0)'
 FunctionEnd
 
+
+Function MyCleanupRegistry
+  DeleteRegValue SHCTX "Software\${PRETTY_PACKAGE_SHORT}" \
+        "Install Directory"
+  DeleteRegKey /ifempty SHCTX "Software\${PRETTY_PACKAGE_SHORT}"
+
+  # Remove Windows Add/Remove Programs support.
+  DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}"
+
+  DeleteRegKey SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp"
+  DeleteRegKey SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp-signature"
+  DeleteRegKey SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp-encrypted"
+  DeleteRegKey SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp-keys"
+FunctionEnd
+
 # Last section is a hidden one.
 Section
   WriteUninstaller "$INSTDIR\${PACKAGE}-uninstall.exe"
@@ -39,7 +54,7 @@ Section
   WriteRegStr       SHCTX $MYTMP "DisplayIcon"     "$INSTDIR\bin\kleopatra.exe,0"
   WriteRegStr       SHCTX $MYTMP "DisplayVersion"  "${VERSION}"
   WriteRegStr       SHCTX $MYTMP "Publisher"       "The Gpg4win Project"
-  WriteRegStr       SHCTX $MYTMP "URLInfoAbout"    "http://www.gpg4win.org/"
+  WriteRegStr       SHCTX $MYTMP "URLInfoAbout"    "https://www.gpg4win.org/"
   WriteRegDWORD     SHCTX $MYTMP "NoModify"        "1"
   WriteRegDWORD     SHCTX $MYTMP "NoRepair"        "1"
 
@@ -85,18 +100,11 @@ no_desktop_delete:
   RMDir /REBOOTOK "$INSTDIR\bin"
   RMDir /REBOOTOK "$INSTDIR"
 
-  # Clean the registry.
-  DeleteRegValue SHCTX "Software\${PRETTY_PACKAGE_SHORT}" \
-        "Install Directory"
-  DeleteRegKey /ifempty SHCTX "Software\${PRETTY_PACKAGE_SHORT}"
-
-  # Remove Windows Add/Remove Programs support.
-  DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}"
-
-  DeleteRegKey SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp"
-  DeleteRegKey SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp-signature"
-  DeleteRegKey SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp-encrypted"
-  DeleteRegKey SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp-keys"
-
+  # Clean the registry.  We better cleanup both versions of the registry
+  # Installing 32bit and 64bit versions concurrently  is not supported.
+  SetRegView 64
+  call MyCleanupRegistry
+  SetRegView 32
+  call MyCleanupRegistry
 
 SectionEnd
