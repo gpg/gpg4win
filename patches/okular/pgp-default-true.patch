@@ -1,0 +1,17 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/generators/poppler/conf/pdfsettings.kcfg b/generators/poppler/conf/pdfsettings.kcfg
+index 594f96d76..4e1dc0849 100644
+--- a/generators/poppler/conf/pdfsettings.kcfg
++++ b/generators/poppler/conf/pdfsettings.kcfg
+@@ -37,7 +37,7 @@
+           <emit signal="signatureBackendChanged" />
+       </entry>
+       <entry key="EnablePgp" type="Bool">
+-          <default>false</default>
++          <default>true</default>
+           <emit signal="enablePgpChanged" />
+       </entry>
+       <entry key="UseDefaultCertDB" type="Bool">

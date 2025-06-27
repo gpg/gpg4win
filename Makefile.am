@@ -83,6 +83,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Add-support-to-customize-about-data.sik \
              patches/okular/lower-cmake-requirement.patch \
+             patches/okular/pgp-default-true.patch \
              patches/pcre2/cross-build-cmake.patch \
              patches/qtbase-6.7.3/0001-QIcon-enable-icon-engine-plugins-to-implement-themes.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
