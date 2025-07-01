@@ -52,6 +52,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools.patch \
              patches/breeze-icons/remove-kleopatra-icons.patch \
              patches/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
+             patches/breeze/0001-Do-not-pass-QIcon-Selected-mode-to-icon-painter.patch \
              patches/breeze/0001-Fix-toolbar-colors-in-high-contrast-mode.patch \
              patches/breeze/0002-fix-ifdef-windows-qmenu.patch \
              patches/breeze/0002-kstyle-Support-registering-QMainWindow-in-tools-area.patch \

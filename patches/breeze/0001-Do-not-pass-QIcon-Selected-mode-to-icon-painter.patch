@@ -1,0 +1,49 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From a8faa839135ecdbd3aa73c260fa09dcd7823a8ad Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 1 Jul 2025 16:25:35 +0200
+Subject: [PATCH] Do not pass QIcon::Selected mode to icon painter
+
+We must always use the normal button text color for the text and the
+icon of buttons to keep good contrast to the button color. Passing
+QIcon::Selected mode makes KIconLoader recolor the button icon with the
+highlighted-text color which is just wrong.
+
+BUG: 506437
+---
+ kstyle/breezestyle.cpp | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/kstyle/breezestyle.cpp b/kstyle/breezestyle.cpp
+index d334be29..d2f055f4 100644
+--- a/kstyle/breezestyle.cpp
++++ b/kstyle/breezestyle.cpp
+@@ -5380,14 +5380,6 @@ bool Style::drawToolButtonLabelControl(const QStyleOption *option, QPainter *pai
+     const bool mouseOver(enabled && (option->state & State_MouseOver));
+     const bool flat(state & State_AutoRaise);
+
+-    // focus flag is set to match the background color in either renderButtonFrame or renderToolButtonFrame
+-    bool hasFocus(false);
+-    if (flat) {
+-        hasFocus = enabled && !mouseOver && (option->state & State_HasFocus);
+-    } else {
+-        hasFocus = enabled && !mouseOver && (option->state & (State_HasFocus | State_Sunken));
+-    }
+-
+     // contents
+     auto contentsRect(rect);
+
+@@ -5504,8 +5496,6 @@ bool Style::drawToolButtonLabelControl(const QStyleOption *option, QPainter *pai
+             QIcon::Mode iconMode;
+             if (!enabled) {
+                 iconMode = QIcon::Disabled;
+-            } else if (!flat && hasFocus) {
+-                iconMode = QIcon::Selected;
+             } else if (mouseOver && flat) {
+                 iconMode = QIcon::Active;
+             } else {
+--
+2.50.0
