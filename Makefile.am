@@ -47,6 +47,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
 	     patches/breeze-icons/0002-Add-nicer-16x16-variant-of-dialog-question.patch \
 	     patches/breeze-icons/0003-Add-data-question-status-icon-similar-to-other-data-.patch \
 	     patches/breeze-icons/0004-Add-symbolic-variants-of-status-icons-for-usage-with.patch \
+             patches/breeze-icons/0005-Disable-recoloring-of-status-icons.patch \
              patches/breeze-icons/0001-Allow-to-disable-building-of-the-icon-library-native.patch \
              patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools.patch \
              patches/breeze-icons/remove-kleopatra-icons.patch \

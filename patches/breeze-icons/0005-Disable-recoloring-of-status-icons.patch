@@ -1,0 +1,111 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From da7c9ebcbb5560bc3da3120b629dc554ccc289bb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 1 Jul 2025 15:12:39 +0200
+Subject: [PATCH 5/5] Disable recoloring of status icons
+
+GnuPG-bug-id: 7703
+---
+ icons/status/16/data-error.svg       | 2 +-
+ icons/status/16/data-information.svg | 2 +-
+ icons/status/16/data-success.svg     | 2 +-
+ icons/status/16/data-warning.svg     | 2 +-
+ icons/status/22/data-error.svg       | 2 +-
+ icons/status/22/data-information.svg | 2 +-
+ icons/status/22/data-success.svg     | 2 +-
+ icons/status/22/data-warning.svg     | 2 +-
+ 8 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/icons/status/16/data-error.svg b/icons/status/16/data-error.svg
+index 82c7f7278..e913beffc 100644
+--- a/icons/status/16/data-error.svg
++++ b/icons/status/16/data-error.svg
+@@ -1,5 +1,5 @@
+ <svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+-    <style type="text/css" id="current-color-scheme">
++    <style type="text/css">
+         .ColorScheme-NegativeText {
+             color:#da4453;
+         }
+diff --git a/icons/status/16/data-information.svg b/icons/status/16/data-information.svg
+index 092113e81..b79540ff5 100644
+--- a/icons/status/16/data-information.svg
++++ b/icons/status/16/data-information.svg
+@@ -1,5 +1,5 @@
+ <svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+-    <style type="text/css" id="current-color-scheme">
++    <style type="text/css">
+         .ColorScheme-Accent {
+             color:#3daee9;
+         }
+diff --git a/icons/status/16/data-success.svg b/icons/status/16/data-success.svg
+index 6d238bb9e..6e5418cc5 100644
+--- a/icons/status/16/data-success.svg
++++ b/icons/status/16/data-success.svg
+@@ -1,5 +1,5 @@
+ <svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+-    <style type="text/css" id="current-color-scheme">
++    <style type="text/css">
+         .ColorScheme-PositiveText {
+             color:#27ae60;
+         }
+diff --git a/icons/status/16/data-warning.svg b/icons/status/16/data-warning.svg
+index 8d0a5dea7..712c8791e 100644
+--- a/icons/status/16/data-warning.svg
++++ b/icons/status/16/data-warning.svg
+@@ -1,5 +1,5 @@
+ <svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+-    <style type="text/css" id="current-color-scheme">
++    <style type="text/css">
+         .ColorScheme-NeutralText {
+             color:#f67400;
+         }
+diff --git a/icons/status/22/data-error.svg b/icons/status/22/data-error.svg
+index 6fc3137e4..b947fca26 100644
+--- a/icons/status/22/data-error.svg
++++ b/icons/status/22/data-error.svg
+@@ -1,5 +1,5 @@
+ <svg version="1.1" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+-    <style type="text/css" id="current-color-scheme">
++    <style type="text/css">
+         .ColorScheme-NegativeText {
+             color:#da4453;
+         }
+diff --git a/icons/status/22/data-information.svg b/icons/status/22/data-information.svg
+index 79fb408a5..2ab4519b3 100644
+--- a/icons/status/22/data-information.svg
++++ b/icons/status/22/data-information.svg
+@@ -1,5 +1,5 @@
+ <svg version="1.1" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+-    <style type="text/css" id="current-color-scheme">
++    <style type="text/css">
+         .ColorScheme-Accent {
+             color:#3daee9;
+         }
+diff --git a/icons/status/22/data-success.svg b/icons/status/22/data-success.svg
+index eb8bc03be..3244a71e5 100644
+--- a/icons/status/22/data-success.svg
++++ b/icons/status/22/data-success.svg
+@@ -1,5 +1,5 @@
+ <svg id="svg9" version="1.1" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+-    <style id="current-color-scheme" type="text/css">.ColorScheme-PositiveText {
++    <style type="text/css">.ColorScheme-PositiveText {
+             color:#27ae60;
+         }
+         .ColorScheme-Text {
+diff --git a/icons/status/22/data-warning.svg b/icons/status/22/data-warning.svg
+index 73841df06..06a01170b 100644
+--- a/icons/status/22/data-warning.svg
++++ b/icons/status/22/data-warning.svg
+@@ -1,5 +1,5 @@
+ <svg version="1.1" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+-    <style type="text/css" id="current-color-scheme">
++    <style type="text/css">
+         .ColorScheme-NeutralText {
+             color:#f67400;
+         }
+--
+2.50.0
