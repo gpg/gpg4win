@@ -1,0 +1,32 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 7febddb7ba9b37dae2d35ec5a04f1d3a43fe4b16 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 2 Jul 2025 16:24:50 +0200
+Subject: [PATCH 1/2] Experimental: Optionally, don't start gpg-agent on
+ start-up
+
+Disable start of gpg-agent with KLEO_NO_GPG_AGENT_START=1
+---
+ src/kleopatraapplication.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/kleopatraapplication.cpp b/src/kleopatraapplication.cpp
+index 3ca79cf11..c5d4ca7fd 100644
+--- a/src/kleopatraapplication.cpp
++++ b/src/kleopatraapplication.cpp
+@@ -361,7 +361,9 @@ void KleopatraApplication::init()
+      * the agent will fail. The requested start via the
+      * connection is additionally done in case the gpg-agent
+      * is killed while Kleopatra is running. */
+-    startGpgAgent();
++    if (qEnvironmentVariableIntValue("KLEO_NO_GPG_AGENT_START") == 0) {
++        startGpgAgent();
++    }
+     d->readerStatus.reset(new SmartCard::ReaderStatus);
+     connect(d->readerStatus.get(), &SmartCard::ReaderStatus::startOfGpgAgentRequested, this, &KleopatraApplication::startGpgAgent);
+     d->setupKeyCache();
+--
+2.50.0
