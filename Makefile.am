@@ -77,6 +77,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kiconthemes/0002-Use-symbolic-icons-if-high-contrast-color-scheme-is-.patch \
              patches/kjobwidgets/0001-Remove-knotification.patch \
              patches/kleopatra/0001-Experimental-Optionally-don-t-start-gpg-agent-on-sta.patch \
+             patches/kleopatra/0002-Experimental-Optionally-don-t-use-file-system-watche.patch \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
              patches/kwidgetsaddons/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches/kwidgetsaddons/0002-KMessageWidget-Don-t-draw-background-if-high-contras.patch \

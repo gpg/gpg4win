@@ -1,0 +1,63 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 04070852d150cc046b2fdee9aee4b05dea438724 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 2 Jul 2025 16:29:17 +0200
+Subject: [PATCH 2/2] Experimental: Optionally, don't use file system watchers
+
+Disable usage of file system watchers with KLEO_NO_FILE_WATCHER=1
+---
+ src/kleopatraapplication.cpp   | 13 +++++++------
+ src/smartcard/readerstatus.cpp | 10 ++++++----
+ 2 files changed, 13 insertions(+), 10 deletions(-)
+
+diff --git a/src/kleopatraapplication.cpp b/src/kleopatraapplication.cpp
+index c5d4ca7fd..7ffb31f5c 100644
+--- a/src/kleopatraapplication.cpp
++++ b/src/kleopatraapplication.cpp
+@@ -238,12 +238,13 @@ public:
+     {
+         keyCache = KeyCache::mutableInstance();
+         keyCache->setRefreshInterval(Settings{}.refreshInterval());
+-        watcher.reset(new FileSystemWatcher);
+-
+-        watcher->whitelistFiles(gnupgFileWhitelist());
+-        watcher->addPaths(gnupgFolderWhitelist());
+-        watcher->setDelay(1000);
+-        keyCache->addFileSystemWatcher(watcher);
++        if (qEnvironmentVariableIntValue("KLEO_NO_FILE_WATCHER") == 0) {
++            watcher.reset(new FileSystemWatcher);
++            watcher->whitelistFiles(gnupgFileWhitelist());
++            watcher->addPaths(gnupgFolderWhitelist());
++            watcher->setDelay(1000);
++            keyCache->addFileSystemWatcher(watcher);
++        }
+         keyCache->setGroupConfig(groupConfig);
+         keyCache->setGroupsEnabled(Settings().groupsEnabled());
+         // always enable remarks (aka tags); in particular, this triggers a
+diff --git a/src/smartcard/readerstatus.cpp b/src/smartcard/readerstatus.cpp
+index 8bce3b2b8..c693fcde9 100644
+--- a/src/smartcard/readerstatus.cpp
++++ b/src/smartcard/readerstatus.cpp
+@@ -1145,11 +1145,13 @@ public:
+         } else {
+             qCDebug(KLEOPATRA_LOG) << "ReaderStatus::Private: Using deprecated FileSystemWatcher";
+
+-            watcher.whitelistFiles(QStringList(QStringLiteral("reader_*.status")));
+-            watcher.addPath(Kleo::gnupgHomeDirectory());
+-            watcher.setDelay(100);
++            if (qEnvironmentVariableIntValue("KLEO_NO_FILE_WATCHER") == 0) {
++                watcher.whitelistFiles(QStringList(QStringLiteral("reader_*.status")));
++                watcher.addPath(Kleo::gnupgHomeDirectory());
++                watcher.setDelay(100);
+
+-            connect(&watcher, &FileSystemWatcher::triggered, this, &::ReaderStatusThread::ping);
++                connect(&watcher, &FileSystemWatcher::triggered, this, &::ReaderStatusThread::ping);
++            }
+         }
+     }
+     ~Private() override
+--
+2.50.0
