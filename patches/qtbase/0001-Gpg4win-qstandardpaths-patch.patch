@@ -17,13 +17,20 @@ diff --git a/src/corelib/io/qstandardpaths.cpp b/src/corelib/io/qstandardpaths.c
 index 04aff3d1..deda4492 100644
 --- a/src/corelib/io/qstandardpaths.cpp
 +++ b/src/corelib/io/qstandardpaths.cpp
-@@ -56,6 +56,14 @@
+@@ -42,6 +42,7 @@
+
+ #include <qdir.h>
+ #include <qfileinfo.h>
++#include <qloggingcategory.h>
+
+ #ifndef QT_BOOTSTRAPPED
+ #include <qobject.h>
+@@ -56,9 +57,18 @@
  #include <unistd.h>
  #endif
 
 +#if !defined(QT_BUILD_QMAKE) && !defined(QT_NO_SETTINGS)  && !defined(QT_BOOTSTRAPPED)
 +#include <qsettings.h>
-+#include <qcoreapplication.h>
 +#endif
 +#ifdef Q_OS_WIN
 +#include <windows.h>
@@ -32,7 +39,12 @@ index 04aff3d1..deda4492 100644
  #ifndef QT_NO_STANDARDPATHS
 
  QT_BEGIN_NAMESPACE
-@@ -624,6 +632,70 @@ bool QStandardPaths::isTestModeEnabled()
++
++Q_LOGGING_CATEGORY(lcStandardPaths, "qt.core.standardpaths")
+
+ /*!
+     \class QStandardPaths
+@@ -624,6 +632,75 @@ bool QStandardPaths::isTestModeEnabled()
      return qsp_testMode;
  }
 
@@ -84,20 +96,20 @@ index 04aff3d1..deda4492 100644
 +        key += locations[type];
 +        const QString value = settings->value(key).toString();
 +#ifdef Q_OS_WIN
-+        if (value.isEmpty())
++        if (!value.contains(QLatin1Char('%')))
 +#endif
-+          return value;
++            return value;
 +#ifdef Q_OS_WIN
 +        wchar_t expandedPath[MAX_PATH] = {0};
 +        if (ExpandEnvironmentStrings((wchar_t*)value.utf16(), expandedPath, MAX_PATH)) {
-+            const auto expanded = QString::fromWCharArray(expandedPath).replace("\\", "/");
++            const auto expanded = QString::fromWCharArray(expandedPath).replace(QLatin1Char('\\'), QLatin1Char('/'));
 +            if (expanded.contains(QLatin1Char('%'))) {
-+                OutputDebugString(L"Not all environment variables could be expanded.");
++                qCWarning(lcStandardPaths) << "Not all environment variables could be expanded in" << expanded;
 +                return QString();
 +            }
 +            return expanded;
 +        }
-+        return value;
++        qCWarning(lcStandardPaths) << "Expanding environment variables failed for" << value;
 +#endif
 +    }
 +#endif // !QT_BUILD_QMAKE && !QT_NO_SETTINGS
