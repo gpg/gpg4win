@@ -15,13 +15,20 @@ Subject: [PATCH 1/2] Gpg4win-qstandardpaths-patch
 
 --- a/src/corelib/io/qstandardpaths.cpp
 +++ b/src/corelib/io/qstandardpaths.cpp
-@@ -20,6 +20,14 @@
+@@ -6,6 +6,7 @@
+
+ #include <qdir.h>
+ #include <qfileinfo.h>
++#include <qloggingcategory.h>
+
+ #ifndef QT_BOOTSTRAPPED
+ #include <qobject.h>
+@@ -20,11 +21,20 @@
  #include <unistd.h>
  #endif
 
 +#if !defined(QT_BUILD_QMAKE) && !defined(QT_NO_SETTINGS)  && !defined(QT_BOOTSTRAPPED)
 +#include <qsettings.h>
-+#include <qcoreapplication.h>
 +#endif
 +#ifdef Q_OS_WIN
 +#include <windows.h>
@@ -30,7 +37,14 @@ Subject: [PATCH 1/2] Gpg4win-qstandardpaths-patch
  #ifndef QT_NO_STANDARDPATHS
 
  QT_BEGIN_NAMESPACE
-@@ -626,6 +634,75 @@
+
+ using namespace Qt::StringLiterals;
++
++Q_LOGGING_CATEGORY(lcStandardPaths, "qt.core.standardpaths")
+ /*!
+     \class QStandardPaths
+     \inmodule QtCore
+@@ -626,6 +636,75 @@
      return qsp_testMode;
  }
 
@@ -82,20 +96,20 @@ Subject: [PATCH 1/2] Gpg4win-qstandardpaths-patch
 +        key += locations[type];
 +        const QString value = settings->value(key).toString();
 +#ifdef Q_OS_WIN
-+        if (value.isEmpty())
++        if (!value.contains(QLatin1Char('%')))
 +#endif
-+          return value;
++            return value;
 +#ifdef Q_OS_WIN
 +        wchar_t expandedPath[MAX_PATH] = {0};
 +        if (ExpandEnvironmentStrings((wchar_t*)value.utf16(), expandedPath, MAX_PATH)) {
-+            const auto expanded = QString::fromWCharArray(expandedPath).replace("\\", "/");
++            const auto expanded = QString::fromWCharArray(expandedPath).replace(QLatin1Char('\\'), QLatin1Char('/'));
 +            if (expanded.contains(QLatin1Char('%'))) {
-+                OutputDebugString(L"Not all environment variables could be expanded.");
++                qCWarning(lcStandardPaths) << "Not all environment variables could be expanded in" << expanded;
 +                return QString();
 +            }
 +            return expanded;
 +        }
-+        return value;
++        qCWarning(lcStandardPaths) << "Expanding environment variables failed for" << value;
 +#endif
 +    }
 +#endif // !QT_BUILD_QMAKE && !QT_NO_SETTINGS
