@@ -90,7 +90,12 @@ index 04aff3d1..deda4492 100644
 +#ifdef Q_OS_WIN
 +        wchar_t expandedPath[MAX_PATH] = {0};
 +        if (ExpandEnvironmentStrings((wchar_t*)value.utf16(), expandedPath, MAX_PATH)) {
-+            return QString::fromWCharArray(expandedPath).replace("\\", "/");
++            const auto expanded = QString::fromWCharArray(expandedPath).replace("\\", "/");
++            if (expanded.contains(QLatin1Char('%'))) {
++                OutputDebugString(L"Not all environment variables could be expanded.");
++                return QString();
++            }
++            return expanded;
 +        }
 +        return value;
 +#endif
