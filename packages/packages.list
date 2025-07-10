@@ -620,32 +620,32 @@ chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
 
 
 # gpg4win-tools
-# last changed: 2025-06-23
+# last changed: 2025-07-10
 # by: wk
 # verified: Tarball created by builder.
-file gpg4win-tools/gpg4win-tools-202506231515.tar.xz
-chk 24a334d87ce8afeb2b892773dfb5d9ce8614cd555488ac9d1986bfc0702f19ee
+file gpg4win-tools/gpg4win-tools-202507101552.tar.xz
+chk 98f45f673b26f600d4c44de619c88f1fdf98b3dfc06d82fed3f1be3631a21f01
 
 # libkleo
-# last changed: 2025-06-23
+# last changed: 2025-07-10
 # by: wk
 # verified: Tarball created by builder.
-file libkleo/libkleo-202506231515.tar.xz
-chk 29607f811248cb3c47ab406596042a4d164125468790543d3920475bcad4dc30
+file libkleo/libkleo-202507101552.tar.xz
+chk 1dbf7f6bd79157066b5d22a85a656ecc6f230271bc43a6938606db92febe5a3b
 
 # kleopatra
-# last changed: 2025-06-23
+# last changed: 2025-07-10
 # by: wk
 # verified: Tarball created by builder.
-file kleopatra/kleopatra-202506231515.tar.xz
-chk 75af211b5df29cc3fd35f8e3f97f9920d62983a15996497c47041500607dd0bb
+file kleopatra/kleopatra-202507101552.tar.xz
+chk 64bf0eb416489cb7b08f78d146cbde8246c11447a26df8a967696f52bf04ec3e
 
 # gpgoljs
-# last changed: 2025-06-23
+# last changed: 2025-07-10
 # by: wk
 # verified: Tarball created by builder.
-file gpgoljs/gpgoljs-202506231518.tar.xz
-chk b31b295ec7f1cc14b85437da4d2d8ab22161ce9a025fba8c2aa6becec47ec23d
+file gpgoljs/gpgoljs-202507101552.tar.xz
+chk 073c01f333e9a05d3f91d62f87520d0b04e80da171adada4a9b9a94079a905b6
 
 
 
@@ -678,11 +678,11 @@ file poppler/poppler-202506241121.tar.xz
 chk 949dcdfb8744c32e6ef0d61b60091190acae9000b49a59ee2494dc2b104d2a72
 
 # okular
-# last changed: 2025-06-24
+# last changed: 2025-07-10
 # by: wk
 # verified: Tarball created by builder.
-file okular/okular-202506241413.tar.xz
-chk ce6535e56fef135befa936a7356e3c75771595a5fd993fca1cc775a7ca0cdd54
+file okular/okular-202507101552.tar.xz
+chk 908a72d80550554b1b6ed91148d36ef81d30f5d2789941fa14fb38c60a7f9d22
 
 
 fi # !gnupg22 - Current Okular et al.
