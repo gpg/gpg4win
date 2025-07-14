@@ -678,11 +678,20 @@ file poppler/poppler-202506241121.tar.xz
 chk 949dcdfb8744c32e6ef0d61b60091190acae9000b49a59ee2494dc2b104d2a72
 
 # okular
-# last changed: 2025-07-10
+# last changed: 2025-06-24
 # by: wk
 # verified: Tarball created by builder.
-file okular/okular-202507101552.tar.xz
-chk 908a72d80550554b1b6ed91148d36ef81d30f5d2789941fa14fb38c60a7f9d22
+file okular/okular-202506241413.tar.xz
+chk ce6535e56fef135befa936a7356e3c75771595a5fd993fca1cc775a7ca0cdd54
+
+
+# This newer one does not build
+# # okular
+# # last changed: 2025-07-10
+# # by: wk
+# # verified: Tarball created by builder.
+# file okular/okular-202507101552.tar.xz
+# chk 908a72d80550554b1b6ed91148d36ef81d30f5d2789941fa14fb38c60a7f9d22
 
 
 fi # !gnupg22 - Current Okular et al.
