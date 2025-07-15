@@ -1,0 +1,41 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From b1abd715e3e372c0c9dc77ddaaa123d333cb3595 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 15 Jul 2025 16:25:11 +0200
+Subject: [PATCH 2/2] Draw text between shortcut keys with normal/highlighted
+ text color
+
+This ensures that the text has good contrast especially for the selected
+item.
+---
+ src/kcommandbar.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/kcommandbar.cpp b/src/kcommandbar.cpp
+index 495160ac..7e3aca89 100644
+--- a/src/kcommandbar.cpp
++++ b/src/kcommandbar.cpp
+@@ -349,8 +349,9 @@ public:
+             x = option.rect.right() - shortcutDrawingWidth(option, shortcutSegments, hMargin) - hMargin;
+         }
+
++        const QColor keyTextColor = option.palette.buttonText().color();
++        const QColor textColor = getTextColor(option);
+         painter->save();
+-        painter->setPen(option.palette.buttonText().color());
+         painter->setRenderHint(QPainter::Antialiasing);
+         for (int i = 0, n = btns.count(); i < n; ++i) {
+             const Button &button = btns.at(i);
+@@ -375,6 +376,7 @@ public:
+             }
+
+             // draw shortcut segment
++            painter->setPen((i % 2 == 0) ? keyTextColor : textColor);
+             painter->drawText(outputRect, Qt::AlignCenter, button.text);
+
+             x += outputRect.width();
+--
+2.50.1
