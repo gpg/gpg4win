@@ -15,15 +15,7 @@ Subject: [PATCH 1/2] Gpg4win-qstandardpaths-patch
 
 --- a/src/corelib/io/qstandardpaths.cpp
 +++ b/src/corelib/io/qstandardpaths.cpp
-@@ -6,6 +6,7 @@
-
- #include <qdir.h>
- #include <qfileinfo.h>
-+#include <qloggingcategory.h>
-
- #ifndef QT_BOOTSTRAPPED
- #include <qobject.h>
-@@ -20,11 +21,20 @@
+@@ -20,6 +20,13 @@
  #include <unistd.h>
  #endif
 
@@ -37,14 +29,7 @@ Subject: [PATCH 1/2] Gpg4win-qstandardpaths-patch
  #ifndef QT_NO_STANDARDPATHS
 
  QT_BEGIN_NAMESPACE
-
- using namespace Qt::StringLiterals;
-+
-+Q_LOGGING_CATEGORY(lcStandardPaths, "qt.core.standardpaths")
- /*!
-     \class QStandardPaths
-     \inmodule QtCore
-@@ -626,6 +636,75 @@
+@@ -626,6 +633,75 @@ bool QStandardPaths::isTestModeEnabled()
      return qsp_testMode;
  }
 
@@ -104,12 +89,12 @@ Subject: [PATCH 1/2] Gpg4win-qstandardpaths-patch
 +        if (ExpandEnvironmentStrings((wchar_t*)value.utf16(), expandedPath, MAX_PATH)) {
 +            const auto expanded = QString::fromWCharArray(expandedPath).replace(QLatin1Char('\\'), QLatin1Char('/'));
 +            if (expanded.contains(QLatin1Char('%'))) {
-+                qCWarning(lcStandardPaths) << "Not all environment variables could be expanded in" << expanded;
++                OutputDebugString(L"QStandardPaths::presetLocation - Not all environment variables in qt.conf could be expanded.");
 +                return QString();
 +            }
 +            return expanded;
 +        }
-+        qCWarning(lcStandardPaths) << "Expanding environment variables failed for" << value;
++        OutputDebugString(L"QStandardPaths::presetLocation - Expanding environment variables in qt.conf failed.");
 +#endif
 +    }
 +#endif // !QT_BUILD_QMAKE && !QT_NO_SETTINGS
