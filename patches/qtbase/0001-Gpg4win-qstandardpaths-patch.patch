@@ -17,15 +17,7 @@ diff --git a/src/corelib/io/qstandardpaths.cpp b/src/corelib/io/qstandardpaths.c
 index 04aff3d1..deda4492 100644
 --- a/src/corelib/io/qstandardpaths.cpp
 +++ b/src/corelib/io/qstandardpaths.cpp
-@@ -42,6 +42,7 @@
-
- #include <qdir.h>
- #include <qfileinfo.h>
-+#include <qloggingcategory.h>
-
- #ifndef QT_BOOTSTRAPPED
- #include <qobject.h>
-@@ -56,9 +57,18 @@
+@@ -56,6 +56,13 @@
  #include <unistd.h>
  #endif
 
@@ -39,12 +31,7 @@ index 04aff3d1..deda4492 100644
  #ifndef QT_NO_STANDARDPATHS
 
  QT_BEGIN_NAMESPACE
-+
-+Q_LOGGING_CATEGORY(lcStandardPaths, "qt.core.standardpaths")
-
- /*!
-     \class QStandardPaths
-@@ -624,6 +632,75 @@ bool QStandardPaths::isTestModeEnabled()
+@@ -624,6 +630,75 @@ bool QStandardPaths::isTestModeEnabled()
      return qsp_testMode;
  }
 
@@ -104,12 +91,12 @@ index 04aff3d1..deda4492 100644
 +        if (ExpandEnvironmentStrings((wchar_t*)value.utf16(), expandedPath, MAX_PATH)) {
 +            const auto expanded = QString::fromWCharArray(expandedPath).replace(QLatin1Char('\\'), QLatin1Char('/'));
 +            if (expanded.contains(QLatin1Char('%'))) {
-+                qCWarning(lcStandardPaths) << "Not all environment variables could be expanded in" << expanded;
++                OutputDebugString(L"Not all environment variables could be expanded.");
 +                return QString();
 +            }
 +            return expanded;
 +        }
-+        qCWarning(lcStandardPaths) << "Expanding environment variables failed for" << value;
++        OutputDebugString(L"Expanding environment variables failed.");
 +#endif
 +    }
 +#endif // !QT_BUILD_QMAKE && !QT_NO_SETTINGS
