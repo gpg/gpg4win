@@ -59,4 +59,11 @@ Section "-un.gpgoljs"
   RmDir "$INSTDIR\share\kxmlgui5\gpgol-client"
   RmDir "$INSTDIR\share\kxmlgui5"
   RmDir "$INSTDIR\share"
+
+  Delete "$INSTDIR\share\locale\de\LC_MESSAGES\gpgol-js-native.mo"
+  Delete "$INSTDIR\share\locale\de\LC_MESSAGES\gpgol-js-web.mo"
+  Delete "$INSTDIR\share\locale\de\LC_MESSAGES\manifest.mo"
+  RMDir "$INSTDIR\share\locale\de\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\de"
+
 SectionEnd

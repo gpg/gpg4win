@@ -34,8 +34,7 @@ ${MementoUnselectedSection} "Web based Oulook plugin" SEC_gpgoljs
   SetOutPath "$INSTDIR\share\gpgol-web\assets"
   # Take care: we can't use wildcards for the filenames because the MSI
   # building process won't be able to cope wit it.
-  File ${prefix}/share/gpgol-web/assets/index-C8C8AKuF.css
-  File ${prefix}/share/gpgol-web/assets/index-Drll8Pr4.js
+  !include "${prefix}/share/gpgol-web/assets/inst-gpgoljs-assets.nsi"
   File ${prefix}/share/gpgol-web/assets/document-decrypt-32.png
   File ${prefix}/share/gpgol-web/assets/document-decrypt-64.png
   File ${prefix}/share/gpgol-web/assets/document-decrypt-80.png
@@ -64,6 +63,15 @@ ${MementoUnselectedSection} "Web based Oulook plugin" SEC_gpgoljs
 
   SetOutPath "$INSTDIR\share\kxmlgui5\gpgol-client"
   File ${prefix}/share/kxmlgui5/gpgol-client/composerui.rc
+
+  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
+  File ${prefix}/share/locale/de/LC_MESSAGES/gpgol-js-native.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/gpgol-js-web.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/manifest.mo
+  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
+  File ${prefix}/share/locale/de/LC_MESSAGES/gpgol-js-native.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/gpgol-js-web.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/manifest.mo
 
 ${MementoSectionEnd}
 
