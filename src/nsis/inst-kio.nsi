@@ -30,4 +30,6 @@ Section "-kio" SEC_kio
   File ${prefix}/bin/libKF6KIOGui.dll
   File ${prefix}/bin/libKF6KIOCore.dll
   File ${prefix}/bin/libKF6KIOWidgets.dll
+  SetOutPath "$INSTDIR\bin\plugins\kf6\kio"
+  File ${prefix}/lib/plugins/kf6/kio/kio_file.dll
 SectionEnd
