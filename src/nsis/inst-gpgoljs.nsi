@@ -68,10 +68,6 @@ ${MementoUnselectedSection} "Web based Oulook plugin" SEC_gpgoljs
   File ${prefix}/share/locale/de/LC_MESSAGES/gpgol-js-native.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/gpgol-js-web.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/manifest.mo
-  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
-  File ${prefix}/share/locale/de/LC_MESSAGES/gpgol-js-native.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/gpgol-js-web.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/manifest.mo
 
 ${MementoSectionEnd}
 
