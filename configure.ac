@@ -124,7 +124,9 @@ BUILD_FILEVERSION=`echo "$VERSION" | sed 's/\([0-9.]*\).*/\1./'`
 changequote([,])dnl
 BUILD_FILEVERSION="${BUILD_FILEVERSION}${GIT_REVISION_DEC}"
 BUILD_FILEVERSION_TR=`echo "${BUILD_FILEVERSION}" | tr . ,`
-BUILD_BETANUM=`let a=$(($(echo "${GIT_BETASTRING}"|sed 's/^[0-9]*//')+0))";echo $a`
+changequote(,)dnl
+BUILD_BETANUM=`let a=$(($(echo "${GIT_BETASTRING}"|sed 's/[^0-9]*//')+0));echo $a`
+changequote([,])dnl
 AC_SUBST(BUILD_BETANUM)
 AC_SUBST(BUILD_TIMESTAMP)
 AC_SUBST(BUILD_ISODATE)
