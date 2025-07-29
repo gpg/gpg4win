@@ -1712,7 +1712,9 @@ sub scan_dir {
             }
             next;
         }
-        push (@ret, $abspath);
+	# Do not push duplicates which would happen if src and
+	# workdir have the same files or are symlinked dirs.
+        push (@ret, $abspath) unless grep{$_ == $abspath} @ret;
     }
 
     chdir($startdir) or
