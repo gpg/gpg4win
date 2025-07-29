@@ -110,6 +110,10 @@ quiet=
 userid=$(id -u)
 groupid=$(id -g)
 
+# Track whether we reset the tty to cooked mode.  docker sets it to raw mode
+# and we set it back via our runner process so that we are sure docker is
+# already running.
+recooked=
 
 # Parse the command line options.
 skipshift=
@@ -739,6 +743,10 @@ runner_loop() {
    echo >&2 "$PGM: command runner started pid=$$"
    while : ; do
        if read -r cmd line < "${builddir}/S.build.sh-in" ; then
+           if [ -z "$recooked" ]; then
+	      stty cooked </dev/tty
+	      recooked=yes
+	   fi
            echo >&2 "$PGM(runner): executing cmd"
            runner_exec_cmd "$cmd" "$line" >"${builddir}/S.build.sh-out" &
            echo >&2 "$PGM(runner): waiting for cmd"
