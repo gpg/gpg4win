@@ -416,6 +416,9 @@ define gpg4win_pkg_okular_post_install
         (rm $$$${pkgidir}/share/icons/hicolor/icon-theme.cache)
 endef
 
+gpg4win_pkg_libkleo_configure = \
+    -DGNUPG_INSTALL_DIR_REGISTRY_KEY=$(GNUPG_INSTALL_DIR_REGISTRY_KEY)
+
 gpg4win_pkg_kleopatra_configure = \
     -DDISABLE_KWATCHGNUPG=ON \
     -DKLEOPATRA_LIST_AS_COMPONENT=ON \
