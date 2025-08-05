@@ -67,6 +67,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kio/0001-WIP-Remove-dependency-to-dbus.patch \
              patches/kio/FileManagerWindowJob.patch \
              patches/kleopatra/0001-Revert-change-of-selection-of-own-keys-to-selection-.patch \
+             patches/kleopatra/0001-Update-status-bar-when-distribution-settings-change.patch \
              patches/kleopatra/0002-Use-RSAKeySizes-and-PGPKeyType-again.patch \
              patches/kleopatra/set-windows-registry.patch \
              patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \

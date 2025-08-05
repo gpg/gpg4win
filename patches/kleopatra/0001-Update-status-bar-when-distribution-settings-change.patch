@@ -1,0 +1,62 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 1fb1e088a82ed011be99ce99e65b8e41525d7ed3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 7 May 2025 10:18:39 +0200
+Subject: [PATCH] Update status bar when distribution settings change
+
+Kleopatra shows information read from the distribution settings in the
+status bar. Hence we need to update the status bar whenever those settings
+change.
+
+GnuPG-bug-id: 7639
+
+(cherry picked from commit 7fa582188438312ca8ae77ec89b85a7731cfca48)
+---
+ src/kleopatraapplication.cpp | 1 +
+ src/kleopatraapplication.h   | 1 +
+ src/mainwindow.cpp           | 3 +++
+ 3 files changed, 5 insertions(+)
+
+diff --git a/src/kleopatraapplication.cpp b/src/kleopatraapplication.cpp
+index 617c4f5a8..86c651bf8 100644
+--- a/src/kleopatraapplication.cpp
++++ b/src/kleopatraapplication.cpp
+@@ -884,6 +884,7 @@ void KleopatraApplication::startGpgAgent()
+ void KleopatraApplication::setDistributionSettings(const std::shared_ptr<QSettings> &settings)
+ {
+     d->distroSettings = settings;
++    Q_EMIT distributionSettingsChanged();
+ }
+
+ std::shared_ptr<QSettings> KleopatraApplication::distributionSettings() const
+diff --git a/src/kleopatraapplication.h b/src/kleopatraapplication.h
+index 96b6b4499..4762db45f 100644
+--- a/src/kleopatraapplication.h
++++ b/src/kleopatraapplication.h
+@@ -106,6 +106,7 @@ Q_SIGNALS:
+     void setExitValue(int value);
+
+     void configurationChanged();
++    void distributionSettingsChanged();
+
+ private Q_SLOTS:
+     // used as URL handler for URLs with schemes that shall be blocked
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index b65836d0c..e3cbd67cc 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -520,6 +520,9 @@ MainWindow::Private::Private(MainWindow *qq)
+     q->setAutoSaveSettings();
+
+     updateSearchBarClickMessage();
++    connect(KleopatraApplication::instance(), &KleopatraApplication::distributionSettingsChanged, q, [this]() {
++        updateStatusBar();
++    });
+     updateStatusBar();
+
+     if (KeyCache::instance()->initialized()) {
+--
+2.50.1
