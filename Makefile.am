@@ -100,6 +100,9 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches-appimage/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
              patches-appimage/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
              patches-appimage/kwidgetsaddons/fix-height-of-text-after-update.patch \
+             patches-appimage/kleopatra/0001-Revert-change-of-selection-of-own-keys-to-selection-.patch \
+             patches-appimage/kleopatra/0001-Update-status-bar-when-distribution-settings-change.patch \
+             patches-appimage/kleopatra/0002-Use-RSAKeySizes-and-PGPKeyType-again.patch \
              patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
              patches-appimage/okular/0001-Add-support-to-customize-about-data.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
