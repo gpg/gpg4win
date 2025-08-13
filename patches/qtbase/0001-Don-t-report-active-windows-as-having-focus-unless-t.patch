@@ -1,0 +1,34 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 44e1869656d6ecdd3f3125741ce3cd69709eb817 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 13 Aug 2025 10:29:34 +0200
+Subject: [PATCH] Don't report active windows as having focus (unless they have
+ focus)
+
+---
+ .../windows/uiautomation/qwindowsuiamainprovider.cpp       | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/src/plugins/platforms/windows/uiautomation/qwindowsuiamainprovider.cpp b/src/plugins/platforms/windows/uiautomation/qwindowsuiamainprovider.cpp
+index de9c8e5efe1..b6b8eaf6590 100644
+--- a/src/plugins/platforms/windows/uiautomation/qwindowsuiamainprovider.cpp
++++ b/src/plugins/platforms/windows/uiautomation/qwindowsuiamainprovider.cpp
+@@ -588,12 +588,7 @@ HRESULT QWindowsUiaMainProvider::GetPropertyValue(PROPERTYID idProp, VARIANT *pR
+         *pRetVal = QComVariant{ accessible->text(QAccessible::Help) }.release();
+         break;
+     case UIA_HasKeyboardFocusPropertyId:
+-        if (topLevelWindow) {
+-            // Windows set the active state to true when they are focused
+-            setVariantBool(accessible->state().active, pRetVal);
+-        } else {
+-            setVariantBool(accessible->state().focused, pRetVal);
+-        }
++        setVariantBool(accessible->state().focused, pRetVal);
+         break;
+     case UIA_IsKeyboardFocusablePropertyId:
+         if (topLevelWindow) {
+--
+2.50.1
