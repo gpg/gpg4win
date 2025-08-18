@@ -317,9 +317,9 @@
 !define gpg4win_pkg_mimetreeparser @gpg4win_pkg_mimetreeparser@
 !define gpg4win_pkg_mimetreeparser_version @gpg4win_pkg_mimetreeparser_version@
 
-@HAVE_PKG_QRENCODE@
-!define gpg4win_pkg_qrencode @gpg4win_pkg_qrencode@
-!define gpg4win_pkg_qrencode_version @gpg4win_pkg_qrencode_version@
+@HAVE_PKG_LIBQRENCODE@
+!define gpg4win_pkg_libqrencode @gpg4win_pkg_libqrencode@
+!define gpg4win_pkg_libqrencode_version @gpg4win_pkg_libqrencode_version@
 
 @HAVE_PKG_PRISON@
 !define gpg4win_pkg_prison @gpg4win_pkg_prison@

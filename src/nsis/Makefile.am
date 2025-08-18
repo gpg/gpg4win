@@ -82,7 +82,7 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-pkgconfig.nsi     uninst-pkgconfig.nsi                 \
              inst-poppler.nsi uninst-poppler.nsi                         \
              inst-prison.nsi uninst-prison.nsi                           \
-             inst-qrencode.nsi uninst-qrencode.nsi                       \
+             inst-libqrencode.nsi uninst-libqrencode.nsi                 \
              inst-qtbase.nsi uninst-qtbase.nsi                           \
              inst-qthttpserver.nsi uninst-qthttpserver.nsi               \
              inst-qtsvg.nsi uninst-qtsvg.nsi                             \

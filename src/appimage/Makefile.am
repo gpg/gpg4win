@@ -69,7 +69,7 @@ $(info -------------------------------------------------)
 # Source packages for the AppImage (see also ../src/Makefile.am)
 appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
-		 freetype qrencode jpeg libpng xcb-util-cursor
+		 freetype jpeg libpng xcb-util-cursor
 
 
 appimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
@@ -85,7 +85,7 @@ appimage_kdepkgs = gpgmepp qgpgme \
 		   kjobwidgets libical kcalendarcore mimetreeparser \
 		   kcolorscheme sonnet ktextwidgets kauth kstatusnotifieritem \
 		   threadweaver kparts poppler okular \
-		   gpgmepp qgpgme \
+		   gpgmepp qgpgme libqrencode \
 		   prison gpgpass zstd pcre2 \
 		   qtbase qttools qtsvg qttranslations qtwayland \
 		   plasma-wayland-protocols breeze
