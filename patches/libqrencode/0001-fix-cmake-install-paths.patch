@@ -1,0 +1,21 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+Subject: [PATCH] Fix install paths for qrencode library dll's
+
+--
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 773e037..c387c52 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -133,7 +133,7 @@ configure_file(libqrencode.pc.in libqrencode.pc @ONLY)
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qrencode.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libqrencode.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ install(FILES qrencode.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+-install(TARGETS qrencode DESTINATION ${CMAKE_INSTALL_LIBDIR})
++install(TARGETS qrencode LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} )
+
+ ## Build utility tools
+ if(WITH_TOOLS)

@@ -18,7 +18,7 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/qrencode-${gpg4win_pkg_qrencode_version}
+!define prefix ${ipdir}/libqrencode-${gpg4win_pkg_libqrencode_version}
 
 !ifdef DEBUG
 Section "qrencode" SEC_qrencode

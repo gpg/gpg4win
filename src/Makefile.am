@@ -141,11 +141,11 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
 		gpa opencdk jpeg \
 		pinentry libassuan ntbtls pcre \
-		paperkey regex libiconv gettext scute qrencode
+		paperkey regex libiconv gettext scute
 
 # Source packages following the KDE pattern
 gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
-                  gpgmepp qgpgme \
+                  gpgmepp qgpgme libqrencode \
                   kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
                   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
@@ -225,6 +225,9 @@ gpg4win_pkg_libgpg_error_ex_configure = --enable-static
 gpg4win_pkg_libgpg_error_extracflags = -D_WIN32_WINNT=0x0600
 
 gpg4win_pkg_libgpg_error_ex_extracflags = -D_WIN32_WINNT=0x0600
+
+gpg4win_pkg_libqrencode_configure = \
+                -DBUILD_SHARED_LIBS=ON
 
 
 # We convert the PO files to UTF-8.  FIXME: This should be done in

@@ -216,8 +216,8 @@
 !ifdef HAVE_PKG_LIBICAL
 !include "inst-libical.nsi"
 !endif
-!ifdef HAVE_PKG_QRENCODE
-!include "inst-qrencode.nsi"
+!ifdef HAVE_PKG_LIBQRENCODE
+!include "inst-libqrencode.nsi"
 !endif
 !ifdef HAVE_PKG_PRISON
 !include "inst-prison.nsi"
@@ -464,8 +464,8 @@
 !ifdef HAVE_PKG_MIMETREEPARSER
 !include "uninst-mimetreeparser.nsi"
 !endif
-!ifdef HAVE_PKG_QRENCODE
-!include "uninst-qrencode.nsi"
+!ifdef HAVE_PKG_LIBQRENCODE
+!include "uninst-libqrencode.nsi"
 !endif
 !ifdef HAVE_PKG_PRISON
 !include "uninst-prison.nsi"
@@ -791,8 +791,8 @@ Function CalcDepends
 !ifdef HAVE_PKG_PRISON
   !insertmacro UnselectSection ${SEC_prison}
 !endif
-!ifdef HAVE_PKG_QRENCODE
-  !insertmacro UnselectSection ${SEC_qrencode}
+!ifdef HAVE_PKG_LIBQRENCODE
+  !insertmacro UnselectSection ${SEC_libqrencode}
 !endif
 !ifdef HAVE_PKG_KDE_L10N
   !insertmacro UnselectSection ${SEC_kde_l10n}
@@ -929,7 +929,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_qtbase}
   !insertmacro SelectSection ${SEC_breeze_icons}
   !insertmacro SelectSection ${SEC_kconfig}
-  !insertmacro SelectSection ${SEC_qrencode}
+  !insertmacro SelectSection ${SEC_libqrencode}
   !insertmacro SelectSection ${SEC_prison}
   skip_gpgpass:
 !endif
