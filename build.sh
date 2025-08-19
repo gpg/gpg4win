@@ -406,8 +406,8 @@ else
     [ $dist = yes ] && cmd="$cmd --dist"
     [ $force = yes ] && cmd="$cmd --force"
     [ $withmsi = yes -a $shell = no ] && cmd="$cmd --msi"
-    docker_image=g10-build-gpg4win:bookworm
-    dockerfile=${srcdir}/docker/gpg4win-bookworm
+    docker_image=g10-build-gpg4win:trixie
+    dockerfile=${srcdir}/docker/gpg4win-trixie
 fi
 
 # Update the docker image if requested or if it does not exist.

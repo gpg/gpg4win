@@ -382,7 +382,7 @@ $(stampdir)/stamp-$(1)-ex-02-configure: $(stampdir)/stamp-$(1)-ex-01-patch
 		--libdir="$$$${pkgidir}/lib"    \
 		--host=$(GPGEX_ADD_HOST)		\
 		--build=$(build)			\
-		$$$${pkgcfg} CFLAGS=\"-fcommon $$$${pkgextracflags}\"\
+		$$$${pkgcfg} CFLAGS=\"-fcommon -Wno-error=incompatible-pointer-types $$$${pkgextracflags}\"\
            || exit 1; \
 	 shopt -s nullglob;					\
 	 for pfile in "$$$${pkgpatbdir}"/*.postcfg       		\
@@ -476,7 +476,7 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 		--prefix="$$$${pkgidir}" \
 		--host=$(host) \
 		--build=$(build) \
-		$$$${pkgcfg} CFLAGS=\"-fcommon $$$${pkgextracflags}\" \
+		$$$${pkgcfg} CFLAGS=\"-fcommon -Wno-error=incompatible-pointer-types $$$${pkgextracflags}\" \
            || exit 1; \
 	shopt -s nullglob; \
 	for pfile in "$$$${pkgpatbdir}"/*.postcfg \
