@@ -53,6 +53,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
+             patches/kconfig/0002-Fix-reading-of-localized-config-values-on-Windows-an.patch \
              patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
              patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \

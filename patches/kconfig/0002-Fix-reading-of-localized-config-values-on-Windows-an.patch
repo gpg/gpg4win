@@ -1,0 +1,62 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From b85702bd17539b8374c9e4f3977e012036c01913 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Thu, 26 Jun 2025 17:02:01 +0200
+Subject: [PATCH] Fix reading of localized config values on Windows (and macOS)
+
+On Linux, this works already because QLocale respects LANGUAGE on Linux
+(and there's no separate "display language" like on Windows). On Windows
+(and macOS), we need to use the same workaround as in ki18n for handling
+LANGUAGE (which is used by kxmlgui to set the user-configured
+application-specific language override) and for preferring the configured
+display language over the system language (aka the default language of the
+Windows installation).
+---
+ src/core/kconfig.cpp      | 22 ++++++++++++++++++++-
+ 4 files changed, 64 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/kconfig.cpp b/src/core/kconfig.cpp
+index 7618ea8a..e25e751e 100644
+--- a/src/core/kconfig.cpp
++++ b/src/core/kconfig.cpp
+@@ -68,6 +68,26 @@ static const Qt::CaseSensitivity sPathCaseSensitivity = Qt::CaseSensitive;
+ static const Qt::CaseSensitivity sPathCaseSensitivity = Qt::CaseInsensitive;
+ #endif
+
++static QString getDefaultLocaleName()
++{
++#if defined(Q_OS_WIN) || defined(Q_OS_MAC)
++    if (QLocale() == QLocale::system()) {
++        // If the default locale hasn't been changed then
++        // On Windows and Apple OSs, we cannot use QLocale::system() if an application-specific
++        // language was set by kxmlgui because Qt ignores LANGUAGE on Windows and Apple OSs.
++        if (const auto languages = qEnvironmentVariable("LANGUAGE").split(u':', Qt::SkipEmptyParts); !languages.isEmpty()) {
++            return languages.front();
++        }
++        // Also prefer the configured display language over the system language
++        if (const auto languages = QLocale::system().uiLanguages(); !languages.isEmpty()) {
++            // uiLanguages() uses dashes as separator, but KConfig assumes underscores
++            return languages.value(0).replace(u'-', u'_');
++        }
++    }
++#endif
++    return QLocale().name();
++}
++
+ KConfigPrivate::KConfigPrivate(KConfig::OpenFlags flags, QStandardPaths::StandardLocation resourceType)
+     : openFlags(flags)
+     , resourceType(resourceType)
+@@ -120,7 +140,7 @@ KConfigPrivate::KConfigPrivate(KConfig::OpenFlags flags, QStandardPaths::Standar
+     //        mappingsRegistered = true;
+     //    }
+
+-    setLocale(QLocale().name());
++    setLocale(getDefaultLocaleName());
+ }
+
+ bool KConfigPrivate::lockLocal()
+--
+2.50.0
