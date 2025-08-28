@@ -27,7 +27,7 @@ RUN zypper --non-interactive update \
         # Build basics
         flex bison gperf awk patch wget automake rsync xz bzip2 \
         gettext gettext-tools gettext-runtime meson ninja \
-        which file git-core cmake gcc13 gcc13-c++ glibc-devel-static pkg-config \
+        which file git-core cmake gcc14 gcc14-c++ glibc-devel-static pkg-config \
         glibc-locale-base \
         # Python
         python311 python311-lxml \
@@ -74,10 +74,10 @@ RUN zypper --non-interactive update \
     # cleanup to ensure we don't leave behind anything that doesn't need to be in the image
     && zypper --non-interactive clean -a \
     # make sure the appropriate gcc/python versions are the defaults
-    && alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 1 \
-    && alternatives --install /usr/bin/cc cc /usr/bin/gcc-13 1 \
-    && alternatives --install /usr/bin/cpp cpp /usr/bin/g++-13 1 \
-    && alternatives --install /usr/bin/g++ gcc++ /usr/bin/g++-13 1 \
+    && alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 1 \
+    && alternatives --install /usr/bin/cc cc /usr/bin/gcc-14 1 \
+    && alternatives --install /usr/bin/cpp cpp /usr/bin/g++-14 1 \
+    && alternatives --install /usr/bin/g++ gcc++ /usr/bin/g++-14 1 \
     && alternatives --install /usr/bin/python python /usr/bin/python3.11 1 \
     && alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
 
