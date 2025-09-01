@@ -20,7 +20,7 @@
 #
 # SPDX-License-Identifier: GPL-2.0-or-later
 
-FROM debian:bookworm
+FROM debian:trixie
 
 RUN set -x \
     && apt-get update \
