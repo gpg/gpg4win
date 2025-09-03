@@ -99,6 +99,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/0001-Don-t-report-active-windows-as-having-focus-unless-t.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/0001-Make-queryHighContrast-a-file-static.patch \
+             patches/qtbase/0001-Notify-a11y-tools-if-check-state-changes.patch \
              patches/qtbase/0002-Use-correct-tool-tip-colors-for-high-contrast-modes.patch \
              patches/qtbase/0003-Use-system-colors-if-high-contrast-mode-is-active.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \

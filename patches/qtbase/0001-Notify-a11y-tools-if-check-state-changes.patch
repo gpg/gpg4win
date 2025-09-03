@@ -1,0 +1,104 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From ede2d885b3585d44163684acddb97900848f9298 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 3 Sep 2025 15:23:50 +0200
+Subject: [PATCH] Notify a11y tools if check state changes
+
+Change-Id: I3175a764d415b26dbb1e9ad2627fcdd898a41ae8
+---
+ src/corelib/itemmodels/qabstractitemmodel.h |  2 ++
+ src/widgets/itemviews/qtreewidget.cpp       | 22 +++++++++++++++++++++
+ src/widgets/itemviews/qtreewidget_p.h       |  3 ++-
+ 3 files changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/src/corelib/itemmodels/qabstractitemmodel.h b/src/corelib/itemmodels/qabstractitemmodel.h
+index 8de9fee7f0a..917de9a3c95 100644
+--- a/src/corelib/itemmodels/qabstractitemmodel.h
++++ b/src/corelib/itemmodels/qabstractitemmodel.h
+@@ -355,6 +355,8 @@ Q_SIGNALS:
+     void columnsAboutToBeMoved( const QModelIndex &sourceParent, int sourceStart, int sourceEnd, const QModelIndex &destinationParent, int destinationColumn, QPrivateSignal);
+     void columnsMoved( const QModelIndex &sourceParent, int sourceStart, int sourceEnd, const QModelIndex &destinationParent, int destinationColumn, QPrivateSignal);
+
++    void checkStateChanged(const QModelIndex &index);
++
+ public Q_SLOTS:
+     virtual bool submit();
+     virtual void revert();
+diff --git a/src/widgets/itemviews/qtreewidget.cpp b/src/widgets/itemviews/qtreewidget.cpp
+index d9f23b7c9db..7a30686b387 100644
+--- a/src/widgets/itemviews/qtreewidget.cpp
++++ b/src/widgets/itemviews/qtreewidget.cpp
+@@ -10,6 +10,9 @@
+ #include <private/qtreewidget_p.h>
+ #include <private/qwidgetitemdata_p.h>
+ #include <private/qtreewidgetitemiterator_p.h>
++#if QT_CONFIG(accessibility)
++#include <qaccessible.h>
++#endif
+
+ #include <QtCore/private/qduplicatetracker_p.h>
+
+@@ -784,6 +787,9 @@ void QTreeModel::emitDataChanged(QTreeWidgetItem *item, int column, const QList<
+         bottomRight = topLeft;
+     }
+     emit dataChanged(topLeft, bottomRight, roles);
++    if (!roles.isEmpty() && roles.first() == Qt::CheckStateRole) {
++        emit checkStateChanged(topLeft);
++    }
+ }
+
+ void QTreeModel::beginInsertItems(QTreeWidgetItem *parent, int row, int count)
+@@ -2408,6 +2414,20 @@ void QTreeWidgetPrivate::dataChanged(const QModelIndex &topLeft,
+     }
+ }
+
++void QTreeWidgetPrivate::checkStateChanged(const QModelIndex &index)
++{
++#if QT_CONFIG(accessibility)
++    Q_Q(QTreeWidget);
++    if (QAccessible::isActive() && q->hasFocus() && index == q->currentIndex()) {
++        QAccessible::State s;
++        s.checked = true;
++        QAccessibleStateChangeEvent event(q, s);
++        event.setChild(accessibleTree2Index(index));
++        QAccessible::updateAccessibility(&event);
++    }
++#endif
++}
++
+ /*!
+   \class QTreeWidget
+
+@@ -2598,6 +2618,8 @@ QTreeWidget::QTreeWidget(QWidget *parent)
+                                 d, &QTreeWidgetPrivate::emitItemChanged),
+         QObjectPrivate::connect(model(), &QAbstractItemModel::dataChanged,
+                                 d, &QTreeWidgetPrivate::dataChanged),
++        QObjectPrivate::connect(model(), &QAbstractItemModel::checkStateChanged,
++                                d, &QTreeWidgetPrivate::checkStateChanged),
+         QObjectPrivate::connect(model(), &QAbstractItemModel::columnsRemoved,
+                                 d, &QTreeWidgetPrivate::sort),
+         QObjectPrivate::connect(selectionModel(), &QItemSelectionModel::currentChanged,
+diff --git a/src/widgets/itemviews/qtreewidget_p.h b/src/widgets/itemviews/qtreewidget_p.h
+index aaf0ff9ea27..1f76af98173 100644
+--- a/src/widgets/itemviews/qtreewidget_p.h
++++ b/src/widgets/itemviews/qtreewidget_p.h
+@@ -205,12 +205,13 @@ public:
+     void emitCurrentItemChanged(const QModelIndex &previous, const QModelIndex &index);
+     void sort();
+     void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);
++    void checkStateChanged(const QModelIndex &index);
+     void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+
+      // used by QTreeWidgetItem::sortChildren to make sure the column argument is used
+     int explicitSortColumn;
+
+-    std::array<QMetaObject::Connection, 12> connections;
++    std::array<QMetaObject::Connection, 13> connections;
+ };
+
+ QT_END_NAMESPACE
+--
+2.51.0
