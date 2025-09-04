@@ -1,0 +1,70 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From cff9df67d34fa21fc8f3ba47300e1671c4526629 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Fri, 29 Aug 2025 14:49:42 +0900
+Subject: [PATCH 2/2] gpgsm: Extend gpgsm_assuan_simple_command to consule diag
+ output.
+
+* src/engine-gpgsm.c (gpgsm_assuan_simple_command): Take care about
+diag output.
+
+--
+
+GnuPG-bug-id: 7759
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+
+
+--- a/src/engine-gpgsm.c	2025-09-17 12:31:24.359626906 +0200
++++ b/src/engine-gpgsm.c	2025-09-17 12:33:35.415622806 +0200
+@@ -691,6 +691,23 @@
+   gpg_error_t err, cb_err;
+   char *line;
+   size_t linelen;
++  struct io_select_fd_s fds[2];
++  struct io_cb_data iocb_data;
++  int nfds = 0;
++
++  iocb_data.handler_value = gpgsm->diag_cb.data;
++  iocb_data.op_err = 0;
++
++  memset (fds, 0, sizeof (struct io_select_fd_s)*2);
++  fds[nfds].fd = gpgsm->status_cb.fd;
++  fds[nfds].for_read = 1;
++  nfds++;
++  if (gpgsm->diag_cb.fd != -1)
++    {
++      fds[nfds].fd = gpgsm->diag_cb.fd;
++      fds[nfds].for_read = 1;
++      nfds++;
++    }
+
+   err = assuan_write_line (ctx, cmd);
+   if (err)
+@@ -699,6 +716,24 @@
+   cb_err = 0;
+   do
+     {
++      fds[0].signaled = fds[1].signaled = 0;
++      if (gpgsm->status_cb.fd != -1
++	  && _gpgme_io_select (fds, nfds, 0) < 0)
++	{
++          err = gpg_error_from_syserror ();
++	  break;
++	}
++
++      if (gpgsm->diag_cb.fd != -1 && fds[1].signaled)
++	{
++	  err = _gpgme_data_inbound_handler (&iocb_data, gpgsm->diag_cb.fd);
++	  if (err)
++	    break;
++	}
++
++      if (gpgsm->status_cb.fd != -1 && !fds[0].signaled)
++	continue;
++
+       err = assuan_read_line (ctx, &line, &linelen);
+       if (err)
+         break;
