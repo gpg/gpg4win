@@ -620,25 +620,25 @@ chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
 
 
 # gpg4win-tools
-# last changed: 2025-07-28
+# last changed: 2025-09-04
 # by: wk
 # verified: Tarball created by builder.
-file gpg4win-tools/gpg4win-tools-202507280933.tar.xz
-chk d3914dc1842697aaaaf50e9865c55a16af8b4d8077782564974a5c2bebcabb65
+file gpg4win-tools/gpg4win-tools-202509041553.tar.xz
+chk e96e3a3daac1bacc42edfce21c247b4eab805cc8b204bfb8ab2f5297ef849c30
 
 # libkleo
-# last changed: 2025-07-28
+# last changed: 2025-09-04
 # by: wk
 # verified: Tarball created by builder.
-file libkleo/libkleo-202507280933.tar.xz
-chk 24fe71fbea557e7ff959dd36ee4a39fe6b9c6efb23b666d1ab6bcd3118faacd5
+file libkleo/libkleo-202509041553.tar.xz
+chk 4a6c71e5c7c7b58c07078f04e71d28ef2c37133050cd0ec21a845a9cc6d48264
 
 # kleopatra
-# last changed: 2025-07-28
+# last changed: 2025-09-04
 # by: wk
 # verified: Tarball created by builder.
-file kleopatra/kleopatra-202507280933.tar.xz
-chk 18c1214ba7fde53590b4960e93ec1ab85252c3bcc7f630e5fc516f2c11058430
+file kleopatra/kleopatra-202509041553.tar.xz
+chk 74fc4d9a807e548fe2f96753b1cd73095d6eade631ffdf53a6b48bdcc81fc591
 
 # gpgoljs
 # last changed: 2025-07-28
@@ -671,28 +671,18 @@ fi # gnupg22 - gpgpass
 if gnupg != gnupg22
 
 # poppler
-# last changed: 2025-06-24
+# last changed: 2025-09-04
 # by: wk
 # verified: Tarball created by builder.
-file poppler/poppler-202506241121.tar.xz
-chk 949dcdfb8744c32e6ef0d61b60091190acae9000b49a59ee2494dc2b104d2a72
+file poppler/poppler-202509041554.tar.xz
+chk fb3956195a19feda15aa2e69ecb91aa239d85e7fda94940327f5953712715c81
 
 # okular
-# last changed: 2025-06-24
+# last changed: 2025-09-04
 # by: wk
 # verified: Tarball created by builder.
-file okular/okular-202506241413.tar.xz
-chk ce6535e56fef135befa936a7356e3c75771595a5fd993fca1cc775a7ca0cdd54
-
-
-# This newer one does not build
-# # okular
-# # last changed: 2025-07-10
-# # by: wk
-# # verified: Tarball created by builder.
-# file okular/okular-202507101552.tar.xz
-# chk 908a72d80550554b1b6ed91148d36ef81d30f5d2789941fa14fb38c60a7f9d22
-
+file okular/okular-202509041554.tar.xz
+chk 4e21878a7def7c2e885e84841dfab7e8a5eb75b7f0e33b092a34f8978498787c
 
 fi # !gnupg22 - Current Okular et al.
 
