@@ -634,11 +634,11 @@ file libkleo/libkleo-202509041553.tar.xz
 chk 4a6c71e5c7c7b58c07078f04e71d28ef2c37133050cd0ec21a845a9cc6d48264
 
 # kleopatra
-# last changed: 2025-09-04
+# last changed: 2025-09-05
 # by: wk
 # verified: Tarball created by builder.
-file kleopatra/kleopatra-202509041553.tar.xz
-chk 74fc4d9a807e548fe2f96753b1cd73095d6eade631ffdf53a6b48bdcc81fc591
+file kleopatra/kleopatra-202509051221.tar.xz
+chk 5e48d7df7f3630cc1d1900653e8a49cb4aa25ea308c9fbc3d0f2183065ffe963
 
 # gpgoljs
 # last changed: 2025-07-28
