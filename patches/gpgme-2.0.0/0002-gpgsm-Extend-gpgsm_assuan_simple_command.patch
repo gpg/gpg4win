@@ -44,10 +44,10 @@ index 37236bc2..b482918c 100644
 +      fds[nfds].for_read = 1;
 +      nfds++;
 +    }
-
+ 
    err = assuan_write_line (ctx, cmd);
    if (err)
-@@ -699,7 +716,24 @@ gpgsm_assuan_simple_command (engine_gpgsm_t gpgsm, const char *cmd,
+@@ -699,6 +716,24 @@ gpgsm_assuan_simple_command (engine_gpgsm_t gpgsm, const char *cmd,
    cb_err = 0;
    do
      {
@@ -71,6 +71,7 @@ index 37236bc2..b482918c 100644
 +
        err = assuan_read_line (ctx, &line, &linelen);
        if (err)
-        break;
---
+ 	break;
+-- 
 2.39.2
+

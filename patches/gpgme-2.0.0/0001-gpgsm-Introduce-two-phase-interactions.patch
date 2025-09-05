@@ -2,7 +2,6 @@
 patch -p1 -l -f $* < $0
 exit $?
 
-
 From 52bde50b879c2b9318c87eb9f377bed6557366e2 Mon Sep 17 00:00:00 2001
 From: NIIBE Yutaka <gniibe@fsij.org>
 Date: Fri, 29 Aug 2025 09:28:06 +0900
@@ -30,8 +29,8 @@ index e9d69d7a..37236bc2 100644
 --- a/src/engine-gpgsm.c
 +++ b/src/engine-gpgsm.c
 @@ -1166,34 +1166,15 @@ add_io_cb (engine_gpgsm_t gpgsm, iocb_data_t *iocbd, gpgme_io_cb_t handler)
-
-
+ 
+ 
  static gpgme_error_t
 -start (engine_gpgsm_t gpgsm, const char *command)
 +prepare (engine_gpgsm_t gpgsm)
@@ -43,7 +42,7 @@ index e9d69d7a..37236bc2 100644
    int fdlist[5];
    int nfds;
    int i;
-
+ 
 -  if (*gpgsm->request_origin)
 -    {
 -      char *cmd;
@@ -68,7 +67,7 @@ index e9d69d7a..37236bc2 100644
       using the assumption that the first returned fd from
       assuan_get_active_fds() is always this one.  */
 @@ -1217,7 +1198,36 @@ start (engine_gpgsm_t gpgsm, const char *command)
-
+ 
    gpgsm->status_cb.fd = _gpgme_io_dup (fdlist[0]);
    if (gpgsm->status_cb.fd < 0)
 -    return gpg_error_from_syserror ();
@@ -102,13 +101,13 @@ index e9d69d7a..37236bc2 100644
 +                               "OPTION offline=1":
 +                               "OPTION offline=0" ,
 +                               NULL, NULL);
-
+ 
    if (_gpgme_io_set_close_notify (gpgsm->status_cb.fd,
-                                  close_notify_handler, gpgsm))
+ 				  close_notify_handler, gpgsm))
 @@ -1319,6 +1329,10 @@ gpgsm_decrypt (void *engine,
    if (!gpgsm)
      return gpg_error (GPG_ERR_INV_VALUE);
-
+ 
 +  err = prepare (gpgsm);
 +  if (err)
 +    return err;
@@ -119,16 +118,16 @@ index e9d69d7a..37236bc2 100644
 @@ -1334,7 +1348,7 @@ gpgsm_decrypt (void *engine,
    gpgsm_clear_fd (gpgsm, MESSAGE_FD);
    gpgsm->inline_data = NULL;
-
+ 
 -  err = start (engine, "DECRYPT");
 +  err = start (gpgsm, "DECRYPT");
    return err;
  }
-
+ 
 @@ -1397,12 +1411,17 @@ gpgsm_delete (void *engine, gpgme_key_t key, unsigned int flags)
      }
    *linep = '\0';
-
+ 
 +  err = prepare (gpgsm);
 +  if (err)
 +    goto leave;
@@ -137,16 +136,16 @@ index e9d69d7a..37236bc2 100644
    gpgsm_clear_fd (gpgsm, INPUT_FD);
    gpgsm_clear_fd (gpgsm, MESSAGE_FD);
    gpgsm->inline_data = NULL;
-
+ 
    err = start (gpgsm, line);
 + leave:
    free (line);
-
+ 
    return err;
 @@ -1539,6 +1558,10 @@ gpgsm_encrypt (void *engine, gpgme_key_t recp[], const char *recpstring,
    if (flags & (GPGME_ENCRYPT_ARCHIVE | GPGME_ENCRYPT_FILE))
      return gpg_error (GPG_ERR_NOT_IMPLEMENTED);
-
+ 
 +  err = prepare (gpgsm);
 +  if (err)
 +    return err;
@@ -157,17 +156,17 @@ index e9d69d7a..37236bc2 100644
 @@ -1621,6 +1644,10 @@ gpgsm_export (void *engine, const char *pattern, gpgme_export_mode_t mode,
      }
    strcat (cmd, pattern);
-
+ 
 +  err = prepare (gpgsm);
 +  if (err)
 +    goto leave;
 +
    gpgsm->output_cb.data = keydata;
    err = gpgsm_set_fd (gpgsm, OUTPUT_FD, use_armor ? "--armor"
-                      : map_data_enc (gpgsm->output_cb.data));
+ 		      : map_data_enc (gpgsm->output_cb.data));
 @@ -1631,6 +1658,7 @@ gpgsm_export (void *engine, const char *pattern, gpgme_export_mode_t mode,
    gpgsm->inline_data = NULL;
-
+ 
    err = start (gpgsm, cmd);
 + leave:
    free (cmd);
@@ -176,17 +175,17 @@ index e9d69d7a..37236bc2 100644
 @@ -1728,6 +1756,10 @@ gpgsm_export_ext (void *engine, const char *pattern[], gpgme_export_mode_t mode,
      }
    *linep = '\0';
-
+ 
 +  err = prepare (gpgsm);
 +  if (err)
 +    goto leave;
 +
    gpgsm->output_cb.data = keydata;
    err = gpgsm_set_fd (gpgsm, OUTPUT_FD, use_armor ? "--armor"
-                      : map_data_enc (gpgsm->output_cb.data));
+ 		      : map_data_enc (gpgsm->output_cb.data));
 @@ -1738,6 +1770,7 @@ gpgsm_export_ext (void *engine, const char *pattern[], gpgme_export_mode_t mode,
    gpgsm->inline_data = NULL;
-
+ 
    err = start (gpgsm, line);
 + leave:
    free (line);
@@ -195,7 +194,7 @@ index e9d69d7a..37236bc2 100644
 @@ -1764,6 +1797,10 @@ gpgsm_genkey (void *engine,
        if (!pubkey || seckey)
          return gpg_error (GPG_ERR_INV_VALUE);
-
+ 
 +      err = prepare (gpgsm);
 +      if (err)
 +	return err;
@@ -206,18 +205,18 @@ index e9d69d7a..37236bc2 100644
 @@ -1815,6 +1852,10 @@ gpgsm_import (void *engine, gpgme_data_t keydata, gpgme_key_t *keyarray,
    if (keydata && keyarray)
      return gpg_error (GPG_ERR_INV_VALUE); /* Only one is allowed.  */
-
+ 
 +  err = prepare (gpgsm);
 +  if (err)
 +    return err;
 +
    dataenc = gpgme_data_get_encoding (keydata);
-
+ 
    if (keyarray)
 @@ -1918,6 +1959,10 @@ gpgsm_keylist (void *engine, const char *pattern, int secret_only,
    if (!pattern)
      pattern = "";
-
+ 
 +  err = prepare (gpgsm);
 +  if (err)
 +    return err;
@@ -228,7 +227,7 @@ index e9d69d7a..37236bc2 100644
 @@ -2007,6 +2052,10 @@ gpgsm_keylist_ext (void *engine, const char *pattern[], int secret_only,
    if (mode & GPGME_KEYLIST_MODE_EXTERN)
      list_mode |= 2;
-
+ 
 +  err = prepare (gpgsm);
 +  if (err)
 +    return err;
@@ -239,7 +238,7 @@ index e9d69d7a..37236bc2 100644
 @@ -2134,6 +2183,10 @@ gpgsm_sign (void *engine, gpgme_data_t in, gpgme_data_t out,
                 | GPGME_SIG_MODE_FILE))
      return gpg_error (GPG_ERR_INV_VALUE);
-
+ 
 +  err = prepare (gpgsm);
 +  if (err)
 +    return err;
@@ -250,7 +249,7 @@ index e9d69d7a..37236bc2 100644
 @@ -2208,6 +2261,10 @@ gpgsm_verify (void *engine, gpgme_verify_flags_t flags, gpgme_data_t sig,
    if (flags & GPGME_VERIFY_ARCHIVE)
      return gpg_error (GPG_ERR_NOT_IMPLEMENTED);
-
+ 
 +  err = prepare (gpgsm);
 +  if (err)
 +    return err;
@@ -261,7 +260,7 @@ index e9d69d7a..37236bc2 100644
 @@ -2293,6 +2350,10 @@ gpgsm_getauditlog (void *engine, gpgme_data_t output, unsigned int flags)
    if (!gpgsm->assuan_ctx)
      return gpg_error (GPG_ERR_INV_VALUE);
-
+ 
 +  err = prepare (gpgsm);
 +  if (err)
 +    return err;
@@ -272,13 +271,14 @@ index e9d69d7a..37236bc2 100644
 @@ -2386,6 +2447,10 @@ gpgsm_passwd (void *engine, gpgme_key_t key, unsigned int flags)
    if (!key || !key->subkeys || !key->subkeys->fpr)
      return gpg_error (GPG_ERR_INV_CERT_OBJ);
-
+ 
 +  err = prepare (gpgsm);
 +  if (err)
 +    return err;
 +
    if (gpgrt_asprintf (&line, "PASSWD -- %s", key->subkeys->fpr) < 0)
      return gpg_error_from_syserror ();
-
---
+ 
+-- 
 2.39.2
+
