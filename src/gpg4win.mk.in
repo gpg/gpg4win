@@ -461,6 +461,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	if [ ! -L "$$$${pkgsdir}" ]; then \
 	    for pfile in "$$$${pkgpatbdir}"/*.patch \
                          "$$$${pkgpatdir}"/*.patch; do \
+		echo "applying $$$${pkgsdir}/$$$${pfile}"; \
 		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}";) \
 	    done \
 	else \
@@ -555,6 +556,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	if [ ! -L "$$$${pkgsdir}" ]; then \
 	    for pfile in "$$$${pkgpatbdir}"/*.patch \
                          "$$$${pkgpatdir}"/*.patch ; do \
+		echo "applying $$$${pkgsdir}/$$$${pfile}"; \
 		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
 	    done \
 	else \
@@ -683,6 +685,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	if [ ! -L "$$$${pkgsdir}" ]; then \
 	    for pfile in "$$$${pkgpatbdir}"/*.patch \
                          "$$$${pkgpatdir}"/*.patch ; do  \
+		echo "applying $$$${pkgsdir}/$$$${pfile}"; \
 	        (cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
 	    done \
 	else \
@@ -777,6 +780,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 		fi; \
 		for pfile in "$$$${pkgpatbdir}"/*.patch \
                              "$$$${pkgpatdir}"/*.patch ; do  \
+		echo "applying $$$${pkgsdir}/$$$${pfile}"; \
 		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
 		done \
 	else \
