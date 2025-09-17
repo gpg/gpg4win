@@ -95,6 +95,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/okular/pgp-default-true.patch \
              patches/pcre2/cross-build-cmake.patch \
              patches/qtbase-6.7.3/0001-QIcon-enable-icon-engine-plugins-to-implement-themes.patch \
+             patches/qtbase-6.7.3/0001-a11y-Remember-QTreeView-s-a11y-child-interfaces.patch \
              patches/qtbase/0001-Don-t-report-active-windows-as-having-focus-unless-t.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/0001-Make-queryHighContrast-a-file-static.patch \
