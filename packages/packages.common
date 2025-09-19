@@ -540,11 +540,11 @@ server https://gnupg.org/ftp/gcrypt/snapshots
 
 
 # gpg4win-tools
-# last changed: 2025-01-22
+# last changed: 2025-09-17
 # by: builder
 # verified: Tarball created by builder.
-file gpg4win-tools/gpg4win-tools-202501221112.tar.xz
-chk 714ba3499b7d217d10ffcb8aa3acd8c6f2c344d74b757acdc4dc0c05a7b0dc70
+file gpg4win-tools/gpg4win-tools-202509171508.tar.xz
+chk abaef9c59a39a9db6437eb9fcedc9c5b10ca2e8b252942388e4b439c1aa962d6
 
 
 # Disabled - not ready for a release on Windows.
