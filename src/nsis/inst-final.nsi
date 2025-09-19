@@ -21,6 +21,12 @@
 # This is the very last section installed.
 Section "-final" SEC_final
 
+  # We do this here because the proper place inst-gnupg-w32.nsi is not
+  # used by the MSI parser.  The uninstalling of this file is handled
+  # by the GnuPG subinstaller
+  SetOutPath "$INSTDIR\..\GnuPG\share\gnupg"
+  File "${SRCDIR}/gpgconf.rnames"
+
   # Set outpath back so that the Finish page gets what it expects.
   SetOutPath "$INSTDIR"
 SectionEnd
