@@ -807,7 +807,20 @@ sub gpg4win_nsis_stubs
         {
             fail "$file:$.: syntax error" if ($#args != 0);
 
+
             my $outpath = $args[0];
+
+	    # Map an OutPath like $FOO\..\GnuPG\bar to
+	    #                     $FOO\GnuPG\bar
+	    # where the first is the Gpg4win installation
+	    # locatation and the latter MSI location.
+	    #  MSI does no like ".." components.
+            if ($outpath =~ m/\\\.\.\\GnuPG\\/)
+	    {
+		$outpath =~ s/\\\.\.\\GnuPG\\/\\GnuPG\\/;
+	    }
+
+
             #       if (not $outpath =~ s/^"\$INSTDIR\\?(.*)"$/$1/)
             if ($outpath =~ m/^"\$INSTDIR\\?(.*)"$/)
             {
@@ -2334,8 +2347,8 @@ print <<EOF;
       <ComponentRef Id='c_scute_0' />
       <ComponentRef Id='c_paperkey_0' />
       <ComponentRef Id='c_paperkey_1' />
-      <!-- gnupg\share\gnupg\gpgconf.rnames -->
-      <ComponentRef Id='c_gnupg_w32_4' />
+      <!-- GnuPG/share/gnupg/gpgconf.rnames -->
+      <ComponentRef Id='c_final_0' />
       <ComponentGroupRef Id='c_customization' />
 
     </Feature>
