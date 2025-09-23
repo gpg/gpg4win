@@ -43,8 +43,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              docker/appimage/Dockerfile \
              docker/appimage/Dockerfile-CentOS7 \
              docker/gpg4win-bookworm/Dockerfile \
-             patches/gpgme-2.0.0/0001-gpgsm-Introduce-two-phase-interactions.patch \
-             patches/gpgme-2.0.0/0002-gpgsm-Extend-gpgsm_assuan_simple_command.patch \
 	     patches/breeze-icons/0001-Add-16x16-variant-of-data-success.patch \
 	     patches/breeze-icons/0002-Add-nicer-16x16-variant-of-dialog-question.patch \
 	     patches/breeze-icons/0003-Add-data-question-status-icon-similar-to-other-data-.patch \
