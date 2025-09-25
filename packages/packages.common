@@ -203,8 +203,8 @@ chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
 # last-changed: 2025-09-25
 # by: wk
 # verified: build-tree
-file gpgol/gpgol-2.6.6.tar.bz2
-chk  cf590f75d64270827077ccd850a5d274fd2f834ee025dc08cac8b9e658a4eb9a
+file gpgol/gpgol-2.6.7.tar.bz2
+chk  e1626e307af5f20d1feac8cf4141f13199fd3e5e12e23a722efb537f0e81a729
 
 #
 # GpgEX
