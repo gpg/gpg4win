@@ -24,6 +24,7 @@ EXTRA_DIST =  config.site                                      \
               slideshow.cpp gpgwrap.c gccwrap.sh.in            \
               versioninfo.rc.in.in gpg4win.w32-manifest.in.in  \
               gpg-enable-keyboxd.bat gpg-disable-keyboxd.bat   \
+              gpgconf.rnames                                   \
               sha1sum.c                                        \
               vsd-gpgconf.ctl                                  \
               potomo                                           \
