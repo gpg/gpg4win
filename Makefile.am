@@ -101,6 +101,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/0001-Raise-UIA-event-for-toggled-tree-view-item.patch \
              patches/qtbase/0002-Use-correct-tool-tip-colors-for-high-contrast-modes.patch \
              patches/qtbase/0003-Use-system-colors-if-high-contrast-mode-is-active.patch \
+             patches/qtbase/0004-Fix-a11y-window-activation-events.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/configurable-windowstheme.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
