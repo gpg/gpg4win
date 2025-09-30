@@ -1,0 +1,49 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 95edf32523882a1fa074efc45e46511c6884061d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 30 Sep 2025 12:03:25 +0200
+Subject: [PATCH] Suspend automatic key listing during key generation
+
+This should prevent a hang that happens intermittently (on Windows)
+caused by gpg and gpgsm fighting over a lock of pubring.kbx.
+
+GnuPG-bug-id: 7827
+---
+ src/commands/newopenpgpcertificatecommand.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/commands/newopenpgpcertificatecommand.cpp b/src/commands/newopenpgpcertificatecommand.cpp
+index 9874cee3e..78ba885e6 100644
+--- a/src/commands/newopenpgpcertificatecommand.cpp
++++ b/src/commands/newopenpgpcertificatecommand.cpp
+@@ -69,6 +69,7 @@ private:
+     QPointer<OpenPGPCertificateCreationDialog> detailsDialog;
+     QPointer<QGpgME::Job> job;
+     QPointer<QProgressDialog> progressDialog;
++    std::shared_ptr<KeyCacheAutoRefreshSuspension> keyCacheAutoRefreshSuspension;
+ };
+
+ NewOpenPGPCertificateCommand::Private *NewOpenPGPCertificateCommand::d_func()
+@@ -143,6 +144,8 @@ void NewOpenPGPCertificateCommand::Private::createCertificate()
+         keyParameters.setComment(settings->value(QStringLiteral("uidcomment"), {}).toString());
+     }
+
++    keyCacheAutoRefreshSuspension = KeyCache::mutableInstance()->suspendAutoRefresh();
++
+     connect(keyGenJob, &QGpgME::KeyGenerationJob::result, q, [this](const KeyGenerationResult &result) {
+         QMetaObject::invokeMethod(
+             q,
+@@ -195,6 +198,8 @@ void NewOpenPGPCertificateCommand::Private::showResult(const KeyGenerationResult
+         }
+     }
+
++    keyCacheAutoRefreshSuspension.reset();
++
+     if (!key.isNull()) {
+         success(xi18nc("@info",
+                        "<para>A new OpenPGP certificate was created successfully.</para>"
+--
+2.51.0
