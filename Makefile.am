@@ -84,6 +84,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/qtbase/CVE-2023-37369-qtbase-5.15.patch \
              patches/qtbase/CVE-2023-43114-5.15.patch \
              patches/qtbase/fix-high-contrast-item-view-selection-color.patch \
+             patches/qtbase/fix-queryHighContrast.patch \
              patches/qtbase/fix-tooltip-text-color-with-dark-theme.patch \
              patches/qtbase/use-fusion-style-for-high-contrast-mode.patch \
              patches/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
