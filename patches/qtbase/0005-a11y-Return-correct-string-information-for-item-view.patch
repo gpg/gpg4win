@@ -1,0 +1,135 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 6da26079fb8edee114268858973c9acd82061bf4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 8 Oct 2025 14:57:34 +0200
+Subject: [PATCH] a11y: Return correct string information for item views
+
+This fixes the problem that accessible name was returned as string
+information for all types of accessible string information (except
+Description), i.e. Name, Help, Value, Accelerator, etc. This made some
+screen readers speak the accessible name multiple times when an item view
+got focus.
+
+QAccessibleTable does not derive from QAccessibleWidget so that we need
+to copy the implementation of QAccessibleWidget.
+
+Change-Id: I443145b97d8546fc6c80689bae50cb896e29cfd1
+---
+ src/widgets/accessible/itemviews.cpp         | 50 ++++++++++++++++++--
+ src/widgets/accessible/qaccessiblewidget.cpp |  6 +--
+ 2 files changed, 50 insertions(+), 6 deletions(-)
+
+diff --git a/src/widgets/accessible/itemviews.cpp b/src/widgets/accessible/itemviews.cpp
+index fc969e17380..06f52613270 100644
+--- a/src/widgets/accessible/itemviews.cpp
++++ b/src/widgets/accessible/itemviews.cpp
+@@ -12,14 +12,20 @@
+ #endif
+ #if QT_CONFIG(treeview)
+ #include <qtreeview.h>
+-#include <private/qtreeview_p.h>
++#include <QtWidgets/private/qtreeview_p.h>
+ #endif
+-#include <private/qwidget_p.h>
++#include <QtWidgets/private/qwidget_p.h>
+
+ #if QT_CONFIG(accessibility)
+
+ QT_BEGIN_NAMESPACE
+
++QString qt_buddyString(const QWidget *widget);
++
++QString qt_accStripAmp(const QString &text);
++
++QString qt_accHotKey(const QString &text);
++
+ /*
+ Implementation of the IAccessible2 table2 interface. Much simpler than
+ the other table interfaces since there is only the main table and cells:
+@@ -585,11 +591,47 @@ int QAccessibleTable::indexOfChild(const QAccessibleInterface *iface) const
+     return -1;
+ }
+
++// from qwidget.cpp
++extern QString qt_setWindowTitle_helperHelper(const QString &, const QWidget*);
++
+ QString QAccessibleTable::text(QAccessible::Text t) const
+ {
+-    if (t == QAccessible::Description)
+-        return view()->accessibleDescription();
+-    return view()->accessibleName();
++    QString str;
++
++    switch (t) {
++    case QAccessible::Name:
++        if (!view()->accessibleName().isEmpty()) {
++            str = view()->accessibleName();
++        } else if (view()->isWindow()) {
++            if (view()->isMinimized())
++                str = qt_setWindowTitle_helperHelper(view()->windowIconText(), view());
++            else
++                str = qt_setWindowTitle_helperHelper(view()->windowTitle(), view());
++        } else {
++            str = qt_accStripAmp(qt_buddyString(view()));
++        }
++        break;
++    case QAccessible::Description:
++        str = view()->accessibleDescription();
++#if QT_CONFIG(tooltip)
++        if (str.isEmpty())
++            str = view()->toolTip();
++#endif
++        break;
++    case QAccessible::Help:
++#if QT_CONFIG(whatsthis)
++        str = view()->whatsThis();
++#endif
++        break;
++    case QAccessible::Accelerator:
++        str = qt_accHotKey(qt_buddyString(view()));
++        break;
++    case QAccessible::Value:
++        break;
++    default:
++        break;
++    }
++    return str;
+ }
+
+ QRect QAccessibleTable::rect() const
+diff --git a/src/widgets/accessible/qaccessiblewidget.cpp b/src/widgets/accessible/qaccessiblewidget.cpp
+index b4adae2e6e6..6de4bfa3a75 100644
+--- a/src/widgets/accessible/qaccessiblewidget.cpp
++++ b/src/widgets/accessible/qaccessiblewidget.cpp
+@@ -36,7 +36,7 @@ using namespace Qt::StringLiterals;
+
+ QWidgetList _q_ac_childWidgets(const QWidget *widget);
+
+-static QString buddyString(const QWidget *widget)
++QString qt_buddyString(const QWidget *widget)
+ {
+     if (!widget)
+         return QString();
+@@ -373,7 +373,7 @@ QString QAccessibleWidget::text(QAccessible::Text t) const
+             else
+                 str = qt_setWindowTitle_helperHelper(widget()->windowTitle(), widget());
+         } else {
+-            str = qt_accStripAmp(buddyString(widget()));
++            str = qt_accStripAmp(qt_buddyString(widget()));
+         }
+         break;
+     case QAccessible::Description:
+@@ -389,7 +389,7 @@ QString QAccessibleWidget::text(QAccessible::Text t) const
+ #endif
+         break;
+     case QAccessible::Accelerator:
+-        str = qt_accHotKey(buddyString(widget()));
++        str = qt_accHotKey(qt_buddyString(widget()));
+         break;
+     case QAccessible::Value:
+         break;
+--
+2.51.0
