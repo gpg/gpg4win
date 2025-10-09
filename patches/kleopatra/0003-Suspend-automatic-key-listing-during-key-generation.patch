@@ -47,3 +47,48 @@ index 9874cee3e..78ba885e6 100644
                         "<para>A new OpenPGP certificate was created successfully.</para>"
 --
 2.51.0
+
+From 42c1e9ad13ddee2e7c3836369c42f724cd90c3d1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 7 Oct 2025 12:06:56 +0200
+Subject: [PATCH] Ensure that Welcome screen is hidden after key generation
+
+GnuPG-bug-id: 7827
+(cherry picked from commit 80419512bd290d4f3e39db9df8992e04a1200bd5)
+---
+ src/mainwindow.cpp | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index 93e9b53b5..4772ebf65 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -344,10 +344,12 @@ public:
+
+     void showCertificateView()
+     {
+-        if (KeyCache::instance()->keys().empty()) {
+-            showView(QStringLiteral("view_certificate_overview"), ui.welcomeWidget);
+-        } else {
+-            showView(QStringLiteral("view_certificate_overview"), ui.searchTab);
++        if (KeyCache::instance()->initialized()) {
++            if (KeyCache::instance()->keys().empty()) {
++                showView(QStringLiteral("view_certificate_overview"), ui.welcomeWidget);
++            } else {
++                showView(QStringLiteral("view_certificate_overview"), ui.searchTab);
++            }
+         }
+     }
+
+@@ -475,6 +477,9 @@ MainWindow::Private::Private(MainWindow *qq)
+     connect(KeyCache::instance().get(), &KeyCache::keyListingDone, q, [this]() {
+         keyListingDone();
+     });
++    connect(KeyCache::instance().get(), &KeyCache::keysMayHaveChanged, q, [this]() {
++        keyListingDone();
++    });
+
+     q->createGUI(QStringLiteral("kleopatra.rc"));
+
+--
+2.51.0
