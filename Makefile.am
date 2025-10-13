@@ -103,6 +103,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/0003-Use-system-colors-if-high-contrast-mode-is-active.patch \
              patches/qtbase/0004-Fix-a11y-window-activation-events.patch \
              patches/qtbase/0005-a11y-Return-correct-string-information-for-item-view.patch \
+             patches/qtbase/CVE-2025-30348-qtbase-6.5.diff.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/configurable-windowstheme.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
