@@ -80,9 +80,19 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
+             patches/qtbase/CVE-2023-32762-qtbase-5.15.patch \
              patches/qtbase/CVE-2023-32763-qtbase-5.15.patch \
+             patches/qtbase/CVE-2023-34410-qtbase-5.15.patch \
              patches/qtbase/CVE-2023-37369-qtbase-5.15.patch \
+             patches/qtbase/CVE-2023-38197-qtbase-5.15.patch \
              patches/qtbase/CVE-2023-43114-5.15.patch \
+             patches/qtbase/CVE-2023-51714-0001-qtbase-5.15.patch \
+             patches/qtbase/CVE-2023-51714-0002-qtbase-5.15.patch \
+             patches/qtbase/CVE-2024-25580-qtbase-5.15.patch \
+             patches/qtbase/CVE-2024-39936-qtbase-5.15.patch \
+             patches/qtbase/CVE-2025-30348-qtbase-5.15.patch \
+             patches/qtbase/CVE-2025-4211-qtbase-5.15.patch \
+             patches/qtbase/CVE-2025-5455-qtbase-5.15.patch \
              patches/qtbase/fix-high-contrast-item-view-selection-color.patch \
              patches/qtbase/fix-queryHighContrast.patch \
              patches/qtbase/fix-tooltip-text-color-with-dark-theme.patch \
@@ -98,9 +108,19 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches-appimage/okular/0001-Add-support-to-customize-about-data.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/poppler/fix-gpg-error-include.patch \
+             patches-appimage/qtbase/CVE-2023-32762-qtbase-5.15.patch \
              patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.patch \
+             patches-appimage/qtbase/CVE-2023-34410-qtbase-5.15.patch \
              patches-appimage/qtbase/CVE-2023-37369-qtbase-5.15.patch \
+             patches-appimage/qtbase/CVE-2023-38197-qtbase-5.15.patch \
              patches-appimage/qtbase/CVE-2023-43114-5.15.patch \
+             patches-appimage/qtbase/CVE-2023-51714-0001-qtbase-5.15.patch \
+             patches-appimage/qtbase/CVE-2023-51714-0002-qtbase-5.15.patch \
+             patches-appimage/qtbase/CVE-2024-25580-qtbase-5.15.patch \
+             patches-appimage/qtbase/CVE-2024-39936-qtbase-5.15.patch \
+             patches-appimage/qtbase/CVE-2025-30348-qtbase-5.15.patch \
+             patches-appimage/qtbase/CVE-2025-4211-qtbase-5.15.patch \
+             patches-appimage/qtbase/CVE-2025-5455-qtbase-5.15.patch \
              patches-appimage/qtbase/add-kleopatras-mime-types.patch \
              patches-appimage/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch
