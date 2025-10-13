@@ -107,6 +107,8 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/configurable-windowstheme.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
              patches/qthttpserver/originAuthenticationRequired.patch \
+             patches/qtsvg/CVE-2025-10728-qtsvg-6.8.diff.patch \
+             patches/qtsvg/CVE-2025-10729-qtsvg-6.8.diff.patch \
              patches-appimage/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
              patches-appimage/breeze/0002-fix-ifdef-windows-qmenu.patch \
              patches-appimage/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
