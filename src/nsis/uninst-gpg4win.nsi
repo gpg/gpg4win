@@ -45,6 +45,8 @@ Section "-un.gpg4win"
   Delete "$INSTDIR\versioninfo.txt"
 
   Delete "$INSTDIR\VERSION"
+  # That second location is used by the MSI.
+  Delete "$INSTDIR\versioninfo.txt"
 
   Delete "$INSTDIR\pkg-licenses.txt"
 

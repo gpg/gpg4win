@@ -2626,6 +2626,7 @@ print <<EOF;
       <ComponentRef Id='c_paperkey_1' />
       <!-- GnuPG/share/gnupg/gpgconf.rnames -->
       <ComponentRef Id='c_final_0' />
+      <ComponentRef Id='c_final_1' />
       <ComponentGroupRef Id='c_customization' />
 
     </Feature>
