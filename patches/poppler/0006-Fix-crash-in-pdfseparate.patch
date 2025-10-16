@@ -1,0 +1,41 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From: Sune Vuorela <sune@vuorela.dk>
+Date: Tue, 29 Jul 2025 14:14:00 +0200
+Subject: [PATCH 6/7] Fix crash in pdfseparate
+
+Don't continue recursing in PDFDoc::mark* if things looks a bit weirder
+than expected
+
+(cherry picked from commit 08d7894e4dd0e313c179e30f06ad8f546619b1b3)
+
+CVE-2025-50420
+
+---
+ poppler/PDFDoc.cc | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/poppler/PDFDoc.cc b/poppler/PDFDoc.cc
+index 894b6767..7d7a9988 100644
+--- a/poppler/PDFDoc.cc
++++ b/poppler/PDFDoc.cc
+@@ -1848,6 +1848,15 @@ bool PDFDoc::markAnnotations(Object *annotsObj, XRef *xRef, XRef *countRef, unsi
+             if (obj1.isDict()) {
+                 Dict *dict = obj1.getDict();
+                 Object type = dict->lookup("Type");
++                if (type.isNull()) {
++                    Object subType = dict->lookup("SubType");
++                    // Type is optional, subtype is required
++                    // If neither of them exists, something is probably
++                    // weird here, so let us just skip this entry
++                    if (subType.isNull()) {
++                        continue;
++                    }
++                }
+                 if (type.isName() && strcmp(type.getName(), "Annot") == 0) {
+                     const Object &obj2 = dict->lookupNF("P");
+                     if (obj2.isRef()) {
+--
+2.47.2

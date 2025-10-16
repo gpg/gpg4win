@@ -1,0 +1,63 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+Backport of:
+
+From ac36affcc8486de38e8905a8d6547a3464ff46e5 Mon Sep 17 00:00:00 2001
+From: Sune Vuorela <sune@vuorela.dk>
+Date: Tue, 3 Jun 2025 00:35:19 +0200
+Subject: [PATCH] Limit ammount of annots per document/page
+
+Without relying on the previous refactorings
+
+CVE-2025-52886
+---
+ poppler/Annot.cc |  4 ++++
+ poppler/Page.cc  | 16 ++++++++++++++++
+ 2 files changed, 20 insertions(+)
+
+diff --git a/poppler/Annot.cc b/poppler/Annot.cc
+index 7841637c..da012fa9 100644
+--- a/poppler/Annot.cc
++++ b/poppler/Annot.cc
+@@ -7491,6 +7491,10 @@ Annots::Annots(PDFDoc *docA, int page, Object *annotsObj)
+                 const Object &obj2 = annotsObj->arrayGetNF(i);
+                 annot = createAnnot(std::move(obj1), &obj2);
+                 if (annot) {
++                    if (annot->refCnt > 100000) {
++                        error(errSyntaxError, -1, "Annotations likely malformed. Too many references. Stopping processing annots on page {0:d}", page);
++                        break;
++                    }
+                     if (annot->isOk()) {
+                         annot->setPage(page, false); // Don't change /P
+                         appendAnnot(annot);
+diff --git a/poppler/Page.cc b/poppler/Page.cc
+index d8711106..b367985a 100644
+--- a/poppler/Page.cc
++++ b/poppler/Page.cc
+@@ -297,6 +297,22 @@ Page::Page(PDFDoc *docA, int numA, Object &&pageDict, Ref pageRefA, PageAttrs *a
+         goto err2;
+     }
+
++    if (annotsObj.isArray() && annotsObj.arrayGetLength() > 10000) {
++        error(errSyntaxError, -1, "Page annotations object (page {0:d}) is likely malformed. Too big: ({1:d})", num, annotsObj.arrayGetLength());
++        goto err2;
++    }
++    if (annotsObj.isRef()) {
++        auto resolvedObj = getAnnotsObject();
++        if (resolvedObj.isArray() && resolvedObj.arrayGetLength() > 10000) {
++            error(errSyntaxError, -1, "Page annotations object (page {0:d}) is likely malformed. Too big: ({1:d})", num, resolvedObj.arrayGetLength());
++            goto err2;
++        }
++        if (!resolvedObj.isArray() && !resolvedObj.isNull()) {
++            error(errSyntaxError, -1, "Page annotations object (page {0:d}) is wrong type ({1:s})", num, resolvedObj.getTypeName());
++            goto err2;
++        }
++    }
++
+     // contents
+     contents = pageObj.dictLookupNF("Contents").copy();
+     if (!(contents.isRef() || contents.isArray() || contents.isNull())) {
+--
+2.47.2

@@ -1,0 +1,79 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From: Albert Astals Cid <aacid@kde.org>
+Date: Tue, 17 Dec 2024 18:59:01 +0100
+Subject: [PATCH 1/7] JBIG2Bitmap::combine: Fix crash on malformed files
+
+Fixes #1553
+
+(cherry picked from commit ade9b5ebed44b0c15522c27669ef6cdf93eff84e)
+
+CVE-2024-56378
+---
+ poppler/JBIG2Stream.cc | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/poppler/JBIG2Stream.cc b/poppler/JBIG2Stream.cc
+index 78ee3a2a..a6dba047 100644
+--- a/poppler/JBIG2Stream.cc
++++ b/poppler/JBIG2Stream.cc
+@@ -766,7 +766,7 @@ void JBIG2Bitmap::duplicateRow(int yDest, int ySrc)
+
+ void JBIG2Bitmap::combine(JBIG2Bitmap *bitmap, int x, int y, unsigned int combOp)
+ {
+-    int x0, x1, y0, y1, xx, yy;
++    int x0, x1, y0, y1, xx, yy, yyy;
+     unsigned char *srcPtr, *destPtr;
+     unsigned int src0, src1, src, dest, s1, s2, m1, m2, m3;
+     bool oneByte;
+@@ -813,14 +813,17 @@ void JBIG2Bitmap::combine(JBIG2Bitmap *bitmap, int x, int y, unsigned int combOp
+     oneByte = x0 == ((x1 - 1) & ~7);
+
+     for (yy = y0; yy < y1; ++yy) {
+-        if (unlikely((y + yy >= h) || (y + yy < 0))) {
++        if (unlikely(checkedAdd(y, yy, &yyy))) {
++            continue;
++        }
++        if (unlikely((yyy >= h) || (yyy < 0))) {
+             continue;
+         }
+
+         // one byte per line -- need to mask both left and right side
+         if (oneByte) {
+             if (x >= 0) {
+-                destPtr = data + (y + yy) * line + (x >> 3);
++                destPtr = data + yyy * line + (x >> 3);
+                 srcPtr = bitmap->data + yy * bitmap->line;
+                 dest = *destPtr;
+                 src1 = *srcPtr;
+@@ -843,7 +846,7 @@ void JBIG2Bitmap::combine(JBIG2Bitmap *bitmap, int x, int y, unsigned int combOp
+                 }
+                 *destPtr = dest;
+             } else {
+-                destPtr = data + (y + yy) * line;
++                destPtr = data + yyy * line;
+                 srcPtr = bitmap->data + yy * bitmap->line + (-x >> 3);
+                 dest = *destPtr;
+                 src1 = *srcPtr;
+@@ -873,7 +876,7 @@ void JBIG2Bitmap::combine(JBIG2Bitmap *bitmap, int x, int y, unsigned int combOp
+
+             // left-most byte
+             if (x >= 0) {
+-                destPtr = data + (y + yy) * line + (x >> 3);
++                destPtr = data + yyy * line + (x >> 3);
+                 srcPtr = bitmap->data + yy * bitmap->line;
+                 src1 = *srcPtr++;
+                 dest = *destPtr;
+@@ -897,7 +900,7 @@ void JBIG2Bitmap::combine(JBIG2Bitmap *bitmap, int x, int y, unsigned int combOp
+                 *destPtr++ = dest;
+                 xx = x0 + 8;
+             } else {
+-                destPtr = data + (y + yy) * line;
++                destPtr = data + yyy * line;
+                 srcPtr = bitmap->data + yy * bitmap->line + (-x >> 3);
+                 src1 = *srcPtr++;
+                 xx = x0;
+--
+2.47.2
