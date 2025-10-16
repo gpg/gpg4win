@@ -84,6 +84,13 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Add-support-to-customize-about-data.patch \
              patches/okular/lower-cmake-requirement.patch \
+             patches/poppler/0001-JBIG2Bitmap-combine-Fix-crash-on-malformed-files.patch \
+             patches/poppler/0002-Backport-of.patch \
+             patches/poppler/0003-Make-sure-regex-doesn-t-stack-overflow-by-limiting-i.patch \
+             patches/poppler/0004-Move-isOk-check-to-inside-JBIG2Bitmap-combine.patch \
+             patches/poppler/0005-PSStack-roll-Protect-against-doing-int-INT_MIN.patch \
+             patches/poppler/0006-Fix-crash-in-pdfseparate.patch \
+             patches/poppler/0007-Check-for-duplicate-entries.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
@@ -106,6 +113,13 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
              patches-appimage/okular/0001-Add-support-to-customize-about-data.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
+             patches-appimage/poppler/0001-JBIG2Bitmap-combine-Fix-crash-on-malformed-files.patch \
+             patches-appimage/poppler/0002-Backport-of.patch \
+             patches-appimage/poppler/0003-Make-sure-regex-doesn-t-stack-overflow-by-limiting-i.patch \
+             patches-appimage/poppler/0004-Move-isOk-check-to-inside-JBIG2Bitmap-combine.patch \
+             patches-appimage/poppler/0005-PSStack-roll-Protect-against-doing-int-INT_MIN.patch \
+             patches-appimage/poppler/0006-Fix-crash-in-pdfseparate.patch \
+             patches-appimage/poppler/0007-Check-for-duplicate-entries.patch \
              patches-appimage/poppler/fix-gpg-error-include.patch \
              patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.patch \
              patches-appimage/qtbase/CVE-2023-37369-qtbase-5.15.patch \
