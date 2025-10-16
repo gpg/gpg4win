@@ -1,0 +1,56 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 0d3f09ac0231fca114aa58553144b78f8040a2e1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andr=C3=A9=20de=20la=20Rocha?= <andre.rocha@qt.io>
+Date: Wed, 31 Aug 2022 16:02:56 +0200
+Subject: [PATCH] Fix tree/table/list accessibility state
+
+The accessibility class associated with trees, tables and lists was
+reporting a default/empty state, causing issues with accessibility
+tools.
+
+Fixes: QTBUG-92964
+Pick-to: 6.4 6.3 6.2
+Change-Id: I9c8ee5e7e582fd6b6a59cd70437eeddad0f4eb8e
+Reviewed-by: Volker Hilsheimer <volker.hilsheimer@qt.io>
+---
+ src/widgets/accessible/itemviews.cpp | 22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
+
+diff --git a/src/widgets/accessible/itemviews.cpp b/src/widgets/accessible/itemviews.cpp
+index 6da2461a6a8..64204c2e597 100644
+--- a/src/widgets/accessible/itemviews.cpp
++++ b/src/widgets/accessible/itemviews.cpp
+@@ -409,7 +409,27 @@ QAccessible::Role QAccessibleTable::role() const
+
+ QAccessible::State QAccessibleTable::state() const
+ {
+-    return QAccessible::State();
++    QAccessible::State state;
++    const auto *w = view();
++
++    if (w->testAttribute(Qt::WA_WState_Visible) == false)
++        state.invisible = true;
++    if (w->focusPolicy() != Qt::NoFocus)
++        state.focusable = true;
++    if (w->hasFocus())
++        state.focused = true;
++    if (!w->isEnabled())
++        state.disabled = true;
++    if (w->isWindow()) {
++        if (w->windowFlags() & Qt::WindowSystemMenuHint)
++            state.movable = true;
++        if (w->minimumSize() != w->maximumSize())
++            state.sizeable = true;
++        if (w->isActiveWindow())
++            state.active = true;
++    }
++
++    return state;
+ }
+
+ QAccessibleInterface *QAccessibleTable::childAt(int x, int y) const
+--
+2.51.0

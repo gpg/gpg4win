@@ -79,6 +79,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/qtbase/0001-Don-t-report-active-windows-as-having-focus-unless-t.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
+             patches/qtbase/0004-Fix-tree-table-list-accessibility-state.patch \
              patches/qtbase/0005-a11y-Return-correct-string-information-for-item-view.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/CVE-2023-32762-qtbase-5.15.patch \
