@@ -28,7 +28,5 @@ Section "-final" SEC_final
   File "${SRCDIR}/gpgconf.rnames"
 
   # Set outpath back so that the Finish page gets what it expects.
-  # and install the second file.
   SetOutPath "$INSTDIR"
-  File "${SRCDIR}/versioninfo.txt"
 SectionEnd
