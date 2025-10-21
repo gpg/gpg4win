@@ -638,8 +638,8 @@ chk 7f78d4c6b13e61bb00123c0987dd34e947d3e18e92fd6f641a7c13abd1813031
 # last changed: 2025-10-21
 # by: wk
 # verified: Tarball created by builder.
-file kleopatra/kleopatra-202510211128.tar.xz
-chk 63dd9ec3e6510654e895e47ec396879cfbe5ac9e74e4bc11cc146737758a4656
+file kleopatra/kleopatra-202510211240.tar.xz
+chk 44aa9fa88f93f5cf9104aa7b4978dc29a604fb6ce1918820b9bac76720a0dd87
 
 # gpgoljs
 # last changed: 2025-10-21
