@@ -621,32 +621,32 @@ chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
 
 
 # gpg4win-tools
-# last changed: 2025-09-04
+# last changed: 2025-10-21
 # by: wk
 # verified: Tarball created by builder.
-file gpg4win-tools/gpg4win-tools-202509041553.tar.xz
-chk e96e3a3daac1bacc42edfce21c247b4eab805cc8b204bfb8ab2f5297ef849c30
+file gpg4win-tools/gpg4win-tools-202510211129.tar.xz
+chk 3163a7badae84cb2ae3ff03f684ffccdb00ff634a3edfb1afd8de6512656d93e
 
 # libkleo
-# last changed: 2025-09-04
+# last changed: 2025-10-21
 # by: wk
 # verified: Tarball created by builder.
-file libkleo/libkleo-202509041553.tar.xz
-chk 4a6c71e5c7c7b58c07078f04e71d28ef2c37133050cd0ec21a845a9cc6d48264
+file libkleo/libkleo-202510211128.tar.xz
+chk 7f78d4c6b13e61bb00123c0987dd34e947d3e18e92fd6f641a7c13abd1813031
 
 # kleopatra
-# last changed: 2025-09-05
+# last changed: 2025-10-21
 # by: wk
 # verified: Tarball created by builder.
-file kleopatra/kleopatra-202509051221.tar.xz
-chk 5e48d7df7f3630cc1d1900653e8a49cb4aa25ea308c9fbc3d0f2183065ffe963
+file kleopatra/kleopatra-202510211128.tar.xz
+chk 63dd9ec3e6510654e895e47ec396879cfbe5ac9e74e4bc11cc146737758a4656
 
 # gpgoljs
-# last changed: 2025-07-28
+# last changed: 2025-10-21
 # by: wk
 # verified: Tarball created by builder.
-file gpgoljs/gpgoljs-202507280938.tar.xz
-chk ed6cf1022e97700adf09b4c47c6d9f0ab7aaccd936d53d0ca1dbc5d4bc69c342
+file gpgoljs/gpgoljs-202510211129.tar.xz
+chk 0821209fdad3527e5e80960c3ac11c5f4efaafa329cc983268f1101ff94aa605
 
 
 
