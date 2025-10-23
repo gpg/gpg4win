@@ -2,48 +2,33 @@
 patch -p1 -f -l $* < $0
 exit $?
 
-From a2d5410e2091d296a6ad2c191417f2d4003f72b0 Mon Sep 17 00:00:00 2001
+From b510e73f4dabb5362e0e504cfe73318b975f235b Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
-Date: Tue, 16 Sep 2025 16:44:25 +0200
-Subject: [PATCH] Raise UIA event for toggled tree view item
+Date: Tue, 28 Oct 2025 10:15:13 +0100
+Subject: [PATCH] a11y: Raise UIA event for (un)checked item view items
 
-Change-Id: Iecd7a876779f944ac1a5463b1f43680e0f7e5558
+This enables assistive tools on Windows to inform users when the
+checked state of checkable item view items change.
+
+Change-Id: I680209d3f5835c58bd91dd5826566c39ae72d7b6
 ---
- .../uiautomation/qwindowsuiamainprovider.cpp        | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ .../windows/uiautomation/qwindowsuiamainprovider.cpp          | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/plugins/platforms/windows/uiautomation/qwindowsuiamainprovider.cpp b/src/plugins/platforms/windows/uiautomation/qwindowsuiamainprovider.cpp
-index 97701c14068..3210b3b61a2 100644
+index fc0e053f396..4fd9f8c6293 100644
 --- a/src/plugins/platforms/windows/uiautomation/qwindowsuiamainprovider.cpp
 +++ b/src/plugins/platforms/windows/uiautomation/qwindowsuiamainprovider.cpp
-@@ -87,7 +87,9 @@ void QWindowsUiaMainProvider::notifyStateChange(QAccessibleStateChangeEvent *eve
- void QWindowsUiaMainProvider::notifyStateChange(QAccessibleStateChangeEvent *event)
+@@ -88,8 +88,8 @@ void QWindowsUiaMainProvider::notifyStateChange(QAccessibleStateChangeEvent *eve
  {
      if (QAccessibleInterface *accessible = event->accessibleInterface()) {
-+       OutputDebugString(L"QWindowsUiaMainProvider::notifyStateChange: accessible is not NULL");
          if (event->changedStates().checked || event->changedStates().checkStateMixed) {
-+           OutputDebugString(L"QWindowsUiaMainProvider::notifyStateChange: checked state changed");
-            // Notifies states changes in checkboxes.
-            if (accessible->role() == QAccessible::CheckBox) {
+-           // Notifies states changes in checkboxes.
+-           if (accessible->role() == QAccessible::CheckBox) {
++            // Notifies states changes in checkboxes and checkable item view items.
++            if (accessible->role() == QAccessible::CheckBox || accessible->role() == QAccessible::Cell || accessible->role() == QAccessible::ListItem || accessible->role() == QAccessible::TreeItem) {
                  if (QWindowsUiaMainProvider *provider = providerForAccessible(accessible)) {
-@@ -99,6 +99,18 @@ void QWindowsUiaMainProvider::notifyStateChange(QAccessibleStateChangeEvent *eve
-                     setVariantI4(toggleState, &newVal);
-                     QWindowsUiaWrapper::instance()->raiseAutomationPropertyChangedEvent(provider, UIA_ToggleToggleStatePropertyId, oldVal, newVal);
-                 }
-+            } else if (accessible->role() == QAccessible::TreeItem) {
-+                OutputDebugString(L"QWindowsUiaMainProvider::notifyStateChange: role == TreeItem");
-+                if (auto provider = providerForAccessible(accessible)) {
-+                    OutputDebugString(L"QWindowsUiaMainProvider::notifyStateChange: provider for accessible is not NULL");
-+                    VARIANT oldVal, newVal;
-+                    clearVariant(&oldVal);
-+                    int toggleState = ToggleState_Off;
-+                    if (accessible->state().checked)
-+                        toggleState = accessible->state().checkStateMixed ? ToggleState_Indeterminate : ToggleState_On;
-+                    setVariantI4(toggleState, &newVal);
-+                    QWindowsUiaWrapper::instance()->raiseAutomationPropertyChangedEvent(provider, UIA_ToggleToggleStatePropertyId, oldVal, newVal);
-+                }
-             }
-         }
-         if (event->changedStates().active) {
+                     VARIANT oldVal, newVal;
+                     clearVariant(&oldVal);
 --
 2.51.0

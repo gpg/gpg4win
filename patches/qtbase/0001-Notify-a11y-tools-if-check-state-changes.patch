@@ -2,63 +2,205 @@
 patch -p1 -f -l $* < $0
 exit $?
 
-From ede2d885b3585d44163684acddb97900848f9298 Mon Sep 17 00:00:00 2001
+From 15aaa076e300349290430150d85c3b832f6c40d9 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
-Date: Wed, 3 Sep 2025 15:23:50 +0200
-Subject: [PATCH] Notify a11y tools if check state changes
+Date: Thu, 23 Oct 2025 11:59:05 +0200
+Subject: [PATCH] a11y: Notify tools when item view items are (un)checked
 
-Change-Id: I3175a764d415b26dbb1e9ad2627fcdd898a41ae8
+Change-Id: Ic7fb7618ad94cca6cc266c2f52b8b62b0864e4a4
 ---
- src/corelib/itemmodels/qabstractitemmodel.h |  2 ++
- src/widgets/itemviews/qtreewidget.cpp       | 22 +++++++++++++++++++++
- src/widgets/itemviews/qtreewidget_p.h       |  3 ++-
- 3 files changed, 26 insertions(+), 1 deletion(-)
+ src/widgets/itemviews/qabstractitemdelegate.h |  1 +
+ src/widgets/itemviews/qabstractitemview.cpp   |  4 ++++
+ src/widgets/itemviews/qabstractitemview_p.h   |  1 +
+ src/widgets/itemviews/qitemdelegate.cpp       |  6 +++++-
+ src/widgets/itemviews/qlistview.cpp           | 18 ++++++++++++++++++
+ src/widgets/itemviews/qlistview_p.h           |  2 ++
+ src/widgets/itemviews/qstyleditemdelegate.cpp |  6 +++++-
+ src/widgets/itemviews/qtableview.cpp          | 18 ++++++++++++++++++
+ src/widgets/itemviews/qtableview_p.h          |  1 +
+ src/widgets/itemviews/qtreeview.cpp           | 18 ++++++++++++++++++
+ src/widgets/itemviews/qtreeview_p.h           |  1 +
+ 11 files changed, 74 insertions(+), 2 deletions(-)
 
-diff --git a/src/corelib/itemmodels/qabstractitemmodel.h b/src/corelib/itemmodels/qabstractitemmodel.h
-index 8de9fee7f0a..917de9a3c95 100644
---- a/src/corelib/itemmodels/qabstractitemmodel.h
-+++ b/src/corelib/itemmodels/qabstractitemmodel.h
-@@ -355,6 +355,8 @@ Q_SIGNALS:
-     void columnsAboutToBeMoved( const QModelIndex &sourceParent, int sourceStart, int sourceEnd, const QModelIndex &destinationParent, int destinationColumn, QPrivateSignal);
-     void columnsMoved( const QModelIndex &sourceParent, int sourceStart, int sourceEnd, const QModelIndex &destinationParent, int destinationColumn, QPrivateSignal);
+diff --git a/src/widgets/itemviews/qabstractitemdelegate.h b/src/widgets/itemviews/qabstractitemdelegate.h
+index 2deba59ba48..b5bdf76191b 100644
+--- a/src/widgets/itemviews/qabstractitemdelegate.h
++++ b/src/widgets/itemviews/qabstractitemdelegate.h
+@@ -78,6 +78,7 @@ Q_SIGNALS:
+     void commitData(QWidget *editor);
+     void closeEditor(QWidget *editor, QAbstractItemDelegate::EndEditHint hint = NoHint);
+     void sizeHintChanged(const QModelIndex &);
++    void checkStateChanged(const QModelIndex &);
 
-+    void checkStateChanged(const QModelIndex &index);
-+
- public Q_SLOTS:
-     virtual bool submit();
-     virtual void revert();
-diff --git a/src/widgets/itemviews/qtreewidget.cpp b/src/widgets/itemviews/qtreewidget.cpp
-index d9f23b7c9db..7a30686b387 100644
---- a/src/widgets/itemviews/qtreewidget.cpp
-+++ b/src/widgets/itemviews/qtreewidget.cpp
-@@ -10,6 +10,9 @@
- #include <private/qtreewidget_p.h>
- #include <private/qwidgetitemdata_p.h>
- #include <private/qtreewidgetitemiterator_p.h>
-+#if QT_CONFIG(accessibility)
-+#include <qaccessible.h>
-+#endif
+ protected:
+     QAbstractItemDelegate(QObjectPrivate &, QObject *parent = nullptr);
+diff --git a/src/widgets/itemviews/qabstractitemview.cpp b/src/widgets/itemviews/qabstractitemview.cpp
+index e4159ad2cf0..f10a77208ff 100644
+--- a/src/widgets/itemviews/qabstractitemview.cpp
++++ b/src/widgets/itemviews/qabstractitemview.cpp
+@@ -230,6 +230,8 @@ void QAbstractItemViewPrivate::connectDelegate(QAbstractItemDelegate *delegate)
+                      q, &QAbstractItemView::commitData);
+     QObjectPrivate::connect(delegate, &QAbstractItemDelegate::sizeHintChanged,
+                             this, &QAbstractItemViewPrivate::delegateSizeHintChanged);
++    QObjectPrivate::connect(delegate, &QAbstractItemDelegate::checkStateChanged,
++                            this, &QAbstractItemViewPrivate::itemCheckStateChanged);
+ }
 
- #include <QtCore/private/qduplicatetracker_p.h>
+ void QAbstractItemViewPrivate::disconnectDelegate(QAbstractItemDelegate *delegate)
+@@ -243,6 +245,8 @@ void QAbstractItemViewPrivate::disconnectDelegate(QAbstractItemDelegate *delegat
+                         q, &QAbstractItemView::commitData);
+     QObjectPrivate::disconnect(delegate, &QAbstractItemDelegate::sizeHintChanged,
+                                this, &QAbstractItemViewPrivate::delegateSizeHintChanged);
++    QObjectPrivate::disconnect(delegate, &QAbstractItemDelegate::checkStateChanged,
++                               this, &QAbstractItemViewPrivate::itemCheckStateChanged);
+ }
 
-@@ -784,6 +787,9 @@ void QTreeModel::emitDataChanged(QTreeWidgetItem *item, int column, const QList<
-         bottomRight = topLeft;
-     }
-     emit dataChanged(topLeft, bottomRight, roles);
-+    if (!roles.isEmpty() && roles.first() == Qt::CheckStateRole) {
-+        emit checkStateChanged(topLeft);
+ void QAbstractItemViewPrivate::disconnectAll()
+diff --git a/src/widgets/itemviews/qabstractitemview_p.h b/src/widgets/itemviews/qabstractitemview_p.h
+index b24b2d21c33..d93b9839bfd 100644
+--- a/src/widgets/itemviews/qabstractitemview_p.h
++++ b/src/widgets/itemviews/qabstractitemview_p.h
+@@ -78,6 +78,7 @@ public:
+     virtual void rowsMoved(const QModelIndex &source, int sourceStart, int sourceEnd, const QModelIndex &destination, int destinationStart);
+     virtual void columnsMoved(const QModelIndex &source, int sourceStart, int sourceEnd, const QModelIndex &destination, int destinationStart);
+     virtual QRect intersectedRect(const QRect rect, const QModelIndex &topLeft, const QModelIndex &bottomRight) const;
++    virtual void itemCheckStateChanged(const QModelIndex &) {}
+
+     void headerDataChanged() { doDelayedItemsLayout(); }
+     void scrollerStateChanged();
+diff --git a/src/widgets/itemviews/qitemdelegate.cpp b/src/widgets/itemviews/qitemdelegate.cpp
+index ce3cc107783..67dcbaf4b7c 100644
+--- a/src/widgets/itemviews/qitemdelegate.cpp
++++ b/src/widgets/itemviews/qitemdelegate.cpp
+@@ -1162,7 +1162,11 @@ bool QItemDelegate::editorEvent(QEvent *event,
+         state = ((Qt::CheckState)((state + 1) % 3));
+     else
+         state = (state == Qt::Checked) ? Qt::Unchecked : Qt::Checked;
+-    return model->setData(index, state, Qt::CheckStateRole);
++    if (model->setData(index, state, Qt::CheckStateRole)) {
++        emit checkStateChanged(index);
++        return true;
 +    }
++    return false;
  }
 
- void QTreeModel::beginInsertItems(QTreeWidgetItem *parent, int row, int count)
-@@ -2408,6 +2414,20 @@ void QTreeWidgetPrivate::dataChanged(const QModelIndex &topLeft,
-     }
+ /*!
+diff --git a/src/widgets/itemviews/qlistview.cpp b/src/widgets/itemviews/qlistview.cpp
+index 8b50bd4301c..71cf4f2ba63 100644
+--- a/src/widgets/itemviews/qlistview.cpp
++++ b/src/widgets/itemviews/qlistview.cpp
+@@ -1972,6 +1972,24 @@ bool QListViewPrivate::dropOn(QDropEvent *event, int *dropRow, int *dropCol, QMo
  }
+ #endif
 
-+void QTreeWidgetPrivate::checkStateChanged(const QModelIndex &index)
++void QListViewPrivate::itemCheckStateChanged(const QModelIndex &index)
 +{
 +#if QT_CONFIG(accessibility)
-+    Q_Q(QTreeWidget);
++    Q_Q(QListView);
++    if (model) {
++        if (!model->checkIndex(index))
++            qWarning("Item check state changed for a model index that does not belong to this view");
++    }
++    if (QAccessible::isActive() && q->hasFocus() && index == q->currentIndex()) {
++        QAccessible::State s;
++        s.checked = true;
++        QAccessibleStateChangeEvent event(q, s);
++        event.setChild(q->visualIndex(index));
++        QAccessible::updateAccessibility(&event);
++    }
++#endif
++}
++
+ void QListViewPrivate::removeCurrentAndDisabled(QList<QModelIndex> *indexes,
+                                                 const QModelIndex &current) const
+ {
+diff --git a/src/widgets/itemviews/qlistview_p.h b/src/widgets/itemviews/qlistview_p.h
+index 4475fa5461f..e83aa51c674 100644
+--- a/src/widgets/itemviews/qlistview_p.h
++++ b/src/widgets/itemviews/qlistview_p.h
+@@ -345,6 +345,8 @@ public:
+     bool dropOn(QDropEvent *event, int *row, int *col, QModelIndex *index) override;
+ #endif
+
++    void itemCheckStateChanged(const QModelIndex &) override;
++
+     inline void setGridSize(const QSize &size) { grid = size; }
+     inline QSize gridSize() const { return grid; }
+     inline void setWrapping(bool b) { wrap = b; }
+diff --git a/src/widgets/itemviews/qstyleditemdelegate.cpp b/src/widgets/itemviews/qstyleditemdelegate.cpp
+index 2bfbb587010..7c40f04c9a1 100644
+--- a/src/widgets/itemviews/qstyleditemdelegate.cpp
++++ b/src/widgets/itemviews/qstyleditemdelegate.cpp
+@@ -604,7 +604,11 @@ bool QStyledItemDelegate::editorEvent(QEvent *event,
+         state = ((Qt::CheckState)((state + 1) % 3));
+     else
+         state = (state == Qt::Checked) ? Qt::Unchecked : Qt::Checked;
+-    return model->setData(index, state, Qt::CheckStateRole);
++    if (model->setData(index, state, Qt::CheckStateRole)) {
++        emit checkStateChanged(index);
++        return true;
++    }
++    return false;
+ }
+
+ QT_END_NAMESPACE
+diff --git a/src/widgets/itemviews/qtableview.cpp b/src/widgets/itemviews/qtableview.cpp
+index c36de15d8f0..a89a6e0d9bf 100644
+--- a/src/widgets/itemviews/qtableview.cpp
++++ b/src/widgets/itemviews/qtableview.cpp
+@@ -699,6 +699,24 @@ QRect QTableViewPrivate::intersectedRect(const QRect rect, const QModelIndex &to
+     return rect.intersected(updateRect);
+ }
+
++void QTableViewPrivate::itemCheckStateChanged(const QModelIndex &index)
++{
++#if QT_CONFIG(accessibility)
++    Q_Q(QTableView);
++    if (model) {
++        if (!model->checkIndex(index))
++            qWarning("Item check state changed for a model index that does not belong to this view");
++    }
++    if (QAccessible::isActive() && q->hasFocus() && index == q->currentIndex()) {
++        QAccessible::State s;
++        s.checked = true;
++        QAccessibleStateChangeEvent event(q, s);
++        event.setChild(accessibleTable2Index(index));
++        QAccessible::updateAccessibility(&event);
++    }
++#endif
++}
++
+ /*!
+   \internal
+   Sets the span for the cell at (\a row, \a column).
+diff --git a/src/widgets/itemviews/qtableview_p.h b/src/widgets/itemviews/qtableview_p.h
+index 8ddb8e797a9..64033f78843 100644
+--- a/src/widgets/itemviews/qtableview_p.h
++++ b/src/widgets/itemviews/qtableview_p.h
+@@ -121,6 +121,7 @@ public:
+     void clearConnections();
+     void trimHiddenSelections(QItemSelectionRange *range) const;
+     QRect intersectedRect(const QRect rect, const QModelIndex &topLeft, const QModelIndex &bottomRight) const override;
++    void itemCheckStateChanged(const QModelIndex &) override;
+
+     inline bool isHidden(int row, int col) const {
+         return verticalHeader->isSectionHidden(row)
+diff --git a/src/widgets/itemviews/qtreeview.cpp b/src/widgets/itemviews/qtreeview.cpp
+index d8fa9a83d83..11d22044cc5 100644
+--- a/src/widgets/itemviews/qtreeview.cpp
++++ b/src/widgets/itemviews/qtreeview.cpp
+@@ -1423,6 +1423,24 @@ QRect QTreeViewPrivate::intersectedRect(const QRect rect, const QModelIndex &top
+     return rect.intersected(updateRect);
+ }
+
++void QTreeViewPrivate::itemCheckStateChanged(const QModelIndex &index)
++{
++#if QT_CONFIG(accessibility)
++    Q_Q(QTreeView);
++    if (model) {
++        if (!model->checkIndex(index))
++            qWarning("Item check state changed for a model index that does not belong to this view");
++    }
 +    if (QAccessible::isActive() && q->hasFocus() && index == q->currentIndex()) {
 +        QAccessible::State s;
 +        s.checked = true;
@@ -70,35 +212,19 @@ index d9f23b7c9db..7a30686b387 100644
 +}
 +
  /*!
-   \class QTreeWidget
+   \reimp
 
-@@ -2598,6 +2618,8 @@ QTreeWidget::QTreeWidget(QWidget *parent)
-                                 d, &QTreeWidgetPrivate::emitItemChanged),
-         QObjectPrivate::connect(model(), &QAbstractItemModel::dataChanged,
-                                 d, &QTreeWidgetPrivate::dataChanged),
-+        QObjectPrivate::connect(model(), &QAbstractItemModel::checkStateChanged,
-+                                d, &QTreeWidgetPrivate::checkStateChanged),
-         QObjectPrivate::connect(model(), &QAbstractItemModel::columnsRemoved,
-                                 d, &QTreeWidgetPrivate::sort),
-         QObjectPrivate::connect(selectionModel(), &QItemSelectionModel::currentChanged,
-diff --git a/src/widgets/itemviews/qtreewidget_p.h b/src/widgets/itemviews/qtreewidget_p.h
-index aaf0ff9ea27..1f76af98173 100644
---- a/src/widgets/itemviews/qtreewidget_p.h
-+++ b/src/widgets/itemviews/qtreewidget_p.h
-@@ -205,12 +205,13 @@ public:
-     void emitCurrentItemChanged(const QModelIndex &previous, const QModelIndex &index);
-     void sort();
-     void dataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight);
-+    void checkStateChanged(const QModelIndex &index);
-     void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+diff --git a/src/widgets/itemviews/qtreeview_p.h b/src/widgets/itemviews/qtreeview_p.h
+index 5a4e057901c..f9a04672d41 100644
+--- a/src/widgets/itemviews/qtreeview_p.h
++++ b/src/widgets/itemviews/qtreeview_p.h
+@@ -103,6 +103,7 @@ public:
+     void sortIndicatorChanged(int column, Qt::SortOrder order);
+     void modelDestroyed() override;
+     QRect intersectedRect(const QRect rect, const QModelIndex &topLeft, const QModelIndex &bottomRight) const override;
++    void itemCheckStateChanged(const QModelIndex &) override;
 
-      // used by QTreeWidgetItem::sortChildren to make sure the column argument is used
-     int explicitSortColumn;
+     void layout(int item, bool recusiveExpanding = false, bool afterIsUninitialized = false);
 
--    std::array<QMetaObject::Connection, 12> connections;
-+    std::array<QMetaObject::Connection, 13> connections;
- };
-
- QT_END_NAMESPACE
 --
 2.51.0
