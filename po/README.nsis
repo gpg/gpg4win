@@ -9,8 +9,8 @@ builds.
 
 1. Preparation of sources
 
-Do not use the usual gettextize thngis.  We use a much simpler build
-system becuase we opnly need to include nsis include files from the po
+Do not use the usual gettextize things.  We use a much simpler build
+system becuase we oply need to include nsis include files from the po
 files.
 
 To add new languages add them to the LINGUAS file.  To add new NSIS
