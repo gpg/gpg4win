@@ -20,15 +20,6 @@ diff --git a/poppler/PDFDoc.cc b/poppler/PDFDoc.cc
 index 814c3095..894b6767 100644
 --- a/poppler/PDFDoc.cc
 +++ b/poppler/PDFDoc.cc
-@@ -14,7 +14,7 @@
- // under GPL version 2 or later
- //
- // Copyright (C) 2005, 2006, 2008 Brad Hards <bradh@frogmouth.net>
--// Copyright (C) 2005, 2007-2009, 2011-2024 Albert Astals Cid <aacid@kde.org>
-+// Copyright (C) 2005, 2007-2009, 2011-2025 Albert Astals Cid <aacid@kde.org>
- // Copyright (C) 2008 Julien Rebetez <julienr@svn.gnome.org>
- // Copyright (C) 2008, 2010 Pino Toscano <pino@kde.org>
- // Copyright (C) 2008, 2010, 2011 Carlos Garcia Campos <carlosgc@gnome.org>
 @@ -490,7 +490,7 @@ static PDFSubtypePart pdfPartFromString(PDFSubtype subtype, const std::string &p
 
  static PDFSubtypeConformance pdfConformanceFromString(const std::string &pdfsubver)

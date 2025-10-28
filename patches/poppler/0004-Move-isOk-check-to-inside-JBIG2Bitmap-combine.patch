@@ -18,15 +18,6 @@ diff --git a/poppler/JBIG2Stream.cc b/poppler/JBIG2Stream.cc
 index a6dba047..9e8d0cc9 100644
 --- a/poppler/JBIG2Stream.cc
 +++ b/poppler/JBIG2Stream.cc
-@@ -15,7 +15,7 @@
- //
- // Copyright (C) 2006 Raj Kumar <rkumar@archive.org>
- // Copyright (C) 2006 Paul Walmsley <paul@booyaka.com>
--// Copyright (C) 2006-2010, 2012, 2014-2022 Albert Astals Cid <aacid@kde.org>
-+// Copyright (C) 2006-2010, 2012, 2014-2022, 2024, 2025 Albert Astals Cid <aacid@kde.org>
- // Copyright (C) 2009 David Benjamin <davidben@mit.edu>
- // Copyright (C) 2011 Edward Jiang <ejiang@google.com>
- // Copyright (C) 2012 William Bader <williambader@hotmail.com>
 @@ -771,6 +771,9 @@ void JBIG2Bitmap::combine(JBIG2Bitmap *bitmap, int x, int y, unsigned int combOp
      unsigned int src0, src1, src, dest, s1, s2, m1, m2, m3;
      bool oneByte;

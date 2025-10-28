@@ -17,15 +17,6 @@ diff --git a/poppler/Function.cc b/poppler/Function.cc
 index d2be7d71..a902cdf3 100644
 --- a/poppler/Function.cc
 +++ b/poppler/Function.cc
-@@ -13,7 +13,7 @@
- // All changes made under the Poppler project to this file are licensed
- // under GPL version 2 or later
- //
--// Copyright (C) 2006, 2008-2010, 2013-2015, 2017-2020, 2022-2024 Albert Astals Cid <aacid@kde.org>
-+// Copyright (C) 2006, 2008-2010, 2013-2015, 2017-2020, 2022-2025 Albert Astals Cid <aacid@kde.org>
- // Copyright (C) 2006 Jeff Muizelaar <jeff@infidigm.net>
- // Copyright (C) 2010 Christian Feuersänger <cfeuersaenger@googlemail.com>
- // Copyright (C) 2011 Andrea Canciani <ranma42@gmail.com>
 @@ -1066,7 +1066,7 @@ void PSStack::roll(int n, int j)
      PSObject obj;
      int i, k;
