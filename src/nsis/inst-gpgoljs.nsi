@@ -21,7 +21,7 @@
 !define prefix ${ipdir}/gpgoljs-${gpg4win_pkg_gpgoljs_version}
 
 # gpgoljs - Opt in for now.
-${MementoUnselectedSection} "Web based Oulook plugin" SEC_gpgoljs
+${MementoUnselectedSection} "GpgOL/Web" SEC_gpgoljs
 
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/gpgol-client.exe
@@ -72,7 +72,7 @@ ${MementoUnselectedSection} "Web based Oulook plugin" SEC_gpgoljs
 ${MementoSectionEnd}
 
 LangString DESC_SEC_gpgoljs ${LANG_ENGLISH} \
-   "An addon for the new, web based, Oulook."
+   "An add-in for the new, web based, Oulook."
 
 LangString DESC_Menu_gpgoljs ${LANG_ENGLISH} \
    "Run the GpgOL/Web client"
