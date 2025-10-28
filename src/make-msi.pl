@@ -1731,6 +1731,15 @@ sub dump_single_custom {
               <Directory Id="GnuPGTrustedCerts" Name="trusted-certs"/>
               <Directory Id="GnuPGExtraCerts" Name="extra-certs"/>
             </Directory>
+            <Directory Id="GcryptDataFolder" Name="gcrypt">
+              <Component Id="gpg4win_etc_gcrypt" KeyPath="yes"
+                         Guid="7F122F29-AA33-4DE5-9DD2-0DAF1A24B630">
+                <CreateFolder>
+                  <Permission User="Administrators" GenericAll="yes" />
+                  <Permission User="BUILTIN\\Users" Read="yes" ReadAttributes="yes" ReadExtendedAttributes="yes" ReadPermission="yes" GenericExecute="yes" />
+                </CreateFolder>
+              </Component>
+            </Directory>
           </Directory>
         </Directory>
       </Directory>
@@ -2350,6 +2359,7 @@ print <<EOF;
       <!-- GnuPG/share/gnupg/gpgconf.rnames -->
       <ComponentRef Id='c_final_0' />
       <ComponentRef Id='c_final_1' />
+      <ComponentRef Id='gpg4win_etc_gcrypt' />
       <ComponentGroupRef Id='c_customization' />
 
     </Feature>
