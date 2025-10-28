@@ -355,7 +355,7 @@ msgstr ""
 
 #: inst-gpgoljs.nsi:68
 msgctxt "DESC_SEC_gpgoljs"
-msgid "An addon for the new, web based, Oulook."
+msgid "An add-in for the new, web based, Oulook."
 msgstr ""
 
 #: inst-gpgoljs.nsi:71

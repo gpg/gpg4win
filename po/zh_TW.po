@@ -334,7 +334,7 @@ msgid "GnuPG for Outlook"
 msgstr ""
 
 msgctxt "DESC_SEC_gpgoljs"
-msgid "An addon for the new, web based, Oulook."
+msgid "An add-in for the new, web based, Oulook."
 msgstr ""
 
 msgctxt "DESC_Menu_gpgoljs"
