@@ -68,6 +68,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kleopatra/0001-Update-status-bar-when-distribution-settings-change.patch \
              patches/kleopatra/0002-Use-RSAKeySizes-and-PGPKeyType-again.patch \
              patches/kleopatra/0003-Suspend-automatic-key-listing-during-key-generation.patch \
+             patches/kleopatra/0004-List-newly-generated-key-with-signatures.patch \
              patches/kleopatra/set-windows-registry.patch \
              patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
              patches/kparts/disable-jobuidelegate.patch \

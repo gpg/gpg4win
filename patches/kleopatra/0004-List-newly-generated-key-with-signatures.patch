@@ -1,0 +1,32 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From fe6a760121058d42cda980b1b43a4dcbcdc93f4a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 29 Oct 2025 17:17:46 +0100
+Subject: [PATCH] List newly generated key with signatures
+
+This ensures that the signatures are available for other operations.
+
+GnuPG-bug-id: 7876
+(cherry picked from commit 6e61a7b2dcb176a0aab728de74a6e2b682b6db96)
+---
+ src/commands/newopenpgpcertificatecommand.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/commands/newopenpgpcertificatecommand.cpp b/src/commands/newopenpgpcertificatecommand.cpp
+index c2a8d2f2f..af3c393cf 100644
+--- a/src/commands/newopenpgpcertificatecommand.cpp
++++ b/src/commands/newopenpgpcertificatecommand.cpp
+@@ -192,7 +192,7 @@ void NewOpenPGPCertificateCommand::Private::showResult(const KeyGenerationResult
+         std::unique_ptr<Context> ctx{Context::createForProtocol(OpenPGP)};
+         if (ctx) {
+             Error err;
+-            ctx->addKeyListMode(GpgME::Validate);
++            ctx->addKeyListMode(KeyListMode::Validate | KeyListMode::Signatures | KeyListMode::SignatureNotations);
+             key = ctx->key(result.fingerprint(), err, /*secret=*/true);
+             if (!key.isNull()) {
+                 KeyCache::mutableInstance()->insert(key);
+--
+2.51.0
