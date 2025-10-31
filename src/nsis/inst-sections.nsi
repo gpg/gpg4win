@@ -165,9 +165,6 @@
 !ifdef HAVE_PKG_KSTATUSNOTIFIERITEM
 !include "inst-kstatusnotifieritem.nsi"
 !endif
-!ifdef HAVE_PKG_OKULAR
-!include "inst-okular.nsi"
-!endif
 !ifdef HAVE_PKG_KBOOKMARKS
 !include "inst-kbookmarks.nsi"
 !endif
@@ -222,9 +219,6 @@
 !ifdef HAVE_PKG_PRISON
 !include "inst-prison.nsi"
 !endif
-!ifdef HAVE_PKG_GPGOLJS
-!include "inst-gpgoljs.nsi"
-!endif
 !ifdef HAVE_PKG_QTHTTPSERVER
 !include "inst-qthttpserver.nsi"
 !endif
@@ -233,9 +227,6 @@
 !endif
 !ifdef HAVE_PKG_KCONTACTS
 !include "inst-kcontacts.nsi"
-!endif
-!ifdef HAVE_PKG_GPGPASS
-!include "inst-gpgpass.nsi"
 !endif
 !ifdef HAVE_PKG_PAPERKEY
 !include "inst-paperkey.nsi"
@@ -252,8 +243,17 @@
 !ifdef HAVE_PKG_GPGOL
 !include "inst-gpgol.nsi"
 !endif
+!ifdef HAVE_PKG_GPGOLJS
+!include "inst-gpgoljs.nsi"
+!endif
 !ifdef HAVE_PKG_GPGEX
 !include "inst-gpgex.nsi"
+!endif
+!ifdef HAVE_PKG_OKULAR
+!include "inst-okular.nsi"
+!endif
+!ifdef HAVE_PKG_GPGPASS
+!include "inst-gpgpass.nsi"
 !endif
 
 # These always exist
@@ -264,20 +264,30 @@
 # We have to invoke the uninstallers in reverse order!
 !include "uninst-compendium.nsi"
 
-!ifdef HAVE_PKG_BREEZE
-!include "uninst-breeze.nsi"
+!ifdef HAVE_PKG_GPGPASS
+!include "uninst-gpgpass.nsi"
 !endif
-!ifdef HAVE_PKG_PAPERKEY
-!include "uninst-paperkey.nsi"
+!ifdef HAVE_PKG_OKULAR
+!include "uninst-okular.nsi"
 !endif
 !ifdef HAVE_PKG_GPGEX
 !include "uninst-gpgex.nsi"
+!endif
+!ifdef HAVE_PKG_GPGOLJS
+!include "uninst-gpgoljs.nsi"
 !endif
 !ifdef HAVE_PKG_GPGOL
 !include "uninst-gpgol.nsi"
 !endif
 !ifdef HAVE_PKG_KLEOPATRA
 !include "uninst-kleopatra.nsi"
+!endif
+
+!ifdef HAVE_PKG_BREEZE
+!include "uninst-breeze.nsi"
+!endif
+!ifdef HAVE_PKG_PAPERKEY
+!include "uninst-paperkey.nsi"
 !endif
 
 !ifdef HAVE_PKG_GPGME
@@ -412,9 +422,6 @@
 !ifdef HAVE_PKG_KSTATUSNOTIFIERITEM
 !include "uninst-kstatusnotifieritem.nsi"
 !endif
-!ifdef HAVE_PKG_OKULAR
-!include "uninst-okular.nsi"
-!endif
 !ifdef HAVE_PKG_KBOOKMARKS
 !include "uninst-kbookmarks.nsi"
 !endif
@@ -470,9 +477,6 @@
 !ifdef HAVE_PKG_PRISON
 !include "uninst-prison.nsi"
 !endif
-!ifdef HAVE_PKG_GPGOLJS
-!include "uninst-gpgoljs.nsi"
-!endif
 !ifdef HAVE_PKG_QTHTTPSERVER
 !include "uninst-qthttpserver.nsi"
 !endif
@@ -484,9 +488,6 @@
 !endif
 !ifdef HAVE_PKG_KCONTACTS
 !include "uninst-kcontacts.nsi"
-!endif
-!ifdef HAVE_PKG_GPGPASS
-!include "uninst-gpgpass.nsi"
 !endif
 !ifdef HAVE_PKG_SONNET
 !include "uninst-sonnet.nsi"
