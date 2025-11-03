@@ -1736,7 +1736,7 @@ sub dump_single_custom {
                          Guid="7F122F29-AA33-4DE5-9DD2-0DAF1A24B630">
                 <CreateFolder>
                   <Permission User="Administrators" GenericAll="yes" />
-                  <Permission User="BUILTIN\\Users" Read="yes" ReadAttributes="yes" ReadExtendedAttributes="yes" ReadPermission="yes" GenericExecute="yes" />
+                  <Permission User="Everyone" Read="yes" ReadAttributes="yes" ReadExtendedAttributes="yes" ReadPermission="yes" GenericExecute="yes" />
                 </CreateFolder>
               </Component>
             </Directory>
