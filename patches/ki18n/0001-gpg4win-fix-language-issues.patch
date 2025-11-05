@@ -1,0 +1,135 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 425e07081908344d94e481e73658d85e79f87e13 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 5 Nov 2025 10:14:45 +0100
+Subject: [PATCH 1/2] Work around wrong result of QLocale::uiLanguages() on
+ Windows
+
+On Windows (compiled with MinGW) QLocale::uiLanguages() returns
+"de", "de-Latn-DE", "de-DE", "en-US", "en-Latn-US", "en"
+if the Windows display language is set to en-US and the regional format
+(which is supposed to be used for dates, etc.) is set to de-DE.
+Obviously, this is not what the user who uses these settings expects.
+
+GnuPG-bug-id: 7874
+---
+ src/i18n/main.cpp | 41 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
+
+diff --git a/src/i18n/main.cpp b/src/i18n/main.cpp
+index 9068fa7..9857b47 100644
+--- a/src/i18n/main.cpp
++++ b/src/i18n/main.cpp
+@@ -16,6 +16,10 @@
+
+ #include <memory>
+
++#ifdef Q_OS_WIN
++#include <windows.h>
++#endif
++
+ //
+ // NOTE when changing anything in here, also check whether ECMQmLoader.cpp.in in ECM
+ // needs to be changed as well!
+@@ -68,6 +72,36 @@ static bool loadTranslation(QStringView language)
+     return success;
+ }
+
++#ifdef Q_OS_WIN
++static QStringList win_GetUserPreferredUILanguages()
++{
++    QStringList result;
++    unsigned long cnt = 0;
++    QVarLengthArray<wchar_t, 64> buf(64);
++    unsigned long size = buf.size();
++    if (!GetUserPreferredUILanguages(MUI_LANGUAGE_NAME, &cnt, buf.data(), &size)) {
++        size = 0;
++        if (GetLastError() == ERROR_INSUFFICIENT_BUFFER && GetUserPreferredUILanguages(MUI_LANGUAGE_NAME, &cnt, NULL, &size)) {
++            buf.resize(size);
++            if (!GetUserPreferredUILanguages(MUI_LANGUAGE_NAME, &cnt, buf.data(), &size)) {
++                return {};
++            }
++        }
++    }
++    result.reserve(cnt);
++    const wchar_t *str = buf.constData();
++    for (; cnt > 0; --cnt) {
++        QString s = QString::fromWCharArray(str);
++        if (s.isEmpty())
++            break; // something is wrong
++        result.append(s.replace('-'_L1, '_'_L1));
++        str += s.size() + 1;
++    }
++    qCDebug(KI18N) << __func__ << result;
++    return result;
++}
++#endif
++
+ static QStringList getSystemLanguages()
+ {
+ #if defined(Q_OS_WIN) || defined(Q_OS_MAC)
+@@ -78,6 +112,14 @@ static QStringList getSystemLanguages()
+     if (const auto languages = qEnvironmentVariable("LANGUAGE").split(':'_L1, Qt::SkipEmptyParts); !languages.isEmpty()) {
+         return languages;
+     }
++#endif
++#ifdef Q_OS_WIN
++    // This is a workaround for broken QLocale::uiLanguages() on Windows (compiled with MinGW); see T7874
++    if (const auto languages = win_GetUserPreferredUILanguages(); !languages.isEmpty()) {
++        // force usage of the languages returned by GetUserPreferredUILanguages
++        qputenv("LANGUAGE", languages.join(':'_L1).toUtf8());
++        return languages;
++    }
+ #endif
+     return QLocale::system().uiLanguages();
+ }
+--
+2.51.1
+
+From 5c663508008c9403d3f69e86241122a430edca52 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 5 Nov 2025 10:20:45 +0100
+Subject: [PATCH 2/2] Force GnuPG to use same language as Qt apps
+
+GnuPG's replacement for gettext on Windows doesn't support LANGUAGE.
+Setting LC_MESSAGES ensures that GnuPG uses this language instead of
+the configured locale (aka regional format).
+
+GnuPG-bug-id: 7874
+---
+ src/i18n/main.cpp | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/i18n/main.cpp b/src/i18n/main.cpp
+index 9857b47..15a18f2 100644
+--- a/src/i18n/main.cpp
++++ b/src/i18n/main.cpp
+@@ -110,6 +110,12 @@ static QStringList getSystemLanguages()
+     // The following code is a simplified variant of QSystemLocale::fallbackUiLocale()
+     // (in qlocale_unix.cpp) ignoring LC_ALL, LC_MESSAGES, and LANG.
+     if (const auto languages = qEnvironmentVariable("LANGUAGE").split(':'_L1, Qt::SkipEmptyParts); !languages.isEmpty()) {
++#ifdef Q_OS_WIN
++        if (qEnvironmentVariableIsEmpty("LC_MESSAGES")) {
++            // force usage of the first language on GnuPG which doesn't support LANGUAGE
++            qputenv("LC_MESSAGES", languages.first().toUtf8());
++        }
++#endif
+         return languages;
+     }
+ #endif
+@@ -118,6 +124,10 @@ static QStringList getSystemLanguages()
+     if (const auto languages = win_GetUserPreferredUILanguages(); !languages.isEmpty()) {
+         // force usage of the languages returned by GetUserPreferredUILanguages
+         qputenv("LANGUAGE", languages.join(':'_L1).toUtf8());
++        if (qEnvironmentVariableIsEmpty("LC_MESSAGES")) {
++            // force usage of the first language on GnuPG which doesn't support LANGUAGE
++            qputenv("LC_MESSAGES", languages.first().toUtf8());
++        }
+         return languages;
+     }
+ #endif
+--
+2.51.1

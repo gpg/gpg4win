@@ -61,6 +61,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/breeze/0005-For-high-contrast-draw-hovered-menu-items-like-selec.patch \
              patches/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
+             patches/extra-cmake-modules/0001-Use-preferred-display-language-instead-of-locale-on-.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
              patches/kcolorscheme/0001-Add-support-for-high-contrast-color-themes-on-Window.patch \
@@ -74,6 +75,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kguiaddons/0001-Add-support-for-high-contrast-mode-on-Windows.patch \
              patches/kguiaddons/0002-DRAFT-There-is-no-dark-mode-on-old-Windows.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
+             patches/ki18n/0001-gpg4win-fix-language-issues.patch \
              patches/kiconthemes/0001-Remove-code-for-Qt-older-than-6.8.patch \
              patches/kiconthemes/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches/kiconthemes/0002-Use-symbolic-icons-if-high-contrast-color-scheme-is-.patch \

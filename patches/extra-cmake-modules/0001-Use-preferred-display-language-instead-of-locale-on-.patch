@@ -1,0 +1,75 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From d6b8c66f62b3fb78821daf638d23aaf1668e4a0f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 5 Nov 2025 11:29:02 +0100
+Subject: [PATCH] Use preferred display language instead of locale on Windows
+
+The system locale depends on the regional format (which is supposed to be
+used for dates, etc.), but for the translation we have to use the
+preferred display language. Ideally, we'd use QLocale::uiLanguages() for
+this, but on Windows (compiled with MinGW) QLocale::uiLanguages() returns
+"de", "de-Latn-DE", "de-DE", "en-US", "en-Latn-US", "en"
+if the Windows display language is set to en-US and the regional format
+is set to de-DE. Obviously, this is not what the user who uses these
+settings expects. Hence, we use GetUserPreferredUILanguages as in ki18n.
+
+GnuPG-bug-id: 7874
+---
+ modules/ECMQmLoader.cpp.in | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
+
+diff --git a/modules/ECMQmLoader.cpp.in b/modules/ECMQmLoader.cpp.in
+index fe0da7d7..21b4ab1e 100644
+--- a/modules/ECMQmLoader.cpp.in
++++ b/modules/ECMQmLoader.cpp.in
+@@ -17,8 +17,32 @@
+ #include <QTranslator>
+ #include <QDir>
+
++#ifdef Q_OS_WIN
++#include <windows.h>
++#endif
++
+ namespace {
+
++#ifdef Q_OS_WIN
++    static QString win_GetUserPreferredUILanguages_first_only()
++    {
++        unsigned long cnt = 0;
++        QVarLengthArray<wchar_t, 64> buf(64);
++        unsigned long size = buf.size();
++        if (!GetUserPreferredUILanguages(MUI_LANGUAGE_NAME, &cnt, buf.data(), &size)) {
++            size = 0;
++            if (GetLastError() == ERROR_INSUFFICIENT_BUFFER && GetUserPreferredUILanguages(MUI_LANGUAGE_NAME, &cnt, NULL, &size)) {
++                buf.resize(size);
++                if (!GetUserPreferredUILanguages(MUI_LANGUAGE_NAME, &cnt, buf.data(), &size)) {
++                    return {};
++                }
++            }
++        }
++        const wchar_t *str = buf.constData();
++        return QString::fromWCharArray(str).replace(u'-', u'_');
++    }
++#endif
++
+     static QLocale getSystemLocale()
+     {
+ #if defined(Q_OS_WIN) || defined(Q_OS_MAC)
+@@ -33,6 +57,12 @@ namespace {
+                 return QLocale{language};
+             }
+         }
++#ifdef Q_OS_WIN
++        language = win_GetUserPreferredUILanguages_first_only();
++        if (!language.isEmpty()) {
++            return QLocale{language};
++        }
++#endif
+ #endif
+         return QLocale::system();
+     }
+--
+2.51.1
