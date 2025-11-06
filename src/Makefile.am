@@ -27,6 +27,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
 	zlib.pc sha1sum.c \
         potomo Memento.nsh mk-sbom.sh \
+	gpgconf.rnames \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
         inst-gettext.nsi	   uninst-gettext.nsi	      \
         inst-gnupg-w32.nsi	   uninst-gnupg-w32.nsi	      \
