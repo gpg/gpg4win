@@ -1,0 +1,54 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 071d11cb7bfc1518d19bab8649dedc3a9b65a208 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Mon, 10 Nov 2025 16:56:29 +0100
+Subject: [PATCH 4/4] Don't draw some days in dark red if high-contrast colors
+ are in use
+
+Dark red has very bad contrast for many high-contrast color schemes on
+Windows.
+---
+ src/kdatetable.cpp | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/src/kdatetable.cpp b/src/kdatetable.cpp
+index d7345cb9..3a90752e 100644
+--- a/src/kdatetable.cpp
++++ b/src/kdatetable.cpp
+@@ -9,6 +9,8 @@
+
+ #include "kdatetable_p.h"
+
++#include "highcontrasthelper_p.h"
++
+ #include <QAction>
+ #include <QActionEvent>
+ #include <QApplication>
+@@ -276,10 +278,10 @@ void KDateTable::paintCell(QPainter *painter, int row, int col)
+         // We are drawing a header cell
+
+         // If not a normal working day, then use "do not work today" color
+-        if (workingDay) {
+-            cellTextColor = palette().color(QPalette::WindowText);
+-        } else {
++        if (!workingDay && !isHighContrastColorSchemeInUse()) {
+             cellTextColor = Qt::darkRed;
++        } else {
++            cellTextColor = palette().color(QPalette::WindowText);
+         }
+         cellBackgroundColor = palette().color(QPalette::Window);
+
+@@ -364,7 +366,7 @@ void KDateTable::paintCell(QPainter *painter, int row, int col)
+             }
+
+             // If the cell day is the day of religious observance, then always color text red unless Custom overrides
+-            if (!customDay && dayOfPray) {
++            if (!customDay && dayOfPray && !isHighContrastColorSchemeInUse()) {
+                 cellTextColor = Qt::darkRed;
+             }
+         }
+--
+2.51.1
