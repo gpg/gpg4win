@@ -28,6 +28,30 @@ index af7a9a15..f30ac9a2 100644
  )
 
  kconfig_add_kcfg_files(breeze_PART_SRCS ../kdecoration/breezesettings.kcfgc)
+diff --git a/kstyle/breezehelper.cpp b/kstyle/breezehelper.cpp
+index d3992ded..001aaa49 100644
+--- a/kstyle/breezehelper.cpp
++++ b/kstyle/breezehelper.cpp
+@@ -8,6 +8,7 @@
+
+ #include "breeze.h"
+ #include "breezepropertynames.h"
++#include "highcontrasthelper.h"
+
+ #include <KColorScheme>
+ #include <KColorUtils>
+diff --git a/kstyle/breezestyle.cpp b/kstyle/breezestyle.cpp
+index a2523913..7d0a6a3a 100644
+--- a/kstyle/breezestyle.cpp
++++ b/kstyle/breezestyle.cpp
+@@ -20,6 +20,7 @@
+ #include "breezetoolsareamanager.h"
+ #include "breezewidgetexplorer.h"
+ #include "breezewindowmanager.h"
++#include "highcontrasthelper.h"
+
+ #include <KColorUtils>
+ #include <KIconLoader>
 diff --git a/kstyle/highcontrasthelper.cpp b/kstyle/highcontrasthelper.cpp
 new file mode 100644
 index 00000000..551f7e7d

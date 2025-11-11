@@ -1,0 +1,180 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From b672214469eb7873c69567918dbcaf227a2a58b9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 11 Nov 2025 11:53:13 +0100
+Subject: [PATCH] Don't use mixed colors for frames if high-contrast is in use
+
+Otherwise, the borders of checkboxes, etc. have way too low contrast.
+---
+ kstyle/breezehelper.cpp | 46 +++++++++++++++++++++++++++--------------
+ kstyle/breezestyle.cpp  | 15 ++++++++++----
+ 2 files changed, 42 insertions(+), 19 deletions(-)
+
+diff --git a/kstyle/breezehelper.cpp b/kstyle/breezehelper.cpp
+index d3992ded..fb524034 100644
+--- a/kstyle/breezehelper.cpp
++++ b/kstyle/breezehelper.cpp
+@@ -145,7 +145,9 @@ QColor transparentize(const QColor &color, qreal amount)
+ //____________________________________________________________________
+ QColor Helper::frameOutlineColor(const QPalette &palette, bool mouseOver, bool hasFocus, qreal opacity, AnimationMode mode) const
+ {
+-    QColor outline(KColorUtils::mix(palette.color(QPalette::Window), palette.color(QPalette::WindowText), Metrics::Bias_Default));
++    QColor outline(isHighContrastColorSchemeInUse() //
++                       ? palette.color(QPalette::WindowText)
++                       : KColorUtils::mix(palette.color(QPalette::Window), palette.color(QPalette::WindowText), Metrics::Bias_Default));
+
+     // focus takes precedence over hover
+     if (mode == AnimationFocus) {
+@@ -263,7 +265,9 @@ QColor Helper::arrowColor(const QPalette &palette, bool mouseOver, bool hasFocus
+ //____________________________________________________________________
+ QColor Helper::sliderOutlineColor(const QPalette &palette, bool mouseOver, bool hasFocus, qreal opacity, AnimationMode mode) const
+ {
+-    QColor outline(KColorUtils::mix(palette.color(QPalette::Button), palette.color(QPalette::ButtonText), Metrics::Bias_Default));
++    QColor outline(isHighContrastColorSchemeInUse() //
++                       ? palette.color(QPalette::ButtonText)
++                       : KColorUtils::mix(palette.color(QPalette::Button), palette.color(QPalette::ButtonText), Metrics::Bias_Default));
+
+     // hover takes precedence over focus
+     if (mode == AnimationHover) {
+@@ -292,7 +296,9 @@ QColor Helper::sliderOutlineColor(const QPalette &palette, bool mouseOver, bool
+ //____________________________________________________________________
+ QColor Helper::scrollBarHandleColor(const QPalette &palette, bool mouseOver, bool hasFocus, qreal opacity, AnimationMode mode) const
+ {
+-    QColor color(alphaColor(palette.color(QPalette::WindowText), 0.5));
++    QColor color(isHighContrastColorSchemeInUse() //
++                     ? palette.color(QPalette::WindowText)
++                     : alphaColor(palette.color(QPalette::WindowText), 0.5));
+
+     // hover takes precedence over focus
+     if (mode == AnimationHover) {
+@@ -344,7 +350,11 @@ QColor Helper::checkBoxIndicatorColor(const QPalette &palette, bool mouseOver, b
+ //______________________________________________________________________________
+ QColor Helper::separatorColor(const QPalette &palette) const
+ {
+-    return KColorUtils::mix(palette.color(QPalette::Window), palette.color(QPalette::WindowText), Metrics::Bias_Default);
++    if (isHighContrastColorSchemeInUse()) {
++        return palette.color(QPalette::ButtonText);
++    } else {
++        return KColorUtils::mix(palette.color(QPalette::Window), palette.color(QPalette::WindowText), Metrics::Bias_Default);
++    }
+ }
+
+ //______________________________________________________________________________
+@@ -693,6 +703,9 @@ void Helper::renderButtonFrame(QPainter *painter,
+     const QColor &highlightColor = palette.color(!enabled ? QPalette::Disabled : QPalette::Active, QPalette::Highlight);
+     QBrush bgBrush;
+     QBrush penBrush;
++    const QColor basePenColor = (isHighContrastColorSchemeInUse() //
++                                     ? palette.buttonText().color()
++                                     : KColorUtils::mix(palette.button().color(), palette.buttonText().color(), Metrics::Bias_Default));
+
+     // Colors
+     if (flat) {
+@@ -700,11 +713,10 @@ void Helper::renderButtonFrame(QPainter *painter,
+             bgBrush = alphaColor(highlightColor, highlightBackgroundAlpha);
+         } else if (checked) {
+             bgBrush = hasNeutralHighlight ? alphaColor(neutralText(palette), highlightBackgroundAlpha) : alphaColor(palette.buttonText().color(), 0.125);
+-            penBrush =
+-                hasNeutralHighlight ? neutralText(palette) : KColorUtils::mix(palette.button().color(), palette.buttonText().color(), Metrics::Bias_Default);
++            penBrush = hasNeutralHighlight ? neutralText(palette) : basePenColor;
+         } else if (isActiveWindow && defaultButton) {
+             bgBrush = alphaColor(highlightColor, 0.125);
+-            penBrush = KColorUtils::mix(highlightColor, KColorUtils::mix(palette.button().color(), palette.buttonText().color(), Metrics::Bias_Default), 0.5);
++            penBrush = KColorUtils::mix(highlightColor, basePenColor, 0.5);
+         } else {
+             bgBrush = alphaColor(highlightColor, 0);
+             penBrush = hasNeutralHighlight ? neutralText(palette) : bgBrush;
+@@ -715,15 +727,13 @@ void Helper::renderButtonFrame(QPainter *painter,
+         } else if (checked) {
+             bgBrush = hasNeutralHighlight ? KColorUtils::mix(palette.button().color(), neutralText(palette), 0.333)
+                                           : KColorUtils::mix(palette.button().color(), palette.buttonText().color(), 0.125);
+-            penBrush =
+-                hasNeutralHighlight ? neutralText(palette) : KColorUtils::mix(palette.button().color(), palette.buttonText().color(), Metrics::Bias_Default);
++            penBrush = hasNeutralHighlight ? neutralText(palette) : basePenColor;
+         } else if (isActiveWindow && defaultButton) {
+             bgBrush = KColorUtils::mix(palette.button().color(), highlightColor, 0.2);
+-            penBrush = KColorUtils::mix(highlightColor, KColorUtils::mix(palette.button().color(), palette.buttonText().color(), Metrics::Bias_Default), 0.5);
++            penBrush = KColorUtils::mix(highlightColor, basePenColor, 0.5);
+         } else {
+             bgBrush = palette.button().color();
+-            penBrush =
+-                hasNeutralHighlight ? neutralText(palette) : KColorUtils::mix(palette.button().color(), palette.buttonText().color(), Metrics::Bias_Default);
++            penBrush = hasNeutralHighlight ? neutralText(palette) : basePenColor;
+         }
+     }
+
+@@ -1321,7 +1331,11 @@ void Helper::renderScrollBarHandle(QPainter *painter, const QRectF &rect, const
+     const qreal radius(0.5 * std::min({baseRect.width(), baseRect.height(), (qreal)Metrics::ScrollBar_SliderWidth}));
+
+     painter->setPen(Qt::NoPen);
+-    painter->setPen(QPen(transparentize(fg, Metrics::Bias_Default), 1.001));
++    if (isHighContrastColorSchemeInUse()) {
++        painter->setPen(QPen(fg, 1.001));
++    } else {
++        painter->setPen(QPen(transparentize(fg, Metrics::Bias_Default), 1.001));
++    }
+     painter->setBrush(KColorUtils::overlayColors(bg, alphaColor(fg, 0.5)));
+     painter->drawRoundedRect(strokedRect(baseRect), radius, radius);
+ }
+@@ -1510,7 +1525,8 @@ void Helper::renderTabBarTab(QPainter *painter,
+         } else {
+             bgBrush = frameBackgroundColor(palette);
+         }
+-        QColor penBrush = KColorUtils::mix(bgBrush, palette.color(QPalette::WindowText), Metrics::Bias_Default);
++        QColor penBrush = isHighContrastColorSchemeInUse() ? palette.windowText().color()
++                                                           : KColorUtils::mix(bgBrush, palette.color(QPalette::WindowText), Metrics::Bias_Default);
+         painter->setBrush(bgBrush);
+         painter->setPen(QPen(penBrush, PenWidth::Frame));
+         QRectF highlightRect = frameRect;
+diff --git a/kstyle/breezestyle.cpp b/kstyle/breezestyle.cpp
+index a2523913..4779db7b 100644
+--- a/kstyle/breezestyle.cpp
++++ b/kstyle/breezestyle.cpp
+@@ -4651,7 +4651,9 @@ bool Style::drawPanelTipLabelPrimitive(const QStyleOption *option, QPainter *pai
+
+     const auto &palette(option->palette);
+     const auto &background = palette.color(QPalette::ToolTipBase);
+-    const auto outline(KColorUtils::mix(palette.color(QPalette::ToolTipBase), palette.color(QPalette::ToolTipText), 0.25));
++    const auto outline(isHighContrastColorSchemeInUse() //
++                           ? palette.buttonText().color()
++                           : KColorUtils::mix(palette.color(QPalette::ToolTipBase), palette.color(QPalette::ToolTipText), 0.25));
+     const bool hasAlpha(_helper->hasAlphaChannel(widget));
+
+     _helper->renderMenuFrame(painter, option->rect, background, outline, hasAlpha);
+@@ -6692,7 +6694,8 @@ bool Style::drawHeaderSectionControl(const QStyleOption *option, QPainter *paint
+
+     // outline
+     painter->setBrush(Qt::NoBrush);
+-    painter->setPen(_helper->alphaColor(palette.color(QPalette::WindowText), Metrics::Bias_Default));
++    painter->setPen(isHighContrastColorSchemeInUse() ? palette.windowText().color()
++                                                     : _helper->alphaColor(palette.color(QPalette::WindowText), Metrics::Bias_Default));
+
+     if (isCorner) {
+         if (reverseLayout) {
+@@ -6713,7 +6716,8 @@ bool Style::drawHeaderSectionControl(const QStyleOption *option, QPainter *paint
+     }
+
+     // separators
+-    painter->setPen(_helper->alphaColor(palette.color(QPalette::WindowText), Metrics::Bias_Default));
++    painter->setPen(isHighContrastColorSchemeInUse() ? palette.windowText().color()
++                                                     : _helper->alphaColor(palette.color(QPalette::WindowText), Metrics::Bias_Default));
+
+     // If the separator is next to a "HeaderEmptyArea", skip it and let that draw
+     // the separator instead. This means that those separators are only visible when necessary.
+@@ -8070,7 +8074,10 @@ bool Style::drawScrollBarComplexControl(const QStyleOptionComplex *option, QPain
+         separatorRect = alignedRect(option->direction, Qt::AlignLeft, QSize(PenWidth::Frame, option->rect.height()), option->rect);
+     }
+
+-    _helper->renderScrollBarBorder(painter, separatorRect, _helper->alphaColor(option->palette.color(QPalette::Text), Metrics::Bias_Default));
++    _helper->renderScrollBarBorder(painter,
++                                   separatorRect,
++                                   isHighContrastColorSchemeInUse() ? option->palette.text().color()
++                                                                    : _helper->alphaColor(option->palette.color(QPalette::Text), Metrics::Bias_Default));
+
+     // call base class primitive
+     ParentStyleClass::drawComplexControl(CC_ScrollBar, option, painter, widget);
+--
+2.51.1

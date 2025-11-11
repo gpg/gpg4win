@@ -51,12 +51,13 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/breeze-icons/0001-Allow-to-disable-building-of-the-icon-library-native.patch \
              patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools.patch \
              patches/breeze-icons/remove-kleopatra-icons.patch \
+             patches/breeze/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
              patches/breeze/0001-Do-not-pass-QIcon-Selected-mode-to-icon-painter.patch \
+             patches/breeze/0001-Don-t-use-mixed-colors-for-frames-if-high-contrast-i.patch \
              patches/breeze/0001-Fix-toolbar-colors-in-high-contrast-mode.patch \
              patches/breeze/0002-fix-ifdef-windows-qmenu.patch \
              patches/breeze/0002-kstyle-Support-registering-QMainWindow-in-tools-area.patch \
-             patches/breeze/0003-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches/breeze/0004-For-high-contrast-draw-hovered-menu-bar-items-like-s.patch \
              patches/breeze/0005-For-high-contrast-draw-hovered-menu-items-like-selec.patch \
              patches/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \

@@ -20,14 +20,6 @@ diff --git a/kstyle/breezestyle.cpp b/kstyle/breezestyle.cpp
 index f76b0c9b..7a4de4e1 100644
 --- a/kstyle/breezestyle.cpp
 +++ b/kstyle/breezestyle.cpp
-@@ -20,6 +20,7 @@
- #include "breezetoolsareamanager.h"
- #include "breezewidgetexplorer.h"
- #include "breezewindowmanager.h"
-+#include "highcontrasthelper.h"
-
- #include <KColorUtils>
- #include <KIconLoader>
 @@ -5682,7 +5683,8 @@ bool Style::drawMenuBarItemControl(const QStyleOption *option, QPainter *painter
          const auto textRect = option->fontMetrics.boundingRect(rect, textFlags, menuItemOption->text);
 
