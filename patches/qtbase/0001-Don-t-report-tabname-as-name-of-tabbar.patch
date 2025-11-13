@@ -1,0 +1,42 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+diff --git a/src/widgets/accessible/complexwidgets.cpp b/src/widgets/accessible/complexwidgets.cpp
+index 3f6f38ae239..770a11d9cc7 100644
+--- a/src/widgets/accessible/complexwidgets.cpp
++++ b/src/widgets/accessible/complexwidgets.cpp
+@@ -253,21 +253,6 @@ int QAccessibleTabBar::childCount() const
+     return tabBar()->count() + 2;
+ }
+
+-QString QAccessibleTabBar::text(QAccessible::Text t) const
+-{
+-    if (t == QAccessible::Name) {
+-        const QTabBar *tBar = tabBar();
+-        int idx = tBar->currentIndex();
+-        QString str = tBar->accessibleTabName(idx);
+-        if (str.isEmpty())
+-            str = qt_accStripAmp(tBar->tabText(idx));
+-        return str;
+-    } else if (t == QAccessible::Accelerator) {
+-        return qt_accHotKey(tabBar()->tabText(tabBar()->currentIndex()));
+-    }
+-    return QString();
+-}
+-
+ int QAccessibleTabBar::selectedItemCount() const
+ {
+     if (tabBar()->currentIndex() >= 0)
+diff --git a/src/widgets/accessible/complexwidgets_p.h b/src/widgets/accessible/complexwidgets_p.h
+index 3c4403cccc9..a071e3c418b 100644
+--- a/src/widgets/accessible/complexwidgets_p.h
++++ b/src/widgets/accessible/complexwidgets_p.h
+@@ -80,7 +80,6 @@ public:
+
+     QAccessibleInterface *focusChild() const override;
+     int childCount() const override;
+-    QString text(QAccessible::Text t) const override;
+
+     QAccessibleInterface* child(int index) const override;
+     int indexOfChild(const QAccessibleInterface *child) const override;
