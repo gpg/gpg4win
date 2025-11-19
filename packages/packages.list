@@ -823,26 +823,26 @@ fi # gnupg24
 #
 # This is the GnuPG used for gpg4win 5.x and vsd 4.x
 #
-# last changed 2025-10-22
+# last changed 2025-11-19
 # by builder
 # verified: [taken from buildtree]
 if gnupg = gnupg26
-name gnupg-2.5.13.tar.bz2
-file gnupg/gnupg-2.5.13.tar.bz2
-chk  31a92aa03525d66a5834fe8ae4aad05a9ba93e99235189f4f64e78ae32f13093
+name gnupg-2.5.14.tar.bz2
+file gnupg/gnupg-2.5.14.tar.bz2
+chk  25a622e625a1cc9078b5e3f7adf2bd02b86759170e2fbb8542bca8e907214610
 
-name gnupg-w32-2.5.13_20251022-bin.exe
-file binary/gnupg-w32-2.5.13_20251022.exe
-chk  136c3ab2a3a0cd80335897d49bc987ae4ba1e52332b8979f893e7396fa666d71
+name gnupg-w32-2.5.14_20251119-bin.exe
+file binary/gnupg-w32-2.5.14_20251119.exe
+chk  a551ba0a2f452fb89ccf71724c9d0d559088e6d3a1ff6119cd308343cf2bfdf2
 
-name gnupg-w32-2.5.13_20251022-src.tar.xz
-file gnupg/gnupg-w32-2.5.13_20251022.tar.xz
-link gnupg-msi-2.5.13_20251022-src.tar.xz
-chk  306a0c009ce4905573756b8fd2884c0c96df8b8ea778434c416cc9bc45b8e409
+name gnupg-w32-2.5.14_20251119-src.tar.xz
+file gnupg/gnupg-w32-2.5.14_20251119.tar.xz
+link gnupg-msi-2.5.14_20251119-src.tar.xz
+chk  dd13408043cc422df3112fee075247ac073a8228b1497612c16585740c0c2e42
 
-name gnupg-msi-2.5.13_20251022-bin.wixlib
-file binary/gnupg-w32-2.5.13_20251022.wixlib
-chk  92b46a118d3b3fad9bd4d0f033ecd56df9aac408113d5f01e2c0d719b520aa16
+name gnupg-msi-2.5.14_20251119-bin.wixlib
+file binary/gnupg-w32-2.5.14_20251119.wixlib
+chk  ce3ca414bc4197f340475f8520ff8145093d77a11eb55233723227039377e7c6
 
 fi # gnupg26
 
