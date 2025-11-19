@@ -24,7 +24,7 @@
 #     GNU make like with all gpg4win Makefiles.
 
 EXTRA_DIST = README.nsis LINGUAS POTFILES \
-	     $(POFILES) gpg4win-de.wxl gpg4win-en.wxl \
+	     $(POFILES) gpg4win-de.wxl gpg4win-en.wxl gpg4win-sv.wxl \
 	     nsis-msgfmt.c nsis-xgettext.awk \
 	     remove-potcdate.sin gpg4win.pot
 

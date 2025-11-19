@@ -1,0 +1,24 @@
+<WixLocalization Culture="sv-se" Codepage="1252"     xmlns="http://schemas.microsoft.com/wix/2006/localization">
+  <String Id="Language">1053</String>
+  <String Id="T_FoundExistingVersion">En nyare version av GnuPG VS-Desktop är redan installerad.
+ Vill du skriva över denna version?</String>
+<String Id="gpg4winInstalled">Avinstallera Gpg4win innan du installerar GnuPG VS-Desktop.</String>
+<String Id="DESC_Menu_kleopatra">Kör nyckelhanteringsverktyget Kleopatra.</String>
+<String Id="DESC_Menu_okular">Kör PDF-visaren Okular för att signera och verifiera dokument med GnuPG.</String>
+<String Id="DESC_SEC_kleopatra">Nyckelhanterare för OpenPGP och X.509 samt vanliga kryptodialoger.</String>
+<String Id="T_File_Type_gpg_Name">Binär OpenPGP-fil</String>
+<String Id="T_File_Type_asc_Name">OpenPGP-textfil</String>
+<String Id="T_File_Type_sig_Name">OpenPGP-signatur</String>
+<String Id="T_File_Type_pgp_key_Name">OpenPGP-certfikatsfil</String>
+<String Id="T_File_Type_pem_Name">CMS-fil (S/MIME)</String>
+<String Id="T_File_Type_x509_Name">X509-certifikatsfil</String>
+<String Id="T_File_Type_x509_info_tip">Certifikat för CMS (S/MIME)</String>
+<String Id="T_File_Type_info_tip">Detta kan vara krypterad data, en signatur eller ett certifikat.</String>
+<String Id="T_File_Type_sig_info_tip">En kryptografisk signatur för att verifiera äktheten för en annan fil.</String>
+<String Id="T_File_Type_pgp_key_info_tip">Certifikat för OpenPGP</String>
+<String Id="T_File_Type_kgrp_Name">Kleopatra-certifikatgrupper </String>
+<String Id="T_File_Type_kgrp_info_tip">Certifikatgrupper att användas av Kleopatra för kryptering.</String>
+<String Id="T_File_Type_MIME_Name">E-postfil</String>
+<String Id="T_File_Type_MIME_info_tip">En e-postfil som antingen kan vara krypterad eller okrypterad.</String>
+
+</WixLocalization>
