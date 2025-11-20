@@ -31,7 +31,6 @@ PGM=gen-tarball.sh
 set -e
 
 FRONTEND_PKGS="
-gpgme
 libkleo
 kleopatra
 gpgol
