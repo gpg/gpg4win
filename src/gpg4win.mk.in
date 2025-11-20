@@ -25,7 +25,6 @@ AUTHENTICODE_FILES = \
 	 bin/gpgol.dll \
 	 bin/gpgolkeyadder.exe \
 	 bin/gpgol-server.exe \
-	 bin/gpgpass.exe \
 	 bin/libiconv-2.dll \
 	 bin/kleopatra.exe \
 	 bin/libassuan-9.dll \
@@ -64,7 +63,6 @@ AUTHENTICODE_FILES = \
 	 bin/libKF6KIOGui.dll \
 	 bin/libKF6KIOWidgets.dll \
 	 bin/libKF6Parts.dll \
-	 bin/libKF6Prison.dll \
 	 bin/libKF6Service.dll \
 	 bin/libKF6Solid.dll \
 	 bin/libKF6SonnetCore.dll \
@@ -87,7 +85,6 @@ AUTHENTICODE_FILES = \
 	 bin/libpoppler-153.dll \
 	 bin/libpoppler-qt6-3.dll \
 	 bin/libqgpgmeqt6-15.dll \
-	 bin/libqrencode.dll \
 	 bin/libtiff.dll \
 	 bin/libzstd.dll \
 	 bin/okular.exe \
@@ -132,9 +129,13 @@ AUTHENTICODE_FILES = \
 	../src/sha1sum.exe \
 	../src/sha256sum.exe
 
+# Some programs are not always build, thus we list them here.
 # Not all of these dlls must exist as they are installed by nsis with
 # the /nonfatal option.
 AUTHENTICODE_FILES_OPTIONAL = \
+	 bin/gpgpass.exe \
+	 bin/libKF6Prison.dll \
+	 bin/libqrencode.dll \
 	../src/libgcc_s_dw2-1.dll-x \
         ../src/libgcc_s_sjlj-1.dll-x \
         ../src/libgcc_s_seh-1.dll-x  \
