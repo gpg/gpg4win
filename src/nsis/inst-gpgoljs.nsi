@@ -20,8 +20,8 @@
 !endif
 !define prefix ${ipdir}/gpgoljs-${gpg4win_pkg_gpgoljs_version}
 
-# gpgoljs - Opt in for now.
-${MementoUnselectedSection} "GpgOL/Web" SEC_gpgoljs
+# gpgoljs
+${MementoSection} "GpgOL/Web" SEC_gpgoljs
 
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/gpgol-client.exe

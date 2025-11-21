@@ -20,8 +20,8 @@
 !endif
 !define prefix ${ipdir}/okular-${gpg4win_pkg_okular_version}
 
-# Okular - Opt in for now.
-${MementoUnselectedSection} "Okular (GnuPG Edition)" SEC_okular
+# Okular
+${MementoSection} "Okular (GnuPG Edition)" SEC_okular
 
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/okular.exe
