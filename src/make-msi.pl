@@ -1029,6 +1029,10 @@ sub gpg4win_nsis_stubs
         {
             $lang = 'nl';
         }
+        elsif ($lang eq 'SWEDISH')
+        {
+            $lang = 'sv';
+        }
         else
         {
             fail "$file:$.: unsupported language ID $args[1]";
