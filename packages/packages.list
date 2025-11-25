@@ -159,11 +159,11 @@ chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 file libgpg-error/libgpg-error-1.56.tar.bz2
 chk  82c3d2deb4ad96ad3925d6f9f124fe7205716055ab50e291116ef27975d169c0
 
-# last-changed: 2024-07-03
+# last-changed: 2025-11-25
 # by: wk
 # verified: swdb
-file libassuan/libassuan-3.0.1.tar.bz2
-chk  c8f0f42e6103dea4b1a6a483cb556654e97302c7465308f58363778f95f194b1
+file libassuan/libassuan-3.0.2.tar.bz2
+chk  d2931cdad266e633510f9970e1a2f346055e351bb19f9b78912475b8074c36f6
 
 
 # last changed 2025-02-04
