@@ -15,12 +15,14 @@ Subject: [PATCH 1/2] Gpg4win-qstandardpaths-patch
 
 --- a/src/corelib/io/qstandardpaths.cpp
 +++ b/src/corelib/io/qstandardpaths.cpp
-@@ -20,6 +20,13 @@
+@@ -20,6 +20,15 @@
  #include <unistd.h>
  #endif
 
 +#if !defined(QT_BUILD_QMAKE) && !defined(QT_NO_SETTINGS)  && !defined(QT_BOOTSTRAPPED)
 +#include <qsettings.h>
++#include <QMap>
++#include <QMetaEnum>
 +#endif
 +#ifdef Q_OS_WIN
 +#include <windows.h>
@@ -29,7 +31,7 @@ Subject: [PATCH 1/2] Gpg4win-qstandardpaths-patch
  #ifndef QT_NO_STANDARDPATHS
 
  QT_BEGIN_NAMESPACE
-@@ -626,6 +633,75 @@ bool QStandardPaths::isTestModeEnabled()
+@@ -626,6 +635,73 @@ bool QStandardPaths::isTestModeEnabled()
      return qsp_testMode;
  }
 
@@ -53,38 +55,24 @@ Subject: [PATCH 1/2] Gpg4win-qstandardpaths-patch
 +QString QStandardPaths::presetLocation(StandardLocation type)
 +{
 +#if !defined(QT_BUILD_QMAKE) && !defined(QT_NO_SETTINGS) && !defined(QT_BOOTSTRAPPED)
-+    QStringList locations = QStringList()   << QStringLiteral("DesktopLocation")
-+                                            << QStringLiteral("DocumentsLocation")
-+                                            << QStringLiteral("FontsLocation")
-+                                            << QStringLiteral("ApplicationsLocation")
-+                                            << QStringLiteral("MusicLocation")
-+                                            << QStringLiteral("MoviesLocation")
-+                                            << QStringLiteral("PicturesLocation")
-+                                            << QStringLiteral("TempLocation")
-+                                            << QStringLiteral("HomeLocation")
-+                                            << QStringLiteral("DataLocation")
-+                                            << QStringLiteral("CacheLocation")
-+                                            << QStringLiteral("GenericDataLocation")
-+                                            << QStringLiteral("RuntimeLocation")
-+                                            << QStringLiteral("ConfigLocation")
-+                                            << QStringLiteral("DownloadLocation")
-+                                            << QStringLiteral("GenericCacheLocation")
-+                                            << QStringLiteral("GenericConfigLocation")
-+                                            << QStringLiteral("AppDataLocation")
-+                                            << QStringLiteral("AppConfigLocation")
-+                                            << QStringLiteral("AppLocalDataLocation");
-+
-+    QScopedPointer<const QSettings> settings(findConfiguration());
-+    if (!settings.isNull()) {
-+        QString key = QLatin1String(standardPathsSection);
-+        key += QLatin1Char('/');
-+        key += locations[type];
-+        const QString value = settings->value(key).toString();
++    // hardcoded fallback for resolving standard paths before application has been created;
++    // keep in sync with qt.conf
++    static const QMap<QString, QString> fallback = {
 +#ifdef Q_OS_WIN
-+        if (!value.contains(QLatin1Char('%')))
++        {QStringLiteral("StandardPaths/AppConfigLocation"), QStringLiteral("%APPDATA%/::APPNAME::")},
++        {QStringLiteral("StandardPaths/ConfigLocation"), QStringLiteral("%APPDATA%/::APPNAME::")},
++        {QStringLiteral("StandardPaths/GenericCacheLocation"), QStringLiteral("%LOCALAPPDATA%/::APPNAME::/cache")},
++        {QStringLiteral("StandardPaths/GenericConfigLocation"), QStringLiteral("%APPDATA%/::APPNAME::")},
++        {QStringLiteral("StandardPaths/GenericDataLocation"), QStringLiteral("%LOCALAPPDATA%/::APPNAME::")},
++        {QStringLiteral("StandardPaths/GenericStateLocation"), QStringLiteral("%LOCALAPPDATA%/::APPNAME::/State")},
 +#endif
-+            return value;
++    };
++    QScopedPointer<const QSettings> settings(findConfiguration());
++
++    const QString key = QLatin1String(standardPathsSection) + QLatin1Char('/') + QString::fromLatin1(QMetaEnum::fromType<QStandardPaths::StandardLocation>().valueToKey(type));
++    QString value = settings.isNull() ? fallback.value(key) : settings->value(key).toString();
 +#ifdef Q_OS_WIN
++    if (value.contains(QLatin1Char('%'))) {
 +        wchar_t expandedPath[MAX_PATH] = {0};
 +        if (ExpandEnvironmentStrings((wchar_t*)value.utf16(), expandedPath, MAX_PATH)) {
 +            const auto expanded = QString::fromWCharArray(expandedPath).replace(QLatin1Char('\\'), QLatin1Char('/'));
@@ -92,14 +80,26 @@ Subject: [PATCH 1/2] Gpg4win-qstandardpaths-patch
 +                OutputDebugString(L"QStandardPaths::presetLocation - Not all environment variables in qt.conf could be expanded.");
 +                return QString();
 +            }
-+            return expanded;
++            value = expanded;
++        } else {
++            OutputDebugString(L"QStandardPaths::presetLocation - Expanding environment variables in qt.conf failed.");
++            return QString();
 +        }
-+        OutputDebugString(L"QStandardPaths::presetLocation - Expanding environment variables in qt.conf failed.");
-+#endif
 +    }
-+#endif // !QT_BUILD_QMAKE && !QT_NO_SETTINGS
-+
++#endif
++    if (value.contains(QLatin1String("::APPNAME::"), Qt::CaseInsensitive)) {
++        if (!QCoreApplication::applicationName().isEmpty()) {
++            value.replace(QLatin1String("::APPNAME::"), QCoreApplication::applicationName(), Qt::CaseInsensitive);
++        } else {
++            // Don't print warning because this happens before main() already and we want to avoid irrelevant warnings
++            //OutputDebugString(L"QStandardPaths::presetLocation - Replacing ::APPNAME:: not possible before application name is set.");
++            return QString();
++        }
++    }
++    return value;
++#else
 +    return QString();
++#endif // !QT_BUILD_QMAKE && !QT_NO_SETTINGS
 +}
 +
 
