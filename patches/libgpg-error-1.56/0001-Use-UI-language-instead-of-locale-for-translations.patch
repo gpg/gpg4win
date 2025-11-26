@@ -1,0 +1,43 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From d813396cfade08c5fbc857463f59dfbd67d3a3f4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 26 Nov 2025 09:38:47 +0100
+Subject: [PATCH Libgpg-error] Use UI language instead of locale for
+ translations
+
+* src/w32-gettext.c (my_nl_locale_name): Use GetThreadUILanguage instead
+of GetThreadLocale.
+--
+
+This ensures that the user configured display language is used even if
+the regional format (which is meant for dates and times) is set to
+another locale.
+
+GetThreadUILanguage is available since Windows Vista and Windows Server
+2008.
+
+GnuPG-bug-id: 7874
+---
+ src/w32-gettext.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/w32-gettext.c b/src/w32-gettext.c
+index 5b15a77..eb65424 100644
+--- a/src/w32-gettext.c
++++ b/src/w32-gettext.c
+@@ -648,8 +648,8 @@ my_nl_locale_name (const char *categoryname)
+       if (retval != NULL && retval[0] != '\0')
+         return retval;
+
+-      /* Use native Win32 API locale ID.  */
+-      lcid = GetThreadLocale ();
++      /* Use native Win32 API language ID.  */
++      lcid = GetThreadUILanguage ();
+       /* Strip off the sorting rules, keep only the language part.  */
+       langid = LANGIDFROMLCID (lcid);
+     }
+--
+2.52.0

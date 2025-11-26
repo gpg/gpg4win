@@ -91,6 +91,8 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kwidgetsaddons/0003-KPageView-Use-correct-icon-mode-if-high-contrast-col.patch \
              patches/kwidgetsaddons/0004-Don-t-draw-some-days-in-dark-red-if-high-contrast-co.patch \
              patches/kxmlgui/0001-Store-kxmlgui-rc-file-in-config-location.patch \
+             patches/libgpg-error-1.56/0001-Use-UI-language-instead-of-locale-for-translations.patch \
+             patches/libgpg-error-1.56/0002-Dynload-GetThreadUILanguage-to-keep-support-for-Wind.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
              patches/libkleo/0001-Revert-Explicitly-use-Boost-s-cmake-config-file-for-.patch \
              patches/mimetreeparser-25.04.2/fix-multiple-connect.patch \
