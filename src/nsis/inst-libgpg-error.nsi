@@ -48,14 +48,48 @@ Section "-libgpg-error" SEC_libgpg_error
       Rename /REBOOTOK libgpg-error-0.dll.tmp libgpg-error-0.dll
 
 
+  SetOutPath "$INSTDIR\share\locale\cs\LC_MESSAGES"
+  File ${prefix}/share/locale/cs/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\da\LC_MESSAGES"
+  File ${prefix}/share/locale/da/LC_MESSAGES/libgpg-error.mo
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/libgpg-error.mo
-  SetOutPath "$INSTDIR\share\locale\pl\LC_MESSAGES"
-  File ${prefix}/share/locale/pl/LC_MESSAGES/libgpg-error.mo
-  SetOutPath "$INSTDIR\share\locale\ro\LC_MESSAGES"
-  File ${prefix}/share/locale/ro/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\eo\LC_MESSAGES"
+  File ${prefix}/share/locale/eo/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
+  File ${prefix}/share/locale/es/LC_MESSAGES/libgpg-error.mo
   SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
   File ${prefix}/share/locale/fr/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\hu\LC_MESSAGES"
+  File ${prefix}/share/locale/hu/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\it\LC_MESSAGES"
+  File ${prefix}/share/locale/it/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\ja\LC_MESSAGES"
+  File ${prefix}/share/locale/ja/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\nl\LC_MESSAGES"
+  File ${prefix}/share/locale/nl/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\pl\LC_MESSAGES"
+  File ${prefix}/share/locale/pl/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\pt\LC_MESSAGES"
+  File ${prefix}/share/locale/pt/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\ro\LC_MESSAGES"
+  File ${prefix}/share/locale/ro/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\ru\LC_MESSAGES"
+  File ${prefix}/share/locale/ru/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\sr\LC_MESSAGES"
+  File ${prefix}/share/locale/sr/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\sv\LC_MESSAGES"
+  File ${prefix}/share/locale/sv/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\tr\LC_MESSAGES"
+  File ${prefix}/share/locale/tr/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\uk\LC_MESSAGES"
+  File ${prefix}/share/locale/uk/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\vi\LC_MESSAGES"
+  File ${prefix}/share/locale/vi/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\zh_CN\LC_MESSAGES"
+  File ${prefix}/share/locale/zh_CN/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\zh_TW\LC_MESSAGES"
+  File ${prefix}/share/locale/zh_TW/LC_MESSAGES/libgpg-error.mo
 
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/gpg-error.exe
