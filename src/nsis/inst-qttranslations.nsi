@@ -30,25 +30,40 @@ Section "-qttranslations" SEC_qttranslations
   File "${gpg4win_pkg_qttranslations}"
 !else
 # Needs all the files included in the qt_$lang.qm which are as of
-# qt 5.8.0 the files below.
+# qt 6.7.0 the files below.
   SetOutPath "$INSTDIR\bin\translations"
-  File ${prefix}/translations/qt_ar.qm
+  File ${prefix}/translations/qtbase_ar.qm
+  File ${prefix}/translations/qtbase_bg.qm
   File ${prefix}/translations/qtbase_ca.qm
   File ${prefix}/translations/qtbase_cs.qm
+  File ${prefix}/translations/qtbase_da.qm
   File ${prefix}/translations/qtbase_de.qm
   File ${prefix}/translations/qtbase_en.qm
+  File ${prefix}/translations/qtbase_es.qm
+  File ${prefix}/translations/qtbase_fa.qm
   File ${prefix}/translations/qtbase_fi.qm
   File ${prefix}/translations/qtbase_fr.qm
+  File ${prefix}/translations/qtbase_gd.qm
   File ${prefix}/translations/qtbase_he.qm
+  File ${prefix}/translations/qtbase_hr.qm
   File ${prefix}/translations/qtbase_hu.qm
   File ${prefix}/translations/qtbase_it.qm
   File ${prefix}/translations/qtbase_ja.qm
+  File ${prefix}/translations/qtbase_ka.qm
   File ${prefix}/translations/qtbase_ko.qm
   File ${prefix}/translations/qtbase_lv.qm
+  File ${prefix}/translations/qtbase_nl.qm
+  File ${prefix}/translations/qtbase_nn.qm
   File ${prefix}/translations/qtbase_pl.qm
+  File ${prefix}/translations/qtbase_pt_BR.qm
   File ${prefix}/translations/qtbase_ru.qm
   File ${prefix}/translations/qtbase_sk.qm
+  File ${prefix}/translations/qtbase_tr.qm
   File ${prefix}/translations/qtbase_uk.qm
+  File ${prefix}/translations/qtbase_zh_CN.qm
+  File ${prefix}/translations/qtbase_zh_TW.qm
+  File ${prefix}/translations/qt_ar.qm
+  File ${prefix}/translations/qt_bg.qm
   File ${prefix}/translations/qt_ca.qm
   File ${prefix}/translations/qt_cs.qm
   File ${prefix}/translations/qt_da.qm
@@ -58,20 +73,27 @@ Section "-qttranslations" SEC_qttranslations
   File ${prefix}/translations/qt_fa.qm
   File ${prefix}/translations/qt_fi.qm
   File ${prefix}/translations/qt_fr.qm
+  File ${prefix}/translations/qt_gd.qm
   File ${prefix}/translations/qt_gl.qm
   File ${prefix}/translations/qt_he.qm
+  File ${prefix}/translations/qt_hr.qm
   File ${prefix}/translations/qt_hu.qm
   File ${prefix}/translations/qt_it.qm
   File ${prefix}/translations/qt_ja.qm
+  File ${prefix}/translations/qt_ka.qm
   File ${prefix}/translations/qt_ko.qm
   File ${prefix}/translations/qt_lt.qm
+  File ${prefix}/translations/qt_lv.qm
+  File ${prefix}/translations/qt_nl.qm
+  File ${prefix}/translations/qt_nn.qm
   File ${prefix}/translations/qt_pl.qm
-  File ${prefix}/translations/qt_pt_PT.qm
   File ${prefix}/translations/qt_pt_BR.qm
+  File ${prefix}/translations/qt_pt_PT.qm
   File ${prefix}/translations/qt_ru.qm
   File ${prefix}/translations/qt_sk.qm
   File ${prefix}/translations/qt_sl.qm
   File ${prefix}/translations/qt_sv.qm
+  File ${prefix}/translations/qt_tr.qm
   File ${prefix}/translations/qt_uk.qm
   File ${prefix}/translations/qt_zh_CN.qm
   File ${prefix}/translations/qt_zh_TW.qm
