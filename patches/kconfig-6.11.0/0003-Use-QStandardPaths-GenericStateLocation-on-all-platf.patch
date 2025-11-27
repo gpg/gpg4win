@@ -1,0 +1,30 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From a71a87fa0feaaee7c5bb319ba44ae5bb012e2d1c Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Thu, 7 Aug 2025 17:04:18 +0300
+Subject: [PATCH] Use QStandardPaths::GenericStateLocation on all platforms
+
+---
+ src/core/ksharedconfig.cpp | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/src/core/ksharedconfig.cpp b/src/core/ksharedconfig.cpp
+index 147a8133..2c032a62 100644
+--- a/src/core/ksharedconfig.cpp
++++ b/src/core/ksharedconfig.cpp
+@@ -171,9 +167,7 @@ KSharedConfig::Ptr KSharedConfig::openStateConfig(const QString &_fileName)
+         fileName = QCoreApplication::applicationName() + QLatin1String("staterc");
+     }
+
+-    return openConfig(migrateStateRc(fileName),
+-                      SimpleConfig,
+-                      QStandardPaths::AppDataLocation /* only used on !XDG platform, on XDG we resolve an absolute path (unless there are problems) */);
++    return openConfig(migrateStateRc(fileName), SimpleConfig, QStandardPaths::GenericStateLocation);
+ }
+
+ KSharedConfig::KSharedConfig(const QString &fileName, OpenFlags flags, QStandardPaths::StandardLocation resType)
+--
+2.52.0
