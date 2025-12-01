@@ -76,6 +76,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Add-support-to-customize-about-data.patch \
              patches/okular/lower-cmake-requirement.patch \
+             patches/qtbase/0001-Add-StateLocation-GenericStateLocation-to-StandardLo.patch \
              patches/qtbase/0001-Don-t-report-active-windows-as-having-focus-unless-t.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
