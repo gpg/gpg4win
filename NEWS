@@ -13,6 +13,16 @@ compared to Version 4.4.0 (of Gpg4win).
 (en) Kleopatra: Keyresolver GpgOL, groups are resolved again [T7484]
 
 
+Noteworthy changes in Version 3.3.4 (2025-12-01)
+------------------------------------------------
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.52
+Kleopatra:      3.3.0
+GpgOL:          2.6.9
+GpgEX:          1.0.10
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in Version 3.3.3 (2025-11-06)
 ------------------------------------------------
 
