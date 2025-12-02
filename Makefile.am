@@ -70,6 +70,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
              patches/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
              patches/kwidgetsaddons/fix-height-of-text-after-update.patch \
+             patches/kxmlgui/0001-Store-kxmlgui-rc-file-in-config-location.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0002-stretch-aboutpage.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \

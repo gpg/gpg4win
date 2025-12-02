@@ -1,0 +1,137 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From a7fea25df5dbb70d8770b1381e3959aa7d1fbc40 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 2 Dec 2025 10:15:16 +0100
+Subject: [PATCH] Store kxmlgui rc file in config location
+
+This makes more sense to me than the data location since the kxmlgui rc
+contains the user-editable toolbar configuration. The fact that the
+ui_standards.rc is read from the config location supports my feeling.
+---
+ autotests/kxmlgui_unittest.cpp | 6 +++---
+ src/kedittoolbar.cpp           | 2 +-
+ src/kxmlguiclient.cpp          | 4 ++--
+ src/kxmlguifactory.cpp         | 4 ++--
+ src/kxmlguiversionhandler.cpp  | 2 +-
+ tests/kxmlguiwindowtest.cpp    | 2 +-
+ 6 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/autotests/kxmlgui_unittest.cpp b/autotests/kxmlgui_unittest.cpp
+index 461e3c26..f96b7ba2 100644
+--- a/autotests/kxmlgui_unittest.cpp
++++ b/autotests/kxmlgui_unittest.cpp
+@@ -189,7 +189,7 @@ void KXmlGui_UnitTest::testVersionHandlerNewVersionNothingKept()
+
+     QMap<QString, int> fileToVersionMap; // makes QCOMPARE failures more readable than just temp filenames
+
+-    const QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/kxmlgui_unittest");
++    const QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + QLatin1String("/kxmlgui_unittest");
+     QDir().mkpath(dir);
+     QFile fileV2(dir + QStringLiteral("/testui.rc"));
+     QVERIFY2(fileV2.open(QIODevice::WriteOnly), qPrintable(fileV2.fileName()));
+@@ -235,7 +235,7 @@ void KXmlGui_UnitTest::testVersionHandlerNewVersionUserChanges()
+     QMap<QString, int> fileToVersionMap; // makes QCOMPARE failures more readable than just temp filenames
+
+     // local file
+-    const QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/kxmlgui_unittest");
++    const QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + QLatin1String("/kxmlgui_unittest");
+     QFile fileV2(dir + QLatin1String("/testui.rc"));
+     QVERIFY(fileV2.open(QIODevice::WriteOnly));
+     createXmlFile(fileV2, 2, AddActionProperties | AddModifiedToolBars);
+@@ -994,7 +994,7 @@ void KXmlGui_UnitTest::testXMLFileReplacement()
+     fileReplace.close();
+
+     // finally, our local xml file has <ActionProperties/>
+-    const QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/kxmlgui_unittest");
++    const QString dir = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + QLatin1String("/kxmlgui_unittest");
+     QFile fileLocal(dir + QLatin1String("/testui.rc"));
+     QVERIFY2(fileLocal.open(QIODevice::WriteOnly), qPrintable(fileLocal.fileName()));
+     createXmlFile(fileLocal, 1, AddActionProperties);
+diff --git a/src/kedittoolbar.cpp b/src/kedittoolbar.cpp
+index f38df8a8..45631c80 100644
+--- a/src/kedittoolbar.cpp
++++ b/src/kedittoolbar.cpp
+@@ -693,7 +693,7 @@ void KEditToolBarPrivate::defaultClicked()
+         if (slash) {
+             m_file.remove(0, slash);
+         }
+-        const QString xml_file = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/kxmlgui5/")
++        const QString xml_file = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + QLatin1String("/kxmlgui5/")
+             + QCoreApplication::instance()->applicationName() + QLatin1Char('/') + m_file;
+
+         if (QFile::exists(xml_file)) {
+diff --git a/src/kxmlguiclient.cpp b/src/kxmlguiclient.cpp
+index bd5e27fb..43d4ead2 100644
+--- a/src/kxmlguiclient.cpp
++++ b/src/kxmlguiclient.cpp
+@@ -157,7 +157,7 @@ QString KXMLGUIClient::localXMLFile() const
+         return QString();
+     }
+
+-    return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/kxmlgui5/%1/%2").arg(componentName(), d->m_xmlFile);
++    return QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + QLatin1String("/kxmlgui5/%1/%2").arg(componentName(), d->m_xmlFile);
+ }
+
+ void KXMLGUIClient::reloadXML()
+@@ -219,7 +219,7 @@ void KXMLGUIClient::setXMLFile(const QString &_file, bool merge, bool setXMLDoc)
+         const QString filter = componentName() + QLatin1Char('/') + _file;
+
+         // files on filesystem
+-        allFiles << QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
++        allFiles << QStandardPaths::locateAll(QStandardPaths::GenericConfigLocation,
+                                               QStringLiteral("kxmlgui" QT_STRINGIFY(QT_VERSION_MAJOR)) + QLatin1Char('/') + filter); // KF >= 5.1
+
+         // KF >= 5.4 (resource file)
+diff --git a/src/kxmlguifactory.cpp b/src/kxmlguifactory.cpp
+index add8cff0..43f47731 100644
+--- a/src/kxmlguifactory.cpp
++++ b/src/kxmlguifactory.cpp
+@@ -107,7 +107,7 @@ QString KXMLGUIFactory::readConfigFile(const QString &filename, const QString &_
+         xml_file = filename;
+     } else {
+         // KF >= 5.1 (KDE_INSTALL_KXMLGUI5DIR)
+-        xml_file = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("kxmlgui5/") + componentName + QLatin1Char('/') + filename);
++        xml_file = QStandardPaths::locate(QStandardPaths::GenericConfigLocation, QLatin1String("kxmlgui5/") + componentName + QLatin1Char('/') + filename);
+         if (!QFile::exists(xml_file)) {
+             // KF >= 5.4 (resource file)
+             xml_file = QLatin1String(":/kxmlgui5/") + componentName + QLatin1Char('/') + filename;
+@@ -150,7 +150,7 @@ bool KXMLGUIFactory::saveConfigFile(const QDomDocument &doc, const QString &file
+     QString xml_file(filename);
+
+     if (QDir::isRelativePath(xml_file)) {
+-        xml_file = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/kxmlgui5/%1/%2").arg(componentName, filename);
++        xml_file = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + QLatin1String("/kxmlgui5/%1/%2").arg(componentName, filename);
+     }
+
+     QFileInfo fileInfo(xml_file);
+diff --git a/src/kxmlguiversionhandler.cpp b/src/kxmlguiversionhandler.cpp
+index 043e98c0..778e2dce 100644
+--- a/src/kxmlguiversionhandler.cpp
++++ b/src/kxmlguiversionhandler.cpp
+@@ -216,7 +216,7 @@ KXmlGuiVersionHandler::KXmlGuiVersionHandler(const QStringList &files)
+         if (best != allDocuments.begin()) {
+             auto local = allDocuments.begin();
+
+-            if ((*local).file.startsWith(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation))) {
++            if ((*local).file.startsWith(QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation))) {
+                 // load the local document and extract the action properties
+                 QDomDocument localDocument;
+                 localDocument.setContent((*local).data);
+diff --git a/tests/kxmlguiwindowtest.cpp b/tests/kxmlguiwindowtest.cpp
+index 9bebc7f7..7d1f865a 100644
+--- a/tests/kxmlguiwindowtest.cpp
++++ b/tests/kxmlguiwindowtest.cpp
+@@ -88,7 +88,7 @@ MainWindow::MainWindow(QWidget *parent)
+     setXMLFile(QFINDTESTDATA("kxmlguiwindowtestui.rc"), true);
+     // Because we use a full path in setXMLFile, we need to call setLocalXMLFile too.
+     // In your apps, just pass a relative filename to setXMLFile instead.
+-    setLocalXMLFile(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1String("/kxmlguiwindowtest/kxmlguiwindowtestui.rc"));
++    setLocalXMLFile(QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + QLatin1String("/kxmlguiwindowtest/kxmlguiwindowtestui.rc"));
+
+     setCentralWidget(new QTextEdit(this));
+     setupActions();
+--
+2.52.0
