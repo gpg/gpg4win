@@ -70,6 +70,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kcolorscheme/0003-Remove-assert-in-createApplicationPalette.patch \
              patches/kconfig-6.11.0/0001-Fix-double-unescaping-of-config-keys.patch \
              patches/kconfig-6.11.0/0002-Fix-reading-of-localized-config-values-on-Windows-an.patch \
+             patches/kconfig-6.11.0/0003-Use-QStandardPaths-GenericStateLocation-on-all-platf.patch \
              patches/kconfigwidgets/0001-Use-highlight-text-color-and-omit-custom-text-colori.patch \
              patches/kconfigwidgets/0002-Draw-text-between-shortcut-keys-with-normal-highligh.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
