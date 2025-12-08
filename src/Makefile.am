@@ -49,7 +49,7 @@ EXTRA_DIST =  config.site                                      \
               icons/shield.ico                                 \
               kdeglobals qtlogging.ini                         \
               make-msi.pl make-msi.guids                       \
-              qt.conf                                          \
+              qt.conf.in                                       \
               WixUI_Gpg4win.wxs included-icons.txt             \
               zlib.pc
 

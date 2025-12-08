@@ -40,7 +40,7 @@ Section "-qtbase" SEC_qtbase
   File ${prefix}/bin/Qt6Network.dll
   File ${prefix}/bin/Qt6PrintSupport.dll
   File ${prefix}/bin/Qt6Xml.dll
-  File ${SRCDIR}/qt.conf
+  File ${TOP_BLDDIR}/src/qt.conf
 
   SetOutPath "$INSTDIR\bin\platforms"
   File ${prefix}/plugins/platforms/qwindows.dll
