@@ -88,8 +88,8 @@ IS_VSD_BUILD=mym4_isvsd
 IS_GPD_BUILD=mym4_isgpd
 
 # Variables for the version info
-PRODUCT_NAME=m4_if(mym4_isvsd, [yes], ["GnuPG VS-Desktop"],
-                   m4_if(mym4_isgpd, [yes], ["GnuPG Desktop"], ["Gpg4win"]))
+PRODUCT_NAME=m4_if(mym4_isgpd, [yes], ["GnuPG Desktop"],
+                   m4_if(mym4_isvsd, [yes], ["GnuPG VS-Desktop"], ["Gpg4win"]))
 COMPANY_NAME=m4_if(mym4_buildtype, [default],
                 ["Gpg4win Community"], ["g10 Code GmbH"])
 
