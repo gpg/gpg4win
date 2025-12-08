@@ -143,10 +143,12 @@ endif
 
 ifeq ($(IS_GPD_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-Desktop
-  KLEOPATRA_APPLICATION_NAME := kleopatra-gpd
+  KLEOPATRA_ORGANIZATION_DOMAIN := gnupg.org
 else ifeq ($(IS_VSD_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-VS-Desktop
-  KLEOPATRA_APPLICATION_NAME := kleopatra-vsd
+  KLEOPATRA_ORGANIZATION_DOMAIN := gnupg.com
+else
+  KLEOPATRA_ORGANIZATION_DOMAIN := gpg4win.org
 endif
 
 # We collect the names of all pkg files used.
