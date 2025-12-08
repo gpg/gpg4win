@@ -31,46 +31,49 @@ Subject: [PATCH 1/2] Gpg4win-qstandardpaths-patch
  #ifndef QT_NO_STANDARDPATHS
 
  QT_BEGIN_NAMESPACE
-@@ -626,6 +635,73 @@ bool QStandardPaths::isTestModeEnabled()
+@@ -626,6 +635,76 @@ bool QStandardPaths::isTestModeEnabled()
      return qsp_testMode;
  }
 
 +#if !defined(QT_BUILD_QMAKE) && !defined(QT_NO_SETTINGS) && !defined(QT_BOOTSTRAPPED)
++#ifdef Q_OS_WIN
++extern QString qAppFileName();
++#endif
 +static const char standardPathsSection[] = "StandardPaths";
 +static QSettings *findConfiguration()
 +{
 +    QString qtconfig = QStringLiteral(":/qt/etc/qt.conf");
 +    if (QFile::exists(qtconfig))
 +        return new QSettings(qtconfig, QSettings::IniFormat);
-+    if (QCoreApplication::instance()) {
-+        QDir pwd(QCoreApplication::applicationDirPath());
++#ifdef Q_OS_WIN
++    // Note: QCoreApplication::applicationDirPath(), while static, requires
++    // an application instance. But we might need to resolve the standard
++    // locations earlier than that, so we fall back to qAppFileName().
++    const QString applicationDirPath = qApp ? QCoreApplication::applicationDirPath()
++        : QFileInfo(qAppFileName()).path();
++#else
++    const QString applicationDirPath = qApp ? QCoreApplication::applicationDirPath()
++        : QString();
++#endif
++    if (!applicationDirPath.isEmpty()) {
++        QDir pwd(applicationDirPath);
 +        qtconfig = pwd.filePath(QLatin1String("qt.conf"));
 +        if (QFile::exists(qtconfig))
 +            return new QSettings(qtconfig, QSettings::IniFormat);
 +    }
-+    return 0;     //no luck
++    return nullptr;     //no luck
 +}
 +#endif
 +
 +QString QStandardPaths::presetLocation(StandardLocation type)
 +{
 +#if !defined(QT_BUILD_QMAKE) && !defined(QT_NO_SETTINGS) && !defined(QT_BOOTSTRAPPED)
-+    // hardcoded fallback for resolving standard paths before application has been created;
-+    // keep in sync with qt.conf
-+    static const QMap<QString, QString> fallback = {
-+#ifdef Q_OS_WIN
-+        {QStringLiteral("StandardPaths/AppConfigLocation"), QStringLiteral("%APPDATA%/::APPNAME::")},
-+        {QStringLiteral("StandardPaths/ConfigLocation"), QStringLiteral("%APPDATA%/::APPNAME::")},
-+        {QStringLiteral("StandardPaths/GenericCacheLocation"), QStringLiteral("%LOCALAPPDATA%/::APPNAME::/cache")},
-+        {QStringLiteral("StandardPaths/GenericConfigLocation"), QStringLiteral("%APPDATA%/::APPNAME::")},
-+        {QStringLiteral("StandardPaths/GenericDataLocation"), QStringLiteral("%LOCALAPPDATA%/::APPNAME::")},
-+        {QStringLiteral("StandardPaths/GenericStateLocation"), QStringLiteral("%LOCALAPPDATA%/::APPNAME::/State")},
-+#endif
-+    };
 +    QScopedPointer<const QSettings> settings(findConfiguration());
++    if (settings.isNull())
++        return QString();
 +
 +    const QString key = QLatin1String(standardPathsSection) + QLatin1Char('/') + QString::fromLatin1(QMetaEnum::fromType<QStandardPaths::StandardLocation>().valueToKey(type));
-+    QString value = settings.isNull() ? fallback.value(key) : settings->value(key).toString();
++    QString value = settings->value(key).toString();
 +#ifdef Q_OS_WIN
 +    if (value.contains(QLatin1Char('%'))) {
 +        wchar_t expandedPath[MAX_PATH] = {0};
