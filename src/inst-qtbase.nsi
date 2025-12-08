@@ -40,7 +40,7 @@ Section "-qtbase" SEC_qtbase
   File ${prefix}/bin/Qt5Network.dll
   File ${prefix}/bin/Qt5PrintSupport.dll
   File ${prefix}/bin/Qt5Xml.dll
-  File ${SRCDIR}/qt.conf
+  File ${BUILD_DIR}/qt.conf
 
   SetOutPath "$INSTDIR\bin\platforms"
   File ${prefix}/plugins/platforms/qwindows.dll

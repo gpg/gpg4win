@@ -1,0 +1,11 @@
+[StandardPaths]
+AppConfigLocation=%APPDATA%/@PRODUCT_NAME@/::APPNAME::
+AppDataLocation=%APPDATA%/@PRODUCT_NAME@/::APPNAME::
+AppLocalDataLocation=%LOCALAPPDATA%/@PRODUCT_NAME@/::APPNAME::
+CacheLocation=%LOCALAPPDATA%/@PRODUCT_NAME@/::APPNAME::/cache
+ConfigLocation=%APPDATA%/@PRODUCT_NAME@/::APPNAME::
+StateLocation=%LOCALAPPDATA%/@PRODUCT_NAME@/::APPNAME::/State
+GenericCacheLocation=%LOCALAPPDATA%/@PRODUCT_NAME@/cache
+GenericConfigLocation=%APPDATA%/@PRODUCT_NAME@
+GenericDataLocation=%LOCALAPPDATA%/@PRODUCT_NAME@
+GenericStateLocation=%LOCALAPPDATA%/@PRODUCT_NAME@/State
