@@ -298,7 +298,7 @@ gpg4win_pkg_pcre2_configure = \
 		-DPCRE2_BUILD_PCRE2_8=OFF -DPCRE2_BUILD_PCRE2_16=ON \
                 -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF
 
-gpg4win_pkg_karchive_configure = -DWITH_LIBZSTD=ON -DWITH_LIBLZMA=OFF
+gpg4win_pkg_karchive_configure = -DWITH_LIBZSTD=ON -DWITH_LIBLZMA=OFF -DWITH_OPENSSL=OFF
 
 gpg4win_pkg_kcoreaddons_configure = -DKCOREADDONS_USE_QML=OFF
 
