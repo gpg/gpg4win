@@ -83,6 +83,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kiconthemes/0002-Use-symbolic-icons-if-high-contrast-color-scheme-is-.patch \
              patches/kjobwidgets/0001-Remove-knotification.patch \
              patches/kleopatra/0001-Experimental-Optionally-don-t-start-gpg-agent-on-sta.patch \
+             patches/kleopatra/0001-Revert-GIT_SILENT-already-done-by-ecm-now.patch \
              patches/kleopatra/0002-Experimental-Optionally-don-t-use-file-system-watche.patch \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
              patches/kwidgetsaddons-6.11.0/0001-Fix-bug-510055-When-we-press-enter-in-search-line-we.patch \

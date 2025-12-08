@@ -1,0 +1,30 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 8309065fdfd6563ca53549c56d183d5cdad5b6e2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Mon, 8 Dec 2025 16:59:56 +0100
+Subject: [PATCH] Revert "GIT_SILENT: already done by ecm now"
+
+This reverts commit 76132ba884b76a36b16571a0c61b01f3036ae13d.
+---
+ CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3cde48054..dbd6a73b0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -62,7 +62,9 @@ else ()
+   set(KMIME_WANT_VERSION ${KMIME_VERSION})
+ endif ()
+
++set(CMAKE_CXX_STANDARD 20)
+ set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
++set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+ find_package(ECM ${KF6_WANT_VERSION} CONFIG REQUIRED)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+--
+2.52.0
