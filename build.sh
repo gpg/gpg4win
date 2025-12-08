@@ -346,7 +346,7 @@ if [ "$indocker" = yes ]; then
     if [ $dist = yes ]; then
         make dist XZ_OPT=-2 TOPSRCDIR=/src PLAYGROUND=/build
     else
-        make TOPSRCDIR=/src PLAYGROUND=/build
+        make TOPSRCDIR=/src PLAYGROUND=/build VERBOSE=1
         if [ $? = 0 -a $withmsi = yes ]; then
             make TOPSRCDIR=/src PLAYGROUND=/build msi
         fi

@@ -948,6 +948,7 @@ $(stampdir)/stamp-$(1)-native-01-patch: $(stampdir)/stamp-$(1)-native-00-unpack
 		cd "$$$${pkgsdir}"; \
 		for pfile in "$$$${pkgpatbdir}"/*-native.patch \
                              "$$$${pkgpatdir}"/*-native.patch ; do  \
+		echo "applying $$$${pkgsdir}/$$$${pfile}"; \
 		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
 		done \
 	else \
