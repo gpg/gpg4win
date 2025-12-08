@@ -156,14 +156,16 @@ ifeq ($(IS_GPD_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-Desktop
   MSI_PRODUCT_NAME := GnuPG Desktop
   GNUPG_INSTALL_DIR_REGISTRY_KEY := Install+Directory
-  KLEOPATRA_APPLICATION_NAME := kleopatra-gpd
+  KLEOPATRA_ORGANIZATION_DOMAIN := gnupg.org
   KLEOPATRA_ICON_DIR := $(tsdir)/src/icons/gpd
 else ifeq ($(IS_VSD_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-VS-Desktop
   MSI_PRODUCT_NAME := GnuPG VS-Desktop
   GNUPG_INSTALL_DIR_REGISTRY_KEY := VSD+Install+Directory
-  KLEOPATRA_APPLICATION_NAME := kleopatra-vsd
+  KLEOPATRA_ORGANIZATION_DOMAIN := gnupg.com
   KLEOPATRA_ICON_DIR :=
+else
+  KLEOPATRA_ORGANIZATION_DOMAIN := gpg4win.org
 endif
 
 
