@@ -2,33 +2,52 @@
 patch -p1 -f -l $* < $0
 exit $?
 
-From 44e1869656d6ecdd3f3125741ce3cd69709eb817 Mon Sep 17 00:00:00 2001
+From 9b01520d05beafe39d199298c155217e587a9312 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
 Date: Wed, 13 Aug 2025 10:29:34 +0200
-Subject: [PATCH] Don't report active windows as having focus (unless they have
- focus)
+Subject: a11y win: Don't report active windows as having focus
 
+UI Automation gets confused if active windows are reported as having
+keyboard focus additionally to the UI element inside the active window
+which actually has keyboard focus. This makes UIA synthesizes bogus
+UIA:FocusEvents for the active window. And this makes NVDA speak some
+texts twice and suppress speaking other texts (e.g. the name of the
+actual focus widget).
+
+Reporting the active window as having keyboard focus only if it does
+actually have keyboard focus (and not some child widget of the window)
+fixes the problem with the bogus UIA:FocusEvents.
+
+This change reverts part of 73ca3dbf490b33159ba66e936bcb11fbcd03e886.
+
+Fixes: QTBUG-90897
+Fixes: QTBUG-90899
+Change-Id: I4d1aeec7ec581730c6a4797a6c95f8b2033dea6d
+Reviewed-by: MohammadHossein Qanbari <mohammad.qanbari@qt.io>
+Reviewed-by: Michael Weghorn <m.weghorn@posteo.de>
 ---
- .../windows/uiautomation/qwindowsuiamainprovider.cpp       | 7 +------
+ .../platforms/windows/uiautomation/qwindowsuiamainprovider.cpp     | 7 +------
  1 file changed, 1 insertion(+), 6 deletions(-)
 
+(limited to 'src/plugins/platforms/windows/uiautomation/qwindowsuiamainprovider.cpp')
+
 diff --git a/src/plugins/platforms/windows/uiautomation/qwindowsuiamainprovider.cpp b/src/plugins/platforms/windows/uiautomation/qwindowsuiamainprovider.cpp
-index de9c8e5efe1..b6b8eaf6590 100644
+index b7bf97f5c4b..db3fb160593 100644
 --- a/src/plugins/platforms/windows/uiautomation/qwindowsuiamainprovider.cpp
 +++ b/src/plugins/platforms/windows/uiautomation/qwindowsuiamainprovider.cpp
-@@ -588,12 +588,7 @@ HRESULT QWindowsUiaMainProvider::GetPropertyValue(PROPERTYID idProp, VARIANT *pR
+@@ -593,12 +593,7 @@ HRESULT QWindowsUiaMainProvider::GetPropertyValue(PROPERTYID idProp, VARIANT *pR
          *pRetVal = QComVariant{ accessible->text(QAccessible::Help) }.release();
          break;
      case UIA_HasKeyboardFocusPropertyId:
 -        if (topLevelWindow) {
 -            // Windows set the active state to true when they are focused
--            setVariantBool(accessible->state().active, pRetVal);
+-            *pRetVal = QComVariant{ accessible->state().active ? true : false }.release();
 -        } else {
--            setVariantBool(accessible->state().focused, pRetVal);
+-            *pRetVal = QComVariant{ accessible->state().focused ? true : false }.release();
 -        }
-+        setVariantBool(accessible->state().focused, pRetVal);
++        *pRetVal = QComVariant{ accessible->state().focused ? true : false }.release();
          break;
      case UIA_IsKeyboardFocusablePropertyId:
          if (topLevelWindow) {
 --
-2.50.1
+cgit v1.2.3

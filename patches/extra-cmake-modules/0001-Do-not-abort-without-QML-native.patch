@@ -18,11 +18,10 @@ diff --git a/modules/ECMQmlModule6.cmake b/modules/ECMQmlModule6.cmake
 index aff4c428..111a9c09 100644
 --- a/modules/ECMQmlModule6.cmake
 +++ b/modules/ECMQmlModule6.cmake
-@@ -11,7 +11,9 @@ unset(QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
-
+@@ -11,6 +11,9 @@ unset(QT_NO_CREATE_VERSIONLESS_FUNCTIONS)
  if (NOT TARGET Qt6::Qml)
      message(WARNING "Target Qt6::Qml was not found. ECMQmlModule requires the QML module when building with Qt 6")
--    return()
+     return()
 +else()
 +    # Stop warning about a changed import prefix.
 +    qt6_policy(SET QTP0001 NEW)
@@ -36,8 +35,8 @@ index aff4c428..111a9c09 100644
 -# Stop warning about a changed import prefix.
 -qt6_policy(SET QTP0001 NEW)
 -
- function(ecm_add_qml_module ARG_TARGET)
-     cmake_parse_arguments(PARSE_ARGV 1 ARG "NO_PLUGIN;QT_NO_PLUGIN;GENERATE_PLUGIN_SOURCE" "URI;VERSION;CLASSNAME" "")
+ option(ECM_QMLCACHE_UNITY_BUILD "Perform unity builds for source files produced by qmlcachegen." OFF)
 
+ # Internal, puts all qmlcachegen cpp source files into the same unity build group
 --
 2.43.2
