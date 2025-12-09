@@ -242,52 +242,52 @@ chk  c4737943083ce92e41faf13c27a9d608105b6285c0840dfb684a7ee294142ddf
 server https://download.qt.io/archive/qt/
 
 # qtbase
-# last changed: 2025-02-14
-# by: carl
-# verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qtbase-everywhere-src-6.7.3.tar.xz.sha256
-name qtbase-6.7.3.tar.xz
-file 6.7/6.7.3/submodules/qtbase-everywhere-src-6.7.3.tar.xz
-chk 8ccbb9ab055205ac76632c9eeddd1ed6fc66936fc56afc2ed0fd5d9e23da3097
+# last changed: 2025-12-02
+# by: sune
+# verified: mirror sha256sum (created by gen-qt.sh)"
+name qtbase-6.10.1.tar.xz
+file 6.10/6.10.1/submodules/qtbase-everywhere-src-6.10.1.tar.xz
+chk 5a6226f7e23db51fdc3223121eba53f3f5447cf0cc4d6cb82a3a2df7a65d265d
 
 # qttools
-# last changed: 2025-02-14
-# by: carl
-# verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qttools-everywhere-src-6.7.3.tar.xz.sha256
-name qttools-6.7.3.tar.xz
-file 6.7/6.7.3/submodules/qttools-everywhere-src-6.7.3.tar.xz
-chk f03bb7df619cd9ac9dba110e30b7bcab5dd88eb8bdc9cc752563b4367233203f
+# last changed: 2025-12-02
+# by: sune
+# verified: mirror sha256sum (created by gen-qt.sh)"
+name qttools-6.10.1.tar.xz
+file 6.10/6.10.1/submodules/qttools-everywhere-src-6.10.1.tar.xz
+chk 8148408380ffea03101a26305c812b612ea30dbc07121e58707601522404d49b
 
 # qtsvg
-# last changed: 2025-02-14
-# by: carl
-# verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qtsvg-everywhere-src-6.7.3.tar.xz.sha256
-name qtsvg-6.7.3.tar.xz
-file 6.7/6.7.3/submodules/qtsvg-everywhere-src-6.7.3.tar.xz
-chk 40142cb71fb1e07ad612bc361b67f5d54cd9367f9979ae6b86124a064deda06b
+# last changed: 2025-12-02
+# by: sune
+# verified: mirror sha256sum (created by gen-qt.sh)"
+name qtsvg-6.10.1.tar.xz
+file 6.10/6.10.1/submodules/qtsvg-everywhere-src-6.10.1.tar.xz
+chk c02f355a58f3bbcf404a628bf488b6aeb2d84a94c269afdb86f6e529343ab01f
 
 # qttranslations
-# last changed: 2025-02-14
-# by: carl
-# verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qttranslations-everywhere-src-6.7.3.tar.xz.sha256
-name qttranslations-6.7.3.tar.xz
-file 6.7/6.7.3/submodules/qttranslations-everywhere-src-6.7.3.tar.xz
-chk dcc762acac043b9bb5e4d369b6d6f53e0ecfcf76a408fe0db5f7ef071c9d6dc8
+# last changed: 2025-12-02
+# by: sune
+# verified: mirror sha256sum (created by gen-qt.sh)"
+name qttranslations-6.10.1.tar.xz
+file 6.10/6.10.1/submodules/qttranslations-everywhere-src-6.10.1.tar.xz
+chk 8e49a2df88a12c376a479ae7bd272a91cf57ebb4e7c0cf7341b3565df99d2314
 
 # qthttpserver
-# last changed: 2025-02-14
-# by: carl
-# verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qthttpserver-everywhere-src-6.7.3.tar.xz.sha256
-name qthttpserver-6.7.3.tar.xz
-file 6.7/6.7.3/submodules/qthttpserver-everywhere-src-6.7.3.tar.xz
-chk 7f2317c7e52b6b634a5be9a9c917066fb707b905ec618f047cc57b8093f4deff
+# last changed: 2025-12-02
+# by: sune
+# verified: mirror sha256sum (created by gen-qt.sh)"
+name qthttpserver-6.10.1.tar.xz
+file 6.10/6.10.1/submodules/qthttpserver-everywhere-src-6.10.1.tar.xz
+chk a26c8d96d34bb4d4e2455e2c5df6e684aafb530927763eab84794ef71944e93b
 
 # qtwebsockets
-# last changed: 2025-02-14
-# by: carl
-# verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qtwebsockets-everywhere-src-6.7.3.tar.xz.sha256
-name qtwebsockets-6.7.3.tar.xz
-file 6.7/6.7.3/submodules/qtwebsockets-everywhere-src-6.7.3.tar.xz
-chk ba03007db7ee68a5bc3e3bd1d71e11f3e1f84e470bcb8c54cd7c01bbe1c5990e
+# last changed: 2025-12-02
+# by: sune
+# verified: mirror sha256sum (created by gen-qt.sh)"
+name qtwebsockets-6.10.1.tar.xz
+file 6.10/6.10.1/submodules/qtwebsockets-everywhere-src-6.10.1.tar.xz
+chk 272ac7e94418e2b13b3384d73ba89dbd6b746d7661b44dce906f8bfc0795bd01
 
 # qtwayland
 # last changed: 2025-02-14
@@ -322,229 +322,228 @@ chk da3fbbe3fa5603f9dc9aabe948a6fc8c3b451edd1958138628e96c83649c1f16
 server https://download.kde.org/stable/frameworks
 ##### Paste Here #####
 # extra-cmake-modules
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/extra-cmake-modules-6.11.0.tar.xz
-chk 69fdab5f0fedfb73d1accff5012d510b486e1dd75c711e925a6912a3e71814b0
+file 6.20/extra-cmake-modules-6.20.0.tar.xz
+chk 3711de8572db5da618efe3f28cc094ca25a1abb0bddffc63dced12c4f8caae5f
 
 # kauth
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kauth-6.11.0.tar.xz
-chk 479660eabe97198c31f228a18271bc739b234943c68e95383c361a835131179b
+file 6.20/kauth-6.20.0.tar.xz
+chk a918455f42e169fa55e965e407588c22cb18beb5529dab321d45acafdb7bd652
 
 # kconfig
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kconfig-6.11.0.tar.xz
-chk c71072aaf2771295b591fc62d4fb657cefb38df29f240ef9c7120854b42d0f7f
+file 6.20/kconfig-6.20.0.tar.xz
+chk daecf4989af9958144139e4918c22cd05b5a96527c51d737eae7c57718167d15
 
 # ki18n
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/ki18n-6.11.0.tar.xz
-chk 658a05ceca184ba31ce58a6e9c51ee76f2829459c56dbcd3bad3aa157eaf11fe
+file 6.20/ki18n-6.20.0.tar.xz
+chk f29c805137af9cee6abab424b380fea964a59b089f90fb909601d9fc78df5f73
 
 # kwidgetsaddons
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kwidgetsaddons-6.11.0.tar.xz
-chk 1c64e7354804845db0cd83ae671dfb5d2cb08308551a0b6c7b8a339aa6dcb436
+file 6.20/kwidgetsaddons-6.20.0.tar.xz
+chk 39974b85cdffd8c6d6e0a5c0684927a21e071c1e63d7cce3888331f0169a4837
 
 # kcompletion
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kcompletion-6.11.0.tar.xz
-chk c812b60de4530de3003916e45fbab121c5f9f576e2430ab2cdf0e3e4c9041852
+file 6.20/kcompletion-6.20.0.tar.xz
+chk 3b270003b661db894f50e9f90fdddd309c3ea97010e363bc551f752db6efcecc
 
 # kwindowsystem
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kwindowsystem-6.11.0.tar.xz
-chk d872e85d0915dd5cf1e2baf89fbef62e9855ff3317ecc5939882bc1724628d5a
+file 6.20/kwindowsystem-6.20.0.tar.xz
+chk 836be005df3c8cfc81d9ca199f19e36ba0df515d69e7d8b06343465412f6f477
 
 # kcoreaddons
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kcoreaddons-6.11.0.tar.xz
-chk ff691c6e0933493ea3e8c4a0ba41fa46ced7b9394e6f35ef9dee349ccfcc3a39
+file 6.20/kcoreaddons-6.20.0.tar.xz
+chk c1d45587616df5eaa3667a028b1f7f909c9c7230ac42d62da69cfb2ac46cd505
 
 # kcodecs
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kcodecs-6.11.0.tar.xz
-chk fbddc437ba9969d89635b75f0ef7e41c925c61c64dac1fff008c2e9138139fe4
+file 6.20/kcodecs-6.20.0.tar.xz
+chk 15920b9a859341b13831e6ed49baceea2e728c796fdd082128e51f8e127ff3a0
 
 # kconfigwidgets
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kconfigwidgets-6.11.0.tar.xz
-chk 28a1bb125161fe9ab0dbfa899433512e928669be31ce149fa25191a24a50242a
+file 6.20/kconfigwidgets-6.20.0.tar.xz
+chk 5c5e8dc7e986d85c3602b8a52b8d8909f91e7433ecad8037099491250f5f4e36
 
 # kdbusaddons
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kdbusaddons-6.11.0.tar.xz
-chk 62e0f3b0487ef1ab729fc85bcb5498c9449e0b74fe8049779434158bb8b12a87
+file 6.20/kdbusaddons-6.20.0.tar.xz
+chk 5db2f6b7235238070224ee8a5225f41ffdb3249d558a81a7c06a8e54d67729f7
 
 # kxmlgui
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kxmlgui-6.11.0.tar.xz
-chk 69c3a6a6363bdbe3ccbace76e23c6ccec173eb0f9c1954ef7317d998d6edb6fc
+file 6.20/kxmlgui-6.20.0.tar.xz
+chk a16fd3734112914ef50ed2666a16905d87e67954bc368725ccb1d5b2edc8f8f1
 
 # kguiaddons
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kguiaddons-6.11.0.tar.xz
-chk ef0925f609ae5b62ed689451dfe9937719ce4ec26714952b5496e3e128d5cc5c
+file 6.20/kguiaddons-6.20.0.tar.xz
+chk 33caf5ae46f1a6214f56596180e0c6ccb4af2cce0dcae060ae4fb7078260a476
 
 # kitemviews
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kitemviews-6.11.0.tar.xz
-chk e3625368e3f8cf6127218cc3e847fbf0176a5978c86228b11a320ad96fea2cbc
+file 6.20/kitemviews-6.20.0.tar.xz
+chk 63f6d64780d3eb1bfdd2f2f9036026a2cdc163b676168c29c2797544f9ad6305
 
 # kitemmodels
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kitemmodels-6.11.0.tar.xz
-chk 398dc4e3c5c44461350a20ac234055bafc2b184284ddea91563134ef62f5d6a6
+file 6.20/kitemmodels-6.20.0.tar.xz
+chk 45b6cd5478fe35f0966a75e3cc554a5db8418ac7d6387745a0070f39caf921a9
+
+# last changed: 2025-12-08
+# by: sune
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
+file 6.20/kcolorscheme-6.20.0.tar.xz
+chk 1505acc69b2cc1be9ad325a70ab9669bb8d316fc5d601ccf4032be22fab8c0c2
 
 # kiconthemes
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kiconthemes-6.11.0.tar.xz
-chk 1671ab3fd9b1e0753a7062bab80f5489f3ac750ecb30b91db99a6689988afb87
+file 6.20/kiconthemes-6.20.0.tar.xz
+chk 61b906051cd66db1dd259ec76d08885d3fe749e0d3947aea749021d2c96537a5
 
 # karchive
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/karchive-6.11.0.tar.xz
-chk 12fc4ac53591fb1dd81d6c5243b900a6d48066559263fc66eb2f4995ceb9e380
+file 6.20/karchive-6.20.0.tar.xz
+chk f6a508d537d283e2a106e848a939e971cdf1a059779825e4482609aa981ffadd
 
 # kcrash
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kcrash-6.11.0.tar.xz
-chk ba13e9f5dd2b40125d5d61d29b612db6383315dc0f510cc1f0e33bb6c9b0ae89
+file 6.20/kcrash-6.20.0.tar.xz
+chk 1f42e9c54ead9f2d81b3ec5eacf55ab6ff4dd1c3a0721c68f3ab39ed46f35973
 
 # kio
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kio-6.11.0.tar.xz
-chk fe511e43a5386f963c9afef93a21c0df44a2c24fcc417777e4d0569102477ff8
+file 6.20/kio-6.20.0.tar.xz
+chk 7e67d471fc10b7df3d76e6ce859480be5d6e675d316592e7a8419b97f01bd649
 
 # kbookmarks
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kbookmarks-6.11.0.tar.xz
-chk b5c677453c70314b9eecc0011a73103f045eabc94bc5f2f223b5979780c801c7
+file 6.20/kbookmarks-6.20.0.tar.xz
+chk 3967d390155e7183dd5de0087aa4bb12264958331ac18a1f8c405a5edbdc1a14
 
 # kservice
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kservice-6.11.0.tar.xz
-chk 161cd296577ff9802b088b06866ec5ab4c1c1a6fe19f76bb5134cdf8a6ab4005
+file 6.20/kservice-6.20.0.tar.xz
+chk c33a5bcd2ce154e275ef9445901a2813c24943e24eaf2382d24865717892353c
 
 # solid
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/solid-6.11.0.tar.xz
-chk cdecc7665b801a508b9ad0929b025ac93fe287be503589c8d8c38a520c2508d7
+file 6.20/solid-6.20.0.tar.xz
+chk 0328381845a11cfcfa8c18c8d60c9df7b85a07bcd7b1bd36b71c7eb3cc3492d6
 
 # kjobwidgets
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kjobwidgets-6.11.0.tar.xz
-chk 2bb342e554f8ecf84d7218a6567628dcc73c1b914d0c5aad1c8bf7753986ddd7
+file 6.20/kjobwidgets-6.20.0.tar.xz
+chk 393b6eb6b35d680d48a5c7b09359668bddc1ed89d4fa70b8a8a81fb2d841ce7a
 
 # threadweaver
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/threadweaver-6.11.0.tar.xz
-chk c408d9ef3c13e9906e6ef1a162def5bf7459f099197b1788eb3d96df4505dd8f
+file 6.20/threadweaver-6.20.0.tar.xz
+chk 9313f25a2ea6e2431d34e0b00f68dad6881849c34f1e40515a539a70dd6fbb19
 
 # kparts
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kparts-6.11.0.tar.xz
-chk 3995f3556aba434de7b13dae099b51a0a86aeade60ba1e06592836d40669bb6a
+file 6.20/kparts-6.20.0.tar.xz
+chk 9e71e3d20c9525f66533dd7a5846f0d982eefdd7425bfbadecd6a17908ebd709
 
 # ktextwidgets
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/ktextwidgets-6.11.0.tar.xz
-chk 0f043b8a60698ccdb88e3d6957b5f5c97cfe793ea2eea421fc467fffdf200697
+file 6.20/ktextwidgets-6.20.0.tar.xz
+chk 781e7fad5720de7f31380b2c4a458bc2875940449ed9168b48c60d474b6df220
 
 # sonnet
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/sonnet-6.11.0.tar.xz
-chk 19441de62d9d97f61e48d26e003543e75607b2ba8f6e4feb19f956289af21d60
+file 6.20/sonnet-6.20.0.tar.xz
+chk 356cddaf7cf2aabcaf850314bb248fa56a15b8285fea74d8f3a7c7e4dec2a83a
 
 # kcalendarcore
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kcalendarcore-6.11.0.tar.xz
-chk ea261324d1b80ef4786b86cf86bfa32c332aa0357b05ba299b13f54be69a7380
+file 6.20/kcalendarcore-6.20.0.tar.xz
+chk 5f61027b34510d0de2f2b151c279b000aa17e1c34906ff05e0f0086eed2f3785
 
 # Disabled because gpgpass is also disabled (wk 2024-11-27)
 # prison
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-###file 6.11/prison-6.11.0.tar.xz
-### chk 7cc8dff3ef172b24d10ee50c0876d79c87730b6fb23bd678708f7770b9da4f20
-
-# kcolorscheme
-# last changed: 2025-02-14
-# by: carl
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kcolorscheme-6.11.0.tar.xz
-chk 8b27bddb830f0173f44ae9aac05213579909b85fa696a2871b2ee11cb239bcc8
+file 6.20/prison-6.20.0.tar.xz
+chk 36ec6f82ecc3c06618d455cc1698ab11754d642fab3f1b850a7cf01ce11b3d1f
 
 # kstatusnotifieritem
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kstatusnotifieritem-6.11.0.tar.xz
-chk 26c92c25b1f70296bde9e71fba1f719778c85cb57227f6045f606af99c48a8bd
+file 6.20/kstatusnotifieritem-6.20.0.tar.xz
+chk db0edb928b15708487ea8ad007db4bcf3949332698cc78b4ed75128bea1b2fa6
 
 # kcontacts
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/kcontacts-6.11.0.tar.xz
-chk 2f0cd26b32bdbad14b6e5f3eff99e23aedf2425eacb0d4d6f44724dce6e26562
+file 6.20/kcontacts-6.20.0.tar.xz
+chk b253cd4864a3f3d4343485cc4bfe1b0344ccf5136ead2ada359e6933e09253de
 
 ### END PASTE ###
 
@@ -726,11 +725,11 @@ fi # gnupg22 - Legacy Okular
 server https://download.kde.org/stable/frameworks
 
 # breeze-icons
-# last changed: 2025-02-14
-# by: carl
+# last changed: 2025-12-08
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.11/breeze-icons-6.11.0.tar.xz
-chk f9cd9ec1b6a4111467cba31a7eed50ee5f03846fb1f5c32b3abdbf68877f8a4e
+file 6.20/breeze-icons-6.20.0.tar.xz
+chk 0a47b28a04a086ccb5b4afb51d6677180006819d0d9302524721689bfa4ad13c
 
 
 #
