@@ -4,10 +4,11 @@ exit $?
 
 --- a/src/plugins/platforms/windows/qwindowstheme.cpp
 +++ b/src/plugins/platforms/windows/qwindowstheme.cpp
-@@ -476,11 +476,32 @@
+@@ -476,11 +476,33 @@
      return appDir.isDir() ? QStringList(appDir.absoluteFilePath()) : QStringList();
  }
 
++#include <qsettings.h>
 +static QSettings *findConfiguration()
 +{
 +    QString qtconfig = QStringLiteral(":/qt/etc/qt.conf");

@@ -27,8 +27,8 @@ index fc0e053f396..4fd9f8c6293 100644
 -           if (accessible->role() == QAccessible::CheckBox) {
 +            // Notifies states changes in checkboxes and checkable item view items.
 +            if (accessible->role() == QAccessible::CheckBox || accessible->role() == QAccessible::Cell || accessible->role() == QAccessible::ListItem || accessible->role() == QAccessible::TreeItem) {
-                 if (QWindowsUiaMainProvider *provider = providerForAccessible(accessible)) {
-                     VARIANT oldVal, newVal;
-                     clearVariant(&oldVal);
+                 if (auto provider = providerForAccessible(accessible)) {
+                     long toggleState = ToggleState_Off;
+                     if (accessible->state().checked)
 --
 2.51.0

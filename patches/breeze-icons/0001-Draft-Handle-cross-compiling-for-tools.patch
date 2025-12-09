@@ -15,10 +15,10 @@ for the build system when the host differs.
  src/tools/CMakeLists.txt | 39 +++++++++++++++++++++++++++++++--------
  1 file changed, 31 insertions(+), 8 deletions(-)
 
-diff --git a/src/tools/CMakeLists.txt b/src/tools/CMakeLists.txt
+diff --git a/tools/CMakeLists.txt b/src/tools/CMakeLists.txt
 index 191dfdf3f..952409353 100644
---- a/src/tools/CMakeLists.txt
-+++ b/src/tools/CMakeLists.txt
+--- a/tools/CMakeLists.txt
++++ b/tools/CMakeLists.txt
 @@ -1,9 +1,31 @@
 -# takes light theme icons and makes modified copies of them with dark theme stylesheets
 -add_executable(generate-symbolic-dark generate-symbolic-dark.cpp)
