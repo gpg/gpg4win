@@ -45,6 +45,10 @@ uninstall_check:
   RmDir "$0\bin"
   ExecWait '"$0\gnupg-uninstall.exe" /S _?=$0'
   Delete "$0\gnupg-uninstall.exe"
+  # Remove gpgconf.rnames if the GnuPG subinstaller failed to remove it
+  Delete "$0\share\gnupg\gpgconf.rnames"
+  RmDir "$0\share\gnupg"
+  RmDir "$0\share"
   RmDir "$0"
 uninstall_not_found:
   StrCmp $uninst64_checked "1" gnupg_w32_not_installed 0
