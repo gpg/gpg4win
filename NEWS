@@ -3,6 +3,41 @@
 # The version numbers given are used by gpg4win and GnuPG [VS-]Desktop
 
 
+Noteworthy changes in Version 5.0.0 (unreleased)
+------------------------------------------------
+
+--- Highlights ---
+
+--- Features ---
+
+(en) File encryption/decryption and signing/verification
+
+
+(en) Certificate management
+
+(en) Certificate lookup
+
+(en) Certificate groups
+
+(en) Smartcard management
+
+(en) Compliance
+
+(en) Other features
+
+--- Bug Fixes ---
+
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.5.14
+Kleopatra:      3.3.0
+GpgOL:          2.7.0
+GpgEX:          1.0.11
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in Version 4.4.1 (unreleased)
 ------------------------------------------------
 Additionally, the Noteworthy changes in Version 3.3.0 (of VSD) are new

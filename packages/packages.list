@@ -207,11 +207,11 @@ file pinentry/pinentry-1.3.2.tar.bz2
 chk 8e986ed88561b4da6e9efe0c54fa4ca8923035c99264df0b0464497c5fb94e9e
 
 # GpgOL
-# last-changed: 2025-11-20
+# last-changed: 2025-12-11
 # by: wk
 # verified: swdb
-file gpgol/gpgol-2.6.9.tar.bz2
-chk  24e136a62ab51ac822bee07bc9ddaf669991c707318a6363967258d918b2b207
+file gpgol/gpgol-2.7.0.tar.bz2
+chk  6778b0b3616723b022711015acb02338217619fecd557a449857cccab99c1fcd
 
 
 #
