@@ -676,18 +676,18 @@ chk 491e1db73c85269f50fe449243720727421e7c59c9073df485e05f1956f23d1a
 if gnupg != gnupg22
 
 # poppler
-# last changed: 2025-09-04
-# by: wk
-# verified: Tarball created by builder.
-file poppler/poppler-202509041554.tar.xz
-chk fb3956195a19feda15aa2e69ecb91aa239d85e7fda94940327f5953712715c81
+# last changed: 2025-12-11
+# by: sune
+# verified: Tarball created by sune.
+file poppler/poppler-202512111601.tar.xz
+chk aa6d141b49cd7cde3bdd91e9135f2e741c41ee95a0fdf3865c590679aa29591b
 
 # okular
-# last changed: 2025-09-04
-# by: wk
-# verified: Tarball created by builder.
-file okular/okular-202509041554.tar.xz
-chk 4e21878a7def7c2e885e84841dfab7e8a5eb75b7f0e33b092a34f8978498787c
+# last changed: 2025-12-11
+# by: sune
+# verified: Tarball created by sune.
+file okular/okular-202512111556.tar.xz
+chk 02f5e12d40627f0ae0223be26e8699ed5880a5dc65c90a2f6e81d557ec2376e5
 
 fi # !gnupg22 - Current Okular et al.
 
