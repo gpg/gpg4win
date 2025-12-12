@@ -626,32 +626,32 @@ chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
 
 
 # gpg4win-tools
-# last changed: 2025-11-20
+# last changed: 2025-12-11
 # by: wk
 # verified: Tarball created by builder.
-file gpg4win-tools/gpg4win-tools-202511201001.tar.xz
-chk c1544e891c91d0698f9e44b86b051861b8923488f6826da8b6a0b98487ade87a
+file gpg4win-tools/gpg4win-tools-202512111542.tar.xz
+chk 5e502601c3dde80064def9465dc91a2ff88c0dba55d1b9715df1dda430a69c4e
 
 # libkleo
-# last changed: 2025-11-20
+# last changed: 2025-12-12
 # by: wk
 # verified: Tarball created by builder.
-file libkleo/libkleo-202511201000.tar.xz
-chk cb4981977af550b06ce641e44cbffdc0796bc18d2c56286166299e74ea94cc39
+file libkleo/libkleo-202512120958.tar.xz
+chk 96bf2ba0cb017c03a90c4c1ce280c091e2714488ae00fe8cdbb133737085c445
 
 # kleopatra
-# last changed: 2025-11-20
+# last changed: 2025-12-12
 # by: wk
 # verified: Tarball created by builder.
-file kleopatra/kleopatra-202511201000.tar.xz
-chk 8417ab420e715160a40f6c8f5c621bae7537a38fca3600b8c65ce0598099b4a1
+file kleopatra/kleopatra-202512120957.tar.xz
+chk ae3dfbfd66d8ddad0cedd11047fce7f0fb222b2713d02ec1a40772ca666fc5ce
 
 # gpgoljs
-# last changed: 2025-11-20
+# last changed: 2025-12-11
 # by: wk
 # verified: Tarball created by builder.
-file gpgoljs/gpgoljs-202511201001.tar.xz
-chk 491e1db73c85269f50fe449243720727421e7c59c9073df485e05f1956f23d1a
+file gpgoljs/gpgoljs-202512111542.tar.xz
+chk fc66ce0a28e6fd342f1bb201e5ec98ff4ca7242b9093f98ed0ea2ece7810ad6d
 
 
 
@@ -677,18 +677,18 @@ chk 491e1db73c85269f50fe449243720727421e7c59c9073df485e05f1956f23d1a
 if gnupg != gnupg22
 
 # poppler
-# last changed: 2025-09-04
+# last changed: 2025-12-12
 # by: wk
 # verified: Tarball created by builder.
-file poppler/poppler-202509041554.tar.xz
-chk fb3956195a19feda15aa2e69ecb91aa239d85e7fda94940327f5953712715c81
+file poppler/poppler-202512121040.tar.xz
+chk 53baff5ca8eb6ce1f99dbe1c65207fbaf3c5f4330c3ea38f3458cdb7cdc6a7eb
 
 # okular
-# last changed: 2025-09-04
+# last changed: 2025-12-11
 # by: wk
 # verified: Tarball created by builder.
-file okular/okular-202509041554.tar.xz
-chk 4e21878a7def7c2e885e84841dfab7e8a5eb75b7f0e33b092a34f8978498787c
+file okular/okular-202512111542.tar.xz
+chk dae20e59449ab392377052d25d4448568c051de3b3c73c8cc63ea508204f2a69
 
 fi # !gnupg22 - Current Okular et al.
 
