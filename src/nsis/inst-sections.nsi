@@ -1027,6 +1027,11 @@ skip_gpgme_browser:
   # actual application instead.
   !insertmacro SelectSection ${SEC_libgpg_error}
   !insertmacro SelectSection ${SEC_libassuan}
+  # We always need to include the gpg4win section.
+  # (Old versions of NSIS seemed to have a bug which always
+  #  included the first section.  But with 1.11 this is not
+  #  anymore the case and thus we need to mark gpg4win here.)
+  !insertmacro SelectSection ${SEC_gpg4win}
    skip_gpgme:
 !endif
 
