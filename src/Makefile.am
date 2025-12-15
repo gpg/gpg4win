@@ -444,7 +444,8 @@ gpg4win_pkg_knotifications_configure = \
 gpg4win_pkg_breeze_icons_native_configure = \
     -DWITH_ICON_GENERATION=OFF \
     -DWITH_ICONS_LIBRARY=OFF \
-    -DSKIP_INSTALL_ICONS=ON
+    -DSKIP_INSTALL_ICONS=ON \
+    -DINSTALL_HOST_TOOLS=ON
 
 define gpg4win_pkg_breeze_icons_native_post_install
  ( mkdir -p $$$${pkgidir}/bin/ && cp $$$${pkgbdir}/bin/* $$$${pkgidir}/bin )
