@@ -82,13 +82,18 @@ for package in $GEARS; do
 
     sha2=$(sha256sum $tmpdir/${tarfile} | cut -d ' ' -f 1)
 
-    echo "# $package"
-    echo "# last changed: $curdate"
-    echo "# by: $(echo ${EMAIL-$USER}|sed 's/@.*//')"
-    echo "# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)"
-    echo "file ${fullversion}/src/${tarfile}"
-    echo "chk $sha2"
-    echo ""
+    cat > ${tmpdir}/snippet <<EOF
+# ${package}
+# last changed: ${curdate}
+# by: $(echo ${EMAIL-$USER}|sed 's/@.*//')
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
+file ${fullversion}/src/${tarfile}
+chk $sha2
+
+EOF
+
+perl -i -p0e "s@# ${package}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
+'@se" packages.list
 done
 
 rm -r $tmpdir
