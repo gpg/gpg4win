@@ -2,6 +2,8 @@
 patch -p1 -l -f $* < $0
 exit $?
 
+https://invent.kde.org/frameworks/kcalendarcore/-/merge_requests/214
+
 From 30c9ad5aa77b9c44b93558916f27f6bc32ca3fb4 Mon Sep 17 00:00:00 2001
 From: Andre Heinecke <aheinecke@gnupg.org>
 Date: Sun, 28 Jul 2024 09:31:38 +0200
