@@ -610,11 +610,11 @@ server https://gnupg.net/snapshots
 # cursor themes to avoid including a huge source package.
 # See gen-tarball.sh for details.
 # breeze
-# last changed: 2024-07-28
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file breeze/breeze-202407281104.tar.xz
-chk 3e91bf1e5324b03a417416916e2f159d7de96ab2c4f05a32b0667c262e1fa647
+# last changed: 2025-12-16
+# by: sune
+# verified: Tarball created by sune.
+file breeze/breeze-202512161010.tar.xz
+chk b45a7f78b841cdf98efa528d687e348590aa7a72bab1310d9deb1dd8ca52d28a
 
 # scute
 # last changed: 2024-07-19

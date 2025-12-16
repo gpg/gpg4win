@@ -225,7 +225,7 @@ case ${package} in
         #branch="WORK"
         ;;
     breeze)
-        branch=v6.1.3
+        branch=v6.5.4
         ;;
     kio)
         ;;
