@@ -388,12 +388,12 @@ $(stampdir)/stamp-$(1)-ex-02-configure: $(stampdir)/stamp-$(1)-ex-01-patch
 		$$$${pkgcfg} CFLAGS=\"-fcommon -Wno-error=incompatible-pointer-types $$$${pkgextracflags}\"\
            || exit 1; \
 	 shopt -s nullglob;					\
-	 for pfile in "$$$${pkgpatbdir}"/*.postcfg       		\
-                       "$$$${pkgpatdir}"/*.postcfg ; do  	\
+	 for pfile in "$$$${pkgpatdir}"/*.postcfg       		\
+                       "$$$${pkgpatbdir}"/*.postcfg ; do  	\
 	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		     	\
 	 done;                                               	\
-	 for pfile in "$$$${pkgpatbdir}"/*.postcfg-build    	\
-                       "$$$${pkgpatdir}"/*.postcfg-build ; do	\
+	 for pfile in "$$$${pkgpatdir}"/*.postcfg-build    	\
+                       "$$$${pkgpatbdir}"/*.postcfg-build ; do	\
 	   (cd "$$$${pkgbdir}"; "$$$${pfile}")			\
 	 done)
 	touch $(stampdir)/stamp-$(1)-ex-02-configure
@@ -462,8 +462,8 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
-	    for pfile in "$$$${pkgpatbdir}"/*.patch \
-                         "$$$${pkgpatdir}"/*.patch; do \
+	    for pfile in "$$$${pkgpatdir}"/*.patch \
+                         "$$$${pkgpatbdir}"/*.patch; do \
 		echo "applying $$$${pkgsdir}/$$$${pfile}"; \
 		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}";) \
 	    done \
@@ -483,12 +483,12 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 		$$$${pkgcfg} CFLAGS=\"-fcommon -Wno-error=incompatible-pointer-types $$$${pkgextracflags}\" \
            || exit 1; \
 	shopt -s nullglob; \
-	for pfile in "$$$${pkgpatbdir}"/*.postcfg \
-	             "$$$${pkgpatdir}"/*.postcfg ; do \
+	for pfile in "$$$${pkgpatdir}"/*.postcfg \
+	             "$$$${pkgpatbdir}"/*.postcfg ; do \
 	    (cd "$$$${pkgsdir}"; "$$$${pfile}") \
 	done; \
-	for pfile in "$$$${pkgpatbdir}"/*.postcfg-build \
-	             "$$$${pkgpatdir}"/*.postcfg-build ; do \
+	for pfile in "$$$${pkgpatdir}"/*.postcfg-build \
+	             "$$$${pkgpatbdir}"/*.postcfg-build ; do \
             (cd "$$$${pkgbdir}"; "$$$${pfile}") \
 	done)
 	touch $(stampdir)/stamp-$(1)-02-configure
@@ -557,8 +557,8 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
-	    for pfile in "$$$${pkgpatbdir}"/*.patch \
-                         "$$$${pkgpatdir}"/*.patch ; do \
+	    for pfile in "$$$${pkgpatdir}"/*.patch \
+                         "$$$${pkgpatbdir}"/*.patch ; do \
 		echo "applying $$$${pkgsdir}/$$$${pfile}"; \
 		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
 	    done \
@@ -686,8 +686,8 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
-	    for pfile in "$$$${pkgpatbdir}"/*.patch \
-                         "$$$${pkgpatdir}"/*.patch ; do  \
+	    for pfile in "$$$${pkgpatdir}"/*.patch \
+                         "$$$${pkgpatbdir}"/*.patch ; do  \
 		echo "applying $$$${pkgsdir}/$$$${pfile}"; \
 	        (cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
 	    done \
@@ -781,8 +781,8 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 			sed -i 's/set(KPIM_MBOX_VERSION.*)/set(KPIM_MBOX_VERSION "6.4.0")/' CMakeLists.txt; \
 			sed -i 's/set(MIMETREEPARSER_VERSION.*)/set(MIMETREEPARSER_VERSION "6.4.0")/' CMakeLists.txt; \
 		fi; \
-		for pfile in "$$$${pkgpatbdir}"/*.patch \
-                             "$$$${pkgpatdir}"/*.patch ; do  \
+		for pfile in "$$$${pkgpatdir}"/*.patch \
+                             "$$$${pkgpatbdir}"/*.patch ; do  \
 		echo "applying $$$${pkgsdir}/$$$${pfile}"; \
 		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
 		done \
@@ -946,8 +946,8 @@ $(stampdir)/stamp-$(1)-native-01-patch: $(stampdir)/stamp-$(1)-native-00-unpack
 	$(call SETVARS_NATIVE,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
 		cd "$$$${pkgsdir}"; \
-		for pfile in "$$$${pkgpatbdir}"/*-native.patch \
-                             "$$$${pkgpatdir}"/*-native.patch ; do  \
+		for pfile in "$$$${pkgpatdir}"/*-native.patch \
+                             "$$$${pkgpatbdir}"/*-native.patch ; do  \
 		echo "applying $$$${pkgsdir}/$$$${pfile}"; \
 		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
 		done \
