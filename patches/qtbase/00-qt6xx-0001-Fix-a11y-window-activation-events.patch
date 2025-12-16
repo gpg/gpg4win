@@ -1,0 +1,99 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+https://codereview.qt-project.org/c/qt/qtbase/+/680697
+
+From f9fbf878b688c3fd84f5997b2aea3d90e7f245ab Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Thu, 25 Sep 2025 16:20:07 +0200
+Subject: [PATCH] Send accessible state change event after window was made
+ active
+
+QGuiApplicationPrivate::processFocusWindowEvent is called when a new
+dialog is opened or when the active window is changed by the user (at
+least on Windows). This function sends FocusOut and FocusIn events to
+the QWindows *before* calling notifyActiveWindowChange which makes the
+new window the active window. Therefore, on Windows, the accessible state
+change event did send a Window_WindowOpened and an AutomationFocusChanged
+(instead of a Window_WindowClosed) event for the *old* window. This
+confuses accessibility tools.
+
+Sending the accessible state change events on WindowActivate and
+WindowDeactivate ensures that the correct window is marked as active
+window when QWindowsUiaMainProvider checks the active state of the
+event object.
+
+Since the WindowActivate/Deactivate events are now handled by
+QWidgetWindow::event and not forwarded anymore to QWindow::event we can
+now simply call the base class's notifyActiveWindowChange. In particular,
+this ensures that the QWidgetWindows do receive WindowActivate/Deactivate
+events. Previously, only the widgets associated with the QWidgetWindows
+received those events (via QApplication::setActiveWindow).
+
+Fixes: QTBUG-140719
+Change-Id: I7acf2cfcbab693752fe6c04ab73506bd4477912b
+---
+ src/widgets/kernel/qapplication.cpp           | 15 +---
+ src/widgets/kernel/qwidgetwindow.cpp          | 13 +++-
+ .../qwidget_window/tst_qwidget_window.cpp     | 72 +++++++++++++++++++
+ 3 files changed, 83 insertions(+), 17 deletions(-)
+
+diff --git a/src/widgets/kernel/qapplication.cpp b/src/widgets/kernel/qapplication.cpp
+index bcf10ad8ed2..66859215bed 100644
+--- a/src/widgets/kernel/qapplication.cpp
++++ b/src/widgets/kernel/qapplication.cpp
+@@ -1944,20 +1944,7 @@ void QApplicationPrivate::notifyActiveWindowChange(QWindow *previous)
+                     widget->setFocus(Qt::ActiveWindowFocusReason);
+     }
+
+-    // QApplication::setActiveWindow() will deliver window activation events for
+-    // QWidgetWindows. But for other subclasses of QWindow (like QQuickWindow), we
+-    // need to send them explicitly, like we do from the base class implementation.
+-    if (previous && !qobject_cast<QWidgetWindow *>(previous)) {
+-        QEvent de(QEvent::WindowDeactivate);
+-        QCoreApplication::sendEvent(previous, &de);
+-    }
+-
+-    if (focusWindow && !qobject_cast<QWidgetWindow *>(focusWindow)) {
+-        QEvent ae(QEvent::WindowActivate);
+-        QCoreApplication::sendEvent(focusWindow, &ae);
+-    }
+-
+-    // don't call base class to avoid double delivery of WindowActivate/Deactivate events
++    QGuiApplicationPrivate::notifyActiveWindowChange(previous);
+ }
+
+ /*!internal
+diff --git a/src/widgets/kernel/qwidgetwindow.cpp b/src/widgets/kernel/qwidgetwindow.cpp
+index 737ccb0e807..755618cd8d9 100644
+--- a/src/widgets/kernel/qwidgetwindow.cpp
++++ b/src/widgets/kernel/qwidgetwindow.cpp
+@@ -261,15 +261,22 @@ bool QWidgetWindow::event(QEvent *event)
+     // are sent by QApplicationPrivate::notifyActiveWindowChange()
+     case QEvent::FocusIn:
+         handleFocusInEvent(static_cast<QFocusEvent *>(event));
+-        Q_FALLTHROUGH();
+-    case QEvent::FocusOut: {
++        return false;
++    case QEvent::FocusOut:
++        return false;
++
++    // these should not be sent to QWidget, the corresponding events
++    // are sent by QApplicationPrivate::notifyActiveWindowChange()
++    case QEvent::WindowActivate:
++    case QEvent::WindowDeactivate: {
+ #if QT_CONFIG(accessibility)
+         QAccessible::State state;
+         state.active = true;
+         QAccessibleStateChangeEvent ev(m_widget, state);
+         QAccessible::updateAccessibility(&ev);
+ #endif
+-        return false; }
++        return false;
++    }
+
+     case QEvent::FocusAboutToChange:
+         if (QApplicationPrivate::focus_widget) {
+--
+2.52.0

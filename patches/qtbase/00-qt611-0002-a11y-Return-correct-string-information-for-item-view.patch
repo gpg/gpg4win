@@ -1,0 +1,63 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+https://codereview.qt-project.org/c/qt/qtbase/+/683331
+
+From fc3f30713799ba71fd2cc015b3d9860295e37760 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 8 Oct 2025 14:57:34 +0200
+Subject: [PATCH] a11y: Return correct string information for item views
+
+This fixes the problem that accessible name was returned as string
+information for all types of accessible string information (except
+Description), i.e. Name, Help, Value, Accelerator, etc. This made some
+screen readers speak the accessible name multiple times when an item
+view got focus.
+
+After 9fa1b691c88a4b928d3c1814a15bcab0e329222e QAccessibleTable is a
+subclass of QAccessibleWidget(V2) which provides suitable default
+implementations. Remove the override of the text() getter.
+
+Fixes: QTBUG-141051
+Change-Id: I443145b97d8546fc6c80689bae50cb896e29cfd1
+Reviewed-by: Michael Weghorn <m.weghorn@posteo.de>
+Reviewed-by: Volker Hilsheimer <volker.hilsheimer@qt.io>
+---
+ src/widgets/accessible/itemviews.cpp                   | 7 -------
+ src/widgets/accessible/itemviews_p.h                   | 1 -
+ tests/auto/other/qaccessibility/tst_qaccessibility.cpp | 7 +++++++
+ 3 files changed, 7 insertions(+), 8 deletions(-)
+
+diff --git a/src/widgets/accessible/itemviews.cpp b/src/widgets/accessible/itemviews.cpp
+index 265c523eae0..7e3dfbd68db 100644
+--- a/src/widgets/accessible/itemviews.cpp
++++ b/src/widgets/accessible/itemviews.cpp
+@@ -589,13 +589,6 @@ int QAccessibleTable::indexOfChild(const QAccessibleInterface *iface) const
+     return -1;
+ }
+
+-QString QAccessibleTable::text(QAccessible::Text t) const
+-{
+-    if (t == QAccessible::Description)
+-        return view()->accessibleDescription();
+-    return view()->accessibleName();
+-}
+-
+ QRect QAccessibleTable::rect() const
+ {
+     if (!view()->isVisible())
+diff --git a/src/widgets/accessible/itemviews_p.h b/src/widgets/accessible/itemviews_p.h
+index 79f9a7f2f05..e74be151115 100644
+--- a/src/widgets/accessible/itemviews_p.h
++++ b/src/widgets/accessible/itemviews_p.h
+@@ -41,7 +41,6 @@ public:
+
+     QAccessible::Role role() const override;
+     QAccessible::State state() const override;
+-    QString text(QAccessible::Text t) const override;
+     QRect rect() const override;
+
+     QAccessibleInterface *childAt(int x, int y) const override;
+--
+2.52.0

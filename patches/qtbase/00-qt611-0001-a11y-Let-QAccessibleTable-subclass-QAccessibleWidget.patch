@@ -1,0 +1,70 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+https://codereview.qt-project.org/c/qt/qtbase/+/688668
+
+From 9fa1b691c88a4b928d3c1814a15bcab0e329222e Mon Sep 17 00:00:00 2001
+From: Michael Weghorn <m.weghorn@posteo.de>
+Date: Tue, 4 Nov 2025 21:59:36 +0100
+Subject: [PATCH] a11y: Let QAccessibleTable subclass QAccessibleWidgetV2
+
+Since QAccessibleTable and subclasses are a11y implementations
+for item views and those are widgets, subclass
+QAccessibleWidgetV2 instead of only the more generic
+QAccessibleObject (which is itself a QAccessibleWidgetV2
+base class).
+
+This e.g. ensures that all accessibility properties set
+on the QWidget (like a manually set accessible name
+or description) or the QAccessible::Labelled relation
+to a QLabel for which the widget was set as the buddy
+are set correctly.
+
+Task-number: QTBUG-141703
+Change-Id: I7f5f1e6d3f84c97e541517baada637d533fa3e00
+Reviewed-by: Volker Hilsheimer <volker.hilsheimer@qt.io>
+---
+ src/widgets/accessible/itemviews.cpp | 4 ++--
+ src/widgets/accessible/itemviews_p.h | 4 +++-
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/widgets/accessible/itemviews.cpp b/src/widgets/accessible/itemviews.cpp
+index fc969e17380..265c523eae0 100644
+--- a/src/widgets/accessible/itemviews.cpp
++++ b/src/widgets/accessible/itemviews.cpp
+@@ -60,7 +60,7 @@ int QAccessibleTable::logicalIndex(const QModelIndex &index) const
+ }
+
+ QAccessibleTable::QAccessibleTable(QWidget *w)
+-    : QAccessibleObject(w)
++    : QAccessibleWidgetV2(w)
+ {
+     Q_ASSERT(view());
+
+@@ -677,7 +677,7 @@ void *QAccessibleTable::interface_cast(QAccessible::InterfaceType t)
+        return static_cast<QAccessibleSelectionInterface*>(this);
+     if (t == QAccessible::TableInterface)
+        return static_cast<QAccessibleTableInterface*>(this);
+-   return nullptr;
++    return QAccessibleWidgetV2::interface_cast(t);
+ }
+
+ void QAccessibleTable::modelChange(QAccessibleTableModelChangeEvent *event)
+diff --git a/src/widgets/accessible/itemviews_p.h b/src/widgets/accessible/itemviews_p.h
+index 9b30f36ced3..79f9a7f2f05 100644
+--- a/src/widgets/accessible/itemviews_p.h
++++ b/src/widgets/accessible/itemviews_p.h
+@@ -31,7 +31,9 @@ QT_BEGIN_NAMESPACE
+ class QAccessibleTableCell;
+ class QAccessibleTableHeaderCell;
+
+-class QAccessibleTable :public QAccessibleTableInterface, public QAccessibleSelectionInterface, public QAccessibleObject
++class QAccessibleTable : public QAccessibleTableInterface,
++                         public QAccessibleSelectionInterface,
++                         public QAccessibleWidgetV2
+ {
+ public:
+     explicit QAccessibleTable(QWidget *w);
+--
+2.52.0
