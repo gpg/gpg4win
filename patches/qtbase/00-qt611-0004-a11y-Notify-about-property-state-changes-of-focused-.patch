@@ -1,0 +1,143 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+https://codereview.qt-project.org/c/qt/qtbase/+/692750
+
+From 888af1ad02af0eab10322a23b032872d72b59fb5 Mon Sep 17 00:00:00 2001
+From: Michael Weghorn <m.weghorn@posteo.de>
+Date: Thu, 20 Nov 2025 15:19:23 +0100
+Subject: [PATCH] a11y: Notify about property/state changes of focused item
+ view item
+
+Item view item data for various roles are relevant
+for the properties and states reported for the
+corresponding accessible objects on the accessibility
+layer, see the a11y implementation in QAccessibleTableCell.
+
+Therefore, changes to the relevant role data
+should also be reported as corresponding state/property
+changes on the a11y layer.
+
+Implement sending corresponding accessibility
+events from QAbstractItemView::dataChanged.
+While the roles param in the QAbstractItemModel::dataChanged
+signal that this slot is connected to is optional,
+only handle roles that are explicitly passed for now,
+which covers the case of interactively modifying items.
+Properly handling the case of an empty list of roles
+indicating that all roles should be considered as
+(potentially) having been modified would require to
+keep track of previous values to be able to only send
+notifications about those that actually changed.
+(One way to do that for the current item could be to
+remember the values in QAbstractItemView::currentChanged
+and then compare whether those have changed in the
+meantime.)
+Always sending accessibility events even if no change
+actually occured would be incorrect and could e.g. result
+in confusing/misleading screen reader announcements.
+
+For now, in order to avoid potential negative performance
+implications when doing that for all items, restrict
+this to the case where (only) the current item's data
+has changed, which in particular covers the case where
+a user interactively modifies that item.
+(If the need arises, this can be further extended as
+needed in the future.)
+
+This e.g. makes the Orca screen reader on Linux
+announce changes to the checkbox state for the
+QTBUG-141856 sample program when toggling it using
+the space key, and results in the state getting
+updated as expected in Accerciser [1]. The accessible
+name shown in Accerciser also gets updated as expected
+when modifying an item's text, and Orca announces the
+new name.
+
+[1] https://gitlab.gnome.org/GNOME/accerciser
+
+Task-number: QTBUG-141856
+Change-Id: Ic1592f4c639c29ab4144ae8b768f26c63f8878dc
+Reviewed-by: Volker Hilsheimer <volker.hilsheimer@qt.io>
+---
+ src/widgets/itemviews/qabstractitemview.cpp | 41 +++++++++++++++++++++
+ src/widgets/itemviews/qabstractitemview_p.h |  4 ++
+ 2 files changed, 45 insertions(+)
+
+diff --git a/src/widgets/itemviews/qabstractitemview.cpp b/src/widgets/itemviews/qabstractitemview.cpp
+index 6288aae096a..05233ba5801 100644
+--- a/src/widgets/itemviews/qabstractitemview.cpp
++++ b/src/widgets/itemviews/qabstractitemview.cpp
+@@ -172,6 +172,43 @@ void QAbstractItemViewPrivate::checkMouseMove(const QPersistentModelIndex &index
+     }
+ }
+
++#if QT_CONFIG(accessibility)
++void QAbstractItemViewPrivate::updateItemAccessibility(const QModelIndex &index,
++                                                       const QList<int> &roles)
++{
++    Q_Q(QAbstractItemView);
++
++    if (!QAccessible::isActive())
++        return;
++
++    const int childIndex = accessibleChildIndex(index);
++    if (childIndex < 0)
++        return;
++
++    // see QAccessibleTableCell for how role data are mapped to the a11y layer
++
++    for (int role : roles) {
++        if (role == Qt::AccessibleTextRole
++            || (role == Qt::DisplayRole
++                && index.data(Qt::AccessibleTextRole).toString().isEmpty())) {
++            QAccessibleEvent event(q, QAccessible::NameChanged);
++            event.setChild(childIndex);
++            QAccessible::updateAccessibility(&event);
++        } else if (role == Qt::AccessibleDescriptionRole) {
++            QAccessibleEvent event(q, QAccessible::DescriptionChanged);
++            event.setChild(childIndex);
++            QAccessible::updateAccessibility(&event);
++        } else if (role == Qt::CheckStateRole) {
++            QAccessible::State state;
++            state.checked = true;
++            QAccessibleStateChangeEvent event(q, state);
++            event.setChild(childIndex);
++            QAccessible::updateAccessibility(&event);
++        }
++    }
++}
++#endif
++
+ #if QT_CONFIG(gestures) && QT_CONFIG(scroller)
+
+ // stores and restores the selection and current item when flicking
+@@ -3495,6 +3532,10 @@ void QAbstractItemView::dataChanged(const QModelIndex &topLeft, const QModelInde
+         accessibleEvent.setLastRow(bottomRight.row());
+         accessibleEvent.setLastColumn(bottomRight.column());
+         QAccessible::updateAccessibility(&accessibleEvent);
++
++        // send accessibility events as needed when current item is modified
++        if (topLeft == bottomRight && topLeft == currentIndex())
++            d->updateItemAccessibility(topLeft, roles);
+     }
+ #endif
+     d->updateGeometry();
+diff --git a/src/widgets/itemviews/qabstractitemview_p.h b/src/widgets/itemviews/qabstractitemview_p.h
+index 360b53f7127..f9e899d7fc8 100644
+--- a/src/widgets/itemviews/qabstractitemview_p.h
++++ b/src/widgets/itemviews/qabstractitemview_p.h
+@@ -280,6 +280,10 @@ public:
+     }
+ #endif
+
++#if QT_CONFIG(accessibility)
++    void updateItemAccessibility(const QModelIndex &index, const QList<int> &roles);
++#endif
++
+     // reimplemented from QAbstractScrollAreaPrivate
+     QPoint contentsOffset() const override {
+         Q_Q(const QAbstractItemView);
+--
+2.52.0

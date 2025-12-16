@@ -2,15 +2,22 @@
 patch -p1 -f -l $* < $0
 exit $?
 
-From b510e73f4dabb5362e0e504cfe73318b975f235b Mon Sep 17 00:00:00 2001
+https://codereview.qt-project.org/c/qt/qtbase/+/695395
+
+From 583c383d7111e472a972e7d1bcb392922744bdf9 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
-Date: Tue, 28 Oct 2025 10:15:13 +0100
-Subject: [PATCH] a11y: Raise UIA event for (un)checked item view items
+Date: Tue, 2 Dec 2025 13:57:32 +0100
+Subject: [PATCH] a11y uia: Notify about state changes of checkable item view
+ items
 
-This enables assistive tools on Windows to inform users when the
-checked state of checkable item view items change.
+To allow assistive technology on Windows to react to changes of the
+checked state of item view items send appropriate notifications also
+for the Cell, ListItem and TreeItem roles.
 
-Change-Id: I680209d3f5835c58bd91dd5826566c39ae72d7b6
+Fixes: QTBUG-141856
+Change-Id: I5ff341fa260ea95c0cf80bc25c141f9da0ea54da
+Reviewed-by: Michael Weghorn <m.weghorn@posteo.de>
+Reviewed-by: Volker Hilsheimer <volker.hilsheimer@qt.io>
 ---
  .../windows/uiautomation/qwindowsuiamainprovider.cpp          | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
@@ -31,4 +38,4 @@ index fc0e053f396..4fd9f8c6293 100644
                      long toggleState = ToggleState_Off;
                      if (accessible->state().checked)
 --
-2.51.0
+2.52.0

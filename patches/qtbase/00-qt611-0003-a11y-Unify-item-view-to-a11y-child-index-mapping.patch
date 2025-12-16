@@ -1,0 +1,252 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+https://codereview.qt-project.org/c/qt/qtbase/+/692749
+
+From 9f36e3f0095f8afdc9ccd8590837effddb1ca92e Mon Sep 17 00:00:00 2001
+From: Michael Weghorn <m.weghorn@posteo.de>
+Date: Thu, 20 Nov 2025 14:50:18 +0100
+Subject: [PATCH] a11y: Unify item view to a11y child index mapping
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Different QAbstractItemViewPrivate subclasses
+implement mapping from the item views model index
+to an accessible child index.
+
+So far, the methods implementing the logic were
+independent and used only within the corresponding
+item view implementations themselves.
+
+Introduce a new virtual base class method
+QAbstractItemViewPrivate::accessibleChildIndex
+and let the existing implementations override
+that one.
+
+This prepares for being able to make use of that
+logic directly inside QAbstractItemViewPrivate
+in an upcoming commit.
+
+While at it, also make have those methods dependent
+on QT_CONFIG(accessibility).
+
+Task-number: QTBUG-141856
+Change-Id: Ic02a7875eccb893f722f13489f768f3675fe14bf
+Reviewed-by: Volker Hilsheimer <volker.hilsheimer@qt.io>
+Reviewed-by: Ingo Klöcker <dev@ingo-kloecker.de>
+---
+ src/widgets/itemviews/qabstractitemview_p.h |  8 ++++++++
+ src/widgets/itemviews/qlistview.cpp         | 16 +++++++++++++---
+ src/widgets/itemviews/qlistview_p.h         |  4 ++++
+ src/widgets/itemviews/qtableview.cpp        |  6 +++---
+ src/widgets/itemviews/qtableview_p.h        |  5 ++++-
+ src/widgets/itemviews/qtreeview.cpp         | 10 ++++++----
+ src/widgets/itemviews/qtreeview_p.h         |  4 +++-
+ 7 files changed, 41 insertions(+), 12 deletions(-)
+
+diff --git a/src/widgets/itemviews/qabstractitemview_p.h b/src/widgets/itemviews/qabstractitemview_p.h
+index 60799fb8a50..360b53f7127 100644
+--- a/src/widgets/itemviews/qabstractitemview_p.h
++++ b/src/widgets/itemviews/qabstractitemview_p.h
+@@ -272,6 +272,14 @@ public:
+         return isIndexValid(index) && isIndexSelectable(index);
+     }
+
++#if QT_CONFIG(accessibility)
++    virtual int accessibleChildIndex(const QModelIndex &index) const
++    {
++        Q_UNUSED(index);
++        return -1;
++    }
++#endif
++
+     // reimplemented from QAbstractScrollAreaPrivate
+     QPoint contentsOffset() const override {
+         Q_Q(const QAbstractItemView);
+diff --git a/src/widgets/itemviews/qlistview.cpp b/src/widgets/itemviews/qlistview.cpp
+index e245f98151b..50b6034500d 100644
+--- a/src/widgets/itemviews/qlistview.cpp
++++ b/src/widgets/itemviews/qlistview.cpp
+@@ -1959,6 +1959,14 @@ bool QListViewPrivate::dropOn(QDropEvent *event, int *dropRow, int *dropCol, QMo
+ }
+ #endif
+
++#if QT_CONFIG(accessibility)
++int QListViewPrivate::accessibleChildIndex(const QModelIndex &index) const
++{
++    Q_Q(const QListView);
++    return q->visualIndex(index);
++}
++#endif
++
+ void QListViewPrivate::removeCurrentAndDisabled(QList<QModelIndex> *indexes,
+                                                 const QModelIndex &current) const
+ {
+@@ -3397,11 +3405,12 @@ void QIconModeViewBase::updateContentsSize()
+ */
+ void QListView::currentChanged(const QModelIndex &current, const QModelIndex &previous)
+ {
++    Q_D(const QListView);
+     QAbstractItemView::currentChanged(current, previous);
+ #if QT_CONFIG(accessibility)
+     if (QAccessible::isActive()) {
+         if (current.isValid() && hasFocus()) {
+-            int entry = visualIndex(current);
++            int entry = d->accessibleChildIndex(current);
+             QAccessibleEvent event(this, QAccessible::Focus);
+             event.setChild(entry);
+             QAccessible::updateAccessibility(&event);
+@@ -3417,18 +3426,19 @@ void QListView::selectionChanged(const QItemSelection &selected,
+                                  const QItemSelection &deselected)
+ {
+ #if QT_CONFIG(accessibility)
++    Q_D(const QListView);
+     if (QAccessible::isActive()) {
+         // ### does not work properly for selection ranges.
+         QModelIndex sel = selected.indexes().value(0);
+         if (sel.isValid()) {
+-            int entry = visualIndex(sel);
++            int entry = d->accessibleChildIndex(sel);
+             QAccessibleEvent event(this, QAccessible::SelectionAdd);
+             event.setChild(entry);
+             QAccessible::updateAccessibility(&event);
+         }
+         QModelIndex desel = deselected.indexes().value(0);
+         if (desel.isValid()) {
+-            int entry = visualIndex(desel);
++            int entry = d->accessibleChildIndex(desel);
+             QAccessibleEvent event(this, QAccessible::SelectionRemove);
+             event.setChild(entry);
+             QAccessible::updateAccessibility(&event);
+diff --git a/src/widgets/itemviews/qlistview_p.h b/src/widgets/itemviews/qlistview_p.h
+index 4475fa5461f..7e36887a65c 100644
+--- a/src/widgets/itemviews/qlistview_p.h
++++ b/src/widgets/itemviews/qlistview_p.h
+@@ -346,6 +346,10 @@ public:
+     bool dropOn(QDropEvent *event, int *row, int *col, QModelIndex *index) override;
+ #endif
+
++#if QT_CONFIG(accessibility)
++    int accessibleChildIndex(const QModelIndex &index) const override;
++#endif
++
+     inline void setGridSize(const QSize &size) { grid = size; }
+     inline QSize gridSize() const { return grid; }
+     inline void setWrapping(bool b) { wrap = b; }
+diff --git a/src/widgets/itemviews/qtableview.cpp b/src/widgets/itemviews/qtableview.cpp
+index 40e3fcaf91b..2d28b3d4a81 100644
+--- a/src/widgets/itemviews/qtableview.cpp
++++ b/src/widgets/itemviews/qtableview.cpp
+@@ -3593,7 +3593,7 @@ void QTableView::currentChanged(const QModelIndex &current, const QModelIndex &p
+     if (QAccessible::isActive()) {
+         if (current.isValid() && hasFocus()) {
+             Q_D(QTableView);
+-            int entry = d->accessibleTable2Index(current);
++            int entry = d->accessibleChildIndex(current);
+             QAccessibleEvent event(this, QAccessible::Focus);
+             event.setChild(entry);
+             QAccessible::updateAccessibility(&event);
+@@ -3616,14 +3616,14 @@ void QTableView::selectionChanged(const QItemSelection &selected,
+         // ### does not work properly for selection ranges.
+         QModelIndex sel = selected.indexes().value(0);
+         if (sel.isValid()) {
+-            int entry = d->accessibleTable2Index(sel);
++            int entry = d->accessibleChildIndex(sel);
+             QAccessibleEvent event(this, QAccessible::SelectionAdd);
+             event.setChild(entry);
+             QAccessible::updateAccessibility(&event);
+         }
+         QModelIndex desel = deselected.indexes().value(0);
+         if (desel.isValid()) {
+-            int entry = d->accessibleTable2Index(desel);
++            int entry = d->accessibleChildIndex(desel);
+             QAccessibleEvent event(this, QAccessible::SelectionRemove);
+             event.setChild(entry);
+             QAccessible::updateAccessibility(&event);
+diff --git a/src/widgets/itemviews/qtableview_p.h b/src/widgets/itemviews/qtableview_p.h
+index 8ddb8e797a9..9a7ce229880 100644
+--- a/src/widgets/itemviews/qtableview_p.h
++++ b/src/widgets/itemviews/qtableview_p.h
+@@ -141,11 +141,14 @@ public:
+
+     QStyleOptionViewItem::ViewItemPosition viewItemPosition(const QModelIndex &index) const;
+
+-    inline int accessibleTable2Index(const QModelIndex &index) const {
++#if QT_CONFIG(accessibility)
++    inline int accessibleChildIndex(const QModelIndex &index) const override
++    {
+         const int vHeader = verticalHeader ? 1 : 0;
+         return (index.row() + (horizontalHeader ? 1 : 0)) * (index.model()->columnCount() + vHeader)
+             + index.column() + vHeader;
+     }
++#endif
+
+     int sectionSpanEndLogical(const QHeaderView *header, int logical, int span) const;
+     int sectionSpanSize(const QHeaderView *header, int logical, int span) const;
+diff --git a/src/widgets/itemviews/qtreeview.cpp b/src/widgets/itemviews/qtreeview.cpp
+index e38d78b72f8..570566793dc 100644
+--- a/src/widgets/itemviews/qtreeview.cpp
++++ b/src/widgets/itemviews/qtreeview.cpp
+@@ -4083,13 +4083,15 @@ void QTreeViewPrivate::sortIndicatorChanged(int column, Qt::SortOrder order)
+     model->sort(column, order);
+ }
+
+-int QTreeViewPrivate::accessibleTree2Index(const QModelIndex &index) const
++#if QT_CONFIG(accessibility)
++int QTreeViewPrivate::accessibleChildIndex(const QModelIndex &index) const
+ {
+     Q_Q(const QTreeView);
+
+     // Note that this will include the header, even if its hidden.
+     return (q->visualIndex(index) + (q->header() ? 1 : 0)) * index.model()->columnCount() + index.column();
+ }
++#endif
+
+ void QTreeViewPrivate::updateIndentationFromStyle()
+ {
+@@ -4116,7 +4118,7 @@ void QTreeView::currentChanged(const QModelIndex &current, const QModelIndex &pr
+         Q_D(QTreeView);
+
+         QAccessibleEvent event(this, QAccessible::Focus);
+-        event.setChild(d->accessibleTree2Index(current));
++        event.setChild(d->accessibleChildIndex(current));
+         QAccessible::updateAccessibility(&event);
+     }
+ #endif
+@@ -4136,7 +4138,7 @@ void QTreeView::selectionChanged(const QItemSelection &selected,
+         // ### does not work properly for selection ranges.
+         QModelIndex sel = selected.indexes().value(0);
+         if (sel.isValid()) {
+-            int entry = d->accessibleTree2Index(sel);
++            int entry = d->accessibleChildIndex(sel);
+             Q_ASSERT(entry >= 0);
+             QAccessibleEvent event(this, QAccessible::SelectionAdd);
+             event.setChild(entry);
+@@ -4144,7 +4146,7 @@ void QTreeView::selectionChanged(const QItemSelection &selected,
+         }
+         QModelIndex desel = deselected.indexes().value(0);
+         if (desel.isValid()) {
+-            int entry = d->accessibleTree2Index(desel);
++            int entry = d->accessibleChildIndex(desel);
+             Q_ASSERT(entry >= 0);
+             QAccessibleEvent event(this, QAccessible::SelectionRemove);
+             event.setChild(entry);
+diff --git a/src/widgets/itemviews/qtreeview_p.h b/src/widgets/itemviews/qtreeview_p.h
+index 5a4e057901c..34db2fcdacb 100644
+--- a/src/widgets/itemviews/qtreeview_p.h
++++ b/src/widgets/itemviews/qtreeview_p.h
+@@ -234,7 +234,9 @@ public:
+         return (viewIndex(index) + (header ? 1 : 0)) * model->columnCount()+index.column();
+     }
+
+-    int accessibleTree2Index(const QModelIndex &index) const;
++#if QT_CONFIG(accessibility)
++    int accessibleChildIndex(const QModelIndex &index) const override;
++#endif
+
+     void updateIndentationFromStyle();
+
+--
+2.52.0
