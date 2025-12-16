@@ -2,6 +2,8 @@
 patch -p1 -l -f $* < $0
 exit $?
 
+https://invent.kde.org/frameworks/kwidgetsaddons/-/merge_requests/323/
+
 From 071d11cb7bfc1518d19bab8649dedc3a9b65a208 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
 Date: Mon, 10 Nov 2025 16:56:29 +0100
