@@ -425,6 +425,7 @@ chk 63f6d64780d3eb1bfdd2f2f9036026a2cdc163b676168c29c2797544f9ad6305
 file 6.20/kitemmodels-6.20.0.tar.xz
 chk 45b6cd5478fe35f0966a75e3cc554a5db8418ac7d6387745a0070f39caf921a9
 
+# kcolorscheme
 # last changed: 2025-12-08
 # by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
@@ -527,8 +528,8 @@ chk 5f61027b34510d0de2f2b151c279b000aa17e1c34906ff05e0f0086eed2f3785
 # last changed: 2025-12-08
 # by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-file 6.20/prison-6.20.0.tar.xz
-chk 36ec6f82ecc3c06618d455cc1698ab11754d642fab3f1b850a7cf01ce11b3d1f
+#file 6.20/prison-6.20.0.tar.xz
+#chk 36ec6f82ecc3c06618d455cc1698ab11754d642fab3f1b850a7cf01ce11b3d1f
 
 # kstatusnotifieritem
 # last changed: 2025-12-08
