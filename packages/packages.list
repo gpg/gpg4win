@@ -554,25 +554,25 @@ chk b253cd4864a3f3d4343485cc4bfe1b0344ccf5136ead2ada359e6933e09253de
 server http://download.kde.org/stable/release-service/
 
 # kmime
-# last changed: 2025-06-12
-# by: carl
+# last changed: 2025-12-16
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
-file 25.04.2/src/kmime-25.04.2.tar.xz
-chk 6102c1191a34475af463f786e7407ee9f328bb75f93a1235e51ab3ef62500d3a
+file 25.12.0/src/kmime-25.12.0.tar.xz
+chk c21f17b1fca6826487cd8e22cd551dee9340a52237c59670cc8c43265b0f4635
 
 # kmbox
-# last changed: 2025-06-12
-# by: carl
+# last changed: 2025-12-16
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
-file 25.04.2/src/kmbox-25.04.2.tar.xz
-chk e348396fb8f1de1729d0415116b05f6220f0ebb4428c4607b98b56edd321f1aa
+file 25.12.0/src/kmbox-25.12.0.tar.xz
+chk 3a6a109bdc4a1648918d4d332aaac2447f67710d87ee9a1bcfac16991b8e93e8
 
 # mimetreeparser
-# last changed: 2025-06-12
-# by: carl
+# last changed: 2025-12-16
+# by: sune
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
-file 25.04.2/src/mimetreeparser-25.04.2.tar.xz
-chk 9cdb04278f03c73c07ac0b840d44491460e3ab431133323d26a4c1ef084b6e37
+file 25.12.0/src/mimetreeparser-25.12.0.tar.xz
+chk 63662367842e25b8e13c7523d0542847a1cffb36c72072bfe3b2942eccdd7841
 
 #
 # GPGME is stored on the GnuPG server
