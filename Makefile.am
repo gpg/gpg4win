@@ -43,21 +43,18 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              docker/appimage/Dockerfile \
              docker/appimage/Dockerfile-CentOS7 \
              docker/gpg4win-bookworm/Dockerfile \
-	     patches/breeze-icons/0001-Add-16x16-variant-of-data-success.patch \
-	     patches/breeze-icons/0002-Add-nicer-16x16-variant-of-dialog-question.patch \
-	     patches/breeze-icons/0003-Add-data-question-status-icon-similar-to-other-data-.patch \
-	     patches/breeze-icons/0004-Add-symbolic-variants-of-status-icons-for-usage-with.patch \
-             patches/breeze-icons/0005-Disable-recoloring-of-status-icons.patch \
+             patches/breeze-icons/0001-Add-16x16-variant-of-data-success.patch \
              patches/breeze-icons/0001-Allow-to-disable-building-of-the-icon-library-native.patch \
-             patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools.patch \
+             patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools-native.patch \
+             patches/breeze-icons/0002-Add-nicer-16x16-variant-of-dialog-question.patch \
+             patches/breeze-icons/0003-Add-data-question-status-icon-similar-to-other-data-.patch \
+             patches/breeze-icons/0004-Add-symbolic-variants-of-status-icons-for-usage-with.patch \
+             patches/breeze-icons/0005-Disable-recoloring-of-status-icons.patch \
              patches/breeze-icons/remove-kleopatra-icons.patch \
              patches/breeze/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
              patches/breeze/0001-Do-not-pass-QIcon-Selected-mode-to-icon-painter.patch \
              patches/breeze/0001-Don-t-use-mixed-colors-for-frames-if-high-contrast-i.patch \
-             patches/breeze/0001-Fix-toolbar-colors-in-high-contrast-mode.patch \
-             patches/breeze/0002-fix-ifdef-windows-qmenu.patch \
-             patches/breeze/0002-kstyle-Support-registering-QMainWindow-in-tools-area.patch \
              patches/breeze/0004-For-high-contrast-draw-hovered-menu-bar-items-like-s.patch \
              patches/breeze/0005-For-high-contrast-draw-hovered-menu-items-like-selec.patch \
              patches/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
@@ -65,20 +62,27 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/extra-cmake-modules/0001-Use-preferred-display-language-instead-of-locale-on-.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
-             patches/kcolorscheme/0001-Add-support-for-high-contrast-color-themes-on-Window.patch \
-             patches/kcolorscheme/0002-Initialize-color-scheme-from-system-palette-if-high-.patch \
-             patches/kcolorscheme/0003-Remove-assert-in-createApplicationPalette.patch \
-             patches/kconfig-6.11.0/0001-Fix-double-unescaping-of-config-keys.patch \
-             patches/kconfig-6.11.0/0002-Fix-reading-of-localized-config-values-on-Windows-an.patch \
-             patches/kconfig-6.11.0/0003-Use-QStandardPaths-GenericStateLocation-on-all-platf.patch \
-             patches/kconfigwidgets/0001-Use-highlight-text-color-and-omit-custom-text-colori.patch \
-             patches/kconfigwidgets/0002-Draw-text-between-shortcut-keys-with-normal-highligh.patch \
-             patches/kcoreaddons/0001-Fix-MINGW-build.patch \
-             patches/kguiaddons/0001-Add-support-for-high-contrast-mode-on-Windows.patch \
+             patches/kf5/breeze-icons/subset-crossbuild.patch \
+             patches/kf5/kconfig/0001-Read-defaults-from-Windows-registry.patch \
+             patches/kf5/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
+             patches/kf5/kconfigwidgets/0001-Make-QDbus-optional.patch \
+             patches/kf5/kcoreaddons/0001-Fix-MINGW-build.patch \
+             patches/kf5/kiconthemes/0001-Make-DBus-optional.patch \
+             patches/kf5/kiconthemes/dark-mode-detection.patch \
+             patches/kf5/kleopatra/set-windows-registry.patch \
+             patches/kf5/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
+             patches/kf5/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
+             patches/kf5/kwidgetsaddons/fix-height-of-text-after-update.patch \
+             patches/kf5/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
+             patches/kf5/qtbase/CVE-2023-32763-qtbase-5.15.patch \
+             patches/kf5/qtbase/CVE-2023-37369-qtbase-5.15.patch \
+             patches/kf5/qtbase/CVE-2023-43114-5.15.patch \
+             patches/kf5/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
+             patches/kf5/qttools/disable-most-tools.patch \
+             patches/kf5/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches/kguiaddons/0002-DRAFT-There-is-no-dark-mode-on-old-Windows.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/ki18n/0001-gpg4win-fix-language-issues.patch \
-             patches/kiconthemes/0001-Remove-code-for-Qt-older-than-6.8.patch \
              patches/kiconthemes/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches/kiconthemes/0002-Use-symbolic-icons-if-high-contrast-color-scheme-is-.patch \
              patches/kjobwidgets/0001-Remove-knotification.patch \
@@ -86,46 +90,33 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kleopatra/0001-Revert-GIT_SILENT-already-done-by-ecm-now.patch \
              patches/kleopatra/0002-Experimental-Optionally-don-t-use-file-system-watche.patch \
              patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
-             patches/kwidgetsaddons-6.11.0/0001-Fix-bug-510055-When-we-press-enter-in-search-line-we.patch \
              patches/kwidgetsaddons/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches/kwidgetsaddons/0002-KMessageWidget-Don-t-draw-background-if-high-contras.patch \
              patches/kwidgetsaddons/0003-KPageView-Use-correct-icon-mode-if-high-contrast-col.patch \
              patches/kwidgetsaddons/0004-Don-t-draw-some-days-in-dark-red-if-high-contrast-co.patch \
              patches/kxmlgui/0001-Store-kxmlgui-rc-file-in-config-location.patch \
-             patches/libgpg-error-1.56/0001-Use-UI-language-instead-of-locale-for-translations.patch \
-             patches/libgpg-error-1.56/0002-Dynload-GetThreadUILanguage-to-keep-support-for-Wind.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
              patches/libkleo/0001-Revert-Explicitly-use-Boost-s-cmake-config-file-for-.patch \
              patches/libkleo/0001-Revert-GIT_SILENT-already-done-by-ecm-now.patch \
-             patches/mimetreeparser-25.04.2/fix-multiple-connect.patch \
+             patches/libqrencode/0001-fix-cmake-install-paths.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Add-support-to-customize-about-data.sik \
              patches/okular/lower-cmake-requirement.patch \
              patches/okular/pgp-default-true.patch \
              patches/pcre2/cross-build-cmake.patch \
-             patches/qtbase-6.7.3/0001-QIcon-enable-icon-engine-plugins-to-implement-themes.patch \
-             patches/qtbase-6.7.3/0001-a11y-Remember-QTreeView-s-a11y-child-interfaces.patch \
              patches/qtbase-6.10.1/0001-Don-t-report-active-windows-as-having-focus-unless-t.patch \
              patches/qtbase/00-qt611-0001-a11y-Let-QAccessibleTable-subclass-QAccessibleWidget.patch \
              patches/qtbase/00-qt611-0002-a11y-Return-correct-string-information-for-item-view.patch \
              patches/qtbase/00-qt611-0003-a11y-Unify-item-view-to-a11y-child-index-mapping.patch \
              patches/qtbase/00-qt611-0004-a11y-Notify-about-property-state-changes-of-focused-.patch \
              patches/qtbase/00-qt611-0005-a11y-uia-Notify-about-state-changes-of-checkable-ite.patch \
-             patches/qtbase/00-qt6xx-0001-Send-accessible-state-change-event-after-window-was-.patch \
+             patches/qtbase/00-qt6xx-0001-Fix-a11y-window-activation-events.patch \
              patches/qtbase/0001-Don-t-report-tabname-as-name-of-tabbar.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
-             patches/qtbase/0001-Make-queryHighContrast-a-file-static.patch \
-             patches/qtbase/0002-Use-correct-tool-tip-colors-for-high-contrast-modes.patch \
-             patches/qtbase/0003-Use-system-colors-if-high-contrast-mode-is-active.patch \
-             patches/qtbase/CVE-2025-30348-qtbase-6.5.diff.patch \
-             patches/qtbase/CVE-2025-4211-qtbase-6.8.diff.patch \
-             patches/qtbase/CVE-2025-5455-qtbase-6.8.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/configurable-windowstheme.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
              patches/qthttpserver/originAuthenticationRequired.patch \
-             patches/qtsvg/CVE-2025-10728-qtsvg-6.8.diff.patch \
-             patches/qtsvg/CVE-2025-10729-qtsvg-6.8.diff.patch \
              patches-appimage/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
              patches-appimage/breeze/0002-fix-ifdef-windows-qmenu.patch \
              patches-appimage/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
