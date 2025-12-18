@@ -162,6 +162,8 @@ condfalse=
 [ $clean = yes ] && rm -f '.#download.v*'
 [ -f '.#download.failed' ] && rm '.#download.failed'
 [ -f '.#download.worked' ] && rm '.#download.worked'
+[ -f '.#download.current_packages' ] && rm '.#download.current_packages'
+[ -f '.#download.stale_packages' ] && rm '.#download.stale_packages'
 cat $packages | \
 while read key value valuetwo valuethree; do
     : $(( lnr = lnr + 1 ))/read
@@ -210,6 +212,7 @@ while read key value valuetwo valuethree; do
        if [ -z "$name" ]; then
            name=`basename "$value"`
        fi
+       echo "$name" >> '.#download.current_packages'
 
        if [ "$clean" = "yes" ]; then
            [ $quiet = no ] && echo "Removing: $name"
@@ -257,6 +260,8 @@ while read key value valuetwo valuethree; do
            echo "no name for link in line $lnr" >&2
            exit 1
        fi
+       echo "$value" >> '.#download.current_packages'
+
        if [ $clean = yes ]; then
            [ $quiet = no ] && echo "Removing link: $value"
            rm -f $value
@@ -324,4 +329,15 @@ if [ -f '.#download.failed' ]; then
   rm '.#download.failed'
   echo "some files failed to download or checksums are not matching" >&2
   exit 1
+fi
+
+# check for stale packages
+for p in $(ls *.xz *.gz *.bz2 *.wixlib *.exe *.zip); do
+    if ! grep -q $p '.#download.current_packages'; then
+        echo "rm $p" >> '.#download.stale_packages'
+    fi
+done
+if [ -f '.#download.stale_packages' ]; then
+    echo "Warning: Stale packages were found. Remove them with" >&2
+    cat '.#download.stale_packages' >&2
 fi
