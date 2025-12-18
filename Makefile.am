@@ -33,8 +33,10 @@ endif
 
 SUBDIRS = ${po} packages ${doc} src
 
+# Use these commands to update the list of patches; the commands are different because in
+# patches-appimage we use symbolic links to folders in patches:
 # git ls-files patches | sed 's/$/ \\/' | sed 's/^/             /'
-# git ls-files patches-appimage | sed 's/$/ \\/' | sed 's/^/             /'
+# find -L patches-appimage -name *.patch | sort | sed 's/$/ \\/' | sed 's/^/             /'
 
 EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              doc/license-page doc/GPLv3 build.sh \
@@ -117,16 +119,31 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/configurable-windowstheme.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
              patches/qthttpserver/originAuthenticationRequired.patch \
+             patches-appimage/breeze/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches-appimage/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
-             patches-appimage/breeze/0002-fix-ifdef-windows-qmenu.patch \
+             patches-appimage/breeze/0001-Do-not-pass-QIcon-Selected-mode-to-icon-painter.patch \
+             patches-appimage/breeze/0001-Don-t-use-mixed-colors-for-frames-if-high-contrast-i.patch \
+             patches-appimage/breeze/0004-For-high-contrast-draw-hovered-menu-bar-items-like-s.patch \
+             patches-appimage/breeze/0005-For-high-contrast-draw-hovered-menu-items-like-selec.patch \
              patches-appimage/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
              patches-appimage/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
+             patches-appimage/extra-cmake-modules/0001-Use-preferred-display-language-instead-of-locale-on-.patch \
              patches-appimage/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
-             patches-appimage/kcrash/0001-Add-option-to-disable-OpenGL-support.patch \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
-             patches-appimage/okular/0001-Make-KF6Pty-dependency-optional.patch \
+             patches-appimage/kleopatra-202501221111/0001-Explicitely-require-threads.patch \
+             patches-appimage/libkleo/0001-Revert-Explicitly-use-Boost-s-cmake-config-file-for-.patch \
+             patches-appimage/libkleo/0001-Revert-GIT_SILENT-already-done-by-ecm-now.patch \
+             patches-appimage/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
+             patches-appimage/okular/pgp-default-true.patch \
+             patches-appimage/qtbase/0001-Don-t-report-tabname-as-name-of-tabbar.patch \
              patches-appimage/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
+             patches-appimage/qtbase/00-qt611-0001-a11y-Let-QAccessibleTable-subclass-QAccessibleWidget.patch \
+             patches-appimage/qtbase/00-qt611-0002-a11y-Return-correct-string-information-for-item-view.patch \
+             patches-appimage/qtbase/00-qt611-0003-a11y-Unify-item-view-to-a11y-child-index-mapping.patch \
+             patches-appimage/qtbase/00-qt611-0004-a11y-Notify-about-property-state-changes-of-focused-.patch \
+             patches-appimage/qtbase/00-qt611-0005-a11y-uia-Notify-about-state-changes-of-checkable-ite.patch \
+             patches-appimage/qtbase/00-qt6xx-0001-Fix-a11y-window-activation-events.patch \
              patches-appimage/qtbase/add-kleopatras-mime-types.patch \
              patches-appimage/qtbase/configurable-windowstheme.patch \
              patches-appimage/qtbase/qt_use_share_instead_of_data.patch
