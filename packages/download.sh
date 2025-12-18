@@ -287,7 +287,10 @@ while read key value valuetwo valuethree; do
        fi
        ;;
      chk)
-       [ $clean = yes ] && continue
+       if [ $clean = yes ]; then
+           name=
+           continue
+       fi
        if [ -z "$value" ]; then
            echo "syntax error in chk statement, line $lnr" >&2
            exit 1
