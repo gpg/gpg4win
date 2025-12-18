@@ -258,8 +258,8 @@ while read key value valuetwo valuethree; do
            exit 1
        fi
        if [ $clean = yes ]; then
-           [ $quiet = no ] && echo "Removing link: $name"
-           rm -f $name
+           [ $quiet = no ] && echo "Removing link: $value"
+           rm -f $value
        elif [ -f "$value" -a "$force" = "no" ]; then
            [ $quiet = no ] && echo "package     \`$value' ... already exists"
        else
