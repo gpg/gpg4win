@@ -1,0 +1,63 @@
+From 8e06daa36dfcea4bb491acf4b350658f40738f02 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20Storsj=C3=B6?= <martin@martin.st>
+Date: Thu, 5 Dec 2024 12:08:53 +0200
+Subject: [PATCH] winpthreads: Run thread dtors in reverse order
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+According to docs, the order is unspecified; running them in
+reverse order would be more logical.
+
+When libstdc++ is built, it can either provide its own implementation
+of __cxa_thread_atexit or use one from the host environment.
+
+When libstdc++ is cross compiled, the configure script doesn't do any
+linking tests and doesn't detect the mingw-w64-crt implementation of
+__cxa_thread_atexit, and always provides its own implementation
+instead.
+
+When the libstdc++/libsupc++ implementation of __cxa_thread_atexit is
+used in conjunction with emulated TLS, both emutls and libsupc++
+register destructors to be executed via pthread_key_create; one for
+freeing the per-thread memory allocated for the TLS objects, and
+one for executing the destructors. They are registered in a sequential
+order; first emutls registers the destructor for freeing the memory,
+followed by libsupc++ registers a destructor for running the TLS
+object destructors.
+
+Therefore, running the pthread key destructors in reverse order makes
+sure that the TLS object destructors are called (via libsupc++) before
+their memory is deallocated (via emutls).
+
+This pattern also matches how destructors normally are executed - in
+opposite order compared with how they were constructors.
+
+Signed-off-by: Martin Storsjö <martin@martin.st>
+---
+ mingw-w64-libraries/winpthreads/src/thread.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/mingw-w64-libraries/winpthreads/src/thread.c b/mingw-w64-libraries/winpthreads/src/thread.c
+index 68858cfa6..d5b3aaa05 100644
+--- a/mingw-w64-libraries/winpthreads/src/thread.c
++++ b/mingw-w64-libraries/winpthreads/src/thread.c
+@@ -970,7 +970,8 @@ void
+ _pthread_cleanup_dest (pthread_t t)
+ {
+ 	_pthread_v *tv;
+-	unsigned int i, j;
++	unsigned int j;
++	int i;
+ 
+ 	if (!t)
+ 		return;
+@@ -983,7 +984,7 @@ _pthread_cleanup_dest (pthread_t t)
+ 		int flag = 0;
+ 
+ 		pthread_spin_lock (&tv->spin_keys);
+-		for (i = 0; i < tv->keymax; i++)
++		for (i = tv->keymax - 1; i >= 0; i--)
+ 		{
+ 			void *val = tv->keyval[i];
+ 

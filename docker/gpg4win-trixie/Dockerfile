@@ -60,10 +60,10 @@ RUN set -x \
         wget
 
 RUN echo "deb-src http://deb.debian.org/debian stable main" >> /etc/apt/sources.list && apt update
-ADD --checksum=sha256:d7d9ca50a42ae93f90382d80f199bb2995e08420154999bf72d5103624cd76b0 https://github.com/mingw-w64/mingw-w64/commit/8e06daa36dfcea4bb491acf4b350658f40738f02.patch /tmp/winpthread-run-reverse-order.patch
-RUN set -x && mkdir /tmp/mingw && cd /tmp/mingw && apt source mingw-w64 && cd mingw-w64-12.0.0 \
-      && cp /tmp/winpthread-run-reverse-order.patch debian/patches && pwd \
-      && echo winpthread-run-reverse-order.patch >> debian/patches/series  \
+COPY mingw-pthread-run-reverse-order.patch /tmp/mingw/
+RUN set -x && cd /tmp/mingw && apt source mingw-w64 && cd mingw-w64-12.0.0 \
+      && cp /tmp/mingw/mingw-pthread-run-reverse-order.patch debian/patches/ && pwd \
+      && echo mingw-pthread-run-reverse-order.patch >> debian/patches/series  \
       && eatmydata apt-get -y --no-install-recommends --no-install-suggests -o APT::Get::Build-Dep-Automatic=true build-dep ./ \
       && dch --nmu "Add patch to fix destruction order of thread local" \
       && dpkg-buildpackage -j 10 && dpkg -i ../mingw-w64-i686-dev_12.0.0-5.1_all.deb ../mingw-w64-x86-64-dev_12.0.0-5.1_all.deb ../mingw-w64-common_12.0.0-5.1_all.deb ../mingw-w64_12.0.0-5.1_all.deb \
