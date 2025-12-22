@@ -23,11 +23,12 @@
 FROM debian:trixie
 
 RUN set -x \
-    && apt-get update && apt-get --no-install-recommends --no-install-suggests -y install eatmydata
+    && apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get --no-install-recommends --no-install-suggests -y install eatmydata
 
 RUN set -x \
     && apt-get update \
-    && eatmydata apt-get install --no-install-recommends --no-install-suggests -y \
+    && DEBIAN_FRONTEND=noninteractive eatmydata apt-get install --no-install-recommends --no-install-suggests -y \
         autoconf \
         automake \
         bison \
@@ -59,16 +60,22 @@ RUN set -x \
         uuid-runtime \
         wget
 
-RUN echo "deb-src http://deb.debian.org/debian stable main" >> /etc/apt/sources.list && apt update
+RUN echo "deb-src http://deb.debian.org/debian stable main" >> /etc/apt/sources.list \
+    && apt-get update
 COPY mingw-pthread-run-reverse-order.patch /tmp/mingw/
-RUN set -x && cd /tmp/mingw && apt source mingw-w64 && cd mingw-w64-12.0.0 \
-      && cp /tmp/mingw/mingw-pthread-run-reverse-order.patch debian/patches/ && pwd \
-      && echo mingw-pthread-run-reverse-order.patch >> debian/patches/series  \
-      && eatmydata apt-get -y --no-install-recommends --no-install-suggests -o APT::Get::Build-Dep-Automatic=true build-dep ./ \
-      && dch --nmu "Add patch to fix destruction order of thread local" \
-      && dpkg-buildpackage -j 10 && dpkg -i ../mingw-w64-i686-dev_12.0.0-5.1_all.deb ../mingw-w64-x86-64-dev_12.0.0-5.1_all.deb ../mingw-w64-common_12.0.0-5.1_all.deb ../mingw-w64_12.0.0-5.1_all.deb \
-      && apt -y autoremove && rm -rf /tmp/mingw
-
+RUN set -x \
+    && cd /tmp/mingw \
+    && apt-get source mingw-w64 \
+    && cd mingw-w64-12.0.0 \
+    && cp /tmp/mingw/mingw-pthread-run-reverse-order.patch debian/patches/ \
+    && pwd \
+    && echo mingw-pthread-run-reverse-order.patch >> debian/patches/series  \
+    && DEBIAN_FRONTEND=noninteractive eatmydata apt-get -y --no-install-recommends --no-install-suggests -o APT::Get::Build-Dep-Automatic=true build-dep ./ \
+    && dch --nmu "Add patch to fix destruction order of thread local" \
+    && dpkg-buildpackage -j 10 \
+    && dpkg -i ../mingw-w64-i686-dev_12.0.0-5.1_all.deb ../mingw-w64-x86-64-dev_12.0.0-5.1_all.deb ../mingw-w64-common_12.0.0-5.1_all.deb ../mingw-w64_12.0.0-5.1_all.deb \
+    && apt -y autoremove \
+    && rm -rf /tmp/mingw
 
 RUN update-alternatives --install /usr/bin/i686-w64-mingw32-gcc i686-w64-mingw32-gcc /usr/bin/i686-w64-mingw32-gcc-posix 100
 RUN update-alternatives --install /usr/bin/i686-w64-mingw32-g++ i686-w64-mingw32-g++ /usr/bin/i686-w64-mingw32-g++-posix 100
