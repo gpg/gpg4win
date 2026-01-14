@@ -3,36 +3,17 @@
 # The version numbers given are used by gpg4win and GnuPG [VS-]Desktop
 
 
-Noteworthy changes in Version 5.0.0 (unreleased)
+Noteworthy changes in Version 5.0.0 (2026-01-15)
 ------------------------------------------------
 
---- Highlights ---
-
---- Features ---
-
-(en) File encryption/decryption and signing/verification
-
-
-(en) Certificate management
-
-(en) Certificate lookup
-
-(en) Certificate groups
-
-(en) Smartcard management
-
-(en) Compliance
-
-(en) Other features
-
---- Bug Fixes ---
-
+See https://dev.gnupg.org/T8028
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.5.16
-Kleopatra:      3.3.0
+Kleopatra:      gpg4win-5.0.0
 GpgOL:          2.7.0
 GpgEX:          1.1.0
+Libgcrypt:      1.11.2
 Kompendium DE:  4.0.1
 Compendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
