@@ -44,15 +44,22 @@ ${EndIf}
   Delete "$INSTDIR\bin\gpgme-mozilla.json"
   Delete "$INSTDIR\bin\gpgme-edge.json"
 
-  DeleteRegKey SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson"
-  DeleteRegKey SHCTX "Software\Microsoft\Edge\NativeMessagingHosts\gpgmejson"
-  DeleteRegKey SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson"
-
   SetRegView 64
   DeleteRegKey SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson"
   DeleteRegKey SHCTX "Software\Microsoft\Edge\NativeMessagingHosts\gpgmejson"
   DeleteRegKey SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson"
+
   SetRegView 32
+  DeleteRegKey SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson"
+  DeleteRegKey SHCTX "Software\Microsoft\Edge\NativeMessagingHosts\gpgmejson"
+  DeleteRegKey SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson"
+
+!ifdef IS_W64_INST
+  # Go back to the regview according to our packaging.
+  SetRegView 64
+!else
+  SetRegView 32
+!endif
 
 !endif
 SectionEnd
