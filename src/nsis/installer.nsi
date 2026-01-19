@@ -726,8 +726,8 @@ ${Endif}
   ${EndIf}
 !endif
 
-  ${MementoSectionRestore}
   SetRegView 64
+  ${MementoSectionRestore}
   Call CalcDefaults
   Call CalcDepends
   Call CheckOtherGnuPGApps
