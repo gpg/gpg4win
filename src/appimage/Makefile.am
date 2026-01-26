@@ -85,7 +85,7 @@ appimage_kdepkgs = gpgmepp qgpgme \
 		   kjobwidgets libical kcalendarcore mimetreeparser \
 		   kcolorscheme sonnet ktextwidgets kauth kstatusnotifieritem \
 		   threadweaver kparts poppler okular \
-		   gpgmepp qgpgme libqrencode \
+		   libqrencode \
 		   prison gpgpass zstd pcre2 \
 		   qtbase qttools qtsvg qttranslations qtwayland \
 		   plasma-wayland-protocols breeze
