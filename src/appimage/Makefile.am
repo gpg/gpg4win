@@ -97,7 +97,7 @@ define appimage_pkg_wayland_protocols_post_install
 	cd ..; \
 	mv $$$${pkgidir}/$$$${pkg_version} $$$${pkgsdir};\
 	cd $$$${pkgsdir}; \
-	meson setup --prefix $$$${pkgidir} build; \
+	meson setup --prefix $$$${pkgidir} build -Dtests=false; \
 	cd build; \
 	ninja && ninja install; \
 	cd $$$${pkgidir}; \

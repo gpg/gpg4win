@@ -510,8 +510,8 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([qttranslations], [qtsvg qttools])
     APPIMAGE_KDEPKG([qtsvg], [qtbase])
     APPIMAGE_KDEPKG([qtwayland], [qtbase])
-    APPIMAGE_KDEPKG([wayland-protocols], [qtwayland])
-    APPIMAGE_KDEPKG([plasma-wayland-protocols], [wayland-protocols])
+    APPIMAGE_KDEPKG([wayland-protocols])
+    APPIMAGE_KDEPKG([plasma-wayland-protocols], [wayland-protocols extra-cmake-modules])
     APPIMAGE_KDEPKG([breeze], [qtbase kcoreaddons kconfig kconfigwidgets kguiaddons kiconthemes kwindowsystem])
 
     # KDE Frameworks Tier 1
