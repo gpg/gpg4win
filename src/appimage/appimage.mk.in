@@ -299,6 +299,7 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 			-DCMAKE_PREFIX_PATH="$(idir)" \
 			-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 			-DBUILD_TESTING=False \
+			-DBUILD_PYTHON_BINDINGS=OFF \
 			$$$${pkgcfg} $$$${pkgextracflags} \
 			"../$$$${pkg_version}$$$${pkg_conf_subdir}" | \
 		tee "$$$${pkglogdir}/configure.log")
