@@ -486,6 +486,8 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([freetype])
     APPIMAGE_SPKG([sqlite])
     APPIMAGE_KDEPKG([libqrencode])
+    # poppler requires tiff >= 4.3
+    APPIMAGE_KDEPKG([tiff])
     APPIMAGE_SPKG([xcb-util-cursor])
 
     APPIMAGE_SPKG([libgpg-error])
@@ -561,7 +563,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([kleopatra], [mimetreeparser gnupg qgpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
 
     # Okular/Poppler
-    APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype])
+    APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff])
     APPIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
 
     # Gpgpass

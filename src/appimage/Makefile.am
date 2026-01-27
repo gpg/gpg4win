@@ -88,7 +88,7 @@ appimage_kdepkgs = gpgmepp qgpgme \
 		   libqrencode \
 		   prison gpgpass \
 		   qtbase qttools qtsvg qttranslations qtwayland \
-		   plasma-wayland-protocols breeze
+		   plasma-wayland-protocols breeze tiff
 
 appimage_bpkgs = wayland-protocols
 
