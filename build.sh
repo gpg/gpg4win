@@ -394,7 +394,7 @@ fi
 # Determine the needed docker image
 if [ "$appimage" = "yes" ]; then
     cmd=/src/src/appimage/build-appimage.sh
-    docker_image=g10-build-appimage:sles15
+    docker_image=g10-build-appimage:almalinux810
     dockerfile=${srcdir}/docker/appimage
 else
     # We will run our self again in the docker image.

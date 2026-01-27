@@ -21,68 +21,97 @@
 #
 # SPDX-License-Identifier: GPL-2.0+
 
-FROM registry.suse.com/suse/sle15:latest
-RUN zypper --non-interactive update \
-    && zypper --non-interactive install \
-        # Build basics
-        flex bison gperf awk patch wget automake rsync xz bzip2 \
-        gettext gettext-tools gettext-runtime meson ninja \
-        which file git-core cmake gcc14 gcc14-c++ glibc-devel-static pkg-config \
-        glibc-locale-base \
-        # Python
-        python311 python311-lxml \
-        # Libraries
-        alsa-devel \
+FROM almalinux:8.10
+
+# Enable the PowerTools repo (needed at least for gperf)
+RUN dnf install -y 'dnf-command(config-manager)' \
+    && dnf config-manager --set-enabled powertools \
+    && dnf update -y \
+    && dnf clean all
+
+# Package                    Needed by
+# boost-devel                libkleo
+# file                       appimagetool
+# glibc-gconv-extra          iconv.m4 (when checking for working iconv which needs the eucJP codec)
+# hunspell-devel             sonnet
+# libmount-devel             solid
+# meson                      wayland-protocols
+# openjpeg2-devel            poppler
+# python3.11-lxml            breeze-icons
+# wget                       docker build to download linuxdeploy (see below)
+# xz-devel                   karchive
+RUN dnf install -y \
         at-spi2-core-devel \
-        cups-devel \
+        bison \
         boost-devel \
+        brotli-devel \
+        bzip2 \
+        bzip2-devel \
+        cmake \
+        cups-devel \
+        dbus-devel \
+        file \
+        flex \
         fontconfig-devel \
+        gcc-toolset-14 \
+        gettext \
+        git-core \
+        git-lfs \
+        glibc-gconv-extra \
+        gnutls-devel \
+        gperf \
         hunspell-devel \
-        openssl-devel \
-        libtiff-devel \
-        libusb-devel \
-        libicu-devel \
-        libmount-devel \
-        libudev-devel \
-        libSM-devel \
+        iso-codes-devel \
         libX11-devel \
-        libX11-xcb1 \
-        libxcb-devel \
+        libX11-xcb \
         libXcomposite-devel \
         libXcursor-devel \
         libXi-devel \
-        libxkbcommon-devel \
-        libxkbcommon-x11-devel \
         libXrandr-devel \
         libXtst-devel \
-#         Mesa-libEGL-devel \
-        Mesa-libGL-devel \
+        libicu-devel \
+        libjpeg-turbo-devel \
+        libmount-devel \
+        libpng-devel \
+        libusbx-devel \
+        libxcb-devel \
+        libxkbcommon-devel \
+        libxkbcommon-x11-devel \
+        libzstd-devel \
+        mesa-libEGL-devel \
+        mesa-libGL-devel \
+        mesa-vulkan-devel \
+        meson \
         openjpeg2-devel \
-        openldap2-devel \
+        openldap-devel \
+        openssl-devel \
+        patch \
+        pcre2-devel \
+        python3.11-lxml \
         readline-devel \
-        vulkan-devel \
+        rsync \
+        systemd-devel \
         vulkan-headers \
         wayland-devel \
+        wget \
+        xcb-util-devel \
+        xcb-util-image \
         xcb-util-image-devel \
+        xcb-util-keysyms \
         xcb-util-keysyms-devel \
+        xcb-util-renderutil \
         xcb-util-renderutil-devel \
+        xcb-util-wm \
         xcb-util-wm-devel \
-        xcb-proto-devel \
-        xkbcomp-devel \
+        xorg-x11-util-macros \
         xz-devel \
+        zlib \
         zlib-devel \
-    # cleanup to ensure we don't leave behind anything that doesn't need to be in the image
-    && zypper --non-interactive clean -a \
-    # make sure the appropriate gcc/python versions are the defaults
-    && alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 1 \
-    && alternatives --install /usr/bin/cc cc /usr/bin/gcc-14 1 \
-    && alternatives --install /usr/bin/cpp cpp /usr/bin/g++-14 1 \
-    && alternatives --install /usr/bin/g++ gcc++ /usr/bin/g++-14 1 \
-    && alternatives --install /usr/bin/python python /usr/bin/python3.11 1 \
-    && alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
+    && dnf clean all
 
 # download the necessary linuxdeploy AppImages and extract them because we have no fuse in the container
-RUN mkdir -p /tmp/download \
+RUN set -x \
+    && mkdir -p /tmp/download \
     && cd /tmp/download \
     && wget --no-verbose https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20240109-1/linuxdeploy-x86_64.AppImage \
     && wget --no-verbose https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/1-alpha-20240109-1/linuxdeploy-plugin-qt-x86_64.AppImage \

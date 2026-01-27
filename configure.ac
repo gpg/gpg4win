@@ -482,9 +482,9 @@ fi
 if test "$build_appimage" = yes ; then
     appimage_dup_sources=""
 
+    # poppler requires freetype >= 2.11
     APPIMAGE_SPKG([freetype])
     APPIMAGE_SPKG([sqlite])
-    APPIMAGE_SPKG([jpeg])
     APPIMAGE_KDEPKG([libqrencode])
     APPIMAGE_SPKG([xcb-util-cursor])
 
@@ -505,9 +505,7 @@ if test "$build_appimage" = yes ; then
     # Qt related stuff.
     # (dependency on gnupg is only to make sure gnupg is build first so
     #  that we don't need to wait for the long running Qt builds)
-    APPIMAGE_KDEPKG([zstd])
-    APPIMAGE_KDEPKG([pcre2])
-    APPIMAGE_KDEPKG([qtbase], [jpeg zstd freetype pcre2 gnupg xcb-util-cursor])
+    APPIMAGE_KDEPKG([qtbase], [freetype gnupg xcb-util-cursor])
     APPIMAGE_KDEPKG([qttools], [qtbase])
     APPIMAGE_KDEPKG([qttranslations], [qtsvg qttools])
     APPIMAGE_KDEPKG([qtsvg], [qtbase])

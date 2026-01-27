@@ -69,7 +69,7 @@ $(info -------------------------------------------------)
 # Source packages for the AppImage (see also ../src/Makefile.am)
 appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
-		 freetype jpeg libpng xcb-util-cursor
+		 freetype libpng xcb-util-cursor
 
 
 appimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
@@ -86,7 +86,7 @@ appimage_kdepkgs = gpgmepp qgpgme \
 		   kcolorscheme sonnet ktextwidgets kauth kstatusnotifieritem \
 		   threadweaver kparts poppler okular \
 		   libqrencode \
-		   prison gpgpass zstd pcre2 \
+		   prison gpgpass \
 		   qtbase qttools qtsvg qttranslations qtwayland \
 		   plasma-wayland-protocols breeze
 
@@ -231,9 +231,6 @@ appimage_pkg_kwindowsystem_configure = -DKWINDOWSYSTEM_QML=OFF
 
 appimage_pkg_xcb_util_cursor_configure = --enable-static --disable-shared
 appimage_pkg_xcb_util_cursor_extracflags = -fPIC
-
-appimage_pkg_zstd_conf_subdir = /build/cmake
-appimage_pkg_zstd_configure = -DZSTD_BUILD_PROGRAMS=OFF
 
 ########################################################################
 

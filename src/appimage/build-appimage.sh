@@ -51,6 +51,7 @@ fi
 
 # The actual build
 cd ${BUILDROOT}
+source /opt/rh/gcc-toolset-14/enable
 ${SRCDIR}/configure --enable-appimage --with-playground=${BUILDROOT}
 make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT}
 
