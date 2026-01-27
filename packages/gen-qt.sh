@@ -36,6 +36,7 @@ QT="qtbase
     qtsvg
     qttranslations
     qthttpserver
+    qtwayland
     qtwebsockets"
 
 if [ -n "$2" ]; then

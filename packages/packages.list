@@ -290,12 +290,12 @@ file 6.10/6.10.1/submodules/qtwebsockets-everywhere-src-6.10.1.tar.xz
 chk 272ac7e94418e2b13b3384d73ba89dbd6b746d7661b44dce906f8bfc0795bd01
 
 # qtwayland
-# last changed: 2025-02-14
-# by: carl
-# verified: HTTPS https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qtwayland-everywhere-src-6.7.3.tar.xz.sha256
-name qtwayland-6.7.3.tar.xz
-file 6.7/6.7.3/submodules/qtwayland-everywhere-src-6.7.3.tar.xz
-chk e326c7ceb628f503bfc20577d5d2df9690ee10db08eb940cb80c759a6972b2b5
+# last changed: 2026-01-27
+# by: ik
+# verified: sha256 in *.mirrorlist file
+name qtwayland-6.10.1.tar.xz
+file 6.10/6.10.1/submodules/qtwayland-everywhere-src-6.10.1.tar.xz
+chk 49bf6db800227a6b2c971f4c5d03dd1e81297e7ffb296ce4a96437304f27cb13
 
 # wayland-protocols
 # last changed: 2025-02-14
