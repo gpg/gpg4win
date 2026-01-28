@@ -58,12 +58,15 @@ name jpeg-9e.tar.gz
 file files/jpegsrc.v9e.tar.gz
 chk  4077d6a6a75aeb01884f708919d25934c93305e49f7e3f36db9129320e6f4f3d
 
-# last-changed: 2023-05-03
-# by ah
-# verified: SIG B1FA7D81EEB8E66399178B9733EBBFC47B3DD87D
+# last-changed: 2026-01-28
+# by ik
+# verified: checked signature tiff-4.7.1.tar.xz.sig
+#           gpg: Signature made Fr 12 Sep 2025 13:25:03 CEST
+#           gpg:                using RSA key B1FA7D81EEB8E66399178B9733EBBFC47B3DD87D
+#           gpg: Good signature from "Even Rouault <even.rouault@spatialys.com>" [unknown]
 server https://download.osgeo.org
-file libtiff/tiff-4.5.0.tar.xz
-chk dafac979c5e7b6c650025569c5a4e720995ba5f17bc17e6276d1f12427be267c
+file libtiff/tiff-4.7.1.tar.xz
+chk b92017489bdc1db3a4c97191aa4b75366673cb746de0dce5d7a749d5954681ba
 
 server https://github.com
 

@@ -229,6 +229,12 @@ appimage_pkg_ktextwidgets_configure = -DWITH_TEXT_TO_SPEECH=OFF
 appimage_pkg_kio_configure = -DWITH_WAYLAND=OFF
 appimage_pkg_kwindowsystem_configure = -DKWINDOWSYSTEM_QML=OFF
 
+appimage_pkg_tiff_configure = \
+    -Dtiff-tools=OFF \
+    -Dtiff-tests=OFF \
+    -Dtiff-contrib=OFF \
+    -Dtiff-docs=OFF
+
 appimage_pkg_xcb_util_cursor_configure = --enable-static --disable-shared
 appimage_pkg_xcb_util_cursor_extracflags = -fPIC
 
