@@ -69,7 +69,7 @@ $(info -------------------------------------------------)
 # Source packages for the AppImage (see also ../src/Makefile.am)
 appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
-		 freetype libpng xcb-util-cursor
+		 freetype xcb-util-cursor
 
 
 appimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
