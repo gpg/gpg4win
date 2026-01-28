@@ -558,7 +558,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([kmbox], [kmime])
     APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion qgpgme])
 
-    APPIMAGE_KDEPKG([kleopatra], [mimetreeparser gnupg qgpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
+    APPIMAGE_KDEPKG([kleopatra], [mimetreeparser qgpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
 
     # Okular/Poppler
     APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff])
