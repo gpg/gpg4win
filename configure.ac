@@ -505,9 +505,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([paperkey])
 
     # Qt related stuff.
-    # (dependency on gnupg is only to make sure gnupg is build first so
-    #  that we don't need to wait for the long running Qt builds)
-    APPIMAGE_KDEPKG([qtbase], [freetype gnupg xcb-util-cursor])
+    APPIMAGE_KDEPKG([qtbase], [freetype xcb-util-cursor])
     APPIMAGE_KDEPKG([qttools], [qtbase])
     APPIMAGE_KDEPKG([qttranslations], [qtsvg qttools])
     APPIMAGE_KDEPKG([qtsvg], [qtbase])
