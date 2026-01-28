@@ -159,7 +159,9 @@ else
     # Restore the Breeze icons that may have been replaced in a previous build
     for f in breeze/apps/22/kleopatra-symbolic.svg breeze/apps/48/kleopatra.svg \
              breeze-dark/apps/22/kleopatra-symbolic.svg breeze-dark/apps/48/kleopatra.svg; do
-        cp -av ${INSTDIR}/share/icons/$f ${APPDIR}/usr/share/icons/$f
+        # copy files only if they are not hard-linked; otherwise, cp complains that the files are the same file
+        test ${INSTDIR}/share/icons/$f -ef ${APPDIR}/usr/share/icons/$f \
+            || cp -av ${INSTDIR}/share/icons/$f ${APPDIR}/usr/share/icons/$f
     done
 fi
 
