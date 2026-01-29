@@ -175,7 +175,10 @@ $(stampdir)/stamp-$(1)-04-install: $(stampdir)/stamp-$(1)-03-make
 $(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
 	($(call SETVARS,$(1));				\
 	 set -x;					\
-	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/" )
+	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/"; \
+	 for pc in "$(idir)"/lib/pkgconfig/*.pc; do \
+	   sed -i "s;$$$${pkgidir};$(idir);" "$$$${pc}"; \
+	 done )
 	touch $(stampdir)/stamp-$(1)-05-rsync
 
 $(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
@@ -327,7 +330,10 @@ $(stampdir)/stamp-$(1)-04-install: $(stampdir)/stamp-$(1)-03-make
 $(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
 	($(call SETVARS,$(1));				\
 	 set -x;					\
-	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/" )
+	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/"; \
+	 for pc in "$(idir)"/lib/pkgconfig/*.pc; do \
+	   sed -i "s;$$$${pkgidir};$(idir);" "$$$${pc}"; \
+	 done )
 	touch $(stampdir)/stamp-$(1)-05-rsync
 
 $(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
