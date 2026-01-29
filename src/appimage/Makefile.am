@@ -160,8 +160,6 @@ appimage_pkg_breeze_configure = \
     -DWITH_DECORATIONS=OFF \
     -DCMAKE_DISABLE_FIND_PACKAGE_KF6KCMUtils=ON
 
-appimage_pkg_karchive_configure = -DWITH_BZIP2=OFF
-
 appimage_pkg_kcompletion_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
 
