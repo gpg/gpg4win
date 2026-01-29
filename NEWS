@@ -3,14 +3,15 @@
 # The version numbers given are used by gpg4win and GnuPG [VS-]Desktop
 
 
-Noteworthy changes in Version 4.4.1 (unreleased)
+Noteworthy changes in Version 3.3.5 (unreleased)
 ------------------------------------------------
-Additionally, the Noteworthy changes in Version 3.3.0 (of VSD) are new
-compared to Version 4.4.0 (of Gpg4win).
 
---- Bug Fixes ---
-
-(en) Kleopatra: Keyresolver GpgOL, groups are resolved again [T7484]
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.52
+Kleopatra:      3.3.0
+GpgOL:          2.7.1
+GpgEX:          1.0.10
+~~~~~~~~~~~~~~~
 
 
 Noteworthy changes in Version 3.3.4 (2025-12-01)
