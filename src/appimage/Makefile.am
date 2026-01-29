@@ -128,12 +128,13 @@ appimage_pkg_qtbase_configure = \
         -DFEATURE_sql_mysql=OFF \
         -DFEATURE_sql_odbc=OFF \
         -DFEATURE_sql_psql=OFF \
-        -DFEATURE_qt_freetype=ON \
-        -DFEATURE_system_pcre=ON \
+        -DFEATURE_system_freetype=ON \
+        -DFEATURE_system_pcre2=ON \
         -DFEATURE_system_jpeg=ON \
-        -DFEATURE_system_zstd=ON \
+        -DFEATURE_system_zlib=ON \
         -DFEATURE_xcb=ON \
         -DFEATURE_use_gold_linker_alias=OFF \
+        -DFEATURE_wayland_server=OFF \
         -DCMAKE_MESSAGE_LOG_LEVEL=STATUS \
         -DCMAKE_VERBOSE_MAKEFILE=ON
 
