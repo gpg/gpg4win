@@ -170,8 +170,6 @@ appimage_pkg_kconfigwidgets_configure = \
 
 appimage_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
 
-appimage_pkg_kcrash_configure = -DWITH_OPENGL=OFF
-
 appimage_pkg_kguiaddons_configure = -DWITH_WAYLAND=OFF
 
 appimage_pkg_sonnet_configure = -DSONNET_USE_QML=OFF
@@ -189,13 +187,7 @@ appimage_pkg_kxmlgui_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF \
     -DFORCE_DISABLE_KGLOBALACCEL=ON
 
-appimage_pkg_libkleo_configure = \
-    -DBOOST_INCLUDEDIR=/usr/include/boost169 \
-    -DBOOST_LIBRARYDIR=/usr/lib64/boost169
-
 appimage_pkg_kleopatra_configure = \
-    -DBOOST_INCLUDEDIR=/usr/include/boost169 \
-    -DBOOST_LIBRARYDIR=/usr/lib64/boost169 \
     -DDISABLE_KWATCHGNUPG=ON \
     -DRELEASE_SERVICE_VERSION=AppImage-$(VERSION)
 
@@ -212,8 +204,7 @@ appimage_pkg_okular_configure = \
     -DFORCE_NOT_REQUIRED_DEPENDENCIES="PlasmaActivities\;KF6Wallet\;KF6Purpose\;Qt6TextToSpeech\;LibZip\;KF6DocTools\;Phonon4Qt6\;LibSpectre\;KExiv2Qt6\;CHM\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt6Qml\;Qt6DBus\;KF6Pty"
 
 appimage_pkg_libical_configure = \
-    -DICAL_GLIB=false \
-    -DENABLE_GTK_DOC=false
+    -DICAL_GLIB=OFF
 
 appimage_pkg_prison_configure = \
     -DWITH_QUICK=OFF \
@@ -223,11 +214,13 @@ appimage_pkg_kiconthemes_configure = \
     -DKICONTHEMES_USE_QTQUICK=OFF
 
 appimage_pkg_kcoreaddons_configure = -DKCOREADDONS_USE_QML=OFF
+
 appimage_pkg_kcalendarcore_configure = -DUSE_QML=OFF
 
 appimage_pkg_ktextwidgets_configure = -DWITH_TEXT_TO_SPEECH=OFF
 
 appimage_pkg_kio_configure = -DWITH_WAYLAND=OFF
+
 appimage_pkg_kwindowsystem_configure = -DKWINDOWSYSTEM_QML=OFF
 
 appimage_pkg_tiff_configure = \
