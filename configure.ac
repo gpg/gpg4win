@@ -497,7 +497,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([libksba], [libgpg-error])
     APPIMAGE_SPKG([ntbtls], [libgcrypt libksba])
     APPIMAGE_SPKG([gnupg], [libgpg-error libassuan npth libgcrypt libksba sqlite ntbtls])
-    APPIMAGE_SPKG([pinentry], [qtbase])
+    APPIMAGE_SPKG([pinentry], [qtbase kguiaddons kwindowsystem])
 
     APPIMAGE_SPKG([gpgme], [libgpg-error libassuan])
     APPIMAGE_KDEPKG([gpgmepp], [gpgme])
