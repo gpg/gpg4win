@@ -75,7 +75,7 @@ if [ $BUILDTYPE = vsd ]; then
 fi
 
 export PATH=/opt/linuxdeploy/usr/bin:$PATH
-export LD_LIBRARY_PATH=${INSTDIR}/lib:${INSTDIR}/lib64
+export LD_LIBRARY_PATH=${INSTDIR}/lib
 
 # tell the linuxdeploy qt-plugin where to find qmake
 export QMAKE=${INSTDIR}/bin/qmake
@@ -94,9 +94,9 @@ mkdir -p ${INSTDIR}/plugins/sqldrivers
 # we don't have to take care of this ourselves
 mkdir -p ${APPDIR}/usr/lib/plugins
 for d in kf6 kiconthemes6 styles; do
-    rsync -av --delete --omit-dir-times ${INSTDIR}/lib64/plugins/${d}/ ${APPDIR}/usr/lib/plugins/${d}/
+    rsync -av --delete --omit-dir-times ${INSTDIR}/lib/plugins/${d}/ ${APPDIR}/usr/lib/plugins/${d}/
 done
-rsync -av --delete --omit-dir-times ${INSTDIR}/lib64/plugins/okular_generators/okularGenerator_poppler.so ${APPDIR}/usr/lib/plugins/okular_generators/
+rsync -av --delete --omit-dir-times ${INSTDIR}/lib/plugins/okular_generators/okularGenerator_poppler.so ${APPDIR}/usr/lib/plugins/okular_generators/
 
 cd /build
 # Remove existing AppRun and wrapped AppRun, that may be left over
