@@ -168,6 +168,11 @@ else ifeq ($(IS_VSD_BUILD),yes)
   KLEOPATRA_ORGANIZATION_NAME := GnuPG VS-Desktop
   KLEOPATRA_ICON_DIR :=
 else
+  # Although we don't build MSIs for Gpg4win it is better to set
+  # the macros to help in tracking down build errors.
+  MSI_FNAME_PREFIX := Gpg4win
+  MSI_PRODUCT_NAME := Gpg4win
+  GNUPG_INSTALL_DIR_REGISTRY_KEY := Install+Directory
   KLEOPATRA_ORGANIZATION_DOMAIN := gpg4win.org
   KLEOPATRA_ORGANIZATION_NAME := Gpg4win
 endif
