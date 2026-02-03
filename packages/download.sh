@@ -52,8 +52,6 @@ Options:
         [--dry-run]  Do not download - just check
         [--clean]    Do not download but remove downloaded files.
         [--update]   Remove old files with the same name.
-        [--gnupg22]  Build using GnuPG 2.2
-        [--gnupg26]  Build using GnuPG 2.6 (default)
 EOF
     exit $1
 }
@@ -65,7 +63,7 @@ ipvx=
 clean=no
 dryrun=no
 update=no
-gnupgtag=gnupg26
+gnupgtag=
 #keep_list=no
 #sig_check=yes
 while [ $# -gt 0 ]; do
@@ -108,12 +106,6 @@ while [ $# -gt 0 ]; do
         --update|-u)
             update=yes
             ;;
-        --gnupg22)
-            gnupgtag=gnupg22
-            ;;
-        --gnupg26)
-            gnupgtag=gnupg26
-            ;;
 	*)
 	    usage 1 1>&2
 	    ;;
@@ -149,6 +141,22 @@ WGET="wget $ipvx"
 #fi
 
 packages="packages.list"
+
+buildtype="$(head -1 ./BUILDTYPE 2>/dev/null|| echo default)"
+[ "$buildtype" = default ] && buildtype=gpg4win
+case "$buildtype" in
+    vsd3) gnupgtag=gnupg22 ;;
+    vsd)  gnupgtag=gnupg26 ;;
+    gpd)  gnupgtag=gnupg26 ;;
+    gpg4win|default)  gnupgtag=gnupg26 ;;
+    *)
+        echo "No valid BUILDTYPE file" >&2
+        echo "Put vsd3, vsd, gpd or gpg4win into ./BUILDTYPE" >&2
+        exit 1
+        ;;
+esac
+echo "configured for \"$buildtype\"" >&2
+
 
 actually_downloaded=
 

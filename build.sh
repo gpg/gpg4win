@@ -31,9 +31,6 @@ Build Gpg4win in a docker containter.
 
 Options:
         --appimage      Build the AppImage instead of the NSIS installer.
-        --gnupg22       Use GnuPG 2.2
-        --gnupg24       Use GnuPG 2.4
-        --gnupg26       Use GnuPG 2.6 (default)
         --w32           Use 32 bit Windows as primary host arch
         --clean         Remove a pre-existing build directory
         --dist          Create a distributable tarball
@@ -86,7 +83,6 @@ commandline="$0 $@"
 
 # Preset variables.
 indocker="no"
-gnupgtag="gnupg26"
 shell="no"
 clean="no"
 dist="no"
@@ -129,9 +125,6 @@ while [ $# -gt 0 ]; do
 
     case "$1" in
         --appimage) appimage="yes";;
-        --gnupg22) gnupgtag="gnupg22";;
-        --gnupg24) gnupgtag="gnupg24";;
-        --gnupg26) gnupgtag="gnupg26";;
         --shell) shell="yes";;
         --clean|-c) clean="yes";;
         --dist) dist="yes";;
@@ -288,7 +281,7 @@ download_packages() {
     fi
 
     echo "$PGM: Downloading packages"
-    ./download.sh $quiet --$gnupgtag --update
+    ./download.sh $quiet --update
     echo >&2 "$PGM: downloading done"
 
     cd ..

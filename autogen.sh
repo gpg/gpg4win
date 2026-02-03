@@ -214,6 +214,7 @@ fi
 # Source our configuration
 if [ -f "${tsdir}/autogen.rc" ]; then
     . "${tsdir}/autogen.rc"
+    [ "$autogen_use_force" = yes ] && FORCE=" --force"
 fi
 
 # Source optional site specific configuration

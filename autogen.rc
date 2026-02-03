@@ -5,6 +5,8 @@ patches_to="https://bugs.gnupg.org"
 # We don't want the maintainer mode due to the docker build
 # with the source directory mounted read-only
 maintainer_mode_option=off
+# We always want to use the force option.
+autogen_use_force=yes
 
 case "$myhost:$myhostsub" in
   w32:64)

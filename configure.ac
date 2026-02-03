@@ -22,39 +22,42 @@ AC_PREREQ(2.59)
 min_automake_version="1.9.3"
 
 # To build a release you need to create a tag with the version number
-# (git tag -s gpg4win-2.x.y) and run "./autogen.sh --force".  Please
+# (git tag -s gpg4win-z.x.y) and run "./autogen.sh --force".  Please
 # bump the version number immediately after the release and do another
-# commit and push so that the git magic is able to work.
-# BUILDTYPE can be used to build the VSD or GPD versions.  Note that
-# IS_VSD_BUILD is set along with IS_GPD_BUILD.
+# commit and push so that the git magic is able to work.  BUILDTYPE
+# defines what to build.  It may be "vsd3" for the old VSD versions,
+# "vsd" for the new (4.x) VSD versions, "gpd" for for GnuPG Desktop,
+# or "gpg4win" for Gpg4win.  Note that IS_VSD_BUILD is always set
+# along with IS_GPD_BUILD.
 m4_define([mym4_package],[gpg4win])
 m4_define([mym4_isvsd],[no])
 m4_define([mym4_isgpd],[no])
-m4_define([mym4_isv3build], m4_if(m4_esyscmd([ls packages/gnupg-2.*.tar.* | \
-                                             head -1 | cut -d. -f2 | \
-                                             tr -d '\n']),
-                                             [2],  [yes], [no]))
+m4_define([mym4_isvsd3build],[no])
 m4_define([mym4_buildtype],
            m4_chomp_all(m4_esyscmd([(cat packages/BUILDTYPE 2>/dev/null\
                                                       || echo default)])))
-m4_if(mym4_buildtype,[vsd],[m4_define([mym4_isvsd],[yes])
-                            m4_define([mym4_isv3build],[yes]]))
+m4_if(mym4_buildtype,[vsd3],[m4_define([mym4_isvsd],[yes])
+                             m4_define([mym4_isvsd3build],[yes])],
+       mym4_buildtype,[vsd],[m4_define([mym4_isvsd],[yes])],
+       mym4_buildtype,[gpd],[m4_define([mym4_isvsd],[yes])
+                             m4_define([mym4_isgpd],[yes])])
 
-# For VSD with GnuPG 2.6 we will use version 4.x
+# For VSD with GnuPG 2.2 we use version 3.x
+# For VSD with GnuPG 2.6 we use version 4.x
 # For GPD and Gpg4win with GnuPG 2.6 we use version 5.x
-m4_if(mym4_buildtype,vsd,
+# Note that the versions numbers are set for the next release.  Right
+# after the replease they are bumped up for the next release.
+m4_if(mym4_buildtype,[vsd3],
+      [m4_define([mym4_major],[3])
+       m4_define([mym4_minor],[4])
+       m4_define([mym4_micro],[0])],
+      mym4_buildtype,[vsd],
       [m4_define([mym4_major],[4])
        m4_define([mym4_minor],[0])
        m4_define([mym4_micro],[0])],
       [m4_define([mym4_major],[5])
        m4_define([mym4_minor],[0])
-       m4_define([mym4_micro],[1])])
-
-
-# We need to set isgpd only after having set the version number.
-m4_if(mym4_buildtype,[gpd],[m4_define([mym4_isvsd],[yes])
-                            m4_define([mym4_isgpd],[yes])])
-
+       m4_define([mym4_micro],[2])])
 
 # Below is m4 magic to extract and compute the git revision number,
 # the decimalized short revision number, a beta version string and a
@@ -86,6 +89,9 @@ GIT_BETASTRING=mym4_betastr
 IS_BETA_BUILD=mym4_isbeta
 IS_VSD_BUILD=mym4_isvsd
 IS_GPD_BUILD=mym4_isgpd
+IS_VSD3_BUILD=mym4_isvsd3build
+MSI_VERSIONSTRING=mym4_major.mym4_minor.m4_if(mym4_isbeta,[yes],[90],mym4_micro)
+
 
 # Variables for the version info
 PRODUCT_NAME=m4_if(mym4_isgpd, [yes], ["GnuPG Desktop"],
@@ -112,6 +118,8 @@ AC_SUBST(GIT_BETASTRING)
 AC_SUBST(IS_BETA_BUILD)
 AC_SUBST(IS_VSD_BUILD)
 AC_SUBST(IS_GPD_BUILD)
+AC_SUBST(IS_VSD3_BUILD)
+AC_SUBST(MSI_VERSIONSTRING)
 AC_SUBST(BUILD_COMMITID)
 
 # Generate extended version information.  Note, that for NSIS use we
@@ -149,6 +157,9 @@ AC_SUBST(emacs_local_vars_begin, ['Local Variables:'])
 AC_SUBST(emacs_local_vars_read_only, ['buffer-read-only: t'])
 AC_SUBST(emacs_local_vars_end, ['End:'])
 
+# The next two macro proive --enable-gpg4win and --enable-appimage
+# configure options and store them in $build_gpg4win or $build_appimage.
+# These options are used by autogen.rc
 GPG4WIN_BUILD_RELEASE(gpg4win, no)
 GPG4WIN_BUILD_RELEASE(appimage, no)
 
@@ -191,12 +202,6 @@ AC_ARG_ENABLE(ninja,
 #
 # Set variables for use by automake makefiles.
 #
-if test -f /src/packages/BUILDTYPE ; then
-   dockerbuild=yes
-else
-   dockerbuild=no
-fi
-AM_CONDITIONAL(DOCKERBUILD,    test "$dockerbuild" = "yes")
 AM_CONDITIONAL(BUILD_GPG4WIN,  test "$build_gpg4win" = "yes")
 AM_CONDITIONAL(BUILD_APPIMAGE, test "$build_appimage" = "yes")
 AM_CONDITIONAL(BUILD_W64_COND, test "$BUILD_W64" = "yes")
@@ -350,11 +355,7 @@ AC_SUBST(PLAYGROUND)
 # NSIFILES := The to-be generated translation files in the NSI format.
 #             (w/o directory)
 #
-if test $dockerbuild = yes ; then
-  posrcdir=/src/po
-else
-  posrcdir="$TOPSRCDIR/po"
-fi
+posrcdir=/src/po
 LINGUAS=$(sed -e "/^#/d" -e "s/#.*//" "$posrcdir/LINGUAS" | xargs -- )
 POTFILES=$(for f in $(sed -e "/^#/d" -e "s/#.*//" "$posrcdir/POTFILES");\
            do echo "$posrcdir/$f"; done | xargs -- )
@@ -661,6 +662,7 @@ fi
 echo -n "
         $PACKAGE_NAME-$PACKAGE_VERSION prepared for make
 
+        MSI version ..: ${MSI_VERSIONSTRING}
         Revision .....: ${GIT_REVISION}  (${GIT_REVISION_DEC})
         Main platform : $host
         Extra platform: ${GPGEX_ADD_HOST}
