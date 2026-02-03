@@ -1793,11 +1793,18 @@ sub dump_single_custom {
     my ($workdir) = @_;
     my $custom_name = basename($workdir);
     my $fname;
+    my $gnupgdatafolder
 
     $fname = "$workdir/$custom_name.wxs";
     open (FILE, ">$fname" ) or die "creating '$fname' failed: $!\n";
 
     # print STDERR "dump_single: workdir='$workdir' custom_name='$custom_name'\n";
+
+    if ($::win64 eq 'yes' && $::product_name eq 'GnuPG VS-Desktop') {
+        gnupgdatafolder = "gnupg-vsd";
+    } else {
+        gnupgdatafolder = "gnupg";
+    }
 
     print FILE <<EOF;
 <?xml version="1.0" encoding="utf-8"?>
@@ -1807,7 +1814,7 @@ sub dump_single_custom {
      <Directory Id="CommonAppDataFolder">
         <Directory Id="CommonAppDataManufacturerFolder" Name="GNU">
           <Directory Id="AppDataSubFolder" Name="etc">
-            <Directory Id="GnuPGDataFolder" Name="gnupg">
+            <Directory Id="GnuPGDataFolder" Name="$gnupgdatafolder">
               <Directory Id="GnuPGTrustedCerts" Name="trusted-certs"/>
               <Directory Id="GnuPGExtraCerts" Name="extra-certs"/>
             </Directory>
