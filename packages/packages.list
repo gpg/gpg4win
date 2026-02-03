@@ -801,33 +801,6 @@ chk  1f955b980780a610f9550b1ef965a0f61a2c74f7b52f458a0dbf1c75b5627d93
 
 fi # gnupg22
 
-#
-# This is the GnuPG used for gpg4win 4.x
-#
-# last changed 2024-11-25
-# by builder
-# verified: [taken from buildtree]
-if gnupg = gnupg24
-
-name gnupg-2.4.7.tar.bz2
-file gnupg/gnupg-2.4.7.tar.bz2
-chk  7b24706e4da7e0e3b06ca068231027401f238102c41c909631349dcc3b85eb46
-
-name gnupg-w32-2.4.7_20241125-bin.exe
-file binary/gnupg-w32-2.4.7_20241125.exe
-chk  caf2904c02c02c94cbe137f01b63e5a43dbea92d27ea66e56f0af4af2c70c170
-
-name gnupg-w32-2.4.7_20241125-src.tar.xz
-file gnupg/gnupg-w32-2.4.7_20241125.tar.xz
-link gnupg-msi-2.4.7_20241125-src.tar.xz
-chk  24d506ebdeaaa3f6abb314c2e1462ee3f61aaf622ae3df9a2af8c398a0518faf
-
-name gnupg-msi-2.4.7_20241125-bin.wixlib
-file binary/gnupg-w32-2.4.7_20241125.wixlib
-chk  97a30e3477f258851d8def41e0330577b40a4c9628dd951cc1aae48af0c58146
-
-fi # gnupg24
-
 
 #
 # This is the GnuPG used for gpg4win 5.x and vsd 4.x

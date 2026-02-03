@@ -53,7 +53,6 @@ Options:
         [--clean]    Do not download but remove downloaded files.
         [--update]   Remove old files with the same name.
         [--gnupg22]  Build using GnuPG 2.2
-        [--gnupg24]  Build using GnuPG 2.4
         [--gnupg26]  Build using GnuPG 2.6 (default)
 EOF
     exit $1
@@ -111,9 +110,6 @@ while [ $# -gt 0 ]; do
             ;;
         --gnupg22)
             gnupgtag=gnupg22
-            ;;
-        --gnupg24)
-            gnupgtag=gnupg24
             ;;
         --gnupg26)
             gnupgtag=gnupg26
