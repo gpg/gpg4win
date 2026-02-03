@@ -381,6 +381,23 @@ if [ $withmsi = yes ]; then
             die=yes
 	fi
     done
+    # Also check that there is no cruft in the gnupg-vsd subdir.
+    # For now we check only the standard configuraion directories.
+    f="${srcdir}/src/gnupg-vsd/custom.mk"
+    if [ ! -f "$f" ]; then
+	echo >&2 "$PGM: error: '$f' does not exist."
+        die=yes
+    else
+        for x in Enterprise Standard Entry Testorg Desktop ; do
+            f="${srcdir}/src/gnupg-vsd/$x"
+            for y in VERSION VERSION.sig $x.wxs ; do
+                if [ -f "$f/$y" ]; then
+	            echo >&2 "$PGM: error: file '$f/$y' should not exist."
+                    die=yes
+                fi
+            done
+        done
+    fi
     [ $die = yes ] && exit 1
 fi
 
