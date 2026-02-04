@@ -309,6 +309,7 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	 $(CMAKE) 		\
 			-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
 			-DCMAKE_INSTALL_LIBDIR=lib \
+			-DKDE_INSTALL_LIBDIR=lib \
 			-DCMAKE_PREFIX_PATH="$(idir)" \
 			-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 			-DBUILD_TESTING=False \
