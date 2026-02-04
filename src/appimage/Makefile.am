@@ -186,8 +186,9 @@ appimage_pkg_kxmlgui_configure = \
     -DFORCE_DISABLE_KGLOBALACCEL=ON
 
 appimage_pkg_kleopatra_configure = \
-    -DDISABLE_KWATCHGNUPG=ON \
-    -DRELEASE_SERVICE_VERSION=AppImage-$(VERSION)
+    -DKLEOPATRA_LIST_AS_COMPONENT=ON \
+    -DKLEOPATRA_VERSION_STRING=$(KLEOPATRA_VERSION_STRING) \
+    -DDISABLE_KWATCHGNUPG=ON
 
 appimage_pkg_poppler_configure = \
     -DENABLE_BOOST=OFF \

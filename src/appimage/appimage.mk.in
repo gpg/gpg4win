@@ -22,6 +22,14 @@
 
 # No servicable parts below this line :)
 
+ifeq ($(IS_GPD_BUILD),yes)
+  KLEOPATRA_VERSION_STRING := Desktop-$(VERSION)
+else ifeq ($(IS_VSD_BUILD),yes)
+  KLEOPATRA_VERSION_STRING := VS-Desktop-$(VERSION)
+else
+  KLEOPATRA_VERSION_STRING := Gpg4win-$(VERSION)
+endif
+
 # We collect the names of all pkg files used.
 pkg_files =
 
