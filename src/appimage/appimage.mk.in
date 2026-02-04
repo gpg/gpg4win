@@ -286,6 +286,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	 $(call SETVARS,$(1));				\
 	 cd "$$$${pkgsdir}";				\
 	 if [ -e "CMakeLists.txt" ]; then \
+		sed -i 's/cmake_minimum_required(VERSION.*)/cmake_minimum_required(VERSION 3.26)/' CMakeLists.txt; \
 		sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "6.20.0")/' CMakeLists.txt; \
 		sed -i 's/find_package(ECM .* NO_MODULE)/find_package(ECM 6.20.0 NO_MODULE)/' CMakeLists.txt; \
 		sed -i 's/set(KF_DEP_VERSION.*)/set(KF_DEP_VERSION "6.20.0")/' CMakeLists.txt; \
