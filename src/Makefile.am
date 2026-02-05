@@ -42,6 +42,7 @@ EXTRA_DIST =  config.site                                      \
               icons/gpd/48-apps-kleopatra.png                  \
               icons/gpd/64-apps-kleopatra.png                  \
               icons/gpd/128-apps-kleopatra.png                 \
+              icons/gpd/256-apps-kleopatra.png                 \
               icons/gpd/1024-apps-kleopatra.png                \
               icons/gpd/sc-apps-kleopatra.svg                  \
               icons/kleopatra-vsd.svg                          \
