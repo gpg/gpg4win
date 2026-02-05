@@ -144,6 +144,7 @@ else
     OUTPUT=gpg4win-${myversion}-x86_64.AppImage
     echo "Packaging Gpg4win Appimage: $myversion"
     echo $myversion >${APPDIR}/Gpg4win-VERSION
+    kleopatra_icon=${SRCDIR}/src/icons/gpd/sc-apps-kleopatra.svg
 fi
 export OUTPUT
 

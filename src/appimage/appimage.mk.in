@@ -24,10 +24,13 @@
 
 ifeq ($(IS_GPD_BUILD),yes)
   KLEOPATRA_VERSION_STRING := Desktop-$(VERSION)
+  KLEOPATRA_ICON_DIR := $(tsdir)/src/icons/gpd
 else ifeq ($(IS_VSD_BUILD),yes)
   KLEOPATRA_VERSION_STRING := VS-Desktop-$(VERSION)
+  KLEOPATRA_ICON_DIR :=
 else
   KLEOPATRA_VERSION_STRING := Gpg4win-$(VERSION)
+  KLEOPATRA_ICON_DIR := $(tsdir)/src/icons/gpd
 endif
 
 # We collect the names of all pkg files used.

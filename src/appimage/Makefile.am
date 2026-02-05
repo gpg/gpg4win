@@ -188,6 +188,7 @@ appimage_pkg_kxmlgui_configure = \
 appimage_pkg_kleopatra_configure = \
     -DKLEOPATRA_LIST_AS_COMPONENT=ON \
     -DKLEOPATRA_VERSION_STRING=$(KLEOPATRA_VERSION_STRING) \
+    -DKLEOPATRA_ICON_DIR=$(KLEOPATRA_ICON_DIR) \
     -DDISABLE_KWATCHGNUPG=ON
 
 appimage_pkg_poppler_configure = \
