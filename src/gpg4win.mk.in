@@ -178,6 +178,7 @@ else
   KLEOPATRA_ORGANIZATION_DOMAIN := gpg4win.org
   KLEOPATRA_ORGANIZATION_NAME := Gpg4win
   KLEOPATRA_VERSION_STRING := Gpg4win-$(VERSION)
+  KLEOPATRA_ICON_DIR := $(tsdir)/src/icons/gpd
 endif
 
 
