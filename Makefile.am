@@ -43,8 +43,8 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              build-aux/git-log-footer build-aux/git-log-fix \
              build-aux/gpg-authcode-sign.sh \
              docker/appimage/Dockerfile \
-             docker/appimage/Dockerfile-CentOS7 \
-             docker/gpg4win-bookworm/Dockerfile \
+             docker/gpg4win-trixie/Dockerfile \
+             docker/gpg4win-trixie/mingw-pthread-run-reverse-order.patch \
              patches/breeze-icons/0001-Add-16x16-variant-of-data-success.patch \
              patches/breeze-icons/0001-Allow-to-disable-building-of-the-icon-library-native.patch \
              patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools-native.patch \
