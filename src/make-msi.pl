@@ -1793,7 +1793,7 @@ sub dump_single_custom {
     my ($workdir) = @_;
     my $custom_name = basename($workdir);
     my $fname;
-    my $gnupgdatafolder
+    my $gnupgdatafolder;
 
     $fname = "$workdir/$custom_name.wxs";
     open (FILE, ">$fname" ) or die "creating '$fname' failed: $!\n";
@@ -1801,9 +1801,9 @@ sub dump_single_custom {
     # print STDERR "dump_single: workdir='$workdir' custom_name='$custom_name'\n";
 
     if ($::win64 eq 'yes' && $::product_name eq 'GnuPG VS-Desktop') {
-        gnupgdatafolder = "gnupg-vsd";
+        $gnupgdatafolder = "gnupg-vsd";
     } else {
-        gnupgdatafolder = "gnupg";
+        $gnupgdatafolder = "gnupg";
     }
 
     print FILE <<EOF;
@@ -1997,7 +1997,7 @@ sub dump_customs
         }
         print STDERR "Unknown file in vsd-custom directory. '$name' \n";
     }
-    chdir($startdir) or die "Unable to dir $startdir!\n";
+    chdir($startdir) or die "Unable to cd to $startdir!\n";
 }
 
 
