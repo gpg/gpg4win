@@ -358,6 +358,7 @@ gpg4win_pkg_qtbase_configure = \
         -DQT_QMAKE_TARGET_MKSPEC=win32-g++ \
         -DQT_BUILD_EXAMPLES=OFF \
         -DQT_BUILD_TESTS=OFF \
+        -DCMAKE_CXX_FLAGS="-DQT_WIN_SERVER_2016_COMPAT=1" \
         -DBUILD_WITH_PCH=OFF \
         -DFEATURE_accessibility=ON \
         -DFEATURE_dbus=OFF \
