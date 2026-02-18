@@ -160,11 +160,11 @@ chk 91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9
 file bzip2/bzip2-1.0.6-g10.tar.gz
 chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 
-# last changed 2025-12-12
+# last changed 2026-02-18
 # by wk
 # verified: build-tree
-file libgpg-error/libgpg-error-1.58.tar.bz2
-chk  f943aea9a830a8bd938e5124b579efaece24a3225ff4c3d27611a80ce1260c27
+file libgpg-error/libgpg-error-1.59.tar.bz2
+chk  a19bc5087fd97026d93cb4b45d51638d1a25202a5e1fbc3905799f424cfa6134
 
 # last-changed: 2025-11-25
 # by: wk
