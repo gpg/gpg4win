@@ -143,17 +143,18 @@ chk 91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9
 file bzip2/bzip2-1.0.6-g10.tar.gz
 chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 
-# last changed 2025-04-09
+# last changed 2026-02-23
 # by wk
 # verified: swdb
-file libgpg-error/libgpg-error-1.53.tar.bz2
-chk  6a0721b52027415f53abcbf63b5c37776a0f774d9126d560a3ce76c0eb42903f
+file libgpg-error/libgpg-error-1.59.tar.bz2
+chk  a19bc5087fd97026d93cb4b45d51638d1a25202a5e1fbc3905799f424cfa6134
+
 
 # last-changed: 2024-07-03
 # by: wk
 # verified: swdb
-file libassuan/libassuan-3.0.1.tar.bz2
-chk  c8f0f42e6103dea4b1a6a483cb556654e97302c7465308f58363778f95f194b1
+file libassuan/libassuan-3.0.2.tar.bz2
+chk  d2931cdad266e633510f9970e1a2f346055e351bb19f9b78912475b8074c36f6
 
 
 # last changed 2025-02-04
@@ -163,11 +164,11 @@ file npth/npth-1.8.tar.bz2
 chk  8bd24b4f23a3065d6e5b26e98aba9ce783ea4fd781069c1b35d149694e90ca3e
 
 
-# last changed 2025-02-04
-# by ik
-# verified: swdb
-file libksba/libksba-1.6.7.tar.bz2
-chk  cf72510b8ebb4eb6693eef765749d83677a03c79291a311040a5bfd79baab763
+# last changed 2026-02-23
+# by wk
+# verified: build tree
+file libksba/libksba-1.6.8.tar.bz2
+chk  0f4510f1c7a679c3545990a31479f391ad45d84e039176309d42f80cf41743f5
 
 
 # last changed 2024-01-12
@@ -205,20 +206,22 @@ file scute/scute-1.7.0.tar.bz2
 chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
 
 # GpgOL
-# last-changed: 2025-05-15
+# last-changed: 2026-02-23
 # by: wk
-# verified: buildtree
-file gpgol/gpgol-2.6.1.tar.bz2
-chk  336229ef527230682ea263d78570a5c4d88d904fa7f26ed8f8520c89761a8497
+# verified: swdb
+file gpgol/gpgol-2.7.1.tar.bz2
+chk  4afc3b0418e11508456cc8866cdff6a383c91506073765c7068bc0274d5202a8
+
 
 #
 # GpgEX
 #
-# last-changed: 2024-07-03
+# last-changed: 2026-02-23
 # by: wk
 # verified: swdb
-file gpgex/gpgex-1.0.11.tar.bz2
-chk  569b78132cd207f7d4a416a76eb1d9f8c260b4dd7a48d67dd830dc2b41d46cdb
+file gpgex/gpgex-1.1.0.tar.bz2
+chk  c0e7869688c5654c00a10c22334be86be9e6485ab4822c114499ef73566bca21
+
 
 #
 #  GnuPG utilities
