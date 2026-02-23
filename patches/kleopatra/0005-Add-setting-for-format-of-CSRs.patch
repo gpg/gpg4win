@@ -1,0 +1,82 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 6c2a7a3ec0c80c589966e6de023304cc86afe68e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Mon, 23 Feb 2026 16:52:57 +0100
+Subject: [PATCH 1/2] Add setting for format of CSRs
+
+This makes it possible to specify (with a config key) whether CSRs
+shall be saved in binary format or as ASCII-armored PEM. By default,
+CSRs are saved in binary format again because some CAs require this
+format. This default reverts a change that was made with commit
+fea96ba9999effbe7e29ff1729aaf3076c0d0b65
+where the format was changed from binary to PEM (to unify it with CSRs
+generated for card keys).
+
+GnuPG-bug-id: 8115
+---
+
+diff --git a/src/commands/createcsrforcardkeycommand.cpp b/src/commands/createcsrforcardkeycommand.cpp
+index 7a75a248a..4a1697aac 100644
+--- a/src/commands/createcsrforcardkeycommand.cpp
++++ b/src/commands/createcsrforcardkeycommand.cpp
+@@ -24,6 +24,8 @@
+ #include "utils/filedialog.h"
+ #include "utils/keyparameters.h"
+
++#include <settings.h>
++
+ #include <Libkleo/Formatting>
+ #include <Libkleo/KeyUsage>
+
+@@ -175,8 +177,7 @@ void CreateCSRForCardKeyCommand::Private::slotDialogAccepted()
+         finished();
+         return;
+     }
+-
+-    Job::context(job)->setArmor(true);
++    Job::context(job)->setArmor(Settings{}.saveCSRAsPEM());
+
+     connect(job, &KeyGenerationJob::result, q, [this](const GpgME::KeyGenerationResult &result, const QByteArray &pubKeyData) {
+         slotResult(result, pubKeyData);
+diff --git a/src/newcertificatewizard/keycreationpage.cpp b/src/newcertificatewizard/keycreationpage.cpp
+index 5490cee5f..3afc9a826 100644
+--- a/src/newcertificatewizard/keycreationpage.cpp
++++ b/src/newcertificatewizard/keycreationpage.cpp
+@@ -19,6 +19,8 @@
+
+ #include "utils/keyparameters.h"
+
++#include <settings.h>
++
+ #include <Libkleo/Formatting>
+ #include <Libkleo/KeyCache>
+ #include <Libkleo/KeyUsage>
+@@ -81,6 +83,7 @@
+     if (!j) {
+         return;
+     }
++    QGpgME::Job::context(j)->setArmor(Settings{}.saveCSRAsPEM());
+     connect(j, &QGpgME::KeyGenerationJob::result, this, &KeyCreationPage::slotResult);
+     if (const Error err = j->start(createGnupgKeyParms()))
+         setField(QStringLiteral("error"), i18n("Could not start key pair creation: %1", Formatting::errorAsString(err)));
+diff --git a/src/kcfg/settings.kcfg b/src/kcfg/settings.kcfg
+index 8b7363214..201edf58b 100644
+--- a/src/kcfg/settings.kcfg
++++ b/src/kcfg/settings.kcfg
+@@ -117,6 +117,11 @@
+      <whatsthis>If false, then Kleopatra will not offer functionality for creating signatures with S/MIME certificates.</whatsthis>
+      <default>true</default>
+    </entry>
++   <entry key="SaveCSRAsPEM" type="Bool">
++     <label>Save generated CSR as PEM</label>
++     <whatsthis>If true then the generated S/MIME certificate signing request will be saved using PEM format. Otherwise, it is saved in binary format (PKCS#10).</whatsthis>
++     <default>false</default>
++   </entry>
+  </group>
+  <group name="ConfigurationDialog">
+    <entry name="ShowAppearanceConfiguration" type="Bool">
+--
+2.53.0

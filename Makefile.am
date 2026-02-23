@@ -69,6 +69,8 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kleopatra/0002-Use-RSAKeySizes-and-PGPKeyType-again.patch \
              patches/kleopatra/0003-Suspend-automatic-key-listing-during-key-generation.patch \
              patches/kleopatra/0004-List-newly-generated-key-with-signatures.patch \
+             patches/kleopatra/0005-Add-setting-for-format-of-CSRs.patch \
+             patches/kleopatra/0006-Save-CSRs-that-were-generated-in-PEM-format-with-suf.patch \
              patches/kleopatra/set-windows-registry.patch \
              patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
              patches/kparts/disable-jobuidelegate.patch \
@@ -109,6 +111,8 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches-appimage/kleopatra/0001-Revert-change-of-selection-of-own-keys-to-selection-.patch \
              patches-appimage/kleopatra/0001-Update-status-bar-when-distribution-settings-change.patch \
              patches-appimage/kleopatra/0002-Use-RSAKeySizes-and-PGPKeyType-again.patch \
+             patches-appimage/kleopatra/0005-Add-setting-for-format-of-CSRs.patch \
+             patches-appimage/kleopatra/0006-Save-CSRs-that-were-generated-in-PEM-format-with-suf.patch \
              patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
              patches-appimage/okular/0001-Add-support-to-customize-about-data.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \

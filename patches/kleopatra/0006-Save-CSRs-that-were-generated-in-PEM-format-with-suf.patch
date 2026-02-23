@@ -1,0 +1,86 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From f3b29b340a2d9d0f282ca57d3a00825cfacf9ec9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Mon, 23 Feb 2026 16:57:02 +0100
+Subject: [PATCH 2/2] Save CSRs that were generated in PEM format with suffix
+ .pem
+
+This ensures that CSRs in PEM format are saved with suffix .pem and that
+CSRs in binary format are saved with suffix .p10. Previously, Kleopatra
+generated the CSRs in PEM format (see previous commit) and saved them
+with suffix .p10.
+
+GnuPG-bug-id: 8115
+---
+
+diff --git a/src/commands/createcsrforcardkeycommand.cpp b/src/commands/createcsrforcardkeycommand.cpp
+index 7a75a248a..4a1697aac 100644
+--- a/src/commands/createcsrforcardkeycommand.cpp
++++ b/src/commands/createcsrforcardkeycommand.cpp
+@@ -243,14 +243,17 @@
+
+ QUrl CreateCSRForCardKeyCommand::Private::saveRequest(const QByteArray &request)
+ {
+-    const QString proposedFilename = QLatin1String("request_%1.p10").arg(QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd_HHmmss")));
++    const bool saveAsPEM = request.startsWith("-----BEGIN CERTIFICATE REQUEST-----");
++    const QString suffix = saveAsPEM ? QStringLiteral("pem") : QStringLiteral("p10");
++    const QString proposedFilename = QLatin1String("request_%1.%2").arg(QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd_HHmmss")), suffix);
+
+     while (true) {
++        const QString filters = saveAsPEM ? (i18n("S/MIME Certificates") + QLatin1String(" (*.pem)")) : i18n("PKCS#10 Requests (*.p10)");
+         const QString filePath = FileDialog::getSaveFileNameEx(parentWidgetOrView(),
+                                                                i18nc("@title", "Save Request"),
+                                                                QStringLiteral("save_csr"),
+                                                                proposedFilename,
+-                                                               i18n("PKCS#10 Requests (*.p10)"));
++                                                               filters);
+         if (filePath.isEmpty()) {
+             // user canceled the dialog
+             return QUrl();
+diff --git a/src/newcertificatewizard/keycreationpage.cpp b/src/newcertificatewizard/keycreationpage.cpp
+index 5490cee5f..3afc9a826 100644
+--- a/src/newcertificatewizard/keycreationpage.cpp
++++ b/src/newcertificatewizard/keycreationpage.cpp
+@@ -143,7 +143,9 @@
+         setField(QStringLiteral("url"), QString());
+         setField(QStringLiteral("result"), QString());
+     } else {
+-        QFile file(tmpDir().absoluteFilePath(QStringLiteral("request.p10")));
++        const bool saveAsPEM = request.startsWith("-----BEGIN CERTIFICATE REQUEST-----");
++        const QString filename = saveAsPEM ? QStringLiteral("request.pem") : QStringLiteral("request.p10");
++        QFile file(tmpDir().absoluteFilePath(filename));
+
+         if (!file.open(QIODevice::WriteOnly)) {
+             setField(QStringLiteral("error"), i18n("Could not write output file %1: %2", file.fileName(), file.errorString()));
+diff --git a/src/newcertificatewizard/resultpage.cpp b/src/newcertificatewizard/resultpage.cpp
+index 5490cee5f..3afc9a826 100644
+--- a/src/newcertificatewizard/resultpage.cpp
++++ b/src/newcertificatewizard/resultpage.cpp
+@@ -203,14 +203,18 @@
+
+ void ResultPage::slotSaveRequestToFile()
+ {
+-    QString fileName = FileDialog::getSaveFileName(this, i18nc("@title", "Save Request"), QStringLiteral("imp"), i18n("PKCS#10 Requests (*.p10)"));
++    const QString tempFileName = QUrl(url()).toLocalFile();
++    const bool saveAsPEM = tempFileName.endsWith(QLatin1String(".pem"));
++    const QString filters = saveAsPEM ? (i18n("S/MIME Certificates") + QLatin1String(" (*.pem)")) : i18n("PKCS#10 Requests (*.p10)");
++    QString fileName = FileDialog::getSaveFileName(this, i18nc("@title", "Save Request"), QStringLiteral("imp"), filters);
+     if (fileName.isEmpty()) {
+         return;
+     }
+-    if (!fileName.endsWith(QLatin1String(".p10"), Qt::CaseInsensitive)) {
+-        fileName += QLatin1String(".p10");
++    const QString suffix = saveAsPEM ? QStringLiteral(".pem") : QStringLiteral(".p10");
++    if (!fileName.endsWith(suffix, Qt::CaseInsensitive)) {
++        fileName += suffix;
+     }
+-    QFile src(QUrl(url()).toLocalFile());
++    QFile src(tempFileName);
+     if (!src.copy(fileName))
+         KMessageBox::error(this,
+                            xi18nc("@info",
+--
+2.53.0
