@@ -1997,7 +1997,7 @@ sub dump_customs
         }
         print STDERR "Unknown file in vsd-custom directory. '$name' \n";
     }
-    chdir($startdir) or die "Unable to cd to $startdir!\n";
+    chdir($startdir) or die "Unable to dir $startdir!\n";
 }
 
 
