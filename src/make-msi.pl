@@ -1776,6 +1776,9 @@ EOF
         if ($basename eq "customer-enc-key.asc") {
             next;
         }
+        if ($basename =~ /.+\.wxs\.vsd-include$/) {
+            next;
+        }
         if ($basename =~ /^\./) {
             next;
         }
