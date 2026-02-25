@@ -1857,6 +1857,12 @@ EOF
         if ($basename eq "customer-enc-key.asc") {
             next;
         }
+        if ($basename =~ /.+\.wxs\.vsd-include$/ and $::vsd4 eq 'no') {
+            next;
+        }
+        if ($basename =~ /.+\.wxs\.include$/ and $::vsd4 eq 'yes') {
+            next;
+        }
         if ($basename =~ /^\./) {
             next;
         }
@@ -1872,7 +1878,8 @@ EOF
             next;
         }
 
-        if ($basename =~ /.+\.wxs\.include$/) {
+        if ($basename =~ /.+\.wxs\.include$/ or
+            $basename =~ /.+\.wxs\.vsd-include$/) {
            print STDERR "Including: $basename for $custom_name\n";
            $fname = "$::vsddir/$workdir/$basename";
            open (INCFILE, "<$fname") or die "open '$fname' failed: $!\n";
@@ -2013,6 +2020,7 @@ fetch_guids ();
 $::build_version = '';
 $::product_name = '';
 $::win64 = 'no';
+$::vsd4 = 'no';
 $::platform = 'x86';
 $::pfilesfolder = 'ProgramFilesFolder';
 $::instdirkey = '';
@@ -2057,6 +2065,10 @@ while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
         $::platform = 'x64';
         $::pfilesfolder = 'ProgramFiles64Folder';
     }
+    elsif ($opt =~ m/^--vsd4$/)
+    {
+        $::vsd4 = 'yes';
+    }
     elsif ($opt eq '--usage')
     {
         print STDERR "Usage: $0 [-DNAME=VALUE...] NSIFILE\n";
@@ -2075,6 +2087,7 @@ while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
         print STDERR "       --version        VERSION of the installer.\n";
         print STDERR "       --name           Product name to use in the installer.\n";
         print STDERR "       --win64          Create for 64 bit Windows.\n";
+        print STDERR "       --vsd4           Use VSD >= 4 conventions.\n";
         print STDERR "\n";
         print STDERR "       -h|--help        Print this help and exit\n";
         exit 0;

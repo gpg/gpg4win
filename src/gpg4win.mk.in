@@ -156,14 +156,25 @@ endif
 ifeq ($(IS_GPD_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-Desktop
   MSI_PRODUCT_NAME := GnuPG Desktop
+  MAKE_MSI_EXTRA_OPTIONS := --win64
   GNUPG_INSTALL_DIR_REGISTRY_KEY := Install+Directory
   KLEOPATRA_ORGANIZATION_DOMAIN := gnupg.org
   KLEOPATRA_ORGANIZATION_NAME := GnuPG Desktop
   KLEOPATRA_VERSION_STRING := Desktop-$(VERSION)
   KLEOPATRA_ICON_DIR := $(tsdir)/src/icons/gpd
+else ifeq ($(IS_VSD3_BUILD),yes)
+  MSI_FNAME_PREFIX := GnuPG-VS-Desktop
+  MSI_PRODUCT_NAME := GnuPG VS-Desktop
+  MAKE_MSI_EXTRA_OPTIONS :=
+  GNUPG_INSTALL_DIR_REGISTRY_KEY := VSD+Install+Directory
+  KLEOPATRA_ORGANIZATION_DOMAIN := gnupg.com
+  KLEOPATRA_ORGANIZATION_NAME := GnuPG VS-Desktop
+  KLEOPATRA_VERSION_STRING := VS-Desktop-$(VERSION)
+  KLEOPATRA_ICON_DIR :=
 else ifeq ($(IS_VSD_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-VS-Desktop
   MSI_PRODUCT_NAME := GnuPG VS-Desktop
+  MAKE_MSI_EXTRA_OPTIONS := --win64 --vsd4
   GNUPG_INSTALL_DIR_REGISTRY_KEY := VSD+Install+Directory
   KLEOPATRA_ORGANIZATION_DOMAIN := gnupg.com
   KLEOPATRA_ORGANIZATION_NAME := GnuPG VS-Desktop
@@ -174,6 +185,7 @@ else
   # the macros to help in tracking down build errors.
   MSI_FNAME_PREFIX := Gpg4win
   MSI_PRODUCT_NAME := Gpg4win
+  MAKE_MSI_EXTRA_OPTIONS := --win64
   GNUPG_INSTALL_DIR_REGISTRY_KEY := Install+Directory
   KLEOPATRA_ORGANIZATION_DOMAIN := gpg4win.org
   KLEOPATRA_ORGANIZATION_NAME := Gpg4win
@@ -1043,8 +1055,8 @@ $(MSI_FNAME_PREFIX)-$(VERSION).wxs: $(common_nsi) $(stampdir)/stamp-final \
 	perl $(sdir)/make-msi.pl --guids make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
 		--version $(VSD_VERSION) \
-		--name "$(MSI_PRODUCT_NAME)" \
-		--win64 -DTOP_SRCDIR=$(tsdir) -DTOP_BLDDIR=$(root) \
+		--name "$(MSI_PRODUCT_NAME)" $(MAKE_MSI_EXTRA_OPTIONS) \
+                -DTOP_SRCDIR=$(tsdir) -DTOP_BLDDIR=$(root) \
 		-DSRCDIR=$(tsdir)/src -DBLDDIR=$(root) -DVSDDIR=$(vsddir) \
                 $(sdir)/nsis/gpg4win.nsi > $(MSI_FNAME_PREFIX)-$(VERSION).wxs
 
@@ -1153,8 +1165,8 @@ $(msidir)/$(1)/$(1).wxs: $(msidir)/$(1)/VERSION.sig \
 	perl $(sdir)/make-msi.pl --guids make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
 		--version $(VSD_VERSION) \
-		--name "$(MSI_PRODUCT_NAME)" \
-		--win64 -DTOP_SRCDIR=$(tsdir) -DTOP_BLDDIR=$(root) \
+		--name "$(MSI_PRODUCT_NAME)" $(MAKE_MSI_EXTRA_OPTIONS) \
+		-DTOP_SRCDIR=$(tsdir) -DTOP_BLDDIR=$(root) \
 		-DSRCDIR=$(tsdir)/src -DBLDDIR=$(root) -DVSDDIR=$(vsddir) \
 		$(sdir)/nsis/gpg4win.nsi > /dev/null
 
