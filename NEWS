@@ -3,15 +3,15 @@
 # The version numbers given are used by gpg4win and GnuPG [VS-]Desktop
 
 
-Noteworthy changes in Version 5.x.x (unreleased)
+Noteworthy changes in Version 5.0.2 (2026-02-26)
 ------------------------------------------------
 
 See https://dev.gnupg.org/T8060
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.5.18
-Kleopatra:      gpg4win-5.0.0
-GpgOL:          2.7.1
+Kleopatra:      202602241430
+GpgOL:          2.7.2
 GpgEX:          1.1.0
 Libgcrypt:      1.12.1
 Kompendium DE:  4.0.1
