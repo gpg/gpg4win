@@ -1857,12 +1857,15 @@ EOF
         if ($basename eq "customer-enc-key.asc") {
             next;
         }
-        if ($basename =~ /.+\.wxs\.vsd-include$/ and $::vsd4 eq 'no') {
-            next;
+        if ($::vsd4 eq 'yes') {
+            next if $basename =~ /.+\.wxs\.include$/ ;
+            next if $dirname =~ m,ProgramData/GNU/etc/gnupg$, ;
         }
-        if ($basename =~ /.+\.wxs\.include$/ and $::vsd4 eq 'yes') {
-            next;
+        else {
+            next if $basename =~ /.+\.wxs\.vsd-include$/ ;
+            next if $dirname =~ m,ProgramData/GNU/etc/gnupg-vsd$, ;
         }
+
         if ($basename =~ /^\./) {
             next;
         }
