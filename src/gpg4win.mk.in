@@ -820,7 +820,7 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	($(call SETVARS,$(1));				\
 	 mkdir -p "$$$${pkgbdir}";				\
 	 cd "$$$${pkgbdir}";				\
-	 $(CMAKE)					\
+	 eval $(CMAKE)					\
 		--fresh \
 		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
 		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \

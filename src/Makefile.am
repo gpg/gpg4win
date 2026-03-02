@@ -358,7 +358,7 @@ gpg4win_pkg_qtbase_configure = \
         -DQT_QMAKE_TARGET_MKSPEC=win32-g++ \
         -DQT_BUILD_EXAMPLES=OFF \
         -DQT_BUILD_TESTS=OFF \
-        -DCMAKE_CXX_FLAGS="-DQT_WIN_SERVER_2016_COMPAT=1" \
+        -DCMAKE_CXX_FLAGS=-DQT_WIN_SERVER_2016_COMPAT=1 \
         -DBUILD_WITH_PCH=OFF \
         -DFEATURE_accessibility=ON \
         -DFEATURE_dbus=OFF \
@@ -430,7 +430,7 @@ gpg4win_pkg_kleopatra_configure = \
     -DKLEOPATRA_LIST_AS_COMPONENT=ON \
     -DKLEOPATRA_VERSION_STRING=$(KLEOPATRA_VERSION_STRING) \
     -DKLEOPATRA_ORGANIZATION_DOMAIN=$(KLEOPATRA_ORGANIZATION_DOMAIN) \
-    -DKLEOPATRA_ORGANIZATION_NAME=$(KLEOPATRA_ORGANIZATION_NAME) \
+    -DKLEOPATRA_ORGANIZATION_NAME=\"$(KLEOPATRA_ORGANIZATION_NAME)\" \
     -DKLEOPATRA_ICON_DIR=$(KLEOPATRA_ICON_DIR)
 
 gpg4win_pkg_kxmlgui_configure = \
@@ -476,7 +476,7 @@ gpg4win_pkg_kiconthemes_configure = \
     -DKICONTHEMES_USE_QTQUICK=OFF
 
 gpg4win_pkg_okular_configure = \
-    -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF6Purpose\;Qt6TextToSpeech\;LibZip\;KF6DocTools\;Phonon4Qt6\;TIFF\;JPEG\;LibSpectre\;KExiv2Qt6\;CHM\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt6Qml\;Qt6DBus"
+    -DFORCE_NOT_REQUIRED_DEPENDENCIES=\"KF6Purpose;Qt6TextToSpeech;LibZip;KF6DocTools;Phonon4Qt6;TIFF;JPEG;LibSpectre;KExiv2Qt6;CHM;DjVuLibre;EPub;QMobipocket;Discount;Qt6Qml;Qt6DBus\"
 
 gpg4win_pkg_libical_configure = \
     -DICAL_GLIB=false \
