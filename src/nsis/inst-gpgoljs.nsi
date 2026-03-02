@@ -67,7 +67,7 @@ ${MementoSection} "GpgOL/Web" SEC_gpgoljs
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/gpgol-js-native.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/gpgol-js-web.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/manifest.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/gpgol-js-manifest.mo
 
 ${MementoSectionEnd}
 
