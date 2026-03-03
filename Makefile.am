@@ -64,6 +64,8 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/extra-cmake-modules/0001-Use-preferred-display-language-instead-of-locale-on-.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
+             patches/kconfig-6.20.0/0001-Avoid-creation-of-not-already-existing-registry-keys.patch \
+             patches/kconfig-6.20.0/0002-Do-not-try-to-read-registry-entries-for-absolute-con.patch \
              patches/kf5/breeze-icons/subset-crossbuild.patch \
              patches/kf5/kconfig/0001-Read-defaults-from-Windows-registry.patch \
              patches/kf5/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
