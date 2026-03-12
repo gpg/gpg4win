@@ -117,6 +117,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/00-qt6xx-0001-Fix-a11y-window-activation-events.patch \
              patches/qtbase/0001-Don-t-report-tabname-as-name-of-tabbar.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
+             patches/qtbase/0002-no-dark-mode-on-old-windows-10.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/configurable-windowstheme.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
@@ -140,6 +141,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/okular/pgp-default-true.patch \
              patches-appimage/qtbase/0001-Don-t-report-tabname-as-name-of-tabbar.patch \
              patches-appimage/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
+             patches-appimage/qtbase/0002-no-dark-mode-on-old-windows-10.patch \
              patches-appimage/qtbase/00-qt611-0001-a11y-Let-QAccessibleTable-subclass-QAccessibleWidget.patch \
              patches-appimage/qtbase/00-qt611-0002-a11y-Return-correct-string-information-for-item-view.patch \
              patches-appimage/qtbase/00-qt611-0003-a11y-Unify-item-view-to-a11y-child-index-mapping.patch \
