@@ -678,7 +678,7 @@ versioninfo.txt:
 	( while read a b c; do echo "$$a $$b $$c"; \
             done < versioninfo.tmp \
           | sort -k2 -sf | tac | uniq -f1 ; \
-          echo "0000000000000000000000000000000000000000 buildsystem-$(VERSION) $(BUILD_COMMITID)"; \
+          echo "0000000000000000000000000000000000000000 _$(SHORTPRODUCT_NAME)-$(VERSION) $(BUILD_COMMITID)"; \
           echo '# Package version infos: SHA-1, name, commit-id' \
          ) | tac | awk '{printf "%s\r\n", $$0}' > versioninfo.txt
 	-rm versioninfo.tmp

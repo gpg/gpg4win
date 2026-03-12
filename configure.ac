@@ -96,6 +96,8 @@ MSI_VERSIONSTRING=mym4_major.mym4_minor.m4_if(mym4_isbeta,[yes],[90],mym4_micro)
 # Variables for the version info
 PRODUCT_NAME=m4_if(mym4_isgpd, [yes], ["GnuPG Desktop"],
                    m4_if(mym4_isvsd, [yes], ["GnuPG VS-Desktop"], ["Gpg4win"]))
+SHORTPRODUCT_NAME=m4_if(mym4_isgpd, [yes], ["gpd"],
+                   m4_if(mym4_isvsd, [yes], ["vsd"], ["gpg4win"]))
 COMPANY_NAME=m4_if(mym4_buildtype, [default],
                 ["Gpg4win Community"], ["g10 Code GmbH"])
 
@@ -111,6 +113,7 @@ AC_CONFIG_HEADERS([config.h])
 
 
 AC_SUBST(PRODUCT_NAME)
+AC_SUBST(SHORTPRODUCT_NAME)
 AC_SUBST(COMPANY_NAME)
 AC_SUBST(PACKAGE)
 AC_SUBST(VERSION)
