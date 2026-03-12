@@ -156,7 +156,7 @@ gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
                   kjobwidgets poppler okular freetype threadweaver \
                   kparts tiff openjpeg sonnet ktextwidgets mimetreeparser \
                   libical kcalendarcore kmbox pcre2 prison gpgpass \
-                  knotifications kcolorscheme zstd kstatusnotifieritem \
+                  kcolorscheme zstd kstatusnotifieritem \
                   gpgoljs kcontacts qtwebsockets \
                   breeze
 
@@ -437,9 +437,6 @@ gpg4win_pkg_kxmlgui_configure = \
 gpg4win_pkg_kio_configure = \
     -DFORCE_DISABLE_DBUS=ON \
     -DFORCE_DISABLE_KCRASH=ON
-
-gpg4win_pkg_knotifications_configure = \
-    -DFORCE_DISABLE_CANBERRA=ON
 
 gpg4win_pkg_breeze_icons_native_configure = \
     -DWITH_ICON_GENERATION=OFF \

@@ -93,7 +93,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kleopatra/0001-Experimental-Optionally-don-t-start-gpg-agent-on-sta.patch \
              patches/kleopatra/0001-Revert-GIT_SILENT-already-done-by-ecm-now.patch \
              patches/kleopatra/0002-Experimental-Optionally-don-t-use-file-system-watche.patch \
-             patches/knotifications/0001-Fix-build-wihout-QDbus.patch \
              patches/kwidgetsaddons/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches/kwidgetsaddons/0002-KMessageWidget-Don-t-draw-background-if-high-contras.patch \
              patches/kwidgetsaddons/0003-KPageView-Use-correct-icon-mode-if-high-contrast-col.patch \
