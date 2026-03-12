@@ -84,7 +84,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kf5/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
              patches/kf5/qttools/disable-most-tools.patch \
              patches/kf5/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
-             patches/kguiaddons/0002-DRAFT-There-is-no-dark-mode-on-old-Windows.patch \
+             patches/kguiaddons-6.20.0/0002-DRAFT-There-is-no-dark-mode-on-old-Windows.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/ki18n/0001-gpg4win-fix-language-issues.patch \
              patches/kiconthemes/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
