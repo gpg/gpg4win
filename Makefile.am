@@ -63,7 +63,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/extra-cmake-modules/0001-Use-preferred-display-language-instead-of-locale-on-.patch \
              patches/jpeg/fix-redefine.patch \
-             patches/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
+             patches/kcalendarcore-6.20.0/0001-Add-option-to-build-without-QML.patch \
              patches/kconfig-6.20.0/0001-Avoid-creation-of-not-already-existing-registry-keys.patch \
              patches/kconfig-6.20.0/0002-Do-not-try-to-read-registry-entries-for-absolute-con.patch \
              patches/kf5/breeze-icons/subset-crossbuild.patch \
@@ -130,7 +130,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
              patches-appimage/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches-appimage/extra-cmake-modules/0001-Use-preferred-display-language-instead-of-locale-on-.patch \
-             patches-appimage/kcalendarcore/0001-Add-option-to-build-without-QML.patch \
+             patches-appimage/kcalendarcore-6.20.0/0001-Add-option-to-build-without-QML.patch \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
              patches-appimage/kleopatra-202501221111/0001-Explicitely-require-threads.patch \
              patches-appimage/libkleo/0001-Revert-Explicitly-use-Boost-s-cmake-config-file-for-.patch \
