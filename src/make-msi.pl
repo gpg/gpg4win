@@ -1783,6 +1783,10 @@ EOF
             next;
         }
 
+        # Skip the vsd-4 directories.
+        next if $dirname =~ m,ProgramData/GNU/etc/gnupg-vsd$, ;
+
+
         if ($dirname =~ /[^\/]+\/etc\/gnupg/ and
             $dirname !~ /ProgramData/) {
             # We need to skip the Unix etc directory so that it does
