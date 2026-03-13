@@ -79,6 +79,7 @@ GIT_BETASTRING=mym4_betastr
 IS_BETA_BUILD=mym4_isbeta
 IS_VSD_BUILD=mym4_isvsd
 IS_GPD_BUILD=mym4_isgpd
+MSI_VERSIONSTRING=mym4_major.mym4_minor.m4_if(mym4_isbeta,[yes],[90],mym4_micro)
 
 # Variables for the version info
 PRODUCT_NAME=m4_if(mym4_isvsd, [yes], ["GnuPG VS-Desktop"],
@@ -108,6 +109,7 @@ AC_SUBST(GIT_BETASTRING)
 AC_SUBST(IS_BETA_BUILD)
 AC_SUBST(IS_VSD_BUILD)
 AC_SUBST(IS_GPD_BUILD)
+AC_SUBST(MSI_VERSIONSTRING)
 AC_SUBST(BUILD_COMMITID)
 
 # Generate extended version information.  Note, that for NSIS use we
@@ -532,6 +534,7 @@ fi
 echo -n "
         $PACKAGE_NAME-$PACKAGE_VERSION prepared for make
 
+        MSI version ..: ${MSI_VERSIONSTRING}
         Revision .....: ${GIT_REVISION}  (${GIT_REVISION_DEC})
         Main platform : $host
         Extra platform: ${GPGEX_ADD_HOST}
