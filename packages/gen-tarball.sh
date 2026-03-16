@@ -182,7 +182,7 @@ case ${package} in
         #repo=https://gitlab.freedesktop.org/svuorela/${package}.git
         ;;
     breeze)
-        repo=https://invent.kde.org/plasma/${package}.git
+        url=https://download.kde.org/stable/plasma/6.5.4/breeze-6.5.4.tar.xz
         ;;
     kio)
         repo=https://invent.kde.org/frameworks/${package}.git
@@ -225,7 +225,7 @@ case ${package} in
         #branch="WORK"
         ;;
     breeze)
-        branch=v6.5.4
+#         branch=v6.5.4
         ;;
     kio)
         ;;
@@ -267,16 +267,28 @@ elif [ "${is_g10_cmake}" == "yes" ]; then
     make dist >&2
     tarball=$(ls -t *.tar.xz | head -1)
     cp ${tarball} ${olddir}
+elif [ "${package}" == "breeze" ]; then
+    # repackage the release package of breeze without the huge wallpapers and cursors
+    cd ${tmpdir}
+    git clone https://invent.kde.org/sysadmin/release-keyring.git
+    mkdir gnupghome-release-keyring
+    GNUPGHOME=$(pwd)/gnupghome-release-keyring gpg --import release-keyring/keys/*.asc
+    GNUPGHOME=$(pwd)/gnupghome-release-keyring gpg --export >kde-release-keyring.kbx
+    wget ${url} ${url}.sig
+    tarball=$(basename ${url})
+    gpgv --keyring $(pwd)/kde-release-keyring.kbx ${tarball}.sig ${tarball}
+    tar xf ${tarball}
+    archivename=${tarball%.tar.xz}
+    rm -rf ${archivename}/cursors ${archivename}/wallpapers
+    modifiedarchivename=${archivename}-g10
+    mv ${archivename} ${modifiedarchivename}
+    tarball=${modifiedarchivename}.tar.xz
+    tar cfJ ${tarball} ${modifiedarchivename}
+    cp ${tarball} ${olddir}
 else
     git clone --depth=1 --branch $branch ${repo} ${tmpdir}/${snapshotdir}
     echo "$PGM: Archiving branch $branch."
     cd ${tmpdir}/${snapshotdir}
-    if [ "${package}" == "breeze" ]; then
-        git rm -r wallpapers cursors
-        sed -i '/add_subdirectory(wallpapers)/d' CMakeLists.txt
-        sed -i '/add_subdirectory(cursors)/d' CMakeLists.txt
-        git commit -a -m "Escort the elephants out of the room"
-    fi
     extrafiles=""
     if [ "${add_version_file}" == "yes" ]; then
         # write empty line as first line in VERSION file because we don't have a useful version number
