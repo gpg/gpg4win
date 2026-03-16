@@ -53,12 +53,12 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/breeze-icons/0004-Add-symbolic-variants-of-status-icons-for-usage-with.patch \
              patches/breeze-icons/0005-Disable-recoloring-of-status-icons.patch \
              patches/breeze-icons/remove-kleopatra-icons.patch \
+             patches/breeze-6.5.4-g10/0001-kstyle-Draw-hovered-menu-bar-items-like-selected-ite.patch \
              patches/breeze/0000-Remove-references-to-wallpapers-and-cursors.patch \
              patches/breeze/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
              patches/breeze/0001-Do-not-pass-QIcon-Selected-mode-to-icon-painter.patch \
              patches/breeze/0001-Don-t-use-mixed-colors-for-frames-if-high-contrast-i.patch \
-             patches/breeze/0004-For-high-contrast-draw-hovered-menu-bar-items-like-s.patch \
              patches/breeze/0005-For-high-contrast-draw-hovered-menu-items-like-selec.patch \
              patches/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
@@ -118,12 +118,12 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/configurable-windowstheme.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
              patches/qthttpserver/originAuthenticationRequired.patch \
+             patches-appimage/breeze-6.5.4-g10/0001-kstyle-Draw-hovered-menu-bar-items-like-selected-ite.patch \
              patches-appimage/breeze/0000-Remove-references-to-wallpapers-and-cursors.patch \
              patches-appimage/breeze/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches-appimage/breeze/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
              patches-appimage/breeze/0001-Do-not-pass-QIcon-Selected-mode-to-icon-painter.patch \
              patches-appimage/breeze/0001-Don-t-use-mixed-colors-for-frames-if-high-contrast-i.patch \
-             patches-appimage/breeze/0004-For-high-contrast-draw-hovered-menu-bar-items-like-s.patch \
              patches-appimage/breeze/0005-For-high-contrast-draw-hovered-menu-items-like-selec.patch \
              patches-appimage/extra-cmake-modules/0001-Do-not-abort-without-QML-native.patch \
              patches-appimage/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
