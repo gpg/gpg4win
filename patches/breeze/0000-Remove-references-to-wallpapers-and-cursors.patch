@@ -1,0 +1,3 @@
+sed -i '/add_subdirectory(wallpapers)/d' CMakeLists.txt
+sed -i '/add_subdirectory(cursors)/d' CMakeLists.txt
+# Note: In Breeze 6.7 we can use `-DBUILD_CURSOR=OFF` instead of patching out `add_subdirectory(cursors)`

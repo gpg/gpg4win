@@ -610,15 +610,15 @@ chk  15645b2475cca6118eb2ed331b3a8d9442c9d4019c3846ba3f6d25321b4a61ad
 #
 server https://gnupg.net/snapshots
 
-# This is a respin of the release tag without the wallpapers and
+# This is a respin of the release tarball without the wallpapers and
 # cursor themes to avoid including a huge source package.
 # See gen-tarball.sh for details.
 # breeze
-# last changed: 2025-12-16
-# by: sune
-# verified: Tarball created by sune.
-file breeze/breeze-202512161010.tar.xz
-chk b45a7f78b841cdf98efa528d687e348590aa7a72bab1310d9deb1dd8ca52d28a
+# last changed: 2026-03-16
+# by: ingo
+# verified: Tarball created by ingo.
+file breeze/breeze-6.5.4-g10.tar.xz
+chk 2efeb6992cc5c306928cabc027ee91cd807c6e52f6e535040aaf469864cc5c1f
 
 # scute
 # last changed: 2024-07-19
