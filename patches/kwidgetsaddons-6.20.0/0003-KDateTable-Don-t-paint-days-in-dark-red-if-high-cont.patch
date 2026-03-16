@@ -2,19 +2,18 @@
 patch -p1 -l -f $* < $0
 exit $?
 
-https://invent.kde.org/frameworks/kwidgetsaddons/-/merge_requests/323/
-
-From 071d11cb7bfc1518d19bab8649dedc3a9b65a208 Mon Sep 17 00:00:00 2001
+From 1f3c48b7bb0a69a0c9140d604a9d6e7bf2455ed2 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
 Date: Mon, 10 Nov 2025 16:56:29 +0100
-Subject: [PATCH 4/4] Don't draw some days in dark red if high-contrast colors
- are in use
+Subject: [PATCH 3/3] KDateTable: Don't paint days in dark red if high-contrast
+ is active
 
-Dark red has very bad contrast for many high-contrast color schemes on
+Dark red has very bad contrast for dark high-contrast color schemes on
 Windows.
 ---
- src/kdatetable.cpp | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ src/kdatetable.cpp   | 10 ++++++----
+ tests/CMakeLists.txt |  2 +-
+ 2 files changed, 7 insertions(+), 5 deletions(-)
 
 diff --git a/src/kdatetable.cpp b/src/kdatetable.cpp
 index d7345cb9..3a90752e 100644
@@ -29,7 +28,7 @@ index d7345cb9..3a90752e 100644
  #include <QAction>
  #include <QActionEvent>
  #include <QApplication>
-@@ -276,10 +278,10 @@ void KDateTable::paintCell(QPainter *painter, int row, int col)
+@@ -278,10 +280,10 @@ void KDateTable::paintCell(QPainter *painter, int row, int col)
          // We are drawing a header cell
 
          // If not a normal working day, then use "do not work today" color
@@ -43,7 +42,7 @@ index d7345cb9..3a90752e 100644
          }
          cellBackgroundColor = palette().color(QPalette::Window);
 
-@@ -364,7 +366,7 @@ void KDateTable::paintCell(QPainter *painter, int row, int col)
+@@ -366,7 +368,7 @@ void KDateTable::paintCell(QPainter *painter, int row, int col)
              }
 
              // If the cell day is the day of religious observance, then always color text red unless Custom overrides
@@ -52,5 +51,18 @@ index d7345cb9..3a90752e 100644
                  cellTextColor = Qt::darkRed;
              }
          }
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 86b84ed6..344efcb2 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -53,7 +53,7 @@ kwidgetsaddons_executable_tests(
+   ktwofingerswipe_test
+ )
+
+-add_executable(kdatetabletest kdatetabletest.cpp ../src/kdatetable.cpp ../src/kdaterangecontrol.cpp)
++add_executable(kdatetabletest kdatetabletest.cpp ../src/kdatetable.cpp ../src/kdaterangecontrol.cpp ../src/highcontrasthelper.cpp)
+ target_include_directories(kdatetabletest PRIVATE ../src)
+ target_link_libraries(kdatetabletest Qt6::Widgets)
+ ecm_mark_as_test(kdatetabletest)
 --
-2.51.1
+2.53.0

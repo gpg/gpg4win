@@ -90,10 +90,10 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kiconthemes/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches/kiconthemes/0002-Use-symbolic-icons-if-high-contrast-color-scheme-is-.patch \
              patches/kjobwidgets/0001-Remove-knotification.patch \
-             patches/kwidgetsaddons/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
+             patches/kwidgetsaddons-6.20.0/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
+             patches/kwidgetsaddons-6.20.0/0002-KPageView-Use-correct-icon-mode-if-high-contrast-col.patch \
+             patches/kwidgetsaddons-6.20.0/0003-KDateTable-Don-t-paint-days-in-dark-red-if-high-cont.patch \
              patches/kwidgetsaddons/0002-KMessageWidget-Don-t-draw-background-if-high-contras.patch \
-             patches/kwidgetsaddons/0003-KPageView-Use-correct-icon-mode-if-high-contrast-col.patch \
-             patches/kwidgetsaddons/0004-Don-t-draw-some-days-in-dark-red-if-high-contrast-co.patch \
              patches/kxmlgui/0001-Store-kxmlgui-rc-file-in-config-location.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
              patches/libkleo/0001-Revert-Explicitly-use-Boost-s-cmake-config-file-for-.patch \
