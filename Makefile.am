@@ -91,7 +91,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kiconthemes/0002-Use-symbolic-icons-if-high-contrast-color-scheme-is-.patch \
              patches/kjobwidgets/0001-Remove-knotification.patch \
              patches/kleopatra/0001-Experimental-Optionally-don-t-start-gpg-agent-on-sta.patch \
-             patches/kleopatra/0001-Revert-GIT_SILENT-already-done-by-ecm-now.patch \
              patches/kleopatra/0002-Experimental-Optionally-don-t-use-file-system-watche.patch \
              patches/kwidgetsaddons/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches/kwidgetsaddons/0002-KMessageWidget-Don-t-draw-background-if-high-contras.patch \
@@ -100,7 +99,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kxmlgui/0001-Store-kxmlgui-rc-file-in-config-location.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
              patches/libkleo/0001-Revert-Explicitly-use-Boost-s-cmake-config-file-for-.patch \
-             patches/libkleo/0001-Revert-GIT_SILENT-already-done-by-ecm-now.patch \
              patches/libqrencode/0001-fix-cmake-install-paths.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Add-support-to-customize-about-data.sik \
@@ -134,7 +132,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
              patches-appimage/kleopatra-202501221111/0001-Explicitely-require-threads.patch \
              patches-appimage/libkleo/0001-Revert-Explicitly-use-Boost-s-cmake-config-file-for-.patch \
-             patches-appimage/libkleo/0001-Revert-GIT_SILENT-already-done-by-ecm-now.patch \
              patches-appimage/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/okular/pgp-default-true.patch \
