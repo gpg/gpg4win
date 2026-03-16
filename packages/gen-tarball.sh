@@ -242,9 +242,9 @@ timestamp=$(date +%Y%m%d%H%M)
 snapshotdir=${package}-${timestamp}
 tarball=${snapshotdir}.tar.xz
 
+olddir=$(pwd)
 if [ "${is_gpg}" == "yes" ]; then
     git clone ${repo} ${tmpdir}/${snapshotdir}
-    olddir=$(pwd)
     cd ${tmpdir}/${snapshotdir}
     ./autogen.sh --force >&2
     if [ "${is_w32}" == "yes" ]; then
@@ -258,10 +258,8 @@ if [ "${is_gpg}" == "yes" ]; then
         find "${olddir}" -name ${package}\* -print0 | xargs -0 rm -f
     fi
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
-    cd ${olddir}
 elif [ "${is_g10_cmake}" == "yes" ]; then
     git clone ${repo} ${tmpdir}/${snapshotdir}
-    olddir=$(pwd)
     cd ${tmpdir}/${snapshotdir}
     mkdir build
     cd build
@@ -269,10 +267,8 @@ elif [ "${is_g10_cmake}" == "yes" ]; then
     make dist >&2
     tarball=$(ls -t *.tar.xz | head -1)
     cp ${tarball} ${olddir}
-    cd ${olddir}
 else
     git clone --depth=1 --branch $branch ${repo} ${tmpdir}/${snapshotdir}
-    olddir=$(pwd)
     echo "$PGM: Archiving branch $branch."
     cd ${tmpdir}/${snapshotdir}
     if [ "${package}" == "breeze" ]; then
@@ -293,8 +289,8 @@ else
         find "${olddir}" -name ${package}\* -print0 | xargs -0 rm -f
     fi
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
-    cd ${olddir}
 fi
+cd ${olddir}
 checksum=$(sha256sum ${tarball} | cut -d ' ' -f 1)
 
 
