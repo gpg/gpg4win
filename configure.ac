@@ -57,7 +57,7 @@ m4_if(mym4_buildtype,[vsd3],
        m4_define([mym4_micro],[0])],
       [m4_define([mym4_major],[5])
        m4_define([mym4_minor],[0])
-       m4_define([mym4_micro],[2])])
+       m4_define([mym4_micro],[3])])
 
 # Below is m4 magic to extract and compute the git revision number,
 # the decimalized short revision number, a beta version string and a
