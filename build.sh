@@ -378,8 +378,7 @@ if [ "$indocker" = yes ]; then
         make dist XZ_OPT=-2 TOPSRCDIR=/src PLAYGROUND=/build
     else
         make TOPSRCDIR=/src PLAYGROUND=/build VERBOSE=1
-        if [ $? = 0 -a $withmsi = yes ]; then
-            FIXME
+        if [ $? = 0 ] && [ $withmsi = yes ]; then
             make TOPSRCDIR=/src PLAYGROUND=/build msi-signed
         fi
     fi
@@ -847,6 +846,8 @@ if [ "$err" = "0" ]; then
     elif [ "$appimage" = "yes" ]; then
         results=$(find "${builddir}" -maxdepth 1 -iname \*.appimage \
                   -a -type f -printf '%p ')
+    elif [ $withmsi = yes ]; then
+        results=$(find "${builddir}/src/signed_installers" -type f -printf '%p ')
     else
         results=$(find "${builddir}/src/installers" -type f -printf '%p ')
     fi
