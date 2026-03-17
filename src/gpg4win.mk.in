@@ -157,6 +157,7 @@ ifeq ($(IS_GPD_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-Desktop
   MSI_PRODUCT_NAME := GnuPG Desktop
   MAKE_MSI_EXTRA_OPTIONS := --win64
+  MAKE_MSI_GUIDS := make-gpd.guids
   KLEOPATRA_ORGANIZATION_DOMAIN := gnupg.org
   KLEOPATRA_ORGANIZATION_NAME := GnuPG Desktop
   KLEOPATRA_VERSION_STRING := Desktop-$(VERSION)
@@ -165,6 +166,7 @@ else ifeq ($(IS_VSD3_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-VS-Desktop
   MSI_PRODUCT_NAME := GnuPG VS-Desktop
   MAKE_MSI_EXTRA_OPTIONS :=
+  MAKE_MSI_GUIDS := make-msi.guids
   KLEOPATRA_ORGANIZATION_DOMAIN := gnupg.com
   KLEOPATRA_ORGANIZATION_NAME := GnuPG VS-Desktop
   KLEOPATRA_VERSION_STRING := VS-Desktop-$(VERSION)
@@ -173,6 +175,7 @@ else ifeq ($(IS_VSD_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-VS-Desktop
   MSI_PRODUCT_NAME := GnuPG VS-Desktop
   MAKE_MSI_EXTRA_OPTIONS := --win64 --vsd4
+  MAKE_MSI_GUIDS := make-msi.guids
   KLEOPATRA_ORGANIZATION_DOMAIN := gnupg.com
   KLEOPATRA_ORGANIZATION_NAME := GnuPG VS-Desktop
   KLEOPATRA_VERSION_STRING := VS-Desktop-$(VERSION)
@@ -183,6 +186,7 @@ else
   MSI_FNAME_PREFIX := Gpg4win
   MSI_PRODUCT_NAME := Gpg4win
   MAKE_MSI_EXTRA_OPTIONS := --win64
+  MAKE_MSI_GUIDS := dummy.guids
   KLEOPATRA_ORGANIZATION_DOMAIN := gpg4win.org
   KLEOPATRA_ORGANIZATION_NAME := Gpg4win
   KLEOPATRA_VERSION_STRING := Gpg4win-$(VERSION)
@@ -1047,8 +1051,8 @@ $(MSI_FNAME_PREFIX)-$(VERSION).wxs: $(common_nsi) $(stampdir)/stamp-final \
     $(foosum_exe) gpgwrap.exe \
     $(sdir)/make-msi.pl \
     $(addsuffix /VERSION.sig,$(addprefix $(msidir)/,$(msi_targets)))
-	cp $(sdir)/make-msi.guids make-msi.guids
-	perl $(sdir)/make-msi.pl --guids make-msi.guids \
+	cp $(sdir)/$(MAKE_MSI_GUIDS) $(MAKE_MSI_GUIDS)
+	perl $(sdir)/make-msi.pl --guids $(MAKE_MSI_GUIDS) \
 		--manifest gpg4win-$(VERSION).files \
 		--version $(VSD_VERSION) \
 		--name "$(MSI_PRODUCT_NAME)" $(MAKE_MSI_EXTRA_OPTIONS) \
@@ -1157,8 +1161,8 @@ $(idir)/$(1).wixlib: $(msidir)/$(1)/$(1).wxs
 $(msidir)/$(1)/$(1).wxs: $(msidir)/$(1)/VERSION.sig \
                          $(sdir)/make-msi.pl \
                          $(MSI_FNAME_PREFIX)-$(VERSION).wxs
-	cp $(sdir)/make-msi.guids make-msi.guids
-	perl $(sdir)/make-msi.pl --guids make-msi.guids \
+	cp $(sdir)/$(MAKE_MSI_GUIDS) $(MAKE_MSI_GUIDS)
+	perl $(sdir)/make-msi.pl --guids $(MAKE_MSI_GUIDS) \
 		--manifest gpg4win-$(VERSION).files \
 		--version $(VSD_VERSION) \
 		--name "$(MSI_PRODUCT_NAME)" $(MAKE_MSI_EXTRA_OPTIONS) \
