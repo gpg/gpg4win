@@ -60,7 +60,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/breeze/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches/breeze/0001-Don-t-use-mixed-colors-for-frames-if-high-contrast-i.patch \
              patches/breeze/0005-For-high-contrast-draw-hovered-menu-items-like-selec.patch \
-             patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
+             patches/extra-cmake-modules/0001-Revert-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/extra-cmake-modules/0001-Use-preferred-display-language-instead-of-locale-on-.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kcalendarcore-6.20.0/0001-Add-option-to-build-without-QML.patch \
@@ -124,7 +124,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/breeze/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches-appimage/breeze/0001-Don-t-use-mixed-colors-for-frames-if-high-contrast-i.patch \
              patches-appimage/breeze/0005-For-high-contrast-draw-hovered-menu-items-like-selec.patch \
-             patches-appimage/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
+             patches-appimage/extra-cmake-modules/0001-Revert-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches-appimage/extra-cmake-modules/0001-Use-preferred-display-language-instead-of-locale-on-.patch \
              patches-appimage/kcalendarcore-6.20.0/0001-Add-option-to-build-without-QML.patch \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
