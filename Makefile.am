@@ -45,9 +45,9 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              docker/appimage/Dockerfile \
              docker/gpg4win-trixie/Dockerfile \
              docker/gpg4win-trixie/mingw-pthread-run-reverse-order.patch \
+             patches/breeze-icons-6.20.0/0001-Allow-to-disable-building-of-the-icon-library-native.patch \
+             patches/breeze-icons-6.20.0/0001-Draft-Handle-cross-compiling-for-tools-native.patch \
              patches/breeze-icons/0001-Add-16x16-variant-of-data-success.patch \
-             patches/breeze-icons/0001-Allow-to-disable-building-of-the-icon-library-native.patch \
-             patches/breeze-icons/0001-Draft-Handle-cross-compiling-for-tools-native.patch \
              patches/breeze-icons/0002-Add-nicer-16x16-variant-of-dialog-question.patch \
              patches/breeze-icons/0003-Add-data-question-status-icon-similar-to-other-data-.patch \
              patches/breeze-icons/0004-Add-symbolic-variants-of-status-icons-for-usage-with.patch \
