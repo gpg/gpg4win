@@ -1220,10 +1220,7 @@ $(msidir)/$(1)/announcement.txt: $(vsddir)/custom.mk $(vsddir)/announcement.de.i
 
 signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 	mkdir -p signed_installers
-	$$(tsdir)/build-aux/authenticode-sign.sh --stamp \
-           --desc="$(MSI_PRODUCT_NAME)" \
-           "installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi" \
-           "signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi"
+        $(call AUTHENTICODE_sign,"installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi","signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi")
 
 $(stampdir)/stamp-$(1)-upload: signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi \
 	$(stampdir)/stamp-dist-self
@@ -1375,7 +1372,7 @@ msi: $(stampdir)/stamp-versions-all-signed \
 		echo "######################"; \
 	fi
 
-$(stampdir)/stamp-msi-all-signed: $(vsddir)/sign.mk \
+$(stampdir)/stamp-msi-all-signed: $(vsddir)/custom.mk \
 	$(addsuffix .msi,$(addprefix signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-,$(msi_targets)))
 	touch $(stampdir)/stamp-msi-all-signed
 
