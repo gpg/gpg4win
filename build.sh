@@ -172,14 +172,40 @@ echo >&2 "$PGM: source directory: $srcdir"
 echo >&2 "$PGM: build  directory: $builddir"
 
 
+# Helper to get the value of a variable from the ~/.gnupg-autogen.rc file
+# Argument is the name of the variable.
+getvar_from_autogenrc() {
+    if [ -f "$HOME/.gnupg-autogen.rc" ]; then
+        grep '^[[:blank:]]*'$1'[[:blank:]]*=' "$HOME/.gnupg-autogen.rc" \
+            | cut -d= -f2 | xargs
+    elif [ -f "$TOPSRCDIR/.gnupg-autogen.rc" ]; then
+        grep '^[[:blank:]]*'$1'[[:blank:]]*=' "$TOPSRCDIR/.gnupg-autogen.rc" \
+            | cut -d= -f2 | xargs
+    else
+        echo "$PGM: warning: .gnupg-autogen.rc not found in " \
+             "HOME or $TOPSRCDIR" >&2
+    fi
+}
+
+
 # First build  a tarball and then build from that tarball
 build_from_tarball() {
     local milldir
     local tarballname
     local extraopt
+    local gnupgvsdconfrepo
 
     if [ "$indocker" = yes ]; then
         echo >&2 "$PGM: error: option --release may not be used from docker"
+        exit 2
+    fi
+
+    # Get the URL of the gnupg-vsd repo which carries customized
+    # configurations for GnuPG [VS-]Desktop
+    gnupgvsdconfrepo="$(getvar_from_autogenrc GNUPG_VSD_CONF_REPO)"
+    if [ -z "$gnupgvsdconfrepo" ]; then
+        echo "$PGM: error: GNUPG_VSD_CONF_REPO value missing in " \
+             ".gnupg-autogen.rc" >&2
         exit 2
     fi
 
@@ -220,6 +246,18 @@ build_from_tarball() {
           echo "$PGM: * ERROR: failed to extract tarball"
           echo "$PGM: *" ) | tee -a ${logfile} >&2
         exit 2
+    fi
+
+    if [ $withmsi = yes ]; then
+        cd src
+        git clone "$gnupgvsdconfrepo"
+        ( cd gnupg-vsd
+          echo "$PGM: *"
+          echo "$PGM: * gnupg-vsd cloned"
+          echo "$PGM: *   branch .. : $(git branch --show-current)"
+          echo "$PGM: *   commitid .: $(git rev-parse HEAD)"
+          echo "$PGM: *" ) | tee -a ${logfile} >&2
+        cd "$milldir/source"
     fi
 
     extraopt="--logfile=$logfile"
@@ -341,7 +379,8 @@ if [ "$indocker" = yes ]; then
     else
         make TOPSRCDIR=/src PLAYGROUND=/build VERBOSE=1
         if [ $? = 0 -a $withmsi = yes ]; then
-            make TOPSRCDIR=/src PLAYGROUND=/build msi
+            FIXME
+            make TOPSRCDIR=/src PLAYGROUND=/build msi-signed
         fi
     fi
     exit $?
@@ -382,9 +421,11 @@ if [ $withmsi = yes ]; then
 	fi
     done
     # Also check that there is no cruft in the gnupg-vsd subdir.
-    # For now we check only the standard configuraion directories.
+    # For now we check only the standard configuration directories.
     f="${srcdir}/src/gnupg-vsd/custom.mk"
-    if [ ! -f "$f" ]; then
+    if [ "$release" = "yes" ]; then
+        echo >&2 "$PGM: note: gnupg-vsd will be cloned later"
+    elif [ ! -f "$f" ]; then
 	echo >&2 "$PGM: error: '$f' does not exist."
         die=yes
     else
