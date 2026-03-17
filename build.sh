@@ -251,13 +251,13 @@ build_from_tarball() {
     if [ $withmsi = yes ]; then
         cd src
         git clone "$gnupgvsdconfrepo"
-        ( echo "$PGM: *"
-          echo "$PGM: * gnupg-vsd info:"
-          echo "$PGM: *   $(git branch --show-current)"
-          echo "$PGM: *   $(git rev-parse HEAD)"
+        ( cd gnupg-vsd
+          echo "$PGM: *"
+          echo "$PGM: * gnupg-vsd cloned"
+          echo "$PGM: *   branch .. : $(git branch --show-current)"
+          echo "$PGM: *   commitid .: $(git rev-parse HEAD)"
           echo "$PGM: *" ) | tee -a ${logfile} >&2
         cd "$milldir/source"
-
     fi
 
     extraopt="--logfile=$logfile"
@@ -379,7 +379,8 @@ if [ "$indocker" = yes ]; then
     else
         make TOPSRCDIR=/src PLAYGROUND=/build VERBOSE=1
         if [ $? = 0 -a $withmsi = yes ]; then
-            make TOPSRCDIR=/src PLAYGROUND=/build msi
+            FIXME
+            make TOPSRCDIR=/src PLAYGROUND=/build msi-signed
         fi
     fi
     exit $?
