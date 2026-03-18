@@ -2,11 +2,13 @@
 patch -p1 -l -f $* < $0
 exit $?
 
-From 14a0ec753d87357a7d35fd6e834991904cf50fde Mon Sep 17 00:00:00 2001
+https://invent.kde.org/frameworks/breeze-icons/-/merge_requests/536
+
+From e6fecb0084412f3774bd111c457cb2a080cd0fbb Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
 Date: Thu, 12 Jun 2025 16:27:24 +0200
-Subject: [PATCH 3/4] Add data-question status icon similar to other data-*
- status icons
+Subject: [PATCH] Add data-question status icon similar to other data-* status
+ icons
 
 ---
  icons/status/16/data-question.svg   | 7 +++++++
@@ -88,4 +90,4 @@ index 000000000..a96f55a92
 +data-question.svg
 \ No newline at end of file
 --
-2.49.0
+2.53.0
