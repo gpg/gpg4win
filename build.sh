@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (C) 2024 g10 Code GmbH
+# Copyright (C) 2024-2026 g10 Code GmbH
 #
 # Software engineering by Andre Heinecke <aheinecke@gnupg.org>
 #
@@ -200,13 +200,15 @@ build_from_tarball() {
         exit 2
     fi
 
-    # Get the URL of the gnupg-vsd repo which carries customized
-    # configurations for GnuPG [VS-]Desktop
-    gnupgvsdconfrepo="$(getvar_from_autogenrc GNUPG_VSD_CONF_REPO)"
-    if [ -z "$gnupgvsdconfrepo" ]; then
-        echo "$PGM: error: GNUPG_VSD_CONF_REPO value missing in " \
-             ".gnupg-autogen.rc" >&2
-        exit 2
+    if [ $withmsi = yes ]; then
+        # Get the URL of the gnupg-vsd repo which carries customized
+        # configurations for GnuPG [VS-]Desktop
+        gnupgvsdconfrepo="$(getvar_from_autogenrc GNUPG_VSD_CONF_REPO)"
+        if [ -z "$gnupgvsdconfrepo" ]; then
+            echo "$PGM: error: GNUPG_VSD_CONF_REPO value missing in " \
+                ".gnupg-autogen.rc" >&2
+            exit 2
+        fi
     fi
 
     [ -d "${builddir}" ] || mkdir -p "${builddir}"
