@@ -137,8 +137,8 @@ AUTHENTICODE_FILES_OPTIONAL = \
 	 bin/libKF6Prison.dll \
 	 bin/libqrencode.dll \
 	../src/libgcc_s_dw2-1.dll-x \
-        ../src/libgcc_s_sjlj-1.dll-x \
-        ../src/libgcc_s_seh-1.dll-x  \
+	../src/libgcc_s_sjlj-1.dll-x \
+	../src/libgcc_s_seh-1.dll-x  \
 	../src/libwinpthread-1.dll-ex
 
 
@@ -1219,8 +1219,8 @@ $(msidir)/$(1)/announcement.txt: $(vsddir)/custom.mk $(vsddir)/announcement.de.i
 		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.xz@' > $(msidir)/$(1)/announcement.txt
 
 signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
-	mkdir -p signed_installers
-        $(call AUTHENTICODE_sign,"installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi","signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi")
+	mkdir -p signed_installers; \
+	$(call AUTHENTICODE_sign,"installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi","signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi")
 
 $(stampdir)/stamp-$(1)-upload: signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi \
 	$(stampdir)/stamp-dist-self
