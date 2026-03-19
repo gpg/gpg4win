@@ -172,6 +172,19 @@ echo >&2 "$PGM: source directory: $srcdir"
 echo >&2 "$PGM: build  directory: $builddir"
 
 
+# Remove leading an trailing whitespace
+trim() {
+    local var="$*"
+
+    # remove leading whitespace characters
+    var="${var#"${var%%[![:space:]]*}"}"
+    # remove trailing whitespace characters
+    var="${var%"${var##*[![:space:]]}"}"
+
+    printf '%s' "$var"
+}
+
+
 # Helper to get the value of a variable from the ~/.gnupg-autogen.rc file
 # Argument is the name of the variable.
 getvar_from_autogenrc() {
@@ -200,15 +213,13 @@ build_from_tarball() {
         exit 2
     fi
 
-    if [ $withmsi = yes ]; then
-        # Get the URL of the gnupg-vsd repo which carries customized
-        # configurations for GnuPG [VS-]Desktop
-        gnupgvsdconfrepo="$(getvar_from_autogenrc GNUPG_VSD_CONF_REPO)"
-        if [ -z "$gnupgvsdconfrepo" ]; then
-            echo "$PGM: error: GNUPG_VSD_CONF_REPO value missing in " \
-                ".gnupg-autogen.rc" >&2
-            exit 2
-        fi
+    # Get the URL of the gnupg-vsd repo which carries customized
+    # configurations for GnuPG [VS-]Desktop
+    gnupgvsdconfrepo="$(getvar_from_autogenrc GNUPG_VSD_CONF_REPO)"
+    if [ -z "$gnupgvsdconfrepo" ] && [ $need_gnupg_vsd = yes ]; then
+        echo "$PGM: error: GNUPG_VSD_CONF_REPO value missing in " \
+             ".gnupg-autogen.rc" >&2
+        exit 2
     fi
 
     [ -d "${builddir}" ] || mkdir -p "${builddir}"
@@ -250,7 +261,7 @@ build_from_tarball() {
         exit 2
     fi
 
-    if [ $withmsi = yes ]; then
+    if [ $withmsi = yes ] && [ $need_gnupg_vsd = yes ]; then
         cd src
         git clone "$gnupgvsdconfrepo"
         ( cd gnupg-vsd
@@ -477,6 +488,13 @@ if [ ! -e packages/BUILDTYPE ]; then
     echo >&2 "PGM: packages/BUILDTYPE not found - see README"
     exit 1
 fi
+
+# Check whether the --release target needs to clone the gnupg-vsd repo.
+case $(trim "$(cat packages/BUILDTYPE 2>/dev/null || echo default)") in
+    vsd|vsd3|gpd) need_gnupg_vsd=yes ;;
+    *) need_gnupg_vsd=no ;;
+esac
+
 
 # If --shell was used override the command for docker.
 # if not used try to download first.
