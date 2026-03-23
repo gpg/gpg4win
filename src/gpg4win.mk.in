@@ -27,8 +27,8 @@ AUTHENTICODE_FILES = \
 	bin/libassuan-9.dll \
 	bin/libfreetype.dll \
 	bin/libgpg-error-0.dll \
-	bin/libgpgme-11.dll \
-	bin/libgpgmepp-6.dll \
+	bin/libgpgme-45.dll \
+	bin/libgpgmepp-7.dll \
 	bin/libical.dll \
 	bin/libicalss.dll \
 	bin/libicalvcal.dll \
@@ -99,8 +99,8 @@ AUTHENTICODE_FILES = \
 	../install-ex/bin/gpgol.dll \
 	../install-ex/bin/libassuan-9.dll \
 	../install-ex/bin/libgpg-error-0.dll \
-	../install-ex/bin/libgpgme-11.dll \
-	../install-ex/bin/libgpgmepp-6.dll \
+	../install-ex/bin/libgpgme-45.dll \
+	../install-ex/bin/libgpgmepp-7.dll \
 	../install-ex/libexec/gpgme-w32spawn.exe \
 	libexec/gpgme-w32spawn.exe \
 	../../libgcc_s_dw2-1.dll-x \

@@ -30,9 +30,9 @@ Section "-un.gpgme"
   Push "${gpg4win_pkg_gpgme}"
   Call un.SourceDelete
 !else
-  Delete /REBOOTOK "$INSTDIR\bin\libgpgme-11.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libgpgme-45.dll"
 ${If} ${RunningX64}
-  Delete /REBOOTOK "$INSTDIR\bin_64\libgpgme-11.dll"
+  Delete /REBOOTOK "$INSTDIR\bin_64\libgpgme-45.dll"
   Delete /REBOOTOK "$INSTDIR\bin_64\gpgme-json.exe"
   Delete "$INSTDIR\bin_64\gpgme-w32spawn.exe"
 ${EndIf}

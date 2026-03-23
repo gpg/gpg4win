@@ -30,9 +30,9 @@ Section "-un.gpgmepp"
   Push "${gpg4win_pkg_gpgmepp}"
   Call un.SourceDelete
 !else
-  Delete /REBOOTOK "$INSTDIR\bin\libgpgmepp-6.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libgpgmepp-7.dll"
 ${If} ${RunningX64}
-  Delete /REBOOTOK "$INSTDIR\bin_64\libgpgmepp-6.dll"
+  Delete /REBOOTOK "$INSTDIR\bin_64\libgpgmepp-7.dll"
 ${EndIf}
 !endif
 SectionEnd
