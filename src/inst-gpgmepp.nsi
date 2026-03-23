@@ -1,5 +1,5 @@
-# inst-gpgme.nsi - Installer snippet for gpgme.     -*- coding: latin-1; -*-
-# Copyright (C) 2005, 2007, 2008 g10 Code GmbH
+# inst-gpgmepp.nsi - Installer snippet for gpgmepp. -*- coding: latin-1; -*-
+# Copyright (C) 2005, 2007, 2008, 2025 g10 Code GmbH
 #
 # This file is part of GPG4Win.
 #
@@ -21,42 +21,25 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/gpgme-${gpg4win_pkg_gpgme_version}
+!define prefix ${ipdir}/gpgmepp-${gpg4win_pkg_gpgmepp_version}
 !ifdef exprefix
 !undef exprefix
 !endif
-!define exprefix ${exipdir}/gpgme-${gpg4win_pkg_gpgme_version}
+!define exprefix ${exipdir}/gpgmepp-${gpg4win_pkg_gpgmepp_version}
 
 !ifdef DEBUG
-Section "gpgme" SEC_gpgme
+Section "gpgmepp" SEC_gpgmepp
 !else
-Section "-gpgme" SEC_gpgme
+Section "-gpgmepp" SEC_gpgmepp
 !endif
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
-  File "${gpg4win_pkg_gpgme}"
+  File "${gpg4win_pkg_gpgmepp}"
 !else
   SetOutPath "$INSTDIR\bin"
   ClearErrors
   SetOverwrite try
-  File "${prefix}/bin/libgpgme-11.dll"
-
-  SetOverwrite lastused
-  ifErrors 0 +3
-      File /oname=libgpgme-11.dll.tmp "${prefix}/bin/libgpgme-11.dll"
-      Rename /REBOOTOK libgpgme-11.dll.tmp libgpgme-11.dll
-
-  ClearErrors
-  SetOverwrite try
-
-  File "${prefix}/libexec/gpgme-w32spawn.exe"
-  File "${prefix}/bin/gpgme-json.exe"
-
-  SetOutPath "$INSTDIR\lib"
-  File /oname=libgpgme.imp "${prefix}/lib/libgpgme.dll.a"
-
-  SetOutPath "$INSTDIR\include"
-  File "${prefix}/include/gpgme.h"
+  File "${prefix}/bin/libgpgmepp-6.dll"
 
 ${If} ${RunningX64}
 
@@ -64,13 +47,11 @@ ${If} ${RunningX64}
   SetOutPath "$INSTDIR\bin_64"
   ClearErrors
   SetOverwrite try
-  File ${exprefix}/bin/libgpgme-11.dll
+  File ${exprefix}/bin/libgpgmepp-6.dll
   SetOverwrite lastused
   ifErrors 0 +3
-      File /oname=libgpgme-11.dll.tmp "${exprefix}/bin/libgpgme-11.dll"
-      Rename /REBOOTOK libgpgme-11.dll.tmp libgpgme-11.dll
-  File ${exprefix}/bin/gpgme-json.exe
-  File "${prefix}/libexec/gpgme-w32spawn.exe"
+      File /oname=libgpgmepp-6.dll.tmp "${exprefix}/bin/libgpgmepp-6.dll"
+      Rename /REBOOTOK libgpgmepp-6.dll.tmp libgpgmepp-6.dll
 
 ${EndIf}
 
