@@ -2,4 +2,4 @@
 
 cd $(dirname $0)
 
-docker build -t g10-build-appimage-kleopatra:centos7 appimage
+docker build --pull -t g10-build-appimage-kleopatra:centos7 appimage
