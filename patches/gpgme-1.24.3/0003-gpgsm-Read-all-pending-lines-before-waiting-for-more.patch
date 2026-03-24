@@ -1,0 +1,168 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 72c396d5001252b9b508196d23015a186f7551b9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 24 Mar 2026 15:56:39 +0100
+Subject: [PATCH] gpgsm: Read all pending lines before waiting for more data
+
+* src/engine-gpgsm.c (gpgsm_assuan_simple_command): Add a loop to read
+all pending lines.
+--
+
+This fixes the problem that gpgme waited indefinitely for the completion
+of the "simple command" if the reply consisted of more than one line.
+For example, if an invalid recipient is sent to gpgsm then gpgsm
+replies something like
+  S INV_RECP 10 798413A50E4C66292914361E8358AC45668F412A<LF>
+  ERR 50331746 Not trusted <GpgSM><LF>
+gpgsm_assuan_simple_command read the first line and then waited forever
+for more data sent by gpgsm.
+
+GnuPG-bug-id: 8187
+(cherry picked from commit 775e1eb923fa0f2f66363d5329acfebc13c864b3)
+---
+ src/engine-gpgsm.c | 112 ++++++++++++++++++++++++---------------------
+ 1 file changed, 60 insertions(+), 52 deletions(-)
+
+diff --git a/src/engine-gpgsm.c b/src/engine-gpgsm.c
+index 68778566..d7d2bf9e 100644
+--- a/src/engine-gpgsm.c
++++ b/src/engine-gpgsm.c
+@@ -694,6 +694,7 @@ gpgsm_assuan_simple_command (engine_gpgsm_t gpgsm, const char *cmd,
+   struct io_select_fd_s fds[2];
+   struct io_cb_data iocb_data;
+   int nfds = 0;
++  int done = 0;
+
+   iocb_data.handler_value = gpgsm->diag_cb.data;
+   iocb_data.op_err = 0;
+@@ -734,66 +735,73 @@ gpgsm_assuan_simple_command (engine_gpgsm_t gpgsm, const char *cmd,
+       if (gpgsm->status_cb.fd != -1 && !fds[0].signaled)
+	continue;
+
+-      err = assuan_read_line (ctx, &line, &linelen);
+-      if (err)
+-	break;
+-
+-      if (*line == '#' || !linelen)
+-	continue;
+-
+-      if (linelen >= 2
+-	  && line[0] == 'O' && line[1] == 'K'
+-	  && (line[2] == '\0' || line[2] == ' '))
+-	break;
+-      else if (linelen >= 4
+-	  && line[0] == 'E' && line[1] == 'R' && line[2] == 'R'
+-	  && line[3] == ' ')
++      do
+         {
+-          /* We prefer a callback generated error because that one is
+-             more related to gpgme and thus probably more important
+-             than the error returned by the engine.  */
+-          err = cb_err? cb_err : atoi (&line[4]);
+-          cb_err = 0;
+-        }
+-      else if (linelen >= 2
+-	       && line[0] == 'S' && line[1] == ' ')
+-	{
+-          /* After an error from a status callback we skip all further
+-             status lines.  */
+-          if (!cb_err)
+-            {
+-              char *rest;
+-              gpgme_status_code_t r;
++          err = assuan_read_line (ctx, &line, &linelen);
++          if (err)
++            break;
+
+-              rest = strchr (line + 2, ' ');
+-              if (!rest)
+-                rest = line + linelen; /* set to an empty string */
+-              else
+-                *(rest++) = 0;
++          if (*line == '#' || !linelen)
++	    continue;
+
+-              r = _gpgme_parse_status (line + 2);
+-              if (gpgsm->status.mon_cb && r != GPGME_STATUS_PROGRESS)
++          if (linelen >= 2
++	      && line[0] == 'O' && line[1] == 'K'
++	      && (line[2] == '\0' || line[2] == ' '))
++            {
++              done = 1;
++              break;
++            }
++          else if (linelen >= 4
++	      && line[0] == 'E' && line[1] == 'R' && line[2] == 'R'
++	      && line[3] == ' ')
++            {
++              /* We prefer a callback generated error because that one is
++                 more related to gpgme and thus probably more important
++                 than the error returned by the engine.  */
++              err = cb_err? cb_err : atoi (&line[4]);
++              cb_err = 0;
++            }
++          else if (linelen >= 2
++	           && line[0] == 'S' && line[1] == ' ')
++	    {
++              /* After an error from a status callback we skip all further
++                 status lines.  */
++              if (!cb_err)
+                 {
+-                  /* Note that we call the monitor even if we do
+-                   * not know the status code (r < 0).  */
+-                  cb_err = gpgsm->status.mon_cb (gpgsm->status.mon_cb_value,
+-                                                 line + 2, rest);
++                  char *rest;
++                  gpgme_status_code_t r;
++
++                  rest = strchr (line + 2, ' ');
++                  if (!rest)
++                    rest = line + linelen; /* set to an empty string */
++                  else
++                    *(rest++) = 0;
++
++                  r = _gpgme_parse_status (line + 2);
++                  if (gpgsm->status.mon_cb && r != GPGME_STATUS_PROGRESS)
++                    {
++                      /* Note that we call the monitor even if we do
++                       * not know the status code (r < 0).  */
++                      cb_err = gpgsm->status.mon_cb (gpgsm->status.mon_cb_value,
++                                                     line + 2, rest);
++                    }
++
++                  if (r >= 0 && status_fnc && !cb_err)
++                    cb_err = status_fnc (status_fnc_value, r, rest);
+                 }
+-
+-              if (r >= 0 && status_fnc && !cb_err)
+-                cb_err = status_fnc (status_fnc_value, r, rest);
++	    }
++          else
++            {
++              /* Invalid line or INQUIRY.  We can't do anything else than
++                 to stop.  As with ERR we prefer a status callback
++                 generated error code, though.  */
++              err = cb_err ? cb_err : gpg_error (GPG_ERR_GENERAL);
++              cb_err = 0;
+             }
+-	}
+-      else
+-        {
+-          /* Invalid line or INQUIRY.  We can't do anything else than
+-             to stop.  As with ERR we prefer a status callback
+-             generated error code, though.  */
+-          err = cb_err ? cb_err : gpg_error (GPG_ERR_GENERAL);
+-          cb_err = 0;
+         }
++      while (!err && assuan_pending_line (ctx));
+     }
+-  while (!err);
++  while (!err && !done);
+
+   /* We only want the first error from the status handler, thus we
+    * take the one saved in CB_ERR. */
+--
+2.53.0

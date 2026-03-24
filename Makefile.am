@@ -53,6 +53,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/gpgme-1.24.3/0001-gpgsm-Introduce-two-phase-interactions.patch \
              patches/gpgme-1.24.3/0002-gpgsm-Extend-gpgsm_assuan_simple_command.patch \
+             patches/gpgme-1.24.3/0003-gpgsm-Read-all-pending-lines-before-waiting-for-more.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
              patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
