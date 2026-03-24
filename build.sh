@@ -480,7 +480,7 @@ if [ -z "$(docker images | grep $drep | grep $dtag)" \
      -o "$update_image" = "yes" ]; then
     echo >&2 "$PGM: Local image $docker_image not found"
     echo >&2 "$PGM: Building docker image"
-    docker build -t $docker_image $dockerfile 2>&1
+    docker build --pull -t $docker_image $dockerfile 2>&1
 fi
 
 # Make sure we have a BUILDTYPE file
