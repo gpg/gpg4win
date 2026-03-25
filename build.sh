@@ -642,7 +642,7 @@ runner_cmd_cptowinhost() {
     shift
 
     files=
-    for f in $@; do
+    for f in "$@"; do
         files="$files $(transform_dir "$f")"
     done
     set +e
