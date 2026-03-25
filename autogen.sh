@@ -223,7 +223,7 @@ if [ -f "$HOME/.gnupg-autogen.rc" ]; then
     . "$HOME/.gnupg-autogen.rc"
 fi
 
-# Disable the --enable-maintainer_mode option.
+# Disable the --enable-maintainer-mode option.
 if [ "${maintainer_mode_option}" = off ]; then
     maintainer_mode_option=
 elif [ -z "${maintainer_mode_option}" ]; then
