@@ -131,7 +131,6 @@ while [ $# -gt 0 ]; do
         --release) release="yes";;
         --update-image|--update-img|-u) update_image="yes";;
         --w32) w64="no";;
-        --w64) w64="yes";;
         --force) force="yes";;
         --no-sign) nosign="yes" ;;
         --download) download="yes";;
@@ -462,7 +461,7 @@ if [ "$appimage" = "yes" ]; then
 else
     # We will run our self again in the docker image.
     if [ "$w64" = "yes" ]; then
-        cmd="/src/build.sh --w64"
+        cmd="/src/build.sh"
     else
         cmd="/src/build.sh --w32"
     fi
