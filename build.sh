@@ -668,7 +668,7 @@ runner_cmd_cpfromwinhost() {
     return 0
 }
 
-# Copy files to the Windows host
+# Run light.exe on Windows host
 runner_cmd_lightwinhost() {
     local version="$1" prefix="$2" name="$3" intlopt="$4" msivers="$5"
 
