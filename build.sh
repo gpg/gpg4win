@@ -51,6 +51,7 @@ Options:
                         packages:
                         libkleo kleopatra gpgol gpgol.js
                         gpgpass gpg4win-tools mimetreeparser
+        --verbose       Get more verbose output
 
 
 This script is used to build either the Appimage or the Windows
