@@ -37,8 +37,9 @@ Options:
         --release       Create a tarball and then build this tarball
         --shell         Start a shell instead of starting the build script
         --builddir=DIR  Directory where the build should take place
-                        (default is ~/b/SRCDIRNAME-playground for gpg4win
-                         and ~/b/SRCDIRNAME-appimage for the AppImage)
+                        (default is ~/b/SRCDIRNAME-playground for gpg4win,
+                         ~/b/SRCDIRNAME-appimage for the AppImage, and
+                         ~/b/SRCDIRNAME-mill for release builds)
         --logfile=file  Change default build log file to FILE
         --force         Force configure run
         --no-sign       Do not authenticode sign packages
@@ -55,8 +56,8 @@ Options:
 
 
 This script is used to build either the Appimage or the Windows
-installer.  The build is done in a build directory with the suffix
-"-playground".  Use the option --builddir to use a non-default build
+installer.  The build is done in a suffixed build directory (see above
+for the defaults).  Use the option --builddir to use a non-default build
 directory.  Take care not to use the source directory for building.
 
 Examples:
