@@ -117,12 +117,8 @@ recooked=
 skipshift=
 while [ $# -gt 0 ]; do
     case "$1" in
-	--*=*)
-	    optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'`
-	    ;;
-	*)
-	    optarg=""
-	    ;;
+        --*=*) optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'`;;
+        *) optarg="";;
     esac
 
     case "$1" in
@@ -408,19 +404,19 @@ if [ $withmsi = yes ]; then
     fi
     [ -z "$WINEPREFIX" ] && WINEPREFIX="$HOME/.wine"
     if [ ! -e "$WINEPREFIX/dosdevices" ]; then
-	echo >&2 "PGM: error: No value for WINEPREFIX found"
-	exit 1
+        echo >&2 "PGM: error: No value for WINEPREFIX found"
+        exit 1
     fi
     if [ -z "$WIXPREFIX" ]; then
         tmp="$(readlink -f ~/w32root/wixtools)"
-	if [ -d "$tmp" ]; then
-	    WIXPREFIX="$tmp"
-	    echo >&2 "$PGM: Using $WIXPREFIX as WIXPREFIX"
-	else
-	    echo >&2 "$PGM: error: You must set WIXPREFIX" \
+    if [ -d "$tmp" ]; then
+        WIXPREFIX="$tmp"
+        echo >&2 "$PGM: Using $WIXPREFIX as WIXPREFIX"
+    else
+        echo >&2 "$PGM: error: You must set WIXPREFIX" \
                  " to an installation of wixtools"
-	    exit 1
-	fi
+        exit 1
+    fi
     fi
     WINEINST="$WINEPREFIX/dosdevices/k:"
     WINESRC="$WINEPREFIX/dosdevices/i:"
@@ -428,10 +424,10 @@ if [ $withmsi = yes ]; then
     WINEBLD="$WINEPREFIX/dosdevices/l:"
     die=no
     for f in "$WINEINST" "$WINESRC" "$WINEINSTEX" "$WINEBLD" ; do
-	if [ -e "$f" -a ! -h "$f" ]; then
-	    echo >&2 "$PGM: error: '$f' already exists. Please remove."
-            die=yes
-	fi
+    if [ -e "$f" -a ! -h "$f" ]; then
+        echo >&2 "$PGM: error: '$f' already exists. Please remove."
+        die=yes
+    fi
     done
     # Also check that there is no cruft in the gnupg-vsd subdir.
     # For now we check only the standard configuration directories.
@@ -439,14 +435,14 @@ if [ $withmsi = yes ]; then
     if [ "$release" = "yes" ]; then
         echo >&2 "$PGM: note: gnupg-vsd will be cloned later"
     elif [ ! -f "$f" ]; then
-	echo >&2 "$PGM: error: '$f' does not exist."
+        echo >&2 "$PGM: error: '$f' does not exist."
         die=yes
     else
         for x in Enterprise Standard Entry Testorg Desktop ; do
             f="${srcdir}/src/gnupg-vsd/$x"
             for y in VERSION VERSION.sig $x.wxs ; do
                 if [ -f "$f/$y" ]; then
-	            echo >&2 "$PGM: error: file '$f/$y' should not exist."
+                    echo >&2 "$PGM: error: file '$f/$y' should not exist."
                     die=yes
                 fi
             done
@@ -611,19 +607,19 @@ runner_cmd_msibase() {
     [ -n "$verbose" ] && set -x
     ssh "$WINHOST" "mkdir AppData\\Local\\Temp\\gpg4win-$version" || true
     scp "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
-	"$WINHOST":AppData/Local/Temp/gpg4win-"$version";
+        "$WINHOST":AppData/Local/Temp/gpg4win-"$version";
     scp "$srcdir"/src/icons/shield.ico \
         "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
     scp "$srcdir"/doc/logo/gpg4win-msi-header_install-493x58.bmp \
-	"$WINHOST":AppData/Local/Temp/gpg4win-"$version"/header.bmp
+        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/header.bmp
     scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-	"$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
+        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
     scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-	"$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
+        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
     scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
-	"$WINHOST":AppData/Local/Temp/gpg4win-"$version"/info.bmp
+        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/info.bmp
     scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
-	"$WINHOST":AppData/Local/Temp/gpg4win-"$version"/exclamation.bmp
+        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/exclamation.bmp
     scp "$srcdir"/po/gpg4win-en.wxl \
         "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
     scp "$srcdir"/po/gpg4win-de.wxl \
@@ -741,37 +737,37 @@ runner_cmd_litcandle() {
     set +e
     if [ $rc -eq 0 ]; then
         $WINE "$WIXPREFIX/candle.exe" \
-	      -dInstDir=k: \
-	      -dInstDirEx=j: \
-	      -dSrcDir=i:\\ \
-	      -dBldDir=l:\\ \
-	      -dVersion="$version" \
-	      -dWin64="yes" \
-	      -out k:\\"$fwixobj" \
-	      -pedantic -wx "$fwxs" \
-	      -arch x64
+            -dInstDir=k: \
+            -dInstDirEx=j: \
+            -dSrcDir=i:\\ \
+            -dBldDir=l:\\ \
+            -dVersion="$version" \
+            -dWin64="yes" \
+            -out k:\\"$fwixobj" \
+            -pedantic -wx "$fwxs" \
+            -arch x64
         rc=$?
     fi
     if [ $rc -eq 0 -a -n "$fextraobj" ]; then
         $WINE "$WIXPREFIX/candle.exe" \
-	      -dInstDir=k: \
-	      -dInstDirEx=j: \
-	      -dSrcDir=i:\\ \
-	      -dBldDir=l:\\ \
-	      -dVersion="$version" \
-	      -dWin64="yes" \
-	      -out "$fextraobj" \
-	      -arch x64 \
-	      -pedantic -wx i:\\src\\WixUI_Gpg4win.wxs
+            -dInstDir=k: \
+            -dInstDirEx=j: \
+            -dSrcDir=i:\\ \
+            -dBldDir=l:\\ \
+            -dVersion="$version" \
+            -dWin64="yes" \
+            -out "$fextraobj" \
+            -arch x64 \
+            -pedantic -wx i:\\src\\WixUI_Gpg4win.wxs
         rc=$?
     fi
     if [ $rc -eq 0 ]; then
-	$WINE "$WIXPREFIX/lit.exe" \
-	      -out k:\\"$fwixlib" \
-	      -bf \
-	      -wx \
-	      -pedantic \
-	      k:\\"$fwixobj" "$fextraobj"
+        $WINE "$WIXPREFIX/lit.exe" \
+            -out k:\\"$fwixlib" \
+            -bf \
+            -wx \
+            -pedantic \
+            k:\\"$fwixobj" "$fextraobj"
         rc=$?
     fi
     set -e
@@ -814,15 +810,15 @@ runner_loop() {
    echo >&2 "$PGM: command runner started pid=$$"
    while : ; do
        if read -r cmd line < "${builddir}/S.build.sh-in" ; then
-           if [ -z "$recooked" ]; then
-	      stty cooked </dev/tty
-	      recooked=yes
-	   fi
-           echo >&2 "$PGM(runner): executing cmd"
-           runner_exec_cmd "$cmd" "$line" >"${builddir}/S.build.sh-out" &
-           echo >&2 "$PGM(runner): waiting for cmd"
-           wait
-           echo >&2 "$PGM(runner): cmd finished"
+            if [ -z "$recooked" ]; then
+                stty cooked </dev/tty
+                recooked=yes
+            fi
+            echo >&2 "$PGM(runner): executing cmd"
+            runner_exec_cmd "$cmd" "$line" >"${builddir}/S.build.sh-out" &
+            echo >&2 "$PGM(runner): waiting for cmd"
+            wait
+            echo >&2 "$PGM(runner): cmd finished"
        fi
    done
    echo >&2 "$PGM: command runner stopped"
