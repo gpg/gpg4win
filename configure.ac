@@ -1,5 +1,5 @@
 # configure.ac for GPG4Win
-# Copyright (C) 2005, 2006, 2007, 2008, 2010, 2023 g10 Code GmbH
+# Copyright (C) 2005, 2006, 2007, 2008, 2010, 2023, 2026 g10 Code GmbH
 #
 # This file is part of GPG4Win
 #
@@ -111,6 +111,8 @@ AM_MAINTAINER_MODE
 AC_CANONICAL_HOST
 AC_CONFIG_HEADERS([config.h])
 
+# Language support
+AM_PO_SUBDIRS
 
 AC_SUBST(PRODUCT_NAME)
 AC_SUBST(SHORTPRODUCT_NAME)
@@ -401,7 +403,11 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_SPKG([gettext], [libiconv])
     GPG4WIN_SPKG([libpng], [zlib])
     GPG4WIN_SPKG([jpeg])
-    GPG4WIN_KDEPKG([libqrencode], [libpng libiconv])
+    if test "$IS_VSD3_BUILD" = yes ; then
+        GPG4WIN_SPKG([qrencode], [libpng libiconv])
+    else
+        GPG4WIN_KDEPKG([libqrencode], [libpng libiconv])
+    fi
 
     # Packages needed for gpgex
     GPG4WIN_SPKGEX([libgpg-error])
@@ -410,6 +416,9 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_SPKGEX([gpgme], [libgpg-error libassuan])
     GPG4WIN_CMKPKGEX([gpgmepp], [gpgme])
     GPG4WIN_SPKGEX([gpgol], [gpgmepp])
+#    if test "$IS_VSD3_BUILD" = yes ; then
+#        GPG4WIN_IPKG([compendium])
+#    fi
 
     # The GnuPG Package.
     GPG4WIN_BPKG_BINSRC([gnupg-w32])
@@ -423,37 +432,66 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_NATIVEPKG([kconfig], [qtbase qttools extra-cmake-modules])
 
     # Qt related stuff.
-    GPG4WIN_KDEPKG([zstd])
-    GPG4WIN_KDEPKG([qtbase], [jpeg zlib zstd libpng freetype pcre2])
     GPG4WIN_KDEPKG([qttools], [qtbase])
-    GPG4WIN_KDEPKG([qttranslations], [qtsvg qttools native-qttools])
+    if test "$IS_VSD3_BUILD" = yes ; then
+        GPG4WIN_KDEPKG([qtbase], [jpeg zlib libpng freetype pcre2])
+        GPG4WIN_KDEPKG([qttranslations], [qtsvg qttools qtwinextras])
+        GPG4WIN_KDEPKG([qtwinextras], [qtbase])
+        GPG4WIN_KDEPKG([kleopatra], [mimetreeparser kio gnupg-w32 breeze-icons kxmlgui libkleo kitemmodels qttranslations ktextwidgets])
+        GPG4WIN_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
+        GPG4WIN_KDEPKG([ki18n], [qtbase gettext qttools extra-cmake-modules])
+        GPG4WIN_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
+        GPG4WIN_KDEPKG([kwindowsystem], [qtbase qtwinextras qttools])
+        GPG4WIN_KDEPKG([kcoreaddons], [qtbase qttools])
+        GPG4WIN_KDEPKG([kcodecs], [qtbase qttools])
+        GPG4WIN_KDEPKG([kguiaddons], [qtbase qttools])
+        GPG4WIN_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
+        GPG4WIN_KDEPKG([kitemviews], [qtbase qttools])
+        GPG4WIN_KDEPKG([kitemmodels], [qtbase qttools])
+        GPG4WIN_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
+        GPG4WIN_KDEPKG([solid], [qttools qtbase extra-cmake-modules])
+        GPG4WIN_KDEPKG([sonnet], [qtbase qttools])
+        GPG4WIN_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
+        GPG4WIN_KDEPKG([prison], [qtbase extra-cmake-modules qrencode])
+        GPG4WIN_KDEPKG([gpgpass], [prison kio kconfigwidgets kiconthemes ki18n qgpgme])
+    else
+        GPG4WIN_KDEPKG([zstd])
+        GPG4WIN_KDEPKG([qtbase], [jpeg zlib zstd libpng freetype pcre2])
+        GPG4WIN_KDEPKG([qttranslations], [qtsvg qttools native-qttools])
+        GPG4WIN_KDEPKG([qthttpserver], [qtbase])
+        GPG4WIN_KDEPKG([qtwebsockets], [qtbase])
+        GPG4WIN_KDEPKG([breeze], [qtbase kcoreaddons kconfig kconfigwidgets kguiaddons kiconthemes kwindowsystem native-kconfig])
+        GPG4WIN_KDEPKG([kleopatra], [kstatusnotifieritem mimetreeparser kio gnupg-w32 breeze-icons kxmlgui libkleo kitemmodels qttranslations ktextwidgets native-kconfig])
+        GPG4WIN_KDEPKG([kconfig], [qtbase native-qttools extra-cmake-modules])
+        GPG4WIN_KDEPKG([ki18n], [qtbase gettext native-qttools extra-cmake-modules])
+        GPG4WIN_KDEPKG([kwidgetsaddons], [kconfig native-qttools qtbase])
+        GPG4WIN_KDEPKG([kwindowsystem], [qtbase native-qttools extra-cmake-modules])
+        GPG4WIN_KDEPKG([kcoreaddons], [qtbase native-qttools extra-cmake-modules])
+        GPG4WIN_KDEPKG([kcodecs], [qtbase native-qttools extra-cmake-modules])
+        GPG4WIN_KDEPKG([kguiaddons], [qtbase native-qttools extra-cmake-modules])
+        GPG4WIN_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig kcolorscheme])
+        GPG4WIN_KDEPKG([kitemviews], [qtbase native-qttools extra-cmake-modules])
+        GPG4WIN_KDEPKG([kitemmodels], [qtbase native-qttools extra-cmake-modules])
+        GPG4WIN_KDEPKG([karchive], [qtbase native-qttools extra-cmake-modules])
+        GPG4WIN_KDEPKG([solid], [native-qttools qtbase extra-cmake-modules])
+        GPG4WIN_KDEPKG([sonnet], [qtbase native-qttools])
+        GPG4WIN_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg native-kconfig])
+        GPG4WIN_KDEPKG([prison], [qtbase extra-cmake-modules libqrencode])
+        GPG4WIN_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
+        GPG4WIN_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n qgpgme native-kconfig])
+        GPG4WIN_KDEPKG([kcontacts], [kcoreaddons qtbase ki18n kconfig kcodecs])
+        GPG4WIN_KDEPKG([gpgoljs],[qtwebsockets kcontacts qthttpserver mimetreeparser libkleo sonnet kcompletion ki18n kwidgetsaddons kio])
+    fi
     GPG4WIN_KDEPKG([qtsvg], [qtbase])
-    GPG4WIN_KDEPKG([qthttpserver], [qtbase])
-    GPG4WIN_KDEPKG([qtwebsockets], [qtbase])
     GPG4WIN_KDEPKG([tiff])
     GPG4WIN_KDEPKG([pcre2])
-    GPG4WIN_KDEPKG([breeze], [qtbase kcoreaddons kconfig kconfigwidgets kguiaddons kiconthemes kwindowsystem native-kconfig])
-#   GPG4WIN_KDEPKG([snoretoast])
     GPG4WIN_KDEPKG([openjpeg], [tiff jpeg])
     GPG4WIN_KDEPKG([breeze-icons], [extra-cmake-modules qtbase])
-    GPG4WIN_KDEPKG([kleopatra], [kstatusnotifieritem mimetreeparser kio gnupg-w32 breeze-icons kxmlgui libkleo kitemmodels qttranslations ktextwidgets native-kconfig])
     GPG4WIN_KDEPKG([extra-cmake-modules])
-    GPG4WIN_KDEPKG([kconfig], [qtbase native-qttools extra-cmake-modules])
-    GPG4WIN_KDEPKG([ki18n], [qtbase gettext native-qttools extra-cmake-modules])
-    GPG4WIN_KDEPKG([kwidgetsaddons], [kconfig native-qttools qtbase])
     GPG4WIN_KDEPKG([kcompletion], [kwidgetsaddons])
-    GPG4WIN_KDEPKG([kwindowsystem], [qtbase native-qttools extra-cmake-modules])
-    GPG4WIN_KDEPKG([kcoreaddons], [qtbase native-qttools extra-cmake-modules])
-    GPG4WIN_KDEPKG([kcodecs], [qtbase native-qttools extra-cmake-modules])
-    GPG4WIN_KDEPKG([kguiaddons], [qtbase native-qttools extra-cmake-modules])
     GPG4WIN_KDEPKG([kmime], [kcodecs ki18n])
     GPG4WIN_KDEPKG([kmbox], [kmime])
-    GPG4WIN_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig kcolorscheme])
-    GPG4WIN_KDEPKG([kitemviews], [qtbase native-qttools extra-cmake-modules])
-    GPG4WIN_KDEPKG([kitemmodels], [qtbase native-qttools extra-cmake-modules])
-    GPG4WIN_KDEPKG([karchive], [qtbase native-qttools extra-cmake-modules])
     GPG4WIN_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
-    GPG4WIN_KDEPKG([solid], [native-qttools qtbase extra-cmake-modules])
     GPG4WIN_KDEPKG([kjobwidgets], [kwidgetsaddons kcoreaddons qtbase extra-cmake-modules])
     GPG4WIN_KDEPKG([kservice], [kconfig kcoreaddons ki18n])
     GPG4WIN_KDEPKG([kbookmarks], [kconfig kxmlgui kcoreaddons kconfigwidgets kwidgetsaddons kcodecs])
@@ -465,19 +503,12 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
     GPG4WIN_KDEPKG([kcolorscheme], [kconfig kguiaddons ki18n])
     GPG4WIN_KDEPKG([freetype], [zlib bzip2])
-    GPG4WIN_KDEPKG([sonnet], [qtbase native-qttools])
     GPG4WIN_KDEPKG([ktextwidgets], [sonnet kcompletion kconfig kconfigwidgets ki18n kwidgetsaddons])
     GPG4WIN_KDEPKG([poppler], [libpng openjpeg tiff gpgmepp kio qtbase freetype])
     GPG4WIN_KDEPKG([kparts], [kio kservice kxmlgui kconfigwidgets kwidgetsaddons ktextwidgets])
-    GPG4WIN_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg native-kconfig])
     GPG4WIN_KDEPKG([libical])
     GPG4WIN_KDEPKG([kcalendarcore], [qtbase libical extra-cmake-modules])
     GPG4WIN_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmbox kmime kcodecs kcalendarcore])
-    GPG4WIN_KDEPKG([prison], [qtbase extra-cmake-modules libqrencode])
-    GPG4WIN_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
-    GPG4WIN_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n qgpgme native-kconfig])
-    GPG4WIN_KDEPKG([kcontacts], [kcoreaddons qtbase ki18n kconfig kcodecs])
-    GPG4WIN_KDEPKG([gpgoljs],[qtwebsockets kcontacts qthttpserver mimetreeparser libkleo sonnet kcompletion ki18n kwidgetsaddons kio])
 
     GPG4WIN_FINALIZE
 fi
@@ -489,10 +520,12 @@ if test "$build_appimage" = yes ; then
     # poppler requires freetype >= 2.11
     APPIMAGE_SPKG([freetype])
     APPIMAGE_SPKG([sqlite])
-    APPIMAGE_KDEPKG([libqrencode])
-    # poppler requires tiff >= 4.3
-    APPIMAGE_KDEPKG([tiff])
-    APPIMAGE_SPKG([xcb-util-cursor])
+    if test "$IS_VSD3_BUILD" = no ; then
+        APPIMAGE_KDEPKG([libqrencode])
+        # poppler requires tiff >= 4.3
+        APPIMAGE_KDEPKG([tiff])
+        APPIMAGE_SPKG([xcb-util-cursor])
+    fi
 
     APPIMAGE_SPKG([libgpg-error])
     APPIMAGE_SPKG([libassuan], [libgpg-error])
@@ -501,7 +534,11 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([libksba], [libgpg-error])
     APPIMAGE_SPKG([ntbtls], [libgcrypt libksba])
     APPIMAGE_SPKG([gnupg], [libgpg-error libassuan npth libgcrypt libksba sqlite ntbtls])
-    APPIMAGE_SPKG([pinentry], [qtbase kguiaddons kwindowsystem])
+    if test "$IS_VSD3_BUILD" = yes ; then
+        APPIMAGE_SPKG([pinentry], [qtbase qtx11extras])
+    else
+        APPIMAGE_SPKG([pinentry], [qtbase kguiaddons kwindowsystem])
+    fi
 
     APPIMAGE_SPKG([gpgme], [libgpg-error libassuan])
     APPIMAGE_KDEPKG([gpgmepp], [gpgme])
@@ -509,14 +546,20 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([paperkey])
 
     # Qt related stuff.
-    APPIMAGE_KDEPKG([qtbase], [freetype xcb-util-cursor])
+    if test "$IS_VSD3_BUILD" = yes ; then
+        APPIMAGE_KDEPKG([qtbase], [freetype gnupg])
+        APPIMAGE_KDEPKG([qttranslations], [qtsvg qttools qtx11extras])
+        APPIMAGE_KDEPKG([qtx11extras], [qtbase])
+    else
+        APPIMAGE_KDEPKG([qtbase], [freetype xcb-util-cursor])
+        APPIMAGE_KDEPKG([qttranslations], [qtsvg qttools])
+        APPIMAGE_KDEPKG([wayland-protocols])
+        APPIMAGE_KDEPKG([plasma-wayland-protocols], [wayland-protocols extra-cmake-modules])
+        APPIMAGE_KDEPKG([breeze], [qtbase kcoreaddons kconfig kconfigwidgets kguiaddons kiconthemes kwindowsystem])
+    fi
     APPIMAGE_KDEPKG([qttools], [qtbase])
-    APPIMAGE_KDEPKG([qttranslations], [qtsvg qttools])
     APPIMAGE_KDEPKG([qtsvg], [qtbase])
     APPIMAGE_KDEPKG([qtwayland], [qtbase])
-    APPIMAGE_KDEPKG([wayland-protocols])
-    APPIMAGE_KDEPKG([plasma-wayland-protocols], [wayland-protocols extra-cmake-modules])
-    APPIMAGE_KDEPKG([breeze], [qtbase kcoreaddons kconfig kconfigwidgets kguiaddons kiconthemes kwindowsystem])
 
     # KDE Frameworks Tier 1
     APPIMAGE_KDEPKG([extra-cmake-modules], [qttools])
@@ -524,7 +567,12 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kauth], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kcodecs], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([kcolorscheme], [kconfig kguiaddons ki18n])
+    if test "$IS_VSD3_BUILD" = yes ; then
+        APPIMAGE_KDEPKG([kwindowsystem], [qtbase qtx11extras extra-cmake-modules])
+    else
+        APPIMAGE_KDEPKG([kcolorscheme], [kconfig kguiaddons ki18n])
+        APPIMAGE_KDEPKG([kwindowsystem], [qtbase qtwayland extra-cmake-modules wayland-protocols plasma-wayland-protocols])
+    fi
     APPIMAGE_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kcoreaddons], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kdbusaddons], [qtbase qttools extra-cmake-modules])
@@ -532,12 +580,16 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([ki18n], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kitemmodels], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kitemviews], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([kwindowsystem], [qtbase qtwayland extra-cmake-modules wayland-protocols plasma-wayland-protocols])
     APPIMAGE_KDEPKG([solid], [qtbase extra-cmake-modules])
     APPIMAGE_KDEPKG([sonnet], [qtbase extra-cmake-modules])
     APPIMAGE_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
 
     # KDE Frameworks Tier 2
+    if test "$IS_VSD3_BUILD" = yes ; then
+        APPIMAGE_KDEPKG([kactivities], [kwindowsystem])
+    else
+        APPIMAGE_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
+    fi
     APPIMAGE_KDEPKG([kcompletion], [kwidgetsaddons])
     APPIMAGE_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
     APPIMAGE_KDEPKG([kjobwidgets], [kwidgetsaddons kcoreaddons qtbase extra-cmake-modules])
@@ -548,7 +600,11 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
     APPIMAGE_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
     APPIMAGE_KDEPKG([ktextwidgets], [sonnet kcompletion kconfig kconfigwidgets ki18n kwidgetsaddons])
-    APPIMAGE_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews ktextwidgets breeze])
+    if test "$IS_VSD3_BUILD" = yes ; then
+        APPIMAGE_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews ktextwidgets])
+    else
+        APPIMAGE_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews ktextwidgets breeze])
+    fi
     APPIMAGE_KDEPKG([kbookmarks], [kconfig kxmlgui kcoreaddons kconfigwidgets kwidgetsaddons kcodecs])
     APPIMAGE_KDEPKG([kservice], [kconfig kcoreaddons ki18n])
     APPIMAGE_KDEPKG([kio], [kcrash kjobwidgets solid kservice kbookmarks kwidgetsaddons kxmlgui kwindowsystem karchive kconfig kcoreaddons ki18n kauth])
@@ -562,16 +618,31 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([kmbox], [kmime])
     APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion qgpgme])
 
-    APPIMAGE_KDEPKG([kleopatra], [mimetreeparser qgpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
+    if test "$IS_VSD3_BUILD" = yes ; then
+        APPIMAGE_KDEPKG([kleopatra], [mimetreeparser gnupg qgpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons])
+    else
+        APPIMAGE_KDEPKG([kleopatra], [mimetreeparser qgpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
+    fi
 
     # Okular/Poppler
-    APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff])
-    APPIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
+    if test "$IS_VSD3_BUILD" = yes ; then
+        APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype])
+        APPIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg kactivities])
+    else
+        APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff])
+        APPIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
+    fi
 
     # Gpgpass
-    APPIMAGE_KDEPKG([prison], [qtbase extra-cmake-modules libqrencode])
-    APPIMAGE_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n qgpgme])
-    APPIMAGE_FINALIZE
+    if test "$IS_VSD3_BUILD" = yes ; then
+        APPIMAGE_SPKG([qrencode], [libpng libiconv])
+        APPIMAGE_KDEPKG([prison], [qtbase extra-cmake-modules qrencode])
+        APPIMAGE_KDEPKG([gpgpass], [prison kconfigwidgets kiconthemes ki18n qgpgme])
+    else
+        APPIMAGE_KDEPKG([prison], [qtbase extra-cmake-modules libqrencode])
+        APPIMAGE_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n qgpgme])
+        APPIMAGE_FINALIZE
+    fi
 fi
 
 # Throw an error if required tools are missing
