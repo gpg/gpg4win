@@ -236,6 +236,15 @@ chk  c4737943083ce92e41faf13c27a9d608105b6285c0840dfb684a7ee294142ddf
 #  Kleopatra and dependencies
 #
 
+server https://github.com
+
+# kdsingleapplication
+# last changed: 2026-03-31
+# by: ik
+# verified: verification of checksum from multiple sources e.g. KDE Craft
+file KDAB/KDSingleApplication/releases/download/v1.2.0/kdsingleapplication-1.2.0.tar.gz
+chk ff4ae6a4620beed1cdb3e6a9b78a17d7d1dae7139c3d4746d4856b7547d42c38
+
 # Qt base
 # last changed: 2023-05-08
 # by: ah

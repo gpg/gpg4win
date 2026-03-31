@@ -157,7 +157,7 @@ gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   gpg4win-tools kcrash kio kbookmarks kservice solid \
                   kjobwidgets poppler okular freetype threadweaver \
                   kparts tiff openjpeg sonnet ktextwidgets mimetreeparser \
-                  libical kcalendarcore kmbox pcre2 prison gpgpass
+                  libical kcalendarcore kmbox pcre2 prison gpgpass kdsingleapplication
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
@@ -400,6 +400,17 @@ endef
 define gpg4win_pkg_okular_post_install
  ( rm $$$${pkgidir}/share/icons/hicolor/icon-theme.cache; )
 endef
+
+define gpg4win_pkg_kdsingleapplication_post_unpack
+        (mv $(bdir)/KDSingleApplication-* $$$${pkgsdir})
+endef
+
+gpg4win_pkg_kdsingleapplication_configure = \
+    -DKDSingleApplication_QT6=OFF \
+    -DKDSingleApplication_STATIC=ON \
+    -DKDSingleApplication_TESTS=OFF \
+    -DKDSingleApplication_EXAMPLES=OFF \
+    -DKDSingleApplication_DOCS=OFF
 
 gpg4win_pkg_kleopatra_configure = \
     -DFORCE_DISABLE_KCMUTILS=ON \
