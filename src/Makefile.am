@@ -158,7 +158,7 @@ gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
                   libical kcalendarcore kmbox pcre2 prison gpgpass \
                   kcolorscheme zstd kstatusnotifieritem \
                   gpgoljs kcontacts qtwebsockets \
-                  breeze
+                  breeze kdsingleapplication
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
@@ -421,6 +421,16 @@ gpg4win_pkg_qttools_configure = \
 define gpg4win_pkg_okular_post_install
         (rm $$$${pkgidir}/share/icons/hicolor/icon-theme.cache)
 endef
+
+define gpg4win_pkg_kdsingleapplication_post_unpack
+        (mv $(bdir)/KDSingleApplication-* $$$${pkgsdir})
+endef
+
+gpg4win_pkg_kdsingleapplication_configure = \
+    -DKDSingleApplication_STATIC=ON \
+    -DKDSingleApplication_TESTS=OFF \
+    -DKDSingleApplication_EXAMPLES=OFF \
+    -DKDSingleApplication_DOCS=OFF
 
 gpg4win_pkg_kleopatra_configure = \
     -DDISABLE_KWATCHGNUPG=ON \

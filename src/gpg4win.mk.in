@@ -786,10 +786,13 @@ define KDEPKG_template_
 
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 
+# Note that post_unpack must come last because it may be empty and
+# "; ;" is a syntax error.
 $(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	(cd $(bdir);					\
 	 $(call SETVARS,$(1));				\
-	 $(call DEFLATE_macro,$$$${pkg}))
+	 $(call DEFLATE_macro,$$$${pkg});		\
+	 $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_unpack))
 	touch $(stampdir)/stamp-$(1)-00-unpack
 
 $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
