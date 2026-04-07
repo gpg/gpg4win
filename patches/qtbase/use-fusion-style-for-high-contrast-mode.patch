@@ -1,0 +1,21 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+diff --git a/src/plugins/platforms/windows/qwindowstheme.cpp b/src/plugins/platforms/windows/qwindowstheme.cpp
+index 25e083fd5c2..a9f784f3e18 100644
+--- a/src/plugins/platforms/windows/qwindowstheme.cpp
++++ b/src/plugins/platforms/windows/qwindowstheme.cpp
+@@ -459,7 +459,11 @@ static inline QStringList iconThemeSearchPaths()
+
+ static inline QStringList styleNames()
+ {
+-    return { QStringLiteral("WindowsVista"), QStringLiteral("Windows") };
++    if (QWindowsTheme::queryHighContrast()) {
++        return { QStringLiteral("Fusion"), QStringLiteral("WindowsVista"), QStringLiteral("Windows") };
++    } else {
++        return { QStringLiteral("WindowsVista"), QStringLiteral("Windows") };
++    }
+ }
+
+ static inline int uiEffects()

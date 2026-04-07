@@ -23,7 +23,7 @@ diff --git a/autotests/kxmlgui_unittest.cpp b/autotests/kxmlgui_unittest.cpp
 index 461e3c26..f96b7ba2 100644
 --- a/autotests/kxmlgui_unittest.cpp
 +++ b/autotests/kxmlgui_unittest.cpp
-@@ -218,7 +218,7 @@ void KXmlGui_UnitTest::testVersionHandlerNewVersionNothingKept()
+@@ -189,7 +189,7 @@ void KXmlGui_UnitTest::testVersionHandlerNewVersionNothingKept()
 
      QMap<QString, int> fileToVersionMap; // makes QCOMPARE failures more readable than just temp filenames
 
@@ -32,7 +32,7 @@ index 461e3c26..f96b7ba2 100644
      QDir().mkpath(dir);
      QFile fileV2(dir + QStringLiteral("/testui.rc"));
      QVERIFY2(fileV2.open(QIODevice::WriteOnly), qPrintable(fileV2.fileName()));
-@@ -264,7 +264,7 @@ void KXmlGui_UnitTest::testVersionHandlerNewVersionUserChanges()
+@@ -235,7 +235,7 @@ void KXmlGui_UnitTest::testVersionHandlerNewVersionUserChanges()
      QMap<QString, int> fileToVersionMap; // makes QCOMPARE failures more readable than just temp filenames
 
      // local file
@@ -41,7 +41,7 @@ index 461e3c26..f96b7ba2 100644
      QFile fileV2(dir + QLatin1String("/testui.rc"));
      QVERIFY(fileV2.open(QIODevice::WriteOnly));
      createXmlFile(fileV2, 2, AddActionProperties | AddModifiedToolBars);
-@@ -1073,7 +1073,7 @@ void KXmlGui_UnitTest::testXMLFileReplacement()
+@@ -994,7 +994,7 @@ void KXmlGui_UnitTest::testXMLFileReplacement()
      fileReplace.close();
 
      // finally, our local xml file has <ActionProperties/>
@@ -54,7 +54,7 @@ diff --git a/src/kedittoolbar.cpp b/src/kedittoolbar.cpp
 index f38df8a8..45631c80 100644
 --- a/src/kedittoolbar.cpp
 +++ b/src/kedittoolbar.cpp
-@@ -688,7 +688,7 @@ void KEditToolBarPrivate::defaultClicked()
+@@ -693,7 +693,7 @@ void KEditToolBarPrivate::defaultClicked()
          if (slash) {
              m_file.remove(0, slash);
          }
@@ -67,7 +67,7 @@ diff --git a/src/kxmlguiclient.cpp b/src/kxmlguiclient.cpp
 index bd5e27fb..43d4ead2 100644
 --- a/src/kxmlguiclient.cpp
 +++ b/src/kxmlguiclient.cpp
-@@ -155,7 +155,7 @@ QString KXMLGUIClient::localXMLFile() const
+@@ -157,7 +157,7 @@ QString KXMLGUIClient::localXMLFile() const
          return QString();
      }
 
@@ -76,29 +76,29 @@ index bd5e27fb..43d4ead2 100644
  }
 
  void KXMLGUIClient::reloadXML()
-@@ -217,7 +217,7 @@ void KXMLGUIClient::setXMLFile(const QString &_file, bool merge, bool setXMLDoc)
+@@ -219,7 +219,7 @@ void KXMLGUIClient::setXMLFile(const QString &_file, bool merge, bool setXMLDoc)
          const QString filter = componentName() + QLatin1Char('/') + _file;
 
          // files on filesystem
--        allFiles << QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("kxmlgui5/") + filter);
-+        allFiles << QStandardPaths::locateAll(QStandardPaths::GenericConfigLocation, QStringLiteral("kxmlgui5/") + filter);
+-        allFiles << QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
++        allFiles << QStandardPaths::locateAll(QStandardPaths::GenericConfigLocation,
+                                               QStringLiteral("kxmlgui" QT_STRINGIFY(QT_VERSION_MAJOR)) + QLatin1Char('/') + filter); // KF >= 5.1
 
-         // built-in resource file
-         const QString qrcFile(QLatin1String(":/kxmlgui5/") + filter);
+         // KF >= 5.4 (resource file)
 diff --git a/src/kxmlguifactory.cpp b/src/kxmlguifactory.cpp
 index add8cff0..43f47731 100644
 --- a/src/kxmlguifactory.cpp
 +++ b/src/kxmlguifactory.cpp
-@@ -102,7 +102,7 @@ QString KXMLGUIFactory::readConfigFile(const QString &filename, const QString &_
+@@ -107,7 +107,7 @@ QString KXMLGUIFactory::readConfigFile(const QString &filename, const QString &_
          xml_file = filename;
      } else {
-         // first look for any custom user config, admin config or the default deployed as file
+         // KF >= 5.1 (KDE_INSTALL_KXMLGUI5DIR)
 -        xml_file = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QLatin1String("kxmlgui5/") + componentName + QLatin1Char('/') + filename);
 +        xml_file = QStandardPaths::locate(QStandardPaths::GenericConfigLocation, QLatin1String("kxmlgui5/") + componentName + QLatin1Char('/') + filename);
          if (!QFile::exists(xml_file)) {
-             // fall-back to any built-in resource file
+             // KF >= 5.4 (resource file)
              xml_file = QLatin1String(":/kxmlgui5/") + componentName + QLatin1Char('/') + filename;
-@@ -125,7 +125,7 @@ bool KXMLGUIFactory::saveConfigFile(const QDomDocument &doc, const QString &file
+@@ -150,7 +150,7 @@ bool KXMLGUIFactory::saveConfigFile(const QDomDocument &doc, const QString &file
      QString xml_file(filename);
 
      if (QDir::isRelativePath(xml_file)) {

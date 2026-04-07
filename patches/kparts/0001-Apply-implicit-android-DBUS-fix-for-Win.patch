@@ -1,0 +1,30 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 21adbf97aa08fa30aa442e0170cb792b827a79c4 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Mon, 5 Jun 2023 09:31:24 +0200
+Subject: [PATCH] Apply implicit android DBUS fix for Win
+
+This is not really upstreamable but as DBUS is only
+implied I could not think of a better hack quickly.
+---
+ src/readwritepart.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/readwritepart.cpp b/src/readwritepart.cpp
+index 55d7c34..7ae94aa 100644
+--- a/src/readwritepart.cpp
++++ b/src/readwritepart.cpp
+@@ -274,7 +274,7 @@ void ReadWritePartPrivate::slotUploadFinished(KJob *)
+         }
+         Q_EMIT q->canceled(error);
+     } else {
+-#ifndef Q_OS_ANDROID
++#if !defined(Q_OS_ANDROID) && !defined(Q_OS_WIN)
+         ::org::kde::KDirNotify::emitFilesAdded(m_url.adjusted(QUrl::RemoveFilename));
+ #endif
+
+--
+2.40.1

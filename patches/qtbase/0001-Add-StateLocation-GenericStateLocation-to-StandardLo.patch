@@ -1,0 +1,156 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 55f0738f1638356137e6bd60459dc186ceaaabd8 Mon Sep 17 00:00:00 2001
+From: Jonathan Ketchker <iontankatchker@gmail.com>
+Date: Sun, 27 Aug 2023 12:45:04 +0300
+Subject: [PATCH] Add StateLocation & GenericStateLocation to StandardLocation
+
+The latest XDG spec (0.8) defines XDG_STATE_HOME that does not exist
+in QStandardPaths::StandardLocation.
+
+Some Linux distributions clean XDG_CACHE_HOME on restart which makes
+XDG_STATE_HOME useful as a path for saving application state.
+
+This commit adds StateLocation and GenericStateLocation to serve as a
+StandardLocation for XDG_STATE_HOME for all platforms.
+
+This commit also updates docs and tests to fit the new changes.
+
+[ChangeLog][QStandardPaths] Added StateLocation &
+GenericStateLocation to StandardLocation
+
+Change-Id: I470602466c37f085062cc64d15ea243711728fa5
+Reviewed-by: David Faure <david.faure@kdab.com>
+Reviewed-by: Qt CI Bot <qt_ci_bot@qt-project.org>
+Reviewed-by: Thiago Macieira <thiago.macieira@intel.com>
+---
+ .../standardpath/functiondocs.qdocinc         |  4 +-
+ src/corelib/io/qstandardpaths.cpp             | 24 ++++++++++
+ src/corelib/io/qstandardpaths.h               |  4 +-
+ src/corelib/io/qstandardpaths_android.cpp     |  3 ++
+ src/corelib/io/qstandardpaths_haiku.cpp       |  4 +-
+ src/corelib/io/qstandardpaths_mac.mm          | 11 +++++
+ src/corelib/io/qstandardpaths_unix.cpp        | 19 ++++++++
+ src/corelib/io/qstandardpaths_win.cpp         | 23 +++++++++-
+ src/tools/qtpaths/qtpaths.cpp                 |  2 +
+ .../io/qstandardpaths/tst_qstandardpaths.cpp  | 44 +++++++++++++++++--
+ 10 files changed, 130 insertions(+), 8 deletions(-)
+
+diff --git a/src/corelib/io/qstandardpaths.cpp b/src/corelib/io/qstandardpaths.cpp
+index 9a14ae0717f..925a48dc945 100644
+--- a/src/corelib/io/qstandardpaths.cpp
++++ b/src/corelib/io/qstandardpaths.cpp
+@@ -549,6 +569,8 @@ QString QStandardPaths::displayName(StandardLocation type)
+         return QCoreApplication::translate("QStandardPaths", "Home");
+     case CacheLocation:
+         return QCoreApplication::translate("QStandardPaths", "Cache");
++    case StateLocation:
++        return QCoreApplication::translate("QStandardPaths", "State");
+     case GenericDataLocation:
+         return QCoreApplication::translate("QStandardPaths", "Shared Data");
+     case RuntimeLocation:
+@@ -559,6 +581,8 @@ QString QStandardPaths::displayName(StandardLocation type)
+         return QCoreApplication::translate("QStandardPaths", "Shared Configuration");
+     case GenericCacheLocation:
+         return QCoreApplication::translate("QStandardPaths", "Shared Cache");
++    case GenericStateLocation:
++        return QCoreApplication::translate("QStandardPaths", "Shared State");
+     case DownloadLocation:
+         return QCoreApplication::translate("QStandardPaths", "Download");
+     case AppDataLocation:
+diff --git a/src/corelib/io/qstandardpaths.h b/src/corelib/io/qstandardpaths.h
+index ca1e37d92c4..3997957d254 100644
+--- a/src/corelib/io/qstandardpaths.h
++++ b/src/corelib/io/qstandardpaths.h
+@@ -38,6 +38,8 @@ public:
+         GenericConfigLocation,
+         AppDataLocation,
+         AppConfigLocation,
++        StateLocation,
++        GenericStateLocation,
+         AppLocalDataLocation = DataLocation
+     };
+     Q_ENUM(StandardLocation)
+diff --git a/src/corelib/io/qstandardpaths_unix.cpp b/src/corelib/io/qstandardpaths_unix.cpp
+index 64d8a3fa49a..e38f6708951 100644
+--- a/src/corelib/io/qstandardpaths_unix.cpp
++++ b/src/corelib/io/qstandardpaths_unix.cpp
+@@ -196,6 +196,25 @@ QString QStandardPaths::writableLocation(StandardLocation type)
+             appendOrganizationAndApp(xdgCacheHome);
+         return xdgCacheHome;
+     }
++    case StateLocation:
++    case GenericStateLocation:
++    {
++        QString xdgStateHome;
++        if (isTestModeEnabled()) {
++            xdgStateHome = QDir::homePath() + QLatin1String("/.qttest/state");
++        } else {
++            // http://standards.freedesktop.org/basedir-spec/basedir-spec-0.8.html
++            xdgStateHome = QFile::decodeName(qgetenv("XDG_STATE_HOME"));
++            if (!xdgStateHome.startsWith(u'/'))
++                xdgStateHome.clear(); // spec says relative paths should be ignored
++
++            if (xdgStateHome.isEmpty())
++                xdgStateHome = QDir::homePath() + QLatin1String("/.local/state");
++        }
++        if (type == QStandardPaths::StateLocation)
++            appendOrganizationAndApp(xdgStateHome);
++        return xdgStateHome;
++    }
+     case AppDataLocation:
+     case AppLocalDataLocation:
+     case GenericDataLocation:
+diff --git a/src/corelib/io/qstandardpaths_win.cpp b/src/corelib/io/qstandardpaths_win.cpp
+index 13b8fe224a3..805ce65a5ac 100644
+--- a/src/corelib/io/qstandardpaths_win.cpp
++++ b/src/corelib/io/qstandardpaths_win.cpp
+@@ -105,8 +105,10 @@ static GUID writableSpecialFolderId(QStandardPaths::StandardLocation type)
+         FOLDERID_LocalAppData,  // GenericConfigLocation ("Local" path)
+         FOLDERID_RoamingAppData,// AppDataLocation ("Roaming" path)
+         FOLDERID_LocalAppData,  // AppConfigLocation ("Local" path)
++        GUID(),                  // StateLocation
++        GUID(),                  // GenericStateLocation
+     };
+-    Q_STATIC_ASSERT(sizeof(folderIds) / sizeof(folderIds[0]) == size_t(QStandardPaths::AppConfigLocation + 1));
++    Q_STATIC_ASSERT(sizeof(folderIds) / sizeof(folderIds[0]) == size_t(QStandardPaths::GenericStateLocation + 1));
+
+     // folders for low integrity processes
+     static const GUID folderIds_li[] = {
+@@ -130,6 +132,8 @@ static GUID writableSpecialFolderId(QStandardPaths::StandardLocation type)
+         FOLDERID_LocalAppDataLow,// GenericConfigLocation ("Local" path)
+         FOLDERID_RoamingAppData, // AppDataLocation ("Roaming" path)
+         FOLDERID_LocalAppDataLow,// AppConfigLocation ("Local" path)
++        GUID(),                  // StateLocation
++        GUID(),                  // GenericStateLocation
+     };
+     Q_STATIC_ASSERT(sizeof(folderIds_li) == sizeof(folderIds));
+
+@@ -184,6 +188,23 @@ QString QStandardPaths::writableLocation(StandardLocation type)
+         result = QDir::tempPath();
+         break;
+
++    case StateLocation:
++        result = sHGetKnownFolderPath(writableSpecialFolderId(AppLocalDataLocation));
++        if (!result.isEmpty()) {
++            appendTestMode(result);
++            appendOrganizationAndApp(result);
++            result += QLatin1String("/State");
++        }
++        break;
++
++    case GenericStateLocation:
++        result = sHGetKnownFolderPath(writableSpecialFolderId(GenericDataLocation));
++        if (!result.isEmpty()) {
++            appendTestMode(result);
++            result += QLatin1String("/State");
++        }
++        break;
++
+     default:
+         result = sHGetKnownFolderPath(writableSpecialFolderId(type));
+         if (!result.isEmpty() && isConfigLocation(type)) {
+--
+2.52.0

@@ -1,0 +1,19 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+diff --git a/src/plugins/platforms/windows/qwindowstheme.cpp b/src/plugins/platforms/windows/qwindowstheme.cpp
+index 25e083fd5c2..e3e62ccb342 100644
+@@ -1047,7 +1047,11 @@ bool QWindowsTheme::queryDarkMode()
+
+ bool QWindowsTheme::queryHighContrast()
+ {
+-    return booleanSystemParametersInfo(SPI_GETHIGHCONTRAST, false);
++    HIGHCONTRAST hcf = {};
++    hcf.cbSize = static_cast<UINT>(sizeof(HIGHCONTRAST));
++    if (SystemParametersInfo(SPI_GETHIGHCONTRAST, hcf.cbSize, &hcf, FALSE))
++        return hcf.dwFlags & HCF_HIGHCONTRASTON;
++    return false;
+ }
+
+ QPlatformMenuItem *QWindowsTheme::createPlatformMenuItem() const

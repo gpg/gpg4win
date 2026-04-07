@@ -1,0 +1,64 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 4cf3d6bb07399f4878411b177582c7b8bf8def81 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Mon, 10 Jul 2023 11:38:07 +0200
+Subject: [PATCH] Make KF5Pty dependency optional
+
+This dependency is only needed for the Comic Book generator. Effectively,
+this change makes the Comic Book generator optional on Unix (!= Android).
+---
+ CMakeLists.txt                      | 7 +++++++
+ generators/CMakeLists.txt           | 4 +++-
+ generators/comicbook/CMakeLists.txt | 1 -
+ 3 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cc92b9258..ca6984cfe 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -287,6 +287,13 @@ set_okular_optional_package_properties(Discount PROPERTIES
+         URL "https://www.pell.portland.or.us/~orc/Code/discount/"
+         PURPOSE "Support for Markdown documents in Okular.")
+
++if (UNIX AND NOT ANDROID)
++    find_package(KF5Pty CONFIG)
++    set_okular_optional_package_properties(KF5Pty PROPERTIES
++            DESCRIPTION "A library for interfacing with pseudo terminal devices"
++            PURPOSE "Support for Comic Book files in Okular.")
++endif()
++
+ add_definitions(-DTRANSLATION_DOMAIN="okular")
+ add_definitions(-DQT_DEPRECATED_WARNINGS_SINCE=0x050F02)
+ add_definitions(-DKF_DEPRECATED_WARNINGS_SINCE=0x055C00)
+diff --git a/generators/CMakeLists.txt b/generators/CMakeLists.txt
+index 4942e61e0..142621d06 100644
+--- a/generators/CMakeLists.txt
++++ b/generators/CMakeLists.txt
+@@ -41,7 +41,9 @@ add_subdirectory(xps)
+
+ add_subdirectory(fictionbook)
+
+-add_subdirectory(comicbook)
++if (KF5Pty_FOUND OR ANDROID OR NOT UNIX)
++  add_subdirectory(comicbook)
++endif()
+
+ add_subdirectory(fax)
+
+diff --git a/generators/comicbook/CMakeLists.txt b/generators/comicbook/CMakeLists.txt
+index ffd9b6ee7..eb1289246 100644
+--- a/generators/comicbook/CMakeLists.txt
++++ b/generators/comicbook/CMakeLists.txt
+@@ -16,7 +16,6 @@ target_link_libraries(okular_comicbook okularcore KF5::I18n KF5::Archive)
+ okular_add_generator(okularGenerator_comicbook generator_comicbook.cpp)
+ target_link_libraries(okularGenerator_comicbook okular_comicbook)
+ if (UNIX AND NOT ANDROID)
+-   find_package(KF5Pty REQUIRED)
+    target_compile_definitions(okular_comicbook PRIVATE -DWITH_KPTY=1)
+    target_link_libraries(okular_comicbook KF5::Pty)
+ endif ()
+--
+2.41.0
