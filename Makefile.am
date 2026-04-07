@@ -39,7 +39,7 @@ SUBDIRS = ${po} packages ${doc} src
 # find -L patches-appimage -name *.patch | sort | sed 's/$/ \\/' | sed 's/^/             /'
 
 EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
-             doc/license-page doc/GPLv3 build.sh \
+             doc/license-page doc/GPLv3 \
              build-aux/git-log-footer build-aux/git-log-fix \
              build-aux/gpg-authcode-sign.sh \
              docker/appimage/Dockerfile \
