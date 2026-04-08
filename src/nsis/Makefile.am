@@ -50,6 +50,7 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-kcoreaddons.nsi uninst-kcoreaddons.nsi                 \
              inst-kcrash.nsi uninst-kcrash.nsi                           \
              inst-kde-l10n.nsi uninst-kde-l10n.nsi                       \
+             inst-kdsingleapplication.nsi uninst-kdsingleapplication.nsi \
              inst-kguiaddons.nsi uninst-kguiaddons.nsi                   \
              inst-ki18n.nsi uninst-ki18n.nsi                             \
              inst-kiconthemes.nsi uninst-kiconthemes.nsi                 \
