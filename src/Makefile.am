@@ -168,8 +168,14 @@ gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
 gpg4win_excmkpkgs = gpgmepp
 
 # The packages that should also be compiled natively
+if BUILD_VSD3
+gpg4win_nativepkgs = breeze-icons kconfig extra-cmake-modules
+gpg4win_snativepkgs = qtbase qttools
+else
 gpg4win_nativepkgs = qtbase breeze-icons kconfig extra-cmake-modules \
                      qttools
+gpg4win_snativepkgs =
+endif
 
 # Some variables
 WINE = wine
@@ -311,6 +317,39 @@ gpg4win_pkg_kcalendarcore_configure = -DUSE_QML=OFF
 
 # Create a minmal build on the build system of the
 # same version before cross compiling.
+if BUILD_VSD3
+gpg4win_pkg_qtbase_native_configure = \
+        ../$$$${pkg_version}/configure \
+        -opensource \
+        -confirm-license \
+        -xplatform win32-g++ \
+        -device-option CROSS_COMPILE=$(host)- \
+        -no-use-gold-linker \
+        -release \
+        -shared \
+        -prefix $$$${pkgidir} \
+        -I "$(idir)/include" \
+        -L "$(idir)/lib" \
+        -no-icu \
+        -opengl desktop \
+        -no-glib \
+        -accessibility \
+        -nomake examples \
+        -nomake tests \
+        -no-sql-mysql \
+        -no-sql-sqlite \
+        -no-sql-odbc \
+        -no-sql-psql \
+        -no-sql-tds \
+        -system-zlib \
+        -system-libpng \
+        -system-libjpeg \
+        -system-freetype \
+        -system-pcre \
+        -no-openssl \
+        -no-dbus \
+        -v
+else
 gpg4win_pkg_qtbase_native_configure = \
         -DQT_BUILD_EXAMPLES=OFF \
         -DQT_BUILD_TESTS=OFF \
@@ -338,8 +377,15 @@ gpg4win_pkg_qtbase_native_configure = \
         -DFEATURE_sql_sqlite=OFF \
         -DFEATURE_sql_ibase=OFF \
         -DCMAKE_VERBOSE_MAKEFILE=ON
+endif
 
 define gpg4win_pkg_qtbase_native_post_install
+if BUILD_VSD3
+	(cd $$$${pkgbdir}; \
+	 make install; \
+	 cd $$$${pkgbdir}/src/printsupport; \
+	 make install;)
+else
 	(set -e ; \
          cd $$$${pkgidir}/bin; \
 	 cp qtpaths qtpaths_real; \
@@ -349,8 +395,42 @@ define gpg4win_pkg_qtbase_native_post_install
                >> qtpaths; \
 	 chmod u+x qtpaths; \
 	 cp qtpaths qtpaths6 )
+endif
 endef
 
+if BUILD_VSD3
+gpg4win_pkg_qtbase_configure = \
+        ../$$$${pkg_version}/configure \
+        -opensource \
+        -confirm-license \
+        -xplatform win32-g++ \
+        -device-option CROSS_COMPILE=$(host)- \
+        -no-use-gold-linker \
+        -release \
+        -shared \
+        -prefix $$$${pkgidir} \
+        -I "$(idir)/include" \
+        -L "$(idir)/lib" \
+        -no-icu \
+        -opengl desktop \
+        -no-glib \
+        -accessibility \
+        -nomake examples \
+        -nomake tests \
+        -no-sql-mysql \
+        -no-sql-sqlite \
+        -no-sql-odbc \
+        -no-sql-psql \
+        -no-sql-tds \
+        -system-zlib \
+        -system-libpng \
+        -system-libjpeg \
+        -system-freetype \
+        -system-pcre \
+        -no-openssl \
+        -no-dbus \
+        -v
+else
 gpg4win_pkg_qtbase_configure = \
         -DQT_HOST_PATH=$(nat_idir) \
         -DQt6HostInfo_DIR=$(nat_idir)/lib/cmake/Qt6HostInfo \
@@ -380,6 +460,7 @@ gpg4win_pkg_qtbase_configure = \
         -DFEATURE_stack_clash_protection=OFF \
         -DFEATURE_stack_protector=OFF \
         -DCMAKE_VERBOSE_MAKEFILE=ON
+endif
 
 # copy moc and rcc from the tools into the target tree
 # so that pkg-config can find them.
@@ -389,6 +470,10 @@ define gpg4win_pkg_qtbase_post_install
 endef
 
 # Build only linguist which includes Qt's translation CLI tools.
+if BUILD_VSD3
+gpg4win_pkg_qttools_native_configure = \
+        "$(idir)/bin/qmake" ../$$$${pkg_version}
+else
 gpg4win_pkg_qttools_native_configure = \
         -DFEATURE_linguist=ON \
         -DFEATURE_assistant=OFF \
@@ -402,8 +487,13 @@ gpg4win_pkg_qttools_native_configure = \
         -DFEATURE_qtattributionsscanner=OFF \
         -DFEATURE_qtdiag=OFF \
         -DFEATURE_qtplugininfo=OFF
+endif
 
 # Build only linguist which qttranslations look for.
+if BUILD_VSD3
+gpg4win_pkg_qttools_configure = \
+        "$(idir)/bin/qmake" ../$$$${pkg_version}
+else
 gpg4win_pkg_qttools_configure = \
         -DFEATURE_linguist=ON \
         -DFEATURE_assistant=OFF \
@@ -417,6 +507,7 @@ gpg4win_pkg_qttools_configure = \
         -DFEATURE_qtattributionsscanner=OFF \
         -DFEATURE_qtdiag=OFF \
         -DFEATURE_qtplugininfo=OFF
+endif
 
 define gpg4win_pkg_okular_post_install
         (rm $$$${pkgidir}/share/icons/hicolor/icon-theme.cache)
@@ -438,15 +529,21 @@ gpg4win_pkg_kio_configure = \
     -DFORCE_DISABLE_DBUS=ON \
     -DFORCE_DISABLE_KCRASH=ON
 
+# if BUILD_VSD3
+# else
 gpg4win_pkg_breeze_icons_native_configure = \
     -DWITH_ICON_GENERATION=OFF \
     -DWITH_ICONS_LIBRARY=OFF \
     -DSKIP_INSTALL_ICONS=ON \
     -DINSTALL_HOST_TOOLS=ON
+# endif
 
+# if BUILD_VSD3
+# else
 define gpg4win_pkg_breeze_icons_native_post_install
  ( mkdir -p $$$${pkgidir}/bin/ && cp $$$${pkgbdir}/bin/* $$$${pkgidir}/bin )
 endef
+# endif
 
 gpg4win_pkg_breeze_icons_configure = \
     -DWITH_ICON_GENERATION=OFF \

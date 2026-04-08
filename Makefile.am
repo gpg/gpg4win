@@ -142,8 +142,8 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
 
 dist-hook: gen-ChangeLog pack_packages_tarballs
 
-if BUILD_W64_COND
-w64_extraargs=" --w64"
+if ! BUILD_W64_COND
+w64_extraargs=" --w32"
 endif
 
 distcheck-hook:

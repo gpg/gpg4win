@@ -485,6 +485,50 @@ AC_DEFUN([GPG4WIN_NATIVEPKG],
         done)
 ])
 
+# GPG4WIN_NATIVESPKG([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
+# Set up the source package PKG to be additionally built
+# natively to provide additional tools on the build system.
+# Unlike GPG4WIN_NATIVEPKG, using make instead of cmake.
+AC_DEFUN([GPG4WIN_NATIVESPKG],
+[
+  AC_REQUIRE([GPG4WIN_INIT])
+  _gpg4win_pkg=maybe
+  AC_ARG_ENABLE([pkg-$1],
+    AS_HELP_STRING([--enable-pkg-$1[=DIR]],
+                   [include package $1]),
+    _gpg4win_pkg=$enableval)
+  _gpg4win_spkg=no
+  _gpg4win_version=
+  AS_IF([test "$_gpg4win_pkg" != no],
+        [GPG4WIN_FIND($1,,, $_gpg4win_pkg,
+	 _gpg4win_spkg=$gpg4win_val
+	 _gpg4win_version=$gpg4win_version)])
+  # At this point, _gpg4win_spkg is no, or the actual package source file.
+
+  # gpg4win_pkg_PKGNAME=FILENAME_OF_SOURCE
+  gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]=$_gpg4win_spkg
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__]))
+
+  # gpg4win_pkg_PKGNAME_version=VERSION
+  gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version=$_gpg4win_version
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version)
+
+  # gpg4win_pkg_PKGNAME_deps=DEPS
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_snative_deps="$2"
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_snative_deps)
+
+  GPG4WIN_DEFINE(HAVE_PKG_[]m4_translit([$1],[a-z+-],[A-Z__])_NATIVE)
+
+  _gpg4win_pkgs="$_gpg4win_pkgs native-$1"
+
+  # Record dependencies.  Also enter every package as node.
+  _gpg4win_deps="$_gpg4win_deps native-$1 native-$1"
+  AS_IF([test ! -z "$2"],
+        for _gpg4win_i in $2; do
+          _gpg4win_deps="$_gpg4win_deps native-$_gpg4win_i native-$1"
+        done)
+])
+
 # GPG4WIN_BPKG_GNUWIN32([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
 # Set up the gnuwin32 package PKG.
 # It is provided in gpg4win_val.
