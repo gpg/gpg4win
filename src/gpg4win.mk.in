@@ -1401,7 +1401,7 @@ $(1)-announce: $(msidir)/$(1)/announcement.txt
 endef
 
 # Insert the template for each build tool package.
-$(foreach snpkg, $(gpg4win_snativespkgs), $(eval $(call NATIVESPKG_template,$(snpkg))))
+$(foreach snpkg, $(gpg4win_snativepkgs), $(eval $(call NATIVESPKG_template,$(snpkg))))
 $(foreach npkg, $(gpg4win_nativepkgs), $(eval $(call NATIVEPKG_template,$(npkg))))
 
 # Insert the template for each source package.
