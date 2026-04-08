@@ -32,14 +32,18 @@ diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index a3aafb74..aea012da 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -2,6 +2,7 @@
+@@ -1,6 +1,11 @@
+ # SPDX-License-Identifier: CC0-1.0
  # SPDX-FileCopyrightText: none
- # target_include_directories does not handle empty include paths
- include_directories(
+
++ # target_include_directories does not handle empty include paths
++ include_directories(
 +    ${Boost_INCLUDE_DIRS}
-     ${GPGME_INCLUDES}
- )
++ )
++
  add_definitions(-DTRANSLATION_DOMAIN=\"libkleopatra6\")
+
+ #add_definitions(-DQT_NO_CAST_FROM_ASCII)
 @@ -220,7 +221,10 @@ target_link_libraries(KPim6Libkleo PUBLIC Gpgmepp PRIVATE Qt::Widgets
                                                  LibGpgError::LibGpgError)
 
