@@ -285,7 +285,11 @@ gpg4win_pkg_gpgmepp_ex_configure = \
   -DENABLE_STATIC=ON \
   -DPKGCONFIG_HOST=$(GPGEX_ADD_HOST)
 
+if BUILD_VSD3
+gpg4win_pkg_qgpgme_configure = -DBUILD_WITH_QT5=ON
+else
 gpg4win_pkg_qgpgme_configure = -DBUILD_WITH_QT5=OFF
+endif
 
 gpg4win_pkg_openjpeg_configure = -DBUILD_CODEC=OFF
 
@@ -331,21 +335,22 @@ gpg4win_pkg_qtbase_native_configure = \
         -I "$(idir)/include" \
         -L "$(idir)/lib" \
         -no-icu \
-        -opengl desktop \
         -no-glib \
-        -accessibility \
+        -no-eventfd \
+        -no-harfbuzz \
+        -no-opengl \
+        -no-egl \
+        -no-accessibility \
         -nomake examples \
         -nomake tests \
         -no-sql-mysql \
-        -no-sql-sqlite \
-        -no-sql-odbc \
+        -no-sql-db2 \
         -no-sql-psql \
+        -no-sql-oci \
+        -no-sql-odbc \
+        -no-sql-sqlite \
         -no-sql-tds \
-        -system-zlib \
-        -system-libpng \
-        -system-libjpeg \
-        -system-freetype \
-        -system-pcre \
+        -no-sql-ibase \
         -no-openssl \
         -no-dbus \
         -v
@@ -379,13 +384,14 @@ gpg4win_pkg_qtbase_native_configure = \
         -DCMAKE_VERBOSE_MAKEFILE=ON
 endif
 
-define gpg4win_pkg_qtbase_native_post_install
 if BUILD_VSD3
-	(cd $$$${pkgbdir}; \
+gpg4win_pkg_qtbase_native_post_install = \
+	 (cd $$$${pkgbdir}; \
 	 make install; \
 	 cd $$$${pkgbdir}/src/printsupport; \
-	 make install;)
+	 make install; )
 else
+gpg4win_pkg_qtbase_native_post_install = \
 	(set -e ; \
          cd $$$${pkgidir}/bin; \
 	 cp qtpaths qtpaths_real; \
@@ -396,11 +402,9 @@ else
 	 chmod u+x qtpaths; \
 	 cp qtpaths qtpaths6 )
 endif
-endef
 
 if BUILD_VSD3
 gpg4win_pkg_qtbase_configure = \
-        ../$$$${pkg_version}/configure \
         -opensource \
         -confirm-license \
         -xplatform win32-g++ \
@@ -529,30 +533,45 @@ gpg4win_pkg_kio_configure = \
     -DFORCE_DISABLE_DBUS=ON \
     -DFORCE_DISABLE_KCRASH=ON
 
-# if BUILD_VSD3
-# else
+if BUILD_VSD3
+gpg4win_pkg_breeze_icons_native_configure = \
+    -DBINARY_ICONS_RESOURCE=ON \
+    -DICON_SUBSET_INCLUDE_FILE=$(abs_srcdir)/included-icons.txt
+else
 gpg4win_pkg_breeze_icons_native_configure = \
     -DWITH_ICON_GENERATION=OFF \
     -DWITH_ICONS_LIBRARY=OFF \
     -DSKIP_INSTALL_ICONS=ON \
     -DINSTALL_HOST_TOOLS=ON
-# endif
+endif
 
-# if BUILD_VSD3
-# else
+if ! BUILD_VSD3
 define gpg4win_pkg_breeze_icons_native_post_install
  ( mkdir -p $$$${pkgidir}/bin/ && cp $$$${pkgbdir}/bin/* $$$${pkgidir}/bin )
 endef
-# endif
+endif
 
+if BUILD_VSD3
+gpg4win_pkg_breeze_icons_configure = \
+    -DBINARY_ICONS_RESOURCE=ON \
+    -DICON_SUBSET_INCLUDE_FILE=$(abs_srcdir)/included-icons.txt
+else
 gpg4win_pkg_breeze_icons_configure = \
     -DWITH_ICON_GENERATION=OFF \
     -DSKIP_INSTALL_ICONS=ON
+endif
 
+if BUILD_VSD3
+gpg4win_pkg_breeze_configure = \
+    -DBUILD_QT6=OFF \
+    -DBUILD_QT5=ON \
+    -DWITH_DECORATIONS=OFF
+else
 gpg4win_pkg_breeze_configure = \
     -DBUILD_QT6=ON \
     -DBUILD_QT5=OFF \
     -DWITH_DECORATIONS=OFF
+endif
 
 gpg4win_pkg_kbookmarks_configure = \
     -DANDROID=ON
@@ -566,8 +585,13 @@ gpg4win_pkg_kjobwidgets_configure = \
 gpg4win_pkg_kiconthemes_configure = \
     -DKICONTHEMES_USE_QTQUICK=OFF
 
+if BUILD_VSD3
+gpg4win_pkg_okular_configure = \
+    -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Purpose\;Qt5TextToSpeech\;LibZip\;KF5Wallet\;KF5DocTools\;KF5JS\;Phonon4Qt5\;TIFF\;JPEG\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt5Qml\;Qt5DBus"
+else
 gpg4win_pkg_okular_configure = \
     -DFORCE_NOT_REQUIRED_DEPENDENCIES=\"KF6Purpose;Qt6TextToSpeech;LibZip;KF6DocTools;Phonon4Qt6;TIFF;JPEG;LibSpectre;KExiv2Qt6;CHM;DjVuLibre;EPub;QMobipocket;Discount;Qt6Qml;Qt6DBus\"
+endif
 
 gpg4win_pkg_libical_configure = \
     -DICAL_GLIB=false \
@@ -577,6 +601,16 @@ gpg4win_pkg_prison_configure = \
     -DWITH_QUICK=OFF \
     -DWITH_MULTIMEDIA=OFF
 
+if BUILD_VSD3
+gpg4win_pkg_poppler_configure = \
+    -DENABLE_NSS3=OFF \
+    -DENABLE_GLIB=OFF \
+    -DENABLE_GOBJECT_INTROSPECTION=OFF \
+    -DENABLE_QT5=ON \
+    -DENABLE_LCMS=OFF \
+    -DENABLE_BOOST=OFF \
+    -DENABLE_LIBCURL=OFF
+else
 gpg4win_pkg_poppler_configure = \
     -DENABLE_NSS3=OFF \
     -DENABLE_GLIB=OFF \
@@ -585,6 +619,7 @@ gpg4win_pkg_poppler_configure = \
     -DENABLE_LCMS=OFF \
     -DENABLE_BOOST=OFF \
     -DENABLE_LIBCURL=OFF
+endif
 
 gpg4win_pkg_kcontacts_configure = \
     -DKCONTACTS_USE_QML=OFF

@@ -322,22 +322,22 @@ define SETVARS_SNATIVE
 	pkg="$(call GETVAR,gpg4win_pkg_$(1))";                              \
 	pkg_version="$(1)-$(call GETVAR,gpg4win_pkg_$(1)_version)";         \
 	pkgsdir="$(bdir)/$$$${pkg_version}";                                \
-	pkgbdir="$(bdir)/$$$${pkg_version}-native-build";                  \
+	pkgbdir="$(bdir)/$$$${pkg_version}-native-build";                   \
 	pkgpatdir="$(patdir)/$$$${pkg_version}";                            \
 	pkgpatbdir="$(patdir)/$(1)";                                        \
 	pkgidir="$(nat_ipdir)/$$$${pkg_version}";                           \
 	pkgidir_dev="$(nat_ipdir)/$$$${pkg_version_dev}";                   \
-	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_native_configure)";         \
+	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_native_configure)";          \
 	pkgextracflags="$(call GETVAR,gpg4win_pkg_$(1)_native_extracflags)"; \
-	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_native_make_args)";      \
+	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_native_make_args)";       \
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_native_make_args_inst)";\
-	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_native_make_dir)";        \
-	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_native_make_dir)";   \
+	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_native_make_dir)";         \
+	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_native_make_dir)";    \
 	export PKG_CONFIG_PATH="$(nat_idir)/lib/pkgconfig";                 \
 	export PKG_CONFIG_LIBDIR="$(nat_idir)/lib/pkgconfig";               \
 	export PATH="$(nat_idir)/bin:$${PATH}";                             \
 	export LD_LIBRARY_PATH=$(nat_idir)/lib:$(nat_idir)/lib64;           \
-	export SYSROOT="$(nat_idir)"                                        \
+	export SYSROOT="$(nat_idir)";                                       \
 	export CONFIG_SITE="$(tsdir)/src/config.site"
 endef
 
@@ -1064,6 +1064,87 @@ clean-$(1)-native:
 endef
 
 # Template for tools which should be compiled natively on
+# the build system
+define NATIVEQT5PKG_template
+$(stampdir)/stamp-$(1)-native-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS_NATIVE,$(1))
+	(cd $(bdir);					\
+	 $(call SETVARS_NATIVE,$(1));				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch $(stampdir)/stamp-$(1)-native-00-unpack
+
+$(stampdir)/stamp-$(1)-native-01-patch: $(stampdir)/stamp-$(1)-native-00-unpack
+	(shopt -s nullglob;				\
+	$(call SETVARS_NATIVE,$(1));				\
+	if [ ! -L "$$$${pkgsdir}" ]; then \
+		cd "$$$${pkgsdir}"; \
+		for pfile in "$$$${pkgpatdir}"/*-native.patch \
+                             "$$$${pkgpatbdir}"/*-native.patch ; do  \
+		echo "applying $$$${pkgsdir}/$$$${pfile}"; \
+		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
+		done \
+	else \
+		echo "Not patching symlinked $(1)"; \
+	fi)
+	touch $(stampdir)/stamp-$(1)-native-01-patch
+
+$(stampdir)/stamp-$(1)-native-02-configure: $(stampdir)/stamp-$(1)-native-01-patch
+	($(call SETVARS_NATIVE,$(1));				\
+	 mkdir -p "$$$${pkgbdir}";				\
+	 cd "$$$${pkgbdir}";				\
+	 $(CMAKE)					\
+		--fresh \
+		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
+		-DCMAKE_PREFIX_PATH="$(nat_idir)" \
+		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_builddir)/src/toolchain-native.cmake \
+		-DQT_MAJOR_VERSION="5" \
+		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
+		-DBUILD_TESTING=False \
+                -DUSE_QML=off \
+		$(CMAKE_GENERATOR_FLAGS) \
+		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}$$$${pkg_conf_subdir}") && \
+	touch $(stampdir)/stamp-$(1)-native-02-configure
+
+$(stampdir)/stamp-$(1)-native-03-make: $(stampdir)/stamp-$(1)-native-02-configure
+	($(call SETVARS_NATIVE,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	touch $(stampdir)/stamp-$(1)-native-03-make
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+$(stampdir)/stamp-$(1)-native-04-install: $(stampdir)/stamp-$(1)-native-03-make
+	($(call SETVARS_NATIVE,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  cd "$$$${pkgmkdir_inst}";			\
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  test -d "$$$${pkgidir}" && $(call STRIP_macro,"$$$${pkgidir}"); \
+	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_native_post_install))
+	touch $(stampdir)/stamp-$(1)-native-04-install
+
+$(stampdir)/stamp-$(1)-native-05-stow: $(stampdir)/stamp-$(1)-native-04-install
+	($(call SETVARS_NATIVE,$(1));				\
+	 cd $(nat_ipdir);					\
+	 $(STOW) "$$$${pkg_version}")
+	touch $(stampdir)/stamp-$(1)-native-05-stow
+
+$(stampdir)/stamp-final-native-$(1): $(stampdir)/stamp-$(1)-native-05-stow
+	touch $(stampdir)/stamp-final-native-$(1)
+
+$(1)-native: $(stampdir)/stamp-final-native-$(1)
+
+.PHONY : clean-$(1)-native
+clean-$(1)-native:
+	($(call SETVARS_NATIVE,$(1));				\
+	 (cd $(nat_ipdir) &&				\
+	  ($(STOW) -D "$$$${pkg_version}" || true;	\
+	   rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
+	rm -f $(stampdir)/stamp-final-native-$(1) $(stampdir)/stamp-$(1)-native-*
+endef
+
+
+# Template for tools which should be compiled natively on
 # the build system, using make instead of cmake
 define NATIVESPKG_template
 $(stampdir)/stamp-$(1)-native-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS_NATIVE,$(1))
@@ -1091,12 +1172,7 @@ $(stampdir)/stamp-$(1)-native-02-configure: $(stampdir)/stamp-$(1)-native-01-pat
 	($(call SETVARS_SNATIVE,$(1));				\
 	mkdir -p "$$$${pkgbdir}";				\
 	cd "$$$${pkgbdir}";				\
-	eval "../$$$${pkg_version}/configure" \
-		--prefix="$$$${pkgidir}" \
-		--host=$(host) \
-		--build=$(build) \
-		$$$${pkgcfg} CFLAGS=\"-fcommon -Wno-error=incompatible-pointer-types $$$${pkgextracflags}\" \
-           || exit 1; \
+	$$$${pkgcfg} || exit 1; \
 	shopt -s nullglob; \
 	for pfile in "$$$${pkgpatdir}"/*.postcfg \
 	             "$$$${pkgpatbdir}"/*.postcfg ; do \
@@ -1119,11 +1195,6 @@ $(stampdir)/stamp-$(1)-native-03-make: $(stampdir)/stamp-$(1)-native-02-configur
 # "; ;" is a syntax error.
 $(stampdir)/stamp-$(1)-native-04-install: $(stampdir)/stamp-$(1)-native-03-make
 	($(call SETVARS_SNATIVE,$(1));				\
-	  cd "$$$${pkgbdir}";				\
-	  cd "$$$${pkgmkdir_inst}";			\
-	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
-	  test -d "$$$${pkgidir}" && $(call STRIP_macro,"$$$${pkgidir}"); \
-	  test -d "$$$${pkgidir}" && rm -f "$$$${pkgidir}/share/info/dir";		\
 	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_native_post_install))
 	touch $(stampdir)/stamp-$(1)-native-04-install
 
