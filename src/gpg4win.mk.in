@@ -906,6 +906,109 @@ $(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
 endef
 
 
+# Template for source packages of KF 5 software
+define KF5PKG_template_
+
+pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
+
+$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
+	(cd $(bdir);					\
+	 $(call SETVARS,$(1));				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch $(stampdir)/stamp-$(1)-00-unpack
+
+$(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
+	#(shopt -s nullglob;				\
+	#$(call SETVARS,$(1));				\
+	#if [ ! -L "$$$${pkgsdir}" ]; then \
+	#	cd "$$$${pkgsdir}"; \
+		#if [ -e "CMakeLists.txt" ]; then \
+		#	sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "6.19.0")/' CMakeLists.txt; \
+		#	sed -i 's/find_package(ECM .* NO_MODULE)/find_package(ECM 6.19.0 NO_MODULE)/' CMakeLists.txt; \
+		#	sed -i 's/set(KF_DEP_VERSION.*)/set(KF_DEP_VERSION "6.19.0")/' CMakeLists.txt; \
+		#	sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "6.4.0")/' CMakeLists.txt; \
+		#	sed -i 's/set(KPIM_MIME_VERSION.*)/set(KPIM_MIME_VERSION "6.4.0")/' CMakeLists.txt; \
+		#	sed -i 's/set(KPIM_MBOX_VERSION.*)/set(KPIM_MBOX_VERSION "6.4.0")/' CMakeLists.txt; \
+		#	sed -i 's/set(MIMETREEPARSER_VERSION.*)/set(MIMETREEPARSER_VERSION "6.4.0")/' CMakeLists.txt; \
+		# fi; \
+	(shopt -s nullglob;				\
+	$(call SETVARS,$(1));				\
+	if [ ! -L "$$$${pkgsdir}" ]; then \
+		cd "$$$${pkgsdir}"; \
+		for pfile in "$$$${pkgpatdir}"/*.patch \
+                             "$$$${pkgpatbdir}"/*.patch ; do  \
+		echo "applying $$$${pkgsdir}/$$$${pfile}"; \
+		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
+		done \
+	else \
+		echo "Not patching symlinked $(1)"; \
+	fi)
+	touch $(stampdir)/stamp-$(1)-01-patch
+
+$(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
+	($(call SETVARS,$(1));				\
+	 mkdir -p "$$$${pkgbdir}";				\
+	 cd "$$$${pkgbdir}";				\
+	 eval $(CMAKE)					\
+		--fresh \
+		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
+		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
+		-DQT_MAJOR_VERSION="5" \
+		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_builddir)/src/toolchain.cmake \
+		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
+		-DBUILD_TESTING=False \
+                -DUSE_QML=off \
+		$(CMAKE_GENERATOR_FLAGS) \
+		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}$$$${pkg_conf_subdir}") && \
+	touch $(stampdir)/stamp-$(1)-02-configure
+
+$(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	touch $(stampdir)/stamp-$(1)-03-make
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+$(stampdir)/stamp-$(1)-04-install: $(stampdir)/stamp-$(1)-03-make
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  cd "$$$${pkgmkdir_inst}";			\
+	  $(MAKETOOL) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(call STRIP_macro,"$$$${pkgidir}");		\
+	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
+	touch $(stampdir)/stamp-$(1)-04-install
+
+$(stampdir)/stamp-$(1)-05-stow: $(stampdir)/stamp-$(1)-04-install
+	($(call SETVARS,$(1));				\
+	 cd $(ipdir);					\
+	 $(STOW) "$$$${pkg_version}")
+	touch $(stampdir)/stamp-$(1)-05-stow
+
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-stow
+	touch $(stampdir)/stamp-final-$(1)
+
+$(1): $(stampdir)/stamp-final-$(1)
+
+.PHONY : clean-$(1)
+clean-$(1):
+	($(call SETVARS,$(1));				\
+	 (cd $(ipdir) &&				\
+	  ($(STOW) -D "$$$${pkg_version}" || true;	\
+	   rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-0*
+
+endef
+# (end KF5PKG_template_)
+
+define KF5PKG_template
+$(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
+  $(call KF5PKG_template_,$1))
+endef
+
+
 # Template for source packages using CMake to build for an additional host
 define EXCMKPKG_template_
 

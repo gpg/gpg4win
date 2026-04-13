@@ -476,7 +476,7 @@ endef
 # Build only linguist which includes Qt's translation CLI tools.
 if BUILD_VSD3
 gpg4win_pkg_qttools_native_configure = \
-        "$(idir)/bin/qmake" ../$$$${pkg_version}
+        "$(nat_idir)/bin/qmake" ../$$$${pkg_version}
 else
 gpg4win_pkg_qttools_native_configure = \
         -DFEATURE_linguist=ON \
@@ -512,6 +512,18 @@ gpg4win_pkg_qttools_configure = \
         -DFEATURE_qtdiag=OFF \
         -DFEATURE_qtplugininfo=OFF
 endif
+
+define gpg4win_pkg_qttools_native_post_install
+	 (cd $$$${pkgbdir}; \
+	  mkdir -p $$$${pkgidir}; \
+	  cp -r bin lib include $$$${pkgidir})
+endef
+
+define gpg4win_pkg_qttools_post_install
+	 (cd $$$${pkgbdir}; \
+	  mkdir -p $$$${pkgidir}; \
+	  cp -r bin lib include $$$${pkgidir})
+endef
 
 define gpg4win_pkg_okular_post_install
         (rm $$$${pkgidir}/share/icons/hicolor/icon-theme.cache)
