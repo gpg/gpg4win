@@ -195,6 +195,8 @@ if [ $opt_c = yes ]; then
                     cp "$f" "$t"
                 fi
               done
+              # Make sure directories are readable.
+              find /etc/gnupg-vsd -type d -exec chmod 755 {} \;
               echo "$myname" >$dotcfg
             fi
           fi
