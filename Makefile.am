@@ -72,7 +72,6 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kleopatra/0004-List-newly-generated-key-with-signatures.patch \
              patches/kleopatra/0005-Add-setting-for-format-of-CSRs.patch \
              patches/kleopatra/0006-Save-CSRs-that-were-generated-in-PEM-format-with-suf.patch \
-             patches/kleopatra/0007-Use-KDSingleApplication-instead-of-own-KUniqueServic-vsd-3.3-branch.patch \
              patches/kleopatra/set-windows-registry.patch \
              patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
              patches/kparts/disable-jobuidelegate.patch \
