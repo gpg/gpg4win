@@ -160,6 +160,8 @@ gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
                   gpgoljs kcontacts qtwebsockets \
                   breeze
 
+gpg4win_kf5pkgs = $(gpg4win_kdepkgs)
+
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
                  gpgme
@@ -169,12 +171,14 @@ gpg4win_excmkpkgs = gpgmepp
 
 # The packages that should also be compiled natively
 if BUILD_VSD3
-gpg4win_nativepkgs = breeze-icons kconfig extra-cmake-modules
+# gpg4win_nativepkgs =
+gpg4win_nativekf5pkgs = breeze-icons kconfig extra-cmake-modules
 gpg4win_snativepkgs = qtbase qttools
 else
 gpg4win_nativepkgs = qtbase breeze-icons kconfig extra-cmake-modules \
                      qttools
-gpg4win_snativepkgs =
+# gpg4win_nativekf5pkgs =
+# gpg4win_snativepkgs =
 endif
 
 # Some variables

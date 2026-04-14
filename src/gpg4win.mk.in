@@ -1168,7 +1168,7 @@ endef
 
 # Template for tools which should be compiled natively on
 # the build system
-define NATIVEQT5PKG_template
+define NATIVEKF5PKG_template
 $(stampdir)/stamp-$(1)-native-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS_NATIVE,$(1))
 	(cd $(bdir);					\
 	 $(call SETVARS_NATIVE,$(1));				\
@@ -1576,6 +1576,7 @@ endef
 
 # Insert the template for each build tool package.
 $(foreach snpkg, $(gpg4win_snativepkgs), $(eval $(call NATIVESPKG_template,$(snpkg))))
+$(foreach kf5npkg, $(gpg4win_nativekf5pkgs), $(eval $(call NATIVEKF5PKG_template,$(kf5npkg))))
 $(foreach npkg, $(gpg4win_nativepkgs), $(eval $(call NATIVEPKG_template,$(npkg))))
 
 # Insert the template for each source package.
@@ -1594,6 +1595,7 @@ $(foreach bpkg, $(gpg4win_bpkgs), $(eval $(call BPKG_template,$(bpkg))))
 $(foreach ipkg, $(gpg4win_ipkgs), $(eval $(call IPKG_template,$(ipkg))))
 
 # Insert the template for KDE packages.
+$(foreach kf5pkg, $(gpg4win_kf5pkgs), $(eval $(call KF5PKG_template,$(kf5pkg))))
 $(foreach kdepkg, $(gpg4win_kdepkgs), $(eval $(call KDEPKG_template,$(kdepkg))))
 
 # Insert the template for each CMake package to build for the additional gpgEx architecture.

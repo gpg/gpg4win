@@ -433,10 +433,10 @@ if test "$build_gpg4win" = yes ; then
     # Tools required for cross compiling
     if test "$IS_VSD3_BUILD" = yes ; then
         GPG4WIN_NATIVESPKG([qtbase])
-        GPG4WIN_NATIVEQT5PKG([extra-cmake-modules])
+        GPG4WIN_NATIVEKF5PKG([extra-cmake-modules])
         GPG4WIN_NATIVESPKG([qttools], [qtbase])
-        # GPG4WIN_NATIVEQT5PKG([breeze-icons], [qtbase extra-cmake-modules])
-        GPG4WIN_NATIVEQT5PKG([kconfig], [qtbase qttools extra-cmake-modules])
+        # GPG4WIN_NATIVEKF5PKG([breeze-icons], [qtbase extra-cmake-modules])
+        GPG4WIN_NATIVEKF5PKG([kconfig], [qtbase qttools extra-cmake-modules])
     else
         GPG4WIN_NATIVEPKG([qtbase])
         GPG4WIN_NATIVEPKG([extra-cmake-modules])

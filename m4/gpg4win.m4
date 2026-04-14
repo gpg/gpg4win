@@ -528,11 +528,11 @@ AC_DEFUN([GPG4WIN_NATIVEPKG],
         done)
 ])
 
-# GPG4WIN_NATIVEQT5PKG([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
+# GPG4WIN_NATIVEKF5PKG([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
 # Set up the source package PKG to be additionally built
 # natively to provide additional tools on the build system.
 # Unlike GPG4WIN_NATIVEPKG, default to Qt5 not Qt6.
-AC_DEFUN([GPG4WIN_NATIVEQT5PKG],
+AC_DEFUN([GPG4WIN_NATIVEKF5PKG],
 [
   AC_REQUIRE([GPG4WIN_INIT])
   _gpg4win_pkg=maybe
