@@ -16,6 +16,111 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
+ifeq ($(IS_VSD3_BUILD),yes)
+AUTHENTICODE_FILES = \
+	bin/gpg-error.exe \
+	bin/gpgex.dll \
+	bin/gpgme-json.exe \
+	bin/gpgolconfig.exe \
+	bin/gpgol.dll \
+	bin/gpgolkeyadder.exe \
+	bin/kleopatra.exe \
+	bin/libassuan-9.dll \
+	bin/libfreetype.dll \
+	bin/libgpg-error-0.dll \
+	bin/libgpgme-45.dll \
+	bin/libgpgmepp-7.dll \
+	bin/libical.dll \
+	bin/libicalss.dll \
+	bin/libicalvcal.dll \
+	bin/libiconv-2.dll \
+	bin/libintl-8.dll \
+	bin/libjpeg-9.dll \
+	bin/libKF5Archive.dll \
+	bin/libKF5Bookmarks.dll \
+	bin/libKF5CalendarCore.dll \
+	bin/libKF5Codecs.dll \
+	bin/libKF5Completion.dll \
+	bin/libKF5ConfigCore.dll \
+	bin/libKF5ConfigGui.dll \
+	bin/libKF5ConfigWidgets.dll \
+	bin/libKF5CoreAddons.dll \
+	bin/libKF5Crash.dll \
+	bin/libKF5GuiAddons.dll \
+	bin/libKF5I18n.dll \
+	bin/libKF5IconThemes.dll \
+	bin/libKF5ItemModels.dll \
+	bin/libKF5ItemViews.dll \
+	bin/libKF5JobWidgets.dll \
+	bin/libKF5KIOCore.dll \
+	bin/libKF5KIOGui.dll \
+	bin/libKF5KIOWidgets.dll \
+	bin/libKF5Parts.dll \
+	bin/libKF5Service.dll \
+	bin/libKF5Solid.dll \
+	bin/libKF5SonnetCore.dll \
+	bin/libKF5SonnetUi.dll \
+	bin/libKF5TextWidgets.dll \
+	bin/libKF5ThreadWeaver.dll \
+	bin/libKF5WidgetsAddons.dll \
+	bin/libKF5WindowSystem.dll \
+	bin/libKF5XmlGui.dll \
+	bin/libkleopatraclientcore.dll \
+	bin/libkleopatraclientgui.dll \
+	bin/libKPim5Libkleo.dll \
+	bin/libKPim5Mbox.dll \
+	bin/libKPim5Mime.dll \
+	bin/libKPim5MimeTreeParserCore.dll \
+	bin/libKPim5MimeTreeParserWidgets.dll \
+	bin/libOkular5Core.dll \
+	bin/libopenjp2.dll \
+	bin/libpcre2-16.dll \
+	bin/libpng16-16.dll \
+	bin/libpoppler-130.dll \
+	bin/libpoppler-qt5-1.dll \
+	bin/libqgpgme-15.dll \
+	bin/libtiff.dll \
+	bin/okular.exe \
+	bin/overlayer.exe \
+	bin/paperkey.exe \
+	bin/pinentry.exe \
+	bin/pinentry-w32.exe \
+	bin/Qt5Core.dll \
+	bin/Qt5Gui.dll \
+	bin/Qt5Network.dll \
+	bin/Qt5PrintSupport.dll \
+	bin/Qt5Svg.dll \
+	bin/Qt5Widgets.dll \
+	bin/Qt5WinExtras.dll \
+	bin/Qt5Xml.dll \
+	bin/resolver.exe \
+	bin/zlib1.dll \
+	../install-ex/bin/gpgex.dll \
+	../install-ex/bin/gpgme-json.exe \
+	../install-ex/bin/gpgol.dll \
+	../install-ex/bin/libassuan-9.dll \
+	../install-ex/bin/libgpg-error-0.dll \
+	../install-ex/bin/libgpgme-45.dll \
+	../install-ex/bin/libgpgmepp-7.dll \
+	../install-ex/libexec/gpgme-w32spawn.exe \
+	libexec/gpgme-w32spawn.exe \
+	../../libgcc_s_dw2-1.dll-x \
+	lib/plugins/kf5/kio/kio_file.dll \
+	lib/plugins/kf5/sonnet/sonnet_ispellchecker.dll \
+	lib/plugins/okular/generators/okularGenerator_poppler.dll \
+	lib/plugins/okularpart.dll \
+	lib/scute.dll \
+	../../libstdc++-6.dll-x \
+	../../libwinpthread-1.dll-x \
+	../../libwinpthread-1.dll-x64 \
+	plugins/iconengines/qsvgicon.dll \
+	plugins/imageformats/qsvg.dll \
+	plugins/platforms/qwindows.dll \
+	plugins/printsupport/windowsprintersupport.dll \
+	plugins/styles/qwindowsvistastyle.dll \
+	../../sha1sum.exe \
+	../../sha256sum.exe
+else
 AUTHENTICODE_FILES = \
 	 bin/gpg-error.exe \
 	 bin/gpgex.dll \
@@ -128,7 +233,11 @@ AUTHENTICODE_FILES = \
 	plugins/tls/qschannelbackend.dll \
 	../src/sha1sum.exe \
 	../src/sha256sum.exe
+endif
 
+ifeq ($(IS_VSD3_BUILD),yes)
+AUTHENTICODE_FILES_OPTIONAL =
+else
 # Some programs are not always build, thus we list them here.
 # Not all of these dlls must exist as they are installed by nsis with
 # the /nonfatal option.
@@ -140,7 +249,7 @@ AUTHENTICODE_FILES_OPTIONAL = \
 	../src/libgcc_s_sjlj-1.dll-x \
 	../src/libgcc_s_seh-1.dll-x  \
 	../src/libwinpthread-1.dll-ex
-
+endif
 
 # No servicable parts below this line :)
 
@@ -918,27 +1027,17 @@ $(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$
 	touch $(stampdir)/stamp-$(1)-00-unpack
 
 $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
-	#(shopt -s nullglob;				\
-	#$(call SETVARS,$(1));				\
-	#if [ ! -L "$$$${pkgsdir}" ]; then \
-	#	cd "$$$${pkgsdir}"; \
-		#if [ -e "CMakeLists.txt" ]; then \
-		#	sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "6.19.0")/' CMakeLists.txt; \
-		#	sed -i 's/find_package(ECM .* NO_MODULE)/find_package(ECM 6.19.0 NO_MODULE)/' CMakeLists.txt; \
-		#	sed -i 's/set(KF_DEP_VERSION.*)/set(KF_DEP_VERSION "6.19.0")/' CMakeLists.txt; \
-		#	sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "6.4.0")/' CMakeLists.txt; \
-		#	sed -i 's/set(KPIM_MIME_VERSION.*)/set(KPIM_MIME_VERSION "6.4.0")/' CMakeLists.txt; \
-		#	sed -i 's/set(KPIM_MBOX_VERSION.*)/set(KPIM_MBOX_VERSION "6.4.0")/' CMakeLists.txt; \
-		#	sed -i 's/set(MIMETREEPARSER_VERSION.*)/set(MIMETREEPARSER_VERSION "6.4.0")/' CMakeLists.txt; \
-		# fi; \
 	(shopt -s nullglob;				\
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
-		cd "$$$${pkgsdir}"; \
-		for pfile in "$$$${pkgpatdir}"/*.patch \
-                             "$$$${pkgpatbdir}"/*.patch ; do  \
+		cd "$$$${pkgsdir}";				\
+		sed -i 's/set(KF5_MIN_VERSION.*)/set(KF5_MIN_VERSION "5.109.0")/' CMakeLists.txt; \
+		sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "5.109.0")/' CMakeLists.txt; \
+		sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.109.0")/' CMakeLists.txt; \
+		sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.24.0")/' CMakeLists.txt; \
+		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
 		echo "applying $$$${pkgsdir}/$$$${pfile}"; \
-		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}") \
+		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
 		done \
 	else \
 		echo "Not patching symlinked $(1)"; \

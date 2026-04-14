@@ -139,13 +139,39 @@ CLEANFILES = g4wihelp.dll desktopshellrun.o versioninfo.txt \
 			 $(foosum_exe) gpgwrap.exe
 
 # Supported source packages. (see also ../appimage/Makefile.am)
+if BUILD_VSD3
+gpg4win_qtpkgs = qtbase qttools qtsvg qttranslations qthttpserver \
+                 qtwebsockets breeze
 gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
-		gpa opencdk jpeg \
-		pinentry libassuan ntbtls pcre \
-		paperkey regex libiconv gettext scute
+                gpa opencdk jpeg \
+                pinentry libassuan ntbtls pcre \
+                paperkey regex libiconv gettext scute
+else
+# gpg4win_qtpkgs =
+gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
+                libgpg-error gpgme gpgol gpgex libpng \
+                gpa opencdk jpeg \
+                pinentry libassuan ntbtls pcre \
+                paperkey regex libiconv gettext scute
+endif
 
 # Source packages following the KDE pattern
+if BUILD_VSD3
+# gpg4win_kdepkgs =
+gpg4win_kf5pkgs = gpgmepp qgpgme libqrencode \
+                  kconfig kwidgetsaddons ki18n extra-cmake-modules \
+                  kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
+                  kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
+                  kiconthemes kleopatra breeze-icons kitemmodels karchive \
+                  gpg4win-tools kcrash kio kbookmarks kservice solid \
+                  kjobwidgets poppler okular freetype threadweaver \
+                  kparts tiff openjpeg sonnet ktextwidgets mimetreeparser \
+                  libical kcalendarcore kmbox pcre2 prison gpgpass \
+                  kcolorscheme zstd kstatusnotifieritem \
+                  gpgoljs kcontacts
+else
+# gpg4win_kf5pkgs =
 gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
                   gpgmepp qgpgme libqrencode \
                   kconfig kwidgetsaddons ki18n extra-cmake-modules \
@@ -159,8 +185,7 @@ gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
                   kcolorscheme zstd kstatusnotifieritem \
                   gpgoljs kcontacts qtwebsockets \
                   breeze
-
-gpg4win_kf5pkgs = $(gpg4win_kdepkgs)
+endif
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
@@ -330,14 +355,12 @@ gpg4win_pkg_qtbase_native_configure = \
         ../$$$${pkg_version}/configure \
         -opensource \
         -confirm-license \
-        -xplatform win32-g++ \
-        -device-option CROSS_COMPILE=$(host)- \
         -no-use-gold-linker \
         -release \
         -shared \
         -prefix $$$${pkgidir} \
-        -I "$(idir)/include" \
-        -L "$(idir)/lib" \
+        -I "$(nat_idir)/include" \
+        -L "$(nat_idir)/lib" \
         -no-icu \
         -no-glib \
         -no-eventfd \
@@ -409,6 +432,7 @@ endif
 
 if BUILD_VSD3
 gpg4win_pkg_qtbase_configure = \
+        ../$$$${pkg_version}/configure \
         -opensource \
         -confirm-license \
         -xplatform win32-g++ \
@@ -472,10 +496,17 @@ endif
 
 # copy moc and rcc from the tools into the target tree
 # so that pkg-config can find them.
-define gpg4win_pkg_qtbase_post_install
-	(cp $(nat_idir)/libexec/moc $$$${pkgidir}/bin; \
-	 cp $(nat_idir)/libexec/rcc $$$${pkgidir}/bin   )
-endef
+if BUILD_VSD3
+gpg4win_pkg_qtbase_post_install = \
+        (cd $$$${pkgbdir}; \
+         make install; \
+         cd $$$${pkgbdir}/src/printsupport; \
+         make install; )
+else
+gpg4win_pkg_qtbase_post_install = \
+        (cp $(nat_idir)/libexec/moc $$$${pkgidir}/bin; \
+         cp $(nat_idir)/libexec/rcc $$$${pkgidir}/bin   )
+endif
 
 # Build only linguist which includes Qt's translation CLI tools.
 if BUILD_VSD3
