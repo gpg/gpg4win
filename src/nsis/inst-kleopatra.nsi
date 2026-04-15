@@ -194,7 +194,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File "${SRCDIR}/icons/file-ext.ico"
   File "${SRCDIR}/icons/mail-ext.ico"
 
-#  SetRegView 64
   # Openpgp4fpr URI scheme
   WriteRegStr SHCTX "Software\Classes\openpgp4fpr" "" "URL:OpenPGP master key fingerprint"
   WriteRegStr SHCTX "Software\Classes\openpgp4fpr" "URL Protocol" ""
