@@ -141,7 +141,7 @@ CLEANFILES = g4wihelp.dll desktopshellrun.o versioninfo.txt \
 # Supported source packages. (see also ../appimage/Makefile.am)
 if BUILD_VSD3
 gpg4win_qtpkgs = qtbase qttools qtsvg qttranslations qthttpserver \
-                 qtwebsockets breeze
+                 qtwebsockets qtwinextras breeze
 gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
                 gpa opencdk jpeg \
@@ -197,7 +197,7 @@ gpg4win_excmkpkgs = gpgmepp
 # The packages that should also be compiled natively
 if BUILD_VSD3
 # gpg4win_nativepkgs =
-gpg4win_nativekf5pkgs = breeze-icons kconfig extra-cmake-modules
+gpg4win_nativekf5pkgs = breeze-icons kconfig extra-cmake-modules kcoreaddons
 gpg4win_snativepkgs = qtbase qttools
 else
 gpg4win_nativepkgs = qtbase breeze-icons kconfig extra-cmake-modules \
@@ -255,9 +255,19 @@ define gpg4win_pkg_gpgol_post_install
 ( cd $$$${pkgbdir}/doc; make pdf )
 endef
 
-gpg4win_pkg_libgpg_error_configure = --enable-static
+if BUILD_VSD3
+gpg4win_pkg_libgpg_error_configure = --silent \
+  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib \
+  --enable-static --enable-install-gpg-error-config
+else
+gpg4win_pkg_libgpg_error_configure = --silent \
+        --enable-static \
+        --enable-install-gpg-error-config
+endif
 
-gpg4win_pkg_libgpg_error_ex_configure = --enable-static
+gpg4win_pkg_libgpg_error_ex_configure = --silent  \
+        --enable-static \
+        --enable-install-gpg-error-config
 
 gpg4win_pkg_libgpg_error_extracflags = -D_WIN32_WINNT=0x0600
 
@@ -278,9 +288,9 @@ define gpg4win_pkg_libgpg_error_post_install
  done)
 endef
 
-gpg4win_pkg_libassuan_configure = --enable-static
+gpg4win_pkg_libassuan_configure = --silent --enable-static
 
-gpg4win_pkg_libassuan_ex_configure = --enable-static
+gpg4win_pkg_libassuan_ex_configure = --with-gpg-error-prefix=$(ex_idir) --silent --enable-static
 
 gpg4win_pkg_libpng_configure = \
       HAVE_SOLARIS_LD_FALSE=yes \
@@ -288,23 +298,54 @@ gpg4win_pkg_libpng_configure = \
       LDFLAGS=\"-L$(idir)/lib\" \
       LIBPNG_DEFINES=\"-DPNG_BUILD_DLL\"
 
+if BUILD_VSD3
+gpg4win_pkg_pinentry_configure = \
+  --enable-pinentry-qt5 \
+  --disable-pinentry-qt \
+  --disable-pinentry-fltk \
+  --disable-pinentry-curses \
+  --disable-fallback-curses \
+  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
+else
 gpg4win_pkg_pinentry_configure = \
   --enable-pinentry-qt \
   --disable-pinentry-fltk \
   --disable-pinentry-curses \
   --disable-fallback-curses
+endif
 
+if BUILD_VSD3
+# The LDFLAGS is needed for -lintl for glib.  The QT4 variables work
+# around the lack of cross compilation support in qt-dev.
+gpg4win_pkg_gpgme_configure = --silent \
+  --with-gpg-error-prefix=$(idir) --enable-static \
+  LDFLAGS=-L$(idir)/lib \
+  --enable-languages="" \
+  --disable-gpg-test \
+  --disable-gpgsm-test
+else
 gpg4win_pkg_gpgme_configure = \
   --enable-static \
   --enable-languages= \
   --disable-gpg-test \
   --disable-gpgsm-test
+endif
 
+if BUILD_VSD3
+gpg4win_pkg_gpgme_ex_configure = --silent \
+  --with-gpg-error-prefix=$(ex_idir) --enable-static \
+  --with-libassuan-prefix=$(ex_idir) \
+  LDFLAGS=-L$(ex_idir)/lib \
+  --enable-languages="" \
+  --disable-gpg-test \
+  --disable-gpgsm-test
+else
 gpg4win_pkg_gpgme_ex_configure = \
   --enable-static \
   --enable-languages= \
   --disable-gpg-test \
   --disable-gpgsm-test
+endif
 
 gpg4win_pkg_gpgmepp_configure = \
   -DENABLE_STATIC=ON \
@@ -315,9 +356,30 @@ gpg4win_pkg_gpgmepp_ex_configure = \
   -DPKGCONFIG_HOST=$(GPGEX_ADD_HOST)
 
 if BUILD_VSD3
-gpg4win_pkg_qgpgme_configure = -DBUILD_WITH_QT5=ON
+gpg4win_pkg_qgpgme_configure = \
+  -DBUILD_WITH_QT6=OFF \
+  -DBUILD_WITH_QT5=ON
 else
-gpg4win_pkg_qgpgme_configure = -DBUILD_WITH_QT5=OFF
+gpg4win_pkg_qgpgme_configure = \
+  -DBUILD_WITH_QT5=OFF
+endif
+
+if BUILD_VSD3
+gpg4win_pkg_gpgol_configure = --silent \
+  --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir) \
+  --with-libassuan-prefix=$(idir)
+
+gpg4win_pkg_gpgol_ex_configure = --silent \
+  --with-gpgme-prefix=$(ex_idir) --with-gpg-error-prefix=$(ex_idir) \
+  --with-libassuan-prefix=$(ex_idir)
+
+gpg4win_pkg_gpgex_configure = --silent \
+  --with-gpg-error-prefix=$(idir) \
+  --with-libassuan-prefix=$(idir)
+
+gpg4win_pkg_gpgex_ex_configure = --silent \
+  --with-gpg-error-prefix=$(ex_idir) \
+  --with-libassuan-prefix=$(ex_idir)
 endif
 
 gpg4win_pkg_openjpeg_configure = -DBUILD_CODEC=OFF
@@ -341,6 +403,8 @@ gpg4win_pkg_pcre2_configure = \
 gpg4win_pkg_karchive_configure = -DWITH_LIBZSTD=ON -DWITH_LIBLZMA=OFF -DWITH_OPENSSL=OFF
 
 gpg4win_pkg_kcoreaddons_configure = -DKCOREADDONS_USE_QML=OFF
+
+gpg4win_pkg_kcoreaddons_native_configure = -DKCOREADDONS_USE_QML=OFF
 
 gpg4win_pkg_kwindowsystem_configure = -DKWINDOWSYSTEM_QML=OFF
 
@@ -381,6 +445,11 @@ gpg4win_pkg_qtbase_native_configure = \
         -no-openssl \
         -no-dbus \
         -v
+# qtbase
+# invoke qmake with removed debug options as a workaround for
+# https://bugreports.qt-project.org/browse/QTBUG-30898
+gpg4win_pkg_qtbase_native_make_args = \
+    QMAKE='$$$${pkgbdir}/bin/qmake'
 else
 gpg4win_pkg_qtbase_native_configure = \
         -DQT_BUILD_EXAMPLES=OFF \
@@ -462,6 +531,11 @@ gpg4win_pkg_qtbase_configure = \
         -no-openssl \
         -no-dbus \
         -v
+# qtbase
+# invoke qmake with removed debug options as a workaround for
+# https://bugreports.qt-project.org/browse/QTBUG-30898
+gpg4win_pkg_qtbase_make_args = \
+    QMAKE='$$$${pkgbdir}/bin/qmake'
 else
 gpg4win_pkg_qtbase_configure = \
         -DQT_HOST_PATH=$(nat_idir) \
@@ -560,10 +634,54 @@ define gpg4win_pkg_qttools_post_install
 	  cp -r bin lib include $$$${pkgidir})
 endef
 
+if BUILD_VSD3
+gpg4win_pkg_qtsvg_configure = \
+        "$(idir)/bin/qmake" ../$$$${pkg_version}
+
+# XXX Adding the qtconf after qtsvg is a weird hack
+# because somhow (yay qmake) zlib is not linked if
+# the qt conf exists before that. The qt conf is
+# needed for qttranslations to find the correct path
+# of the translation tools.
+gpg4win_pkg_qtsvg_post_install = \
+        (cd $$$${pkgbdir}; \
+         mkdir -p $$$${pkgidir}; \
+         cp -r lib include plugins $$$${pkgidir}; \
+         mkdir -p $$$${pkgidir}/bin; \
+         mv $$$${pkgidir}/lib/*.dll $$$${pkgidir}/bin; \
+         echo "[Paths]" > $$$${pkgidir}/bin/qt.conf; \
+         echo "Prefix = .." >> $$$${pkgidir}/bin/qt.conf)
+
+gpg4win_pkg_qtwinextras_configure = \
+        "$(idir)/bin/qmake" ../$$$${pkg_version}
+
+gpg4win_pkg_qtwinextras_post_install = \
+        (cd $$$${pkgbdir}; \
+         mkdir -p $$$${pkgidir}/bin; \
+         cp -r lib include $$$${pkgidir}; \
+         mv $$$${pkgidir}/lib/*.dll $$$${pkgidir}/bin;)
+gpg4win_pkg_qttranslations_configure = \
+        "$(idir)/bin/qmake" ../$$$${pkg_version}
+
+define gpg4win_pkg_qttranslations_post_install
+ ( rm -fR $$$${pkgidir}/qttranslations; \
+   mkdir -p $$$${pkgidir}; \
+   cp -r $$$${pkgbdir}/translations $$$${pkgidir}/qttranslations;)
+endef
+endif
+
 define gpg4win_pkg_okular_post_install
         (rm $$$${pkgidir}/share/icons/hicolor/icon-theme.cache)
 endef
 
+if BUILD_VSD3
+gpg4win_pkg_kleopatra_configure = \
+    -DFORCE_DISABLE_KCMUTILS=ON \
+    -DDISABLE_KWATCHGNUPG=ON \
+    -DKLEOPATRA_VERSION_STRING=Gpg4win-$(VERSION) \
+    -DKLEOPATRA_ORGANIZATION_DOMAIN=$(KLEOPATRA_ORGANIZATION_DOMAIN) \
+    -DKLEOPATRA_DISTRIBUTION_TEXT="$(DISTRIBUTION_TEXT)"
+else
 gpg4win_pkg_kleopatra_configure = \
     -DDISABLE_KWATCHGNUPG=ON \
     -DKLEOPATRA_LIST_AS_COMPONENT=ON \
@@ -571,10 +689,19 @@ gpg4win_pkg_kleopatra_configure = \
     -DKLEOPATRA_ORGANIZATION_DOMAIN=$(KLEOPATRA_ORGANIZATION_DOMAIN) \
     -DKLEOPATRA_ORGANIZATION_NAME=\"$(KLEOPATRA_ORGANIZATION_NAME)\" \
     -DKLEOPATRA_ICON_DIR=$(KLEOPATRA_ICON_DIR)
+endif
 
+if BUILD_VSD3
+gpg4win_pkg_kxmlgui_configure = \
+    -DFORCE_DISABLE_KGLOBALACCEL=ON \
+    -DFORCE_DISABLE_DBUS=ON \
+    -DXMLGUI_COMPILER_VERSION="i686-w64-mingw32-gcc" \
+    -DXMLGUI_DISTRIBUTION_TEXT="$(DISTRIBUTION_TEXT)"
+else
 gpg4win_pkg_kxmlgui_configure = \
     -DFORCE_DISABLE_KGLOBALACCEL=ON \
     -DFORCE_DISABLE_DBUS=ON
+endif
 
 gpg4win_pkg_kio_configure = \
     -DFORCE_DISABLE_DBUS=ON \
