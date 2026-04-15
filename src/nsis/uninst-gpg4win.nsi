@@ -36,7 +36,7 @@ Section "-un.gpg4win"
   Delete "$INSTDIR\bin\libgcc_s_sjlj-1.dll"
   Delete "$INSTDIR\bin\libgcc_s_dw2-1.dll"
   Delete "$INSTDIR\bin\libgcc_s_seh-1.dll"
-  Delete "$INSTDIR\bin\libwinpthread-1.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libwinpthread-1.dll"
   Delete /REBOOTOK "$INSTDIR\${EX_BINDIR}\libwinpthread-1.dll"
 
   # Delete standard stuff.

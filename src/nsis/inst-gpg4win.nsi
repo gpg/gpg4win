@@ -146,7 +146,15 @@ uninst_checks_done:
   # build directory with a different suffix, so that makensis does not
   # list symbol names.
   File /oname=libstdc++-6.dll     "${TOP_BLDDIR}/src/libstdc++-6.dll-x"
+
+  ClearErrors
+  SetOverwrite try
   File /oname=libwinpthread-1.dll "${TOP_BLDDIR}/src/libwinpthread-1.dll-x"
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=libwinpthread-1.dll.tmp "${TOP_BLDDIR}/src/libwinpthread-1.dll-x"
+      Rename /REBOOTOK libwinpthread-1.dll.tmp libwinpthread-1.dll
+
   # only one of the following two files exists
   File /nonfatal /oname=libgcc_s_sjlj-1.dll "${TOP_BLDDIR}/src/libgcc_s_sjlj-1.dll-x"
   File /nonfatal /oname=libgcc_s_dw2-1.dll  "${TOP_BLDDIR}/src/libgcc_s_dw2-1.dll-x"
