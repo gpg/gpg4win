@@ -1035,9 +1035,9 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 		sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "5.109.0")/' CMakeLists.txt; \
 		sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.109.0")/' CMakeLists.txt; \
 		sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.24.0")/' CMakeLists.txt; \
-		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
+		for pfile in "$$$${pkgpatdir}"/*.patch "$$$${pkgpatbdir}"/*.patch ; do  \
 		echo "applying $$$${pkgsdir}/$$$${pfile}"; \
-		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
+		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}")		\
 		done \
 	else \
 		echo "Not patching symlinked $(1)"; \
