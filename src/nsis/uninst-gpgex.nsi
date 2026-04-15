@@ -68,14 +68,19 @@ Section "-un.gpgex"
   RMDir "$INSTDIR\share\locale"
   RMDir "$INSTDIR\share"
 
+!ifdef IS_W64_INST
   UnRegDLL "$INSTDIR\bin\gpgex.dll"
-
+!else
+  ExecWait '"$SYSDIR\regsvr32" /u /s "$INSTDIR\bin\gpgex.dll"'
+!endif
   Delete /REBOOTOK "$INSTDIR\bin\gpgex.dll"
 
+!ifndef IS_W64_INST
 ${If} ${RunningX64}
   ExecWait '"$SYSDIR\regsvr32" /u /s "$INSTDIR\bin_64\gpgex.dll"'
   Delete /REBOOTOK "$INSTDIR\bin_64\gpgex.dll"
 ${EndIf}
+!endif
 
 !endif
 SectionEnd
