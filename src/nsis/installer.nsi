@@ -681,6 +681,9 @@ FunctionEnd
 
 
 Function .onInit
+!ifdef IS_W64_INST
+  SetRegView 64
+!endif
   Call G4wRunOnce
 
   ${GetParameters} $R0
@@ -709,9 +712,6 @@ initDone:
 !define MUI_LANGDLL_ALWAYSSHOW
 !endif
 
- # Since NSIS is still 32 bit we stay on that for NSIS registry
- # keys.
-  SetRegView 32
   !insertmacro MUI_LANGDLL_DISPLAY
 
 ${IfNot} ${AtLeastWin7}
@@ -725,7 +725,6 @@ ${Endif}
   ${EndIf}
 !endif
 
-  SetRegView 64
   ${MementoSectionRestore}
   Call CalcDefaults
   Call CalcDepends
