@@ -36,10 +36,12 @@ m4_define([mym4_buildtype],
 m4_if(mym4_buildtype,[vsd],[m4_define([mym4_isvsd],[yes])])
 
 # For VSD we use a different version number.
+# Note that this is onl;y usded for vsd 3.3 - with vsd 3.4 we will
+# use the new docker/build.sh based system.
 m4_if(mym4_isvsd,yes,
       [m4_define([mym4_major],[3])
        m4_define([mym4_minor],[3])
-       m4_define([mym4_micro],[6])],
+       m4_define([mym4_micro],[7])],
       [m4_define([mym4_major],[4])
        m4_define([mym4_minor],[4])
        m4_define([mym4_micro],[2])])
