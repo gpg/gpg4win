@@ -367,6 +367,7 @@ define SETVARS
 	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";            \
 	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";       \
 	pkg_conf_subdir="$(call GETVAR,gpg4win_pkg_$(1)_conf_subdir)";  \
+	export PKG_CONFIG="$(tsdir)/src/pkg-config"; \
 	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
 	export PKG_CONFIG_LIBDIR="$(idir)/lib/pkgconfig";		\
 	export PATH="$(idir)/bin:$(nat_idir)/bin:$${PATH}";		\
@@ -392,6 +393,7 @@ define SETVARS_EX
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_args_inst)"; \
 	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_dir)";             \
 	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_dir)";        \
+	export PKG_CONFIG="$(tsdir)/src/pkg-config"; \
 	export PKG_CONFIG_PATH="$(ex_idir)/lib/pkgconfig";                  \
 	export PKG_CONFIG_LIBDIR="$(ex_idir)/lib/pkgconfig";                \
 	export PATH="$(ex_idir)/bin:$(nat_idir)/bin:$${PATH}";           \
@@ -1053,6 +1055,7 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
 		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
 		-DQT_MAJOR_VERSION="5" \
+		-DPKG_CONFIG_EXECUTABLE=$(abs_top_srcdir)/src/pkg-config \
 		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_builddir)/src/toolchain.cmake \
 		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 		-DBUILD_TESTING=False \
