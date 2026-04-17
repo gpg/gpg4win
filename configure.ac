@@ -81,7 +81,7 @@ GIT_BETASTRING=mym4_betastr
 IS_BETA_BUILD=mym4_isbeta
 IS_VSD_BUILD=mym4_isvsd
 IS_GPD_BUILD=mym4_isgpd
-MSI_VERSIONSTRING=mym4_major.mym4_minor.m4_if(mym4_isbeta,[yes],[90],mym4_micro)
+MSI_VERSIONSTRING=mym4_major.mym4_minor.m4_if(mym4_isbeta,[yes],[97],mym4_micro)
 
 # Variables for the version info
 PRODUCT_NAME=m4_if(mym4_isvsd, [yes], ["GnuPG VS-Desktop"],
