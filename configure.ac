@@ -291,7 +291,6 @@ if test "$build_gpg4win" = yes ; then
         # Otherwise for 64 bit builds --with-additional-gpgex-host
         # is then 32 bit to take care of that.
         AC_CHECK_PROGS(W32CC32, i686-w64-mingw32-gcc)
-        GPG4WIN_RUNTIME_LIBRARY(libgcc_s_seh-1)
         ;;
     *)
         W32CC32=${CC}
@@ -300,6 +299,7 @@ if test "$build_gpg4win" = yes ; then
     esac
     AC_SUBST(BUILD_W64)
 
+    GPG4WIN_RUNTIME_LIBRARY(libgcc_s_seh-1)
     GPG4WIN_RUNTIME_LIBRARY(libstdc++-6, REQUIRED)
     GPG4WIN_RUNTIME_LIBRARY(libwinpthread-1, REQUIRED)
 
