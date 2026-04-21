@@ -32,34 +32,17 @@ Section "-un.libgpg-error"
 !else
   Delete /REBOOTOK "$INSTDIR\bin\libgpg-error-0.dll"
 
-  Delete "$INSTDIR\share\locale\cs\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\da\LC_MESSAGES\libgpg-error.mo"
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\eo\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\es\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\fr\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\hu\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\it\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\ja\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\nl\LC_MESSAGES\libgpg-error.mo"
   Delete "$INSTDIR\share\locale\pl\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\pt\LC_MESSAGES\libgpg-error.mo"
   Delete "$INSTDIR\share\locale\ro\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\ru\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\sr\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\sv\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\tr\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\uk\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\vi\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\zh_CN\LC_MESSAGES\libgpg-error.mo"
-  Delete "$INSTDIR\share\locale\zh_TW\LC_MESSAGES\libgpg-error.mo"
+  Delete "$INSTDIR\share\locale\fr\LC_MESSAGES\libgpg-error.mo"
 
   Delete "$INSTDIR\bin\gpg-error.exe"
   Delete "$INSTDIR\lib\libgpg-error.imp"
   Delete "$INSTDIR\lib\libgpg-assuan.imp"
   Delete "$INSTDIR\include\gpg-error.h"
 ${If} ${RunningX64}
-  Delete /REBOOTOK "$INSTDIR\${EX_BINDIR}\libgpg-error-0.dll"
+  Delete /REBOOTOK "$INSTDIR\bin_64\libgpg-error-0.dll"
 ${EndIf}
 
 !endif

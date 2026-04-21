@@ -40,8 +40,8 @@ SetOutPath "$TEMP"
   MessageBox MB_OK|MB_ICONEXCLAMATION "$(T_Gpg_Install_failed)"
 done:
   SetOutPath "$INSTDIR\..\GnuPG\bin"
-  File "${SRCDIR}/gpg-enable-keyboxd.bat"
-  File "${SRCDIR}/gpg-disable-keyboxd.bat"
+  File "${TOP_BLDDIR}/gpg-enable-keyboxd.bat"
+  File "${TOP_BLDDIR}/gpg-disable-keyboxd.bat"
 
   Delete "$TEMP\gnupg-w32-${gpg4win_pkg_gnupg_w32_version}-bin.exe"
 !endif

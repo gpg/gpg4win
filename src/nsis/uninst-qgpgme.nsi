@@ -30,6 +30,6 @@ Section "-un.qgpgme"
   Push "${gpg4win_pkg_qgpgme}"
   Call un.SourceDelete
 !else
-  Delete /REBOOTOK "$INSTDIR\bin\libqgpgmeqt6-15.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libqgpgme-15.dll"
 !endif
 SectionEnd

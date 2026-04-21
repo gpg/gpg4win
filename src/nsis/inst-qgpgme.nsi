@@ -39,6 +39,6 @@ Section "-qgpgme" SEC_qgpgme
   SetOutPath "$INSTDIR\bin"
   ClearErrors
   SetOverwrite try
-  File "${prefix}/bin/libqgpgmeqt6-15.dll"
+  File "${prefix}/bin/libqgpgme-15.dll"
 !endif
 SectionEnd

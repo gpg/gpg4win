@@ -30,10 +30,21 @@ Section "-libkleo" SEC_libkleo
   File "${gpg4win_pkg_libkleo}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKPim6Libkleo.dll
-  SetOutPath "$INSTDIR\share"
+  File ${prefix}/bin/libKPim5Libkleo.dll
+  SetOutPath "$INSTDIR\etc\xdg"
   File ${prefix}/etc/xdg/libkleopatrarc
   SetOutPath "$INSTDIR\share\libkleopatra\pics"
+  File ${prefix}/share/libkleopatra/pics/chiasmus_chi.png
+  File ${prefix}/share/libkleopatra/pics/hi16-app-gpg.png
+  File ${prefix}/share/libkleopatra/pics/hi16-app-gpgsm.png
+  File ${prefix}/share/libkleopatra/pics/hi22-app-gpg.png
+  File ${prefix}/share/libkleopatra/pics/hi22-app-gpgsm.png
+  File ${prefix}/share/libkleopatra/pics/hi32-app-gpg.png
+  File ${prefix}/share/libkleopatra/pics/hi32-app-gpgsm.png
+  File ${prefix}/share/libkleopatra/pics/key_bad.png
+  File ${prefix}/share/libkleopatra/pics/key_ok.png
+  File ${prefix}/share/libkleopatra/pics/key.png
+  File ${prefix}/share/libkleopatra/pics/key_unknown.png
   File ${prefix}/share/libkleopatra/pics/smartcard.xpm
 
 !endif

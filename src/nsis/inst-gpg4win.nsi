@@ -17,12 +17,12 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-var uninst64_checked
+
 # This is the very first section installed.
 Section "-gpg4win" SEC_gpg4win
 !ifdef SOURCES
   SetOutPath "$INSTDIR"
-  File "${TOP_BLDDIR}/gpg4win-${VERSION}.tar.bz2"
+  File "${BUILD_DIR}/../gpg4win-${VERSION}.tar.bz2"
 !else
   Call KillOtherAppsOrWarn
   StrCpy $is_update "0"
@@ -34,24 +34,16 @@ Section "-gpg4win" SEC_gpg4win
   SetDetailsPrint none
 
   SetOutPath "$PLUGINSDIR\Slides"
-  File "${SRCDIR}/slideshow/slide1-gpgol.png"
-  File "${SRCDIR}/slideshow/slide2-gpgex.png"
-  #File "${SRCDIR}/slideshow/slide3-kleopatra.png"
-  File "${SRCDIR}/slideshow/slide4-summary.png"
-  File "${SRCDIR}/slideshow/slides.dat"
+  File "${BUILD_DIR}/slideshow/slide1-gpgol.png"
+  File "${BUILD_DIR}/slideshow/slide2-gpgex.png"
+  #File "${BUILD_DIR}/slideshow/slide3-kleopatra.png"
+  File "${BUILD_DIR}/slideshow/slide4-summary.png"
+  File "${BUILD_DIR}/slideshow/slides.dat"
   g4wihelp::slide_show /NOUNLOAD /CCOLOR=0x000000 "/auto=$PLUGINSDIR\Slides\slides.dat" /FIT=WIDTH
   SetDetailsPrint both
   SetOutPath "$INSTDIR"
 # END MSI IGNORE
 
-# We do the uninstall check twice once in the 32 bit registry and once
-# looking in the 64 bit registry, even if we are a 32 bit installer.
-# because  we could be downgrading a 64 bit installation and would want
-# to call the uninstaller in that case, too.
-  StrCpy $uninst64_checked "0"
-
-  SetRegView 32
-uninstall_check:
 # Uninstall an old version if found.
   ClearErrors
   ReadRegStr $0 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "DisplayVersion"
@@ -71,35 +63,13 @@ uninstall_check:
   SetOutPath "$INSTDIR\share\gpg4win"
 
 skip_uninst:
-  # If we arrive here and uninst64_checked is 1 this means
-  # that we checked both for 32 bit in the first run and
-  # then jumped into another uninstall_check with the
-  # 64bit reg view.
-  StrCmp $uninst64_checked "1" uninst_checks_done 0
-  StrCpy $uninst64_checked "1"
-  SetRegView 64
-  goto uninstall_check
-
-uninst_checks_done:
-!ifdef IS_W64_INST
-# While trying to find the old installation dir and configuration in
-# both 32 and 64 views. For new Versions we only install in the
-# 64 view
-  SetRegView 64
-!else
-  # Legacy installation
-  SetRegView 32
-!endif
-
-  SetOutPath "$INSTDIR"
-  File "${TOP_BLDDIR}/src/versioninfo.txt"
-
 # BEGIN MSI IGNORE
   SetOutPath "$INSTDIR\share\gpg4win"
 
-  File "${TOP_BLDDIR}/src/HOWTO-SMIME.en.txt"
-  File "${TOP_BLDDIR}/src/HOWTO-SMIME.de.txt"
+  File "${BUILD_DIR}/HOWTO-SMIME.en.txt"
+  File "${BUILD_DIR}/HOWTO-SMIME.de.txt"
 
+  File "${BUILD_DIR}/versioninfo.txt"
 # END MSI IGNORE
 
   # Write a version file.
@@ -137,23 +107,22 @@ uninst_checks_done:
 
   # Install gpg4win included tools
   SetOutPath "$INSTDIR\bin"
-  File "${TOP_BLDDIR}/src/sha1sum.exe"
+  File "${BUILD_DIR}/sha1sum.exe"
   SetOutPath "$INSTDIR\bin"
-  File "${TOP_BLDDIR}/src/sha256sum.exe"
-  File "${TOP_BLDDIR}/src/md5sum.exe"
+  File "${BUILD_DIR}/sha256sum.exe"
+  File "${BUILD_DIR}/md5sum.exe"
 
   # Install the mingw32 runtime libraries.  They are stored in the
   # build directory with a different suffix, so that makensis does not
   # list symbol names.
-  File /oname=libstdc++-6.dll     "${TOP_BLDDIR}/src/libstdc++-6.dll-x"
-  File /oname=libwinpthread-1.dll "${TOP_BLDDIR}/src/libwinpthread-1.dll-x"
+  File /oname=libstdc++-6.dll     "${BUILD_DIR}/libstdc++-6.dll-x"
+  File /oname=libwinpthread-1.dll "${BUILD_DIR}/libwinpthread-1.dll-x"
   # only one of the following two files exists
-  File /nonfatal /oname=libgcc_s_sjlj-1.dll "${TOP_BLDDIR}/src/libgcc_s_sjlj-1.dll-x"
-  File /nonfatal /oname=libgcc_s_dw2-1.dll  "${TOP_BLDDIR}/src/libgcc_s_dw2-1.dll-x"
-  File /nonfatal /oname=libgcc_s_seh-1.dll "${TOP_BLDDIR}/src/libgcc_s_seh-1.dll-x"
+  File /nonfatal /oname=libgcc_s_sjlj-1.dll "${BUILD_DIR}/libgcc_s_sjlj-1.dll-x"
+  File /nonfatal /oname=libgcc_s_dw2-1.dll  "${BUILD_DIR}/libgcc_s_dw2-1.dll-x"
 
-  SetOutPath "$INSTDIR\${EX_BINDIR}"
-  File /nonfatal /oname=libwinpthread-1.dll "${TOP_BLDDIR}/src/libwinpthread-1.dll-ex"
+  SetOutPath "$INSTDIR\bin_64"
+  File /nonfatal /oname=libwinpthread-1.dll "${BUILD_DIR}/libwinpthread-1.dll-x64"
 
   SetOutPath "$INSTDIR"
   File /oname=pkg-licenses.txt "${SRCDIR}/../doc/pkg-copyright.txt"

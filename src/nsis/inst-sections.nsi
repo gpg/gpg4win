@@ -20,7 +20,7 @@
 
 # The order of installation must be the same as the build order.  You
 # can use tsort on the info in configure.ac, or just check out
-# gpg4win_nsis_list in config.nsi.  The order determines also the
+# gpg4win_build_list in config.nsi.  The order determines also the
 # order in the packages selection dialog.
 
 !ifdef HAVE_PKG_BZIP2
@@ -73,6 +73,9 @@
 !ifdef HAVE_PKG_QTTOOLS
 !include "inst-qttools.nsi"
 !endif
+!ifdef HAVE_PKG_QTWINEXTRAS
+!include "inst-qtwinextras.nsi"
+!endif
 !ifdef HAVE_PKG_KCONFIG
 !include "inst-kconfig.nsi"
 !endif
@@ -120,12 +123,6 @@
 !ifdef HAVE_PKG_KJOBWIDGETS
 !include "inst-kjobwidgets.nsi"
 !endif
-!ifdef HAVE_PKG_KCOLORSCHEME
-!include "inst-kcolorscheme.nsi"
-!endif
-#!ifdef HAVE_PKG_SNORETOAST
-#!include "inst-snoretoast.nsi"
-#!endif
 !ifdef HAVE_PKG_PCRE2
 !include "inst-pcre2.nsi"
 !endif
@@ -162,8 +159,8 @@
 !ifdef HAVE_PKG_KPARTS
 !include "inst-kparts.nsi"
 !endif
-!ifdef HAVE_PKG_KSTATUSNOTIFIERITEM
-!include "inst-kstatusnotifieritem.nsi"
+!ifdef HAVE_PKG_OKULAR
+!include "inst-okular.nsi"
 !endif
 !ifdef HAVE_PKG_KBOOKMARKS
 !include "inst-kbookmarks.nsi"
@@ -195,9 +192,6 @@
 !ifdef HAVE_PKG_SCUTE
 !include "inst-scute.nsi"
 !endif
-!ifdef HAVE_PKG_ZSTD
-!include "inst-zstd.nsi"
-!endif
 !ifdef HAVE_PKG_SONNET
 !include "inst-sonnet.nsi"
 !endif
@@ -213,26 +207,29 @@
 !ifdef HAVE_PKG_LIBICAL
 !include "inst-libical.nsi"
 !endif
-!ifdef HAVE_PKG_LIBQRENCODE
-!include "inst-libqrencode.nsi"
+!ifdef HAVE_PKG_QRENCODE
+!include "inst-qrencode.nsi"
 !endif
 !ifdef HAVE_PKG_PRISON
 !include "inst-prison.nsi"
 !endif
-!ifdef HAVE_PKG_QTHTTPSERVER
-!include "inst-qthttpserver.nsi"
-!endif
-!ifdef HAVE_PKG_QTWEBSOCKETS
-!include "inst-qtwebsockets.nsi"
-!endif
-!ifdef HAVE_PKG_KCONTACTS
-!include "inst-kcontacts.nsi"
+!ifdef HAVE_PKG_GPGPASS
+!include "inst-gpgpass.nsi"
 !endif
 !ifdef HAVE_PKG_PAPERKEY
 !include "inst-paperkey.nsi"
 !endif
-!ifdef HAVE_PKG_BREEZE
-!include "inst-breeze.nsi"
+!ifdef HAVE_PKG_MAN_NOVICE_EN
+!include "inst-man_novice_en.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_EN
+!include "inst-man_advanced_en.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+!include "inst-man_novice_de.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+!include "inst-man_advanced_de.nsi"
 !endif
 
 # These are displayed in the selection dialog.
@@ -243,51 +240,45 @@
 !ifdef HAVE_PKG_GPGOL
 !include "inst-gpgol.nsi"
 !endif
-!ifdef HAVE_PKG_GPGOLJS
-!include "inst-gpgoljs.nsi"
-!endif
 !ifdef HAVE_PKG_GPGEX
 !include "inst-gpgex.nsi"
 !endif
-!ifdef HAVE_PKG_OKULAR
-!include "inst-okular.nsi"
-!endif
-!ifdef HAVE_PKG_GPGPASS
-!include "inst-gpgpass.nsi"
+!ifdef HAVE_PKG_COMPENDIUM
+!include "inst-compendium.nsi"
 !endif
 
-# These always exist
-!include "inst-compendium.nsi"
 !include "inst-gpgme-browser.nsi"
+
 !include "inst-final.nsi"
 
 # We have to invoke the uninstallers in reverse order!
-!include "uninst-compendium.nsi"
 
-!ifdef HAVE_PKG_GPGPASS
-!include "uninst-gpgpass.nsi"
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+!include "uninst-man_advanced_de.nsi"
 !endif
-!ifdef HAVE_PKG_OKULAR
-!include "uninst-okular.nsi"
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+!include "uninst-man_novice_de.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_EN
+!include "uninst-man_advanced_en.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_NOVICE_EN
+!include "uninst-man_novice_en.nsi"
+!endif
+!ifdef HAVE_PKG_COMPENDIUM
+!include "uninst-compendium.nsi"
+!endif
+!ifdef HAVE_PKG_PAPERKEY
+!include "uninst-paperkey.nsi"
 !endif
 !ifdef HAVE_PKG_GPGEX
 !include "uninst-gpgex.nsi"
-!endif
-!ifdef HAVE_PKG_GPGOLJS
-!include "uninst-gpgoljs.nsi"
 !endif
 !ifdef HAVE_PKG_GPGOL
 !include "uninst-gpgol.nsi"
 !endif
 !ifdef HAVE_PKG_KLEOPATRA
 !include "uninst-kleopatra.nsi"
-!endif
-
-!ifdef HAVE_PKG_BREEZE
-!include "uninst-breeze.nsi"
-!endif
-!ifdef HAVE_PKG_PAPERKEY
-!include "uninst-paperkey.nsi"
 !endif
 
 !ifdef HAVE_PKG_GPGME
@@ -332,11 +323,26 @@
 !ifdef HAVE_PKG_BREEZE_ICONS
 !include "uninst-breeze-icons.nsi"
 !endif
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+!include "uninst-man_advanced_de.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+!include "uninst-man_novice_de.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_EN
+!include "uninst-man_advanced_en.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_NOVICE_EN
+!include "uninst-man_novice_en.nsi"
+!endif
 !ifdef HAVE_PKG_LIBICONV
 !include "uninst-libiconv.nsi"
 !endif
 !ifdef HAVE_PKG_QTTOOLS
 !include "uninst-qttools.nsi"
+!endif
+!ifdef HAVE_PKG_QTWINEXTRAS
+!include "uninst-qtwinextras.nsi"
 !endif
 !ifdef HAVE_PKG_KCONFIG
 !include "uninst-kconfig.nsi"
@@ -398,12 +404,9 @@
 !ifdef HAVE_PKG_KIO
 !include "uninst-kio.nsi"
 !endif
-!ifdef HAVE_PKG_KCOLORSCHEME
-!include "uninst-kcolorscheme.nsi"
+!ifdef HAVE_PKG_KJOBWIDGETS
+!include "uninst-kjobwidgets.nsi"
 !endif
-#!ifdef HAVE_PKG_SNORETOAST
-#!include "uninst-snoretoast.nsi"
-#!endif
 !ifdef HAVE_PKG_SOLID
 !include "uninst-solid.nsi"
 !endif
@@ -419,8 +422,8 @@
 !ifdef HAVE_PKG_KPARTS
 !include "uninst-kparts.nsi"
 !endif
-!ifdef HAVE_PKG_KSTATUSNOTIFIERITEM
-!include "uninst-kstatusnotifieritem.nsi"
+!ifdef HAVE_PKG_OKULAR
+!include "uninst-okular.nsi"
 !endif
 !ifdef HAVE_PKG_KBOOKMARKS
 !include "uninst-kbookmarks.nsi"
@@ -471,32 +474,20 @@
 !ifdef HAVE_PKG_MIMETREEPARSER
 !include "uninst-mimetreeparser.nsi"
 !endif
-!ifdef HAVE_PKG_LIBQRENCODE
-!include "uninst-libqrencode.nsi"
+!ifdef HAVE_PKG_QRENCODE
+!include "uninst-qrencode.nsi"
 !endif
 !ifdef HAVE_PKG_PRISON
 !include "uninst-prison.nsi"
 !endif
-!ifdef HAVE_PKG_QTHTTPSERVER
-!include "uninst-qthttpserver.nsi"
-!endif
-!ifdef HAVE_PKG_QTWEBSOCKETS
-!include "uninst-qtwebsockets.nsi"
-!endif
-!ifdef HAVE_PKG_KSTATUSNOTIFIERITEM
-!include "uninst-kstatusnotifieritem.nsi"
-!endif
-!ifdef HAVE_PKG_KCONTACTS
-!include "uninst-kcontacts.nsi"
+!ifdef HAVE_PKG_GPGPASS
+!include "uninst-gpgpass.nsi"
 !endif
 !ifdef HAVE_PKG_SONNET
 !include "uninst-sonnet.nsi"
 !endif
 !ifdef HAVE_PKG_SCUTE
 !include "uninst-scute.nsi"
-!endif
-!ifdef HAVE_PKG_ZSTD
-!include "uninst-zstd.nsi"
 !endif
 
 !include "uninst-gpg4win.nsi"
@@ -541,17 +532,6 @@ calc_defaults_okular_done:
 calc_defaults_gpgpass_done:
 !endif
 
-!ifdef HAVE_PKG_GPGOLJS
-  g4wihelp::config_fetch_bool "inst_gpgoljs"
-  StrCmp $R0 "1" 0 calc_defaults_gpgoljs_not_one
-   !insertmacro SelectSection ${SEC_gpgoljs}
-   Goto calc_defaults_gpgoljs_done
-  calc_defaults_gpgoljs_not_one:
-  StrCmp $R0 "0" 0 calc_defaults_gpgoljs_done
-   !insertmacro UnselectSection ${SEC_gpgoljs}
-calc_defaults_gpgoljs_done:
-!endif
-
 !ifdef HAVE_PKG_GPGOL
   g4wihelp::config_fetch_bool "inst_gpgol"
   StrCmp $R0 "1" 0 calc_defaults_gpgol_not_one
@@ -585,6 +565,62 @@ calc_defaults_gpgex_done:
 calc_defaults_paperkey_done:
 !endif
 
+!ifdef HAVE_PKG_COMPENDIUM
+  g4wihelp::config_fetch_bool "inst_compendium"
+  StrCmp $R0 "1" 0 calc_defaults_compendium_not_one
+   !insertmacro SelectSection ${SEC_compendium}
+   Goto calc_defaults_compendium_done
+  calc_defaults_compendium_not_one:
+  StrCmp $R0 "0" 0 calc_defaults_compendium_done
+   !insertmacro UnselectSection ${SEC_compendium}
+calc_defaults_compendium_done:
+!endif
+
+
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+  g4wihelp::config_fetch_bool "inst_man_novice_de"
+  StrCmp $R0 "1" 0 calc_defaults_man_novice_de_not_one
+   !insertmacro SelectSection ${SEC_man_novice_de}
+   Goto calc_defaults_man_novice_de_done
+  calc_defaults_man_novice_de_not_one:
+  StrCmp $R0 "0" 0 calc_defaults_man_novice_de_done
+   !insertmacro UnselectSection ${SEC_man_novice_de}
+calc_defaults_man_novice_de_done:
+!endif
+
+!ifdef HAVE_PKG_MAN_NOVICE_EN
+  g4wihelp::config_fetch_bool "inst_man_novice_en"
+  StrCmp $R0 "1" 0 calc_defaults_man_novice_en_not_one
+   !insertmacro SelectSection ${SEC_man_novice_en}
+   Goto calc_defaults_man_novice_en_done
+  calc_defaults_man_novice_en_not_one:
+  StrCmp $R0 "0" 0 calc_defaults_man_novice_en_done
+   !insertmacro UnselectSection ${SEC_man_novice_en}
+calc_defaults_man_novice_en_done:
+!endif
+
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+  g4wihelp::config_fetch_bool "inst_man_advanced_de"
+  StrCmp $R0 "1" 0 calc_defaults_man_advanced_de_not_one
+   !insertmacro SelectSection ${SEC_man_advanced_de}
+   Goto calc_defaults_man_advanced_de_done
+  calc_defaults_man_advanced_de_not_one:
+  StrCmp $R0 "0" 0 calc_defaults_man_advanced_de_done
+   !insertmacro UnselectSection ${SEC_man_advanced_de}
+calc_defaults_man_advanced_de_done:
+!endif
+
+!ifdef HAVE_PKG_MAN_ADVANCED_EN
+  g4wihelp::config_fetch_bool "inst_man_advanced_en"
+  StrCmp $R0 "1" 0 calc_defaults_man_advanced_en_not_one
+   !insertmacro SelectSection ${SEC_man_advanced_en}
+   Goto calc_defaults_man_advanced_en_done
+  calc_defaults_man_advanced_en_not_one:
+  StrCmp $R0 "0" 0 calc_defaults_man_advanced_en_done
+   !insertmacro UnselectSection ${SEC_man_advanced_en}
+calc_defaults_man_advanced_en_done:
+!endif
+
 # Check if minimal install was requested on the command line
 
 StrCmp $is_minimal '1' select_minimal continue
@@ -592,7 +628,6 @@ select_minimal:
    !insertmacro UnselectSection ${SEC_kleopatra}
    !insertmacro UnselectSection ${SEC_okular}
    !insertmacro UnselectSection ${SEC_gpgpass}
-   !insertmacro UnselectSection ${SEC_gpgoljs}
    !insertmacro UnselectSection ${SEC_gpgol}
    !insertmacro UnselectSection ${SEC_gpgex}
    !insertmacro UnselectSection ${SEC_gpgme_browser}
@@ -636,9 +671,6 @@ Function CalcDepends
 !ifdef HAVE_PKG_ZLIB
   !insertmacro UnselectSection ${SEC_zlib}
 !endif
-!ifdef HAVE_PKG_ZSTD
-  !insertmacro UnselectSection ${SEC_zstd}
-!endif
 !ifdef HAVE_PKG_PKGCONFIG
   !insertmacro UnselectSection ${SEC_pkgconfig}
 !endif
@@ -665,6 +697,9 @@ Function CalcDepends
 !endif
 !ifdef HAVE_PKG_QTTOOLS
   !insertmacro UnselectSection ${SEC_qttools}
+!endif
+!ifdef HAVE_PKG_QTWINEXTRAS
+  !insertmacro UnselectSection ${SEC_qtwinextras}
 !endif
 !ifdef HAVE_PKG_FREETYPE
   !insertmacro UnselectSection ${SEC_freetype}
@@ -711,12 +746,6 @@ Function CalcDepends
 !ifdef HAVE_PKG_KIO
   !insertmacro UnselectSection ${SEC_kio}
 !endif
-!ifdef HAVE_PKG_KCOLORSCHEME
-  !insertmacro UnselectSection ${SEC_kcolorscheme}
-!endif
-#!ifdef HAVE_PKG_SNORETOAST
-#  !insertmacro UnselectSection ${SEC_snoretoast}
-#!endif
 !ifdef HAVE_PKG_KJOBWIDGETS
   !insertmacro UnselectSection ${SEC_kjobwidgets}
 !endif
@@ -743,9 +772,6 @@ Function CalcDepends
 !endif
 !ifdef HAVE_PKG_KPARTS
   !insertmacro UnselectSection ${SEC_kparts}
-!endif
-!ifdef HAVE_PKG_KSTATUSNOTIFIERITEM
-  !insertmacro UnselectSection ${SEC_kstatusnotifieritem}
 !endif
 !ifdef HAVE_PKG_FREETYPE
   !insertmacro UnselectSection ${SEC_freetype}
@@ -792,8 +818,8 @@ Function CalcDepends
 !ifdef HAVE_PKG_PRISON
   !insertmacro UnselectSection ${SEC_prison}
 !endif
-!ifdef HAVE_PKG_LIBQRENCODE
-  !insertmacro UnselectSection ${SEC_libqrencode}
+!ifdef HAVE_PKG_QRENCODE
+  !insertmacro UnselectSection ${SEC_qrencode}
 !endif
 !ifdef HAVE_PKG_KDE_L10N
   !insertmacro UnselectSection ${SEC_kde_l10n}
@@ -807,18 +833,7 @@ Function CalcDepends
 !ifdef HAVE_PKG_GPG4WIN_TOOLS
   !insertmacro UnselectSection ${SEC_gpg4win_tools}
 !endif
-!ifdef HAVE_PKG_QTHTTPSERVER
-  !insertmacro UnselectSection ${SEC_qthttpserver}
-!endif
-!ifdef HAVE_PKG_QTWEBSOCKETS
-  !insertmacro UnselectSection ${SEC_qtwebsockets}
-!endif
-!ifdef HAVE_PKG_KCONTACTS
-  !insertmacro UnselectSection ${SEC_kcontacts}
-!endif
-!ifdef HAVE_PKG_BREEZE
-  !insertmacro UnselectSection ${SEC_breeze}
-!endif
+
 # BEGIN MSI IGNORE
 # MSI pulls this in through the gnupg-w32 component.
   # Always install gnupg2.  This is also ensured by putting
@@ -895,8 +910,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_karchive}
   !insertmacro SelectSection ${SEC_kio}
   !insertmacro SelectSection ${SEC_kjobwidgets}
-#  !insertmacro SelectSection ${SEC_snoretoast}
-  !insertmacro SelectSection ${SEC_kcolorscheme}
   !insertmacro SelectSection ${SEC_solid}
   !insertmacro SelectSection ${SEC_kservice}
   !insertmacro SelectSection ${SEC_kbookmarks}
@@ -911,7 +924,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_sonnet}
   !insertmacro SelectSection ${SEC_ktextwidgets}
   !insertmacro SelectSection ${SEC_openjpeg}
-  !insertmacro SelectSection ${SEC_breeze}
   skip_okular:
 !endif
 
@@ -930,32 +942,9 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_qtbase}
   !insertmacro SelectSection ${SEC_breeze_icons}
   !insertmacro SelectSection ${SEC_kconfig}
-  !insertmacro SelectSection ${SEC_libqrencode}
+  !insertmacro SelectSection ${SEC_qrencode}
   !insertmacro SelectSection ${SEC_prison}
   skip_gpgpass:
-!endif
-
-!ifdef HAVE_PKG_GPGOLJS
-  ${IfNot} ${AtLeastWin7}
-    # Disable gpgoljs for Windows below 7
-    SectionSetFlags ${SEC_gpgoljs} 16
-  ${Endif}
-  !insertmacro SectionFlagIsSet ${SEC_gpgoljs} ${SF_SELECTED} have_gpgoljs skip_gpgoljs
-  have_gpgoljs:
-  !insertmacro SelectSection ${SEC_kde_l10n}
-
-  !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_qtbase}
-  !insertmacro SelectSection ${SEC_breeze_icons}
-  !insertmacro SelectSection ${SEC_kconfig}
-  !insertmacro SelectSection ${SEC_libkleo}
-  !insertmacro SelectSection ${SEC_qthttpserver}
-  !insertmacro SelectSection ${SEC_qtwebsockets}
-  !insertmacro SelectSection ${SEC_kstatusnotifieritem}
-  !insertmacro SelectSection ${SEC_kcontacts}
-  !insertmacro SelectSection ${SEC_breeze}
-
-   skip_gpgoljs:
 !endif
 
 !ifdef HAVE_PKG_KLEOPATRA
@@ -988,8 +977,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_karchive}
   !insertmacro SelectSection ${SEC_kio}
   !insertmacro SelectSection ${SEC_kjobwidgets}
-#  !insertmacro SelectSection ${SEC_snoretoast}
-  !insertmacro SelectSection ${SEC_kcolorscheme}
   !insertmacro SelectSection ${SEC_solid}
   !insertmacro SelectSection ${SEC_kservice}
   !insertmacro SelectSection ${SEC_kbookmarks}
@@ -1000,14 +987,13 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kde_l10n}
   !insertmacro SelectSection ${SEC_libkleo}
   !insertmacro SelectSection ${SEC_qttools}
+  !insertmacro SelectSection ${SEC_qtwinextras}
   !insertmacro SelectSection ${SEC_extra-cmake-modules}
   !insertmacro SelectSection ${SEC_sonnet}
   !insertmacro SelectSection ${SEC_ktextwidgets}
   !insertmacro SelectSection ${SEC_mimetreeparser}
   !insertmacro SelectSection ${SEC_libical}
   !insertmacro SelectSection ${SEC_kcalendarcore}
-  !insertmacro SelectSection ${SEC_kstatusnotifieritem}
-  !insertmacro SelectSection ${SEC_breeze}
   skip_kleopatra:
 !endif
 
@@ -1027,11 +1013,6 @@ skip_gpgme_browser:
   # actual application instead.
   !insertmacro SelectSection ${SEC_libgpg_error}
   !insertmacro SelectSection ${SEC_libassuan}
-  # We always need to include the gpg4win section.
-  # (Old versions of NSIS seemed to have a bug which always
-  #  included the first section.  But with 1.11 this is not
-  #  anymore the case and thus we need to mark gpg4win here.)
-  !insertmacro SelectSection ${SEC_gpg4win}
    skip_gpgme:
 !endif
 
@@ -1081,13 +1062,13 @@ skip_gpgme_browser:
 		${SF_SELECTED} have_qtbase skip_qtbase
   have_qtbase:
   !insertmacro SelectSection ${SEC_zlib}
-  !insertmacro SelectSection ${SEC_zstd}
   !insertmacro SelectSection ${SEC_qttranslations}
   !insertmacro SelectSection ${SEC_freetype}
   !insertmacro SelectSection ${SEC_libpng}
   !insertmacro SelectSection ${SEC_jpeg}
   !insertmacro SelectSection ${SEC_pcre2}
   !insertmacro SelectSection ${SEC_qtsvg}
+  !insertmacro SelectSection ${SEC_qtwinextras}
   !insertmacro SelectSection ${SEC_qttools}
   skip_qtbase:
 !endif
@@ -1186,18 +1167,8 @@ is_no_admin:
     IntCmp $R0 ${SF_SELECTED} 0 no_gpgpass_menu
     CreateShortCut "$SMPROGRAMS\GnuPG Password Manager.lnk" \
 	"$INSTDIR\bin\gpgpass.exe" \
-        "" "$INSTDIR\bin\gpgpass.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_gpgpass)
+        "" "$INSTDIR\bin\gpgpass.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_okular)
   no_gpgpass_menu:
-!endif
-
-!ifdef HAVE_PKG_GPGOLJS
-    SectionGetFlags ${SEC_gpgoljs} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_gpgoljs_menu
-    CreateShortCut "$SMPROGRAMS\GpgOL-Web.lnk" \
-	"$INSTDIR\bin\gpgol-client.exe" \
-        "" "$INSTDIR\bin\gpgol-client.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_gpgoljs)
-  no_gpgoljs_menu:
 !endif
 
  no_start_menu:

@@ -46,6 +46,9 @@ SectionEnd
 
 ${MementoSection} "GpgEX" SEC_gpgex
   SetOutPath "$INSTDIR"
+!ifdef SOURCES
+  File "${gpg4win_pkg_gpgex}"
+!else
   SetOutPath "$INSTDIR\bin"
 
   ClearErrors
@@ -59,11 +62,7 @@ ${MementoSection} "GpgEX" SEC_gpgex
  do_reg:
   # Register the DLL.
   ClearErrors
-!ifdef IS_W64_INST
-  ExecWait '"$SYSDIR\regsvr32" /s "$INSTDIR\bin\gpgex.dll"'
-!else
   RegDLL "$INSTDIR\bin\gpgex.dll"
-!endif
   ifErrors 0 +2
      MessageBox MB_OK "$(T_GpgEX_RegFailed)"
 
@@ -93,13 +92,6 @@ ${MementoSection} "GpgEX" SEC_gpgex
   File ${prefix}/share/doc/gpgex/gpgex-de.html
 
 
-!ifndef IS_W64_INST
-
-# BEGIN MSI IGNORE
-
-# If the installer is 64 bit no need to install an addional
-# variant.
-
 ${If} ${RunningX64}
 
   # Install the 64 bit version of the dll.
@@ -124,8 +116,6 @@ ${If} ${RunningX64}
   # Note: There is no need to install the help an mo files because
   # they are identical to those installed by the 32 bit version.
 ${EndIf}
-
-# END MSI IGNORE
 
 !endif
 ${MementoSectionEnd}

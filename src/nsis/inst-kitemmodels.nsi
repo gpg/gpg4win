@@ -30,6 +30,6 @@ Section "-kitemmodels" SEC_kitemmodels
   File "${gpg4win_pkg_kitemmodels}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF6ItemModels.dll
+  File ${prefix}/bin/libKF5ItemModels.dll
 !endif
 SectionEnd

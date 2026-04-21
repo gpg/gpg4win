@@ -30,6 +30,6 @@ Section "-kcompletion" SEC_kcompletion
   File "${gpg4win_pkg_kcompletion}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF6Completion.dll
+  File ${prefix}/bin/libKF5Completion.dll
 !endif
 SectionEnd

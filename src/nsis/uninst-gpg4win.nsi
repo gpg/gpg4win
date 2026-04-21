@@ -35,14 +35,13 @@ Section "-un.gpg4win"
   Delete "$INSTDIR\bin\libstdc++-6.dll"
   Delete "$INSTDIR\bin\libgcc_s_sjlj-1.dll"
   Delete "$INSTDIR\bin\libgcc_s_dw2-1.dll"
-  Delete "$INSTDIR\bin\libgcc_s_seh-1.dll"
   Delete "$INSTDIR\bin\libwinpthread-1.dll"
-  Delete /REBOOTOK "$INSTDIR\${EX_BINDIR}\libwinpthread-1.dll"
+  Delete /REBOOTOK "$INSTDIR\bin_64\libwinpthread-1.dll"
 
   # Delete standard stuff.
   Delete "$INSTDIR\share\gpg4win\HOWTO-SMIME.*.txt"
 
-  Delete "$INSTDIR\versioninfo.txt"
+  Delete "$INSTDIR\share\gpg4win\versioninfo.txt"
 
   Delete "$INSTDIR\VERSION"
 
@@ -121,8 +120,6 @@ Section "-un.gpg4win"
   RMDir "$INSTDIR\share\locale\tr"
   RMDir "$INSTDIR\share\locale\uk\LC_MESSAGES"
   RMDir "$INSTDIR\share\locale\uk"
-  RMDir "$INSTDIR\share\locale\vi\LC_MESSAGES"
-  RMDir "$INSTDIR\share\locale\vi"
   RMDir "$INSTDIR\share\locale\zh_CN\LC_MESSAGES"
   RMDir "$INSTDIR\share\locale\zh_CN"
   RMDir "$INSTDIR\share\locale\zh_TW\LC_MESSAGES"
@@ -142,7 +139,6 @@ Section "-un.gpg4win"
   RMDir "$INSTDIR\etc"
   RMDir "$INSTDIR\bin"
   RMDir "$INSTDIR\bin_64"
-  RMDir "$INSTDIR\${EX_BINDIR}"
   RMDir "$INSTDIR"
 
 !endif

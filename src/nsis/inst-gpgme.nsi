@@ -60,8 +60,8 @@ Section "-gpgme" SEC_gpgme
 
 ${If} ${RunningX64}
 
-  # Install the alternative version of the dll.
-  SetOutPath "$INSTDIR\${EX_BINDIR}"
+  # Install the 64 bit version of the dll.
+  SetOutPath "$INSTDIR\bin_64"
   ClearErrors
   SetOverwrite try
   File ${exprefix}/bin/libgpgme-45.dll

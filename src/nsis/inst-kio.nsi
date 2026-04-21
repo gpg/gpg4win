@@ -27,9 +27,9 @@ Section "-kio" SEC_kio
 !endif
   SetOutPath "$INSTDIR"
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF6KIOGui.dll
-  File ${prefix}/bin/libKF6KIOCore.dll
-  File ${prefix}/bin/libKF6KIOWidgets.dll
-  SetOutPath "$INSTDIR\bin\plugins\kf6\kio"
-  File ${prefix}/lib/plugins/kf6/kio/kio_file.dll
+  File ${prefix}/bin/libKF5KIOGui.dll
+  File ${prefix}/bin/libKF5KIOCore.dll
+  File ${prefix}/bin/libKF5KIOWidgets.dll
+  SetOutPath "$INSTDIR\bin\plugins\kf5\kio"
+  File ${prefix}/lib/plugins/kf5/kio/kio_file.dll
 SectionEnd

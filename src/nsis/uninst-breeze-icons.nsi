@@ -1,5 +1,5 @@
 # uninst-breeze-icons.nsi - Snippet for breeze-icons.  -*- coding: latin-1; -*-
-# Copyright (C) 2005, 2007, 2008, 2024 g10 Code GmbH
+# Copyright (C) 2005, 2007, 2008 g10 Code GmbH
 #
 # This file is part of GPG4Win.
 #
@@ -26,7 +26,9 @@
 
 ; Uninstaller section.
 Section "-un.breeze-icons"
-  Delete "$INSTDIR\bin\libKF6BreezeIcons.dll"
+  Delete "$INSTDIR\bin\data\icontheme.rcc"
+  Delete "$INSTDIR\bin\data\icontheme-dark.rcc"
+  RMDir "$INSTDIR\bin\data"
   RMDir "$INSTDIR\bin"
   RMDir "$INSTDIR"
 SectionEnd

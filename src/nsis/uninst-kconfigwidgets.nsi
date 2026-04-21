@@ -22,6 +22,10 @@
 
 ; Uninstaller section.
 Section "-un.kconfigwidgets"
-Delete "$INSTDIR\bin\libKF6ConfigWidgets.dll"
+Delete "$INSTDIR\bin\libKF5ConfigWidgets.dll"
+Delete "$INSTDIR\share\color-schemes\Breeze.colors"
+Delete "$INSTDIR\share\color-schemes\BreezeDark.colors"
+RmDir "$INSTDIR\share\color-schemes"
+RmDir "$INSTDIR\share"
 RmDir "$INSTDIR\bin"
 SectionEnd

@@ -26,5 +26,12 @@ Section "kcoreaddons" SEC_kcoreaddons
 Section "-kcoreaddons" SEC_kcoreaddons
 !endif
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF6CoreAddons.dll
+  File ${prefix}/bin/libKF5CoreAddons.dll
+  SetOutPath "$INSTDIR\share\kf5\licenses"
+  File ${prefix}/share/kf5/licenses/GPL_V2
+  File ${prefix}/share/kf5/licenses/GPL_V3
+  File ${prefix}/share/kf5/licenses/LGPL_V2
+  File ${prefix}/share/kf5/licenses/LGPL_V21
+  File ${prefix}/share/kf5/licenses/LGPL_V3
+  File ${prefix}/share/kf5/licenses/BSD
 SectionEnd

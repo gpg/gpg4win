@@ -20,10 +20,16 @@
 !endif
 !define prefix ${ipdir}/kiconthemes-${gpg4win_pkg_kiconthemes_version}
 
+!ifdef DEBUG
+Section "kiconthemes" SEC_kiconthemes
+!else
 Section "-kiconthemes" SEC_kiconthemes
+!endif
+  SetOutPath "$INSTDIR"
+!ifdef SOURCES
+  File "${gpg4win_pkg_kiconthemes}"
+!else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF6IconThemes.dll
-  File ${prefix}/bin/libKF6IconWidgets.dll
-  SetOutPath "$INSTDIR\bin\iconengines"
-  File ${prefix}/lib/plugins/kiconthemes6/iconengines/KIconEnginePlugin.dll
+  File ${prefix}/bin/libKF5IconThemes.dll
+!endif
 SectionEnd

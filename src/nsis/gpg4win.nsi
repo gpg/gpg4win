@@ -19,13 +19,11 @@
 
 Unicode true
 
-!cd "${TOP_BLDDIR}"
+!cd "${BUILD_DIR}"
 !addincludedir "${TOP_SRCDIR}"
-!addincludedir "${TOP_BLDDIR}/po"
 !addincludedir "${TOP_SRCDIR}/po"
-!addincludedir "${TOP_BLDDIR}/src/nsis"
-!addincludedir "${TOP_SRCDIR}/src/nsis"
-!addplugindir "${TOP_BLDDIR}/src"
+!addincludedir "${SRCDIR}"
+!addplugindir "${BUILD_DIR}"
 !include "config.nsi"
 
 
@@ -41,28 +39,13 @@ Unicode true
 !define PACKAGE "${_PACKAGE}"
 !define PRETTY_PACKAGE "Gpg4win"
 !define PRETTY_PACKAGE_SHORT "Gpg4win"
+!define VERSION "${_VERSION}"
 !define PROD_VERSION "${_BUILD_FILEVERSION}"
 !define COMPANY "g10 Code GmbH"
-!define COPYRIGHT "Copyright (C) 2024 g10 Code GmbH"
+!define COPYRIGHT "Copyright (C) 2023 g10 Code GmbH"
 !define DESCRIPTION "Gpg4win: The GNU Privacy Guard and Tools for Windows"
-!define VERSION "${_VERSION}"
 
-# Set the installation directory.
-!ifndef INSTALL_DIR
-!define INSTALL_DIR "${PRETTY_PACKAGE_SHORT}"
-!endif
-
-# BEGIN MSI IGNORE
-!if ${_BUILD_W64} == "yes"
-InstallDir "$PROGRAMFILES64\${INSTALL_DIR}"
-!define EX_BINDIR "bin_32"
-!define MULTIUSER_USE_PROGRAMFILES64
-!define IS_W64_INST
-!else
-InstallDir "$PROGRAMFILES\${INSTALL_DIR}"
-!define EX_BINDIR "bin_64"
-!endif
-# END MSI IGNORE
+!define INSTALL_DIR "Gpg4win"
 
 !define WELCOME_TITLE_STR "$(T_WelcomeTitleGpg4win)"
 
@@ -97,9 +80,9 @@ SetCompressor /SOLID lzma
 !endif
 
 # The installation directory.
-!define ipdir "${TOP_BLDDIR}/install/pkgs"
-!define exipdir "${TOP_BLDDIR}/install-ex/pkgs"
-!define bpdir "${TOP_BLDDIR}/build"
+!define ipdir "playground/install/pkgs"
+!define exipdir "playground/install-ex/pkgs"
+!define bpdir "playground/build"
 
 # Variables
 VAR is_minimal

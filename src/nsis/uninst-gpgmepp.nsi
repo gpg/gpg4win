@@ -32,7 +32,7 @@ Section "-un.gpgmepp"
 !else
   Delete /REBOOTOK "$INSTDIR\bin\libgpgmepp-7.dll"
 ${If} ${RunningX64}
-  Delete /REBOOTOK "$INSTDIR\${EX_BINDIR}\libgpgmepp-7.dll"
+  Delete /REBOOTOK "$INSTDIR\bin_64\libgpgmepp-7.dll"
 ${EndIf}
 !endif
 SectionEnd

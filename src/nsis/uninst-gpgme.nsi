@@ -32,9 +32,9 @@ Section "-un.gpgme"
 !else
   Delete /REBOOTOK "$INSTDIR\bin\libgpgme-45.dll"
 ${If} ${RunningX64}
-  Delete /REBOOTOK "$INSTDIR\${EX_BINDIR}\libgpgme-45.dll"
-  Delete /REBOOTOK "$INSTDIR\${EX_BINDIR}\gpgme-json.exe"
-  Delete "$INSTDIR\${EX_BINDIR}\gpgme-w32spawn.exe"
+  Delete /REBOOTOK "$INSTDIR\bin_64\libgpgme-45.dll"
+  Delete /REBOOTOK "$INSTDIR\bin_64\gpgme-json.exe"
+  Delete "$INSTDIR\bin_64\gpgme-w32spawn.exe"
 ${EndIf}
   Delete "$INSTDIR\bin\gpgme-w32spawn.exe"
   Delete "$INSTDIR\bin\gpgme-json.exe"
@@ -44,22 +44,15 @@ ${EndIf}
   Delete "$INSTDIR\bin\gpgme-mozilla.json"
   Delete "$INSTDIR\bin\gpgme-edge.json"
 
-  SetRegView 64
   DeleteRegKey SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson"
   DeleteRegKey SHCTX "Software\Microsoft\Edge\NativeMessagingHosts\gpgmejson"
   DeleteRegKey SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson"
 
-  SetRegView 32
+  SetRegView 64
   DeleteRegKey SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson"
   DeleteRegKey SHCTX "Software\Microsoft\Edge\NativeMessagingHosts\gpgmejson"
   DeleteRegKey SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson"
-
-!ifdef IS_W64_INST
-  # Go back to the regview according to our packaging.
-  SetRegView 64
-!else
   SetRegView 32
-!endif
 
 !endif
 SectionEnd

@@ -29,7 +29,7 @@ ${MementoSection} "-compendium" SEC_compendium
 !else
 
   SetOutPath "$INSTDIR\share\gpg4win"
-  File "${TOP_SRCDIR}/doc/manual/gpg4win-compendium-de.pdf"
-  File "${TOP_SRCDIR}/doc/manual/gpg4win-compendium-en.pdf"
+  File "${TOP_BLDDIR}/../doc/manual/gpg4win-compendium-de.pdf"
+  File "${TOP_BLDDIR}/../doc/manual/gpg4win-compendium-en.pdf"
 !endif
 ${MementoSectionEnd}

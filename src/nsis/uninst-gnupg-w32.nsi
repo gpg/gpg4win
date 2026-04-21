@@ -22,20 +22,16 @@
 !endif
 !define prefix ${ipdir}/gnupg-w32-${gpg4win_pkg_gnupg_w32_version}
 
+
 # Uninstaller section.
 Section  "un.gnupg_w32"
 !ifdef SOURCES
   Push "${gpg4win_pkg_gnupg_w32}"
   Call un.SourceDelete
 !else
-
-  # Check for an installed 32 bit and 64 bit GnuPG
-  StrCpy $uninst64_checked "0"
-uninstall_check:
   ClearErrors
   ReadRegStr $0 SHCTX "Software\GnuPG" "Install Directory"
-  IfErrors uninstall_not_found 0
-
+  IfErrors gnupg_w32_not_installed 0
   # It is possible that someone uninstalled gnupg without uninstalling
   # gpg4win
   StrCmp $0 "" gnupg_w32_not_installed
@@ -45,24 +41,8 @@ uninstall_check:
   RmDir "$0\bin"
   ExecWait '"$0\gnupg-uninstall.exe" /S _?=$0'
   Delete "$0\gnupg-uninstall.exe"
-  # Remove gpgconf.rnames if the GnuPG subinstaller failed to remove it
-  Delete "$0\share\gnupg\gpgconf.rnames"
-  RmDir "$0\share\gnupg"
-  RmDir "$0\share"
   RmDir "$0"
-uninstall_not_found:
-  StrCmp $uninst64_checked "1" gnupg_w32_not_installed 0
-  StrCpy $uninst64_checked "1"
-  SetRegView 64
-  goto uninstall_check
-
 gnupg_w32_not_installed:
-!ifdef IS_W64_INST
-  # Go back to the regview acccording to our packaging.
-  SetRegView 64
-!else
-  SetRegView 32
-!endif
 !endif
 SectionEnd
 

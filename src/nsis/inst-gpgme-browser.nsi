@@ -75,24 +75,16 @@ ${MementoUnselectedSection} "Browser integration" SEC_gpgme_browser
 
   pop $2
 
-  SetRegView 64
   WriteRegStr SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-chrome.json"
   WriteRegStr SHCTX "Software\Microsoft\Edge\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-edge.json"
   WriteRegStr SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-mozilla.json"
-
-  SetRegView 32
+  SetRegView 64
 # BEGIN MSI IGNORE
   WriteRegStr SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-chrome.json"
   WriteRegStr SHCTX "Software\Microsoft\Edge\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-edge.json"
   WriteRegStr SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-mozilla.json"
 # END MSI IGNORE
-
-!ifdef IS_W64_INST
-  # Go back to the regview according to our packaging.
-  SetRegView 64
-!else
   SetRegView 32
-!endif
 
 !endif
 

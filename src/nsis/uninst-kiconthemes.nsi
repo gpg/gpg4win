@@ -22,11 +22,12 @@
 
 ; Uninstaller section.
 Section "-un.kiconthemes"
-  Delete "$INSTDIR\bin\libKF6IconThemes.dll"
-  Delete "$INSTDIR\bin\libKF6IconWidgets.dll"
-
-  Delete "$INSTDIR\bin\iconengines\KIconEnginePlugin.dll"
-
-  RmDir "$INSTDIR\bin\iconengines"
+!ifdef SOURCES
+  Push "${gpg4win_pkg_kiconthemes}"
+  Call un.SourceDelete
+!else
+  Delete "$INSTDIR\bin\libKF5IconThemes.dll"
   RmDir "$INSTDIR\bin"
+
+!endif
 SectionEnd

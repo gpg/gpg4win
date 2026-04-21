@@ -34,22 +34,22 @@ Section "-qtbase" SEC_qtbase
   File "${gpg4win_pkg_qtbase}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/Qt6Core.dll
-  File ${prefix}/bin/Qt6Gui.dll
-  File ${prefix}/bin/Qt6Widgets.dll
-  File ${prefix}/bin/Qt6Network.dll
-  File ${prefix}/bin/Qt6PrintSupport.dll
-  File ${prefix}/bin/Qt6Xml.dll
-  File ${TOP_BLDDIR}/src/qt.conf
+  File ${prefix}/bin/Qt5Core.dll
+  File ${prefix}/bin/Qt5Gui.dll
+  File ${prefix}/bin/Qt5Widgets.dll
+  File ${prefix}/bin/Qt5Network.dll
+  File ${prefix}/bin/Qt5PrintSupport.dll
+  File ${prefix}/bin/Qt5Xml.dll
+  File ${TOP_BLDDIR}/qt.conf
 
   SetOutPath "$INSTDIR\bin\platforms"
   File ${prefix}/plugins/platforms/qwindows.dll
 
-  SetOutPath "$INSTDIR\bin\tls"
-  File ${prefix}/plugins/tls/qschannelbackend.dll
+  SetOutPath "$INSTDIR\bin\printsupport"
+  File ${prefix}/plugins/printsupport/windowsprintersupport.dll
 
   SetOutPath "$INSTDIR\bin\styles"
-  File ${prefix}/plugins/styles/qmodernwindowsstyle.dll
+  File ${prefix}/plugins/styles/qwindowsvistastyle.dll
 
 !endif
 SectionEnd

@@ -35,6 +35,17 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/bin/kleopatra.exe
   #File ${prefix}/bin/kwatchgnupg.exe
 
+  File ${prefix}/bin/libkleopatraclientcore.dll
+  File ${prefix}/bin/libkleopatraclientgui.dll
+
+  SetOutPath "$INSTDIR\share\kleopatra\pics"
+
+  File ${prefix}/share/kleopatra/pics/gpg4win.png
+  File ${prefix}/share/kleopatra/pics/kleopatra_splashscreen.png
+  File ${prefix}/share/kleopatra/pics/kleopatra_splashscreen.svgz
+  File ${prefix}/share/kleopatra/pics/kleopatra_wizard.png
+  File ${prefix}/share/kleopatra/pics/kleopatra_wizard.svgz
+
 #  SetOutPath "$INSTDIR\share\apps\kwatchgnupg\pics"
 
 #  File ${prefix}/share/apps/kwatchgnupg/pics/kwatchgnupg.png
@@ -148,51 +159,55 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 #  File ${prefix}/share/doc/HTML/en/kleopatra/menuview.html
 #  File ${prefix}/share/doc/HTML/en/kleopatra/menuwindow.html
 
-#  SetOutPath "$INSTDIR\share\icons\hicolor\128x128\apps"
-#
-#  File ${prefix}/share/icons/hicolor/128x128/apps/kleopatra.png
-#
-#  SetOutPath "$INSTDIR\share\icons\hicolor\16x16\apps"
-#
-#  File ${prefix}/share/icons/hicolor/16x16/apps/kleopatra.png
-#
-#  SetOutPath "$INSTDIR\share\icons\hicolor\22x22\apps"
-#
-#  File ${prefix}/share/icons/hicolor/22x22/apps/kleopatra.png
-#
-#  SetOutPath "$INSTDIR\share\icons\hicolor\256x256\apps"
-#
-#  File ${prefix}/share/icons/hicolor/256x256/apps/kleopatra.png
-#
-#  SetOutPath "$INSTDIR\share\icons\hicolor\32x32\apps"
-#
-#  File ${prefix}/share/icons/hicolor/32x32/apps/kleopatra.png
-#
-#  SetOutPath "$INSTDIR\share\icons\hicolor\48x48\apps"
-#
-#  File ${prefix}/share/icons/hicolor/48x48/apps/kleopatra.png
-#
-#  SetOutPath "$INSTDIR\share\icons\hicolor\64x64\apps"
-#
-#  File ${prefix}/share/icons/hicolor/64x64/apps/kleopatra.png
-#
-#  SetOutPath "$INSTDIR\share\icons\hicolor"
-#  File ${prefix}/share/icons/hicolor/icon-theme.cache
-#  File ${SRCDIR}/index.theme
+  SetOutPath "$INSTDIR\share\icons\hicolor\128x128\apps"
+
+  File ${prefix}/share/icons/hicolor/128x128/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\hicolor\16x16\apps"
+
+  File ${prefix}/share/kleopatra/pics/gpg4win-compact.png
+  File ${prefix}/share/icons/hicolor/16x16/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\hicolor\22x22\apps"
+
+  File ${prefix}/share/icons/hicolor/22x22/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\hicolor\256x256\apps"
+
+  File ${prefix}/share/icons/hicolor/256x256/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\hicolor\32x32\apps"
+
+  File ${prefix}/share/icons/hicolor/32x32/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\hicolor\48x48\apps"
+
+  File ${prefix}/share/icons/hicolor/48x48/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\hicolor\64x64\apps"
+
+  File ${prefix}/share/icons/hicolor/64x64/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\hicolor"
+  File ${prefix}/share/icons/hicolor/icon-theme.cache
+  File index.theme
 
   # In KDE 4.10 the locale detection in kdelibs is broken so we
   # install a kdeglobals with the language setting chosen in the
   # installer
   SetOutPath "$INSTDIR\share"
-  File ${SRCDIR}/kdeglobals
-  File ${prefix}/etc/xdg/kleopatradebugcommandsrc
-
-  SetOutPath "$INSTDIR\bin"
-  File ${SRCDIR}/qtlogging.ini
+  File kdeglobals
+  SetOutPath "$INSTDIR\share\QtProject"
+  File qtlogging.ini
 
   SetOutPath "$INSTDIR\share\gpg4win"
-  File "${SRCDIR}/icons/file-ext.ico"
-  File "${SRCDIR}/icons/mail-ext.ico"
+  File "icons/file-ext.ico"
+  File "icons/mail-ext.ico"
+
+  # Note that the uninst is done by uninst-libkleo because this is
+  # where the xdg directory is removed.
+  SetOutPath "$INSTDIR\etc\xdg"
+  File ${prefix}/etc/xdg/kleopatradebugcommandsrc
 
 #  SetRegView 64
   # Openpgp4fpr URI scheme

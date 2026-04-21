@@ -44,7 +44,7 @@ Section "-gpgmepp" SEC_gpgmepp
 ${If} ${RunningX64}
 
   # Install the 64 bit version of the dll.
-  SetOutPath "$INSTDIR\${EX_BINDIR}"
+  SetOutPath "$INSTDIR\bin_64"
   ClearErrors
   SetOverwrite try
   File ${exprefix}/bin/libgpgmepp-7.dll
