@@ -22,7 +22,7 @@
 Section "-gpg4win" SEC_gpg4win
 !ifdef SOURCES
   SetOutPath "$INSTDIR"
-  File "${BUILD_DIR}/../gpg4win-${VERSION}.tar.bz2"
+  File "${TOP_BLDDIR}/../gpg4win-${VERSION}.tar.bz2"
 !else
   Call KillOtherAppsOrWarn
   StrCpy $is_update "0"
@@ -34,11 +34,11 @@ Section "-gpg4win" SEC_gpg4win
   SetDetailsPrint none
 
   SetOutPath "$PLUGINSDIR\Slides"
-  File "${BUILD_DIR}/slideshow/slide1-gpgol.png"
-  File "${BUILD_DIR}/slideshow/slide2-gpgex.png"
-  #File "${BUILD_DIR}/slideshow/slide3-kleopatra.png"
-  File "${BUILD_DIR}/slideshow/slide4-summary.png"
-  File "${BUILD_DIR}/slideshow/slides.dat"
+  File "${TOP_SRCDIR}/src/slideshow/slide1-gpgol.png"
+  File "${TOP_SRCDIR}/src/slideshow/slide2-gpgex.png"
+  #File "${TOP_SRCDIR}/src/slideshow/slide3-kleopatra.png"
+  File "${TOP_SRCDIR}/src/slideshow/slide4-summary.png"
+  File "${TOP_SRCDIR}/src/slideshow/slides.dat"
   g4wihelp::slide_show /NOUNLOAD /CCOLOR=0x000000 "/auto=$PLUGINSDIR\Slides\slides.dat" /FIT=WIDTH
   SetDetailsPrint both
   SetOutPath "$INSTDIR"
@@ -66,10 +66,10 @@ skip_uninst:
 # BEGIN MSI IGNORE
   SetOutPath "$INSTDIR\share\gpg4win"
 
-  File "${BUILD_DIR}/HOWTO-SMIME.en.txt"
-  File "${BUILD_DIR}/HOWTO-SMIME.de.txt"
+  File "${TOP_BLDDIR}/src/HOWTO-SMIME.en.txt"
+  File "${TOP_BLDDIR}/src/HOWTO-SMIME.de.txt"
 
-  File "${BUILD_DIR}/versioninfo.txt"
+  File "${TOP_BLDDIR}/src/versioninfo.txt"
 # END MSI IGNORE
 
   # Write a version file.
@@ -107,22 +107,22 @@ skip_uninst:
 
   # Install gpg4win included tools
   SetOutPath "$INSTDIR\bin"
-  File "${BUILD_DIR}/sha1sum.exe"
+  File "${TOP_BLDDIR}/src/sha1sum.exe"
   SetOutPath "$INSTDIR\bin"
-  File "${BUILD_DIR}/sha256sum.exe"
-  File "${BUILD_DIR}/md5sum.exe"
+  File "${TOP_BLDDIR}/src/sha256sum.exe"
+  File "${TOP_BLDDIR}/src/md5sum.exe"
 
   # Install the mingw32 runtime libraries.  They are stored in the
   # build directory with a different suffix, so that makensis does not
   # list symbol names.
-  File /oname=libstdc++-6.dll     "${BUILD_DIR}/libstdc++-6.dll-x"
-  File /oname=libwinpthread-1.dll "${BUILD_DIR}/libwinpthread-1.dll-x"
+  File /oname=libstdc++-6.dll     "${TOP_BLDDIR}/src/libstdc++-6.dll-x"
+  File /oname=libwinpthread-1.dll "${TOP_BLDDIR}/src/libwinpthread-1.dll-x"
   # only one of the following two files exists
-  File /nonfatal /oname=libgcc_s_sjlj-1.dll "${BUILD_DIR}/libgcc_s_sjlj-1.dll-x"
-  File /nonfatal /oname=libgcc_s_dw2-1.dll  "${BUILD_DIR}/libgcc_s_dw2-1.dll-x"
+  File /nonfatal /oname=libgcc_s_sjlj-1.dll "${TOP_BLDDIR}/src/libgcc_s_sjlj-1.dll-x"
+  File /nonfatal /oname=libgcc_s_dw2-1.dll  "${TOP_BLDDIR}/src/libgcc_s_dw2-1.dll-x"
 
   SetOutPath "$INSTDIR\bin_64"
-  File /nonfatal /oname=libwinpthread-1.dll "${BUILD_DIR}/libwinpthread-1.dll-x64"
+  File /nonfatal /oname=libwinpthread-1.dll "${TOP_BLDDIR}/src/libwinpthread-1.dll-x64"
 
   SetOutPath "$INSTDIR"
   File /oname=pkg-licenses.txt "${SRCDIR}/../doc/pkg-copyright.txt"
