@@ -273,21 +273,9 @@
 !define gpg4win_pkg_kparts @gpg4win_pkg_kparts@
 !define gpg4win_pkg_kparts_version @gpg4win_pkg_kparts_version@
 
-@HAVE_PKG_KSTATUSNOTIFIERITEM@
-!define gpg4win_pkg_kstatusnotifieritem @gpg4win_pkg_kstatusnotifieritem@
-!define gpg4win_pkg_kstatusnotifieritem_version @gpg4win_pkg_kstatusnotifieritem_version@
-
 @HAVE_PKG_KTEXTWIDGETS@
 !define gpg4win_pkg_ktextwidgets @gpg4win_pkg_ktextwidgets@
 !define gpg4win_pkg_ktextwidgets_version @gpg4win_pkg_ktextwidgets_version@
-
-@HAVE_PKG_KCOLORSCHEME@
-!define gpg4win_pkg_kcolorscheme @gpg4win_pkg_kcolorscheme@
-!define gpg4win_pkg_kcolorscheme_version @gpg4win_pkg_kcolorscheme_version@
-
-@HAVE_PKG_ZSTD@
-!define gpg4win_pkg_zstd @gpg4win_pkg_zstd@
-!define gpg4win_pkg_zstd_version @gpg4win_pkg_zstd_version@
 
 @HAVE_PKG_SONNET@
 !define gpg4win_pkg_sonnet @gpg4win_pkg_sonnet@
@@ -317,38 +305,9 @@
 !define gpg4win_pkg_mimetreeparser @gpg4win_pkg_mimetreeparser@
 !define gpg4win_pkg_mimetreeparser_version @gpg4win_pkg_mimetreeparser_version@
 
-@HAVE_PKG_LIBQRENCODE@
-!define gpg4win_pkg_libqrencode @gpg4win_pkg_libqrencode@
-!define gpg4win_pkg_libqrencode_version @gpg4win_pkg_libqrencode_version@
-
 @HAVE_PKG_PRISON@
 !define gpg4win_pkg_prison @gpg4win_pkg_prison@
 !define gpg4win_pkg_prison_version @gpg4win_pkg_prison_version@
-
-@HAVE_PKG_GPGPASS@
-!define gpg4win_pkg_gpgpass @gpg4win_pkg_gpgpass@
-!define gpg4win_pkg_gpgpass_version @gpg4win_pkg_gpgpass_version@
-
-@HAVE_PKG_QTHTTPSERVER@
-!define gpg4win_pkg_qthttpserver @gpg4win_pkg_qthttpserver@
-!define gpg4win_pkg_qthttpserver_version @gpg4win_pkg_qthttpserver_version@
-
-@HAVE_PKG_QTWEBSOCKETS@
-!define gpg4win_pkg_qtwebsockets @gpg4win_pkg_qtwebsockets@
-!define gpg4win_pkg_qtwebsockets_version @gpg4win_pkg_qtwebsockets_version@
-
-@HAVE_PKG_KCONTACTS@
-!define gpg4win_pkg_kcontacts @gpg4win_pkg_kcontacts@
-!define gpg4win_pkg_kcontacts_version @gpg4win_pkg_kcontacts_version@
-
-@HAVE_PKG_GPGOLJS@
-!define gpg4win_pkg_gpgoljs @gpg4win_pkg_gpgoljs@
-!define gpg4win_pkg_gpgoljs_version @gpg4win_pkg_gpgoljs_version@
-
-@HAVE_PKG_BREEZE@
-!define gpg4win_pkg_breeze @gpg4win_pkg_breeze@
-!define gpg4win_pkg_breeze_version @gpg4win_pkg_breeze_version@
-
 
 # @HAVE_PKG_MAN_NOVICE_EN@
 
