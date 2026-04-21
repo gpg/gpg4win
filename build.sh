@@ -45,6 +45,7 @@ Options:
         --no-sign       Do not authenticode sign packages
         --update-image  Update the docker image before build
         --msi           Building MSI packages
+                        Also assumes --w32 if BUILDTYPE is vsd3
         --user=name     Use NAME as FTP server user
         --download      Download packages first
         --runcmd CMD    Run a command via a pair of FIFOs
@@ -365,6 +366,23 @@ if [ "$runcmd" = yes ]; then
 fi
 
 
+# Make sure we have a BUILDTYPE file
+buildtype_prefix=""
+[ "$indocker" = yes ] && buildtype_prefix="src/"
+if [ ! -e "${buildtype_prefix}packages/BUILDTYPE" ]; then
+    echo >&2 "PGM: ${buildtype_prefix}packages/BUILDTYPE not found - see README"
+    exit 1
+fi
+
+# Check whether the --release target needs to clone the gnupg-vsd repo.
+case $(trim "$(cat "${buildtype_prefix}packages/BUILDTYPE" 2>/dev/null || echo default)") in
+    vsd3)       need_gnupg_vsd=yes
+                w64=no              ;;
+    vsd|gpd)    need_gnupg_vsd=yes  ;;
+    *)          need_gnupg_vsd=no   ;;
+esac
+
+
 # Check whether we are in the docker image and run appropriate commands.
 # Note that this script is used to start the docker container and also
 # within the docker container to run the desired commands.
@@ -479,19 +497,6 @@ if [ -z "$(docker images | grep $drep | grep $dtag)" \
     echo >&2 "$PGM: Building docker image"
     docker build --pull -t $docker_image $dockerfile 2>&1
 fi
-
-# Make sure we have a BUILDTYPE file
-if [ ! -e packages/BUILDTYPE ]; then
-    echo >&2 "PGM: packages/BUILDTYPE not found - see README"
-    exit 1
-fi
-
-# Check whether the --release target needs to clone the gnupg-vsd repo.
-case $(trim "$(cat packages/BUILDTYPE 2>/dev/null || echo default)") in
-    vsd|vsd3|gpd) need_gnupg_vsd=yes ;;
-    *) need_gnupg_vsd=no ;;
-esac
-
 
 # If --shell was used override the command for docker.
 # if not used try to download first.
