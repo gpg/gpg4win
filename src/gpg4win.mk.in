@@ -104,22 +104,19 @@ AUTHENTICODE_FILES = \
 	../install-ex/bin/libgpgmepp-7.dll \
 	../install-ex/libexec/gpgme-w32spawn.exe \
 	libexec/gpgme-w32spawn.exe \
-	../../libgcc_s_dw2-1.dll-x \
 	lib/plugins/kf5/kio/kio_file.dll \
 	lib/plugins/kf5/sonnet/sonnet_ispellchecker.dll \
 	lib/plugins/okular/generators/okularGenerator_poppler.dll \
 	lib/plugins/okularpart.dll \
 	lib/scute.dll \
-	../../libstdc++-6.dll-x \
-	../../libwinpthread-1.dll-x \
-	../../libwinpthread-1.dll-x64 \
+	../src/libstdc++-6.dll-x \
 	plugins/iconengines/qsvgicon.dll \
 	plugins/imageformats/qsvg.dll \
 	plugins/platforms/qwindows.dll \
 	plugins/printsupport/windowsprintersupport.dll \
 	plugins/styles/qwindowsvistastyle.dll \
-	../../sha1sum.exe \
-	../../sha256sum.exe
+	../src/sha1sum.exe \
+	../src/sha256sum.exe
 else
 AUTHENTICODE_FILES = \
 	 bin/gpg-error.exe \
@@ -236,7 +233,12 @@ AUTHENTICODE_FILES = \
 endif
 
 ifeq ($(IS_VSD3_BUILD),yes)
-AUTHENTICODE_FILES_OPTIONAL =
+AUTHENTICODE_FILES_OPTIONAL = \
+	../../libgcc_s_dw2-1.dll-x \
+	../src/libgcc_s_sjlj-1.dll-x \
+	../src/libgcc_s_seh-1.dll-x \
+	../src/libwinpthread-1.dll-x \
+	../src/libwinpthread-1.dll-x64
 else
 # Some programs are not always build, thus we list them here.
 # Not all of these dlls must exist as they are installed by nsis with
