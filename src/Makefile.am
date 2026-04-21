@@ -761,7 +761,7 @@ gpg4win_pkg_kiconthemes_configure = \
 
 if BUILD_VSD3
 gpg4win_pkg_okular_configure = \
-    -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Purpose\;Qt5TextToSpeech\;LibZip\;KF5Wallet\;KF5DocTools\;KF5JS\;Phonon4Qt5\;TIFF\;JPEG\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt5Qml\;Qt5DBus"
+    -DFORCE_NOT_REQUIRED_DEPENDENCIES=KF5Purpose\;Qt5TextToSpeech\;LibZip\;KF5Wallet\;KF5DocTools\;KF5JS\;Phonon4Qt5\;TIFF\;JPEG\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt5Qml\;Qt5DBus
 else
 gpg4win_pkg_okular_configure = \
     -DFORCE_NOT_REQUIRED_DEPENDENCIES=\"KF6Purpose;Qt6TextToSpeech;LibZip;KF6DocTools;Phonon4Qt6;TIFF;JPEG;LibSpectre;KExiv2Qt6;CHM;DjVuLibre;EPub;QMobipocket;Discount;Qt6Qml;Qt6DBus\"
