@@ -20,7 +20,6 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              Memento.nsh inst-final.nsi                                  \
              inst-sections.nsi installer.nsi installer-finish.nsi        \
              inst-gpg4win.nsi       uninst-gpg4win.nsi                   \
-             inst-breeze.nsi             uninst-breeze.nsi               \
              inst-breeze-icons.nsi uninst-breeze-icons.nsi               \
              inst-bzip2.nsi             uninst-bzip2.nsi                 \
              inst-compendium.nsi    uninst-compendium.nsi                \
@@ -34,7 +33,6 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-gpgme.nsi         uninst-gpgme.nsi                     \
              inst-gpgmepp.nsi       uninst-gpgmepp.nsi                   \
              inst-qgpgme.nsi        uninst-qgpgme.nsi                    \
-             inst-gpgoljs.nsi uninst-gpgoljs.nsi                         \
              inst-gpgol.nsi         uninst-gpgol.nsi                     \
              inst-gpgpass.nsi uninst-gpgpass.nsi                         \
              inst-jpeg.nsi uninst-jpeg.nsi                               \
@@ -42,11 +40,9 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-kbookmarks.nsi uninst-kbookmarks.nsi                   \
              inst-kcalendarcore.nsi uninst-kcalendarcore.nsi             \
              inst-kcodecs.nsi uninst-kcodecs.nsi                         \
-             inst-kcolorscheme.nsi uninst-kcolorscheme.nsi               \
              inst-kcompletion.nsi uninst-kcompletion.nsi                 \
              inst-kconfig.nsi        uninst-kconfig.nsi                  \
              inst-kconfigwidgets.nsi uninst-kconfigwidgets.nsi           \
-             inst-kcontacts.nsi uninst-kcontacts.nsi                     \
              inst-kcoreaddons.nsi uninst-kcoreaddons.nsi                 \
              inst-kcrash.nsi uninst-kcrash.nsi                           \
              inst-kde-l10n.nsi uninst-kde-l10n.nsi                       \
@@ -62,7 +58,6 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-kmime.nsi uninst-kmime.nsi                             \
              inst-kparts.nsi uninst-kparts.nsi                           \
              inst-kservice.nsi uninst-kservice.nsi                       \
-             inst-kstatusnotifieritem.nsi uninst-kstatusnotifieritem.nsi \
              inst-ktextwidgets.nsi uninst-ktextwidgets.nsi               \
              inst-kwidgetsaddons.nsi uninst-kwidgetsaddons.nsi           \
              inst-kwindowsystem.nsi uninst-kwindowsystem.nsi             \
@@ -82,17 +77,13 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-pkgconfig.nsi     uninst-pkgconfig.nsi                 \
              inst-poppler.nsi uninst-poppler.nsi                         \
              inst-prison.nsi uninst-prison.nsi                           \
-             inst-libqrencode.nsi uninst-libqrencode.nsi                 \
              inst-qtbase.nsi uninst-qtbase.nsi                           \
-             inst-qthttpserver.nsi uninst-qthttpserver.nsi               \
              inst-qtsvg.nsi uninst-qtsvg.nsi                             \
              inst-qttools.nsi uninst-qttools.nsi                         \
              inst-qttranslations.nsi uninst-qttranslations.nsi           \
-             inst-qtwebsockets.nsi uninst-qtwebsockets.nsi               \
              inst-scute.nsi uninst-scute.nsi                             \
              inst-solid.nsi uninst-solid.nsi                             \
              inst-sonnet.nsi uninst-sonnet.nsi                           \
              inst-threadweaver.nsi uninst-threadweaver.nsi               \
              inst-tiff.nsi uninst-tiff.nsi                               \
-             inst-zlib.nsi              uninst-zlib.nsi                  \
-             inst-zstd.nsi uninst-zstd.nsi
+             inst-zlib.nsi              uninst-zlib.nsi
