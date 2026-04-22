@@ -41,11 +41,11 @@ Unicode true
 !define PACKAGE "${_PACKAGE}"
 !define PRETTY_PACKAGE "Gpg4win"
 !define PRETTY_PACKAGE_SHORT "Gpg4win"
-!define VERSION "${_VERSION}"
 !define PROD_VERSION "${_BUILD_FILEVERSION}"
 !define COMPANY "g10 Code GmbH"
 !define COPYRIGHT "Copyright (C) 2026 g10 Code GmbH"
 !define DESCRIPTION "Gpg4win: The GNU Privacy Guard and Tools for Windows"
+!define VERSION "${_VERSION}"
 
 # Set the installation directory.
 !ifndef INSTALL_DIR
@@ -97,9 +97,9 @@ SetCompressor /SOLID lzma
 !endif
 
 # The installation directory.
-!define ipdir "playground/install/pkgs"
-!define exipdir "playground/install-ex/pkgs"
-!define bpdir "playground/build"
+!define ipdir "${TOP_BLDDIR}/install/pkgs"
+!define exipdir "${TOP_BLDDIR}/install-ex/pkgs"
+!define bpdir "${TOP_BLDDIR}/build"
 
 # Variables
 VAR is_minimal
