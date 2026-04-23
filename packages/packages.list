@@ -30,17 +30,16 @@ chk  8f74213b56238c85a50a5329f77e06198771e70dd9a739779f4c02f65d971313
 file gettext/gettext-0.22.5.tar.xz
 chk  fe10c37353213d78a5b83d48af231e005c4da84db5ce88037d88355938259640
 
-# last-changed: 2025-12-10
+# last-changed: 2026-04-15
 # by wk
-# verified: Downloaded tar.xz from sf which does not provide a
-#           checksum.  Also downloaded the tar.gz version and compared
-#           to the checkums given at
-#           https://tracker.debian.org/news/1697075/
-#                 accepted-libpng16-1653-1-source-into-unstable/
-#           and checked that both extracted trees are identical.
+# verified: Downloaded tar.gz from
+#   https://github.com/pnggroup/libpng/archive/refs/tags/v1.6.57.tar.gz
+#   which should refer to commit
+#   95ab3fdca83ea294efd3b092e9a53c5a39886444 .  Then compared the
+#   unpacked tarball with the tarball downloaded from sourceforge.net
 server https://sourceforge.net
-file projects/libpng/files/libpng16/1.6.53/libpng-1.6.53.tar.xz
-chk  1d3fb8ccc2932d04aa3663e22ef5ef490244370f4e568d7850165068778d98d4
+file projects/libpng/files/libpng16/1.6.57/libpng-1.6.57.tar.xz
+chk  d10c20d7171569804cae8dfc13ba6dcd0662c41ed39d43d4d429314aafb10a80
 
 
 # last-changed: 2023-05-03
@@ -193,6 +192,13 @@ file pinentry/pinentry-1.3.2.tar.bz2
 chk  8e986ed88561b4da6e9efe0c54fa4ca8923035c99264df0b0464497c5fb94e9e
 
 
+## gpgme
+## last changed: 2025-05-19
+## by: wk
+## verified: buildtree
+#file gpgme/gpgme-1.24.3.tar.bz2
+#chk  bfc17f5bd1b178c8649fdd918956d277080f33df006a2dc40acdecdce68c50dd
+
 # gpgme
 # last changed: 2026-02-23
 # by: wk
@@ -221,12 +227,11 @@ file scute/scute-1.7.0.tar.bz2
 chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
 
 # GpgOL
-# last-changed: 2026-02-23
+# last-changed: 2026-03-12
 # by: wk
-# verified: swdb
-file gpgol/gpgol-2.7.1.tar.bz2
-chk  4afc3b0418e11508456cc8866cdff6a383c91506073765c7068bc0274d5202a8
-
+# verified: build-tree
+file gpgol/gpgol-2.7.2.tar.bz2
+chk  ddd4094be63a30c0e54b28ef34d3c741136c06fef9af5dd4ca623d3758fa9220
 
 #
 # GpgEX
@@ -623,37 +628,35 @@ chk 205df68c183900a1b21d1381d9a3d7554a642fa6dd3ef7e9bc5bbcfcd0aa8f1b
 
 server https://gnupg.org/ftp/gcrypt
 
-server https://gnupg.org/ftp/gcrypt
-
 # All tarballs from this server are verified with an openpgp
 # signature made by "Werner Koch (dist sig)" or one of the other
 # gnupg main contributors.
 
-# last changed 2023-11-16
+# last changed 2026-04-15
 # by wk
-# verified: [taken from buildtree]
-file libgcrypt/libgcrypt-1.8.11.tar.bz2
-chk  c98249fb5bb1f6017f5f9bf484327a940b59075bca7c46fa69ebb54098249860
+# verified: [swdb]
+# (required for the appimage)
+file libgcrypt/libgcrypt-1.8.13.tar.bz2
+chk  7c6489ae102ebd6dcc09a40344f181ceb719653a4b56bf3c6e35606d4bbd30e8
 
-
-# last changed 2025-01-07
+# last changed 2026-04-20
 # by builder
 # verified: [taken from buildtree]
-name gnupg-2.2.46.tar.bz2
-file gnupg/gnupg-2.2.46.tar.bz2
-chk  e22ec3ff396df2011236a2d84b1933f646805daa736ef096feab1d5e8924be5c
+name gnupg-2.2.54.tar.bz2
+file gnupg/gnupg-2.2.54.tar.bz2
+chk  0430e60f5a6d63fdd80b69e7221b5da2a713091457262c4e87db1725232ad5dd
 
-name gnupg-w32-2.2.46_20250107-bin.exe
-file binary/gnupg-w32-2.2.46_20250107.exe
-chk  6ae33d91dd36e28675edcf3fa30face98adda9d02ade9d5786c0a624f6779df5
+name gnupg-w32-2.2.54_20260420-bin.exe
+file binary/gnupg-w32-2.2.54_20260420.exe
+chk  018c5e0dde13b587044c932808731a874edfca80118530f1f7a3026d66ef5505
 
-name gnupg-w32-2.2.46_20250107-src.tar.xz
-file binary/gnupg-w32-2.2.46_20250107.tar.xz
-link gnupg-msi-2.2.46_20250107-src.tar.xz
-chk  d44306ef84d4823587b711983e3e9e17a1c6b374108aea11f8feb6b7866cbcd2
+name gnupg-w32-2.2.54_20260420-src.tar.xz
+file binary/gnupg-w32-2.2.54_20260420.tar.xz
+link gnupg-msi-2.2.54_20260420-src.tar.xz
+chk  4f9b4653110ee58ffad1a84171006b0a6f1b27a41059f20a17b7baac4ddc3f8b
 
-name gnupg-msi-2.2.46_20250107-bin.wixlib
-file binary/gnupg-w32-2.2.46_20250107.wixlib
-chk  1f955b980780a610f9550b1ef965a0f61a2c74f7b52f458a0dbf1c75b5627d93
+name gnupg-msi-2.2.54_20260420-bin.wixlib
+file binary/gnupg-w32-2.2.54_20260420.wixlib
+chk  72a49782c8c02361c2b9e724bad9ed098755ecefa8be57a6c8976ae2a3432ee4
 
 # eof
