@@ -619,7 +619,9 @@ file okular/okular-202311221749.tar.xz
 chk 205df68c183900a1b21d1381d9a3d7554a642fa6dd3ef7e9bc5bbcfcd0aa8f1b
 
 
-## the list of packages for use with gpg4win-4.x
+## the list of packages for use with gpg4win-3.x
+
+server https://gnupg.org/ftp/gcrypt
 
 server https://gnupg.org/ftp/gcrypt
 
@@ -627,30 +629,31 @@ server https://gnupg.org/ftp/gcrypt
 # signature made by "Werner Koch (dist sig)" or one of the other
 # gnupg main contributors.
 
-# last changed 2025-05-07
+# last changed 2023-11-16
 # by wk
 # verified: [taken from buildtree]
-file libgcrypt/libgcrypt-1.11.2.tar.bz2
-chk  6ba59dd192270e8c1d22ddb41a07d95dcdbc1f0fb02d03c4b54b235814330aac
+file libgcrypt/libgcrypt-1.8.11.tar.bz2
+chk  c98249fb5bb1f6017f5f9bf484327a940b59075bca7c46fa69ebb54098249860
 
-# last changed 2025-05-14
+
+# last changed 2025-01-07
 # by builder
 # verified: [taken from buildtree]
-name gnupg-2.4.8.tar.bz2
-file gnupg/gnupg-2.4.8.tar.bz2
-chk  b58c80d79b04d3243ff49c1c3fc6b5f83138eb3784689563bcdd060595318616
+name gnupg-2.2.46.tar.bz2
+file gnupg/gnupg-2.2.46.tar.bz2
+chk  e22ec3ff396df2011236a2d84b1933f646805daa736ef096feab1d5e8924be5c
 
-name gnupg-w32-2.4.8_20250514-bin.exe
-file binary/gnupg-w32-2.4.8_20250514.exe
-chk  2cd239a8301c59da3737f44566c8c6f9c1779a148af3561e77fb866a0a90de4e
+name gnupg-w32-2.2.46_20250107-bin.exe
+file binary/gnupg-w32-2.2.46_20250107.exe
+chk  6ae33d91dd36e28675edcf3fa30face98adda9d02ade9d5786c0a624f6779df5
 
-name gnupg-w32-2.4.8_20250514-src.tar.xz
-file gnupg/gnupg-w32-2.4.8_20250514.tar.xz
-link gnupg-msi-2.4.8_20250514-src.tar.xz
-chk  135072b4cf9ce1e25904713ea5f08ac545645e663773dd1f6aca72d10e5a8761
+name gnupg-w32-2.2.46_20250107-src.tar.xz
+file binary/gnupg-w32-2.2.46_20250107.tar.xz
+link gnupg-msi-2.2.46_20250107-src.tar.xz
+chk  d44306ef84d4823587b711983e3e9e17a1c6b374108aea11f8feb6b7866cbcd2
 
-name gnupg-msi-2.4.8_20250514-bin.wixlib
-file binary/gnupg-w32-2.4.8_20250514.wixlib
-chk  a35aad2848d0f8ab3aabdaba4959c39b3f3d0faacb16b7a6c1d0797308526d19
+name gnupg-msi-2.2.46_20250107-bin.wixlib
+file binary/gnupg-w32-2.2.46_20250107.wixlib
+chk  1f955b980780a610f9550b1ef965a0f61a2c74f7b52f458a0dbf1c75b5627d93
 
 # eof
