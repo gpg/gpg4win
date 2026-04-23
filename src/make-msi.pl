@@ -2621,7 +2621,7 @@ print <<EOF;
       <!-- Hardcode some components that always should be installed -->
 EOF
 
-($::product_name ne 'GnuPG Desktop') && print <<EOF;
+($::vsd4 eq 'yes') && print <<EOF;
       <!-- The gpgconf.ctl file to map gnupg to gnupg-vsd -->
       <ComponentRef Id='c_gpgconfctl_0' />
 EOF
@@ -2675,7 +2675,7 @@ EOF
     }
 }
 
-($::product_name ne 'GnuPG Desktop') && print <<EOF;
+($::vsd4 eq 'yes') && print <<EOF;
     <!-- "dirAA72FF..." is defined by the GnuPG wixlib -->
     <Component Win64="\$(var.Win64)" Id="c_gpgconfctl_0"
                Directory="dirAA72FFDDFA224FB221D53750596B0142"
