@@ -45,7 +45,13 @@ ${MementoSection} "GpgOL" SEC_gpgol
 
  do_reg:
   # Register the DLL.
+!ifdef IS_W64_INST
+  # Do the 64 bit call with the bin gpgol.dll
+  ExecWait '"$SYSDIR\regsvr32" /s "$INSTDIR\bin\gpgol.dll"'
+!else
+  # Do the 32 bit call with the bin gpgol.dll
   RegDLL "$INSTDIR\bin\gpgol.dll"
+!endif
   ifErrors 0 +2
      MessageBox MB_OK "$(T_GpgOL_RegFailed)"
 
@@ -88,7 +94,7 @@ ${MementoSection} "GpgOL" SEC_gpgol
 ${If} ${RunningX64}
 
   # Install the 64 bit version of the dll.
-  SetOutPath "$INSTDIR\bin_64"
+  SetOutPath "$INSTDIR\${EX_BINDIR}"
   ClearErrors
   SetOverwrite try
   File ${exprefix}/bin/gpgol.dll
@@ -102,9 +108,12 @@ ${If} ${RunningX64}
   # RegDLL can't be used for 64 bit and InstallLib seems to be a
   # registry hack.
   ClearErrors
-  ExecWait '"$SYSDIR\regsvr32" /s "$INSTDIR\bin_64\gpgol.dll"'
-  ifErrors 0 +2
-     MessageBox MB_OK "$(T_GpgOL_RegFailed) (64 bit)"
+!ifdef IS_W64_INST
+  # Register the 32 bit DLL that is installed under the ex prefix
+  RegDLL "$INSTDIR\${EX_BINDIR}\gpgol.dll"
+!else
+  ExecWait '"$SYSDIR\regsvr32" /s "$INSTDIR\${EX_BINDIR}\gpgol.dll"'
+!endif
 ${EndIf}
 
 !endif
