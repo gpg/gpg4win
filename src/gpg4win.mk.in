@@ -276,7 +276,7 @@ ifeq ($(IS_GPD_BUILD),yes)
 else ifeq ($(IS_VSD3_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-VS-Desktop
   MSI_PRODUCT_NAME := GnuPG VS-Desktop
-  MAKE_MSI_EXTRA_OPTIONS := --win64
+  MAKE_MSI_EXTRA_OPTIONS :=
   MAKE_MSI_GUIDS := make-msi.guids
   KLEOPATRA_ORGANIZATION_DOMAIN := gnupg.com
   KLEOPATRA_ORGANIZATION_NAME := GnuPG VS-Desktop
