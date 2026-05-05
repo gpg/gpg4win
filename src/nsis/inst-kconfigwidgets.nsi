@@ -28,11 +28,11 @@ Section "-kconfigwidgets" SEC_kconfigwidgets
 SetOutPath "$INSTDIR\bin"
 File ${prefix}/bin/libKF5ConfigWidgets.dll
 
-## This is a bit strange but these files are from the plasma repo
-## but actually used by a class from KConfigWidgets so we install
-## them here.
-#SetOutPath "$INSTDIR\share\color-schemes"
-#File /oname=Breeze.colors BreezeClassic.colors
-#File BreezeDark.colors
+# This is a bit strange but these files are from the plasma repo
+# but actually used by a class from KConfigWidgets so we install
+# them here.
+SetOutPath "$INSTDIR\share\color-schemes"
+File /oname=Breeze.colors BreezeClassic.colors
+File BreezeDark.colors
 
 SectionEnd

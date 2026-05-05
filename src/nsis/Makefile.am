@@ -18,6 +18,7 @@
 
 EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              Memento.nsh inst-final.nsi                                  \
+             BreezeClassic.colors BreezeDark.colors                      \
              inst-sections.nsi installer.nsi installer-finish.nsi        \
              inst-gpg4win.nsi       uninst-gpg4win.nsi                   \
              inst-breeze-icons.nsi uninst-breeze-icons.nsi               \
