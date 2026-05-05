@@ -32,7 +32,7 @@ File ${prefix}/bin/libKF5ConfigWidgets.dll
 # but actually used by a class from KConfigWidgets so we install
 # them here.
 SetOutPath "$INSTDIR\share\color-schemes"
-File /oname=Breeze.colors BreezeClassic.colors
-File BreezeDark.colors
+File /oname=Breeze.colors "${SRCDIR}/nsis/BreezeClassic.colors"
+File "${SRCDIR}/nsis/BreezeDark.colors"
 
 SectionEnd
