@@ -1641,10 +1641,10 @@ sub dump_all2
             print <<EOF;
             <Feature Id='p_gpgol_autoload' Title='p_gpgol_autoload' Level='1' Display='hidden' InstallDefault='followParent'>
               <Condition Level='1000'>INST_GPGOL=\"inactive\"</Condition>
-              <Component Win64=\"$::win64\" Id='GpgOLActivateRegKey' Guid='87765E51-3902-41F8-B624-4CCEBC731A13' Directory='APPLICATIONFOLDER'>
+              <Component Win64='yes' Id='GpgOLActivateRegKey' Guid='87765E51-3902-41F8-B624-4CCEBC731A13' Directory='APPLICATIONFOLDER'>
                 <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="LoadBehavior" Value="3" Type="integer" Action="write" />
               </Component>
-              <Component Win64=\"$::win64\" Id='GpgOLActivateRegKey_32' Guid='87765E51-3902-41F8-B624-4CCEBC731A14' Directory='APPLICATIONFOLDER'>
+              <Component Win64='no' Id='GpgOLActivateRegKey_32' Guid='87765E51-3902-41F8-B624-4CCEBC731A14' Directory='APPLICATIONFOLDER'>
                 <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="LoadBehavior" Value="3" Type="integer" Action="write" />
               </Component>
             </Feature>
