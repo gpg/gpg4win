@@ -143,11 +143,12 @@ chk 91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9
 file bzip2/bzip2-1.0.6-g10.tar.gz
 chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 
-# last changed 2025-10-07
+# last changed 2026-05-07
 # by wk
 # verified: build-tree
-file libgpg-error/libgpg-error-1.56.tar.bz2
-chk  82c3d2deb4ad96ad3925d6f9f124fe7205716055ab50e291116ef27975d169c0
+file libgpg-error/libgpg-error-1.61.tar.bz2
+chk  7a85413f2bc354f4f8aa832b718af122e48965e9e0eb9012ee659c13c6385c93
+
 
 # last-changed: 2024-07-03
 # by: wk
@@ -163,11 +164,11 @@ file npth/npth-1.7.tar.bz2
 chk  8589f56937b75ce33b28d312fccbf302b3b71ec3f3945fde6aaa74027914ad05
 
 
-# last changed 2026-02-23
+# last changed 2026-05-07
 # by wk
-# verified: build tree
-file libksba/libksba-1.6.8.tar.bz2
-chk  0f4510f1c7a679c3545990a31479f391ad45d84e039176309d42f80cf41743f5
+# verified: buildtree
+file libksba/libksba-1.7.0.tar.bz2
+chk  e1d3a5745911f5a663fddecf526541c4241052a9e4cafbc92dc7f4096c7efdac
 
 
 # last changed 2024-01-12
