@@ -21,7 +21,7 @@
 EXTRA_DIST = \
 	download.sh packages.list BUILDTYPE \
 	gen-frameworks.sh gen-tarball.sh gen-kde-gears.sh gen-gnupg.sh \
-	distsigkey.gpg kde-release-keys.gpg \
+	kde-release-keys.gpg \
 	gen-kde-l10n.sh
 
 

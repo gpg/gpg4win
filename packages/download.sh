@@ -118,10 +118,10 @@ WGET="wget $ipvx"
 
 # We used to download the packages.current list but it turned out that
 # this is too problematic: As there is no history of these files it is
-# not possible to build and older version of gpg4win using the online
+# not possible to build an older version of gpg4win using the online
 # version of the list.  Thus we keep the list now with the installer
-# and in case a package update is required we will post an updated
-# list to the mailing list.
+# and in case a package update is required we may post an updated list
+# for that version to the mailing list.
 #
 #url="http://www.gpg4win.org"
 #if [ "$keep_list" = "no" ]; then
@@ -133,7 +133,8 @@ WGET="wget $ipvx"
 #fi
 #
 #if [ "$sig_ckeck" = yes ]; then
-# if ! gpgv --keyring ./packages.keys packages.current.sig packages.current
+# distsigkey="$(echo $(gpgconf -L datadir)/distsigkey.gpg)"
+# if ! gpgv --keyring "$distsigkey" packages.current.sig packages.current
 #   then
 #    echo "list of packages is not usable." >&2
 #    exit 1
