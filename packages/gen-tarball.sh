@@ -212,11 +212,11 @@ case ${package} in
 #        branch="gpg4win/24.05"
         ;;
     kleopatra)
-#        branch="gpg4win/24.05"
+        branch="gpg4win/gpd-5.1"
         add_version_file="yes"
         ;;
     libkleo)
-#        branch="gpg4win/24.05"
+        branch="gpg4win/gpd-5.1"
         ;;
     okular)
   #      branch="work/sune/WORK"
