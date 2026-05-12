@@ -162,6 +162,7 @@ ifeq ($(IS_GPD_BUILD),yes)
   KLEOPATRA_ORGANIZATION_NAME := GnuPG Desktop
   KLEOPATRA_VERSION_STRING := Desktop-$(VERSION)
   KLEOPATRA_ICON_DIR := $(tsdir)/src/icons/gpd
+  LIBKLEO_FEATURE_DEVS_COMPLIANCE := OFF
 else ifeq ($(IS_VSD3_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-VS-Desktop
   MSI_PRODUCT_NAME := GnuPG VS-Desktop
@@ -171,6 +172,7 @@ else ifeq ($(IS_VSD3_BUILD),yes)
   KLEOPATRA_ORGANIZATION_NAME := GnuPG VS-Desktop
   KLEOPATRA_VERSION_STRING := VS-Desktop-$(VERSION)
   KLEOPATRA_ICON_DIR :=
+  LIBKLEO_FEATURE_DEVS_COMPLIANCE := ON
 else ifeq ($(IS_VSD_BUILD),yes)
   MSI_FNAME_PREFIX := GnuPG-VS-Desktop
   MSI_PRODUCT_NAME := GnuPG VS-Desktop
@@ -180,6 +182,7 @@ else ifeq ($(IS_VSD_BUILD),yes)
   KLEOPATRA_ORGANIZATION_NAME := GnuPG VS-Desktop
   KLEOPATRA_VERSION_STRING := VS-Desktop-$(VERSION)
   KLEOPATRA_ICON_DIR :=
+  LIBKLEO_FEATURE_DEVS_COMPLIANCE := ON
 else
   # Although we don't build MSIs for Gpg4win it is better to set
   # the macros to help in tracking down build errors.
@@ -191,6 +194,7 @@ else
   KLEOPATRA_ORGANIZATION_NAME := Gpg4win
   KLEOPATRA_VERSION_STRING := Gpg4win-$(VERSION)
   KLEOPATRA_ICON_DIR := $(tsdir)/src/icons/gpd
+  LIBKLEO_FEATURE_DEVS_COMPLIANCE := OFF
 endif
 
 

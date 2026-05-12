@@ -432,6 +432,9 @@ gpg4win_pkg_kdsingleapplication_configure = \
     -DKDSingleApplication_EXAMPLES=OFF \
     -DKDSingleApplication_DOCS=OFF
 
+gpg4win_pkg_libkleo_configure = \
+    -DLIBKLEO_FEATURE_DEVS_COMPLIANCE=$(LIBKLEO_FEATURE_DEVS_COMPLIANCE)
+
 gpg4win_pkg_kleopatra_configure = \
     -DDISABLE_KWATCHGNUPG=ON \
     -DKLEOPATRA_LIST_AS_COMPONENT=ON \
