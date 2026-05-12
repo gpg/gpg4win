@@ -102,13 +102,6 @@ uninst_checks_done:
 
 # END MSI IGNORE
 
-  # Write a version file.
-  DetailPrint "Opening VERSION file for writing"
-  FileOpen $0 "$INSTDIR\VERSION" w
-  FileWrite $0 "${PRETTY_PACKAGE}-${VERSION}$\r$\n"
-  FileClose $0
-  DetailPrint "VERSION closed"
-
 # BEGIN MSI IGNORE
 
   # Register the install directory for Gpg4win suite.
