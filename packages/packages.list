@@ -591,18 +591,18 @@ file gpgme/gpgme-2.0.1.tar.bz2
 chk  821ab0695c842eab51752a81980c92b0410c7eadd04103f791d5d2a526784966
 
 # gpgmepp
-# last changed: 2025-06-03
+# last changed: 2026-05-18
 # by: wk
 # verified: swdb
-file gpgmepp/gpgmepp-2.0.0.tar.xz
-chk  d4796049c06708a26f3096f748ef095347e1a3c1e570561701fe952c3f565382
+file gpgmepp/gpgmepp-2.1.0.tar.xz
+chk  57f804468f0204504b172c6b139cb05124b4263be7ad514932c7c4c5062a16e2
 
 # qgpgme
-# last changed: 2025-06-03
+# last changed: 2026-05-18
 # by: wk
 # verified: swdb
-file qgpgme/qgpgme-2.0.0.tar.xz
-chk  15645b2475cca6118eb2ed331b3a8d9442c9d4019c3846ba3f6d25321b4a61ad
+file qgpgme/qgpgme-2.1.0.tar.xz
+chk  5b32feb3eee4a7f9402d22b7206480908dc43bb4df382917c075c512116f8f08
 
 
 #
