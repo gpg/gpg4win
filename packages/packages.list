@@ -236,11 +236,11 @@ chk  ddd4094be63a30c0e54b28ef34d3c741136c06fef9af5dd4ca623d3758fa9220
 #
 # GpgEX
 #
-# last-changed: 2026-02-23
+# last-changed: 2026-05-18
 # by: wk
-# verified: swdb
-file gpgex/gpgex-1.1.0.tar.bz2
-chk  c0e7869688c5654c00a10c22334be86be9e6485ab4822c114499ef73566bca21
+# verified: build-tree
+file gpgex/gpgex-1.1.1.tar.bz2
+chk  f60e08d0f6394d1ecf1a42a5902feb089729f1a9f96f54a04117b3e5f6de6fb7
 
 
 #
