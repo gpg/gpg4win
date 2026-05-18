@@ -95,6 +95,14 @@ uninst_checks_done:
   File "${TOP_BLDDIR}/src/versioninfo.txt"
 
 # BEGIN MSI IGNORE
+
+  # Add the VERSION file
+  SetOutPath "$INSTDIR"
+  File "${TOP_SRCDIR}/VERSION"
+
+# END MSI IGNORE
+
+# BEGIN MSI IGNORE
   SetOutPath "$INSTDIR\share\gpg4win"
 
   File "${TOP_BLDDIR}/src/HOWTO-SMIME.en.txt"
