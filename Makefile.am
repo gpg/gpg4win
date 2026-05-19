@@ -62,6 +62,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/breeze/0005-For-high-contrast-draw-hovered-menu-items-like-selec.patch \
              patches/extra-cmake-modules/0001-Revert-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/extra-cmake-modules/0001-Use-preferred-display-language-instead-of-locale-on-.patch \
+             patches/gpgol-2.7.2/0001-Require-C-17.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kcalendarcore-6.20.0/0001-Add-option-to-build-without-QML.patch \
              patches/kconfig-6.20.0/0001-Avoid-creation-of-not-already-existing-registry-keys.patch \
