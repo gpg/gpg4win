@@ -50,6 +50,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/breeze-icons/azz-Make-all-breeze-icons-available-in-breeze-dark.patch \
              patches/breeze-icons/subset-crossbuild.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
+             patches/gpgol-2.7.2/0001-Require-C-17.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
              patches/kconfig/0002-Fix-reading-of-localized-config-values-on-Windows-an.patch \
