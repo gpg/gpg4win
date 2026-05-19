@@ -303,6 +303,7 @@ else
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
 fi
 cd ${olddir}
+chmod a+r "${tarball}"
 checksum=$(sha256sum ${tarball} | cut -d ' ' -f 1)
 
 
