@@ -154,7 +154,7 @@ uninst_checks_done:
   File /nonfatal /oname=libgcc_s_seh-1.dll "${TOP_BLDDIR}/src/libgcc_s_seh-1.dll-x"
 
   SetOutPath "$INSTDIR\bin_64"
-  File /nonfatal /oname=libwinpthread-1.dll "${TOP_BLDDIR}/src/libwinpthread-1.dll-ex"
+  File /oname=libwinpthread-1.dll "${TOP_BLDDIR}/src/libwinpthread-1.dll-ex"
 
   SetOutPath "$INSTDIR"
   File /oname=pkg-licenses.txt "${SRCDIR}/../doc/pkg-copyright.txt"
