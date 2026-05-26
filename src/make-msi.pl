@@ -2626,26 +2626,33 @@ EOF
       <ComponentRef Id='c_gpgconfctl_0' />
 EOF
 
+# if your installation is missing files, check the respective src/nsis/inst-*.nsi files
+# of the package for relevant 'File' declarations and make sure you define the same number of
+# <ComponentRef> declarations in the next section
 print <<EOF;
       <!-- List comes from ICE21 and was transformed by see: comment above -->
-      <!-- sha1sum.exe -->
+      <!-- versioninfo.txt />
       <ComponentRef Id='c_gpg4win_0' />
-      <!-- sha256sum.exe -->
+      <!-- sha1sum.exe -->
       <ComponentRef Id='c_gpg4win_1' />
-      <!-- md5sum.exe -->
+      <!-- sha256sum.exe -->
       <ComponentRef Id='c_gpg4win_2' />
-      <!-- libstdc++-6.dll -->
+      <!-- md5sum.exe -->
       <ComponentRef Id='c_gpg4win_3' />
-      <!-- libwinpthread-1.dll -->
+      <!-- libstdc++-6.dll -->
       <ComponentRef Id='c_gpg4win_4' />
-      <!-- libgcc_s_sjlj-1.dll -->
+      <!-- libwinpthread-1.dll -->
       <ComponentRef Id='c_gpg4win_5' />
-      <!-- libgcc_s_dw2-1.dll -->
+      <!-- libgcc_s_sjlj-1.dll -->
       <ComponentRef Id='c_gpg4win_6' />
-      <!-- bin64 libwinpthread-1.dll -->
+      <!-- libgcc_s_dw2-1.dll -->
       <ComponentRef Id='c_gpg4win_7' />
-      <!-- pkg-copyright.txt -->
+      <!-- libgcc_s_seh-1.dll -->
       <ComponentRef Id='c_gpg4win_8' />
+      <!-- bin64 libwinpthread-1.dll -->
+      <ComponentRef Id='c_gpg4win_9' />
+      <!-- pkg-copyright.txt -->
+      <ComponentRef Id='c_gpg4win_10' />
       <ComponentRef Id='c_pinentry_0' />
       <ComponentRef Id='c_pinentry_1' />
       <ComponentRef Id='c_scute_0' />
