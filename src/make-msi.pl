@@ -2631,7 +2631,7 @@ EOF
 # <ComponentRef> declarations in the next section
 print <<EOF;
       <!-- List comes from ICE21 and was transformed by see: comment above -->
-      <!-- versioninfo.txt />
+      <!-- versioninfo.txt -->
       <ComponentRef Id='c_gpg4win_0' />
       <!-- sha1sum.exe -->
       <ComponentRef Id='c_gpg4win_1' />
