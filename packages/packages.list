@@ -163,10 +163,10 @@ file npth/npth-1.8.tar.bz2
 chk  8bd24b4f23a3065d6e5b26e98aba9ce783ea4fd781069c1b35d149694e90ca3e
 
 
-# last changed 2026-05-07
+# last changed 2026-06-02
 # by wk
-# verified: buildtree
-file libksba/libksba-1.7.0.tar.bz2
+# verified: swdb
+file libksba/libksba-1.8.0.tar.bz2
 chk  e1d3a5745911f5a663fddecf526541c4241052a9e4cafbc92dc7f4096c7efdac
 
 
@@ -229,11 +229,11 @@ chk  ddd4094be63a30c0e54b28ef34d3c741136c06fef9af5dd4ca623d3758fa9220
 #
 # GpgEX
 #
-# last-changed: 2026-05-18
+# last-changed: 2026-06-02
 # by: wk
-# verified: build-tree
-file gpgex/gpgex-1.1.1.tar.bz2
-chk  f60e08d0f6394d1ecf1a42a5902feb089729f1a9f96f54a04117b3e5f6de6fb7
+# verified: swdb
+file gpgex/gpgex-1.1.2.tar.bz2
+chk  e6ca95a8b94449df510526fb0c4ef6b2fbe11de5142ad9978a2757a9b6d36d6e
 
 
 #
