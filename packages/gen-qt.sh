@@ -121,7 +121,7 @@ chk ${sha2}
 
 EOF
 
-perl -i -p0e "s@# ${module}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
+perl -i -p0e "s@# ${module}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nname.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
 '@se" packages.list
 done
 
