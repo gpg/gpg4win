@@ -27,23 +27,14 @@
 set -e
 
 if [ -z "$1" ]; then
-    echo "Usage $0 <Version> [frameworks] > snippet"
+    echo "Usage $0 <Version> [PACKAGE] ..."
     exit 1
 fi
 
-QT="qtbase
-    qttools
-    qtsvg
-    qttranslations
-    qthttpserver
-    qtwayland
-    qtwebsockets"
-
-if [ -n "$2" ]; then
-    QT="$2"
-fi
-
 fullversion=$1
+shift
+packages=$@
+
 case ${fullversion} in
     *.*.*)
         majorversion=${fullversion%.*}
@@ -59,25 +50,57 @@ case ${fullversion} in
         ;;
 esac
 
+case ${majorversion} in
+    5.*)
+        defaultpackages="qtbase
+                         qttools
+                         qtwinextras
+                         qtx11extras
+                         qtwayland
+                         qtsvg
+                         qttranslations"
+        tarfileinfix="everywhere-opensource-src"
+        ;;
+    6.*)
+        defaultpackages="qtbase
+                         qttools
+                         qtsvg
+                         qttranslations
+                         qthttpserver
+                         qtwayland
+                         qtwebsockets"
+        tarfileinfix="everywhere-src"
+        ;;
+    *)
+        echo "Unknown Qt version: ${majorversion}"
+        exit 1
+        ;;
+esac
+if [ -z "$packages" ]; then
+    packages=${defaultpackages}
+fi
+
 curdate=$(date +%Y-%m-%d)
 
 KEYRING=$(dirname $0)/kde-release-keys.gpg
 
-server=https://download.qt.io/official_releases/qt
+server=https://download.qt.io/archive/qt
 echo "server ${server}"
 
 tmpdir=$(mktemp -d -t gen-qt.XXXXXXXXXX)
 
-for module in $QT; do
+for module in $packages; do
     # Download packages over https now and verify that the signature matches
-    tarfile="${module}-everywhere-src-${fullversion}.tar.xz"
+    tarfile="${module}-${tarfileinfix}-${fullversion}.tar.xz"
     tarfileurl="${server}/${majorversion}/${fullversion}/submodules/${tarfile}"
     resultingtarfile="${module}-${fullversion}.tar.xz"
+    echo "Downloading ${tarfileurl} ..."
     if ! curl -L --silent --show-error --fail "${tarfileurl}" > "$tmpdir/${resultingtarfile}"; then
         echo "Downloading ${tarfileurl} failed"
         exit 1
     fi
     tarfilesha="${tarfileurl}.sha256"
+    echo "Downloading ${tarfilesha} ..."
     if ! curl -L --silent --show-error --fail "${tarfilesha}" | sed "s/${tarfile}/${resultingtarfile}/" > "$tmpdir/${resultingtarfile}.sha256"; then
         echo "Downloading ${tarfilesha} failed"
         exit 1
