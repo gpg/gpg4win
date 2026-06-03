@@ -100,7 +100,6 @@ uninst_checks_done:
   File "${TOP_BLDDIR}/src/HOWTO-SMIME.en.txt"
   File "${TOP_BLDDIR}/src/HOWTO-SMIME.de.txt"
 
-  File "${TOP_BLDDIR}/src/versioninfo.txt"
 # END MSI IGNORE
 
   # Write a version file.
