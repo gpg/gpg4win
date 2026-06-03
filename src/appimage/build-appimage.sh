@@ -111,6 +111,16 @@ if [ $BUILDTYPE != default ] && [ ! -f ${VSD_DIR}/custom.mk ]; then
     echo "change the BUILDTYPE in ${SRCDIR}/packages/BUILDTYPE"
     exit 2
 fi
+if [ $BUILDTYPE = vsd -o $BUILDTYPE = vsd3 ] && \
+    [ ! -f ${VSD_DIR}/Standard/VERSION ]; then
+    echo "No VERSION file in Standard dir."
+    exit 2
+fi
+if [ $BUILDTYPE = gpd ] && \
+    [ ! -f ${VSD_DIR}/Desktop/VERSION ]; then
+    echo "No VERSION file in Desktop dir."
+    exit 2
+fi
 
 # The actual build
 cd ${BUILDROOT}
@@ -119,7 +129,7 @@ ${SRCDIR}/configure --enable-appimage --with-playground=${BUILDROOT}
 make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT}
 
 echo 'rootdir = $APPDIR/usr' >${APPDIR}/usr/bin/gpgconf.ctl
-if [ $BUILDTYPE = vsd ]; then
+if [ $BUILDTYPE = vsd -o $BUILDTYPE = vsd3 ]; then
     echo 'sysconfdir = /etc/gnupg-vsd' >>${APPDIR}/usr/bin/gpgconf.ctl
 else
     echo 'sysconfdir = /etc/gnupg' >>${APPDIR}/usr/bin/gpgconf.ctl
@@ -130,7 +140,7 @@ cp ${SRCDIR}/src/appimage/start-shell ${APPDIR}/
 chmod +x ${APPDIR}/start-shell
 
 # Copy standard global configuration
-if [ $BUILDTYPE = vsd ]; then
+if [ $BUILDTYPE = vsd -o $BUILDTYPE = vsd3 ]; then
     mkdir -p ${APPDIR}/usr/share/gnupg/conf/gnupg-vsd
     rsync -aLv --delete --omit-dir-times \
           --perms --chmod=D0755,F0644 \
@@ -176,7 +186,7 @@ rm -f ${APPDIR}/GnuPG-Desktop-VERSION    2>/dev/null
 rm -f ${APPDIR}/Gpg4win-VERSION        2>/dev/null
 
 myversion=$(grep PACKAGE_VERSION ${BUILDROOT}/config.h|sed -n 's/.*"\(.*\)"$/\1/p')
-if [ $BUILDTYPE = vsd ]; then
+if [ $BUILDTYPE = vsd -o $BUILDTYPE = vsd3 ]; then
     OUTPUT=gnupg-vs-desktop-${myversion}-x86_64.AppImage
     echo "Packaging GnuPG VS-Desktop Appimage: $myversion"
     echo $myversion >${APPDIR}/GnuPG-VS-Desktop-VERSION
