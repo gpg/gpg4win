@@ -244,7 +244,7 @@ $(stampdir)/stamp-directories:
 	$(MKDIR) -p $(bdir)
 	$(MKDIR) -p $(idir)
 	$(MKDIR) -p $(ipdir)
-	$(MKDIR) -p $(appdir)/usr
+	$(MKDIR) -p $(appdir)/usr/bin
 	touch $(bdir)/versioninfo.txt
 	touch $(stampdir)/stamp-directories
 
