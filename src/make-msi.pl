@@ -2653,6 +2653,8 @@ print <<EOF;
       <ComponentRef Id='c_gpg4win_9' />
       <!-- pkg-copyright.txt -->
       <ComponentRef Id='c_gpg4win_10' />
+      <!-- freedesktop.org.xml -->
+      <ComponentRef Id='c_gpg4win_11' />
       <ComponentRef Id='c_pinentry_0' />
       <ComponentRef Id='c_pinentry_1' />
       <ComponentRef Id='c_scute_0' />

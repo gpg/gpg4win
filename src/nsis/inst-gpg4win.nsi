@@ -158,6 +158,9 @@ uninst_checks_done:
 
   SetOutPath "$INSTDIR"
   File /oname=pkg-licenses.txt "${SRCDIR}/../doc/pkg-copyright.txt"
+
+  SetOutPath "$INSTDIR\share\mime\packages"
+  File "${SRCDIR}/mime/freedesktop.org.xml"
 !endif
 
 SectionEnd

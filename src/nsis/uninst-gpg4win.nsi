@@ -38,6 +38,11 @@ Section "-un.gpg4win"
   Delete "$INSTDIR\bin\libwinpthread-1.dll"
   Delete /REBOOTOK "$INSTDIR\bin_64\libwinpthread-1.dll"
 
+  # Delete the MIME database
+  Delete "$INSTDIR\share\mime\packages\freedesktop.org.xml"
+  RMDir "$INSTDIR\share\mime\packages"
+  RMDir "$INSTDIR\share\mime"
+
   # Delete standard stuff.
   Delete "$INSTDIR\share\gpg4win\HOWTO-SMIME.*.txt"
 
