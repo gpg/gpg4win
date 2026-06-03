@@ -59,6 +59,37 @@ XML files in the 'packages' directory and run the update-mime-database
 command to generate the output files.
 -->
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/vnd.kde.kleopatra.pgp-encrypted-tar">
+    <comment>Encrypted tar archive</comment>
+    <sub-class-of type="application/pgp-encrypted"/>
+    <glob pattern="*.tar.gpg"/>
+    <glob pattern="*.tar.pgp"/>
+  </mime-type>
+  <mime-type type="application/vnd.kde.kleopatra.pgp-signed-tar">
+    <comment>Signed tar archive</comment>
+    <sub-class-of type="application/pgp-signature"/>
+    <glob pattern="*.tar.sig"/>
+    <glob pattern="*.tar.pgp"/>
+  </mime-type>
+  <mime-type type="application/vnd.kde.kleopatra.pkcs7-encrypted-tar">
+    <comment>Encrypted tar archive</comment>
+    <sub-class-of type="application/pkcs7-mime"/>
+    <glob pattern="*.tar.p7m"/>
+  </mime-type>
+  <mime-type type="application/vnd.kde.kleopatra.pkcs7-signed-tar">
+    <comment>Signed tar archive</comment>
+    <sub-class-of type="application/pkcs7-signature"/>
+    <glob pattern="*.tar.p7s"/>
+  </mime-type>
+  <mime-type type="application/vnd.kde.kleopatra.keygroup">
+    <comment>Kleopatra certificate group</comment>
+    <sub-class-of type="text/plain"/>
+    <generic-icon name="text-x-generic"/>
+    <magic priority="80">
+      <match type="string" value="[KeyGroup-" offset="0"/>
+    </magic>
+    <glob pattern="*.kgrp"/>
+  </mime-type>
   <mime-type type="application/x-atari-2600-rom">
     <comment>Atari 2600 ROM</comment>
     <comment xml:lang="zh-Hant-TW">雅達利 2600 ROM</comment>

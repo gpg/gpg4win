@@ -1,0 +1,5 @@
+To update the MIME database:
+* Make a copy of freedesktop.org.xml included in the shared-mime-info package
+  of the Debian used for the build Docker image.
+* Add our custom MIME types by applying the patch:
+    patch -p1 < add-kleopatras-mime-types.patch
