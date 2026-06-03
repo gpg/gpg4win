@@ -48,6 +48,7 @@ EXTRA_DIST =  config.site                                      \
               icons/kleopatra-vsd.svg                          \
               icons/mail-ext.ico                               \
               icons/shield.ico                                 \
+              mime/freedesktop.org.xml                         \
               kdeglobals qtlogging.ini                         \
               make-msi.pl make-msi.guids make-gpd.guids        \
               qt.conf.in                                       \
