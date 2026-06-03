@@ -128,7 +128,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/extra-cmake-modules/0001-Use-preferred-display-language-instead-of-locale-on-.patch \
              patches-appimage/kcalendarcore-6.20.0/0001-Add-option-to-build-without-QML.patch \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
-             patches-appimage/libkleo/0001-Revert-Explicitly-use-Boost-s-cmake-config-file-for-.patch \
              patches-appimage/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/okular/pgp-default-true.patch \
