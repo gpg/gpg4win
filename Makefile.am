@@ -84,25 +84,10 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
              patches/qtbase/0004-Fix-tree-table-list-accessibility-state.patch \
              patches/qtbase/0005-a11y-Return-correct-string-information-for-item-view.patch \
-             patches/qtbase/CVE-2023-32762-qtbase-5.15.patch \
-             patches/qtbase/CVE-2023-32763-qtbase-5.15.patch \
-             patches/qtbase/CVE-2023-34410-qtbase-5.15.patch \
-             patches/qtbase/CVE-2023-37369-qtbase-5.15.patch \
-             patches/qtbase/CVE-2023-38197-qtbase-5.15.patch \
-             patches/qtbase/CVE-2023-43114-5.15.patch \
-             patches/qtbase/CVE-2023-51714-0001-qtbase-5.15.patch \
-             patches/qtbase/CVE-2023-51714-0002-qtbase-5.15.patch \
-             patches/qtbase/CVE-2024-25580-qtbase-5.15.patch \
-             patches/qtbase/CVE-2024-39936-qtbase-5.15.patch \
-             patches/qtbase/CVE-2025-30348-qtbase-5.15.patch \
-             patches/qtbase/CVE-2025-4211-qtbase-5.15.patch \
-             patches/qtbase/CVE-2025-5455-qtbase-5.15.patch \
-             patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/fix-high-contrast-item-view-selection-color.patch \
              patches/qtbase/fix-queryHighContrast.patch \
              patches/qtbase/fix-tooltip-text-color-with-dark-theme.patch \
              patches/qtbase/use-fusion-style-for-high-contrast-mode.patch \
-             patches/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
              patches/qttools/disable-most-tools.patch \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches-appimage/kcoreaddons/0001-Fix-MINGW-build.patch \
@@ -120,25 +105,10 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
              patches-appimage/qtbase/0004-Fix-tree-table-list-accessibility-state.patch \
              patches-appimage/qtbase/0005-a11y-Return-correct-string-information-for-item-view.patch \
-             patches-appimage/qtbase/add-kleopatras-mime-types.patch \
-             patches-appimage/qtbase/CVE-2023-32762-qtbase-5.15.patch \
-             patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.patch \
-             patches-appimage/qtbase/CVE-2023-34410-qtbase-5.15.patch \
-             patches-appimage/qtbase/CVE-2023-37369-qtbase-5.15.patch \
-             patches-appimage/qtbase/CVE-2023-38197-qtbase-5.15.patch \
-             patches-appimage/qtbase/CVE-2023-43114-5.15.patch \
-             patches-appimage/qtbase/CVE-2023-51714-0001-qtbase-5.15.patch \
-             patches-appimage/qtbase/CVE-2023-51714-0002-qtbase-5.15.patch \
-             patches-appimage/qtbase/CVE-2024-25580-qtbase-5.15.patch \
-             patches-appimage/qtbase/CVE-2024-39936-qtbase-5.15.patch \
-             patches-appimage/qtbase/CVE-2025-30348-qtbase-5.15.patch \
-             patches-appimage/qtbase/CVE-2025-4211-qtbase-5.15.patch \
-             patches-appimage/qtbase/CVE-2025-5455-qtbase-5.15.patch \
              patches-appimage/qtbase/fix-high-contrast-item-view-selection-color.patch \
              patches-appimage/qtbase/fix-queryHighContrast.patch \
              patches-appimage/qtbase/fix-tooltip-text-color-with-dark-theme.patch \
              patches-appimage/qtbase/use-fusion-style-for-high-contrast-mode.patch \
-             patches-appimage/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch
 
 dist-hook: gen-ChangeLog pack_packages_tarballs
