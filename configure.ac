@@ -584,8 +584,13 @@ if test "$build_appimage" = yes ; then
     fi
 
     APPIMAGE_SPKG([gpgme], [libgpg-error libassuan])
-    APPIMAGE_KDEPKG([gpgmepp], [gpgme])
-    APPIMAGE_KDEPKG([qgpgme], [gpgmepp qtbase])
+    if test "$IS_VSD3_BUILD" = yes ; then
+        APPIMAGE_KF5PKG([gpgmepp], [gpgme])
+        APPIMAGE_KF5PKG([qgpgme], [gpgmepp qtbase])
+    else
+        APPIMAGE_KDEPKG([gpgmepp], [gpgme])
+        APPIMAGE_KDEPKG([qgpgme], [gpgmepp qtbase])
+    fi
     APPIMAGE_SPKG([paperkey])
 
     # Qt related stuff.

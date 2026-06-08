@@ -70,7 +70,8 @@ $(info -------------------------------------------------)
 if BUILD_VSD3
 appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
-		 freetype qrencode
+		 freetype qrencode \
+		 qtbase qttools qtsvg qttranslations qtx11extras
 else
 appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
@@ -82,7 +83,8 @@ appimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
 
 # KDE packages for the AppImage
 if BUILD_VSD3
-appimage_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
+appimage_kdepkgs = gpgmepp qgpgme \
+		   kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
 		   kmime kmbox kconfigwidgets kxmlgui kguiaddons kitemviews \
 		   kiconthemes kleopatra breeze-icons kitemmodels karchive \
@@ -123,9 +125,12 @@ endef
 
 if BUILD_VSD3
 appimage_pkg_gpgme_configure = \
-    --enable-languages=cpp,qt \
-    --disable-gpg-test \
-    --disable-gpgsm-test
+  --silent \
+  --with-gpg-error-prefix=$(idir) \
+  LDFLAGS=-L$(idir)/lib \
+  --enable-languages="" \
+  --disable-gpg-test \
+  --disable-gpgsm-test
 else
 appimage_pkg_gpgme_configure = \
     --enable-languages= \
@@ -133,8 +138,17 @@ appimage_pkg_gpgme_configure = \
     --disable-gpgsm-test
 endif
 
-if ! BUILD_VSD3
-appimage_pkg_qgpgme_configure = -DBUILD_WITH_QT5=OFF
+appimage_pkg_gpgmepp_configure = \
+  -DENABLE_STATIC=ON \
+  -DPKGCONFIG_HOST=$(host)
+
+if BUILD_VSD3
+appimage_pkg_qgpgme_configure = \
+  -DBUILD_WITH_QT6=OFF \
+  -DBUILD_WITH_QT5=ON
+else
+appimage_pkg_qgpgme_configure = \
+  -DBUILD_WITH_QT5=OFF
 endif
 
 if BUILD_VSD3
