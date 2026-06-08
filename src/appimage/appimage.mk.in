@@ -53,26 +53,26 @@ endef
 define SETVARS
 	set -e; \
 	set -o pipefail; \
-	pkg="$(call GETVAR,appimage_pkg_$(1))";				\
-	pkg_version="$(1)-$(call GETVAR,appimage_pkg_$(1)_version)";	\
-	pkglogdir="$(logdir)/$$$${pkg_version}";				\
-	pkgsdir="$(bdir)/$$$${pkg_version}";				\
-	pkgbdir="$(bdir)/$$$${pkg_version}-build";			\
-	pkgpatdir="$(patdir)/$$$${pkg_version}";				\
-	pkgpatbdir="$(patdir)/$(1)";	          			\
-	pkgidir="$(ipdir)/$$$${pkg_version}";				\
-	pkginstallroot="/tmp/$$$${pkg_version}";			\
-	pkgbladir="/tmp/$$$${pkg_version}/$(idir)";			\
-	pkgcfg="$(call GETVAR,appimage_pkg_$(1)_configure)";		\
-	pkgextracflags="$(call GETVAR,appimage_pkg_$(1)_extracflags)";	\
-	pkgmkargs="$(call GETVAR,appimage_pkg_$(1)_make_args)";          \
-	pkgmkargs_inst="$(call GETVAR,appimage_pkg_$(1)_make_args_inst)";\
-	pkgmkdir="$(call GETVAR,appimage_pkg_$(1)_make_dir)";             \
+	pkg="$(call GETVAR,appimage_pkg_$(1))"; \
+	pkg_version="$(1)-$(call GETVAR,appimage_pkg_$(1)_version)"; \
+	pkglogdir="$(logdir)/$$$${pkg_version}"; \
+	pkgsdir="$(bdir)/$$$${pkg_version}"; \
+	pkgbdir="$(bdir)/$$$${pkg_version}-build"; \
+	pkgpatdir="$(patdir)/$$$${pkg_version}"; \
+	pkgpatbdir="$(patdir)/$(1)"; \
+	pkgidir="$(ipdir)/$$$${pkg_version}"; \
+	pkginstallroot="/tmp/$$$${pkg_version}"; \
+	pkgbladir="/tmp/$$$${pkg_version}/$(idir)"; \
+	pkgcfg="$(call GETVAR,appimage_pkg_$(1)_configure)"; \
+	pkgextracflags="$(call GETVAR,appimage_pkg_$(1)_extracflags)"; \
+	pkgmkargs="$(call GETVAR,appimage_pkg_$(1)_make_args)"; \
+	pkgmkargs_inst="$(call GETVAR,appimage_pkg_$(1)_make_args_inst)"; \
+	pkgmkdir="$(call GETVAR,appimage_pkg_$(1)_make_dir)"; \
 	pkgmkdir_inst="$(call GETVAR,appimage_pkg_$(1)_make_dir)"; \
 	pkgrsyncfilter="$(rsyncfilterdir)/$(1).rsync-filter"; \
 	pkg_conf_subdir="$(call GETVAR,appimage_pkg_$(1)_conf_subdir)"; \
-	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig:$(idir)/lib64/pkgconfig";	\
-	export FREETYPE_DIR="$(idir)"					\
+	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig:$(idir)/lib64/pkgconfig"; \
+	export FREETYPE_DIR="$(idir)"; \
 	export PATH="$(idir)/bin:$${PATH}"
 endef
 
@@ -387,9 +387,6 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 		sed -i 's/find_package(ECM .* NO_MODULE)/find_package(ECM 5.109.0 NO_MODULE)/' CMakeLists.txt; \
 		sed -i 's/set(KF_DEP_VERSION.*)/set(KF_DEP_VERSION "5.109.0")/' CMakeLists.txt; \
 		sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.24.0")/' CMakeLists.txt; \
-		#sed -i 's/set(KPIM_MIME_VERSION.*)/set(KPIM_MIME_VERSION "6.5.0")/' CMakeLists.txt; \
-		#sed -i 's/set(KPIM_MBOX_VERSION.*)/set(KPIM_MBOX_VERSION "6.5.0")/' CMakeLists.txt; \
-		#sed -i 's/set(MIMETREEPARSER_VERSION.*)/set(MIMETREEPARSER_VERSION "6.5.0")/' CMakeLists.txt; \
 	 fi; \
 	 for pfile in "$$$${pkgpatbdir}"/*.patch "$$$${pkgpatdir}"/*.patch ; do  \
 	   (cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}")		\
