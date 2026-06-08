@@ -760,13 +760,13 @@ chk  c98249fb5bb1f6017f5f9bf484327a940b59075bca7c46fa69ebb54098249860
 
 fi
 
-# last changed 2026-01-29
+# last changed 2026-06-08
 # by wk
-# verified: [taken from buildtree]
+# verified: swdb
 if gnupg != gnupg22
 
-file libgcrypt/libgcrypt-1.12.0.tar.bz2
-chk  0311454e678189bad62a7e9402a9dd793025efff6e7449898616e2fc75e0f4f5
+file libgcrypt/libgcrypt-1.12.2.tar.bz2
+chk  7ce33c2492221a0436f96a8500215e9f3e3dcb5fd26a757cd415e7a843babd5e
 
 fi
 
@@ -813,26 +813,26 @@ fi # gnupg22
 #
 # This is the GnuPG used for gpg4win 5.x and vsd 4.x
 #
-# last changed 2026-02-24
+# last changed 2026-06-08
 # by builder
 # verified: [taken from buildtree]
 if gnupg = gnupg26
-name gnupg-2.5.18.tar.bz2
-file gnupg/gnupg-2.5.18.tar.bz2
-chk  0dbd64e0322fe1a4813360d46539d5f8daf4a8fa235cf5fce464e8b0214a7e4f
+name gnupg-2.5.20.tar.bz2
+file gnupg/gnupg-2.5.20.tar.bz2
+chk  6461266e99c308419a379abe6c356d54c214136c4589bd65951091138989ffc6
 
-name gnupg-w32-2.5.18_20260224-bin.exe
-file binary/gnupg-w32-2.5.18_20260224.exe
-chk  6da8b09dbe7a26261d4beea2d6303571a457ce0c68081a6adca032d5b62b9063
+name gnupg-w32-2.5.20_20260513-bin.exe
+file binary/gnupg-w32-2.5.20_20260513.exe
+chk  ca26cd20602581b2ce05e95b16f6249f6fb6c4dcf32304165fc90519328d7981
 
-name gnupg-w32-2.5.18_20260224-src.tar.xz
-file gnupg/gnupg-w32-2.5.18_20260224.tar.xz
-link gnupg-msi-2.5.18_20260224-src.tar.xz
-chk  ecffa87b928be79d4063ee5f8a697e70475945b5a9446b1b1178c70bb1dc3c01
+name gnupg-w32-2.5.20_20260513-src.tar.xz
+file gnupg/gnupg-w32-2.5.20_20260513.tar.xz
+link gnupg-msi-2.5.20_20260513-src.tar.xz
+chk  8fa53e7ad39d665b0c4bb95461ee9ad77d642c6f1e64d571edbf992cf9c9e3aa
 
-name gnupg-msi-2.5.18_20260224-bin.wixlib
-file binary/gnupg-w32-2.5.18_20260224.wixlib
-chk  a288ae6064f922205e2d0df2c46dade455909bededc23336fc10486e56be8b07
+name gnupg-msi-2.5.20_20260513-bin.wixlib
+file binary/gnupg-w32-2.5.20_20260513.wixlib
+chk  6f314b30d006142d62fad8e462368e3caba9bbfcda859b140d875237e6d15050
 
 fi # gnupg26
 
