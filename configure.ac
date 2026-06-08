@@ -605,61 +605,97 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([qtwayland], [qtbase])
 
     # KDE Frameworks Tier 1
-    APPIMAGE_KDEPKG([extra-cmake-modules], [qttools])
-    APPIMAGE_KDEPKG([breeze-icons], [extra-cmake-modules qtbase])
-    APPIMAGE_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([kauth], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([kcodecs], [qtbase qttools extra-cmake-modules])
     if test "$IS_VSD3_BUILD" = yes ; then
-        APPIMAGE_KDEPKG([kwindowsystem], [qtbase qtx11extras extra-cmake-modules])
+        APPIMAGE_KF5PKG([extra-cmake-modules], [qttools])
+        APPIMAGE_KF5PKG([breeze-icons], [extra-cmake-modules qtbase])
+        APPIMAGE_KF5PKG([karchive], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KF5PKG([kauth], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KF5PKG([kcodecs], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KF5PKG([kwindowsystem], [qtbase qtx11extras extra-cmake-modules])
+        APPIMAGE_KF5PKG([kconfig], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KF5PKG([kcoreaddons], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KF5PKG([kdbusaddons], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KF5PKG([kguiaddons], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KF5PKG([ki18n], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KF5PKG([kitemmodels], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KF5PKG([kitemviews], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KF5PKG([solid], [qtbase extra-cmake-modules])
+        APPIMAGE_KF5PKG([sonnet], [qtbase extra-cmake-modules])
+        APPIMAGE_KF5PKG([threadweaver], [qtbase extra-cmake-modules])
     else
+        APPIMAGE_KDEPKG([extra-cmake-modules], [qttools])
+        APPIMAGE_KDEPKG([breeze-icons], [extra-cmake-modules qtbase])
+        APPIMAGE_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KDEPKG([kauth], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KDEPKG([kcodecs], [qtbase qttools extra-cmake-modules])
         APPIMAGE_KDEPKG([kcolorscheme], [kconfig kguiaddons ki18n])
         APPIMAGE_KDEPKG([kwindowsystem], [qtbase qtwayland extra-cmake-modules wayland-protocols plasma-wayland-protocols])
+        APPIMAGE_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KDEPKG([kcoreaddons], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KDEPKG([kdbusaddons], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KDEPKG([kguiaddons], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KDEPKG([ki18n], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KDEPKG([kitemmodels], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KDEPKG([kitemviews], [qtbase qttools extra-cmake-modules])
+        APPIMAGE_KDEPKG([solid], [qtbase extra-cmake-modules])
+        APPIMAGE_KDEPKG([sonnet], [qtbase extra-cmake-modules])
+        APPIMAGE_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
     fi
-    APPIMAGE_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([kcoreaddons], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([kdbusaddons], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([kguiaddons], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([ki18n], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([kitemmodels], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([kitemviews], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([solid], [qtbase extra-cmake-modules])
-    APPIMAGE_KDEPKG([sonnet], [qtbase extra-cmake-modules])
-    APPIMAGE_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
 
     # KDE Frameworks Tier 2
     if test "$IS_VSD3_BUILD" = yes ; then
-        APPIMAGE_KDEPKG([kactivities], [kwindowsystem])
+        APPIMAGE_KF5PKG([kactivities], [kwindowsystem])
+        APPIMAGE_KF5PKG([kcompletion], [kwidgetsaddons])
+        APPIMAGE_KF5PKG([kcrash], [kwindowsystem kcoreaddons])
+        APPIMAGE_KF5PKG([kjobwidgets], [kwidgetsaddons kcoreaddons qtbase extra-cmake-modules])
+        APPIMAGE_KF5PKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
+        APPIMAGE_KF5PKG([kwidgetsaddons], [kconfig qttools qtbase])
     else
         APPIMAGE_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
+        APPIMAGE_KDEPKG([kcompletion], [kwidgetsaddons])
+        APPIMAGE_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
+        APPIMAGE_KDEPKG([kjobwidgets], [kwidgetsaddons kcoreaddons qtbase extra-cmake-modules])
+        APPIMAGE_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
+        APPIMAGE_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
     fi
-    APPIMAGE_KDEPKG([kcompletion], [kwidgetsaddons])
-    APPIMAGE_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
-    APPIMAGE_KDEPKG([kjobwidgets], [kwidgetsaddons kcoreaddons qtbase extra-cmake-modules])
-    APPIMAGE_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
-    APPIMAGE_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
 
     # KDE Frameworks Tier 3
-    APPIMAGE_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
-    APPIMAGE_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
-    APPIMAGE_KDEPKG([ktextwidgets], [sonnet kcompletion kconfig kconfigwidgets ki18n kwidgetsaddons])
     if test "$IS_VSD3_BUILD" = yes ; then
-        APPIMAGE_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews ktextwidgets])
+        APPIMAGE_KF5PKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
+        APPIMAGE_KF5PKG([kiconthemes], [qtsvg kconfigwidgets karchive])
+        APPIMAGE_KF5PKG([ktextwidgets], [sonnet kcompletion kconfig kconfigwidgets ki18n kwidgetsaddons])
+        APPIMAGE_KF5PKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews ktextwidgets])
+        APPIMAGE_KF5PKG([kbookmarks], [kconfig kxmlgui kcoreaddons kconfigwidgets kwidgetsaddons kcodecs])
+        APPIMAGE_KF5PKG([kservice], [kconfig kcoreaddons ki18n])
+        APPIMAGE_KF5PKG([kio], [kcrash kjobwidgets solid kservice kbookmarks kwidgetsaddons kxmlgui kwindowsystem karchive kconfig kcoreaddons ki18n kauth])
+        APPIMAGE_KF5PKG([kparts], [kio kservice kxmlgui kconfigwidgets kwidgetsaddons ktextwidgets])
     else
+        APPIMAGE_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
+        APPIMAGE_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
+        APPIMAGE_KDEPKG([ktextwidgets], [sonnet kcompletion kconfig kconfigwidgets ki18n kwidgetsaddons])
         APPIMAGE_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews ktextwidgets breeze])
+        APPIMAGE_KDEPKG([kbookmarks], [kconfig kxmlgui kcoreaddons kconfigwidgets kwidgetsaddons kcodecs])
+        APPIMAGE_KDEPKG([kservice], [kconfig kcoreaddons ki18n])
+        APPIMAGE_KDEPKG([kio], [kcrash kjobwidgets solid kservice kbookmarks kwidgetsaddons kxmlgui kwindowsystem karchive kconfig kcoreaddons ki18n kauth])
+        APPIMAGE_KDEPKG([kparts], [kio kservice kxmlgui kconfigwidgets kwidgetsaddons ktextwidgets])
     fi
-    APPIMAGE_KDEPKG([kbookmarks], [kconfig kxmlgui kcoreaddons kconfigwidgets kwidgetsaddons kcodecs])
-    APPIMAGE_KDEPKG([kservice], [kconfig kcoreaddons ki18n])
-    APPIMAGE_KDEPKG([kio], [kcrash kjobwidgets solid kservice kbookmarks kwidgetsaddons kxmlgui kwindowsystem karchive kconfig kcoreaddons ki18n kauth])
-    APPIMAGE_KDEPKG([kparts], [kio kservice kxmlgui kconfigwidgets kwidgetsaddons ktextwidgets])
 
     # KDE PIM
-    APPIMAGE_KDEPKG([libical])
-    APPIMAGE_KDEPKG([kcalendarcore], [qtbase libical extra-cmake-modules])
-    APPIMAGE_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmime kcodecs kcalendarcore kmbox])
-    APPIMAGE_KDEPKG([kmime], [kcodecs ki18n])
-    APPIMAGE_KDEPKG([kmbox], [kmime])
-    APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion qgpgme])
+    if test "$IS_VSD3_BUILD" = yes ; then
+        APPIMAGE_KF5PKG([libical])
+        APPIMAGE_KF5PKG([kcalendarcore], [qtbase libical extra-cmake-modules])
+        APPIMAGE_KF5PKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmime kcodecs kcalendarcore kmbox])
+        APPIMAGE_KF5PKG([kmime], [kcodecs ki18n])
+        APPIMAGE_KF5PKG([kmbox], [kmime])
+        APPIMAGE_KF5PKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion qgpgme])
+    else
+        APPIMAGE_KDEPKG([libical])
+        APPIMAGE_KDEPKG([kcalendarcore], [qtbase libical extra-cmake-modules])
+        APPIMAGE_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmime kcodecs kcalendarcore kmbox])
+        APPIMAGE_KDEPKG([kmime], [kcodecs ki18n])
+        APPIMAGE_KDEPKG([kmbox], [kmime])
+        APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion qgpgme])
+    fi
 
     if test "$IS_VSD3_BUILD" = yes ; then
         APPIMAGE_KDEPKG([kleopatra], [mimetreeparser gnupg qgpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons])
@@ -669,8 +705,8 @@ if test "$build_appimage" = yes ; then
 
     # Okular/Poppler
     if test "$IS_VSD3_BUILD" = yes ; then
-        APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype])
-        APPIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg kactivities])
+        APPIMAGE_KF5PKG([poppler], [gpgmepp kio qtbase freetype])
+        APPIMAGE_KF5PKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg kactivities])
     else
         APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff])
         APPIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
@@ -679,13 +715,13 @@ if test "$build_appimage" = yes ; then
     # Gpgpass
     if test "$IS_VSD3_BUILD" = yes ; then
         APPIMAGE_SPKG([qrencode], [libpng libiconv])
-        APPIMAGE_KDEPKG([prison], [qtbase extra-cmake-modules qrencode])
-        APPIMAGE_KDEPKG([gpgpass], [prison kconfigwidgets kiconthemes ki18n qgpgme])
+        APPIMAGE_KF5PKG([prison], [qtbase extra-cmake-modules qrencode])
+        APPIMAGE_KF5PKG([gpgpass], [prison kconfigwidgets kiconthemes ki18n qgpgme])
     else
         APPIMAGE_KDEPKG([prison], [qtbase extra-cmake-modules libqrencode])
         APPIMAGE_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n qgpgme])
-        APPIMAGE_FINALIZE
     fi
+    APPIMAGE_FINALIZE
 fi
 
 # Throw an error if required tools are missing

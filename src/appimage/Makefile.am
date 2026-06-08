@@ -67,15 +67,31 @@ $(info -------------------------------------------------)
 
 
 # Source packages for the AppImage (see also ../src/Makefile.am)
+if BUILD_VSD3
+appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
+		 pinentry gpgme paperkey ntbtls \
+		 freetype qrencode
+else
 appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
 		 freetype xcb-util-cursor
-
+endif
 
 appimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
 
 
 # KDE packages for the AppImage
+if BUILD_VSD3
+appimage_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
+		   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
+		   kmime kmbox kconfigwidgets kxmlgui kguiaddons kitemviews \
+		   kiconthemes kleopatra breeze-icons kitemmodels karchive \
+		   kcrash kdbusaddons kio kbookmarks kservice solid \
+		   kjobwidgets libical kcalendarcore mimetreeparser \
+		   sonnet ktextwidgets kauth \
+		   threadweaver kparts poppler okular kactivities \
+		   prison gpgpass
+else
 appimage_kdepkgs = gpgmepp qgpgme \
 		   kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
@@ -89,6 +105,7 @@ appimage_kdepkgs = gpgmepp qgpgme \
 		   prison gpgpass \
 		   qtbase qttools qtsvg qttranslations qtwayland \
 		   plasma-wayland-protocols breeze tiff
+endif
 
 appimage_bpkgs = wayland-protocols
 
@@ -104,13 +121,52 @@ define appimage_pkg_wayland_protocols_post_install
 )
 endef
 
+if BUILD_VSD3
+appimage_pkg_gpgme_configure = \
+    --enable-languages=cpp,qt \
+    --disable-gpg-test \
+    --disable-gpgsm-test
+else
 appimage_pkg_gpgme_configure = \
     --enable-languages= \
     --disable-gpg-test \
     --disable-gpgsm-test
+endif
 
+if ! BUILD_VSD3
 appimage_pkg_qgpgme_configure = -DBUILD_WITH_QT5=OFF
+endif
 
+if BUILD_VSD3
+appimage_pkg_qtbase_configure = \
+        ../$$$${pkg_version}/configure -opensource \
+        -confirm-license \
+        -platform linux-g++ \
+        -release \
+        -shared \
+        -prefix $$$${pkgidir} \
+        -I '$(idir)/include' \
+        -L '$(idir)/lib' \
+        -opengl desktop \
+        -no-glib \
+        -accessibility \
+        -nomake examples \
+        -nomake tests \
+        -no-sql-mysql \
+        -no-sql-sqlite \
+        -no-sql-odbc \
+        -no-sql-psql \
+        -no-sql-tds \
+        -qt-harfbuzz \
+        -v \
+        -xcb \
+        OPENSSL_INCDIR=/usr/include/openssl11
+
+define appimage_pkg_qtbase_post_install
+	(cd $$$${pkgbdir}; \
+	 make install;)
+endef
+else
 appimage_pkg_qtbase_configure = \
         -DQT_BUILD_EXAMPLES=OFF \
         -DQT_BUILD_TESTS=OFF \
@@ -137,7 +193,68 @@ appimage_pkg_qtbase_configure = \
         -DFEATURE_wayland_server=OFF \
         -DCMAKE_MESSAGE_LOG_LEVEL=STATUS \
         -DCMAKE_VERBOSE_MAKEFILE=ON
+endif
 
+if BUILD_VSD3
+appimage_pkg_qttools_configure = \
+	"$(idir)/bin/qmake" ../$$$${pkg_version}
+
+define appimage_pkg_qttools_post_install
+	 (cd $$$${pkgbdir}; \
+	  mkdir -p $$$${pkgidir}; \
+	  cp -r bin lib include $$$${pkgidir})
+endef
+
+appimage_pkg_qtx11extras_configure = \
+	"$(idir)/bin/qmake" ../$$$${pkg_version}
+
+define appimage_pkg_qtx11extras_post_install
+	 (cd $$$${pkgbdir}; \
+	  mkdir -p $$$${pkginstallroot}; \
+	  make install INSTALL_ROOT=$$$${pkginstallroot}; \
+	  mkdir -p $$$${pkgidir}; \
+	  mv $$$${pkgbladir}/* $$$${pkgidir}; \
+	  rm -rf $$$${pkginstallroot};)
+endef
+
+appimage_pkg_qtwayland_configure = \
+	"$(idir)/bin/qmake" ../$$$${pkg_version}
+
+define appimage_pkg_qtwayland_post_install
+	 (cd $$$${pkgbdir}; \
+	  mkdir -p $$$${pkginstallroot}; \
+	  make install INSTALL_ROOT=$$$${pkginstallroot}; \
+	  mkdir -p $$$${pkgidir}; \
+	  mv $$$${pkgbladir}/* $$$${pkgidir}; \
+	  rm -rf $$$${pkginstallroot};)
+endef
+
+appimage_pkg_qtsvg_configure = \
+	"$(idir)/bin/qmake" ../$$$${pkg_version}
+
+# XXX Adding the qtconf after qtsvg is a weird hack
+# because somhow (yay qmake) zlib is not linked if
+# the qt conf exists before that. The qt conf is
+# needed for qttranslations to find the correct path
+# of the translation tools.
+define appimage_pkg_qtsvg_post_install
+ (cd $$$${pkgbdir}; \
+  mkdir -p $$$${pkgidir}; \
+  cp -r lib include plugins $$$${pkgidir}; \
+  mkdir -p $$$${pkgidir}/bin; \
+  echo "[Paths]" > $$$${pkgidir}/bin/qt.conf; \
+  echo "Prefix = .." >> $$$${pkgidir}/bin/qt.conf)
+endef
+
+appimage_pkg_qttranslations_configure = \
+	"$(idir)/bin/qmake" ../$$$${pkg_version}
+
+define appimage_pkg_qttranslations_post_install
+ ( rm -rf $$$${pkgidir}/translations; \
+   mkdir -p $$$${pkgidir}; \
+   cp -r $$$${pkgbdir}/translations $$$${pkgidir}/translations;)
+endef
+else
 appimage_pkg_qttools_configure = \
 	-DFEATURE_assistant=OFF \
 	-DFEATURE_qdoc=OFF \
@@ -150,15 +267,25 @@ appimage_pkg_qttools_configure = \
 	-DFEATURE_qtattributionsscanner=OFF \
 	-DFEATURE_qtdiag=OFF \
 	-DFEATURE_qtplugininfo=OFF
+endif
 
 # do not create the huge icon resource files
 appimage_pkg_breeze_icons_configure = -DBINARY_ICONS_RESOURCE=OFF
 
+if ! BUILD_VSD3
 appimage_pkg_breeze_configure = \
     -DBUILD_QT6=ON \
     -DBUILD_QT5=OFF \
     -DWITH_DECORATIONS=OFF \
     -DCMAKE_DISABLE_FIND_PACKAGE_KF6KCMUtils=ON
+endif
+
+if BUILD_VSD3
+appimage_pkg_kactivities_configure = \
+    -DBOOST_INCLUDEDIR=/usr/include/boost169 \
+    -DBOOST_LIBRARYDIR=/usr/lib64/boost169 \
+    -DKACTIVITIES_LIBRARY_ONLY=ON
+endif
 
 appimage_pkg_kcompletion_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
@@ -174,6 +301,14 @@ appimage_pkg_sonnet_configure = -DSONNET_USE_QML=OFF
 
 appimage_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
 
+if BUILD_VSD3
+appimage_pkg_kiconthemes_configure = \
+    -DBUILD_DESIGNERPLUGIN=OFF
+else
+appimage_pkg_kiconthemes_configure = \
+    -DKICONTHEMES_USE_QTQUICK=OFF
+endif
+
 appimage_pkg_kitemviews_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
 
@@ -181,16 +316,40 @@ appimage_pkg_kwidgetsaddons_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
 
 # FIXME: Uses spaces in distribution text
+if BUILD_VSD3
+appimage_pkg_kxmlgui_configure = \
+    -DBUILD_DESIGNERPLUGIN=OFF \
+    -DFORCE_DISABLE_KGLOBALACCEL=ON \
+    -DXMLGUI_DISTRIBUTION_TEXT=g10_Code_GmbH_AppImage
+else
 appimage_pkg_kxmlgui_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF \
     -DFORCE_DISABLE_KGLOBALACCEL=ON
+endif
 
+if BUILD_VSD3
+appimage_pkg_libkleo_configure = \
+    -DBOOST_INCLUDEDIR=/usr/include/boost169 \
+    -DBOOST_LIBRARYDIR=/usr/lib64/boost169
+
+appimage_pkg_kleopatra_configure = \
+    -DBOOST_INCLUDEDIR=/usr/include/boost169 \
+    -DBOOST_LIBRARYDIR=/usr/lib64/boost169 \
+    -DDISABLE_KWATCHGNUPG=ON \
+    -DRELEASE_SERVICE_VERSION=AppImage-$(VERSION)
+else
 appimage_pkg_kleopatra_configure = \
     -DKLEOPATRA_LIST_AS_COMPONENT=ON \
     -DKLEOPATRA_VERSION_STRING=$(KLEOPATRA_VERSION_STRING) \
     -DKLEOPATRA_ICON_DIR=$(KLEOPATRA_ICON_DIR) \
     -DDISABLE_KWATCHGNUPG=ON
+endif
 
+if BUILD_VSD3
+appimage_pkg_poppler_configure = \
+    -DENABLE_BOOST=OFF \
+    -DENABLE_NSS=OFF
+else
 appimage_pkg_poppler_configure = \
     -DENABLE_BOOST=OFF \
     -DENABLE_NSS3=OFF \
@@ -199,20 +358,29 @@ appimage_pkg_poppler_configure = \
     -DENABLE_LCMS=OFF \
     -DENABLE_LIBCURL=OFF \
     -DFONT_CONFIGURATION=generic
+endif
 
+if BUILD_VSD3
+appimage_pkg_okular_configure = \
+    -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Wallet\;KF5DocTools\;KF5JS\;KF5Purpose\;Qt5TextToSpeech\;Phonon4Qt5\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;LibZip\;DjVuLibre\;EPub\;QMobipocket\;Discount\;KF5Pty\;Qt5Qml"
+else
 appimage_pkg_okular_configure = \
     -DFORCE_NOT_REQUIRED_DEPENDENCIES="PlasmaActivities\;KF6Wallet\;KF6Purpose\;Qt6TextToSpeech\;LibZip\;KF6DocTools\;Phonon4Qt6\;LibSpectre\;KExiv2Qt6\;CHM\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt6Qml\;Qt6DBus\;KF6Pty"
+endif
 
+if BUILD_VSD3
+appimage_pkg_libical_configure = \
+    -DICAL_GLIB=false \
+    -DENABLE_GTK_DOC=false
+else
 appimage_pkg_libical_configure = \
     -DICAL_BUILD_DOCS=OFF \
     -DICAL_GLIB=OFF
+endif
 
 appimage_pkg_prison_configure = \
     -DWITH_QUICK=OFF \
     -DWITH_MULTIMEDIA=OFF
-
-appimage_pkg_kiconthemes_configure = \
-    -DKICONTHEMES_USE_QTQUICK=OFF
 
 appimage_pkg_kcoreaddons_configure = -DKCOREADDONS_USE_QML=OFF
 

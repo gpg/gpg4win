@@ -365,6 +365,113 @@ $(if $(filter-out no, $(call GETVAR,appimage_pkg_$(1))),
   $(call KDEPKG_template_,$1))
 endef
 
+# Template for KF5 packages.
+define KF5PKG_template_
+
+pkg_files += $(call GETVAR,appimage_pkg_$(1))
+
+$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
+	(cd $(bdir);					\
+	 $(call SETVARS,$(1));				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch $(stampdir)/stamp-$(1)-00-unpack
+
+$(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
+	(set -x;						\
+	 shopt -s nullglob;				\
+	 $(call SETVARS,$(1));				\
+	 cd "$$$${pkgsdir}";				\
+	 if [ -e "CMakeLists.txt" ]; then \
+		sed -i 's/cmake_minimum_required(VERSION 3.27)/cmake_minimum_required(VERSION 3.16)/' CMakeLists.txt; \
+		sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "5.109.0")/' CMakeLists.txt; \
+		sed -i 's/find_package(ECM .* NO_MODULE)/find_package(ECM 5.109.0 NO_MODULE)/' CMakeLists.txt; \
+		sed -i 's/set(KF_DEP_VERSION.*)/set(KF_DEP_VERSION "5.109.0")/' CMakeLists.txt; \
+		sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.24.0")/' CMakeLists.txt; \
+		#sed -i 's/set(KPIM_MIME_VERSION.*)/set(KPIM_MIME_VERSION "6.5.0")/' CMakeLists.txt; \
+		#sed -i 's/set(KPIM_MBOX_VERSION.*)/set(KPIM_MBOX_VERSION "6.5.0")/' CMakeLists.txt; \
+		#sed -i 's/set(MIMETREEPARSER_VERSION.*)/set(MIMETREEPARSER_VERSION "6.5.0")/' CMakeLists.txt; \
+	 fi; \
+	 for pfile in "$$$${pkgpatbdir}"/*.patch "$$$${pkgpatdir}"/*.patch ; do  \
+	   (cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}")		\
+	 done)
+	touch $(stampdir)/stamp-$(1)-01-patch
+
+$(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
+	(set -x;						\
+	 $(call SETVARS,$(1));				\
+	 mkdir -p "$$$${pkglogdir}"; \
+	 mkdir -p "$$$${pkgbdir}";				\
+	 cd "$$$${pkgbdir}";				\
+	 $(CMAKE) 		\
+			-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
+			-DCMAKE_INSTALL_LIBDIR=lib \
+			-DKDE_INSTALL_LIBDIR=lib \
+			-DCMAKE_PREFIX_PATH="$(idir)" \
+			-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
+			-DBUILD_TESTING=False \
+			-DBUILD_PYTHON_BINDINGS=OFF \
+			$$$${pkgcfg} $$$${pkgextracflags} \
+			"../$$$${pkg_version}$$$${pkg_conf_subdir}" | \
+		tee "$$$${pkglogdir}/configure.log")
+	touch $(stampdir)/stamp-$(1)-02-configure
+
+$(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
+	  export LD_LIBRARY_PATH=$(idir)/lib; \
+	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	touch $(stampdir)/stamp-$(1)-03-make
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+$(stampdir)/stamp-$(1)-04-install: $(stampdir)/stamp-$(1)-03-make
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  cd "$$$${pkgmkdir_inst}";			\
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(call STRIP_macro,"$$$${pkgidir}");		\
+	  $(call appimage_pkg_$(call FROB_macro,$(1))_post_install))
+	touch $(stampdir)/stamp-$(1)-04-install
+
+$(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
+	($(call SETVARS,$(1));				\
+	 set -x;					\
+	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/"; \
+	 for pc in "$(idir)"/lib/pkgconfig/*.pc; do \
+	   sed -i "s;$$$${pkgidir};$(idir);" "$$$${pc}"; \
+	 done )
+	touch $(stampdir)/stamp-$(1)-05-rsync
+
+$(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
+	($(call SETVARS,$(1));				\
+	 set -x;					\
+	 if test -f "$$$${pkgrsyncfilter}"; then \
+	   cp "$$$${pkgrsyncfilter}" "$$$${pkgidir}/.rsync-filter"; \
+	   $(RSYNC) -av -FF --omit-dir-times --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(appdir)/usr/"; \
+	 fi )
+	touch $(stampdir)/stamp-$(1)-06-copy-to-appdir
+
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-06-copy-to-appdir
+	touch $(stampdir)/stamp-final-$(1)
+
+$(1): $(stampdir)/stamp-final-$(1)
+
+.PHONY : clean-$(1)
+clean-$(1):
+	($(call SETVARS,$(1));				\
+	 (cd $(ipdir) &&				\
+	  (rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+
+endef
+
+define KF5PKG_template
+$(if $(filter-out no, $(call GETVAR,appimage_pkg_$(1))),
+  $(call KF5PKG_template_,$1))
+endef
+
 # Insert the template for each source package.
 $(foreach spkg, $(appimage_spkgs), $(eval $(call SPKG_template,$(spkg))))
 
@@ -376,6 +483,9 @@ $(foreach qtpkg, $(appimage_qtpkgs), $(eval $(call QTPKG_template,$(qtpkg))))
 
 # Insert the template for KDE packages.
 $(foreach kdepkg, $(appimage_kdepkgs), $(eval $(call KDEPKG_template,$(kdepkg))))
+
+# Insert the template for KF5 packages.
+$(foreach kdepkg, $(appimage_kdepkgs), $(eval $(call KF5PKG_template,$(kdepkg))))
 
 $(stampdir)/stamp-final: $(stampdir)/stamp-directories
 $(stampdir)/stamp-final: $(addprefix $(stampdir)/stamp-final-,$(appimage_build_list))
