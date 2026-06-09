@@ -111,6 +111,7 @@ appimage_kdepkgs = gpgmepp qgpgme \
 		   plasma-wayland-protocols breeze tiff
 endif
 
+if ! BUILD_VSD3
 appimage_bpkgs = wayland-protocols
 
 define appimage_pkg_wayland_protocols_post_install
@@ -124,6 +125,7 @@ define appimage_pkg_wayland_protocols_post_install
 	cd $$$${pkgidir}; \
 )
 endef
+endif
 
 if BUILD_VSD3
 appimage_pkg_gpgme_configure = \
@@ -177,7 +179,7 @@ appimage_pkg_qtbase_configure = \
         -qt-harfbuzz \
         -v \
         -xcb \
-        OPENSSL_INCDIR=/usr/include/openssl11
+        OPENSSL_INCDIR=/usr/include/openssl
 
 appimage_pkg_qtbase_make_args = \
     QMAKE='$$$${pkgbdir}/bin/qmake'
@@ -302,8 +304,8 @@ endif
 
 if BUILD_VSD3
 appimage_pkg_kactivities_configure = \
-    -DBOOST_INCLUDEDIR=/usr/include/boost169 \
-    -DBOOST_LIBRARYDIR=/usr/lib64/boost169 \
+    -DBOOST_INCLUDEDIR=/usr/include/boost \
+    -DBOOST_LIBRARYDIR=/usr/lib64/boost \
     -DKACTIVITIES_LIBRARY_ONLY=ON
 endif
 
@@ -349,12 +351,12 @@ endif
 
 if BUILD_VSD3
 appimage_pkg_libkleo_configure = \
-    -DBOOST_INCLUDEDIR=/usr/include/boost169 \
-    -DBOOST_LIBRARYDIR=/usr/lib64/boost169
+    -DBOOST_INCLUDEDIR=/usr/include/boost \
+    -DBOOST_LIBRARYDIR=/usr/lib64/boost
 
 appimage_pkg_kleopatra_configure = \
-    -DBOOST_INCLUDEDIR=/usr/include/boost169 \
-    -DBOOST_LIBRARYDIR=/usr/lib64/boost169 \
+    -DBOOST_INCLUDEDIR=/usr/include/boost \
+    -DBOOST_LIBRARYDIR=/usr/lib64/boost \
     -DDISABLE_KWATCHGNUPG=ON \
     -DRELEASE_SERVICE_VERSION=AppImage-$(VERSION)
 else
