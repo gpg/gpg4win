@@ -153,7 +153,7 @@ endif
 
 if BUILD_VSD3
 appimage_pkg_qtbase_configure = \
-        ../$$$${pkg_version}/configure -opensource \
+        -opensource \
         -confirm-license \
         -platform linux-g++ \
         -release \
@@ -175,6 +175,9 @@ appimage_pkg_qtbase_configure = \
         -v \
         -xcb \
         OPENSSL_INCDIR=/usr/include/openssl11
+
+appimage_pkg_qtbase_make_args = \
+    QMAKE='$$$${pkgbdir}/bin/qmake'
 
 define appimage_pkg_qtbase_post_install
 	(cd $$$${pkgbdir}; \

@@ -138,7 +138,8 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 for pfile in "$$$${pkgpatbdir}"/*.patch "$$$${pkgpatdir}"/*.patch ; do  \
-	   (cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}")		\
+		 echo "applying $$$${pkgsdir}/$$$${pfile}"; \
+		 (cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}")		\
 	 done)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
