@@ -70,8 +70,7 @@ $(info -------------------------------------------------)
 if BUILD_VSD3
 appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
-		 freetype qrencode \
-		 qtbase qttools qtsvg qttranslations qtx11extras
+		 freetype qrencode
 else
 appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
@@ -80,6 +79,9 @@ endif
 
 appimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
 
+
+# Qt packages for the AppImage
+appimage_qtpkgs = qtbase qttools qtx11extras qtwayland qtsvg qttranslations
 
 # KDE packages for the AppImage
 if BUILD_VSD3
@@ -153,6 +155,7 @@ endif
 
 if BUILD_VSD3
 appimage_pkg_qtbase_configure = \
+         ../$$$${pkg_version}/configure \
         -opensource \
         -confirm-license \
         -platform linux-g++ \

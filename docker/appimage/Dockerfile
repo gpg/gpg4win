@@ -94,6 +94,7 @@ RUN dnf install -y \
         vulkan-headers \
         wayland-devel \
         wget \
+        which \
         xcb-util-devel \
         xcb-util-image \
         xcb-util-image-devel \
