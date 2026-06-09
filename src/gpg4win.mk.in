@@ -1229,9 +1229,11 @@ $(msidir)/$(1)/announcement.txt: $(vsddir)/custom.mk $(vsddir)/announcement.de.i
 		sed 's@GNUPG_VSD_CUSTOMER_LINK@https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi@' | \
 		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.xz@' > $(msidir)/$(1)/announcement.txt
 
+# NB the AUTHENTICODE_sign call is run from the install directroy,
+# thus we need to prefix with ../src/ - see build.sh.
 signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 	mkdir -p signed_installers; \
-	$(call AUTHENTICODE_sign,"installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi","signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi")
+	$(call AUTHENTICODE_sign,"../src/installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi","../src/signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi")
 
 $(stampdir)/stamp-$(1)-upload: signed_installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi \
 	$(stampdir)/stamp-dist-self
