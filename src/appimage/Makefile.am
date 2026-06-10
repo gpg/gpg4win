@@ -94,7 +94,7 @@ appimage_kdepkgs = gpgmepp qgpgme \
 		   kjobwidgets libical kcalendarcore mimetreeparser \
 		   sonnet ktextwidgets kauth \
 		   threadweaver kparts poppler okular kactivities \
-		   prison gpgpass
+		   prison gpgpass tiff
 else
 appimage_kdepkgs = gpgmepp qgpgme \
 		   kconfig kwidgetsaddons ki18n extra-cmake-modules \
@@ -369,11 +369,15 @@ endif
 
 if BUILD_VSD3
 appimage_pkg_poppler_configure = \
-    -DENABLE_BOOST=OFF \
-    -DENABLE_NSS=OFF
+    -DENABLE_NSS3=OFF \
+    -DENABLE_GOBJECT_INTROSPECTION=OFF \
+    -DENABLE_QT5=ON \
+    -DENABLE_QT6=OFF \
+    -DENABLE_LCMS=OFF \
+    -DENABLE_LIBCURL=OFF \
+    -DFONT_CONFIGURATION=generic
 else
 appimage_pkg_poppler_configure = \
-    -DENABLE_BOOST=OFF \
     -DENABLE_NSS3=OFF \
     -DENABLE_GOBJECT_INTROSPECTION=OFF \
     -DENABLE_QT5=OFF \

@@ -1,0 +1,11 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+--- a/CMakeLists.txt    2026-06-09 15:56:39.380880210 +0200
++++ b/CMakeLists.txt    2026-06-09 16:06:20.365303350 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.28.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.26.0 FATAL_ERROR)
+
+ project(poppler)

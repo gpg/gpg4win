@@ -77,7 +77,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Add-support-to-customize-about-data.patch \
-             patches/okular/lower-cmake-requirement.patch \
              patches/qtbase/0001-Add-StateLocation-GenericStateLocation-to-StandardLo.patch \
              patches/qtbase/0001-Don-t-report-active-windows-as-having-focus-unless-t.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
@@ -97,8 +96,9 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/kwidgetsaddons/fix-height-of-text-after-update.patch \
              patches-appimage/okular/0001-Add-support-to-customize-about-data.patch \
              patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
-             patches-appimage/okular/lower-cmake-requirement.patch \
-             patches-appimage/poppler/fix-gpg-error-include.patch \
+             patches-appimage/poppler/downgrade-min-boost.patch \
+             patches-appimage/poppler/downgrade-min-cmake.patch \
+             patches-appimage/poppler/downgrade-min-fontconfig.patch \
              patches-appimage/qtbase/0001-Add-StateLocation-GenericStateLocation-to-StandardLo.patch \
              patches-appimage/qtbase/0001-Don-t-report-active-windows-as-having-focus-unless-t.patch \
              patches-appimage/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \

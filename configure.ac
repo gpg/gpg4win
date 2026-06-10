@@ -563,9 +563,12 @@ if test "$build_appimage" = yes ; then
     # poppler requires freetype >= 2.11
     APPIMAGE_SPKG([freetype])
     APPIMAGE_SPKG([sqlite])
-    if test "$IS_VSD3_BUILD" = no ; then
+    if test "$IS_VSD3_BUILD" = yes ; then
+        # poppler requires tiff >= 4.5
+        APPIMAGE_KF5PKG([tiff])
+    else
         APPIMAGE_KDEPKG([libqrencode])
-        # poppler requires tiff >= 4.3
+        # poppler requires tiff >= 4.5
         APPIMAGE_KDEPKG([tiff])
         APPIMAGE_SPKG([xcb-util-cursor])
     fi
@@ -710,7 +713,7 @@ if test "$build_appimage" = yes ; then
 
     # Okular/Poppler
     if test "$IS_VSD3_BUILD" = yes ; then
-        APPIMAGE_KF5PKG([poppler], [gpgmepp kio qtbase freetype])
+        APPIMAGE_KF5PKG([poppler], [gpgmepp kio qtbase freetype tiff])
         APPIMAGE_KF5PKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg kactivities])
     else
         APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff])

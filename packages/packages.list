@@ -602,12 +602,6 @@ file kleopatra/kleopatra-202606021547.tar.xz
 chk f589b8fff91c322583abe6dbc8db9cb0b5f460f315b8e9cb6032bf111cacab0f
 
 # Okular and dependencies
-# poppler
-# last changed: 2023-09-08
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file poppler/poppler-202309080910.tar.xz
-chk 2ca1273a6ef9ce00e9bc886b0864ef02b88f4df2525922e1ac322ce7360e6621
 
 # okular
 # last changed: 2023-11-22
@@ -615,6 +609,15 @@ chk 2ca1273a6ef9ce00e9bc886b0864ef02b88f4df2525922e1ac322ce7360e6621
 # verified: Tarball created by aheinecke.
 file okular/okular-202311221749.tar.xz
 chk 205df68c183900a1b21d1381d9a3d7554a642fa6dd3ef7e9bc5bbcfcd0aa8f1b
+
+server https://poppler.freedesktop.org
+
+# poppler
+# last changed: 2026-06-05
+# by: m.
+# verified: SIG CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
+file poppler-26.06.0.tar.xz
+chk 4cb4e5a3dc8cb5eec751c8a23c8ba19f61f96dedc0cd07d2aee6b0c8e2cf6ba4
 
 
 ## the list of packages for use with gpg4win-3.x

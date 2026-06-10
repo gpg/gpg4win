@@ -782,9 +782,8 @@ gpg4win_pkg_poppler_configure = \
     -DENABLE_NSS3=OFF \
     -DENABLE_GLIB=OFF \
     -DENABLE_GOBJECT_INTROSPECTION=OFF \
-    -DENABLE_QT5=ON \
+    -DENABLE_QT6=OFF \
     -DENABLE_LCMS=OFF \
-    -DENABLE_BOOST=OFF \
     -DENABLE_LIBCURL=OFF
 else
 gpg4win_pkg_poppler_configure = \
@@ -793,7 +792,6 @@ gpg4win_pkg_poppler_configure = \
     -DENABLE_GOBJECT_INTROSPECTION=OFF \
     -DENABLE_QT5=OFF \
     -DENABLE_LCMS=OFF \
-    -DENABLE_BOOST=OFF \
     -DENABLE_LIBCURL=OFF
 endif
 
