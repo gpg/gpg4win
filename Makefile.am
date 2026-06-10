@@ -96,6 +96,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/kwidgetsaddons/fix-height-of-text-after-update.patch \
              patches-appimage/okular/0001-Add-support-to-customize-about-data.patch \
              patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
+             patches-appimage/okular/0002-formfields-and-pdfsignatureutils-with-poppler-26-06.patch \
              patches-appimage/poppler/downgrade-min-boost.patch \
              patches-appimage/poppler/downgrade-min-cmake.patch \
              patches-appimage/poppler/downgrade-min-fontconfig.patch \
