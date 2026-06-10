@@ -93,10 +93,24 @@ mkdir -p ${INSTDIR}/plugins/sqldrivers
 # linuxdeploy copies the dependencies of the plugins to APPDIR so that
 # we don't have to take care of this ourselves
 mkdir -p ${APPDIR}/usr/lib/plugins
-for d in kf6 kiconthemes6 styles; do
-    rsync -av --delete --omit-dir-times ${INSTDIR}/lib/plugins/${d}/ ${APPDIR}/usr/lib/plugins/${d}/
-done
-rsync -av --delete --omit-dir-times ${INSTDIR}/lib/plugins/okular_generators/okularGenerator_poppler.so ${APPDIR}/usr/lib/plugins/okular_generators/
+if [ $BUILDTYPE = vsd ]; then
+    for d in kf6 kiconthemes6 styles; do
+        rsync -av --delete --omit-dir-times ${INSTDIR}/lib/plugins/${d}/ ${APPDIR}/usr/lib/plugins/${d}/
+    done
+    rsync -av --delete --omit-dir-times ${INSTDIR}/lib/plugins/okular_generators/okularGenerator_poppler.so ${APPDIR}/usr/lib/plugins/okular_generators/
+elif [ $BUILDTYPE = vsd3 ]; then
+    for d in iconengines kauth kf5 okular plasma; do
+        rsync -av --delete --omit-dir-times ${INSTDIR}/lib/plugins/${d}/ ${APPDIR}/usr/lib/plugins/${d}/
+    done
+    rsync -av --delete --omit-dir-times ${INSTDIR}/lib/plugins/okularpart.so ${APPDIR}/usr/lib/plugins/
+
+    mkdir -p ${APPDIR}/usr/lib
+    # copy dependencies of the plugins
+    # okularGenerator_*.so
+    for f in libfreetype* libpoppler* libtiff.so* libOkular5Core.so* ; do
+        rsync -av --delete --omit-dir-times ${INSTDIR}/lib/${f} ${APPDIR}/usr/lib/
+    done
+fi
 
 cd /build
 # Remove existing AppRun and wrapped AppRun, that may be left over
