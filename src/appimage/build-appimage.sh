@@ -29,6 +29,77 @@ APPDIR=${BUILDROOT}/AppDir
 INSTDIR=${BUILDROOT}/install
 VSD_DIR=${SRCDIR}/src/gnupg-vsd
 
+# get signkey for VERSION file from build.sh
+VERSION_SIGNKEY="$1"
+
+write_version_file () (
+    echo "Writing VERSION file"
+    VERSION_FILE="$1"
+    FLAVOUR="$2"
+    LANG="$3"
+    VSD_VERSION="$4"
+    BUILD_CID_INSTALLER="$(cd "/src" && git rev-parse --verify HEAD)"
+    BUILD_CID_CONFIG="$(cd "/src/src/gnupg-vsd" && git rev-parse --verify HEAD)"
+    YEAR="$(date +%Y)"
+
+    if [ "${FLAVOUR}" = "vsd" ] ; then
+        KLEO_VERSION="VS-Desktop-${VSD_VERSION}"
+        KLEO_BUG_ADDRESS="https://gnupg.com/vsd/report.html"
+        KLEO_HOMEPAGE="https://www.gnupg.com/vsd/release-notes.html"
+        if [ "${LANG}" = "de" ] ; then
+            KLEO_SHORT_DESC="<h1>GnuPG VS-Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>Die GnuPG.com Unterstützung ist verfügbar unter:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Stichwort: VSD AppImage<br/><br/>"
+            KLEO_OTHER_TEXT="<b>GnuPG VS-Desktop</b><sup>®</sup> ist Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>Eine vollständige Liste der Lizenzen findet sich in der beiliegenden pkg-licenses.txt Datei."
+        else
+            KLEO_SHORT_DESC="<h1>GnuPG VS-Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>The GnuPG.com vendor support is available at:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Keyword: VSD AppImage English<br/><br/>"
+            KLEO_OTHER_TEXT="<b>GnuPG VS-Desktop</b><sup>®</sup> is Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>For a full list of licenses see the installed pkg-licenses.txt file."
+        fi
+    elif [ "${FLAVOUR}" = "gpd" ] ; then
+        KLEO_VERSION="Desktop-${VSD_VERSION}"
+        KLEO_BUG_ADDRESS="https://gnupg.com/gpd/report.html"
+        KLEO_HOMEPAGE="https://www.gnupg.com/gpd/release-notes.html"
+        if [ "${LANG}" = "de" ] ; then
+            KLEO_SHORT_DESC="<h1>GnuPG Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>Die GnuPG.com Unterstützung ist verfügbar unter:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Stichwort: GPD AppImage<br/><br/>"
+            KLEO_OTHER_TEXT="<b>GnuPG Desktop</b><sup>®</sup> ist Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>Eine vollständige Liste der Lizenzen findet sich in der beiliegenden pkg-licenses.txt Datei."
+        else
+            KLEO_SHORT_DESC="<h1>GnuPG Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>The GnuPG.com vendor support is available at:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Keyword: GPD AppImage English<br/><br/>"
+            KLEO_OTHER_TEXT="<b>GnuPG Desktop</b><sup>®</sup> is Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>For a full list of licenses see the installed pkg-licenses.txt file."
+        fi
+    fi
+
+    OKULAR_VERSION="${KLEO_VERSION}"
+    OKULAR_SHORT_DESC="${KLEO_SHORT_DESC}"
+    OKULAR_OTHER_TEXT="${KLEO_OTHER_TEXT}"
+    OKULAR_BUG_ADDRESS="${KLEO_BUG_ADDRESS}"
+    OKULAR_HOMEPAGE="${KLEO_HOMEPAGE}"
+
+    echo "[Kleopatra]
+version=${KLEO_VERSION}
+shortDescription=${KLEO_SHORT_DESC}
+otherText=${KLEO_OTHER_TEXT}
+bugAddress=${KLEO_BUG_ADDRESS}
+homepage=${KLEO_HOMEPAGE}
+copyrightStatement=<pre><pre/>
+
+[Okular]
+version=${OKULAR_VERSION}
+shortDescription=${OKULAR_SHORT_DESC}
+otherText=${OKULAR_OTHER_TEXT}
+bugAddress=${OKULAR_BUG_ADDRESS}
+homepage=${OKULAR_HOMEPAGE}
+displayName=Okular - GnuPG Edition
+
+[Build]
+cidInstaller=${BUILD_CID_INSTALLER}
+cidConfig=${BUILD_CID_CONFIG}" > ${VERSION_FILE}
+)
+
+sign_version_file () (
+    VERSION_FILE="$1"
+    SIGNKEY="$2"
+
+    /src/build.sh --runcmd gpg --yes -o "${VERSION_FILE}.sig" -bau "${SIGNKEY}" "${VERSION_FILE}"
+)
+
 # Check for the buildtype and existence of required files
 # early
 BUILDTYPE=$(cat ${SRCDIR}/packages/BUILDTYPE || echo default)
@@ -36,16 +107,6 @@ if [ $BUILDTYPE != default ] && [ ! -f ${VSD_DIR}/custom.mk ]; then
     echo "ERROR: Non default build without custom file."
     echo "Check that ${VSD_DIR}/custom.mk exists or "
     echo "change the BUILDTYPE in ${SRCDIR}/packages/BUILDTYPE"
-    exit 2
-fi
-if [ $BUILDTYPE = vsd ] && \
-    [ ! -f ${VSD_DIR}/Standard/VERSION ]; then
-    echo "No VERSION file in Standard dir."
-    exit 2
-fi
-if [ $BUILDTYPE = gpd ] && \
-    [ ! -f ${VSD_DIR}/Desktop/VERSION ]; then
-    echo "No VERSION file in Desktop dir."
     exit 2
 fi
 
@@ -116,7 +177,7 @@ if [ $BUILDTYPE = vsd ]; then
     OUTPUT=gnupg-vs-desktop-${myversion}-x86_64.AppImage
     echo "Packaging GnuPG VS-Desktop Appimage: $myversion"
     echo $myversion >${APPDIR}/GnuPG-VS-Desktop-VERSION
-    cp ${VSD_DIR}/Standard/VERSION* ${APPDIR}/usr/
+    write_version_file "${APPDIR}/usr/VERSION" "vsd" "en" "${myversion}" && sign_version_file "${APPDIR}/usr/VERSION" "${VERSION_SIGNKEY}"
     echo "Packaging help files"
     mkdir -p ${APPDIR}/usr/share/doc/gnupg-vsd
     cp ${VSD_DIR}/help/*.pdf ${APPDIR}/usr/share/doc/gnupg-vsd
@@ -130,7 +191,7 @@ elif [ $BUILDTYPE = gpd ]; then
     OUTPUT=gnupg-desktop-${myversion}-x86_64.AppImage
     echo "Packaging GnuPG Desktop Appimage: $myversion"
     echo $myversion >${APPDIR}/GnuPG-Desktop-VERSION
-    cp ${VSD_DIR}/Desktop/VERSION* ${APPDIR}/usr/
+    write_version_file "${APPDIR}/usr/VERSION" "gpd" "en" "${myversion}" && sign_version_file "${APPDIR}/usr/VERSION" "${VERSION_SIGNKEY}"
     echo "Packaging help files"
     mkdir -p ${APPDIR}/usr/share/doc/gnupg-vsd
     cp ${VSD_DIR}/help/*.pdf ${APPDIR}/usr/share/doc/gnupg-vsd
