@@ -471,7 +471,8 @@ fi
 
 # Determine the needed docker image
 if [ "$appimage" = "yes" ]; then
-    cmd=/src/src/appimage/build-appimage.sh
+    version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' $HOME/.gnupg-autogen.rc|cut -d= -f2|xargs)"
+    cmd="/src/src/appimage/build-appimage.sh $version_signkey"
     docker_image=g10-build-appimage:almalinux810
     dockerfile=${srcdir}/docker/appimage
 else
