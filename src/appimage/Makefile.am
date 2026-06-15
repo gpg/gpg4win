@@ -185,6 +185,9 @@ appimage_pkg_kxmlgui_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF \
     -DFORCE_DISABLE_KGLOBALACCEL=ON
 
+appimage_pkg_libkleo_configure = \
+    -DLIBKLEO_FEATURE_DEVS_COMPLIANCE=$(LIBKLEO_FEATURE_DEVS_COMPLIANCE)
+
 appimage_pkg_kleopatra_configure = \
     -DKLEOPATRA_LIST_AS_COMPONENT=ON \
     -DKLEOPATRA_VERSION_STRING=$(KLEOPATRA_VERSION_STRING) \
