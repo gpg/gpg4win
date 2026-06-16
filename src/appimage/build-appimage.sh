@@ -131,6 +131,7 @@ chmod +x ${APPDIR}/start-shell
 if [ $BUILDTYPE = vsd ]; then
     mkdir -p ${APPDIR}/usr/share/gnupg/conf/gnupg-vsd
     rsync -aLv --delete --omit-dir-times \
+          --perms --chmod=D0755,F0644 \
           ${VSD_DIR}/Standard/etc/gnupg/ \
           ${APPDIR}/usr/share/gnupg/conf/gnupg-vsd/
 fi
