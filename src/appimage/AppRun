@@ -176,7 +176,7 @@ if [ $opt_c = yes ]; then
             docopy=yes
             if [ ! -d /etc/gnupg-vsd ]; then
                 echo "no global configuration - installing default" >&2
-                mkdir /etc/gnupg-vsd
+                mkdir --mode 0755 /etc/gnupg-vsd
             elif [ -f $dotcfg \
                    -a "$(head -1 $dotcfg 2>/dev/null)" = "$myname" ]; then
                 docopy=no
@@ -188,15 +188,20 @@ if [ $opt_c = yes ]; then
                 t="/etc/gnupg-vsd/${f##*/}"
                 if [ -d "$f" ]; then
                     cp -R "$f" /etc/gnupg-vsd/
+                    chmod 0755 "/etc/gnupg-vsd/${f##*/}"
+                    chmod -R a+r "/etc/gnupg-vsd/${f##*/}"
                 elif [ -f "$t" ]; then
                     cp "$t" "$t.old"
                     cp "$f" "$t"
+                    chmod 0644 "$t"
                     cmp -s "$t" "$t.old" && rm "$t.old"
                 else
                     cp "$f" "$t"
+                    chmod 0644 "$t"
                 fi
               done
               echo "$myname" >$dotcfg
+              chmod 0644 "$dotcfg"
             fi
           fi
         fi
