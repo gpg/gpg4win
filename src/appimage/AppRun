@@ -1,5 +1,14 @@
 #! /usr/bin/env bash
 
+error () {
+    echo -e "\e[31merror:\e[0m $1" >&2
+    if [ $2 ] ; then
+        exit $2
+    else
+        exit 2
+    fi
+}
+
 this_dir="$(readlink -f "$(dirname "$0")")"
 if [ -f "${APPDIR}/GnuPG-VS-Desktop-VERSION" ]; then
     _gnupg_appimage=vsd
@@ -18,6 +27,7 @@ fi
 opt_c=no
 opt_gui=no
 opt_keep_socket=no
+opt_install=no
 opt_debug=no
 opt_version=no
 lastoption=no
@@ -30,20 +40,27 @@ while [ $# -gt 0 ]; do
             opt_c=yes
             lastoption=yes
             ;;
-	--gui)
-	    opt_gui=yes
-	    ;;
-	--keep-socket)
-	    opt_keep_socket=yes
-	    ;;
-	--debug)
-	    opt_debug=yes
-	    ;;
+        --gui)
+            opt_gui=yes
+            ;;
+        --keep-socket)
+            opt_keep_socket=yes
+            ;;
+        --install)
+            if [ ${_gnupg_appimage} = vsd ] ; then
+                opt_install=yes
+            else
+                error "option --install is unavailable."
+            fi
+            ;;
+        --debug)
+            opt_debug=yes
+            ;;
         --version)
             opt_version=yes
             cat <<EOF
 $myname
-Copyright (C) 2022 g10 Code GmbH
+Copyright (C) 2022, 2026 g10 Code GmbH
 
 ${_gnupg_appimage_name} consists of several independent developed packages,
 available under different license conditions.  Most of these packages
@@ -63,8 +80,7 @@ g10 Code GmbH.  For more infomation see <https://gnupg.com>.
 
 EOF
             ;;
-	--help|-h)
-
+        --help|-h)
             cat <<EOF
 $myname
 
@@ -73,6 +89,10 @@ Options:
   -c command    Run command with optional arguments.
   --gui         Run the GUI with optional arguments.
   --keep-socket Keep an existing gpg-agent socket.
+EOF
+            [ ${_gnupg_appimage} = vsd ] \
+                && echo "  --install     Install system-wide configuration (requires root permissions)"
+            cat <<EOF
   --debug       Enable debugging of the start script.
   --version     Print version and copyright info
   --help        Print this help.
@@ -80,11 +100,11 @@ Options:
 The default is to run the GUI with optional arguments.
 
 EOF
-	    exit 0
-	    ;;
-	*)
-	    break
-	    ;;
+            exit 0
+            ;;
+        *)
+            break
+            ;;
     esac
     shift
     if [ $lastoption = yes ]; then
@@ -103,13 +123,11 @@ if [ $opt_version = yes ]; then
     # Do some basic verification - not really secure because an
     # attacker may change the appimage and the included keyring.
     if [ ! -f "$APPIMAGE".sig ]; then
-        echo "error: no signature found for this appimage" >&2
-        exit 2
+        error "no signature found for this appimage"
     elif ! "${APPDIR}"/usr/bin/gpgv --quiet \
          --keyring "${APPDIR}"/usr/share/gnupg/distsigkey.gpg \
          "$APPIMAGE".sig "$APPIMAGE" ; then
-        echo "error: this appimage is not correctly signed" >&2
-        exit 2
+        error "this appimage is not correctly signed"
     fi
     exit 0
 fi
@@ -150,19 +168,82 @@ fi
 
 
 mycleanup () {
-    if [ -n $"gnupg_SETUPINIFILE" ]; then
-        rm -f $"gnupg_SETUPINIFILE"
+    if [ -n "${gnupg_SETUPINIFILE}" ]; then
+        rm -f "${gnupg_SETUPINIFILE}"
+    fi
+    if [ -n "${AI_TEMPDIR}" ]; then
+        rm -rf "${AI_TEMPDIR}"
     fi
 }
 
 gnupg_SETUPINIFILE=
 trap mycleanup 0 INT QUIT
 
+dotcfg="/etc/gnupg-vsd/.config-by-appimage"
+# installation as root is a bit complicated when the AppImage was not started as root
+# because FUSE mounts the image with the 'nosuid' option which prohibits root from
+# accessing its content. as a workaround we'll copy all files to a tempdir as the
+# current user and then as root to the final destination
+if [ $opt_install = yes ]; then
+    sudo_cmd="$(command -v sudo)"
+    if [ "${sudo_cmd}" = "" ] && [ ! $(id -u) -eq 0 ]; then
+        error "'sudo' was not found, you must run the AppImage with root privileges to complete the installation!"
+    fi
+    docopy=yes
+    if [ ! -d /etc/gnupg-vsd ]; then
+        echo "no global configuration - installing default" >&2
+        ${sudo_cmd} mkdir --mode 0755 /etc/gnupg-vsd || error "unable to create /etc/gnupg-vsd"
+        echo "created configuration directory /etc/gnupg-vsd" >&2
+    elif [ -f $dotcfg \
+            -a "$(head -1 $dotcfg 2>/dev/null)" = "$myname" ]; then
+        docopy=no
+        echo "installation appears to be up to date!"
+        exit 0
+    else
+        echo "updating global configuration" >&2
+    fi
+    if [ $docopy = yes ]; then
+        AI_TEMPDIR="$(mktemp -d --suffix=_gnuppg-vsd)"
+        cp -R "${APPDIR}"/usr/share/gnupg/conf/gnupg-vsd "${AI_TEMPDIR}"
+        for f in "${AI_TEMPDIR}"/gnupg-vsd/* ; do
+        t="/etc/gnupg-vsd/${f##*/}"
+        if [ -d "$f" ]; then
+            echo -n "setting up directory ${t} ... " >&2
+            ${sudo_cmd} cp -R "$f" /etc/gnupg-vsd/ || error "failed!"
+            ${sudo_cmd} chmod 0755 "/etc/gnupg-vsd/${f##*/}" || error "failed!"
+            ${sudo_cmd} chmod -R a+r "/etc/gnupg-vsd/${f##*/}" || error "failed!"
+            echo "done." >&2
+        elif [ -f "$t" ]; then
+            echo -n "updating existing file ${t} ... " >&2
+            ${sudo_cmd} cp "$t" "$t.old" || error "failed!"
+            ${sudo_cmd} cp "$f" "$t" || error "failed!"
+            ${sudo_cmd} chmod 0644 "$t" || error "failed!"
+            cmp -s "$t" "$t.old" && ${sudo_cmd} rm "$t.old"
+            echo "done." >&2
+        else
+            echo -n "initializing up ${t} ... " >&2
+            ${sudo_cmd} cp "$f" "$t" || error "failed!"
+            ${sudo_cmd} chmod 0644 "$t" || error "failed!"
+            echo "done." >&2
+        fi
+        done
+        echo "$myname" | ${sudo_cmd} tee $dotcfg >/dev/null || error "unable to write $dotcfg"
+        ${sudo_cmd} chmod 0644 "$dotcfg" || error "unable to set permissions of $dotcfg"
+    fi
+    unset sudo_cmd
+    echo "installation finished!"
+    exit 0
+fi
+
+if [ ${_gnupg_appimage} = vsd ] && [ ! -f $dotcfg ] ; then
+    # do a quick check whether the configuration is correctly installed
+    error "systemwide configuration of ${_gnupg_appimage_name} missing, please initialize with '--install'!"
+fi
+
 callerargs=no
 if [ $opt_c = yes ]; then
     if [ ! -x "$SHELL" ]; then
-        echo "error: no shell found" >&2
-        exit 2
+        error "no shell found"
     fi
     if [ -n "$1" ]; then
         pgm=/usr/bin/env
@@ -170,41 +251,6 @@ if [ $opt_c = yes ]; then
         callerargs=yes
     else
         export gnupg_SETUPINIFILE SHELL
-        if [ ${_gnupg_appimage} = vsd ]; then
-          if [ $(id -u) -eq 0 ]; then
-            dotcfg="/etc/gnupg-vsd/.config-by-appimage"
-            docopy=yes
-            if [ ! -d /etc/gnupg-vsd ]; then
-                echo "no global configuration - installing default" >&2
-                mkdir --mode 0755 /etc/gnupg-vsd
-            elif [ -f $dotcfg \
-                   -a "$(head -1 $dotcfg 2>/dev/null)" = "$myname" ]; then
-                docopy=no
-            else
-                echo "updating global configuration" >&2
-            fi
-            if [ $docopy = yes ]; then
-              for f in "${APPDIR}"/usr/share/gnupg/conf/gnupg-vsd/* ; do
-                t="/etc/gnupg-vsd/${f##*/}"
-                if [ -d "$f" ]; then
-                    cp -R "$f" /etc/gnupg-vsd/
-                    chmod 0755 "/etc/gnupg-vsd/${f##*/}"
-                    chmod -R a+r "/etc/gnupg-vsd/${f##*/}"
-                elif [ -f "$t" ]; then
-                    cp "$t" "$t.old"
-                    cp "$f" "$t"
-                    chmod 0644 "$t"
-                    cmp -s "$t" "$t.old" && rm "$t.old"
-                else
-                    cp "$f" "$t"
-                    chmod 0644 "$t"
-                fi
-              done
-              echo "$myname" >$dotcfg
-              chmod 0644 "$dotcfg"
-            fi
-          fi
-        fi
         if echo "$SHELL" | grep '/bash$' >/dev/null 2>&1; then
             pgm="${APPDIR}/start-shell"
             pgmargs=
@@ -219,8 +265,7 @@ if [ $opt_c = yes ]; then
     fi
 else
     if [ $(id -u) -eq 0 ]; then
-        echo "error: the GUI may not be run by root" >&2
-        exit 2
+        error "the GUI may not be run by root"
     fi
     if [ -x "${this_dir}/usr/bin/kleopatra" ];then
         pgm="${this_dir}/usr/bin/kleopatra"
@@ -300,3 +345,5 @@ else
 fi
 
 echo Goodbye from "$myname"\! >&2
+
+exit 0
