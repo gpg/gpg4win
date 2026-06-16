@@ -33,6 +33,7 @@ VSD_DIR=${SRCDIR}/src/gnupg-vsd
 VERSION_SIGNKEY="$1"
 
 write_version_file () (
+    # TODO: add uidcomment and read content from config files
     echo "Writing VERSION file"
     VERSION_FILE="$1"
     FLAVOUR="$2"
@@ -79,6 +80,7 @@ otherText=${KLEO_OTHER_TEXT}
 bugAddress=${KLEO_BUG_ADDRESS}
 homepage=${KLEO_HOMEPAGE}
 copyrightStatement=<pre><pre/>
+statusline=${VSD_VERSION}
 
 [Okular]
 version=${OKULAR_VERSION}
