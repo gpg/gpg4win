@@ -100,7 +100,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/libqrencode/0001-fix-cmake-install-paths.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Add-support-to-customize-about-data.sik \
-             patches/okular/lower-cmake-requirement.patch \
              patches/okular/pgp-default-true.patch \
              patches/pcre2/cross-build-cmake.patch \
              patches/qtbase-6.10.1/0001-Don-t-report-active-windows-as-having-focus-unless-t.patch \
@@ -129,7 +128,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/kcalendarcore-6.20.0/0001-Add-option-to-build-without-QML.patch \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
              patches-appimage/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
-             patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/okular/pgp-default-true.patch \
              patches-appimage/qtbase/0001-Don-t-report-tabname-as-name-of-tabbar.patch \
              patches-appimage/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
