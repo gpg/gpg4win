@@ -79,7 +79,7 @@ shortDescription=${KLEO_SHORT_DESC}
 otherText=${KLEO_OTHER_TEXT}
 bugAddress=${KLEO_BUG_ADDRESS}
 homepage=${KLEO_HOMEPAGE}
-copyrightStatement=<pre><pre/>
+copyrightStatement=<pre></pre>
 statusline=${VSD_VERSION}
 
 [Okular]
