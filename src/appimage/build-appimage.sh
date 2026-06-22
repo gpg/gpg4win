@@ -111,16 +111,6 @@ if [ $BUILDTYPE != default ] && [ ! -f ${VSD_DIR}/custom.mk ]; then
     echo "change the BUILDTYPE in ${SRCDIR}/packages/BUILDTYPE"
     exit 2
 fi
-if [ $BUILDTYPE = vsd -o $BUILDTYPE = vsd3 ] && \
-    [ ! -f ${VSD_DIR}/Standard/VERSION ]; then
-    echo "No VERSION file in Standard dir."
-    exit 2
-fi
-if [ $BUILDTYPE = gpd ] && \
-    [ ! -f ${VSD_DIR}/Desktop/VERSION ]; then
-    echo "No VERSION file in Desktop dir."
-    exit 2
-fi
 
 # The actual build
 cd ${BUILDROOT}
