@@ -26,4 +26,4 @@ esac
 extra_automake_flags="-Wno-portability"
 
 final_info="For building a Gpg4win installer: \"./build.sh\".
-  For building an AppImage: check the README."
+  For building an AppImage: \"./build.sh --appimage\"."
