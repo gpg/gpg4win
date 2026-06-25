@@ -44,7 +44,7 @@ EOF
     exit $1
 }
 
-branch="gpg4win/24.05"
+#branch="gpg4win/24.05"
 custom_l10n="no"
 while [ $# -gt 0 ]; do
     case "$1" in
@@ -114,7 +114,7 @@ statsfile=$(mktemp)
 for lang in $translation_langs; do
     poname=${package}
     if [ "${poname}" == "libkleo" ]; then
-        poname="libkleopatra"
+        poname="libkleopatra6"
     fi
     if [ "$lang" = "de" ]; then
         # the development team is German
@@ -174,6 +174,9 @@ for lang in $translation_langs; do
         echo "WARN: error from msgattrib ignored" >&2
     fi
 
+    # remove line numbers to reduce noise in diffs
+    sed -i -E '/^#: /s/:[0-9]+//g' po/$lang/${poname}.po
+
     if [ "$lang" = "de" -o "$lang" = "fr" -o "$lang" = "ja" ]; then
         echo "Statistics for po/$lang/${poname}.po after the update:" | tee -a ${statsfile}
         msgfmt --statistics po/$lang/${poname}.po 2>&1 | tee -a ${statsfile}
@@ -195,4 +198,7 @@ rm -f messages.mo
 echo "#####################################################################"
 cat ${statsfile}
 rm ${statsfile}
+
+git commit -m "Update translations using update-po-files.sh in gpg4win"
+
 cd ${olddir}
