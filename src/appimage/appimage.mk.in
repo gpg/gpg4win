@@ -592,11 +592,13 @@ $(foreach bpkg, $(appimage_bpkgs), $(eval $(call BPKG_template,$(bpkg))))
 # Insert the template for Qt packages.
 $(foreach qtpkg, $(appimage_qtpkgs), $(eval $(call QTPKG_template,$(qtpkg))))
 
-# Insert the template for KDE packages.
-$(foreach kdepkg, $(appimage_kdepkgs), $(eval $(call KDEPKG_template,$(kdepkg))))
-
+ifeq ($(IS_VSD3_BUILD),yes)
 # Insert the template for KF5 packages.
 $(foreach kdepkg, $(appimage_kdepkgs), $(eval $(call KF5PKG_template,$(kdepkg))))
+else
+# Insert the template for KDE packages.
+$(foreach kdepkg, $(appimage_kdepkgs), $(eval $(call KDEPKG_template,$(kdepkg))))
+endif
 
 $(stampdir)/stamp-final: $(stampdir)/stamp-directories
 $(stampdir)/stamp-final: $(addprefix $(stampdir)/stamp-final-,$(appimage_build_list))
