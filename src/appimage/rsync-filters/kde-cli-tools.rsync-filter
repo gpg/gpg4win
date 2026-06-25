@@ -1,0 +1,10 @@
++ /bin/
++ /share/
+- kbroadcastnotification.mo
+- kcm5_filetypes.mo
+- kcmshell5.mo
+- kdesu5.mo
+- kmimetypefinder5.mo
+- kstart5.mo
+- ktraderclient5.mo
+- plasma-open-settings.mo

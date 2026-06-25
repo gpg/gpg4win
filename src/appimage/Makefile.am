@@ -94,7 +94,8 @@ appimage_kdepkgs = gpgmepp qgpgme \
 		   kjobwidgets libical kcalendarcore mimetreeparser \
 		   sonnet ktextwidgets kauth \
 		   threadweaver kparts poppler okular kactivities \
-		   prison gpgpass tiff
+		   prison gpgpass tiff \
+		   kde-cli-tools
 else
 appimage_kdepkgs = gpgmepp qgpgme \
 		   kconfig kwidgetsaddons ki18n extra-cmake-modules \
