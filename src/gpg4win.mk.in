@@ -76,7 +76,7 @@ AUTHENTICODE_FILES = \
 	bin/libopenjp2.dll \
 	bin/libpcre2-16.dll \
 	bin/libpng16-16.dll \
-	bin/libpoppler-130.dll \
+	bin/libpoppler-161.dll \
 	bin/libpoppler-qt5-1.dll \
 	bin/libqgpgme-15.dll \
 	bin/libtiff.dll \
