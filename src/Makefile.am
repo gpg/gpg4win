@@ -500,7 +500,6 @@ gpg4win_pkg_poppler_configure = \
     -DENABLE_GOBJECT_INTROSPECTION=OFF \
     -DENABLE_QT5=OFF \
     -DENABLE_LCMS=OFF \
-    -DENABLE_BOOST=OFF \
     -DENABLE_LIBCURL=OFF
 
 gpg4win_pkg_kcontacts_configure = \
