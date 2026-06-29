@@ -688,12 +688,16 @@ chk 7ebb454bffd8bf41841c5aafba6a55f0288c91c356eaff17a3e19b189877a8bb
 
 if gnupg != gnupg22
 
+server https://poppler.freedesktop.org
+
 # poppler
-# last changed: 2025-12-12
-# by: wk
-# verified: Tarball created by builder.
-file poppler/poppler-202512121040.tar.xz
-chk 53baff5ca8eb6ce1f99dbe1c65207fbaf3c5f4330c3ea38f3458cdb7cdc6a7eb
+# last changed: 2026-06-05
+# by: m.
+# verified: SIG CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
+file poppler-26.06.0.tar.xz
+chk 4cb4e5a3dc8cb5eec751c8a23c8ba19f61f96dedc0cd07d2aee6b0c8e2cf6ba4
+
+server https://gnupg.net/snapshots
 
 # okular
 # last changed: 2025-12-11
@@ -702,7 +706,9 @@ chk 53baff5ca8eb6ce1f99dbe1c65207fbaf3c5f4330c3ea38f3458cdb7cdc6a7eb
 file okular/okular-202512111542.tar.xz
 chk dae20e59449ab392377052d25d4448568c051de3b3c73c8cc63ea508204f2a69
 
-fi # !gnupg22 - Current Okular et al.
+fi
+
+# !gnupg22 - Current Okular et al.
 
 # And here comes the old poppler version as used by vsd 3.3.  This
 # comes after the current version due to the way the gen-tarball.sh
