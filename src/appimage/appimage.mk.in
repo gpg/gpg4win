@@ -216,7 +216,7 @@ $(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
 	 set -x;					\
 	 if test -f "$$$${pkgrsyncfilter}"; then \
 	   cp "$$$${pkgrsyncfilter}" "$$$${pkgidir}/.rsync-filter"; \
-	   $(RSYNC) -av -FF --omit-dir-times --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(appdir)/usr/"; \
+	   $(RSYNC) -av -FF --omit-dir-times "$$$${pkgidir}/" "$(appdir)/usr/"; \
 	 fi )
 	touch $(stampdir)/stamp-$(1)-06-copy-to-appdir
 
@@ -267,7 +267,7 @@ $(stampdir)/stamp-$(1)-02-copy-to-appdir: $(stampdir)/stamp-$(1)-01-rsync
 	 set -x;					\
 	 if test -f "$$$${pkgrsyncfilter}"; then \
 	   cp "$$$${pkgrsyncfilter}" "$$$${pkgidir}/.rsync-filter"; \
-	   $(RSYNC) -av -FF --omit-dir-times --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(appdir)/usr/"; \
+	   $(RSYNC) -av -FF --omit-dir-times "$$$${pkgidir}/" "$(appdir)/usr/"; \
 	 fi )
 	touch $(stampdir)/stamp-$(1)-02-copy-to-appdir
 
@@ -377,7 +377,7 @@ $(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
 	 set -x;					\
 	 if test -f "$$$${pkgrsyncfilter}"; then \
 	   cp "$$$${pkgrsyncfilter}" "$$$${pkgidir}/.rsync-filter"; \
-	   $(RSYNC) -av -FF --omit-dir-times --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(appdir)/usr/"; \
+	   $(RSYNC) -av -FF --omit-dir-times "$$$${pkgidir}/" "$(appdir)/usr/"; \
 	 fi )
 	touch $(stampdir)/stamp-$(1)-06-copy-to-appdir
 
