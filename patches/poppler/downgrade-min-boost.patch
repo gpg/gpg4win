@@ -1,0 +1,24 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+--- a/CMakeLists.txt	2026-06-10 10:16:27.337775992 +0200
++++ b/CMakeLists.txt	2026-06-10 10:18:39.639775825 +0200
+@@ -152,7 +152,7 @@
+ set(TIFF_VERSION "4.5")
+ set(QT5_VERSION "5.15")
+ set(QT6_VERSION "6.4")
+-set(BOOST_VERSION "1.83")
++set(BOOST_VERSION "1.66")
+ set(GOBJECT_INTROSPECTION_VERSION "1.80")
+
+ find_package(Freetype ${FREETYPE_VERSION} REQUIRED)
+@@ -235,7 +235,7 @@
+ macro_optional_find_package(Cairo ${CAIRO_VERSION})
+
+ if (ENABLE_BOOST)
+-  find_package(Boost ${BOOST_VERSION} CONFIG)
++  find_package(Boost ${BOOST_VERSION})
+   if(Boost_FOUND)
+     set(USE_BOOST_HEADERS ON)
+   else()
