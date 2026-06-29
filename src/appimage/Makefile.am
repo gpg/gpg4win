@@ -443,9 +443,12 @@ $(stampdir)/stamp-directories:
 	$(MKDIR) -p $(bdir)
 	$(MKDIR) -p $(idir)
 	$(MKDIR) -p $(ipdir)
-	$(MKDIR) -p $(appdir)/usr/bin
 	touch $(bdir)/versioninfo.txt
 	touch $(stampdir)/stamp-directories
+
+$(stampdir)/stamp-appdir:
+	$(MKDIR) -p $(appdir)/usr/bin
+	touch $(stampdir)/stamp-appdir
 
 # Now do the bunch of the work.  This is a bunch of dirty magic to
 # integrate our special makefile into automake, while not actually
@@ -464,7 +467,7 @@ clean-local: clean-appimage
 license.blurb: $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3
 	cat $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3 >$@
 
-all-local: $(stampdir)/stamp-final
+all-local: $(stampdir)/stamp-final $(stampdir)/stamp-prepare-appdir
 	@echo "###################################################"
 	@echo " AppDir prepared successfully for the AppImage!"
 	@echo " Now run linuxdeploy to create the AppImage."

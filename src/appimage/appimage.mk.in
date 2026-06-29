@@ -212,19 +212,19 @@ $(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
 	 done )
 	touch $(stampdir)/stamp-$(1)-05-rsync
 
-$(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-rsync
+	touch $(stampdir)/stamp-final-$(1)
+
+$(1): $(stampdir)/stamp-final-$(1)
+
+$(stampdir)/stamp-prepare-appdir-$(1): $(stampdir)/stamp-final-$(1)
 	($(call SETVARS,$(1));				\
 	 set -x;					\
 	 if test -f "$$$${pkgrsyncfilter}"; then \
 	   cp "$$$${pkgrsyncfilter}" "$$$${pkgidir}/.rsync-filter"; \
 	   $(RSYNC) -av -FF --omit-dir-times "$$$${pkgidir}/" "$(appdir)/usr/"; \
 	 fi )
-	touch $(stampdir)/stamp-$(1)-06-copy-to-appdir
-
-$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-06-copy-to-appdir
-	touch $(stampdir)/stamp-final-$(1)
-
-$(1): $(stampdir)/stamp-final-$(1)
+	touch $(stampdir)/stamp-prepare-appdir-$(1)
 
 .PHONY : clean-$(1)
 clean-$(1):
@@ -263,19 +263,19 @@ $(stampdir)/stamp-$(1)-01-rsync: $(stampdir)/stamp-$(1)-00-install
 	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/" )
 	touch $(stampdir)/stamp-$(1)-01-rsync
 
-$(stampdir)/stamp-$(1)-02-copy-to-appdir: $(stampdir)/stamp-$(1)-01-rsync
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-01-rsync
+	touch $(stampdir)/stamp-final-$(1)
+
+$(1): $(stampdir)/stamp-final-$(1)
+
+$(stampdir)/stamp-prepare-appdir-$(1): $(stampdir)/stamp-final-$(1)
 	($(call SETVARS,$(1));				\
 	 set -x;					\
 	 if test -f "$$$${pkgrsyncfilter}"; then \
 	   cp "$$$${pkgrsyncfilter}" "$$$${pkgidir}/.rsync-filter"; \
 	   $(RSYNC) -av -FF --omit-dir-times "$$$${pkgidir}/" "$(appdir)/usr/"; \
 	 fi )
-	touch $(stampdir)/stamp-$(1)-02-copy-to-appdir
-
-$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-02-copy-to-appdir
-	touch $(stampdir)/stamp-final-$(1)
-
-$(1): $(stampdir)/stamp-final-$(1)
+	touch $(stampdir)/stamp-prepare-appdir-$(1)
 
 .PHONY : clean-$(1)
 clean-$(1):
@@ -344,17 +344,17 @@ $(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
 	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/" )
 	touch $(stampdir)/stamp-$(1)-05-rsync
 
-$(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-rsync
+	touch $(stampdir)/stamp-final-$(1)
+
+$(stampdir)/stamp-prepare-appdir-$(1): $(stampdir)/stamp-final-$(1)
 	($(call SETVARS,$(1));				\
 	 set -x;					\
 	 if test -f "$$$${pkgrsyncfilter}"; then \
 	   cp "$$$${pkgrsyncfilter}" "$$$${pkgidir}/.rsync-filter"; \
 	   $(RSYNC) -av -FF --omit-dir-times "$$$${pkgidir}/" "$(appdir)/usr/"; \
 	 fi )
-	touch $(stampdir)/stamp-$(1)-06-copy-to-appdir
-
-$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-06-copy-to-appdir
-	touch $(stampdir)/stamp-final-$(1)
+	touch $(stampdir)/stamp-prepare-appdir-$(1)
 
 .PHONY : clean-$(1)
 clean-$(1):
@@ -450,19 +450,19 @@ $(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
 	 done )
 	touch $(stampdir)/stamp-$(1)-05-rsync
 
-$(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-rsync
+	touch $(stampdir)/stamp-final-$(1)
+
+$(1): $(stampdir)/stamp-final-$(1)
+
+$(stampdir)/stamp-prepare-appdir-$(1): $(stampdir)/stamp-final-$(1)
 	($(call SETVARS,$(1));				\
 	 set -x;					\
 	 if test -f "$$$${pkgrsyncfilter}"; then \
 	   cp "$$$${pkgrsyncfilter}" "$$$${pkgidir}/.rsync-filter"; \
 	   $(RSYNC) -av -FF --omit-dir-times "$$$${pkgidir}/" "$(appdir)/usr/"; \
 	 fi )
-	touch $(stampdir)/stamp-$(1)-06-copy-to-appdir
-
-$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-06-copy-to-appdir
-	touch $(stampdir)/stamp-final-$(1)
-
-$(1): $(stampdir)/stamp-final-$(1)
+	touch $(stampdir)/stamp-prepare-appdir-$(1)
 
 .PHONY : clean-$(1)
 clean-$(1):
@@ -554,19 +554,19 @@ $(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
 	 done )
 	touch $(stampdir)/stamp-$(1)-05-rsync
 
-$(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-rsync
+	touch $(stampdir)/stamp-final-$(1)
+
+$(1): $(stampdir)/stamp-final-$(1)
+
+$(stampdir)/stamp-prepare-appdir-$(1): $(stampdir)/stamp-final-$(1)
 	($(call SETVARS,$(1));				\
 	 set -x;					\
 	 if test -f "$$$${pkgrsyncfilter}"; then \
 	   cp "$$$${pkgrsyncfilter}" "$$$${pkgidir}/.rsync-filter"; \
 	   $(RSYNC) -av -FF --omit-dir-times "$$$${pkgidir}/" "$(appdir)/usr/"; \
 	 fi )
-	touch $(stampdir)/stamp-$(1)-06-copy-to-appdir
-
-$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-06-copy-to-appdir
-	touch $(stampdir)/stamp-final-$(1)
-
-$(1): $(stampdir)/stamp-final-$(1)
+	touch $(stampdir)/stamp-prepare-appdir-$(1)
 
 .PHONY : clean-$(1)
 clean-$(1):
@@ -607,16 +607,24 @@ $(stampdir)/stamp-final: $(addprefix $(stampdir)/stamp-final-,$(appimage_build_l
 $(bdir)/versioninfo.txt: $(stampdir)/stamp-final
 	touch $(bdir)/versioninfo.txt
 
+$(stampdir)/stamp-prepare-appdir: $(stampdir)/stamp-appdir $(addprefix $(stampdir)/stamp-prepare-appdir-,$(appimage_build_list))
+	touch $(stampdir)/stamp-prepare-appdir
+
 all-appimage: $(stampdir)/stamp-final
+
+all-appdir: $(stampdir)/stamp-prepare-appdir
 
 # Just to check if we catched all stamps.
 clean-stamps:
 	$(RM) -fR $(stampdir)
 
-clean-appimage:
-	$(RM) -fR $(bdir) $(idir) $(stampdir) $(logdir) $(appdir)
+clean-appimage: clean-appdir
+	$(RM) -fR $(bdir) $(idir) $(stampdir) $(logdir)
 
-.PHONY : all-appimage clean-stamps clean-appimage
+clean-appdir:
+	$(RM) -fR $(appdir) $(stampdir)/stamp-appdir $(stampdir)/stamp-prepare-appdir*
+
+.PHONY : all-appimage clean-stamps clean-appdir clean-appimage
 
 # @emacs_local_vars_begin@
 # @emacs_local_vars_read_only@
