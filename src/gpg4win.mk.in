@@ -488,7 +488,7 @@ define DEFLATE_macro
 		*.zip)   $(UNZIP) -o "$(1)"; tc="" ;;\
 	    esac; \
             [ -n "$$$$tf" ] && tf="--transform=$$$$tf"; \
-	    if [ -n "$$$$tc" -a -n "$(1)" ]; then \
+	    if [ -n "$$$$tc" ] && [ -n "$(1)" ]; then \
 	        $(TAR) -x$$$$tc $$$$tf -f "$(1)" ; \
             fi; \
         fi
@@ -1726,7 +1726,7 @@ $(bdir)/versioninfo.txt: $(stampdir)/stamp-final
 	touch $(bdir)/versioninfo.txt
 
 $(stampdir)/stamp-betanum: ../config.log
-	if [ ! -e "$(stampdir)/stamp-betanum" -o "$$(cat "$(stampdir)/stamp-betanum")" != "$(BUILD_BETANUM)" ]; then \
+	if [ ! -e "$(stampdir)/stamp-betanum" ] || [ "$$(cat "$(stampdir)/stamp-betanum")" != "$(BUILD_BETANUM)" ]; then \
 		echo -n "$(BUILD_BETANUM)" > "$(stampdir)/stamp-betanum"; \
 	fi
 
