@@ -256,6 +256,10 @@ for f in dirmngr_ldap gpg-check-pattern \
 done
 
 # linuxdeploy also doesn't know about non-Qt plugins
+for f in $(find ${APPDIR}/usr/lib/plugins/ -mindepth 1 -maxdepth 1 -type f); do
+    # this is only needed for the Qt 5 version of okularpart.so because it's installed in /usr/lib/plugins
+    /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/..' $f
+done
 for f in $(find ${APPDIR}/usr/lib/plugins/ -mindepth 2 -maxdepth 2 -type f); do
     /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../..' $f
 done
