@@ -1,0 +1,47 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 7c2c0d2fa0e3241da023f9ca6f6697b657c731a4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 30 Jun 2026 15:39:26 +0200
+Subject: [PATCH] Support multiple comma-separated plugin paths in qt.conf
+
+This is a hack for Qt 5. Since Qt 6.8 QLibraryInfo supports multiple
+paths (but QCoreApplication::libraryPaths() still only uses the first
+one).
+
+---
+ src/corelib/kernel/qcoreapplication.cpp | 21 ++++++++++++++++-----
+ 1 file changed, 16 insertions(+), 5 deletions(-)
+
+diff --git a/src/corelib/kernel/qcoreapplication.cpp b/src/corelib/kernel/qcoreapplication.cpp
+index d671f70bd3b..076a6aafa6a 100644
+--- a/src/corelib/kernel/qcoreapplication.cpp
++++ b/src/corelib/kernel/qcoreapplication.cpp
+@@ -2750,11 +2750,18 @@ QStringList QCoreApplication::libraryPathsLocked()
+ #endif // Q_OS_DARWIN
+
+         QString installPathPlugins =  QLibraryInfo::location(QLibraryInfo::PluginsPath);
+-        if (QFile::exists(installPathPlugins)) {
+-            // Make sure we convert from backslashes to slashes.
+-            installPathPlugins = QDir(installPathPlugins).canonicalPath();
+-            if (!app_libpaths->contains(installPathPlugins))
+-                app_libpaths->append(installPathPlugins);
++        for (const auto &path : installPathPlugins.split(',', Qt::SkipEmptyParts)) {
++            QString canonicalPath = path;
++            // make all paths absolute; for the first path this is already done by QLibraryInfo::location
++            if (QDir::isRelativePath(canonicalPath)) {
++                canonicalPath = QDir::cleanPath(QLibraryInfo::location(QLibraryInfo::PrefixPath) + QLatin1Char('/') + canonicalPath);
++            }
++            if (QFile::exists(canonicalPath)) {
++                // Make sure we convert from backslashes to slashes.
++                canonicalPath = QDir(canonicalPath).canonicalPath();
++                if (!app_libpaths->contains(canonicalPath))
++                    app_libpaths->append(canonicalPath);
++            }
+         }
+
+         // If QCoreApplication is not yet instantiated,
+--
+2.54.0

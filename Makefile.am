@@ -86,6 +86,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
              patches/qtbase/0004-Fix-tree-table-list-accessibility-state.patch \
              patches/qtbase/0005-a11y-Return-correct-string-information-for-item-view.patch \
+             patches/qtbase/0006-Support-multiple-comma-separated-plugin-paths-in-qt..patch \
              patches/qtbase/fix-high-contrast-item-view-selection-color.patch \
              patches/qtbase/fix-queryHighContrast.patch \
              patches/qtbase/fix-tooltip-text-color-with-dark-theme.patch \
@@ -111,6 +112,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
              patches-appimage/qtbase/0004-Fix-tree-table-list-accessibility-state.patch \
              patches-appimage/qtbase/0005-a11y-Return-correct-string-information-for-item-view.patch \
+             patches-appimage/qtbase/0006-Support-multiple-comma-separated-plugin-paths-in-qt..patch \
              patches-appimage/qtbase/fix-high-contrast-item-view-selection-color.patch \
              patches-appimage/qtbase/fix-queryHighContrast.patch \
              patches-appimage/qtbase/fix-tooltip-text-color-with-dark-theme.patch \
