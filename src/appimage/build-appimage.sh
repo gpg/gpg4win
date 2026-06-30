@@ -39,8 +39,8 @@ write_version_file () (
     FLAVOUR="$2"
     LANG="$3"
     VSD_VERSION="$4"
-    BUILD_CID_INSTALLER="$(cd "/src" && git rev-parse --verify HEAD)"
-    BUILD_CID_CONFIG="$(cd "/src/src/gnupg-vsd" && git rev-parse --verify HEAD)"
+    BUILD_CID_INSTALLER="$(cd "${SRCDIR}" && git rev-parse --verify HEAD)"
+    BUILD_CID_CONFIG="$(cd "${SRCDIR}/src/gnupg-vsd" && git rev-parse --verify HEAD)"
     YEAR="$(date +%Y)"
 
     if [ "${FLAVOUR}" = "vsd" ] ; then
@@ -116,6 +116,10 @@ fi
 cd ${BUILDROOT}
 source /opt/rh/gcc-toolset-14/enable
 ${SRCDIR}/configure --enable-appimage --with-playground=${BUILDROOT}
+# Nuke the AppDir to make sure we get everything nice and clean
+cd ${BUILDROOT}/src/appimage
+make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT} clean-appdir
+cd ${BUILDROOT}
 make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT}
 
 echo 'rootdir = $APPDIR/usr' >${APPDIR}/usr/bin/gpgconf.ctl
@@ -176,19 +180,7 @@ elif [ $BUILDTYPE = vsd3 ]; then
     done
 fi
 
-cd /build
-# Remove existing AppRun and wrapped AppRun, that may be left over
-# from a previous run of linuxdeploy, to ensure that our custom AppRun
-# is deployed
-rm -f ${APPDIR}/AppRun ${APPDIR}/AppRun.wrapped 2>/dev/null
-# Remove existing translations that may be left over from a previous
-# run of linuxdeploy
-rm -rf ${APPDIR}/usr/translations
-# Remove the version files to make sure that only one will be created.
-rm -f ${APPDIR}/GnuPG-VS-Desktop-VERSION 2>/dev/null
-rm -f ${APPDIR}/GnuPG-Desktop-VERSION    2>/dev/null
-rm -f ${APPDIR}/Gpg4win-VERSION        2>/dev/null
-
+cd ${BUILDROOT}
 myversion=$(grep PACKAGE_VERSION ${BUILDROOT}/config.h|sed -n 's/.*"\(.*\)"$/\1/p')
 if [ $BUILDTYPE = vsd -o $BUILDTYPE = vsd3 ]; then
     OUTPUT=gnupg-vs-desktop-${myversion}-x86_64.AppImage
@@ -277,7 +269,7 @@ linuxdeploy --appdir ${APPDIR} \
             --custom-apprun ${SRCDIR}/src/appimage/AppRun \
             --plugin qt \
             --output appimage \
-    2>&1 | tee /build/logs/linuxdeploy-gnupg-desktop.log
+    2>&1 | tee ${BUILDROOT}/logs/linuxdeploy-gnupg-desktop.log
 
 echo ready
 exit 0
