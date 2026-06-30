@@ -593,11 +593,11 @@ server https://gnupg.org/ftp/gcrypt
 
 
 # gpgme
-# last changed: 2026-06-25
+# last changed: 2026-06-30
 # by: wk
 # verified: swdb
-file gpgme/gpgme-2.1.1.tar.bz2
-chk  6d7ee12b209d7dce75468db53f72a90e1ad3d21f4c304ef2c002612a52f5333a
+file gpgme/gpgme-2.1.2.tar.bz2
+chk  0687a95b299871c4141f507c0f740de6b429c9ac067d0fa4e062e3264df5fb77
 
 # gpgmepp
 # last changed: 2026-05-18
