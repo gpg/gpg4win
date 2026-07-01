@@ -100,6 +100,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/libqrencode/0001-fix-cmake-install-paths.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Add-support-to-customize-about-data.sik \
+             patches/okular/0003-signing-only-set-NSS-callback-if-NSS-is-active.patch \
              patches/okular/pgp-default-true.patch \
              patches/pcre2/cross-build-cmake.patch \
              patches/poppler/downgrade-min-boost.patch \
@@ -129,6 +130,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/kcalendarcore-6.20.0/0001-Add-option-to-build-without-QML.patch \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
              patches-appimage/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
+             patches-appimage/okular/0003-signing-only-set-NSS-callback-if-NSS-is-active.patch \
              patches-appimage/okular/pgp-default-true.patch \
              patches-appimage/poppler/downgrade-min-boost.patch \
              patches-appimage/qtbase/0001-Don-t-report-tabname-as-name-of-tabbar.patch \
