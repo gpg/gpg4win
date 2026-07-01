@@ -238,6 +238,7 @@ define appimage_pkg_qtx11extras_post_install
 	 (cd $$$${pkgbdir}; \
 	  mkdir -p $$$${pkginstallroot}; \
 	  make install INSTALL_ROOT=$$$${pkginstallroot}; \
+	  rm -rf $$$${pkgidir}; \
 	  mkdir -p $$$${pkgidir}; \
 	  mv $$$${pkgbladir}/* $$$${pkgidir}; \
 	  rm -rf $$$${pkginstallroot};)
@@ -250,6 +251,7 @@ define appimage_pkg_qtwayland_post_install
 	 (cd $$$${pkgbdir}; \
 	  mkdir -p $$$${pkginstallroot}; \
 	  make install INSTALL_ROOT=$$$${pkginstallroot}; \
+	  rm -rf $$$${pkgidir}; \
 	  mkdir -p $$$${pkgidir}; \
 	  mv $$$${pkgbladir}/* $$$${pkgidir}; \
 	  rm -rf $$$${pkginstallroot};)
