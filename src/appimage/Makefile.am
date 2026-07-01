@@ -384,16 +384,14 @@ appimage_pkg_poppler_configure = \
     -DENABLE_QT5=ON \
     -DENABLE_QT6=OFF \
     -DENABLE_LCMS=OFF \
-    -DENABLE_LIBCURL=OFF \
-    -DFONT_CONFIGURATION=generic
+    -DENABLE_LIBCURL=OFF
 else
 appimage_pkg_poppler_configure = \
     -DENABLE_NSS3=OFF \
     -DENABLE_GOBJECT_INTROSPECTION=OFF \
     -DENABLE_QT5=OFF \
     -DENABLE_LCMS=OFF \
-    -DENABLE_LIBCURL=OFF \
-    -DFONT_CONFIGURATION=generic
+    -DENABLE_LIBCURL=OFF
 endif
 
 if BUILD_VSD3
