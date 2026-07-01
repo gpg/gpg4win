@@ -1,0 +1,59 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 2bf56342394f11c2ec3df9a4e2274e1fecd4a5af Mon Sep 17 00:00:00 2001
+From: Sune Vuorela <sune@vuorela.dk>
+Date: Wed, 1 Jul 2026 08:55:37 +0200
+Subject: [PATCH] Signing: Only set NSS callback if NSS is active
+
+If NSS is not compiled in poppler, poppler comes with a warning:
+
+"setNSSPasswordCallback called but this poppler is built without NSS support"
+
+which has given me some support headaches, so let's avoid it.
+---
+ generators/poppler/pdfsignatureutils.cpp | 23 +++++++++++++++--------
+ 1 file changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/generators/poppler/pdfsignatureutils.cpp b/generators/poppler/pdfsignatureutils.cpp
+index f503bacb9..54ebc27be 100644
+--- a/generators/poppler/pdfsignatureutils.cpp
++++ b/generators/poppler/pdfsignatureutils.cpp
+@@ -225,13 +225,18 @@ PopplerCertificateStore::~PopplerCertificateStore() = default;
+ QList<Okular::CertificateInfo> PopplerCertificateStore::signingCertificates(bool *userCancelled) const
+ {
+     *userCancelled = false;
+-    auto PDFGeneratorNSSPasswordCallback = [&userCancelled](const char *element) -> char * {
+-        bool ok;
+-        const QString pwd = QInputDialog::getText(nullptr, i18n("Enter Password"), i18n("Enter password to open %1:", QString::fromUtf8(element)), QLineEdit::Password, QString(), &ok);
+-        *userCancelled = !ok;
+-        return ok ? strdup(pwd.toUtf8().constData()) : nullptr;
+-    };
+-    Poppler::setNSSPasswordCallback(PDFGeneratorNSSPasswordCallback);
++
++    const bool isNSS = Poppler::activeCryptoSignBackend() == Poppler::CryptoSignBackend::NSS;
++
++    if (isNSS) {
++        auto PDFGeneratorNSSPasswordCallback = [&userCancelled](const char *element) -> char * {
++            bool ok;
++            const QString pwd = QInputDialog::getText(nullptr, i18n("Enter Password"), i18n("Enter password to open %1:", QString::fromUtf8(element)), QLineEdit::Password, QString(), &ok);
++            *userCancelled = !ok;
++            return ok ? strdup(pwd.toUtf8().constData()) : nullptr;
++        };
++        Poppler::setNSSPasswordCallback(PDFGeneratorNSSPasswordCallback);
++    }
+
+     const QList<Poppler::CertificateInfo> certs = Poppler::getAvailableSigningCertificates();
+     QList<Okular::CertificateInfo> vReturnCerts;
+@@ -239,7 +244,9 @@ QList<Okular::CertificateInfo> PopplerCertificateStore::signingCertificates(bool
+         vReturnCerts.append(fromPoppler(cert));
+     }
+
+-    Poppler::setNSSPasswordCallback(nullptr);
++    if (isNSS) {
++        Poppler::setNSSPasswordCallback(nullptr);
++    }
+
+     return vReturnCerts;
+ }
