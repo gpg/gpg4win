@@ -1,0 +1,15 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+--- a/CMakeLists.txt	2026-06-10 09:55:44.502206541 +0200
++++ b/CMakeLists.txt	2026-06-10 09:57:22.059307946 +0200
+@@ -144,7 +144,7 @@
+ set(GTK_REQUIRED "3.24")
+ set(GDK_PIXBUF_REQUIRED "2.42")
+ set(FREETYPE_VERSION "2.13")
+-set(FONTCONFIG_VERSION "2.15")
++set(FONTCONFIG_VERSION "2.13")
+ set(LIBCURL_VERSION "8.5")
+ set(NSS3_VERSION "3.98")
+ set(GPGME_VERSION "1.19")
