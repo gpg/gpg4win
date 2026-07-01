@@ -539,23 +539,7 @@ chk 8581e0e2ac540ce4c8ea76fb61c61234c85c3c908e70b8b5afd0b8ca244edad4
 
 ### END PASTE ###
 
-#
-# Packages released with KDE Plasma
-#
-server https://download.kde.org/stable/plasma/
-
-# kde-cli-tools
-# last changed: 2026-06-25
-# by: ingo
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-plasma.sh)
-file 5.27.12/kde-cli-tools-5.27.12.tar.xz
-chk 34eee66a6440e6e55317aee469e0e266c6515dcbf6783ae437f3efe03f0884c6
-
-#
-# Packages released with KDE Release Service (aka KDE Gear)
-#
 server http://download.kde.org/stable/release-service/
-
 # kmime
 # last changed: 2023-09-11
 # by: ah

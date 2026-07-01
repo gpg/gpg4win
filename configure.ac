@@ -688,11 +688,6 @@ if test "$build_appimage" = yes ; then
         APPIMAGE_KDEPKG([kparts], [kio kservice kxmlgui kconfigwidgets kwidgetsaddons ktextwidgets])
     fi
 
-    # KDE Plasma
-    if test "$IS_VSD3_BUILD" = yes ; then
-        APPIMAGE_KF5PKG([kde-cli-tools], [qtbase kconfig kiconthemes ki18n kio kservice kwindowsystem kactivities kparts kcoreaddons])
-    fi
-
     # KDE PIM
     if test "$IS_VSD3_BUILD" = yes ; then
         APPIMAGE_KF5PKG([libical])

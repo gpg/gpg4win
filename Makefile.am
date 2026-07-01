@@ -94,7 +94,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qttools/disable-most-tools.patch \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches-appimage/kcoreaddons/0001-Fix-MINGW-build.patch \
-             patches-appimage/kde-cli-tools/0001-Disable-components-we-don-t-need.patch \
              patches-appimage/kleopatra-202501221111/0001-Explicitely-require-threads.patch \
              patches-appimage/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
              patches-appimage/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
