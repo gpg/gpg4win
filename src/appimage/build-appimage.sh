@@ -100,6 +100,7 @@ sign_version_file () (
     SIGNKEY="$2"
 
     /src/build.sh --runcmd gpg --yes -o "${VERSION_FILE}.sig" -bau "${SIGNKEY}" "${VERSION_FILE}"
+    chmod 0644 "${VERSION_FILE}.sig"
 )
 
 # Check for the buildtype and existence of required files
