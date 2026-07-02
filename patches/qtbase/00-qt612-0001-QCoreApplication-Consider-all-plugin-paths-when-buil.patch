@@ -1,0 +1,62 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 85f98a971980c961b4c8f48407c10653684d1df5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tor=20Arne=20Vestb=C3=B8?= <tor.arne.vestbo@qt.io>
+Date: Thu, 4 Jun 2026 19:01:39 +0200
+Subject: [PATCH] QCoreApplication: Consider all plugin paths when building
+ library paths
+
+The default library paths were seeded from a single plugin installation
+directory via QLibraryInfo::path(), but QLibraryInfo can resolve more
+than one plugin path. We now iterate all of them, so each existing path
+is picked up.
+
+Pick-to: 6.12
+Change-Id: I2915357f9c94ae4f10673b0f2f20433b714d9419
+Reviewed-by: Joerg Bornemann <joerg.bornemann@qt.io>
+Reviewed-by: Thiago Macieira <thiago.macieira@intel.com>
+---
+ src/corelib/kernel/qcoreapplication.cpp        | 18 ++++++++++--------
+ .../qcoreapplication/tst_qcoreapplication.cpp  | 18 ++++++++++--------
+ 2 files changed, 20 insertions(+), 16 deletions(-)
+
+diff --git a/src/corelib/kernel/qcoreapplication.cpp b/src/corelib/kernel/qcoreapplication.cpp
+index 374b76953c5..a4a411ce617 100644
+--- a/src/corelib/kernel/qcoreapplication.cpp
++++ b/src/corelib/kernel/qcoreapplication.cpp
+@@ -2982,8 +2982,8 @@ static QStringList libraryPathsLocked();
+     until a QCoreApplication is created. If it is not found when calling
+     this function, the default library paths will be used.
+
+-    The list will include the installation directory for plugins if
+-    it exists (the default installation directory for plugins is \c
++    The list will include the installation directories for plugins if
++    they exist (the default installation directory for plugins is \c
+     INSTALL/plugins, where \c INSTALL is the directory where Qt was
+     installed). The colon separated entries of the \c QT_PLUGIN_PATH
+     environment variable are always added. The plugin installation
+@@ -3044,12 +3044,14 @@ static QStringList libraryPathsLocked()
+         }
+ #endif // Q_OS_DARWIN
+
+-        QString installPathPlugins =  QLibraryInfo::path(QLibraryInfo::PluginsPath);
+-        if (QFile::exists(installPathPlugins)) {
+-            // Make sure we convert from backslashes to slashes.
+-            installPathPlugins = QDir(installPathPlugins).canonicalPath();
+-            if (!app_libpaths->contains(installPathPlugins))
+-                app_libpaths->append(installPathPlugins);
++        const auto pluginPaths = QLibraryInfo::paths(QLibraryInfo::PluginsPath);
++        for (auto path : pluginPaths) {
++            if (QFile::exists(path)) {
++                // Make sure we convert from backslashes to slashes.
++                path = QDir(path).canonicalPath();
++                if (!app_libpaths->contains(path))
++                    app_libpaths->append(path);
++            }
+         }
+
+         // If QCoreApplication is not yet instantiated,
+--
+2.54.0

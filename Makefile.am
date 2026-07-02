@@ -110,6 +110,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/00-qt611-0003-a11y-Unify-item-view-to-a11y-child-index-mapping.patch \
              patches/qtbase/00-qt611-0004-a11y-Notify-about-property-state-changes-of-focused-.patch \
              patches/qtbase/00-qt611-0005-a11y-uia-Notify-about-state-changes-of-checkable-ite.patch \
+             patches/qtbase/00-qt612-0001-QCoreApplication-Consider-all-plugin-paths-when-buil.patch \
              patches/qtbase/00-qt6xx-0001-Fix-a11y-window-activation-events.patch \
              patches/qtbase/0001-Don-t-report-tabname-as-name-of-tabbar.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
@@ -141,6 +142,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/qtbase/00-qt611-0003-a11y-Unify-item-view-to-a11y-child-index-mapping.patch \
              patches-appimage/qtbase/00-qt611-0004-a11y-Notify-about-property-state-changes-of-focused-.patch \
              patches-appimage/qtbase/00-qt611-0005-a11y-uia-Notify-about-state-changes-of-checkable-ite.patch \
+             patches-appimage/qtbase/00-qt612-0001-QCoreApplication-Consider-all-plugin-paths-when-buil.patch \
              patches-appimage/qtbase/00-qt6xx-0001-Fix-a11y-window-activation-events.patch \
              patches-appimage/qtbase/add-kleopatras-mime-types.patch \
              patches-appimage/qtbase/configurable-windowstheme.patch \
