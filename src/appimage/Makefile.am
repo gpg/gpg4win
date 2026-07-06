@@ -220,7 +220,8 @@ appimage_pkg_poppler_configure = \
     -DENABLE_GOBJECT_INTROSPECTION=OFF \
     -DENABLE_QT5=OFF \
     -DENABLE_LCMS=OFF \
-    -DENABLE_LIBCURL=OFF
+    -DENABLE_LIBCURL=OFF \
+    -DBUILD_QT6_TESTS=OFF
 
 appimage_pkg_okular_configure = \
     -DFORCE_NOT_REQUIRED_DEPENDENCIES=\"PlasmaActivities;KF6Wallet;KF6Purpose;Qt6TextToSpeech;LibZip;KF6DocTools;Phonon4Qt6;LibSpectre;KExiv2Qt6;CHM;DjVuLibre;EPub;QMobipocket;Discount;Qt6Qml;Qt6DBus;KF6Pty\"
