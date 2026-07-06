@@ -87,7 +87,7 @@ RUN dnf install -y \
         openssl-devel \
         patch \
         pcre2-devel \
-        python3.11-lxml \
+        python3.12-lxml \
         readline-devel \
         rsync \
         systemd-devel \
