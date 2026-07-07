@@ -87,9 +87,9 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/0004-Fix-tree-table-list-accessibility-state.patch \
              patches/qtbase/0005-a11y-Return-correct-string-information-for-item-view.patch \
              patches/qtbase/0006-Support-multiple-comma-separated-plugin-paths-in-qt..patch \
-             patches/qtbase/fix-high-contrast-item-view-selection-color.patch \
-             patches/qtbase/fix-queryHighContrast.patch \
-             patches/qtbase/fix-tooltip-text-color-with-dark-theme.patch \
+             patches/qtbase/0007-fix-high-contrast-item-view-selection-color.patch \
+             patches/qtbase/0008-fix-queryHighContrast.patch \
+             patches/qtbase/0009-fix-tooltip-text-color-with-dark-theme.patch \
              patches/qttools/disable-most-tools.patch \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches-appimage/kcoreaddons/0001-Fix-MINGW-build.patch \
@@ -111,9 +111,9 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/qtbase/0004-Fix-tree-table-list-accessibility-state.patch \
              patches-appimage/qtbase/0005-a11y-Return-correct-string-information-for-item-view.patch \
              patches-appimage/qtbase/0006-Support-multiple-comma-separated-plugin-paths-in-qt..patch \
-             patches-appimage/qtbase/fix-high-contrast-item-view-selection-color.patch \
-             patches-appimage/qtbase/fix-queryHighContrast.patch \
-             patches-appimage/qtbase/fix-tooltip-text-color-with-dark-theme.patch \
+             patches-appimage/qtbase/0007-fix-high-contrast-item-view-selection-color.patch \
+             patches-appimage/qtbase/0008-fix-queryHighContrast.patch \
+             patches-appimage/qtbase/0009-fix-tooltip-text-color-with-dark-theme.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch
 
 dist-hook: gen-ChangeLog pack_packages_tarballs
