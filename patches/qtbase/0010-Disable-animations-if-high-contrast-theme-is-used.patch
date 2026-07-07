@@ -1,0 +1,30 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 3399eff09c0501a768f040ea6ec4792fcf29c796 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 7 Jul 2026 11:50:33 +0200
+Subject: [PATCH] Disable animations if high contrast theme is used
+
+---
+ src/plugins/styles/windowsvista/qwindowsvistastyle.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/plugins/styles/windowsvista/qwindowsvistastyle.cpp b/src/plugins/styles/windowsvista/qwindowsvistastyle.cpp
+index 140daeaf6da..47225899bd6 100644
+--- a/src/plugins/styles/windowsvista/qwindowsvistastyle.cpp
++++ b/src/plugins/styles/windowsvista/qwindowsvistastyle.cpp
+@@ -2445,6 +2445,10 @@ QWindowsVistaStylePrivate::QWindowsVistaStylePrivate() :
+
+ bool QWindowsVistaStylePrivate::transitionsEnabled() const
+ {
++    QWindowsVistaStyle *q = const_cast<QWindowsVistaStyle*>(q_func());
++    if (q->highContrastTheme) {
++        return false;
++    }
+     BOOL animEnabled = false;
+     if (SystemParametersInfo(SPI_GETCLIENTAREAANIMATION, 0, &animEnabled, 0))
+     {
+--
+2.54.0
