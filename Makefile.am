@@ -90,7 +90,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/fix-high-contrast-item-view-selection-color.patch \
              patches/qtbase/fix-queryHighContrast.patch \
              patches/qtbase/fix-tooltip-text-color-with-dark-theme.patch \
-             patches/qtbase/use-fusion-style-for-high-contrast-mode.patch \
              patches/qttools/disable-most-tools.patch \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches-appimage/kcoreaddons/0001-Fix-MINGW-build.patch \
@@ -115,7 +114,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/qtbase/fix-high-contrast-item-view-selection-color.patch \
              patches-appimage/qtbase/fix-queryHighContrast.patch \
              patches-appimage/qtbase/fix-tooltip-text-color-with-dark-theme.patch \
-             patches-appimage/qtbase/use-fusion-style-for-high-contrast-mode.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch
 
 dist-hook: gen-ChangeLog pack_packages_tarballs
