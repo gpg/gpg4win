@@ -219,7 +219,7 @@ case ${package} in
         branch="gpg4win/gpd-5.1"
         ;;
     okular)
-  #      branch="work/sune/WORK"
+        branch="release/26.08"
         ;;
     poppler)
         #branch="WORK"

@@ -694,17 +694,17 @@ server https://poppler.freedesktop.org
 # last changed: 2026-06-05
 # by: m.
 # verified: SIG CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
-file poppler-26.06.0.tar.xz
-chk 4cb4e5a3dc8cb5eec751c8a23c8ba19f61f96dedc0cd07d2aee6b0c8e2cf6ba4
+file poppler-26.07.0.tar.xz
+chk 304832f48f8a47fdca90c6b6d1f684e68f37c10c9a0726f345f4ca9df4ca01e2
 
 server https://gnupg.net/snapshots
 
 # okular
-# last changed: 2025-12-11
-# by: wk
-# verified: Tarball created by builder.
-file okular/okular-202512111542.tar.xz
-chk dae20e59449ab392377052d25d4448568c051de3b3c73c8cc63ea508204f2a69
+# last changed: 2026-07-07
+# by: sune
+# verified: Tarball created by sune.
+file okular/okular-202607071119.tar.xz
+chk e2b34db6a8114136cc2412d606656baa7ea50170d31b12f691ac671bc9b2a2cf
 
 fi
 
