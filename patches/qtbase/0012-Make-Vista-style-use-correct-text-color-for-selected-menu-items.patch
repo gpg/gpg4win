@@ -1,0 +1,35 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From d354110acc685b43f46dd74a3ec80b854f3aa909 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 7 Jul 2026 16:36:03 +0200
+Subject: [PATCH] Make Vista style use correct text color for selected menu
+ items
+
+This fixes bad text/background contrast of menu items with Windows high
+contrast themes.
+
+GnuPG-bug-id: 7585
+---
+ src/plugins/styles/windowsvista/qwindowsvistastyle.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/plugins/styles/windowsvista/qwindowsvistastyle.cpp b/src/plugins/styles/windowsvista/qwindowsvistastyle.cpp
+index 47225899bd6..252a82bff89 100644
+--- a/src/plugins/styles/windowsvista/qwindowsvistastyle.cpp
++++ b/src/plugins/styles/windowsvista/qwindowsvistastyle.cpp
+@@ -1283,8 +1283,8 @@ void QWindowsVistaStyle::drawControl(ControlElement element, const QStyleOption
+
+             painter->setPen(menuitem->palette.buttonText().color());
+
+-            const QColor textColor = menuitem->palette.text().color();
+-            if (dis)
++            const QColor textColor = (act && !dis && queryHighContrast()) ? menuitem->palette.highlightedText().color() : menuitem->palette.text().color();
++            if (dis || (act && queryHighContrast()))
+                 painter->setPen(textColor);
+
+             int xm = windowsItemFrame + checkcol + windowsItemHMargin + (gutterWidth - menuitem->rect.x()) - 1;
+--
+2.54.0

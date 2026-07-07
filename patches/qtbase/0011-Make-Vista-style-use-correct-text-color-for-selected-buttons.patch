@@ -1,0 +1,60 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From b0337a88bb1950a0146fe9c6b625235768dfc58e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 7 Jul 2026 15:25:57 +0200
+Subject: [PATCH] Make Vista style use correct text color for selected
+ buttons
+
+This fixes bad text/background contrast of buttons with Windows high
+contrast themes.
+
+GnuPG-bug-id: 7585
+---
+ src/widgets/styles/qcommonstyle.cpp | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/src/widgets/styles/qcommonstyle.cpp b/src/widgets/styles/qcommonstyle.cpp
+index a79c33005c6..469cbd31132 100644
+--- a/src/widgets/styles/qcommonstyle.cpp
++++ b/src/widgets/styles/qcommonstyle.cpp
+@@ -119,8 +119,21 @@
+ #include <private/qtextengine_p.h>
+ #include <private/qstylehelper_p.h>
+
++#ifdef Q_OS_WIN
++#  include <qt_windows.h>
++#endif
++
+ QT_BEGIN_NAMESPACE
+
++static bool queryHighContrast()
++{
++    HIGHCONTRAST hcf = {};
++    hcf.cbSize = static_cast<UINT>(sizeof(HIGHCONTRAST));
++    if (SystemParametersInfo(SPI_GETHIGHCONTRAST, hcf.cbSize, &hcf, FALSE))
++        return hcf.dwFlags & HCF_HIGHCONTRASTON;
++    return false;
++}
++
+ static QWindow *qt_getWindow(const QWidget *widget)
+ {
+     return widget ? widget->window()->windowHandle() : nullptr;
+@@ -1429,8 +1442,12 @@ void QCommonStyle::drawControl(ControlElement element, const QStyleOption *opt,
+                 else
+                     textRect = textRect.adjusted(indicatorSize, 0, 0, 0);
+             }
++            // HACK force correct text color for Windows Vista style with Windows high contrast theme
++            const bool hovered = button->state & State_MouseOver;
++            const bool defaulted = (button->features & QStyleOptionButton::DefaultButton) && (button->state & State_Active);
++            const auto textRole = ((hovered || defaulted) && queryHighContrast()) ? QPalette::HighlightedText : QPalette::ButtonText;
+             proxy()->drawItemText(p, textRect, tf, button->palette, (button->state & State_Enabled),
+-                         button->text, QPalette::ButtonText);
++                         button->text, textRole);
+         }
+         break;
+     case CE_RadioButton:
+--
+2.54.0
