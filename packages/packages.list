@@ -579,12 +579,13 @@ chk 79616a7bc28710f8f2fc4e7eee53342e83c58969eef09ba70e63ee2017472e6a
 file 26.04.1/src/kmbox-26.04.1.tar.xz
 chk 3f45c677859e15ec16be4c710811022931629cccf29999282ecf63583233bccc
 
-# mimetreeparser
-# last changed: 2026-05-12
-# by: ingo
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
-file 26.04.1/src/mimetreeparser-26.04.1.tar.xz
-chk 5aeec9af9b3d589a948350d32f8724b142a8c82ad0c5465b4e934b6159f68219
+server https://gnupg.net/snapshots
+
+# last changed: 2026-07-08
+# by: thomas
+# verified: Tarball created by thomas.
+file mimetreeparser/mimetreeparser-202607081249.tar.xz
+chk e7aa6e465a7d5a0280b32e4d39ebd49c5b675677d0c3717bbdff4c6ceef3a1d3
 
 #
 # GPGME is stored on the GnuPG server
@@ -659,11 +660,11 @@ file kleopatra/kleopatra-202606290947.tar.xz
 chk 6a1bc2908dc84d061537319cb187e8a6311a998e047e92de7125ddae85990cd4
 
 # gpgoljs
-# last changed: 2026-06-03
+# last changed: 2026-07-08
 # by: m
 # verified: Tarball created by m.
-file gpgoljs/gpgoljs-202606031607.tar.xz
-chk 7ebb454bffd8bf41841c5aafba6a55f0288c91c356eaff17a3e19b189877a8bb
+file gpgoljs/gpgoljs-202607081354.tar.xz
+chk 692037b89fa8dc334c85d96b81be74adf526fdbc1b69ccab46134266b6607e62
 
 
 

@@ -28,23 +28,6 @@ ${MementoSection} "GpgOL/Web" SEC_gpgoljs
   File ${prefix}/bin/gpgol-server.exe
   File ${prefix}/bin/install.ps1
 
-  SetOutPath "$INSTDIR\share\gpgol-web"
-  File ${prefix}/share/gpgol-web/index.html
-
-  SetOutPath "$INSTDIR\share\gpgol-web\assets"
-  # Take care: we can't use wildcards for the filenames because the MSI
-  # building process won't be able to cope wit it.
-  !include "${prefix}/share/gpgol-web/assets/inst-gpgoljs-assets.nsi"
-  File ${prefix}/share/gpgol-web/assets/document-decrypt-32.png
-  File ${prefix}/share/gpgol-web/assets/document-decrypt-64.png
-  File ${prefix}/share/gpgol-web/assets/document-decrypt-80.png
-  File ${prefix}/share/gpgol-web/assets/icon-128.png
-  File ${prefix}/share/gpgol-web/assets/icon-16.png
-  File ${prefix}/share/gpgol-web/assets/icon-32.png
-  File ${prefix}/share/gpgol-web/assets/icon-64.png
-  File ${prefix}/share/gpgol-web/assets/icon-80.png
-  File ${prefix}/share/gpgol-web/assets/logo.png
-
   SetOutPath "$INSTDIR\share\icons\hicolor\scalable\apps"
   File /nonfatal ${prefix}/share/icons/hicolor/scalable/apps/com.gnupg.gpgolweb.svg
 
