@@ -20,7 +20,7 @@ diff --git a/src/widgets/styles/qcommonstyle.cpp b/src/widgets/styles/qcommonsty
 index a79c33005c6..469cbd31132 100644
 --- a/src/widgets/styles/qcommonstyle.cpp
 +++ b/src/widgets/styles/qcommonstyle.cpp
-@@ -119,8 +119,21 @@
+@@ -119,8 +119,23 @@
  #include <private/qtextengine_p.h>
  #include <private/qstylehelper_p.h>
 
@@ -32,10 +32,12 @@ index a79c33005c6..469cbd31132 100644
 
 +static bool queryHighContrast()
 +{
++#ifdef Q_OS_WIN
 +    HIGHCONTRAST hcf = {};
 +    hcf.cbSize = static_cast<UINT>(sizeof(HIGHCONTRAST));
 +    if (SystemParametersInfo(SPI_GETHIGHCONTRAST, hcf.cbSize, &hcf, FALSE))
 +        return hcf.dwFlags & HCF_HIGHCONTRASTON;
++#endif
 +    return false;
 +}
 +
