@@ -209,7 +209,7 @@ case ${package} in
     gpgol.js|gpgoljs)
         ;;
     mimetreeparser)
-#        branch="gpg4win/24.05"
+		branch="gpg4win/gpd-5.1"
         ;;
     kleopatra)
         branch="gpg4win/gpd-5.1"
