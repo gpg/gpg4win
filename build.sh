@@ -842,7 +842,9 @@ echo >&2 "$PGM: command runner pid is $runnerpid"
 docker_cmdline="run -it --rm --user $userid:$groupid"
 docker_cmdline="$docker_cmdline -v "${srcdir}":/src:ro"
 docker_cmdline="$docker_cmdline -v "${builddir}":/build:rw"
-docker_cmdline="$docker_cmdline -v "$HOME/.gnupg-autogen.rc":/.gnupg-autogen.rc:ro"
+# only add ~/.gnupg-autogen.rc if it actually exists
+[ -f "$HOME/.gnupg-autogen.rc" ] && \
+    docker_cmdline="$docker_cmdline -v "$HOME/.gnupg-autogen.rc":/.gnupg-autogen.rc:ro"
 docker_cmdline="$docker_cmdline $docker_image $cmd"
 echo >&2 "$PGM: running: docker $docker_cmdline"
 docker $docker_cmdline 2>&1 | tee -a ${logfile}
