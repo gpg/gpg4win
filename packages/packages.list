@@ -581,11 +581,12 @@ chk 3f45c677859e15ec16be4c710811022931629cccf29999282ecf63583233bccc
 
 server https://gnupg.net/snapshots
 
-# last changed: 2026-07-08
-# by: thomas
-# verified: Tarball created by thomas.
-file mimetreeparser/mimetreeparser-202607081249.tar.xz
-chk e7aa6e465a7d5a0280b32e4d39ebd49c5b675677d0c3717bbdff4c6ceef3a1d3
+# mimetreeparser
+# last changed: 2026-07-09
+# by: m
+# verified: Tarball created by m.
+file mimetreeparser/mimetreeparser-202607091157.tar.xz
+chk 3c9883e5a81a277838cb4c23dcf7d64464416635277cc56f9ea0f76788bdc04d
 
 #
 # GPGME is stored on the GnuPG server
