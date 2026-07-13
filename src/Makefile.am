@@ -59,11 +59,16 @@ appimage = appimage
 else
 appimage =
 endif
+if BUILD_MACIMAGE
+macimage = mac
+else
+macimage =
+endif
 if BUILD_W64_COND
 w64_suffix="-x64"
 endif
 
-SUBDIRS = ${appimage} nsis
+SUBDIRS = ${macimage} ${appimage} nsis
 
 # Define macros for the various directories.  These directory names
 # must be absolute, as we switch pretty often between them and don't
