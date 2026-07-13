@@ -588,9 +588,10 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_KDEPKG([libqrencode])
     # poppler requires tiff >= 4.3
     MACIMAGE_KDEPKG([tiff])
-    MACIMAGE_SPKG([xcb-util-cursor])
 
-    MACIMAGE_SPKG([libgpg-error])
+    MACIMAGE_SPKG([libiconv])
+    MACIMAGE_SPKG([gettext], [libiconv])
+    MACIMAGE_SPKG([libgpg-error], [libiconv gettext])
     MACIMAGE_SPKG([libassuan], [libgpg-error])
     MACIMAGE_SPKG([npth])
     MACIMAGE_SPKG([libgcrypt], [libgpg-error])
@@ -605,13 +606,10 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_SPKG([paperkey])
 
     # Qt related stuff.
-    MACIMAGE_KDEPKG([qtbase], [freetype, xcb-util-cursor])
+    MACIMAGE_KDEPKG([qtbase], [freetype])
     MACIMAGE_KDEPKG([qttools], [qtbase])
     MACIMAGE_KDEPKG([qttranslations], [qtsvg qttools])
     MACIMAGE_KDEPKG([qtsvg], [qtbase])
-    MACIMAGE_KDEPKG([qtwayland], [qtbase])
-    MACIMAGE_KDEPKG([wayland-protocols])
-    MACIMAGE_KDEPKG([plasma-wayland-protocols], [wayland-protocols extra-cmake-modules])
     MACIMAGE_KDEPKG([breeze], [qtbase kcoreaddons kconfig kconfigwidgets kguiaddons kiconthemes kwindowsystem])
 
     # KDE Frameworks Tier 1
@@ -628,7 +626,7 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_KDEPKG([ki18n], [qtbase qttools extra-cmake-modules])
     MACIMAGE_KDEPKG([kitemmodels], [qtbase qttools extra-cmake-modules])
     MACIMAGE_KDEPKG([kitemviews], [qtbase qttools extra-cmake-modules])
-    MACIMAGE_KDEPKG([kwindowsystem], [qtbase qtwayland extra-cmake-modules wayland_protocols plasma-wayland-protocols])
+    MACIMAGE_KDEPKG([kwindowsystem], [qtbase extra-cmake-modules])
     MACIMAGE_KDEPKG([solid], [qtbase extra-cmake-modules])
     MACIMAGE_KDEPKG([sonnet], [qtbase extra-cmake-modules])
     MACIMAGE_KDEPKG([threadweaver], [qtbase extra-cmake-modules])

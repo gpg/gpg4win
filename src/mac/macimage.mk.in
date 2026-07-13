@@ -330,13 +330,14 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	 $(call SETVARS,$(1));				\
 	 mkdir -p "$$$${pkglogdir}"; \
 	 mkdir -p "$$$${pkgbdir}";				\
-	 cd "$$$${pkgbdir}";				\
+	 cd $$$$(realpath "$$$${pkgbdir}");				\
 	 eval $(CMAKE) 		\
 			-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
 			-DCMAKE_INSTALL_LIBDIR=lib \
 			-DKDE_INSTALL_LIBDIR=lib \
 			-DCMAKE_PREFIX_PATH="$(idir)" \
 			-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
+			-DKDE_INSTALL_BUNDLEDIR="$(idir)/Applications" \
 			-DBUILD_TESTING=False \
 			-DBUILD_PYTHON_BINDINGS=OFF \
 			$$$${pkgcfg} $$$${pkgextracflags} \

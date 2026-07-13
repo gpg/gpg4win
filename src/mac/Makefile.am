@@ -1,5 +1,5 @@
-# Makefile.am - Makefile for building AppImage of Kleopatra
-# Copyright (C) 2005, 2006, 2007, 2008, 2009, 2021 g10 Code GmbH
+# Makefile.am - Makefile for building MacOS Image of Kleopatra
+# Copyright (C) 2005, 2006, 2007, 2008, 2009, 2021, 2026 g10 Code GmbH
 #
 # Software engineering by Ingo Klöcker <dev@ingo-kloecker.de>
 #
@@ -20,9 +20,7 @@
 #
 # SPDX-License-Identifier: GPL-2.0+
 
-EXTRA_DIST = AppRun start-shell build-appimage.sh
-
-SUBDIRS = rsync-filters
+EXTRA_DIST = build-macimage.sh
 
 # Define macros for the various directories.  These directory names
 # must be absolute, as we switch pretty often between them and don't
@@ -41,7 +39,7 @@ SUBDIRS = rsync-filters
 # ipdir    :: A subdir of the install directory to hold the installed
 #             packages which will be stowed to other subdirs of $(idir).
 # appdir   :: The directory for preparing the content of the AppImage.
-# patdir   :: The source directory patches-appimage/ below tsdir.
+# patdir   :: The source directory patches-macimage/ below tsdir.
 # rsyncfilterdir :: The source directory with the package-specific
 #                   rsync filters (rsync replaces stow in the AppImage
 #                   build).
@@ -54,8 +52,8 @@ bdir      := $(root)/build
 idir      := $(root)/install
 ipdir     := $(root)/install/pkgs
 appdir    := $(root)/AppDir
-patdir    := $(tsdir)/patches-appimage
-rsyncfilterdir := $(tsdir)/src/appimage/rsync-filters
+patdir    := $(tsdir)/patches-macimage
+rsyncfilterdir := $(tsdir)/src/macimage/rsync-filters
 
 $(info -------------------------------------------------)
 $(info Topsource ....: $(tsdir))
@@ -67,16 +65,16 @@ $(info -------------------------------------------------)
 
 
 # Source packages for the AppImage (see also ../src/Makefile.am)
-appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
+macimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
-		 freetype xcb-util-cursor
+		 freetype xcb-util-cursor libiconv gettext
 
 
-appimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
+macimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
 
 
 # KDE packages for the AppImage
-appimage_kdepkgs = gpgmepp qgpgme \
+macimage_kdepkgs = gpgmepp qgpgme \
 		   kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
 		   kmime kmbox kconfigwidgets kxmlgui kguiaddons kitemviews \
@@ -90,9 +88,9 @@ appimage_kdepkgs = gpgmepp qgpgme \
 		   qtbase qttools qtsvg qttranslations qtwayland \
 		   plasma-wayland-protocols breeze tiff
 
-appimage_bpkgs = wayland-protocols
+macimage_bpkgs = wayland-protocols
 
-define appimage_pkg_wayland_protocols_post_install
+define macimage_pkg_wayland_protocols_post_install
 ( \
 	cd ..; \
 	mv $$$${pkgidir}/$$$${pkg_version} $$$${pkgsdir};\
@@ -104,14 +102,24 @@ define appimage_pkg_wayland_protocols_post_install
 )
 endef
 
-appimage_pkg_gpgme_configure = \
+macimage_pkg_pinentry_configure = \
+	--disable-ncurses \
+	--enable-pinentry-qt \
+	PKG_CONFIG=\"/opt/homebrew/bin/pkg-config \
+	--with-path=$(idir)/lib/pkgconfig/\" \
+	CXXFLAGS=\"-std=c++17 -F$(idir)/lib\" \
+	--disable-pinentry-fltk \
+	--disable-pinentry-curses \
+	--disable-fallback-curses
+
+macimage_pkg_gpgme_configure = \
     --enable-languages= \
     --disable-gpg-test \
     --disable-gpgsm-test
 
-appimage_pkg_qgpgme_configure = -DBUILD_WITH_QT5=OFF
+macimage_pkg_qgpgme_configure = -DBUILD_WITH_QT5=OFF
 
-appimage_pkg_qtbase_configure = \
+macimage_pkg_qtbase_configure = \
         -DQT_BUILD_EXAMPLES=OFF \
         -DQT_BUILD_TESTS=OFF \
         -DBUILD_WITH_PCH=OFF \
@@ -132,13 +140,13 @@ appimage_pkg_qtbase_configure = \
         -DFEATURE_system_pcre2=ON \
         -DFEATURE_system_jpeg=ON \
         -DFEATURE_system_zlib=ON \
-        -DFEATURE_xcb=ON \
+        -DFEATURE_xcb=OFF \
         -DFEATURE_use_gold_linker_alias=OFF \
         -DFEATURE_wayland_server=OFF \
         -DCMAKE_MESSAGE_LOG_LEVEL=STATUS \
         -DCMAKE_VERBOSE_MAKEFILE=ON
 
-appimage_pkg_qttools_configure = \
+macimage_pkg_qttools_configure = \
 	-DFEATURE_assistant=OFF \
 	-DFEATURE_qdoc=OFF \
 	-DFEATURE_designer=OFF \
@@ -152,56 +160,57 @@ appimage_pkg_qttools_configure = \
 	-DFEATURE_qtplugininfo=OFF
 
 # do not create the huge icon resource files
-appimage_pkg_breeze_icons_configure = -DBINARY_ICONS_RESOURCE=OFF
+# do not require python-lxml
+macimage_pkg_breeze_icons_configure = -DBINARY_ICONS_RESOURCE=OFF -DWITH_ICON_GENERATION=OFF
 
-appimage_pkg_breeze_configure = \
+macimage_pkg_breeze_configure = \
     -DBUILD_QT6=ON \
     -DBUILD_QT5=OFF \
     -DWITH_DECORATIONS=OFF \
     -DCMAKE_DISABLE_FIND_PACKAGE_KF6KCMUtils=ON
 
-appimage_pkg_kauth_configure = \
+macimage_pkg_kauth_configure = \
     -DKAUTH_BACKEND_NAME=FAKE
 
-appimage_pkg_kcompletion_configure = \
+macimage_pkg_kcompletion_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
 
-appimage_pkg_kconfigwidgets_configure = \
+macimage_pkg_kconfigwidgets_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
 
-appimage_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
+macimage_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
 
-appimage_pkg_kguiaddons_configure = -DWITH_WAYLAND=OFF
+macimage_pkg_kguiaddons_configure = -DWITH_WAYLAND=OFF
 
-appimage_pkg_sonnet_configure = -DSONNET_USE_QML=OFF
+macimage_pkg_sonnet_configure = -DSONNET_USE_QML=OFF
 
-appimage_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
+macimage_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
 
-appimage_pkg_kitemviews_configure = \
+macimage_pkg_kitemviews_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
 
-appimage_pkg_kwidgetsaddons_configure = \
+macimage_pkg_kwidgetsaddons_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
 
 # FIXME: Uses spaces in distribution text
-appimage_pkg_kxmlgui_configure = \
+macimage_pkg_kxmlgui_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF \
     -DFORCE_DISABLE_KGLOBALACCEL=ON
 
-appimage_pkg_libkleo_configure = \
+macimage_pkg_libkleo_configure = \
     -DLIBKLEO_FEATURE_DEVS_COMPLIANCE=$(LIBKLEO_FEATURE_DEVS_COMPLIANCE)
 
-define appimage_pkg_kdsingleapplication_post_unpack
+define macimage_pkg_kdsingleapplication_post_unpack
         (mv $(bdir)/KDSingleApplication-* $$$${pkgsdir})
 endef
 
-appimage_pkg_kdsingleapplication_configure = \
+macimage_pkg_kdsingleapplication_configure = \
     -DKDSingleApplication_STATIC=ON \
     -DKDSingleApplication_TESTS=OFF \
     -DKDSingleApplication_EXAMPLES=OFF \
     -DKDSingleApplication_DOCS=OFF
 
-appimage_pkg_kleopatra_configure = \
+macimage_pkg_kleopatra_configure = \
     -DKLEOPATRA_LIST_AS_COMPONENT=ON \
     -DKLEOPATRA_FEATURE_READ_VERSION_FILE=$(KLEOPATRA_FEATURE_READ_VERSION_FILE) \
     -DKLEOPATRA_VERSION_STRING=$(KLEOPATRA_VERSION_STRING) \
@@ -210,7 +219,7 @@ appimage_pkg_kleopatra_configure = \
     -DKLEOPATRA_ICON_DIR=$(KLEOPATRA_ICON_DIR) \
     -DDISABLE_KWATCHGNUPG=ON
 
-appimage_pkg_poppler_configure = \
+macimage_pkg_poppler_configure = \
     -DENABLE_BOOST=OFF \
     -DENABLE_NSS3=OFF \
     -DENABLE_GOBJECT_INTROSPECTION=OFF \
@@ -219,38 +228,40 @@ appimage_pkg_poppler_configure = \
     -DENABLE_LIBCURL=OFF \
     -DFONT_CONFIGURATION=generic
 
-appimage_pkg_okular_configure = \
+macimage_pkg_okular_configure = \
     -DFORCE_NOT_REQUIRED_DEPENDENCIES=\"PlasmaActivities;KF6Wallet;KF6Purpose;Qt6TextToSpeech;LibZip;KF6DocTools;Phonon4Qt6;LibSpectre;KExiv2Qt6;CHM;DjVuLibre;EPub;QMobipocket;Discount;Qt6Qml;Qt6DBus;KF6Pty\"
 
-appimage_pkg_libical_configure = \
+macimage_pkg_libical_configure = \
     -DICAL_BUILD_DOCS=OFF \
     -DICAL_GLIB=OFF
 
-appimage_pkg_prison_configure = \
+macimage_pkg_prison_configure = \
     -DWITH_QUICK=OFF \
     -DWITH_MULTIMEDIA=OFF
 
-appimage_pkg_kiconthemes_configure = \
+macimage_pkg_kiconthemes_configure = \
     -DKICONTHEMES_USE_QTQUICK=OFF
 
-appimage_pkg_kcoreaddons_configure = -DKCOREADDONS_USE_QML=OFF
+macimage_pkg_kcoreaddons_configure = -DKCOREADDONS_USE_QML=OFF
 
-appimage_pkg_kcalendarcore_configure = -DUSE_QML=OFF
+macimage_pkg_kcalendarcore_configure = -DUSE_QML=OFF
 
-appimage_pkg_ktextwidgets_configure = -DWITH_TEXT_TO_SPEECH=OFF
+macimage_pkg_ktextwidgets_configure = -DWITH_TEXT_TO_SPEECH=OFF
 
-appimage_pkg_kio_configure = -DWITH_WAYLAND=OFF
+macimage_pkg_kio_configure = -DWITH_WAYLAND=OFF
 
-appimage_pkg_kwindowsystem_configure = -DKWINDOWSYSTEM_QML=OFF
+macimage_pkg_kwindowsystem_configure = -DKWINDOWSYSTEM_QML=OFF
 
-appimage_pkg_tiff_configure = \
+macimage_pkg_solid_configure = -DBISON_EXECUTABLE=/opt/homebrew/opt/bison/bin/bison
+
+macimage_pkg_tiff_configure = \
     -Dtiff-tools=OFF \
     -Dtiff-tests=OFF \
     -Dtiff-contrib=OFF \
     -Dtiff-docs=OFF
 
-appimage_pkg_xcb_util_cursor_configure = --enable-static --disable-shared
-appimage_pkg_xcb_util_cursor_extracflags = -fPIC
+macimage_pkg_xcb_util_cursor_configure = --enable-static --disable-shared
+macimage_pkg_xcb_util_cursor_extracflags = -fPIC
 
 ########################################################################
 
@@ -280,9 +291,9 @@ define INCLUDE_BY_MAKE
 include $(1)
 endef
 
-$(eval $(call INCLUDE_BY_MAKE,appimage.mk))
+$(eval $(call INCLUDE_BY_MAKE,macimage.mk))
 
-clean-local: clean-appimage
+clean-local: clean-macimage
 
 license.blurb: $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3
 	cat $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3 >$@
