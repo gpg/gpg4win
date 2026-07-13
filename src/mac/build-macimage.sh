@@ -115,7 +115,7 @@ fi
 
 # The actual build
 cd ${BUILDROOT}
-source /opt/rh/gcc-toolset-14/enable
+PATH=/opt/homebrew/opt/bison/bin:/opt/homebrew/opt/gnu-tar/libexec/gnubin/:/opt/homebrew/opt/gnu-sed/libexec/gnubin/:/opt/homebrew/opt/coreutils/libexec/gnubin/:/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
 ${SRCDIR}/configure --enable-macimage --with-playground=${BUILDROOT}
 # Nuke the AppDir to make sure we get everything nice and clean
 cd ${BUILDROOT}/src/appimage
