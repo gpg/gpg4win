@@ -1,0 +1,276 @@
+#!/bin/sh
+# Build a MacOS Image of GnuPG (VS-)Desktop
+# Copyright (C) 2021, 2024, 2026 g10 Code GmbH
+#
+# Software engineering by: Ingo Klöcker <dev@ingo-kloecker.de>
+#                          Andre Heinecke <aheinecke@gnupg.org>
+# This file is part of GnuPG.
+#
+# GnuPG is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# GnuPG is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, see <https://www.gnu.org/licenses/>.
+#
+# SPDX-License-Identifier: GPL-3.0+
+
+set -e
+
+BUILDROOT=/build
+SRCDIR=/src
+APPDIR=${BUILDROOT}/AppDir
+INSTDIR=${BUILDROOT}/install
+VSD_DIR=${SRCDIR}/src/gnupg-vsd
+
+# get signkey for VERSION file from build.sh
+VERSION_SIGNKEY="$1"
+
+write_version_file () (
+    # TODO: add uidcomment and read content from config files
+    echo "Writing VERSION file"
+    VERSION_FILE="$1"
+    FLAVOUR="$2"
+    LANG="$3"
+    VSD_VERSION="$4"
+    BUILD_CID_INSTALLER="$(cd "${SRCDIR}" && git rev-parse --verify HEAD)"
+    BUILD_CID_CONFIG="$(cd "${SRCDIR}/src/gnupg-vsd" && git rev-parse --verify HEAD)"
+    YEAR="$(date +%Y)"
+
+    if [ "${FLAVOUR}" = "vsd" ] ; then
+        KLEO_VERSION="VS-Desktop-${VSD_VERSION}"
+        KLEO_BUG_ADDRESS="https://gnupg.com/vsd/report.html"
+        KLEO_HOMEPAGE="https://www.gnupg.com/vsd/release-notes.html"
+        if [ "${LANG}" = "de" ] ; then
+            KLEO_SHORT_DESC="<h1>GnuPG VS-Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>Die GnuPG.com Unterstützung ist verfügbar unter:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Stichwort: VSD AppImage<br/><br/>"
+            KLEO_OTHER_TEXT="<b>GnuPG VS-Desktop</b><sup>®</sup> ist Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>Eine vollständige Liste der Lizenzen findet sich in der beiliegenden pkg-licenses.txt Datei."
+        else
+            KLEO_SHORT_DESC="<h1>GnuPG VS-Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>The GnuPG.com vendor support is available at:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Keyword: VSD AppImage English<br/><br/>"
+            KLEO_OTHER_TEXT="<b>GnuPG VS-Desktop</b><sup>®</sup> is Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>For a full list of licenses see the installed pkg-licenses.txt file."
+        fi
+    elif [ "${FLAVOUR}" = "gpd" ] ; then
+        KLEO_VERSION="Desktop-${VSD_VERSION}"
+        KLEO_BUG_ADDRESS="https://gnupg.com/gpd/report.html"
+        KLEO_HOMEPAGE="https://www.gnupg.com/gpd/release-notes.html"
+        if [ "${LANG}" = "de" ] ; then
+            KLEO_SHORT_DESC="<h1>GnuPG Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>Die GnuPG.com Unterstützung ist verfügbar unter:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Stichwort: GPD AppImage<br/><br/>"
+            KLEO_OTHER_TEXT="<b>GnuPG Desktop</b><sup>®</sup> ist Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>Eine vollständige Liste der Lizenzen findet sich in der beiliegenden pkg-licenses.txt Datei."
+        else
+            KLEO_SHORT_DESC="<h1>GnuPG Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>The GnuPG.com vendor support is available at:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Keyword: GPD AppImage English<br/><br/>"
+            KLEO_OTHER_TEXT="<b>GnuPG Desktop</b><sup>®</sup> is Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>For a full list of licenses see the installed pkg-licenses.txt file."
+        fi
+    fi
+
+    OKULAR_VERSION="${KLEO_VERSION}"
+    OKULAR_SHORT_DESC="${KLEO_SHORT_DESC}"
+    OKULAR_OTHER_TEXT="${KLEO_OTHER_TEXT}"
+    OKULAR_BUG_ADDRESS="${KLEO_BUG_ADDRESS}"
+    OKULAR_HOMEPAGE="${KLEO_HOMEPAGE}"
+
+    echo "[Kleopatra]
+version=${KLEO_VERSION}
+shortDescription=${KLEO_SHORT_DESC}
+otherText=${KLEO_OTHER_TEXT}
+bugAddress=${KLEO_BUG_ADDRESS}
+homepage=${KLEO_HOMEPAGE}
+copyrightStatement=<pre></pre>
+statusline=${VSD_VERSION}
+
+[Okular]
+version=${OKULAR_VERSION}
+shortDescription=${OKULAR_SHORT_DESC}
+otherText=${OKULAR_OTHER_TEXT}
+bugAddress=${OKULAR_BUG_ADDRESS}
+homepage=${OKULAR_HOMEPAGE}
+displayName=Okular - GnuPG Edition
+
+[Build]
+cidInstaller=${BUILD_CID_INSTALLER}
+cidConfig=${BUILD_CID_CONFIG}" > ${VERSION_FILE}
+)
+
+sign_version_file () (
+    VERSION_FILE="$1"
+    SIGNKEY="$2"
+
+    /src/build.sh --runcmd gpg --yes -o "${VERSION_FILE}.sig" -bau "${SIGNKEY}" "${VERSION_FILE}"
+    chmod 0644 "${VERSION_FILE}.sig"
+)
+
+# Check for the buildtype and existence of required files
+# early
+BUILDTYPE=$(cat ${SRCDIR}/packages/BUILDTYPE || echo default)
+if [ $BUILDTYPE != default ] && [ ! -f ${VSD_DIR}/custom.mk ]; then
+    echo "ERROR: Non default build without custom file."
+    echo "Check that ${VSD_DIR}/custom.mk exists or "
+    echo "change the BUILDTYPE in ${SRCDIR}/packages/BUILDTYPE"
+    exit 2
+fi
+
+# The actual build
+cd ${BUILDROOT}
+source /opt/rh/gcc-toolset-14/enable
+${SRCDIR}/configure --enable-macimage --with-playground=${BUILDROOT}
+# Nuke the AppDir to make sure we get everything nice and clean
+cd ${BUILDROOT}/src/appimage
+make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT} clean-appdir
+cd ${BUILDROOT}
+make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT}
+
+echo 'rootdir = $APPDIR/usr' >${APPDIR}/usr/bin/gpgconf.ctl
+if [ $BUILDTYPE = vsd -o $BUILDTYPE = vsd3 ]; then
+    echo 'sysconfdir = /etc/gnupg-vsd' >>${APPDIR}/usr/bin/gpgconf.ctl
+else
+    echo 'sysconfdir = /etc/gnupg' >>${APPDIR}/usr/bin/gpgconf.ctl
+fi
+
+# Copy the start-shell helper for use AppRun
+cp ${SRCDIR}/src/appimage/start-shell ${APPDIR}/
+chmod +x ${APPDIR}/start-shell
+
+# Copy standard global configuration
+if [ $BUILDTYPE = vsd -o $BUILDTYPE = vsd3 ]; then
+    mkdir -p ${APPDIR}/usr/share/gnupg/conf/gnupg-vsd
+    rsync -aLv --delete --omit-dir-times \
+          --perms --chmod=D0755,F0644 \
+          ${VSD_DIR}/Standard/etc/gnupg/ \
+          ${APPDIR}/usr/share/gnupg/conf/gnupg-vsd/
+fi
+
+export PATH=/opt/linuxdeploy/usr/bin:$PATH
+export LD_LIBRARY_PATH=${INSTDIR}/lib
+
+# tell the linuxdeploy qt-plugin where to find qmake
+export QMAKE=${INSTDIR}/bin/qmake
+
+# create plugin directories expected by linuxdeploy qt-plugin
+# workaround for
+# [qt/stdout] Deploy[qt/stderr] terminate called after throwing an instance of 'boost::filesystem::filesystem_error'
+# [qt/stderr]   what():  boost::filesystem::directory_iterator::construct: No such file or directory: "/build/AppDir/usr/plugins/sqldrivers"
+# ERROR: Failed to run plugin: qt (exit code: 6)
+mkdir -p ${INSTDIR}/plugins/sqldrivers
+
+# copy KDE plugins to ${APPDIR}/usr/lib/plugins/
+# copying the plugins to a subfolder of ${APPDIR}/usr/lib (instead of to
+# ${APPDIR}/usr/plugins/ as linuxdeploy does for the Qt plugins) ensures that
+# linuxdeploy copies the dependencies of the plugins to APPDIR so that
+# we don't have to take care of this ourselves
+mkdir -p ${APPDIR}/usr/lib/plugins
+if [ $BUILDTYPE = vsd ]; then
+    for d in kf6 kiconthemes6 styles; do
+        rsync -av --delete --omit-dir-times ${INSTDIR}/lib/plugins/${d}/ ${APPDIR}/usr/lib/plugins/${d}/
+    done
+    rsync -av --delete --omit-dir-times ${INSTDIR}/lib/plugins/okular_generators/okularGenerator_poppler.so ${APPDIR}/usr/lib/plugins/okular_generators/
+elif [ $BUILDTYPE = vsd3 ]; then
+    for d in iconengines kauth kf5 okular plasma; do
+        rsync -av --delete --omit-dir-times ${INSTDIR}/lib/plugins/${d}/ ${APPDIR}/usr/lib/plugins/${d}/
+    done
+    rsync -av --delete --omit-dir-times ${INSTDIR}/lib/plugins/okularpart.so ${APPDIR}/usr/lib/plugins/
+
+    mkdir -p ${APPDIR}/usr/lib
+    # copy dependencies of the plugins
+    # okularGenerator_*.so
+    for f in libfreetype* libpoppler* libtiff.so* libOkular5Core.so* ; do
+        rsync -av --delete --omit-dir-times ${INSTDIR}/lib/${f} ${APPDIR}/usr/lib/
+    done
+fi
+
+cd ${BUILDROOT}
+myversion=$(grep PACKAGE_VERSION ${BUILDROOT}/config.h|sed -n 's/.*"\(.*\)"$/\1/p')
+if [ $BUILDTYPE = vsd -o $BUILDTYPE = vsd3 ]; then
+    OUTPUT=gnupg-vs-desktop-${myversion}-x86_64.AppImage
+    echo "Packaging GnuPG VS-Desktop Appimage: $myversion"
+    echo $myversion >${APPDIR}/GnuPG-VS-Desktop-VERSION
+    write_version_file "${APPDIR}/usr/VERSION" "vsd" "en" "${myversion}" && sign_version_file "${APPDIR}/usr/VERSION" "${VERSION_SIGNKEY}"
+    echo "Packaging help files"
+    mkdir -p ${APPDIR}/usr/share/doc/gnupg-vsd
+    cp ${VSD_DIR}/help/*.pdf ${APPDIR}/usr/share/doc/gnupg-vsd
+    if [ -f ${VSD_DIR}/Standard/kleopatrarc ]; then
+        echo "Packaging kleopatrarc"
+        mkdir -p ${APPDIR}/usr/etc/xdg
+        cp ${VSD_DIR}/Standard/kleopatrarc ${APPDIR}/usr/etc/xdg
+    fi
+    kleopatra_icon=${SRCDIR}/src/icons/kleopatra-vsd.svg
+elif [ $BUILDTYPE = gpd ]; then
+    OUTPUT=gnupg-desktop-${myversion}-x86_64.AppImage
+    echo "Packaging GnuPG Desktop Appimage: $myversion"
+    echo $myversion >${APPDIR}/GnuPG-Desktop-VERSION
+    write_version_file "${APPDIR}/usr/VERSION" "gpd" "en" "${myversion}" && sign_version_file "${APPDIR}/usr/VERSION" "${VERSION_SIGNKEY}"
+    echo "Packaging help files"
+    mkdir -p ${APPDIR}/usr/share/doc/gnupg-vsd
+    cp ${VSD_DIR}/help/*.pdf ${APPDIR}/usr/share/doc/gnupg-vsd
+    if [ -f ${VSD_DIR}/Desktop/kleopatrarc ]; then
+        echo "Packaging kleopatrarc"
+        mkdir -p ${APPDIR}/usr/etc/xdg
+        cp ${VSD_DIR}/Desktop/kleopatrarc ${APPDIR}/usr/etc/xdg
+    fi
+    kleopatra_icon=${SRCDIR}/src/icons/gpd/sc-apps-kleopatra.svg
+else
+    OUTPUT=gpg4win-${myversion}-x86_64.AppImage
+    echo "Packaging Gpg4win Appimage: $myversion"
+    echo $myversion >${APPDIR}/Gpg4win-VERSION
+    kleopatra_icon=${SRCDIR}/src/icons/gpd/sc-apps-kleopatra.svg
+fi
+export OUTPUT
+
+if [ -n "${kleopatra_icon}" ]; then
+    # Replace Breeze icons for kleopatra with our icon
+    find ${APPDIR}/usr/share/icons/breeze -name 'kleopatra*.svg' -delete
+    find ${APPDIR}/usr/share/icons/breeze-dark -name 'kleopatra*.svg' -delete
+    cp -av ${kleopatra_icon} ${APPDIR}/usr/share/icons/breeze/apps/22/kleopatra-symbolic.svg
+    cp -av ${kleopatra_icon} ${APPDIR}/usr/share/icons/breeze/apps/48/kleopatra.svg
+    cp -av ${kleopatra_icon} ${APPDIR}/usr/share/icons/breeze-dark/apps/22/kleopatra-symbolic.svg
+    cp -av ${kleopatra_icon} ${APPDIR}/usr/share/icons/breeze-dark/apps/48/kleopatra.svg
+else
+    # Restore the Breeze icons that may have been replaced in a previous build
+    for f in breeze/apps/22/kleopatra-symbolic.svg breeze/apps/48/kleopatra.svg \
+             breeze-dark/apps/22/kleopatra-symbolic.svg breeze-dark/apps/48/kleopatra.svg; do
+        # copy files only if they are not hard-linked; otherwise, cp complains that the files are the same file
+        test ${INSTDIR}/share/icons/$f -ef ${APPDIR}/usr/share/icons/$f \
+            || cp -av ${INSTDIR}/share/icons/$f ${APPDIR}/usr/share/icons/$f
+    done
+fi
+
+# Hack around that linuxdeploy does not know libexec
+for f in dirmngr_ldap gpg-check-pattern \
+         gpg-preset-passphrase gpg-protect-tool \
+         gpg-wks-client scdaemon \
+         keyboxd gpg-pair-tool; do
+# Ignore errors because some files might not exist depending
+# on GnuPG Version
+    /opt/linuxdeploy/usr/bin/patchelf --debug \
+              --set-rpath '$ORIGIN/../lib' ${APPDIR}/usr/libexec/$f || true
+done
+
+# linuxdeploy also doesn't know about non-Qt plugins
+for f in $(find ${APPDIR}/usr/lib/plugins/ -mindepth 1 -maxdepth 1 -type f); do
+    # this is only needed for the Qt 5 version of okularpart.so because it's installed in /usr/lib/plugins
+    /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/..' $f
+done
+for f in $(find ${APPDIR}/usr/lib/plugins/ -mindepth 2 -maxdepth 2 -type f); do
+    /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../..' $f
+done
+for f in $(find ${APPDIR}/usr/lib/plugins/ -mindepth 3 -maxdepth 3 -type f); do
+    /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../../..' $f
+done
+for f in $(find ${APPDIR}/usr/lib/plugins/ -mindepth 4 -maxdepth 4 -type f); do
+    /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../../../..' $f
+done
+
+# Fix up everything and build the file system
+linuxdeploy --appdir ${APPDIR} \
+            --desktop-file ${APPDIR}/usr/share/applications/org.kde.kleopatra.desktop \
+            --icon-file ${APPDIR}/usr/share/icons/hicolor/256x256/apps/kleopatra.png \
+            --custom-apprun ${SRCDIR}/src/appimage/AppRun \
+            --plugin qt \
+            --output appimage \
+    2>&1 | tee ${BUILDROOT}/logs/linuxdeploy-gnupg-desktop.log
+
+echo ready
+exit 0

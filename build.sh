@@ -31,6 +31,7 @@ Build Gpg4win in a docker containter.
 
 Options:
         --appimage      Build the AppImage instead of the NSIS installer.
+        --mac           Build the MacOS image
         --w32           Use 32 bit Windows as primary host arch
         --clean         Remove a pre-existing build directory
         --dist          Create a distributable tarball
@@ -56,7 +57,7 @@ Options:
         --verbose       Get more verbose output
 
 
-This script is used to build either the Appimage or the Windows
+This script is used to build either the Appimage, MacOS imaage or the Windows
 installer.  The build is done in a suffixed build directory (see above
 for the defaults).  Use the option --builddir to use a non-default build
 directory.  Take care not to use the source directory for building.
@@ -124,6 +125,8 @@ while [ $# -gt 0 ]; do
 
     case "$1" in
         --appimage) appimage="yes";;
+        --mac) mac="yes";;
+        --nodocker) nodocker="yes";;
         --shell) shell="yes";;
         --clean|-c) clean="yes";;
         --dist) dist="yes";;
@@ -153,17 +156,27 @@ if [ -z "$builddir" ]; then
         builddir="${HOME}/b/$(basename "$srcdir")-mill"
     elif [ "$appimage" = "yes" ]; then
         builddir="${HOME}/b/$(basename "$srcdir")-appimage"
+    elif [ "$mac" = "yes" ]; then
+        builddir="${HOME}/b/$(basename "$srcdir")-mac"
     else
         builddir="${HOME}/b/$(basename "$srcdir")-playground"
     fi
 fi
 
-# Check whether we are running in the docker container.
-if [ -d /src/src -a -d /src/patches -a -d /build ]; then
-    indocker="yes"
-    srcdir=/src
-    builddir=/build
-    echo >&2 "$PGM: running in docker"
+if [ -z "$mac$nodocker" ]; then
+    # Check whether we are running in the docker container.
+    if [ -d /src/src -a -d /src/patches -a -d /build ]; then
+        indocker="yes"
+        srcdir=/src
+        builddir=/build
+        echo >&2 "$PGM: running in docker"
+    fi
+else
+    if [ "$nodocker" = "yes" ]; then
+        indocker="yes"
+        srcdir=/src
+        builddir=/build
+    fi
 fi
 
 echo >&2 "$PGM: source directory: $srcdir"
@@ -475,6 +488,9 @@ if [ "$appimage" = "yes" ]; then
     cmd="/src/src/appimage/build-appimage.sh $version_signkey"
     docker_image=g10-build-appimage:almalinux810
     dockerfile=${srcdir}/docker/appimage
+elif [ "$mac" = "yes" ]; then
+    version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' $HOME/.gnupg-autogen.rc|cut -d= -f2|xargs)"
+    cmd="/src/src/mac/build-macimage.sh $version_signkey"
 else
     # We will run our self again in the docker image.
     if [ "$w64" = "yes" ]; then
@@ -489,14 +505,16 @@ else
     dockerfile=${srcdir}/docker/gpg4win-trixie
 fi
 
-# Update the docker image if requested or if it does not exist.
-drep=$(echo $docker_image | cut -d : -f 1)
-dtag=$(echo $docker_image | cut -d : -f 2)
-if [ -z "$(docker images | grep $drep | grep $dtag)" \
-     -o "$update_image" = "yes" ]; then
-    echo >&2 "$PGM: Local image $docker_image not found"
-    echo >&2 "$PGM: Building docker image"
-    docker build --pull -t $docker_image $dockerfile 2>&1
+if [ -z "$mac" ]; then
+    # Update the docker image if requested or if it does not exist.
+    drep=$(echo $docker_image | cut -d : -f 1)
+    dtag=$(echo $docker_image | cut -d : -f 2)
+    if [ -z "$(docker images | grep $drep | grep $dtag)" \
+        -o "$update_image" = "yes" ]; then
+        echo >&2 "$PGM: Local image $docker_image not found"
+        echo >&2 "$PGM: Building docker image"
+        docker build --pull -t $docker_image $dockerfile 2>&1
+    fi
 fi
 
 # If --shell was used override the command for docker.
@@ -837,19 +855,23 @@ runner_loop &
 runnerpid=$!
 echo >&2 "$PGM: command runner pid is $runnerpid"
 
-
-# Run docker
-docker_cmdline="run -it --rm --user $userid:$groupid"
-docker_cmdline="$docker_cmdline -v "${srcdir}":/src:ro"
-docker_cmdline="$docker_cmdline -v "${builddir}":/build:rw"
-# only add ~/.gnupg-autogen.rc if it actually exists
-[ -f "$HOME/.gnupg-autogen.rc" ] && \
+if [ -z "$mac" ] ;then
+    # Run docker
+    docker_cmdline="run -it --rm --user $userid:$groupid"
+    docker_cmdline="$docker_cmdline -v "${srcdir}":/src:ro"
+    docker_cmdline="$docker_cmdline -v "${builddir}":/build:rw"
     docker_cmdline="$docker_cmdline -v "$HOME/.gnupg-autogen.rc":/.gnupg-autogen.rc:ro"
-docker_cmdline="$docker_cmdline $docker_image $cmd"
-echo >&2 "$PGM: running: docker $docker_cmdline"
-docker $docker_cmdline 2>&1 | tee -a ${logfile}
-err="${PIPESTATUS[0]}"
-echo >&2 "$PGM: docker finished. rc=$err"
+    docker_cmdline="$docker_cmdline $docker_image $cmd"
+    echo >&2 "$PGM: running: docker $docker_cmdline"
+    docker $docker_cmdline 2>&1 | tee -a ${logfile}
+    err="${PIPESTATUS[0]}"
+    echo >&2 "$PGM: docker finished. rc=$err"
+else
+    echo >&2 "$PGM: building on MacOS (without docker): $cmd"
+    $cmd --mac --nodocker 2>&1 | tee -a ${logfile}
+    err="${PIPESTATUS[0]}"
+    echo >&2 "$PGM: mac build finished. rc=$err"
+fi
 
 end_time=$(date +"%s")
 duration=$((end_time - start_time))
@@ -870,6 +892,9 @@ if [ "$err" = "0" ]; then
                   -a -type f -printf '%p ')
     elif [ "$appimage" = "yes" ]; then
         results=$(find "${builddir}" -maxdepth 1 -iname \*.appimage \
+                  -a -type f -printf '%p ')
+    elif [ "$mac" = "yes" ]; then
+        results=$(find "${builddir}" -maxdepth 1 -iname \*.mac \
                   -a -type f -printf '%p ')
     elif [ $withmsi = yes ]; then
         results=$(find "${builddir}/src/signed_installers" -type f -printf '%p ')

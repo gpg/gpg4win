@@ -160,11 +160,12 @@ AC_SUBST(emacs_local_vars_begin, ['Local Variables:'])
 AC_SUBST(emacs_local_vars_read_only, ['buffer-read-only: t'])
 AC_SUBST(emacs_local_vars_end, ['End:'])
 
-# The next two macro proive --enable-gpg4win and --enable-appimage
-# configure options and store them in $build_gpg4win or $build_appimage.
+# The next macros provide --enable-gpg4win, --enable-appimage,
+# and --enable-macimage configure options and store them in $build_gpg4win, etc.
 # These options are used by autogen.rc
 GPG4WIN_BUILD_RELEASE(gpg4win, no)
 GPG4WIN_BUILD_RELEASE(appimage, no)
+GPG4WIN_BUILD_RELEASE(macimage, no)
 
 # Additionaly enable building gpgex for another host
 AC_ARG_WITH([additional-gpgex-host],
@@ -207,6 +208,7 @@ AC_ARG_ENABLE(ninja,
 #
 AM_CONDITIONAL(BUILD_GPG4WIN,  test "$build_gpg4win" = "yes")
 AM_CONDITIONAL(BUILD_APPIMAGE, test "$build_appimage" = "yes")
+AM_CONDITIONAL(BUILD_MACIMAGE, test "$build_macimage" = "yes")
 AM_CONDITIONAL(BUILD_W64_COND, test "$BUILD_W64" = "yes")
 
 
@@ -576,6 +578,99 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_FINALIZE
 fi
 
+# Packages for the Mac image
+if test "$build_macimage" = yes ; then
+    macimage_dup_sources=""
+
+    # poppler requires freetype >= 2.11
+    MACIMAGE_SPKG([freetype])
+    MACIMAGE_SPKG([sqlite])
+    MACIMAGE_KDEPKG([libqrencode])
+    # poppler requires tiff >= 4.3
+    MACIMAGE_KDEPKG([tiff])
+    MACIMAGE_SPKG([xcb-util-cursor])
+
+    MACIMAGE_SPKG([libgpg-error])
+    MACIMAGE_SPKG([libassuan], [libgpg-error])
+    MACIMAGE_SPKG([npth])
+    MACIMAGE_SPKG([libgcrypt], [libgpg-error])
+    MACIMAGE_SPKG([libksba], [libgpg-error])
+    MACIMAGE_SPKG([ntbtls], [libgcrypt libksba])
+    MACIMAGE_SPKG([gnupg], [libgpg-error libassuan npth libgcrypt libksba sqlite ntbtls])
+    MACIMAGE_SPKG([pinentry], [qtbase kguiaddons kwindowsystem])
+
+    MACIMAGE_SPKG([gpgme], [libgpg-error libassuan])
+    MACIMAGE_KDEPKG([gpgmepp], [gpgme])
+    MACIMAGE_KDEPKG([qgpgme], [gpgmepp qtbase])
+    MACIMAGE_SPKG([paperkey])
+
+    # Qt related stuff.
+    MACIMAGE_KDEPKG([qtbase], [freetype, xcb-util-cursor])
+    MACIMAGE_KDEPKG([qttools], [qtbase])
+    MACIMAGE_KDEPKG([qttranslations], [qtsvg qttools])
+    MACIMAGE_KDEPKG([qtsvg], [qtbase])
+    MACIMAGE_KDEPKG([qtwayland], [qtbase])
+    MACIMAGE_KDEPKG([wayland-protocols])
+    MACIMAGE_KDEPKG([plasma-wayland-protocols], [wayland-protocols extra-cmake-modules])
+    MACIMAGE_KDEPKG([breeze], [qtbase kcoreaddons kconfig kconfigwidgets kguiaddons kiconthemes kwindowsystem])
+
+    # KDE Frameworks Tier 1
+    MACIMAGE_KDEPKG([extra-cmake-modules], [qttools])
+    MACIMAGE_KDEPKG([breeze-icons], [extra-cmake-modules qtbase])
+    MACIMAGE_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
+    MACIMAGE_KDEPKG([kauth], [qtbase qttools extra-cmake-modules])
+    MACIMAGE_KDEPKG([kcodecs], [qtbase qttools extra-cmake-modules])
+    MACIMAGE_KDEPKG([kcolorscheme], [kconfig kguiaddons ki18n])
+    MACIMAGE_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
+    MACIMAGE_KDEPKG([kcoreaddons], [qtbase qttools extra-cmake-modules])
+    MACIMAGE_KDEPKG([kdbusaddons], [qtbase qttools extra-cmake-modules])
+    MACIMAGE_KDEPKG([kguiaddons], [qtbase qttools extra-cmake-modules])
+    MACIMAGE_KDEPKG([ki18n], [qtbase qttools extra-cmake-modules])
+    MACIMAGE_KDEPKG([kitemmodels], [qtbase qttools extra-cmake-modules])
+    MACIMAGE_KDEPKG([kitemviews], [qtbase qttools extra-cmake-modules])
+    MACIMAGE_KDEPKG([kwindowsystem], [qtbase qtwayland extra-cmake-modules wayland_protocols plasma-wayland-protocols])
+    MACIMAGE_KDEPKG([solid], [qtbase extra-cmake-modules])
+    MACIMAGE_KDEPKG([sonnet], [qtbase extra-cmake-modules])
+    MACIMAGE_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
+
+    # KDE Frameworks Tier 2
+    MACIMAGE_KDEPKG([kcompletion], [kwidgetsaddons])
+    MACIMAGE_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
+    MACIMAGE_KDEPKG([kjobwidgets], [kwidgetsaddons kcoreaddons qtbase extra-cmake-modules])
+    MACIMAGE_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
+    MACIMAGE_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
+
+    # KDE Frameworks Tier 3
+    MACIMAGE_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
+    MACIMAGE_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
+    MACIMAGE_KDEPKG([ktextwidgets], [sonnet kcompletion kconfig kconfigwidgets ki18n kwidgetsaddons])
+    MACIMAGE_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews ktextwidgets breeze])
+    MACIMAGE_KDEPKG([kbookmarks], [kconfig kxmlgui kcoreaddons kconfigwidgets kwidgetsaddons kcodecs])
+    MACIMAGE_KDEPKG([kservice], [kconfig kcoreaddons ki18n])
+    MACIMAGE_KDEPKG([kio], [kcrash kjobwidgets solid kservice kbookmarks kwidgetsaddons kxmlgui kwindowsystem karchive kconfig kcoreaddons ki18n kauth])
+    MACIMAGE_KDEPKG([kparts], [kio kservice kxmlgui kconfigwidgets kwidgetsaddons ktextwidgets])
+
+    # KDE PIM
+    MACIMAGE_KDEPKG([libical])
+    MACIMAGE_KDEPKG([kcalendarcore], [qtbase libical extra-cmake-modules])
+    MACIMAGE_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmime kcodecs kcalendarcore kmbox])
+    MACIMAGE_KDEPKG([kmime], [kcodecs ki18n])
+    MACIMAGE_KDEPKG([kmbox], [kmime])
+    MACIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion qgpgme])
+
+    MACIMAGE_KDEPKG([kdsingleapplication], [qtbase])
+    MACIMAGE_KDEPKG([kleopatra], [mimetreeparser qgpgme breeze-icons kdsingleapplication kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
+
+    # Okular/Poppler
+    MACIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff])
+    MACIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
+
+    # Gpgpass
+    MACIMAGE_KDEPKG([prison], [qtbase extra-cmake-modules libqrencode])
+    MACIMAGE_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n qgpgme])
+    MACIMAGE_FINALIZE
+fi
+
 # Throw an error if required tools are missing
 if test -n "$missing_tools"; then
     for i in $missing_tools; do
@@ -628,6 +723,23 @@ rm $i"
     AC_MSG_ERROR([Packages with more that one source version:$tmp$tmp2])
 fi
 
+if test -n "$macimage_dup_sources"; then
+    tmp=
+    for i in $macimage_dup_sources; do
+      tmp="$tmp
+$i"
+    done
+    tmp2="
+You might remove them with:"
+    for i in $macimage_rm_candidates; do
+        if ! grep -q $(basename $i) $packages_files; then
+            tmp2="$tmp2
+rm $i"
+        fi
+    done
+    AC_MSG_ERROR([Packages with more that one source version:$tmp$tmp2])
+fi
+
 # Finalize.
 
 AC_CONFIG_FILES(Makefile)
@@ -641,6 +753,7 @@ AC_CONFIG_FILES(src/toolchain-ex.cmake)
 AC_CONFIG_FILES(src/toolchain-native.cmake)
 AC_CONFIG_FILES(src/appimage/Makefile src/appimage/appimage.mk)
 AC_CONFIG_FILES(src/appimage/rsync-filters/Makefile)
+AC_CONFIG_FILES(src/mac/Makefile src/mac/macimage.mk)
 AC_CONFIG_FILES(src/nsis/Makefile)
 AC_CONFIG_FILES(src/versioninfo.rc.in)
 AC_CONFIG_FILES(src/gpg4win.w32-manifest.in)
