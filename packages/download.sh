@@ -39,6 +39,30 @@
 #    chk  1e92b39ef4f4cdf3b1849b6f824dd8f160276aa5c9718be35f8a7bd190bf6154
 #
 
+if uname | grep --quiet 'Darwin'; then
+    # MacOS
+    verify_sha256() {
+        sha256 $1 -c $2 2> /dev/null
+        return $?
+    }
+    do_wget() {
+        curl -q --silent -L --output "$2" $1
+    }
+    get_size() {
+        stat -f '%z' $1
+    }
+else
+    verify_sha256() {
+        echo $2 *$1 | sha256sum -c --status
+        return $?
+    }
+    do_wget() {
+        wget -c -q "$1" -O "$2"
+    }
+    get_size() {
+	stat -c'%s' $1
+    }
+fi
 
 usage()
 {
@@ -113,8 +137,6 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-
-WGET="wget $ipvx"
 
 # We used to download the packages.current list but it turned out that
 # this is too problematic: As there is no history of these files it is
@@ -242,8 +264,8 @@ while read key value valuetwo valuethree; do
                fi
            fi
            echo -n "downloading \`$url' ..."
-           if ${WGET} -c -q "$url" -O "$name" ; then
-               if [ $(stat -c'%s' "$name" 2>/dev/null || echo 0) -eq 0 ]; then
+           if do_wget "$url" "$name" ; then
+               if [ $(get_size "$name" 2>/dev/null || echo 0) -eq 0 ]; then
                  echo " FAILED (line $lnr)"
                  echo "line $lnr: $url has zero length" >> '.#download.failed'
                else
@@ -310,7 +332,7 @@ while read key value valuetwo valuethree; do
            exit 1
        fi
        [ $quiet = no ] && echo -n "checking    \`$name' ..."
-       if echo "$value *$name" | sha256sum -c --status ; then
+       if verify_sha256 $name $value ; then
            [ $quiet = no ] && echo " okay"
        else
            [ $quiet = no ] && echo " FAILED (line $lnr)"
