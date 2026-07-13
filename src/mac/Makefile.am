@@ -52,7 +52,7 @@ bdir      := $(root)/build
 idir      := $(root)/install
 ipdir     := $(root)/install/pkgs
 appdir    := $(root)/AppDir
-patdir    := $(tsdir)/patches-macimage
+patdir    := $(tsdir)/patches-mac
 rsyncfilterdir := $(tsdir)/src/macimage/rsync-filters
 
 $(info -------------------------------------------------)
