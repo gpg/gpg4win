@@ -67,7 +67,7 @@ $(info -------------------------------------------------)
 # Source packages for the AppImage (see also ../src/Makefile.am)
 macimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
-		 freetype xcb-util-cursor libiconv gettext
+		 freetype libiconv gettext
 
 
 macimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
@@ -85,8 +85,8 @@ macimage_kdepkgs = gpgmepp qgpgme \
 		   threadweaver kparts poppler okular \
 		   libqrencode \
 		   prison gpgpass \
-		   qtbase qttools qtsvg qttranslations qtwayland \
-		   plasma-wayland-protocols breeze tiff
+		   qtbase qttools qtsvg qttranslations \
+		   breeze tiff
 
 macimage_bpkgs = wayland-protocols
 

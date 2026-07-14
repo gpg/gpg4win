@@ -1,0 +1,39 @@
+Status / Hints / TODO list for MacOS builds
+
+- Requirements:
+  - system installs:
+    - need full xcode; command line tools is not enough (for qtbase)
+  - Required tools not in MacOS (or not in a usable version)
+    We take these from homebrew, ATM. Some bits have hardcoded paths
+    to /opt/homebrew (TODO).
+      - gnu-tar
+      - gnu-sed
+      - meson (not in macos)
+      - bison (version in macos is too old)
+  - Required libs neither in MacOS nor our current build scripts. We
+    probably want to build those, ourselves, mid term (TODO)
+    - boost (for libkleo)
+    - openjpeg (for poppler)
+
+- Setup:
+  - We cannot run MacOS as a docker guest, so need a different setup.
+    For now we just bypass that (internal --nodocker option), but that's
+    just a temporary hack. We probably want to run in a VM.
+    https://github.com/s-u/macosvm looks like a good candidate that supports
+    MacOS arm64 on arm64, and is geared towards builder scenarios.
+  - At a minimum, we should gather non-system build-deps in a ro volume
+  - To set up /build and /src, need to modify /etc/synthetic.conf:
+    - /build -> point builddir arg
+    - /src -> point to repo
+    - sudo /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t
+  - some package builds fail due to case insensitive filesytem (kdsingleapplication is the first)
+    -> build filesystem needs to be on an ADFSX volume
+      - sudo diskutil apfs addVolume disk3 APFSX VOLUMENAME
+
+- Running:
+  ./build.sh --mac --builddir=/Some/casesensitive/Volume
+
+- Further TODO:
+  - There is no bundling at all, yet (macdeployqt? Take code from KDE craft?)
+  - There is not codesigning at all, yet
+  - Test patch to find gpgconf.ctl, and provide that
