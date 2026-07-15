@@ -86,19 +86,20 @@ package=$(basename ${repo_path})
 
 case ${package} in
     mimetreeparser)
-        custom_l10n="mimetreeparser/mimetreeparser6.po"
+        poname="${package}6"
         ;;
     kleopatra)
-        custom_l10n="kleopatra/kleopatra.po"
+        poname="${package}"
         ;;
     libkleo)
-        custom_l10n="libkleo/libkleopatra6.po"
+        poname="libkleopatra6"
         ;;
     *)
         echo "$PGM: error: Unsupported package '${package}'"
         exit 1
         ;;
 esac
+custom_l10n="${package}/${poname}.po"
 
 olddir=$(pwd)
 echo "$PGM: Updating translation files."
@@ -112,10 +113,6 @@ extract-messages.sh
 statsfile=$(mktemp)
 
 for lang in $translation_langs; do
-    poname=${package}
-    if [ "${poname}" == "libkleo" ]; then
-        poname="libkleopatra6"
-    fi
     if [ "$lang" = "de" ]; then
         # the development team is German
         echo "##############################DE#######################################"
