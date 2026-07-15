@@ -238,6 +238,18 @@ server http://www.jabberwocky.com/software/paperkey
 file paperkey-1.5.tar.gz
 chk  c4737943083ce92e41faf13c27a9d608105b6285c0840dfb684a7ee294142ddf
 
+server https://github.com
+
+#
+#  Boost (required by libkleo)
+#
+# last-changed: 2026-07-15
+# by: tfry
+# verified: checksum as listed on github.com/boostorg
+name boost-1.91.0-1.tar.gz
+file boostorg/boost/releases/download/boost-1.91.0-1/boost-1.91.0-1-cmake.tar.gz
+chk 8a82bd11a720c70923806c36ee5c26dbd2d630c1eaa1d8fad9a7bd5529908a26
+
 #
 #  Kleopatra and dependencies
 #

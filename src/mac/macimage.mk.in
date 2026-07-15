@@ -206,8 +206,10 @@ $(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
 	($(call SETVARS,$(1));				\
 	 set -x;					\
 	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/"; \
-	 for pc in "$(idir)"/lib/pkgconfig/*.pc; do \
-	   sed -i '' "s;$$$${pkgidir};$(idir);" "$$$${pc}"; \
+	 for pc in "$(idir)/lib/pkgconfig/*.pc"; do \
+	   if test -f "$$$${pc}"; then              \
+	     sed -i '' "s;$$$${pkgidir};$(idir);" "$$$${pc}"; \
+	   fi \
 	 done )
 	touch $(stampdir)/stamp-$(1)-05-rsync
 
@@ -368,8 +370,10 @@ $(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
 	($(call SETVARS,$(1));				\
 	 set -x;					\
 	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/"; \
-	 for pc in "$(idir)"/lib/pkgconfig/*.pc; do \
-	   sed -i '' "s;$$$${pkgidir};$(idir);" "$$$${pc}"; \
+	 for pc in "$(idir)/lib/pkgconfig/*.pc"; do \
+	   if test -f "$$$${pc}"; then              \
+	     sed -i '' "s;$$$${pkgidir};$(idir);" "$$$${pc}"; \
+	   fi \
 	 done )
 	touch $(stampdir)/stamp-$(1)-05-rsync
 

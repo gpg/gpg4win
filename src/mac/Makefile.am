@@ -83,7 +83,7 @@ macimage_kdepkgs = gpgmepp qgpgme \
 		   kjobwidgets libical kcalendarcore mimetreeparser \
 		   kcolorscheme sonnet ktextwidgets kauth kstatusnotifieritem \
 		   threadweaver kparts poppler okular \
-		   libqrencode openjpeg \
+		   libqrencode openjpeg boost \
 		   prison gpgpass \
 		   qtbase qttools qtsvg qttranslations \
 		   breeze tiff

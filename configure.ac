@@ -589,6 +589,7 @@ if test "$build_macimage" = yes ; then
     # poppler requires tiff >= 4.3
     MACIMAGE_KDEPKG([tiff])
     MACIMAGE_KDEPKG([openjpeg], [tiff])
+    MACIMAGE_KDEPKG([boost])
 
     MACIMAGE_SPKG([libiconv])
     MACIMAGE_SPKG([gettext], [libiconv])
@@ -655,7 +656,7 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmime kcodecs kcalendarcore kmbox])
     MACIMAGE_KDEPKG([kmime], [kcodecs ki18n])
     MACIMAGE_KDEPKG([kmbox], [kmime])
-    MACIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion qgpgme])
+    MACIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion qgpgme boost])
 
     MACIMAGE_KDEPKG([kdsingleapplication], [qtbase])
     MACIMAGE_KDEPKG([kleopatra], [mimetreeparser qgpgme breeze-icons kdsingleapplication kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
