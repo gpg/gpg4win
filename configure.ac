@@ -588,6 +588,7 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_KDEPKG([libqrencode])
     # poppler requires tiff >= 4.3
     MACIMAGE_KDEPKG([tiff])
+    MACIMAGE_KDEPKG([openjpeg], [tiff])
 
     MACIMAGE_SPKG([libiconv])
     MACIMAGE_SPKG([gettext], [libiconv])
@@ -660,7 +661,7 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_KDEPKG([kleopatra], [mimetreeparser qgpgme breeze-icons kdsingleapplication kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
 
     # Okular/Poppler
-    MACIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff])
+    MACIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff openjpeg])
     MACIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
 
     # Gpgpass

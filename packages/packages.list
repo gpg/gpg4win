@@ -69,12 +69,13 @@ chk b92017489bdc1db3a4c97191aa4b75366673cb746de0dce5d7a749d5954681ba
 
 server https://github.com
 
-# last-changed: 2023-05-03
-# by ah
+# last-changed: 2026-07-15
+# by tfry
 # verified: verification of checksum from multiple sources e.g. homebrew
-name openjpeg-2.5.0.tar.gz
-file uclouvain/openjpeg/archive/refs/tags/v2.5.0.tar.gz
-chk  0333806d6adecc6f7a91243b2b839ff4d2053823634d4f6ed7a59bc87409122a
+name openjpeg-2.5.4.tar.gz
+file uclouvain/openjpeg/archive/refs/tags/v2.5.4.tar.gz
+chk a695fbe19c0165f295a8531b1e4e855cd94d0875d2f88ec4b61080677e27188a
+#chk  0333806d6adecc6f7a91243b2b839ff4d2053823634d4f6ed7a59bc87409122a
 
 # last-changed: 2023-07-31
 # by ah

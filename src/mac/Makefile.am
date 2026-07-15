@@ -83,7 +83,7 @@ macimage_kdepkgs = gpgmepp qgpgme \
 		   kjobwidgets libical kcalendarcore mimetreeparser \
 		   kcolorscheme sonnet ktextwidgets kauth kstatusnotifieritem \
 		   threadweaver kparts poppler okular \
-		   libqrencode \
+		   libqrencode openjpeg \
 		   prison gpgpass \
 		   qtbase qttools qtsvg qttranslations \
 		   breeze tiff
@@ -259,6 +259,9 @@ macimage_pkg_tiff_configure = \
     -Dtiff-tests=OFF \
     -Dtiff-contrib=OFF \
     -Dtiff-docs=OFF
+
+macimage_pkg_openjpeg_configure = \
+    -DBUILD_CODEC=OFF
 
 macimage_pkg_xcb_util_cursor_configure = --enable-static --disable-shared
 macimage_pkg_xcb_util_cursor_extracflags = -fPIC

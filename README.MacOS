@@ -6,6 +6,7 @@ Status / Hints / TODO list for MacOS builds
   - Required tools not in MacOS (or not in a usable version)
     We take these from homebrew, ATM. Some bits have hardcoded paths
     to /opt/homebrew (TODO).
+      - cmake
       - gnu-tar
       - gnu-sed
       - meson (not in macos)
@@ -13,7 +14,6 @@ Status / Hints / TODO list for MacOS builds
   - Required libs neither in MacOS nor our current build scripts. We
     probably want to build those, ourselves, mid term (TODO)
     - boost (for libkleo)
-    - openjpeg (for poppler)
 
 - Setup:
   - We cannot run MacOS as a docker guest, so need a different setup.
@@ -29,6 +29,7 @@ Status / Hints / TODO list for MacOS builds
   - some package builds fail due to case insensitive filesytem (kdsingleapplication is the first)
     -> build filesystem needs to be on an ADFSX volume
       - sudo diskutil apfs addVolume disk3 APFSX VOLUMENAME
+        (assuming disk3 is the root disk)
 
 - Running:
   ./build.sh --mac --builddir=/Some/casesensitive/Volume
