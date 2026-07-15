@@ -8,7 +8,6 @@ Status / Hints / TODO list for MacOS builds
     to /opt/homebrew (TODO).
       - cmake
       - gnu-tar
-      - gnu-sed
       - meson (not in macos)
       - bison (version in macos is too old)
   - Required libs neither in MacOS nor our current build scripts. We
