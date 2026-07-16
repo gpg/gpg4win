@@ -7,12 +7,12 @@ Status / Hints / TODO list for MacOS builds
     We take these from homebrew, ATM. Some bits have hardcoded paths
     to /opt/homebrew (TODO).
       - cmake
-      - gnu-tar
       - meson (not in macos)
       - bison (version in macos is too old)
   - Required libs neither in MacOS nor our current build scripts. We
     probably want to build those, ourselves, mid term (TODO)
-    - boost (for libkleo)
+    - boost, openjpeg -> done
+    - any others?
 
 - Setup:
   - We cannot run MacOS as a docker guest, so need a different setup.
