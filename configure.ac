@@ -504,7 +504,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([libksba], [libgpg-error])
     APPIMAGE_SPKG([ntbtls], [libgcrypt libksba])
     APPIMAGE_SPKG([gnupg], [libgpg-error libassuan npth libgcrypt libksba sqlite ntbtls])
-    APPIMAGE_SPKG([pinentry], [qtbase kguiaddons kwindowsystem])
+    APPIMAGE_SPKG([pinentry], [qtbase kguiaddons kwindowsystem libassuan])
 
     APPIMAGE_SPKG([gpgme], [libgpg-error libassuan])
     APPIMAGE_KDEPKG([gpgmepp], [gpgme])
@@ -541,7 +541,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
 
     # KDE Frameworks Tier 2
-    APPIMAGE_KDEPKG([kcompletion], [kwidgetsaddons])
+    APPIMAGE_KDEPKG([kcompletion], [kwidgetsaddons kcodecs])
     APPIMAGE_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
     APPIMAGE_KDEPKG([kjobwidgets], [kwidgetsaddons kcoreaddons qtbase extra-cmake-modules])
     APPIMAGE_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
@@ -600,7 +600,7 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_SPKG([libksba], [libgpg-error])
     MACIMAGE_SPKG([ntbtls], [libgcrypt libksba])
     MACIMAGE_SPKG([gnupg], [libgpg-error libassuan npth libgcrypt libksba sqlite ntbtls])
-    MACIMAGE_SPKG([pinentry], [qtbase kguiaddons kwindowsystem])
+    MACIMAGE_SPKG([pinentry], [qtbase kguiaddons kwindowsystem libassuan])
 
     MACIMAGE_SPKG([gpgme], [libgpg-error libassuan])
     MACIMAGE_KDEPKG([gpgmepp], [gpgme])
@@ -634,7 +634,7 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
 
     # KDE Frameworks Tier 2
-    MACIMAGE_KDEPKG([kcompletion], [kwidgetsaddons])
+    MACIMAGE_KDEPKG([kcompletion], [kwidgetsaddons kcodecs])
     MACIMAGE_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
     MACIMAGE_KDEPKG([kjobwidgets], [kwidgetsaddons kcoreaddons qtbase extra-cmake-modules])
     MACIMAGE_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
