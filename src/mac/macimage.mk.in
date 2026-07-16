@@ -99,20 +99,6 @@ endef
 define DEFLATE_macro
 	rm -rf $$$${pkgsdir}; \
 	case "$(1)" in			\
-          */qtbase*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qtbase-everywhere-src,qtbase,' -f "$(1)" ;; \
-          */qttools*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qttools-everywhere-src,qttools,' -f "$(1)" ;; \
-          */qtx11extras*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qtx11extras-everywhere-src,qtx11extras,' -f "$(1)" ;; \
-          */qtwayland*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qtwayland-everywhere-src,qtwayland,' -f "$(1)" ;; \
-          */qtsvg*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qtsvg-everywhere-src,qtsvg,' -f "$(1)" ;; \
-          */qttranslations*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qttranslations-everywhere-src,qttranslations,' -f "$(1)" ;; \
-          */sqlite*.*.tar.gz)          \
-            $(TAR) -xz --transform='s,^sqlite-autoconf-3270200,sqlite-3.27.2,' -f "$(1)" ;; \
 	  *.tar.gz | *.tgz)		\
 	    $(TAR) xzf "$(1)" ;;	\
 	  *.tar.bz2 | *.tbz2 | *.tbz)	\
@@ -123,7 +109,22 @@ define DEFLATE_macro
 	    cp "$(1)" .       ;;	\
 	  *.zip)			\
 	    $(UNZIP) -o "$(1)" ;;		\
-	esac
+	esac;                         \
+	for f in *; do     \
+	 echo $$$${f};                \
+	  case "$$$${f}" in                \
+		qtbase-everywhere*)         \
+		  mv "$$$${f}" "$$$$(echo $$$${f} | sed 's,^qtbase-everywhere-src,qtbase,'i)" ;; \
+		qttools-everywhere*)        \
+		  mv "$$$${f}" "$$$$(echo $$$${f} | sed 's,^qttools-everywhere-src,qttools,')" ;; \
+		qtsvg-everywhere*)          \
+		  mv "$$$${f}" "$$$$(echo $$$${f} | sed 's,^qtsvg-everywhere-src,qtsvg,')" ;; \
+		qttranslations-everywhere*) \
+		  mv "$$$${f}" "$$$$(echo $$$${f} | sed 's,^qttranslations-everywhere-src,qttranslations,')" ;; \
+		sqlite-autoconf*)         \
+		  mv "$$$${f}" "$$$$(echo $$$${f} | sed 's,^sqlite-autoconf-3270200,sqlite-3.27.2,')" ;; \
+	  esac \
+	done
 endef
 
 # Support macro.  Strip all exe files below $(1).
