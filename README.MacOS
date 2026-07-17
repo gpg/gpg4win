@@ -3,6 +3,7 @@ Status / Hints / TODO list for MacOS builds
 - Requirements:
   - system installs:
     - need full xcode; command line tools is not enough (for qtbase)
+      (Xcode includes git and python3.9, but not too much else)
   - Required tools not in MacOS (or not in a usable version)
     We take these from homebrew, ATM (TODO)
     Some bits have hardcoded paths to /opt/homebrew (TODO).
@@ -15,7 +16,13 @@ Status / Hints / TODO list for MacOS builds
     probably want to build those, ourselves, mid term (TODO)
     - openjpeg -> done
     - boost -> done (but actually, we only need the headers! cmake opt?)
-    - any others?
+    - The following libs are also pulled in from homebrew (probably via pkgconf?);
+      not all may be required; see src/mac/bundle.py for checking:
+      - libjpeg (poppler, qtbase, libtiff)
+      - libpcre2 (qtbase)
+      - libzstd (qtbase, libtiff, karchive)
+      - libpng (qtbase, poppler, freetype)
+      - libcrypto (karchive)
 
 - Setup:
   - We cannot run MacOS as a docker guest, so need a different setup.
