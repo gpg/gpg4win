@@ -4,14 +4,17 @@ Status / Hints / TODO list for MacOS builds
   - system installs:
     - need full xcode; command line tools is not enough (for qtbase)
   - Required tools not in MacOS (or not in a usable version)
-    We take these from homebrew, ATM. Some bits have hardcoded paths
-    to /opt/homebrew (TODO).
+    We take these from homebrew, ATM (TODO)
+    Some bits have hardcoded paths to /opt/homebrew (TODO).
+      - autoconf (only for running autogen.sh)
       - cmake
       - meson (not in macos)
       - bison (version in macos is too old)
+      - pkgconf (several packages want that for building)
   - Required libs neither in MacOS nor our current build scripts. We
     probably want to build those, ourselves, mid term (TODO)
-    - boost, openjpeg -> done
+    - openjpeg -> done
+    - boost -> done (but actually, we only need the headers! cmake opt?)
     - any others?
 
 - Setup:
@@ -33,7 +36,7 @@ Status / Hints / TODO list for MacOS builds
 - Running:
   ./build.sh --mac --builddir=/Some/casesensitive/Volume
 
-- Further TODO:
+- Further TODOs:
   - There is no bundling at all, yet (macdeployqt? Take code from KDE craft?)
-  - There is not codesigning at all, yet
-  - Test patch to find gpgconf.ctl, and provide that
+  - There is no codesigning at all, yet
+  - provide gpgconf.ctl
