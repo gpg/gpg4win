@@ -116,8 +116,10 @@ fi
 # The actual build
 cd ${BUILDROOT}
 PATH=/opt/homebrew/opt/bison/bin:$PATH
-#PATH=/opt/homebrew/opt/gnu-tar/libexec/gnubin/:$PATH
-#PATH=/opt/homebrew/opt/coreutils/libexec/gnubin/:$PATH
+PATH=/opt/homebrew/opt/pkgconf/bin:$PATH
+#PATH=/opt/homebrew/opt/meson/bin:$PATH
+PATH=/opt/homebrew/opt/gettext/bin:$PATH # configure.ac checks for msgfmt/msgmerge, although we build gettext, ourselves?!
+PATH=/opt/homebrew/opt/cmake/bin:$PATH
 PATH=/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
 ${SRCDIR}/configure --enable-macimage --with-playground=${BUILDROOT}
 # Nuke the AppDir to make sure we get everything nice and clean
