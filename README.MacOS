@@ -9,18 +9,18 @@ Status / Hints / TODO list for MacOS builds
     Some bits have hardcoded paths to /opt/homebrew (TODO).
       - autoconf (only for running autogen.sh)
       - cmake
-      - meson (not in macos)
       - bison (version in macos is too old)
-      - pkgconf (several packages want that for building)
   - Required libs neither in MacOS nor our current build scripts. We
     probably want to build those, ourselves, mid term (TODO)
     - openjpeg -> done
     - boost -> done (but actually, we only need the headers! cmake opt?)
+    - pkgconf -> done (had to update package -> TODO: check if Windows build broke)
+    - libzstd -> done
     - The following libs are also pulled in from homebrew (probably via pkgconf?);
       not all may be required; see src/mac/bundle.py for checking:
       - libjpeg (poppler, qtbase, libtiff)
       - libpcre2 (qtbase)
-      - libzstd (qtbase, libtiff, karchive)
+      - libzstd (qtbase, libtiff, karchive) (still applicable?)
       - libpng (qtbase, poppler, freetype)
       - libcrypto (karchive)
 
