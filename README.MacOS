@@ -25,23 +25,31 @@ Status / Hints / TODO list for MacOS builds
       - libcrypto (karchive)
 
 - Setup:
+  - We need a case sensitive filesystem for building, which is not the default:
+    sudo diskutil apfs addVolume disk3 APFSX BuildFS
+    (assuming disk3 is the "synthesized" disk as given by `diskutil list`)
+    This creates and mounts /Volumes/BuildFS . The important spec is "APFSX".
+  - Next point /build and /src to the correct dirs. This can only be done
+    via /etc/synthetic.conf . Edit that file to have the following contents
+      build Volumes/BuildFS
+      src   abs/path/to/gpg4win/repo/
+    (no space on the left; the space in the middle _must_ be a single _tab_; note
+     the missing initial slashes in all paths)
+    - run: sudo /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t
+      or reboot to make /build and /src come up
+
+- Running (in gpg4win repo dir):
+  echo "default" > packages/BUILDTYPE     # once
+  ./autogen.sh                            # once, and after touching the build system
+  ./build.sh --download --mac --builddir=/Some/casesensitive/Volume
+
+- Implementation Notes / TODO:
   - We cannot run MacOS as a docker guest, so need a different setup.
     For now we just bypass that (internal --nodocker option), but that's
     just a temporary hack. We probably want to run in a VM.
     https://github.com/s-u/macosvm looks like a good candidate that supports
     MacOS arm64 on arm64, and is geared towards builder scenarios.
   - At a minimum, we should gather non-system build-deps in a ro volume
-  - To set up /build and /src, need to modify /etc/synthetic.conf:
-    - /build -> point builddir arg
-    - /src -> point to repo
-    - sudo /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t
-  - some package builds fail due to case insensitive filesytem (kdsingleapplication is the first)
-    -> build filesystem needs to be on an ADFSX volume
-      - sudo diskutil apfs addVolume disk3 APFSX VOLUMENAME
-        (assuming disk3 is the root disk)
-
-- Running:
-  ./build.sh --mac --builddir=/Some/casesensitive/Volume
 
 - Further TODOs:
   - There is no bundling at all, yet (macdeployqt? Take code from KDE craft?)
