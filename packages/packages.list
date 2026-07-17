@@ -107,18 +107,14 @@ file v1.5.6/zstd-1.5.6.tar.gz
 chk 8c29e06cf42aacc1eafc4077ae2ec6c6fcb96a626157e0593d5e82a34fd403c1
 
 #
-# GIMP stuff for W32
-#
-server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
-
-# checked: 2012-03-28 wk - Not updated - not a security problem
-name pkgconfig-0.23.tar.gz
-file pkg-config-0.23.tar.gz
-chk  08a0e072d6a05419a58124db864f0685e6ac96e71b2875bf15ac12714e983b53
-
-name pkgconfig-0.23.zip
-file pkg-config_0.23-3_win32.zip
-chk  677d6055494e24cad6c49eab33eee618ddc6ed65da827c8b5b7da761b4063278
+# pkgconfig
+# last-changed: 2026:07:17
+# by: tfry
+# verified: announcement mail: https://lists.freedesktop.org/archives/pkg-config/2017-March/001084.html
+server https://pkgconfig.freedesktop.org/releases
+name pkgconfig-0.29.2.tar.gz
+file pkg-config-0.29.2.tar.gz
+chk  6fc69c01688c9458a57eb9a1664c9aba372ccda420a02bf4429fe610e7e7d591
 
 server https://download.savannah.gnu.org/releases/
 # last-changed: 2025-02-18

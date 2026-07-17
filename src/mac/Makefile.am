@@ -67,7 +67,7 @@ $(info -------------------------------------------------)
 # Source packages for the AppImage (see also ../src/Makefile.am)
 macimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
-		 freetype libiconv gettext
+		 freetype libiconv gettext pkgconfig
 
 
 macimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
@@ -86,27 +86,24 @@ macimage_kdepkgs = gpgmepp qgpgme \
 		   libqrencode openjpeg boost \
 		   prison gpgpass \
 		   qtbase qttools qtsvg qttranslations \
-		   breeze tiff
+		   breeze tiff zstd
 
-macimage_bpkgs = wayland-protocols
+macimage_pkg_pkgconfig_configure = \
+        --with-internal-glib \
+        --exec-prefix=$(idir)
 
-define macimage_pkg_wayland_protocols_post_install
-( \
-	cd ..; \
-	mv $$$${pkgidir}/$$$${pkg_version} $$$${pkgsdir};\
-	cd $$$${pkgsdir}; \
-	meson setup --prefix $$$${pkgidir} build -Dtests=false; \
-	cd build; \
-	ninja && ninja install; \
-	cd $$$${pkgidir}; \
-)
-endef
+macimage_pkg_pkgconfig_extracflags = -Wno-error=int-conversion
+
+macimage_pkg_boost_configure = \
+        -DBOOST_INCLUDE_LIBRARIES=headers
+
+# CMakeList.txt does not live in the top level
+macimage_pkg_zstd_conf_subdir = /build/cmake
+macimage_pkg_zstd_configure = -DZSTD_BUILD_PROGRAMS=OFF
 
 macimage_pkg_pinentry_configure = \
 	--disable-ncurses \
 	--enable-pinentry-qt \
-	PKG_CONFIG=\"/opt/homebrew/bin/pkg-config \
-	--with-path=$(idir)/lib/pkgconfig/\" \
 	CXXFLAGS=\"-std=c++17 -F$(idir)/lib\" \
 	--disable-pinentry-fltk \
 	--disable-pinentry-curses \

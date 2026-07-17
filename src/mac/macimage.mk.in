@@ -123,6 +123,8 @@ define DEFLATE_macro
 		  mv "$$$${f}" "$$$$(echo $$$${f} | sed 's,^qttranslations-everywhere-src,qttranslations,')" ;; \
 		sqlite-autoconf*)         \
 		  mv "$$$${f}" "$$$$(echo $$$${f} | sed 's,^sqlite-autoconf-3270200,sqlite-3.27.2,')" ;; \
+		pkg-config*)         \
+		  mv "$$$${f}" "$$$$(echo $$$${f} | sed 's,^pkg-config-,pkgconfig-,')" ;; \
 	  esac \
 	done
 endef

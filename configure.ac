@@ -590,6 +590,8 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_KDEPKG([tiff])
     MACIMAGE_KDEPKG([openjpeg], [tiff])
     MACIMAGE_KDEPKG([boost])
+    MACIMAGE_SPKG([pkgconfig])
+    MACIMAGE_KDEPKG([zstd])
 
     MACIMAGE_SPKG([libiconv])
     MACIMAGE_SPKG([gettext], [libiconv])
@@ -608,7 +610,7 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_SPKG([paperkey])
 
     # Qt related stuff.
-    MACIMAGE_KDEPKG([qtbase], [freetype])
+    MACIMAGE_KDEPKG([qtbase], [freetype zstd])
     MACIMAGE_KDEPKG([qttools], [qtbase])
     MACIMAGE_KDEPKG([qttranslations], [qtsvg qttools])
     MACIMAGE_KDEPKG([qtsvg], [qtbase])
@@ -617,7 +619,7 @@ if test "$build_macimage" = yes ; then
     # KDE Frameworks Tier 1
     MACIMAGE_KDEPKG([extra-cmake-modules], [qttools])
     MACIMAGE_KDEPKG([breeze-icons], [extra-cmake-modules qtbase])
-    MACIMAGE_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
+    MACIMAGE_KDEPKG([karchive], [qtbase qttools extra-cmake-modules zstd])
     MACIMAGE_KDEPKG([kauth], [qtbase qttools extra-cmake-modules])
     MACIMAGE_KDEPKG([kcodecs], [qtbase qttools extra-cmake-modules])
     MACIMAGE_KDEPKG([kcolorscheme], [kconfig kguiaddons ki18n])
