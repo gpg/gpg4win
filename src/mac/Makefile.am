@@ -94,9 +94,6 @@ macimage_pkg_pkgconfig_configure = \
 
 macimage_pkg_pkgconfig_extracflags = -Wno-error=int-conversion
 
-macimage_pkg_boost_configure = \
-        -DBOOST_INCLUDE_LIBRARIES=headers
-
 # CMakeList.txt does not live in the top level
 macimage_pkg_zstd_conf_subdir = /build/cmake
 macimage_pkg_zstd_configure = -DZSTD_BUILD_PROGRAMS=OFF
@@ -193,6 +190,9 @@ macimage_pkg_kwidgetsaddons_configure = \
 macimage_pkg_kxmlgui_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF \
     -DFORCE_DISABLE_KGLOBALACCEL=ON
+
+macimage_pkg_boost_configure = \
+    -DBOOST_INCLUDE_LIBRARIES=\"headers;graph\"
 
 macimage_pkg_libkleo_configure = \
     -DLIBKLEO_FEATURE_DEVS_COMPLIANCE=$(LIBKLEO_FEATURE_DEVS_COMPLIANCE)
