@@ -67,6 +67,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kcalendarcore-6.20.0/0001-Add-option-to-build-without-QML.patch \
              patches/kconfig-6.20.0/0001-Avoid-creation-of-not-already-existing-registry-keys.patch \
              patches/kconfig-6.20.0/0002-Do-not-try-to-read-registry-entries-for-absolute-con.patch \
+             patches/kconfig-6.20.0/0003-Read-config-files-in-system-locations-before-user-wr.patch \
              patches/kf5/breeze-icons/subset-crossbuild.patch \
              patches/kf5/kconfig/0001-Read-defaults-from-Windows-registry.patch \
              patches/kf5/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
@@ -131,6 +132,9 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/extra-cmake-modules/0001-Revert-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches-appimage/extra-cmake-modules/0001-Use-preferred-display-language-instead-of-locale-on-.patch \
              patches-appimage/kcalendarcore-6.20.0/0001-Add-option-to-build-without-QML.patch \
+             patches-appimage/kconfig-6.20.0/0001-Avoid-creation-of-not-already-existing-registry-keys.patch \
+             patches-appimage/kconfig-6.20.0/0002-Do-not-try-to-read-registry-entries-for-absolute-con.patch \
+             patches-appimage/kconfig-6.20.0/0003-Read-config-files-in-system-locations-before-user-wr.patch \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
              patches-appimage/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches-appimage/okular/pgp-default-true.patch \
