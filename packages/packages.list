@@ -640,11 +640,11 @@ chk 6bc88a71fe51e76d374d1544fa4d42e667f618ee3e5c37581a2e858427ac50ee
 
 
 # gpg4win-tools
-# last changed: 2026-05-19
+# last changed: 2026-07-21
 # by: ingo
 # verified: Tarball created by ingo.
-file gpg4win-tools/gpg4win-tools-202605191404.tar.xz
-chk a3810a65f4805091f190a2a1f1670c68919ceb8df13ee97484449c5806d27bd0
+file gpg4win-tools/gpg4win-tools-202607211459.tar.xz
+chk 4527eb101cad9fcd5f5c3a57b31e6e35fa1a0b42f6fd0683f43ffaa1f00c52d1
 
 # libkleo
 # last changed: 2026-07-15
