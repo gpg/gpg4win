@@ -32,10 +32,10 @@ Section "-un.gpg4win"
   Delete "$INSTDIR\bin\md5sum.exe"
 
   # Delete the runtime libaries
-  Delete "$INSTDIR\bin\libstdc++-6.dll"
-  Delete "$INSTDIR\bin\libgcc_s_sjlj-1.dll"
-  Delete "$INSTDIR\bin\libgcc_s_dw2-1.dll"
-  Delete "$INSTDIR\bin\libgcc_s_seh-1.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libstdc++-6.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libgcc_s_sjlj-1.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libgcc_s_dw2-1.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libgcc_s_seh-1.dll"
   Delete /REBOOTOK "$INSTDIR\bin\libwinpthread-1.dll"
   Delete /REBOOTOK "$INSTDIR\${EX_BINDIR}\libwinpthread-1.dll"
 
