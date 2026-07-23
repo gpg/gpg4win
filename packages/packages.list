@@ -209,12 +209,11 @@ file pinentry/pinentry-1.3.3.tar.bz2
 chk  c2970f16d6afb66ecddfca767d743936c86239bff936eed7fd7597a678414b63
 
 # GpgOL
-# last-changed: 2026-02-26
+# last-changed: 2026-07-23
 # by: wk
-# verified: swdb
-file gpgol/gpgol-2.7.2.tar.bz2
-chk  ddd4094be63a30c0e54b28ef34d3c741136c06fef9af5dd4ca623d3758fa9220
-
+# verified: build-tree
+file gpgol/gpgol-2.7.3.tar.bz2
+chk  edd379a0fe8c515c8ad945f36b6e25a7f7331e1da2eaa429ad6752461a1843d8
 
 #
 # GpgEX
