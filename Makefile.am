@@ -105,7 +105,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/pcre2/cross-build-cmake.patch \
              patches/poppler/downgrade-min-boost.patch \
              patches/poppler/downgrade-min-fontconfig.patch \
-             patches/poppler/gpgme-export-minimal.patch \
              patches/qtbase-6.10.1/0001-Don-t-report-active-windows-as-having-focus-unless-t.patch \
              patches/qtbase/00-qt611-0001-a11y-Let-QAccessibleTable-subclass-QAccessibleWidget.patch \
              patches/qtbase/00-qt611-0002-a11y-Return-correct-string-information-for-item-view.patch \
@@ -140,7 +139,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/okular/pgp-default-true.patch \
              patches-appimage/poppler/downgrade-min-boost.patch \
              patches-appimage/poppler/downgrade-min-fontconfig.patch \
-             patches-appimage/poppler/gpgme-export-minimal.patch \
              patches-appimage/qtbase/0001-Don-t-report-tabname-as-name-of-tabbar.patch \
              patches-appimage/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches-appimage/qtbase/0002-no-dark-mode-on-old-windows-10.patch \
