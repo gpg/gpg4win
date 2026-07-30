@@ -30,6 +30,7 @@ Section "-kconfig" SEC_kconfig
   File "${gpg4win_pkg_kconfig}"
 !else
   SetOutPath "$INSTDIR\bin"
+  File ${prefix}/bin/kreadconfig6.exe
   File ${prefix}/bin/libKF6ConfigCore.dll
   File ${prefix}/bin/libKF6ConfigGui.dll
 !endif

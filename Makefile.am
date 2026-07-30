@@ -68,6 +68,10 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kconfig-6.20.0/0001-Avoid-creation-of-not-already-existing-registry-keys.patch \
              patches/kconfig-6.20.0/0002-Do-not-try-to-read-registry-entries-for-absolute-con.patch \
              patches/kconfig-6.20.0/0003-Read-config-files-in-system-locations-before-user-wr.patch \
+             patches/kconfig-6.20.0/0004-kreadconfig-Add-flag-to-dump-all-entries.patch \
+             patches/kconfig-6.20.0/0005-kreadconfig-Add-flag-to-include-globals.patch \
+             patches/kconfig-6.20.0/0006-kreadconfig-Dump-entries-sorted-by-group-name-entry-.patch \
+             patches/kconfig-6.20.0/0007-g10-Set-organization-name-of-kreadconfig-for-Windows.patch \
              patches/kf5/breeze-icons/subset-crossbuild.patch \
              patches/kf5/kconfig/0001-Read-defaults-from-Windows-registry.patch \
              patches/kf5/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
@@ -134,6 +138,10 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/kconfig-6.20.0/0001-Avoid-creation-of-not-already-existing-registry-keys.patch \
              patches-appimage/kconfig-6.20.0/0002-Do-not-try-to-read-registry-entries-for-absolute-con.patch \
              patches-appimage/kconfig-6.20.0/0003-Read-config-files-in-system-locations-before-user-wr.patch \
+             patches-appimage/kconfig-6.20.0/0004-kreadconfig-Add-flag-to-dump-all-entries.patch \
+             patches-appimage/kconfig-6.20.0/0005-kreadconfig-Add-flag-to-include-globals.patch \
+             patches-appimage/kconfig-6.20.0/0006-kreadconfig-Dump-entries-sorted-by-group-name-entry-.patch \
+             patches-appimage/kconfig-6.20.0/0007-g10-Set-organization-name-of-kreadconfig-for-Windows.patch \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
              patches-appimage/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches-appimage/okular/pgp-default-true.patch \

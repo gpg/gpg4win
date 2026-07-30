@@ -1,0 +1,42 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 27eedaef12e357bb4ffa790251a316c911bcccd6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Thu, 11 Jun 2026 10:28:59 +0200
+Subject: [PATCH] kreadconfig: Dump entries sorted by group name/entry key
+
+---
+ src/kreadconfig/kreadconfig.cpp | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/src/kreadconfig/kreadconfig.cpp b/src/kreadconfig/kreadconfig.cpp
+index f4015332..f3719361 100644
+--- a/src/kreadconfig/kreadconfig.cpp
++++ b/src/kreadconfig/kreadconfig.cpp
+@@ -96,16 +96,18 @@ int main(int argc, char **argv)
+     }
+
+     if (parser.isSet(QStringLiteral("dump"))) {
+-        const QStringList groups = konfig->groupList();
++        QStringList groups = konfig->groupList();
++        groups.sort();
+         for (const QString &groupName : groups) {
+             const KConfigGroup group = konfig->group(groupName);
+
+             fprintf(stdout, "Group: %s\n", qPrintable(groupName));
+
+-            const auto entries = group.entryMap();
++            QStringList keys = group.keyList();
++            keys.sort();
+
+-            for (const auto [key, value] : entries.asKeyValueRange()) {
+-                fprintf(stdout, "  %s: %s\n", qPrintable(key), value.toStdString().c_str());
++            for (const QString &key : keys) {
++                fprintf(stdout, "  %s: %s\n", qPrintable(key), group.readEntry(key).toStdString().c_str());
+             }
+
+             fprintf(stdout, "\n");
+--
+2.54.0

@@ -1,0 +1,69 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From d795ce74fa300e41778e898f4b4fdcd17bfcbf79 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Wed, 4 Mar 2026 19:15:22 +0100
+Subject: [PATCH] kreadconfig: Add flag to dump all entries
+
+This prints all entries in the given file
+
+Useful for debugging/testing
+---
+ src/kreadconfig/kreadconfig.cpp | 26 +++++++++++++++++++++++++-
+ 1 file changed, 25 insertions(+), 1 deletion(-)
+
+diff --git a/src/kreadconfig/kreadconfig.cpp b/src/kreadconfig/kreadconfig.cpp
+index d5010935..f3130b0a 100644
+--- a/src/kreadconfig/kreadconfig.cpp
++++ b/src/kreadconfig/kreadconfig.cpp
+@@ -52,6 +52,7 @@ int main(int argc, char **argv)
+     parser.addOption(QCommandLineOption(QStringLiteral("key"), QCoreApplication::translate("main", "Key to look for"), QStringLiteral("key")));
+     parser.addOption(QCommandLineOption(QStringLiteral("default"), QCoreApplication::translate("main", "Default value"), QStringLiteral("value")));
+     parser.addOption(QCommandLineOption(QStringLiteral("type"), QCoreApplication::translate("main", "Type of variable"), QStringLiteral("type")));
++    parser.addOption(QCommandLineOption(QStringLiteral("dump"), QCoreApplication::translate("main", "Dump all entries")));
+
+     parser.process(app);
+
+@@ -61,7 +62,7 @@ int main(int argc, char **argv)
+     QString dflt = parser.value(QStringLiteral("default"));
+     QString type = parser.value(QStringLiteral("type")).toLower();
+
+-    if (key.isNull() || !parser.positionalArguments().isEmpty()) {
++    if ((key.isNull() || !parser.positionalArguments().isEmpty()) && !parser.isSet(QStringLiteral("dump"))) {
+         parser.showHelp(1);
+     }
+
+@@ -90,6 +91,29 @@ int main(int argc, char **argv)
+         cfgGroup = cfgGroup.group(grp);
+     }
+
++    if (parser.isSet(QStringLiteral("dump"))) {
++        const QStringList groups = konfig->groupList();
++        for (const QString &groupName : groups) {
++            const KConfigGroup group = konfig->group(groupName);
++
++            fprintf(stdout, "Group: %s\n", qPrintable(groupName));
++
++            const auto entries = group.entryMap();
++
++            for (const auto [key, value] : entries.asKeyValueRange()) {
++                fprintf(stdout, "  %s: %s\n", qPrintable(key), value.toStdString().c_str());
++            }
++
++            fprintf(stdout, "\n");
++        }
++
++        if (configMustDeleted) {
++            delete konfig;
++        }
++
++        return 0;
++    }
++
+     if (type == QLatin1String{"bool"}) {
+         dflt = dflt.toLower();
+         bool def = (dflt == QLatin1String{"true"} || dflt == QLatin1String{"on"} || dflt == QLatin1String{"yes"} || dflt == QLatin1String{"1"});
+--
+2.54.0

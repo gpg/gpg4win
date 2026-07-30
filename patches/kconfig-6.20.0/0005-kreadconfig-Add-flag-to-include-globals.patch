@@ -1,0 +1,48 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 0f90cf5ca7999bf49812b217198ad44ca7232f46 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 18 Mar 2026 15:55:43 +0100
+Subject: [PATCH] kreadconfig: Add flag to include globals
+
+This makes `kreadconfig <file>` behave like `KSharedConfig::openConfig()`
+and allows testing/debugging things related to globals.
+---
+ src/kreadconfig/kreadconfig.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/kreadconfig/kreadconfig.cpp b/src/kreadconfig/kreadconfig.cpp
+index f3130b0a..f4015332 100644
+--- a/src/kreadconfig/kreadconfig.cpp
++++ b/src/kreadconfig/kreadconfig.cpp
+@@ -53,6 +53,9 @@ int main(int argc, char **argv)
+     parser.addOption(QCommandLineOption(QStringLiteral("default"), QCoreApplication::translate("main", "Default value"), QStringLiteral("value")));
+     parser.addOption(QCommandLineOption(QStringLiteral("type"), QCoreApplication::translate("main", "Type of variable"), QStringLiteral("type")));
+     parser.addOption(QCommandLineOption(QStringLiteral("dump"), QCoreApplication::translate("main", "Dump all entries")));
++    parser.addOption(
++        QCommandLineOption(QStringLiteral("include-globals"),
++                           QCoreApplication::translate("main", "Include globals; by default, the global config files are not read if a file is specified")));
+
+     parser.process(app);
+
+@@ -61,6 +64,7 @@ int main(int argc, char **argv)
+     QString file = parser.value(QStringLiteral("file"));
+     QString dflt = parser.value(QStringLiteral("default"));
+     QString type = parser.value(QStringLiteral("type")).toLower();
++    const bool includeGlobals = parser.isSet(QStringLiteral("include-globals"));
+
+     if ((key.isNull() || !parser.positionalArguments().isEmpty()) && !parser.isSet(QStringLiteral("dump"))) {
+         parser.showHelp(1);
+@@ -73,7 +77,7 @@ int main(int argc, char **argv)
+     if (file.isEmpty()) {
+         konfig = KSharedConfig::openConfig().data();
+     } else {
+-        konfig = new KConfig(file, KConfig::NoGlobals);
++        konfig = new KConfig(file, includeGlobals ? KConfig::FullConfig : KConfig::NoGlobals);
+         configMustDeleted = true;
+     }
+     KConfigGroup cfgGroup = konfig->group(QString());
+--
+2.54.0

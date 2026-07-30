@@ -289,7 +289,9 @@ gpg4win_pkg_sonnet_configure = -DSONNET_USE_QML=OFF
 
 gpg4win_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
 
-gpg4win_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
+gpg4win_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF \
+                                -DKCONFIG_USE_QML=OFF \
+                                -DGPG4WIN_ORGANIZATION_NAME=\"$(KLEOPATRA_ORGANIZATION_NAME)\"
 
 gpg4win_pkg_kconfig_native_configure = -DKCONFIG_USE_DBUS=OFF \
                                        -DKCONFIG_USE_QML=OFF  \

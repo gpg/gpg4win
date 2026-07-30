@@ -26,6 +26,7 @@ Section "-un.kconfig"
   Push "${gpg4win_pkg_kconfig}"
   Call un.SourceDelete
 !else
+  Delete "$INSTDIR\bin\kreadconfig6.exe"
   Delete "$INSTDIR\bin\libKF6ConfigCore.dll"
   Delete "$INSTDIR\bin\libKF6ConfigGui.dll"
   RmDir "$INSTDIR\bin"

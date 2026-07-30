@@ -1,4 +1,7 @@
-- /bin/
++ /bin/
++ /bin/kreadconfig6
+- /bin/*
+
 - /include/
 - /lib64/
 - /mkspecs/

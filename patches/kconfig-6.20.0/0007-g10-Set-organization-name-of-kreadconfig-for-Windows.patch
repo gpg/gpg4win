@@ -1,0 +1,47 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 1dd22017a679bdc8838665b2465512a3939127d7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Mon, 27 Jul 2026 14:28:07 +0200
+Subject: [PATCH] g10: Set organization name of kreadconfig for Windows
+ registry
+
+GnuPG-bug-id: 8366
+---
+ src/kreadconfig/CMakeLists.txt  | 4 ++++
+ src/kreadconfig/kreadconfig.cpp | 4 ++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/src/kreadconfig/CMakeLists.txt b/src/kreadconfig/CMakeLists.txt
+index d3bbe301..66e4e925 100644
+--- a/src/kreadconfig/CMakeLists.txt
++++ b/src/kreadconfig/CMakeLists.txt
+@@ -1,5 +1,9 @@
+ add_executable(kreadconfig6 kreadconfig.cpp)
+ ecm_mark_nongui_executable(kreadconfig6)
++if(WIN32 AND GPG4WIN_ORGANIZATION_NAME)
++    # The organization name is used on Windows to look up config entries in the registry
++    target_compile_definitions(kreadconfig6 PRIVATE GPG4WIN_ORGANIZATION_NAME="${GPG4WIN_ORGANIZATION_NAME}")
++endif()
+
+ target_link_libraries(kreadconfig6 KF6::ConfigCore)
+
+diff --git a/src/kreadconfig/kreadconfig.cpp b/src/kreadconfig/kreadconfig.cpp
+index f3719361..d76c566f 100644
+--- a/src/kreadconfig/kreadconfig.cpp
++++ b/src/kreadconfig/kreadconfig.cpp
+@@ -38,6 +38,10 @@
+
+ int main(int argc, char **argv)
+ {
++#ifdef GPG4WIN_ORGANIZATION_NAME
++    QCoreApplication::setOrganizationName(QStringLiteral(GPG4WIN_ORGANIZATION_NAME));
++#endif
++
+     QCoreApplication app(argc, argv);
+
+     QCommandLineParser parser;
+--
+2.54.0
