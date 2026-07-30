@@ -1,0 +1,29 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From b7113fb7598aa468136d121bba01fd834db5e2b8 Mon Sep 17 00:00:00 2001
+From: Sune Vuorela <sune@vuorela.dk>
+Date: Fri, 10 Jul 2026 14:14:07 +0200
+Subject: [PATCH] Hide finish signing banner on document reload
+
+Reloading the document makes the signature annotation disappear, and if
+one still can click 'finish signing', we crash.
+---
+ part/part.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/part/part.cpp b/part/part.cpp
+index deb4382ee..423934d7c 100644
+--- a/part/part.cpp
++++ b/part/part.cpp
+@@ -2104,6 +2104,10 @@ bool Part::slotAttemptReload(bool oneShot, const QUrl &newUrl)
+         m_toc->finishReload();
+     }
+
++#if HAVE_NEW_SIGNATURE_API
++    m_signatureInProgressMessage->setVisible(false);
++#endif
++
+     // inform the user about the operation in progress
+     m_pageView->displayMessage(i18n("Reloading the document…"));
