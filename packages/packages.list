@@ -220,11 +220,11 @@ file scute/scute-1.7.0.tar.bz2
 chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
 
 # GpgOL
-# last-changed: 2026-03-12
+# last-changed: 2026-07-23
 # by: wk
 # verified: build-tree
-file gpgol/gpgol-2.7.2.tar.bz2
-chk  ddd4094be63a30c0e54b28ef34d3c741136c06fef9af5dd4ca623d3758fa9220
+file gpgol/gpgol-2.7.3.tar.bz2
+chk  edd379a0fe8c515c8ad945f36b6e25a7f7331e1da2eaa429ad6752461a1843d8
 
 #
 # GpgEX
