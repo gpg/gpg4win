@@ -146,6 +146,11 @@ while [ $# -gt 0 ]; do
     [ -z "$skipshift" ] && shift
 done
 
+if [ "$appimage" = yes -a "$release" = yes ] ; then
+    echo "--release can't be used together with --appimage"
+    exit 1
+fi
+
 [ -z "$verbose" ] && quiet="--quiet"
 
 if [ -z "$builddir" ]; then
