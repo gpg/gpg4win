@@ -375,11 +375,17 @@ if [ ! -e "${buildtype_prefix}packages/BUILDTYPE" ]; then
 fi
 
 # Check whether the --release target needs to clone the gnupg-vsd repo.
-case $(trim "$(cat "${buildtype_prefix}packages/BUILDTYPE" 2>/dev/null || echo default)") in
+buildtype="$(trim "$(cat "${buildtype_prefix}packages/BUILDTYPE" 2>/dev/null)")"
+case "${buildtype}" in
     vsd3)       need_gnupg_vsd=yes
                 w64=no              ;;
     vsd|gpd)    need_gnupg_vsd=yes  ;;
-    *)          need_gnupg_vsd=no   ;;
+    gpg4win|default)
+                need_gnupg_vsd=no   ;;
+    *)          echo "Not a valid BUILDTYPE: ${buildtype}" >&2
+                echo "Put vsd3, vsd, gpd, gpg4win or default into packages/BUILDTYPE" >&2
+                exit 1
+                                    ;;
 esac
 
 
