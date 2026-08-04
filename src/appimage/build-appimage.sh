@@ -106,7 +106,7 @@ sign_version_file () (
 # Check for the buildtype and existence of required files
 # early
 BUILDTYPE=$(cat ${SRCDIR}/packages/BUILDTYPE || echo default)
-if [ $BUILDTYPE != default ] && [ ! -f ${VSD_DIR}/custom.mk ]; then
+if [ "${BUILDTYPE}" = "vsd" -o "${BUILDTYPE}" = "vsd3" -o "${BUILDTYPE}" = "gpd" ] && [ ! -f ${VSD_DIR}/custom.mk ]; then
     echo "ERROR: Non default build without custom file."
     echo "Check that ${VSD_DIR}/custom.mk exists or "
     echo "change the BUILDTYPE in ${SRCDIR}/packages/BUILDTYPE"
