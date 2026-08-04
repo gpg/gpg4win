@@ -24,9 +24,8 @@ EXTRA_DIST = AppRun \
              build-appimage.sh \
              start-shell \
              qt5/qt.conf \
-             qt6/qt.conf
-
-SUBDIRS = rsync-filters
+             qt6/qt.conf \
+             rsync-filters
 
 # Define macros for the various directories.  These directory names
 # must be absolute, as we switch pretty often between them and don't
