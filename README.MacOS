@@ -10,19 +10,16 @@ Status / Hints / TODO list for MacOS builds
       - autoconf (only for running autogen.sh)
       - cmake
       - bison (version in macos is too old)
-  - Required libs neither in MacOS nor our current build scripts. We
-    probably want to build those, ourselves, mid term (TODO)
-    - openjpeg -> done
-    - boost -> done (but actually, we only need the headers! cmake opt?)
+  - Required libs not in the current AppImage build scripts.
+    - openjpeg, libzstd, libpng, jpg, libpcre2 -> done (already had Windows builds)
     - pkgconf -> done (had to update package -> TODO: check if Windows build broke)
-    - libzstd -> done
-    - The following libs are also pulled in from homebrew (probably via pkgconf?);
-      not all may be required; see src/mac/bundle.py for checking:
-      - libjpeg (poppler, qtbase, libtiff)
-      - libpcre2 (qtbase)
-      - libzstd (qtbase, libtiff, karchive) (still applicable?)
-      - libpng (qtbase, poppler, freetype)
-      - libcrypto (karchive)
+    - boost -> done (poppler complains about some missing sub-lib; not sure if we
+                     should add that)
+  - Everything _can_ now be built without external (non-sytem) runtime deps,
+    however the build process is still prone to picking up some libs from homebrew
+    (hard to rule out, entirely, as long as we are using cmake from homebrew).
+    To make sure this did not happen, use src/mac/bundle.py to check for any
+    remaining bad dependencies.
 
 - Setup:
   - We need a case sensitive filesystem for building, which is not the default:

@@ -67,7 +67,8 @@ $(info -------------------------------------------------)
 # Source packages for the AppImage (see also ../src/Makefile.am)
 macimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
-		 freetype libiconv gettext pkgconfig
+		 freetype libiconv gettext pkgconfig \
+                 libpng jpeg
 
 
 macimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
@@ -86,7 +87,7 @@ macimage_kdepkgs = gpgmepp qgpgme \
 		   libqrencode openjpeg boost \
 		   prison gpgpass \
 		   qtbase qttools qtsvg qttranslations \
-		   breeze tiff zstd
+		   breeze tiff zstd pcre2
 
 macimage_pkg_pkgconfig_configure = \
         --with-internal-glib \
@@ -112,6 +113,16 @@ macimage_pkg_gpgme_configure = \
     --disable-gpgsm-test
 
 macimage_pkg_qgpgme_configure = -DBUILD_WITH_QT5=OFF
+
+macimage_pkg_libpng_configure = \
+      HAVE_SOLARIS_LD_FALSE=yes \
+      CPPFLAGS=\"-I$(idir)/include\" \
+      LDFLAGS=\"-L$(idir)/lib\"
+
+macimage_pkg_pcre2_configure = \
+        -DPCRE2_BUILD_PCRE2_8=OFF -DPCRE2_BUILD_PCRE2_16=ON \
+        -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 macimage_pkg_qtbase_configure = \
         -DQT_BUILD_EXAMPLES=OFF \
@@ -162,6 +173,9 @@ macimage_pkg_breeze_configure = \
     -DBUILD_QT5=OFF \
     -DWITH_DECORATIONS=OFF \
     -DCMAKE_DISABLE_FIND_PACKAGE_KF6KCMUtils=ON
+
+macimage_pkg_karchive_configure = -DWITH_LIBZSTD=ON -DWITH_LIBLZMA=OFF -DWITH_OPENSSL=OFF \
+    -DOPENSSL_ROOT_DIR=/build/thisdoesnotexist
 
 macimage_pkg_kauth_configure = \
     -DKAUTH_BACKEND_NAME=FAKE

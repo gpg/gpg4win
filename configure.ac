@@ -592,6 +592,9 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_KDEPKG([boost])
     MACIMAGE_SPKG([pkgconfig])
     MACIMAGE_KDEPKG([zstd])
+    MACIMAGE_KDEPKG([pcre2])
+    MACIMAGE_KDEPKG([jpeg])
+    MACIMAGE_KDEPKG([libpng])
 
     MACIMAGE_SPKG([libiconv])
     MACIMAGE_SPKG([gettext], [libiconv])
@@ -610,7 +613,7 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_SPKG([paperkey])
 
     # Qt related stuff.
-    MACIMAGE_KDEPKG([qtbase], [freetype zstd])
+    MACIMAGE_KDEPKG([qtbase], [jpeg libpng freetype zstd pcre2])
     MACIMAGE_KDEPKG([qttools], [qtbase])
     MACIMAGE_KDEPKG([qttranslations], [qtsvg qttools])
     MACIMAGE_KDEPKG([qtsvg], [qtbase])
@@ -664,7 +667,7 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_KDEPKG([kleopatra], [mimetreeparser qgpgme breeze-icons kdsingleapplication kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
 
     # Okular/Poppler
-    MACIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff openjpeg])
+    MACIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff openjpeg libpng])
     MACIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
 
     # Gpgpass
