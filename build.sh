@@ -53,10 +53,13 @@ Options:
                         packages:
                         libkleo kleopatra gpgol gpgol.js
                         gpgpass gpg4win-tools mimetreeparser
+        --signkey       OpenPGP key ID for signing an AppImage
+                        Overwrites VERSION_SIGNKEY of ~/.gnupg-autogen.rc
+                        Only used if BUILDTYPE is vsd, vsd3 or gpd
         --verbose       Get more verbose output
 
 
-This script is used to build either the Appimage or the Windows
+qThis script is used to build either the Appimage or the Windows
 installer.  The build is done in a suffixed build directory (see above
 for the defaults).  Use the option --builddir to use a non-default build
 directory.  Take care not to use the source directory for building.
@@ -86,6 +89,8 @@ commandline="$0 $@"
 
 # Preset variables.
 indocker="no"
+appimage="no"
+appimage_docker_build="no"
 shell="no"
 clean="no"
 dist="no"
@@ -99,12 +104,14 @@ download="no"
 runcmd="no"
 fromgit="no"
 withmsi="no"
-force=no
-nosign=no
+force="no"
+nosign="no"
 ftpuser=
 verbose=
 logfile=
 quiet=
+version_signkey=
+have_signkey="no"
 # Get UID for use by docker.
 userid=$(id -u)
 groupid=$(id -g)
@@ -123,25 +130,28 @@ while [ $# -gt 0 ]; do
     esac
 
     case "$1" in
-        --appimage) appimage="yes";;
-        --shell) shell="yes";;
-        --clean|-c) clean="yes";;
-        --dist) dist="yes";;
-        --release) release="yes";;
-        --update-image|--update-img|-u) update_image="yes";;
-        --w32) w64="no";;
-        --force) force="yes";;
-        --no-sign) nosign="yes" ;;
-        --download) download="yes";;
-        --runcmd)   runcmd="yes";;
-        --git|-g|--git-pkgs)     fromgit="yes";;
+        --appimage)              appimage="yes"       ;;
+        --shell)                 shell="yes"          ;;
+        --clean|-c)              clean="yes"          ;;
+        --dist)                  dist="yes"           ;;
+        --release)               release="yes"        ;;
+        --update-image|--update-img|-u)
+                                 update_image="yes"   ;;
+        --w32)                   w64="no"             ;;
+        --force)                 force="yes"          ;;
+        --no-sign)               nosign="yes"         ;;
+        --download)              download="yes"       ;;
+        --runcmd)                runcmd="yes"         ;;
+        --git|-g|--git-pkgs)     fromgit="yes"        ;;
         --builddir|--builddir=*) builddir="${optarg}" ;;
         --logfile|--logfile=*)   logfile="${optarg}"  ;;
         --user|--user=*)         ftpuser="${optarg}"  ;;
-        --msi|--with-msi)        withmsi=yes          ;;
-        --verbose|-v)            verbose=yes          ;;
-        --*) usage 1 1>&2; exit 1;;
-        *) skipshift=1; break ;;
+        --msi|--with-msi)        withmsi="yes"        ;;
+        --signkey|--signkey=*)   version_signkey="${optarg}"
+                                 have_signkey="yes"   ;;
+        --verbose|-v)            verbose="yes"        ;;
+        --*)                     usage 1 1>&2; exit 1 ;;
+        *)                       skipshift=1; break   ;;
     esac
     [ -z "$skipshift" ] && shift
 done
@@ -166,14 +176,276 @@ fi
 # Check whether we are running in the docker container.
 if [ -d /src/src -a -d /src/patches -a -d /build ]; then
     indocker="yes"
-    srcdir=/src
-    builddir=/build
+    srcdir="/src"
+    builddir="/build"
+    instdir="${builddir}/install"
+    vsddir="${srcdir}/src/gnupg-vsd"
+    if [ "$appimage" = "yes" ] ; then
+        appimage_docker_build="yes"
+        appdir="${builddir}/AppDir"
+    fi
     echo >&2 "$PGM: running in docker"
 fi
 
 echo >&2 "$PGM: source directory: $srcdir"
 echo >&2 "$PGM: build  directory: $builddir"
 
+if  [ "$appimage_docker_build" = "yes" ] ; then
+    echo "run appimage build"
+
+    write_version_file () (
+        # TODO: add uidcomment and read content from config files
+        echo "Writing VERSION file"
+        VERSION_FILE="$1"
+        FLAVOUR="$2"
+        LANG="$3"
+        VSD_VERSION="$4"
+        BUILD_CID_INSTALLER="$(cd "${srcdir}" && git rev-parse --verify HEAD)"
+        BUILD_CID_CONFIG="$(cd "${srcdir}/src/gnupg-vsd" && git rev-parse --verify HEAD)"
+        YEAR="$(date +%Y)"
+
+        if [ "${FLAVOUR}" = "vsd" ] ; then
+            KLEO_VERSION="VS-Desktop-${VSD_VERSION}"
+            KLEO_BUG_ADDRESS="https://gnupg.com/vsd/report.html"
+            KLEO_HOMEPAGE="https://www.gnupg.com/vsd/release-notes.html"
+            if [ "${LANG}" = "de" ] ; then
+                KLEO_SHORT_DESC="<h1>GnuPG VS-Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>Die GnuPG.com Unterstützung ist verfügbar unter:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Stichwort: VSD AppImage<br/><br/>"
+                KLEO_OTHER_TEXT="<b>GnuPG VS-Desktop</b><sup>®</sup> ist Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>Eine vollständige Liste der Lizenzen findet sich in der beiliegenden pkg-licenses.txt Datei."
+            else
+                KLEO_SHORT_DESC="<h1>GnuPG VS-Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>The GnuPG.com vendor support is available at:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Keyword: VSD AppImage English<br/><br/>"
+                KLEO_OTHER_TEXT="<b>GnuPG VS-Desktop</b><sup>®</sup> is Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>For a full list of licenses see the installed pkg-licenses.txt file."
+            fi
+        elif [ "${FLAVOUR}" = "gpd" ] ; then
+            KLEO_VERSION="Desktop-${VSD_VERSION}"
+            KLEO_BUG_ADDRESS="https://gnupg.com/gpd/report.html"
+            KLEO_HOMEPAGE="https://www.gnupg.com/gpd/release-notes.html"
+            if [ "${LANG}" = "de" ] ; then
+                KLEO_SHORT_DESC="<h1>GnuPG Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>Die GnuPG.com Unterstützung ist verfügbar unter:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Stichwort: GPD AppImage<br/><br/>"
+                KLEO_OTHER_TEXT="<b>GnuPG Desktop</b><sup>®</sup> ist Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>Eine vollständige Liste der Lizenzen findet sich in der beiliegenden pkg-licenses.txt Datei."
+            else
+                KLEO_SHORT_DESC="<h1>GnuPG Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>The GnuPG.com vendor support is available at:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Keyword: GPD AppImage English<br/><br/>"
+                KLEO_OTHER_TEXT="<b>GnuPG Desktop</b><sup>®</sup> is Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>For a full list of licenses see the installed pkg-licenses.txt file."
+            fi
+        fi
+
+        OKULAR_VERSION="${KLEO_VERSION}"
+        OKULAR_SHORT_DESC="${KLEO_SHORT_DESC}"
+        OKULAR_OTHER_TEXT="${KLEO_OTHER_TEXT}"
+        OKULAR_BUG_ADDRESS="${KLEO_BUG_ADDRESS}"
+        OKULAR_HOMEPAGE="${KLEO_HOMEPAGE}"
+
+        cat <<- EOF > ${VERSION_FILE}
+		[Kleopatra]
+		version=${KLEO_VERSION}
+		shortDescription=${KLEO_SHORT_DESC}
+		otherText=${KLEO_OTHER_TEXT}
+		bugAddress=${KLEO_BUG_ADDRESS}
+		homepage=${KLEO_HOMEPAGE}
+		copyrightStatement=<pre></pre>
+		statusline=${VSD_VERSION}
+
+		[Okular]
+		version=${OKULAR_VERSION}
+		shortDescription=${OKULAR_SHORT_DESC}
+		otherText=${OKULAR_OTHER_TEXT}
+		bugAddress=${OKULAR_BUG_ADDRESS}
+		homepage=${OKULAR_HOMEPAGE}
+		displayName=Okular - GnuPG Edition
+
+		[Build]
+		cidInstaller=${BUILD_CID_INSTALLER}
+		cidConfig=${BUILD_CID_CONFIG}" > ${VERSION_FILE}
+		EOF
+    )
+
+    sign_version_file () (
+        VERSION_FILE="$1"
+        SIGNKEY="$2"
+
+        /src/build.sh --runcmd gpg --yes -o "${VERSION_FILE}.sig" -bau "${SIGNKEY}" "${VERSION_FILE}"
+        chmod 0644 "${VERSION_FILE}.sig"
+    )
+
+    # Check for the buildtype and existence of required files
+    # early
+    BUILDTYPE=$(cat ${srcdir}/packages/BUILDTYPE || echo default)
+    if [ "${BUILDTYPE}" = "vsd" -o "${BUILDTYPE}" = "vsd3" -o "${BUILDTYPE}" = "gpd" ] && [ ! -f ${vsddir}/custom.mk ]; then
+        echo "ERROR: Non default build without custom file."
+        echo "Check that ${vsddir}/custom.mk exists or "
+        echo "change the BUILDTYPE in ${srcdir}/packages/BUILDTYPE"
+        exit 2
+    fi
+
+    # The actual build
+    cd ${builddir}
+    source /opt/rh/gcc-toolset-14/enable
+    ${srcdir}/configure --enable-appimage --with-playground=${builddir}
+    # Nuke the AppDir to make sure we get everything nice and clean
+    cd ${builddir}/src/appimage
+    make TOPsrcdir=${srcdir} PLAYGROUND=${builddir} clean-appdir
+    cd ${builddir}
+    make TOPsrcdir=${srcdir} PLAYGROUND=${builddir}
+
+    echo 'rootdir = $appdir/usr' >${appdir}/usr/bin/gpgconf.ctl
+    if [ ${buildtype} = vsd -o ${buildtype} = vsd3 ]; then
+        echo 'sysconfdir = /etc/gnupg-vsd' >>${appdir}/usr/bin/gpgconf.ctl
+    else
+        echo 'sysconfdir = /etc/gnupg' >>${appdir}/usr/bin/gpgconf.ctl
+    fi
+
+    # Copy the start-shell helper for use AppRun
+    cp ${srcdir}/src/appimage/start-shell ${appdir}/
+    chmod +x ${appdir}/start-shell
+
+    # Copy standard global configuration
+    if [ ${buildtype} = vsd -o ${buildtype} = vsd3 ]; then
+        mkdir -p ${appdir}/usr/share/gnupg/conf/gnupg-vsd
+        rsync -aLv --delete --omit-dir-times \
+            --perms --chmod=D0755,F0644 \
+            ${vsddir}/Standard/etc/gnupg/ \
+            ${appdir}/usr/share/gnupg/conf/gnupg-vsd/
+    fi
+
+    export PATH=/opt/linuxdeploy/usr/bin:$PATH
+    export LD_LIBRARY_PATH=${instdir}/lib
+
+    # tell the linuxdeploy qt-plugin where to find qmake
+    export QMAKE=${instdir}/bin/qmake
+
+    # create plugin directories expected by linuxdeploy qt-plugin
+    # workaround for
+    # [qt/stdout] Deploy[qt/stderr] terminate called after throwing an instance of 'boost::filesystem::filesystem_error'
+    # [qt/stderr]   what():  boost::filesystem::directory_iterator::construct: No such file or directory: "/build/AppDir/usr/plugins/sqldrivers"
+    # ERROR: Failed to run plugin: qt (exit code: 6)
+    mkdir -p ${instdir}/plugins/sqldrivers
+
+    # copy KDE plugins to ${appdir}/usr/lib/plugins/
+    # copying the plugins to a subfolder of ${appdir}/usr/lib (instead of to
+    # ${appdir}/usr/plugins/ as linuxdeploy does for the Qt plugins) ensures that
+    # linuxdeploy copies the dependencies of the plugins to ${appdir} so that
+    # we don't have to take care of this ourselves
+    mkdir -p ${appdir}/usr/lib/plugins
+    if [ ${buildtype} = vsd ]; then
+        for d in kf6 kiconthemes6 styles; do
+            rsync -av --delete --omit-dir-times ${instdir}/lib/plugins/${d}/ ${appdir}/usr/lib/plugins/${d}/
+        done
+        rsync -av --delete --omit-dir-times ${instdir}/lib/plugins/okular_generators/okularGenerator_poppler.so ${appdir}/usr/lib/plugins/okular_generators/
+    elif [ ${buildtype} = vsd3 ]; then
+        for d in iconengines kauth kf5 okular plasma; do
+            rsync -av --delete --omit-dir-times ${instdir}/lib/plugins/${d}/ ${appdir}/usr/lib/plugins/${d}/
+        done
+        rsync -av --delete --omit-dir-times ${instdir}/lib/plugins/okularpart.so ${appdir}/usr/lib/plugins/
+
+        mkdir -p ${appdir}/usr/lib
+        # copy dependencies of the plugins
+        # okularGenerator_*.so
+        for f in libfreetype* libpoppler* libtiff.so* libOkular5Core.so* ; do
+            rsync -av --delete --omit-dir-times ${instdir}/lib/${f} ${appdir}/usr/lib/
+        done
+    fi
+
+    cd ${builddir}
+    myversion=$(grep PACKAGE_VERSION ${builddir}/config.h|sed -n 's/.*"\(.*\)"$/\1/p')
+    if [ ${buildtype} = vsd -o ${buildtype} = vsd3 ]; then
+        appimage_name=gnupg-vs-desktop-${myversion}-x86_64.AppImage
+        echo "Packaging GnuPG VS-Desktop Appimage: ${myversion}"
+        echo $myversion >${appdir}/GnuPG-VS-Desktop-VERSION
+        write_version_file "${appdir}/usr/VERSION" "vsd" "en" "${myversion}" && sign_version_file "${appdir}/usr/VERSION" "${version_signkey}"
+        echo "Packaging help files"
+        mkdir -p ${appdir}/usr/share/doc/gnupg-vsd
+        cp ${vsddir}/help/*.pdf ${appdir}/usr/share/doc/gnupg-vsd
+        if [ -f ${vsddir}/Standard/kleopatrarc ]; then
+            echo "Packaging kleopatrarc"
+            mkdir -p ${appdir}/usr/etc/xdg
+            cp ${vsddir}/Standard/kleopatrarc ${appdir}/usr/etc/xdg
+        fi
+        kleopatra_icon=${srcdir}/src/icons/kleopatra-vsd.svg
+    elif [ ${buildtype} = gpd ]; then
+        appimage_name=gnupg-desktop-${myversion}-x86_64.AppImage
+        echo "Packaging GnuPG Desktop Appimage: $myversion"
+        echo $myversion >${appdir}/GnuPG-Desktop-VERSION
+        write_version_file "${appdir}/usr/VERSION" "gpd" "en" "${myversion}" && sign_version_file "${appdir}/usr/VERSION" "${version_signkey}"
+        echo "Packaging help files"
+        mkdir -p ${appdir}/usr/share/doc/gnupg-vsd
+        cp ${vsddir}/help/*.pdf ${appdir}/usr/share/doc/gnupg-vsd
+        if [ -f ${vsddir}/Desktop/kleopatrarc ]; then
+            echo "Packaging kleopatrarc"
+            mkdir -p ${appdir}/usr/etc/xdg
+            cp ${vsddir}/Desktop/kleopatrarc ${appdir}/usr/etc/xdg
+        fi
+        kleopatra_icon=${srcdir}/src/icons/gpd/sc-apps-kleopatra.svg
+    else
+        appimage_name=gpg4win-${myversion}-x86_64.AppImage
+        echo "Packaging Gpg4win Appimage: $myversion"
+        echo $myversion >${appdir}/Gpg4win-VERSION
+        kleopatra_icon=${srcdir}/src/icons/gpd/sc-apps-kleopatra.svg
+    fi
+
+    if [ -n "${kleopatra_icon}" ]; then
+        # Replace Breeze icons for kleopatra with our icon
+        find ${appdir}/usr/share/icons/breeze -name 'kleopatra*.svg' -delete
+        find ${appdir}/usr/share/icons/breeze-dark -name 'kleopatra*.svg' -delete
+        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze/apps/22/kleopatra-symbolic.svg
+        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze/apps/48/kleopatra.svg
+        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze-dark/apps/22/kleopatra-symbolic.svg
+        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze-dark/apps/48/kleopatra.svg
+    else
+        # Restore the Breeze icons that may have been replaced in a previous build
+        for f in breeze/apps/22/kleopatra-symbolic.svg breeze/apps/48/kleopatra.svg \
+                breeze-dark/apps/22/kleopatra-symbolic.svg breeze-dark/apps/48/kleopatra.svg; do
+            # copy files only if they are not hard-linked; otherwise, cp complains that the files are the same file
+            test ${instdir}/share/icons/$f -ef ${appdir}/usr/share/icons/$f \
+                || cp -av ${instdir}/share/icons/$f ${appdir}/usr/share/icons/$f
+        done
+    fi
+
+    # Hack around that linuxdeploy does not know libexec
+    for f in dirmngr_ldap gpg-check-pattern \
+            gpg-preset-passphrase gpg-protect-tool \
+            gpg-wks-client scdaemon \
+            keyboxd gpg-pair-tool; do
+    # Ignore errors because some files might not exist depending
+    # on GnuPG Version
+        /opt/linuxdeploy/usr/bin/patchelf --debug \
+                --set-rpath '$ORIGIN/../lib' ${appdir}/usr/libexec/$f || true
+    done
+
+    # linuxdeploy also doesn't know about non-Qt plugins
+    for f in $(find ${appdir}/usr/lib/plugins/ -mindepth 1 -maxdepth 1 -type f); do
+        # this is only needed for the Qt 5 version of okularpart.so because it's installed in /usr/lib/plugins
+        /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/..' $f
+    done
+    for f in $(find ${appdir}/usr/lib/plugins/ -mindepth 2 -maxdepth 2 -type f); do
+        /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../..' $f
+    done
+    for f in $(find ${appdir}/usr/lib/plugins/ -mindepth 3 -maxdepth 3 -type f); do
+        /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../../..' $f
+    done
+    for f in $(find ${appdir}/usr/lib/plugins/ -mindepth 4 -maxdepth 4 -type f); do
+        /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../../../..' $f
+    done
+
+    # Fix up everything and build the file system
+    linuxdeploy --appdir ${appdir} \
+                --desktop-file ${appdir}/usr/share/applications/org.kde.kleopatra.desktop \
+                --icon-file ${appdir}/usr/share/icons/hicolor/256x256/apps/kleopatra.png \
+                --custom-apprun ${srcdir}/src/appimage/AppRun \
+                --plugin qt \
+        2>&1 | tee ${builddir}/logs/linuxdeploy-gnupg-desktop.log
+
+    # Replace qt.conf generated by linuxdeploy-plugin-qt with our own qt.conf
+    if [ ${buildtype} = vsd3 ]; then
+        cp ${srcdir}/src/appimage/qt5/qt.conf ${appdir}/usr/bin
+    else
+        cp ${srcdir}/src/appimage/qt6/qt.conf ${appdir}/usr/bin
+    fi
+
+    # Finally, create the AppImage
+    /opt/linuxdeploy/plugins/linuxdeploy-plugin-appimage/usr/bin/appimagetool ${appdir} ${appimage_name}
+
+    echo ready
+    exit 0
+fi
 
 # Remove leading an trailing whitespace
 trim() {
@@ -482,8 +754,18 @@ fi
 
 # Determine the needed docker image
 if [ "$appimage" = "yes" ]; then
-    version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' $HOME/.gnupg-autogen.rc|cut -d= -f2|xargs)"
-    cmd="/src/src/appimage/build-appimage.sh $version_signkey"
+    if [ "${BUILDTYPE}" = "vsd" ] || [ "${BUILDTYPE}" = "vsd3" ] || [ "${BUILDTYPE}" = "gpd" ] ; then
+        if [ "$have_signkey" = "no" ] && [ -f "$HOME/.gnupg-autogen.rc" ] ; then
+            version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' "$HOME/.gnupg-autogen.rc"|cut -d= -f2|xargs)"
+        fi
+        if  [ -z "${version_signkey}" ] ; then
+            echo "No signing key defined, which is mandatory for buildtypes vsd, vsd3 and gpd!"
+            exit 1
+        fi
+        cmd="/src/build.sh --appimage --signkey=${version_signkey}"
+    else
+        cmd="/src/build.sh --appimage"
+    fi
     docker_image=g10-build-appimage:almalinux810
     dockerfile=${srcdir}/docker/appimage
 else
@@ -878,10 +1160,10 @@ if [ "$err" = "0" ]; then
     mkdir -p "${builddir}/artifacts"
     if [ "$dist" = "yes" ]; then
         results=$(find "${builddir}" -maxdepth 1 -name \*.tar.xz \
-                  -a -type f -printf '%p ')
+                -a -type f -printf '%p ')
     elif [ "$appimage" = "yes" ]; then
         results=$(find "${builddir}" -maxdepth 1 -iname \*.appimage \
-                  -a -type f -printf '%p ')
+                -a -type f -printf '%p ')
     elif [ $withmsi = yes ]; then
         results=$(find "${builddir}/src/signed_installers" -type f -printf '%p ')
     else
