@@ -4,10 +4,10 @@ Status / Hints / TODO list for MacOS builds
   - system installs:
     - need full xcode; command line tools is not enough (for qtbase)
       (Xcode includes git and python3.9, but not too much else)
-  - Required tools not in MacOS (or not in a usable version)
+  - Required tools not in MacOS/XCode (or not in a usable version)
     We take these from homebrew, ATM (TODO)
     Some bits have hardcoded paths to /opt/homebrew (TODO).
-      - autoconf (only for running autogen.sh)
+      - autoconf, automake (only for running autogen.sh)
       - cmake
       - bison (version in macos is too old)
   - Required libs not in the current AppImage build scripts.
@@ -40,6 +40,9 @@ Status / Hints / TODO list for MacOS builds
   ./autogen.sh                            # once, and after touching the build system
   ./build.sh --download --mac --builddir=/Some/casesensitive/Volume
 
+- Running:
+  Many things will not work properly until bundled/installed
+
 - Implementation Notes / TODO:
   - We cannot run MacOS as a docker guest, so need a different setup.
     For now we just bypass that (internal --nodocker option), but that's
@@ -49,6 +52,20 @@ Status / Hints / TODO list for MacOS builds
   - At a minimum, we should gather non-system build-deps in a ro volume
 
 - Further TODOs:
-  - There is no bundling at all, yet (macdeployqt? Take code from KDE craft?)
+  - For the time being, several places assume fixed absolute paths for install locations.
+    This may actually be in line with common MacOS practices, but prevents a portable
+    install, ATM. Affected places:
+    - gnupg configure flags: So gnupgconf returns correct paths
+      - potential alternative: provide gpgconf.ctl
+    - gpgme configure flags: --enable-fixed-path, to allow finding gpg
+      - potential alternative: require PATH
+    - bundling script sets library locations using abs paths
+      - potential alternative: convert to @loader_path references
+  - There are some extra patches in patches-mac which we should simply merge
+    in the corresponding packages (gpgoljs). This is just to allow
+    independent testing.
+  - -DCMAKE_MACOSX_BUNDLE=OFF in gpgoljs does not have the desired effect
+  - bundling should be complete, but lacks "installer" look
+  - entitlements?
   - There is no codesigning at all, yet
   - provide gpgconf.ctl

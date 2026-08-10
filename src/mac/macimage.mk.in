@@ -115,6 +115,10 @@ define DEFLATE_macro
 	  case "$$$${f}" in                \
 		qtbase-everywhere*)         \
 		  mv "$$$${f}" "$$$$(echo $$$${f} | sed 's,^qtbase-everywhere-src,qtbase,'i)" ;; \
+		qthttpserver-everywhere*)        \
+                  mv "$$$${f}" "$$$$(echo $$$${f} | sed 's,^qthttpserver-everywhere-src,qthttpserver,')" ;; \
+                qtwebsockets-everywhere*)        \
+                  mv "$$$${f}" "$$$$(echo $$$${f} | sed 's,^qtwebsockets-everywhere-src,qtwebsockets,')" ;; \
 		qttools-everywhere*)        \
 		  mv "$$$${f}" "$$$$(echo $$$${f} | sed 's,^qttools-everywhere-src,qttools,')" ;; \
 		qtsvg-everywhere*)          \

@@ -1,0 +1,69 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From c9eef97aeee4eb990cee5a168e0625c3b731555e Mon Sep 17 00:00:00 2001
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@gnupg.com>
+Date: Mon, 10 Aug 2026 07:59:32 +0200
+Subject: [PATCH] Allow to compile on Mac
+
+---
+ client/rootcagenerator/truststore.cpp | 25 ++++++++++++++++++++-----
+ 1 file changed, 20 insertions(+), 5 deletions(-)
+
+diff --git a/client/rootcagenerator/truststore.cpp b/client/rootcagenerator/truststore.cpp
+index b9b5149..e226c67 100644
+--- a/client/rootcagenerator/truststore.cpp
++++ b/client/rootcagenerator/truststore.cpp
+@@ -7,6 +7,7 @@
+ #include "controller.h"
+
+ #include <QString>
++#include <QTemporaryFile>
+
+ #ifdef Q_OS_WIN
+ #include <QCoreApplication>
+@@ -14,12 +15,10 @@
+ #include <QDir>
+ #include <QElapsedTimer>
+ #include <QIODevice>
+-#include <QTemporaryFile>
+ #include <QTimer>
+ // include after windows.h
+ #include <shellapi.h>
+-#endif
+-#ifdef Q_OS_LINUX
++#else
+ #include <QCryptographicHash>
+ #include <QFileInfo>
+ #include <QProcess>
+@@ -58,9 +57,25 @@ void TrustStore::install(const Controller &controller)
+         Q_EMIT installComplete(true);
+     }
+ }
+-#endif
++#elif defined(Q_OS_MAC)
++void TrustStore::install(const Controller &controller)
++{
++    QTemporaryFile file;
++    if (!file.open()) {
++        Q_EMIT installComplete(false);
++    }
++    file.setAutoRemove(false);
++    file.write(controller.caCert());
++    file.close();
+
+-#ifdef Q_OS_WIN
++    // This does not quite work, yet, but allows us to proceed.
++    auto args = QStringList(
++        {u"-e"_s, u"do shell script \"security add-trusted-cert -p ssl -p basic -k /Library/Keychains/System.keychain %1 with administrator privileges\""_s});
++    auto res = QProcess::execute(u"osasript"_s, args);
++    Q_EMIT installComplete(res == 0);
++}
++
++#else // Q_OS_WIN
+ TrustStore::InstallState TrustStore::pollScriptCompletion()
+ {
+     if ((intptr_t) m_scriptStartupResult < 32) {
+--
+2.54.0

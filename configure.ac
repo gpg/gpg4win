@@ -478,7 +478,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
     GPG4WIN_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n qgpgme native-kconfig])
     GPG4WIN_KDEPKG([kcontacts], [kcoreaddons qtbase ki18n kconfig kcodecs])
-    GPG4WIN_KDEPKG([gpgoljs],[qtwebsockets kcontacts qthttpserver mimetreeparser libkleo sonnet kcompletion ki18n kwidgetsaddons kio])
+    GPG4WIN_KDEPKG([gpgoljs],[qtwebsockets kcontacts qthttpserver mimetreeparser libkleo sonnet kcompletion ki18n kwidgetsaddons kio kdsingleapplication])
 
     GPG4WIN_FINALIZE
 fi
@@ -615,6 +615,8 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_KDEPKG([qttools], [qtbase])
     MACIMAGE_KDEPKG([qttranslations], [qtsvg qttools])
     MACIMAGE_KDEPKG([qtsvg], [qtbase])
+    MACIMAGE_KDEPKG([qthttpserver], [qtbase])
+    MACIMAGE_KDEPKG([qtwebsockets], [qtbase])
     MACIMAGE_KDEPKG([breeze], [qtbase kcoreaddons kconfig kconfigwidgets kguiaddons kiconthemes kwindowsystem])
 
     # KDE Frameworks Tier 1
@@ -638,6 +640,7 @@ if test "$build_macimage" = yes ; then
 
     # KDE Frameworks Tier 2
     MACIMAGE_KDEPKG([kcompletion], [kwidgetsaddons kcodecs])
+    MACIMAGE_KDEPKG([kcontacts], [qtbase kcoreaddons ki18n kconfig kcodecs])
     MACIMAGE_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
     MACIMAGE_KDEPKG([kjobwidgets], [kwidgetsaddons kcoreaddons qtbase extra-cmake-modules])
     MACIMAGE_KDEPKG([kstatusnotifieritem], [kwindowsystem qtbase extra-cmake-modules])
@@ -663,6 +666,7 @@ if test "$build_macimage" = yes ; then
 
     MACIMAGE_KDEPKG([kdsingleapplication], [qtbase])
     MACIMAGE_KDEPKG([kleopatra], [mimetreeparser qgpgme breeze-icons kdsingleapplication kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
+    MACIMAGE_KDEPKG([gpgoljs], [mimetreeparser qtwebsockets qthttpserver libkleo sonnet kcontacts kcompletion ki18n kwidgetsaddons kio kdsingleapplication])
 
     # Okular/Poppler
     MACIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff openjpeg libpng])

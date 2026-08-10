@@ -1,0 +1,41 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 2d03d681fc5d117518a0007910d24225baf97ea9 Mon Sep 17 00:00:00 2001
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@gnupg.com>
+Date: Thu, 13 Aug 2026 09:10:24 +0200
+Subject: [PATCH] Work around failure to accept custom root cert on MacOS
+
+---
+ client/websocketclient.cpp | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/client/websocketclient.cpp b/client/websocketclient.cpp
+index e738395..2e5ea84 100644
+--- a/client/websocketclient.cpp
++++ b/client/websocketclient.cpp
+@@ -64,6 +64,21 @@ WebsocketClient::WebsocketClient()
+     connect(&m_webSocket, &QWebSocket::textMessageReceived, this, &WebsocketClient::slotTextMessageReceived);
+     connect(&m_webSocket, QOverload<const QList<QSslError> &>::of(&QWebSocket::sslErrors), this, [this](const QList<QSslError> &errors) {
+         qCWarning(WEBSOCKET_LOG) << "SSL error" << errors;
++#ifdef Q_OS_MACOS
++        // TODO: On MacOS, Qt built without OpenSSL, there appears to be a problem that custom root
++        // certificates are never accepted as trusted (even if the cert is set to "Always Trust").
++        // The root certificate in question is returned as part of QSslConfiguration::defaultConfiguration().caCertificates(),
++        // but not taken into account for this purpose. Note that Safari accepts the same cert chain.
++        // As we know, which cert the server should present, we special-case to always trust that one.
++        // The downside is that we do not detect real problems (which will also affect the webclient to proxy
++        // connection).
++        if (errors.length() == 1 && errors.value(0).error() == QSslError::CertificateUntrusted
++            && errors.value(0).certificate() == QSslCertificate::fromPath(GpgOLPaths::getDir(GpgOLPaths::Category::TLSDir) + u"/certificate.pem"_s).value(0)) {
++            qCWarning(WEBSOCKET_LOG) << "ignoring lack of trust for our own cert";
++            m_webSocket.ignoreSslErrors();
++            return;
++        }
++#endif
+         m_state = HandshakeError;
+         m_stateDisplay = i18nc("@info", "Failure during TLS handshake: %1. Please (re-)install the TLS certificate.", errors.value(0).errorString());
+         Q_EMIT stateChanged(m_stateDisplay);
+--
+2.54.0
