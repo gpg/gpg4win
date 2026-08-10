@@ -110,6 +110,7 @@ ftpuser=
 verbose=
 logfile=
 quiet=
+docker_cmd_extras=
 version_signkey=
 have_signkey="no"
 # Get UID for use by docker.
@@ -190,6 +191,29 @@ fi
 echo >&2 "$PGM: source directory: $srcdir"
 echo >&2 "$PGM: build  directory: $builddir"
 
+# Remove leading an trailing whitespace
+trim() {
+    local var="$*"
+
+    # remove leading whitespace characters
+    var="${var#"${var%%[![:space:]]*}"}"
+    # remove trailing whitespace characters
+    var="${var%"${var##*[![:space:]]}"}"
+
+    printf '%s' "$var"
+}
+
+
+# Make sure we have a BUILDTYPE file
+buildtype_prefix=""
+[ "$indocker" = yes ] && buildtype_prefix="src/"
+if [ -e "${buildtype_prefix}packages/BUILDTYPE" ]; then
+    buildtype="$(trim "$(cat "${buildtype_prefix}packages/BUILDTYPE" 2>/dev/null)")"
+else
+    echo >&2 "PGM: ${buildtype_prefix}packages/BUILDTYPE not found - see README"
+    exit 1
+fi
+
 if  [ "$appimage_docker_build" = "yes" ] ; then
     echo "run appimage build"
 
@@ -268,16 +292,32 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
 
     # Check for the buildtype and existence of required files
     # early
-    BUILDTYPE=$(cat ${srcdir}/packages/BUILDTYPE || echo default)
-    if [ "${BUILDTYPE}" = "vsd" -o "${BUILDTYPE}" = "vsd3" -o "${BUILDTYPE}" = "gpd" ] && [ ! -f ${vsddir}/custom.mk ]; then
+    if [ "${buildtype}" = "vsd" -o "${buildtype}" = "vsd3" -o "${buildtype}" = "gpd" ] && [ ! -f ${vsddir}/custom.mk ]; then
         echo "ERROR: Non default build without custom file."
         echo "Check that ${vsddir}/custom.mk exists or "
         echo "change the BUILDTYPE in ${srcdir}/packages/BUILDTYPE"
         exit 2
     fi
 
+    if [ -n "$verbose" ] ; then
+        echo >&2 "$PGM(AppImage): printenv     : $(printenv)"
+        echo >&2 "$PGM(AppImage): buildtype    : ${buildtype}"
+        echo >&2 "$PGM(AppImage): vsddir: ${vsddir}"
+        echo >&2 "$PGM(AppImage): builddir: ${builddir}"
+        echo >&2 "$PGM(AppImage): srcdir: ${srcdir}"
+        echo >&2 "$PGM(AppImage): appdir: ${appdir}"
+        echo >&2 "$PGM(AppImage): instdir: ${instdir}"
+        # echo >&2 "$PGM(AppImage): : ${}"
+    fi
+
     # The actual build
     cd ${builddir}
+    if [ -f /opt/rh/gcc-toolset-14/enable ] ;then
+        [ -n "$verbose" ] && echo >&2 "$PGM(AppImage): found        : /opt/rh/gcc-toolset-14/enable"
+    else
+        echo >&2 "$PGM(AppImage): no found     : /opt/rh/gcc-toolset-14/enable"
+        exit 1
+    fi
     source /opt/rh/gcc-toolset-14/enable
     ${srcdir}/configure --enable-appimage --with-playground=${builddir}
     # Nuke the AppDir to make sure we get everything nice and clean
@@ -446,19 +486,6 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
     echo ready
     exit 0
 fi
-
-# Remove leading an trailing whitespace
-trim() {
-    local var="$*"
-
-    # remove leading whitespace characters
-    var="${var#"${var%%[![:space:]]*}"}"
-    # remove trailing whitespace characters
-    var="${var%"${var##*[![:space:]]}"}"
-
-    printf '%s' "$var"
-}
-
 
 # Helper to get the value of a variable from the ~/.gnupg-autogen.rc file
 # Argument is the name of the variable.
@@ -643,16 +670,7 @@ if [ "$runcmd" = yes ]; then
 fi
 
 
-# Make sure we have a BUILDTYPE file
-buildtype_prefix=""
-[ "$indocker" = yes ] && buildtype_prefix="src/"
-if [ ! -e "${buildtype_prefix}packages/BUILDTYPE" ]; then
-    echo >&2 "PGM: ${buildtype_prefix}packages/BUILDTYPE not found - see README"
-    exit 1
-fi
-
 # Check whether the --release target needs to clone the gnupg-vsd repo.
-buildtype="$(trim "$(cat "${buildtype_prefix}packages/BUILDTYPE" 2>/dev/null)")"
 case "${buildtype}" in
     vsd3)       need_gnupg_vsd=yes
                 w64=no              ;;
@@ -754,6 +772,7 @@ fi
 
 # Determine the needed docker image
 if [ "$appimage" = "yes" ]; then
+    [ -n "$verbose" ] && docker_cmd_extras="${docker_cmd_extras} --verbose"
     if [ "${BUILDTYPE}" = "vsd" ] || [ "${BUILDTYPE}" = "vsd3" ] || [ "${BUILDTYPE}" = "gpd" ] ; then
         if [ "$have_signkey" = "no" ] && [ -f "$HOME/.gnupg-autogen.rc" ] ; then
             version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' "$HOME/.gnupg-autogen.rc"|cut -d= -f2|xargs)"
@@ -762,18 +781,18 @@ if [ "$appimage" = "yes" ]; then
             echo "No signing key defined, which is mandatory for buildtypes vsd, vsd3 and gpd!"
             exit 1
         fi
-        cmd="/src/build.sh --appimage --signkey=${version_signkey}"
+        cmd="/src/build.sh --appimage --signkey=${version_signkey} ${docker_cmd_extras}"
     else
-        cmd="/src/build.sh --appimage"
+        cmd="/src/build.sh --appimage ${docker_cmd_extras}"
     fi
     docker_image=g10-build-appimage:almalinux810
     dockerfile=${srcdir}/docker/appimage
 else
     # We will run our self again in the docker image.
     if [ "$w64" = "yes" ]; then
-        cmd="/src/build.sh"
+        cmd="/src/build.sh ${docker_cmd_extras}"
     else
-        cmd="/src/build.sh --w32"
+        cmd="/src/build.sh --w32 ${docker_cmd_extras}"
     fi
     [ $dist = yes ] && cmd="$cmd --dist"
     [ $force = yes ] && cmd="$cmd --force"
