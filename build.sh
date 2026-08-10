@@ -40,7 +40,8 @@ Options:
                         (default is ~/b/SRCDIRNAME-playground for gpg4win,
                          ~/b/SRCDIRNAME-appimage for the AppImage, and
                          ~/b/SRCDIRNAME-mill for release builds)
-        --logfile=file  Change default build log file to FILE
+        --logfile=FILE  Change default build log file to FILE
+                        Unavailabe for --release builds
         --force         Force configure run
         --no-sign       Do not authenticode sign packages
         --update-image  Update the docker image before build
@@ -104,6 +105,7 @@ nosign=no
 ftpuser=
 verbose=
 logfile=
+custom_logfile="no"
 quiet=
 # Get UID for use by docker.
 userid=$(id -u)
@@ -136,7 +138,8 @@ while [ $# -gt 0 ]; do
         --runcmd)   runcmd="yes";;
         --git|-g|--git-pkgs)     fromgit="yes";;
         --builddir|--builddir=*) builddir="${optarg}" ;;
-        --logfile|--logfile=*)   logfile="${optarg}"  ;;
+        --logfile|--logfile=*)   logfile="${optarg}"
+                                 custom_logfile="yes" ;;
         --user|--user=*)         ftpuser="${optarg}"  ;;
         --msi|--with-msi)        withmsi=yes          ;;
         --verbose|-v)            verbose=yes          ;;
@@ -148,6 +151,10 @@ done
 
 if [ "$appimage" = yes -a "$release" = yes ] ; then
     echo "--release can't be used together with --appimage"
+    exit 1
+fi
+if [ "$custom_logfile" = yes -a "$release" = yes ] ; then
+    echo "--release can't be used together with --logfile"
     exit 1
 fi
 
