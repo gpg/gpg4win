@@ -87,6 +87,7 @@ macimage_kdepkgs = gpgmepp qgpgme \
 		   libqrencode openjpeg boost \
 		   prison gpgpass \
 		   qtbase qttools qtsvg qttranslations \
+                   qthttpserver qtwebsockets kcontacts gpgoljs \
 		   breeze tiff zstd pcre2
 
 macimage_pkg_pkgconfig_configure = \
@@ -187,6 +188,8 @@ macimage_pkg_kconfigwidgets_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
 
 macimage_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
+
+macimage_pkg_kcontacts_configure = -DUSE_QML=OFF
 
 macimage_pkg_kguiaddons_configure = -DWITH_WAYLAND=OFF
 
