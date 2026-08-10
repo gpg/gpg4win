@@ -52,6 +52,10 @@ bdir      := $(root)/build
 idir      := $(root)/install
 ipdir     := $(root)/install/pkgs
 appdir    := $(root)/AppDir
+# TODO: in some places we want the target installation directory. The value
+#       of that should be centrally configured and passed in from outside.
+targetbindir := /Applications/kleopatra.app/Contents/MacOS
+targetlibexecdir := $(targetbindir)
 patdir    := $(tsdir)/patches-mac
 rsyncfilterdir := $(tsdir)/src/macimage/rsync-filters
 
@@ -70,10 +74,6 @@ macimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 freetype libiconv gettext pkgconfig \
                  libpng jpeg
 
-
-macimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
-
-
 # KDE packages for the AppImage
 macimage_kdepkgs = gpgmepp qgpgme \
 		   kconfig kwidgetsaddons ki18n extra-cmake-modules \
@@ -87,7 +87,7 @@ macimage_kdepkgs = gpgmepp qgpgme \
 		   libqrencode openjpeg boost \
 		   prison gpgpass \
 		   qtbase qttools qtsvg qttranslations \
-                   qthttpserver qtwebsockets kcontacts gpgoljs \
+		   qthttpserver qtwebsockets kcontacts gpgoljs \
 		   breeze tiff zstd pcre2
 
 macimage_pkg_pkgconfig_configure = \
@@ -108,10 +108,21 @@ macimage_pkg_pinentry_configure = \
 	--disable-pinentry-curses \
 	--disable-fallback-curses
 
+macimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
+
+# To make gpgconf paths work, pass the final destinations to configure,
+# then prefix with DESTDIR during install
+macimage_pkg_gnupg_configure = --bindir=$(targetbindir) \
+			       --libexecdir=$(targetlibexecdir) \
+			       --prefix=/
+
+macimage_pkg_gnupg_make_args_inst = DESTDIR=$$$${pkgidir}
+
 macimage_pkg_gpgme_configure = \
     --enable-languages= \
     --disable-gpg-test \
-    --disable-gpgsm-test
+    --disable-gpgsm-test \
+    --enable-fixed-path=$(targetbindir)
 
 macimage_pkg_qgpgme_configure = -DBUILD_WITH_QT5=OFF
 

@@ -7,8 +7,8 @@ Status / Hints / TODO list for MacOS builds
   - Required tools not in MacOS (or not in a usable version)
     We take these from homebrew, ATM (TODO)
     Some bits have hardcoded paths to /opt/homebrew (TODO).
-      - autoconf (only for running autogen.sh)
-      - cmake
+      - autoconf, automake (only for running autogen.sh)
+      - cmake, meson
       - bison (version in macos is too old)
   - Required libs not in the current AppImage build scripts.
     - openjpeg, libzstd, libpng, jpg, libpcre2 -> done (already had Windows builds)
@@ -35,10 +35,14 @@ Status / Hints / TODO list for MacOS builds
     - run: sudo /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t
       or reboot to make /build and /src come up
 
-- Running (in gpg4win repo dir):
+- Building (in gpg4win repo dir):
   echo "default" > packages/BUILDTYPE     # once
   ./autogen.sh                            # once, and after touching the build system
   ./build.sh --download --mac --builddir=/Some/casesensitive/Volume
+  src/mac/bundle.py
+
+- Running:
+  Many things will not work properly until bundled/installed
 
 - Implementation Notes / TODO:
   - We cannot run MacOS as a docker guest, so need a different setup.
@@ -47,8 +51,18 @@ Status / Hints / TODO list for MacOS builds
     https://github.com/s-u/macosvm looks like a good candidate that supports
     MacOS arm64 on arm64, and is geared towards builder scenarios.
   - At a minimum, we should gather non-system build-deps in a ro volume
+  - For the time being, several places assume fixed absolute paths for install locations.
+    This may actually be in line with common MacOS practices, but prevents a portable
+    install, ATM. Affected places:
+    - gnupg configure flags: So gnupgconf returns correct paths
+      - potential alternative: provide gpgconf.ctl
+    - gpgme configure flags: --enable-fixed-path, to allow finding gpg
+      - potential alternative: require PATH
+    - bundling script sets library locations using abs paths
+      - potential alternative: convert to @loader_path references
 
 - Further TODOs:
-  - There is no bundling at all, yet (macdeployqt? Take code from KDE craft?)
+  - bundling is not complete
+  - entitlements?
   - There is no codesigning at all, yet
   - provide gpgconf.ctl
