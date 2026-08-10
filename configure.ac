@@ -264,12 +264,12 @@ if test -z "$GPG4WIN_PARALLEL"; then
 fi
 AC_SUBST(GPG4WIN_PARALLEL)
 
-required_tools="MAKE TAR MKDIR CP RM ZCAT SHA1SUM MSGFMT BUILD_CC CMAKE"
+required_tools="MAKE TAR MKDIR CP RM ZCAT SHA1SUM BUILD_CC CMAKE"
 if test "$build_gpg4win" = yes ; then
     required_tools="$required_tools DLLTOOL UNZIP STOW MAKENSIS TEXI2DVI DVIPDF CONVERT"
 fi
 if test "$build_appimage" = yes ; then
-    required_tools="$required_tools RSYNC"
+    required_tools="$required_tools RSYNC MSGFMT"
 fi
 
 missing_tools=
