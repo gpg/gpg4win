@@ -222,11 +222,11 @@ else
 fi
 
 if  [ "$appimage_docker_build" = "yes" ] ; then
-    echo "run appimage build"
+    echo "run appimage build" | tee -a ${logfile} >&2
 
     write_version_file () (
         # TODO: add uidcomment and read content from config files
-        echo "Writing VERSION file"
+        echo "Writing VERSION file" | tee -a ${logfile} >&2
         VERSION_FILE="$1"
         FLAVOUR="$2"
         LANG="$3"
@@ -300,38 +300,40 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
     # Check for the buildtype and existence of required files
     # early
     if [ "${buildtype}" = "vsd" -o "${buildtype}" = "vsd3" -o "${buildtype}" = "gpd" ] && [ ! -f ${vsddir}/custom.mk ]; then
-        echo "ERROR: Non default build without custom file."
-        echo "Check that ${vsddir}/custom.mk exists or "
-        echo "change the BUILDTYPE in ${srcdir}/packages/BUILDTYPE"
+        (   echo "ERROR: Non default build without custom file."
+            echo "Check that ${vsddir}/custom.mk exists or "
+            echo "change the BUILDTYPE in ${srcdir}/packages/BUILDTYPE" ) | tee -a ${logfile} >&2
         exit 2
     fi
 
     if [ -n "$verbose" ] ; then
-        echo >&2 "$PGM(AppImage): printenv     : $(printenv)"
-        echo >&2 "$PGM(AppImage): buildtype    : ${buildtype}"
-        echo >&2 "$PGM(AppImage): vsddir: ${vsddir}"
-        echo >&2 "$PGM(AppImage): builddir: ${builddir}"
-        echo >&2 "$PGM(AppImage): srcdir: ${srcdir}"
-        echo >&2 "$PGM(AppImage): appdir: ${appdir}"
-        echo >&2 "$PGM(AppImage): instdir: ${instdir}"
-        # echo >&2 "$PGM(AppImage): : ${}"
+        (   echo "$PGM (AppImage): printenv     : $(printenv)"
+            echo "$PGM (AppImage): version      : $(cat /proc/version)"
+            echo "$PGM (AppImage): buildtype    : ${buildtype}"
+            echo "$PGM (AppImage): vsddir       : ${vsddir}"
+            echo "$PGM (AppImage): builddir     : ${builddir}"
+            echo "$PGM (AppImage): srcdir       : ${srcdir}"
+            echo "$PGM (AppImage): appdir       : ${appdir}"
+            echo "$PGM (AppImage): instdir      : ${instdir}" ) | tee -a ${logfile} >&2
+        # echo "$PGM (AppImage): : ${}"
     fi
 
     # The actual build
     cd ${builddir}
     if [ -f /opt/rh/gcc-toolset-14/enable ] ;then
-        [ -n "$verbose" ] && echo >&2 "$PGM(AppImage): found        : /opt/rh/gcc-toolset-14/enable"
+        [ -n "$verbose" ] && echo "$PGM (AppImage): found        : /opt/rh/gcc-toolset-14/enable" | tee -a ${logfile} >&2
     else
-        echo >&2 "$PGM(AppImage): no found     : /opt/rh/gcc-toolset-14/enable"
+        echo "$PGM (AppImage): no found     : /opt/rh/gcc-toolset-14/enable" | tee -a ${logfile} >&2
         exit 1
     fi
     source /opt/rh/gcc-toolset-14/enable
+    echo "${srcdir}/configure --enable-appimage --with-playground=${builddir}" | tee -a ${logfile} >&2
     ${srcdir}/configure --enable-appimage --with-playground=${builddir}
     # Nuke the AppDir to make sure we get everything nice and clean
     cd ${builddir}/src/appimage
-    make TOPsrcdir=${srcdir} PLAYGROUND=${builddir} clean-appdir
+    make TOPSRCDIR=${srcdir} PLAYGROUND=${builddir} clean-appdir
     cd ${builddir}
-    make TOPsrcdir=${srcdir} PLAYGROUND=${builddir}
+    make TOPSRCDIR=${srcdir} PLAYGROUND=${builddir}
 
     echo 'rootdir = $appdir/usr' >${appdir}/usr/bin/gpgconf.ctl
     if [ ${buildtype} = vsd -o ${buildtype} = vsd3 ]; then
@@ -395,35 +397,35 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
     myversion=$(grep PACKAGE_VERSION ${builddir}/config.h|sed -n 's/.*"\(.*\)"$/\1/p')
     if [ ${buildtype} = vsd -o ${buildtype} = vsd3 ]; then
         appimage_name=gnupg-vs-desktop-${myversion}-x86_64.AppImage
-        echo "Packaging GnuPG VS-Desktop Appimage: ${myversion}"
+        echo "Packaging GnuPG VS-Desktop Appimage: ${myversion}" | tee -a ${logfile} >&2
         echo $myversion >${appdir}/GnuPG-VS-Desktop-VERSION
         write_version_file "${appdir}/usr/VERSION" "vsd" "en" "${myversion}" && sign_version_file "${appdir}/usr/VERSION" "${version_signkey}"
-        echo "Packaging help files"
+        echo "Packaging help files" | tee -a ${logfile} >&2
         mkdir -p ${appdir}/usr/share/doc/gnupg-vsd
         cp ${vsddir}/help/*.pdf ${appdir}/usr/share/doc/gnupg-vsd
         if [ -f ${vsddir}/Standard/kleopatrarc ]; then
-            echo "Packaging kleopatrarc"
+            echo "Packaging kleopatrarc" | tee -a ${logfile} >&2
             mkdir -p ${appdir}/usr/etc/xdg
             cp ${vsddir}/Standard/kleopatrarc ${appdir}/usr/etc/xdg
         fi
         kleopatra_icon=${srcdir}/src/icons/kleopatra-vsd.svg
     elif [ ${buildtype} = gpd ]; then
         appimage_name=gnupg-desktop-${myversion}-x86_64.AppImage
-        echo "Packaging GnuPG Desktop Appimage: $myversion"
+        echo "Packaging GnuPG Desktop Appimage: $myversion" | tee -a ${logfile} >&2
         echo $myversion >${appdir}/GnuPG-Desktop-VERSION
         write_version_file "${appdir}/usr/VERSION" "gpd" "en" "${myversion}" && sign_version_file "${appdir}/usr/VERSION" "${version_signkey}"
-        echo "Packaging help files"
+        echo "Packaging help files" | tee -a ${logfile} >&2
         mkdir -p ${appdir}/usr/share/doc/gnupg-vsd
         cp ${vsddir}/help/*.pdf ${appdir}/usr/share/doc/gnupg-vsd
         if [ -f ${vsddir}/Desktop/kleopatrarc ]; then
-            echo "Packaging kleopatrarc"
+            echo "Packaging kleopatrarc" | tee -a ${logfile} >&2
             mkdir -p ${appdir}/usr/etc/xdg
             cp ${vsddir}/Desktop/kleopatrarc ${appdir}/usr/etc/xdg
         fi
         kleopatra_icon=${srcdir}/src/icons/gpd/sc-apps-kleopatra.svg
     else
         appimage_name=gpg4win-${myversion}-x86_64.AppImage
-        echo "Packaging Gpg4win Appimage: $myversion"
+        echo "Packaging Gpg4win Appimage: $myversion" | tee -a ${logfile} >&2
         echo $myversion >${appdir}/Gpg4win-VERSION
         kleopatra_icon=${srcdir}/src/icons/gpd/sc-apps-kleopatra.svg
     fi
@@ -1047,10 +1049,10 @@ runner_cmd_litcandle() {
 
     # Create symlinks into the Wine dosdevices directory
     if [ -n "$verbose" ]; then
-        echo >&2 "$PGM(runner): idir    : $WINEINST"
-        echo >&2 "$PGM(runner): exidir  : $WINEINSTEX"
-        echo >&2 "$PGM(runner): srcdir  : $WINESRC"
-        echo >&2 "$PGM(runner): builddir: $WINEBLD"
+        (   echo "$PGM(runner): idir    : $WINEINST"
+            echo "$PGM(runner): exidir  : $WINEINSTEX"
+            echo "$PGM(runner): srcdir  : $WINESRC"
+            echo "$PGM(runner): builddir: $WINEBLD" ) | tee -a ${logfile} >&2
     fi
     ln -sf "$idir"   "$WINEINST"
     ln -sf "$exidir" "$WINEINSTEX"
@@ -1121,7 +1123,7 @@ runner_exec_cmd() {
         litcandle) runner_cmd_litcandle $line ;;
         *)    echo "$PGM(runner): $cmd: no such command"; rc=4 ;;
     esac
-    echo >&2 "$PGM: runner cmd '$cmd' returned $rc"
+    echo "$PGM: runner cmd '$cmd' returned $rc" | tee -a ${logfile} >&2
     # Make sure that we have a final LF in the output and then write
     # the error line
     echo
@@ -1132,21 +1134,21 @@ runner_exec_cmd() {
 
 # Start our FIFO command runner.
 runner_loop() {
-   echo >&2 "$PGM: command runner started pid=$$"
+   echo "$PGM: command runner started pid=$$" | tee -a ${logfile} >&2
    while : ; do
        if read -r cmd line < "${builddir}/S.build.sh-in" ; then
             if [ -z "$recooked" ]; then
                 stty cooked </dev/tty
                 recooked=yes
             fi
-            echo >&2 "$PGM(runner): executing cmd"
+            echo "$PGM(runner): executing cmd" | tee -a ${logfile} >&2
             runner_exec_cmd "$cmd" "$line" >"${builddir}/S.build.sh-out" &
-            echo >&2 "$PGM(runner): waiting for cmd"
+            echo "$PGM(runner): waiting for cmd" | tee -a ${logfile} >&2
             wait
-            echo >&2 "$PGM(runner): cmd finished"
+            echo "$PGM(runner): cmd finished" | tee -a ${logfile} >&2
        fi
    done
-   echo >&2 "$PGM: command runner stopped"
+   echo "$PGM: command runner stopped" | tee -a ${logfile} >&2
    exit 0
 }
 
@@ -1165,10 +1167,10 @@ docker_cmdline="$docker_cmdline -v "${builddir}":/build:rw"
 [ -f "$HOME/.gnupg-autogen.rc" ] && \
     docker_cmdline="$docker_cmdline -v "$HOME/.gnupg-autogen.rc":/.gnupg-autogen.rc:ro"
 docker_cmdline="$docker_cmdline $docker_image $cmd"
-echo >&2 "$PGM: running: docker $docker_cmdline"
+echo "$PGM: running: docker $docker_cmdline" | tee -a ${logfile} >&2
 docker $docker_cmdline 2>&1 | tee -a ${logfile}
 err="${PIPESTATUS[0]}"
-echo >&2 "$PGM: docker finished. rc=$err"
+echo "$PGM: docker finished. rc=$err" | tee -a ${logfile} >&2
 
 end_time=$(date +"%s")
 duration=$((end_time - start_time))
@@ -1178,7 +1180,7 @@ seconds=$((duration % 60))
 buildtime=$(printf "%02d:%02d:%02d\n" "$hours" "$minutes" "$seconds")
 
 if [ "$err" = "1" -a "$appimage" = "yes" ]; then
-    echo >&2 "$PGM: Return code 1 on AppImage build.  Treating as success."
+    echo "$PGM: Return code 1 on AppImage build.  Treating as success." | tee -a ${logfile} >&2
     err=0
 fi
 
