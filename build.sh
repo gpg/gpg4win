@@ -213,7 +213,7 @@ trim() {
 
 # Make sure we have a BUILDTYPE file
 buildtype_prefix=""
-[ "$indocker" = yes ] && buildtype_prefix="src/"
+[ "$indocker" = yes ] && buildtype_prefix="/src/"
 if [ -e "${buildtype_prefix}packages/BUILDTYPE" ]; then
     buildtype="$(trim "$(cat "${buildtype_prefix}packages/BUILDTYPE" 2>/dev/null)")"
 else
@@ -221,49 +221,82 @@ else
     exit 1
 fi
 
+
+# Run a command using the FIFOs.  This needs to be called via a FIFO
+# from the docker.  Note that we don't explicit serialize access to the
+# FIFO, hopefully no parallel make rules are run.
+if [ "$runcmd" = yes ]; then
+    if [ "$indocker" != yes ]; then
+        echo >&2 "$PGM: Option --runcmd must be called from docker"
+        echo >&2 "$PGM: Available commands are:"
+        echo >&2 "$PGM:   ping      - Wait for a pong"
+        echo >&2 "$PGM:   gpg       - Run a gpg command"
+        echo >&2 "$PGM:   msibase   - Prepare MSI linking"
+        echo >&2 "$PGM:   litcandle - Run candle.exe"
+        exit 2
+    fi
+    # Running in docker
+    if [ -z "$1" ]; then
+        echo >&2 "usage: /src/build.sh --runcmd COMMAND ARGS"
+        exit 2
+    fi
+    [ -f /build/S.build.sh-rc ] && rm /build/S.build.sh-rc
+    echo "$@" >/build/S.build.sh-in
+    cat /build/S.build.sh-out
+    while [ ! -f /build/S.build.sh-rc ]; do sleep 0.05; done
+    rc=$(sed -ne 's/EXITSTATUS=\([0-9]*\).*$/\1/p' \
+             </build/S.build.sh-rc 2>/dev/null || true)
+    [ -z "$rc" ] && rc=0
+    exit $rc
+fi
+
+
+# The following condition does the whole AppImage building stuff
+# It must not be placed earlier in the script so that neccessary
+# checks and actions have already taken place!
 if  [ "$appimage_docker_build" = "yes" ] ; then
     echo "run appimage build" | tee -a ${logfile} >&2
 
     write_version_file () (
         # TODO: add uidcomment and read content from config files
         echo "Writing VERSION file" | tee -a ${logfile} >&2
-        VERSION_FILE="$1"
-        FLAVOUR="$2"
-        LANG="$3"
-        VSD_VERSION="$4"
-        BUILD_CID_INSTALLER="$(cd "${srcdir}" && git rev-parse --verify HEAD)"
-        BUILD_CID_CONFIG="$(cd "${srcdir}/src/gnupg-vsd" && git rev-parse --verify HEAD)"
-        YEAR="$(date +%Y)"
+        local VERSION_FILE="$1"
+        local FLAVOUR="$2"
+        local LANG="$3"
+        local VSD_VERSION="$4"
+        local BUILD_CID_INSTALLER="$(cd "${srcdir}" && git rev-parse --verify HEAD)"
+        local BUILD_CID_CONFIG="$(cd "${srcdir}/src/gnupg-vsd" && git rev-parse --verify HEAD)"
+        local YEAR="$(date +%Y)"
 
         if [ "${FLAVOUR}" = "vsd" ] ; then
-            KLEO_VERSION="VS-Desktop-${VSD_VERSION}"
-            KLEO_BUG_ADDRESS="https://gnupg.com/vsd/report.html"
-            KLEO_HOMEPAGE="https://www.gnupg.com/vsd/release-notes.html"
+            local KLEO_VERSION="VS-Desktop-${VSD_VERSION}"
+            local KLEO_BUG_ADDRESS="https://gnupg.com/vsd/report.html"
+            local KLEO_HOMEPAGE="https://www.gnupg.com/vsd/release-notes.html"
             if [ "${LANG}" = "de" ] ; then
-                KLEO_SHORT_DESC="<h1>GnuPG VS-Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>Die GnuPG.com Unterstützung ist verfügbar unter:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Stichwort: VSD AppImage<br/><br/>"
-                KLEO_OTHER_TEXT="<b>GnuPG VS-Desktop</b><sup>®</sup> ist Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>Eine vollständige Liste der Lizenzen findet sich in der beiliegenden pkg-licenses.txt Datei."
+                local KLEO_SHORT_DESC="<h1>GnuPG VS-Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>Die GnuPG.com Unterstützung ist verfügbar unter:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Stichwort: VSD AppImage<br/><br/>"
+                local KLEO_OTHER_TEXT="<b>GnuPG VS-Desktop</b><sup>®</sup> ist Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>Eine vollständige Liste der Lizenzen findet sich in der beiliegenden pkg-licenses.txt Datei."
             else
-                KLEO_SHORT_DESC="<h1>GnuPG VS-Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>The GnuPG.com vendor support is available at:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Keyword: VSD AppImage English<br/><br/>"
-                KLEO_OTHER_TEXT="<b>GnuPG VS-Desktop</b><sup>®</sup> is Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>For a full list of licenses see the installed pkg-licenses.txt file."
+                local KLEO_SHORT_DESC="<h1>GnuPG VS-Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>The GnuPG.com vendor support is available at:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Keyword: VSD AppImage English<br/><br/>"
+                local KLEO_OTHER_TEXT="<b>GnuPG VS-Desktop</b><sup>®</sup> is Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>For a full list of licenses see the installed pkg-licenses.txt file."
             fi
         elif [ "${FLAVOUR}" = "gpd" ] ; then
-            KLEO_VERSION="Desktop-${VSD_VERSION}"
-            KLEO_BUG_ADDRESS="https://gnupg.com/gpd/report.html"
-            KLEO_HOMEPAGE="https://www.gnupg.com/gpd/release-notes.html"
+            local KLEO_VERSION="Desktop-${VSD_VERSION}"
+            local KLEO_BUG_ADDRESS="https://gnupg.com/gpd/report.html"
+            local KLEO_HOMEPAGE="https://www.gnupg.com/gpd/release-notes.html"
             if [ "${LANG}" = "de" ] ; then
-                KLEO_SHORT_DESC="<h1>GnuPG Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>Die GnuPG.com Unterstützung ist verfügbar unter:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Stichwort: GPD AppImage<br/><br/>"
-                KLEO_OTHER_TEXT="<b>GnuPG Desktop</b><sup>®</sup> ist Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>Eine vollständige Liste der Lizenzen findet sich in der beiliegenden pkg-licenses.txt Datei."
+                local KLEO_SHORT_DESC="<h1>GnuPG Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>Die GnuPG.com Unterstützung ist verfügbar unter:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Stichwort: GPD AppImage<br/><br/>"
+                local KLEO_OTHER_TEXT="<b>GnuPG Desktop</b><sup>®</sup> ist Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>Eine vollständige Liste der Lizenzen findet sich in der beiliegenden pkg-licenses.txt Datei."
             else
-                KLEO_SHORT_DESC="<h1>GnuPG Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>The GnuPG.com vendor support is available at:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Keyword: GPD AppImage English<br/><br/>"
+                local KLEO_SHORT_DESC="<h1>GnuPG Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>The GnuPG.com vendor support is available at:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Keyword: GPD AppImage English<br/><br/>"
                 KLEO_OTHER_TEXT="<b>GnuPG Desktop</b><sup>®</sup> is Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>For a full list of licenses see the installed pkg-licenses.txt file."
             fi
         fi
 
-        OKULAR_VERSION="${KLEO_VERSION}"
-        OKULAR_SHORT_DESC="${KLEO_SHORT_DESC}"
-        OKULAR_OTHER_TEXT="${KLEO_OTHER_TEXT}"
-        OKULAR_BUG_ADDRESS="${KLEO_BUG_ADDRESS}"
-        OKULAR_HOMEPAGE="${KLEO_HOMEPAGE}"
+        local OKULAR_VERSION="${KLEO_VERSION}"
+        local OKULAR_SHORT_DESC="${KLEO_SHORT_DESC}"
+        local OKULAR_OTHER_TEXT="${KLEO_OTHER_TEXT}"
+        local OKULAR_BUG_ADDRESS="${KLEO_BUG_ADDRESS}"
+        local OKULAR_HOMEPAGE="${KLEO_HOMEPAGE}"
 
         cat <<- EOF > ${VERSION_FILE}
 		[Kleopatra]
@@ -290,8 +323,10 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
     )
 
     sign_version_file () (
-        VERSION_FILE="$1"
-        SIGNKEY="$2"
+        local VERSION_FILE="$1"
+        local SIGNKEY="$2"
+
+        [ -n "$verbose" ] && echo "$PGM (AppImage): signkey      : ${SIGNKEY}" | tee -a ${logfile} >&2
 
         /src/build.sh --runcmd gpg --yes -o "${VERSION_FILE}.sig" -bau "${SIGNKEY}" "${VERSION_FILE}"
         chmod 0644 "${VERSION_FILE}.sig"
@@ -314,7 +349,8 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
             echo "$PGM (AppImage): builddir     : ${builddir}"
             echo "$PGM (AppImage): srcdir       : ${srcdir}"
             echo "$PGM (AppImage): appdir       : ${appdir}"
-            echo "$PGM (AppImage): instdir      : ${instdir}" ) | tee -a ${logfile} >&2
+            echo "$PGM (AppImage): instdir      : ${instdir}"
+            echo "$PGM (AppImage): signkey      : ${version_signkey}" ) | tee -a ${logfile} >&2
         # echo "$PGM (AppImage): : ${}"
     fi
 
@@ -650,35 +686,6 @@ download_packages() {
 }
 
 
-# Run a command using the FIFOs.  This needs to be called via a FIFO
-# from the docker.  Note that we don't explicit serialize access to the
-# FIFO, hopefully no parallel make rules are run.
-if [ "$runcmd" = yes ]; then
-    if [ "$indocker" != yes ]; then
-        echo >&2 "$PGM: Option --runcmd must be called from docker"
-        echo >&2 "$PGM: Available commands are:"
-        echo >&2 "$PGM:   ping      - Wait for a pong"
-        echo >&2 "$PGM:   gpg       - Run a gpg command"
-        echo >&2 "$PGM:   msibase   - Prepare MSI linking"
-        echo >&2 "$PGM:   litcandle - Run candle.exe"
-        exit 2
-    fi
-    # Running in docker
-    if [ -z "$1" ]; then
-        echo >&2 "usage: /src/build.sh --runcmd COMMAND ARGS"
-        exit 2
-    fi
-    [ -f /build/S.build.sh-rc ] && rm /build/S.build.sh-rc
-    echo "$@" >/build/S.build.sh-in
-    cat /build/S.build.sh-out
-    while [ ! -f /build/S.build.sh-rc ]; do sleep 0.05; done
-    rc=$(sed -ne 's/EXITSTATUS=\([0-9]*\).*$/\1/p' \
-             </build/S.build.sh-rc 2>/dev/null || true)
-    [ -z "$rc" ] && rc=0
-    exit $rc
-fi
-
-
 # Check whether the --release target needs to clone the gnupg-vsd repo.
 case "${buildtype}" in
     vsd3)       need_gnupg_vsd=yes
@@ -782,7 +789,7 @@ fi
 # Determine the needed docker image
 if [ "$appimage" = "yes" ]; then
     [ -n "$verbose" ] && docker_cmd_extras="${docker_cmd_extras} --verbose"
-    if [ "${BUILDTYPE}" = "vsd" ] || [ "${BUILDTYPE}" = "vsd3" ] || [ "${BUILDTYPE}" = "gpd" ] ; then
+    if [ "${buildtype}" = "vsd" ] || [ "${buildtype}" = "vsd3" ] || [ "${buildtype}" = "gpd" ] ; then
         if [ "$have_signkey" = "no" ] && [ -f "$HOME/.gnupg-autogen.rc" ] ; then
             version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' "$HOME/.gnupg-autogen.rc"|cut -d= -f2|xargs)"
         fi
