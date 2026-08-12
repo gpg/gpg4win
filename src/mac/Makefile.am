@@ -103,7 +103,7 @@ macimage_pkg_zstd_configure = -DZSTD_BUILD_PROGRAMS=OFF
 macimage_pkg_pinentry_configure = \
 	--disable-ncurses \
 	--enable-pinentry-qt \
-	CXXFLAGS=\"-std=c++17 -F$(idir)/lib\" \
+	CXXFLAGS=\"-std=c++17 -F$(idir)/lib -Wl,-headerpad_max_install_names\" \
 	--disable-pinentry-fltk \
 	--disable-pinentry-curses \
 	--disable-fallback-curses
@@ -114,7 +114,10 @@ macimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
 # then prefix with DESTDIR during install
 macimage_pkg_gnupg_configure = --bindir=$(targetbindir) \
 			       --libexecdir=$(targetlibexecdir) \
-			       --prefix=/
+			       --prefix=/ \
+                               LDFLAGS="-headerpad_max_install_names"
+
+macimage_pkg_gnupg_extracflags = "-Wl,-headerpad_max_install_names"
 
 macimage_pkg_gnupg_make_args_inst = DESTDIR=$$$${pkgidir}
 

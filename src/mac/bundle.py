@@ -164,7 +164,7 @@ def checkAndPatchDependencies(file: Path, origin: Path):
     # (which we'll then reference without resorting to rpath)
     rpaths = getRPaths(origin)
     for rpath in rpaths:
-        subprocess.run(["install_name_tool", "-delete_rpath", rpath, file])
+        subprocess.run(["install_name_tool", "-delete_rpath", rpath, file]).check_returncode()
     rpaths.append(srcPrefix / 'lib')
 
     # If this is a library, fix its library id, otherwise consumers may
@@ -175,7 +175,7 @@ def checkAndPatchDependencies(file: Path, origin: Path):
         libid = lines[1].strip()
         if libid != "":
             print(f"Adjusting libid on {file} from {libid} to {os.path.basename(libid)}")
-            subprocess.run(["install_name_tool", "-id", os.path.basename(libid), file])
+            subprocess.run(["install_name_tool", "-id", os.path.basename(libid), file]).check_returncode()
             libid = os.path.basename(libid)
 
     # find and fix all references to libs this binary depends on
@@ -218,7 +218,7 @@ def checkAndPatchDependencies(file: Path, origin: Path):
         # a movable installation, anyway (so far)
         dep = str((bundleDir / dep).absolute()).replace(str(destPrefix), '')
         print(f"fixing dep {olddep} -> {dep}")
-        subprocess.run(["install_name_tool", "-change", olddep, dep, file])
+        subprocess.run(["install_name_tool", "-change", olddep, dep, file]).check_returncode()
 
 
 def createDMG(stagingFolder: Path, outfile: Path):
@@ -239,10 +239,6 @@ def createDMG(stagingFolder: Path, outfile: Path):
 # - codesign
 # - package into DMG
 # - notarize (for some hints see macdeployqt docs)
-
-# TODO
-# install_name_tool fails for a few binaries (pinentry-qt, keyboxd), because there is not enough room in the header
-# fix that (and bail out on error)
 
 srcPrefix = Path(sys.argv[1])
 destPrefix = Path(sys.argv[2])
