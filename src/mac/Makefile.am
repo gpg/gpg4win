@@ -205,6 +205,8 @@ macimage_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
 
 macimage_pkg_kcontacts_configure = -DUSE_QML=OFF
 
+macimage_pkg_gpgoljs_configure = -DCMAKE_MACOSX_BUNDLE=OFF
+
 macimage_pkg_kguiaddons_configure = -DWITH_WAYLAND=OFF
 
 macimage_pkg_sonnet_configure = -DSONNET_USE_QML=OFF

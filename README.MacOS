@@ -4,11 +4,11 @@ Status / Hints / TODO list for MacOS builds
   - system installs:
     - need full xcode; command line tools is not enough (for qtbase)
       (Xcode includes git and python3.9, but not too much else)
-  - Required tools not in MacOS (or not in a usable version)
+  - Required tools not in MacOS/XCode (or not in a usable version)
     We take these from homebrew, ATM (TODO)
     Some bits have hardcoded paths to /opt/homebrew (TODO).
       - autoconf, automake (only for running autogen.sh)
-      - cmake, meson
+      - cmake
       - bison (version in macos is too old)
   - Required libs not in the current AppImage build scripts.
     - openjpeg, libzstd, libpng, jpg, libpcre2 -> done (already had Windows builds)
@@ -39,7 +39,7 @@ Status / Hints / TODO list for MacOS builds
   echo "default" > packages/BUILDTYPE     # once
   ./autogen.sh                            # once, and after touching the build system
   ./build.sh --download --mac --builddir=/Some/casesensitive/Volume
-  src/mac/bundle.py
+  src/mac/bundle.py /build/install /tmp/staging output.dmg
 
 - Running:
   Many things will not work properly until bundled/installed
@@ -60,9 +60,12 @@ Status / Hints / TODO list for MacOS builds
       - potential alternative: require PATH
     - bundling script sets library locations using abs paths
       - potential alternative: convert to @loader_path references
+  - There are some extra patches in patches-mac which we should simply merge
+    in the corresponding packages (gpgoljs). This is just to allow
+    independent testing.
 
 - Further TODOs:
-  - bundling is not complete
+  - bundling should be complete, but lacks "installer" look
   - entitlements?
   - There is no codesigning at all, yet
   - provide gpgconf.ctl

@@ -1,0 +1,494 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 269b132cc2a380c21eebafb25ce82134d0a2d1f2 Mon Sep 17 00:00:00 2001
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@gnupg.com>
+Date: Wed, 12 Aug 2026 13:02:30 +0200
+Subject: [PATCH] Switch to KDSingleApplication for handling unique instance
+
+This allows to drop DBus, thereby also fixing the MacOS runtime.
+---
+ CMakeLists.txt                       |  13 +-
+ client/CMakeLists.txt                |  11 +-
+ client/main.cpp                      |  25 ++--
+ client/utils/kuniqueservice.cpp      |  20 ---
+ client/utils/kuniqueservice.h        |  66 ---------
+ client/utils/kuniqueservice_dbus.cpp |  48 -------
+ client/utils/kuniqueservice_win.cpp  | 200 ---------------------------
+ 7 files changed, 19 insertions(+), 364 deletions(-)
+ delete mode 100644 client/utils/kuniqueservice.cpp
+ delete mode 100644 client/utils/kuniqueservice.h
+ delete mode 100644 client/utils/kuniqueservice_dbus.cpp
+ delete mode 100644 client/utils/kuniqueservice_win.cpp
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9b58811..9f9374b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -61,20 +61,11 @@ find_package(Gpgmepp ${GPGME_VERSION} CONFIG REQUIRED)
+ find_package(KPim6Libkleo ${LIBKLEO_VERSION} CONFIG REQUIRED)
+ find_package(KPim6MimeTreeParserWidgets ${MIMETREEPARSER_VERSION} CONFIG REQUIRED)
+ find_package(LibGpgError ${GPG_ERROR_REQUIRED_VERSION} REQUIRED)
++find_package(KDSingleApplication-qt6 CONFIG REQUIRED)
+
+ # Optional packages
+-if (WIN32)
+-  # Only a replacement available for Windows so this
+-  # is required on other platforms.
+-  find_package(KF6DBusAddons ${KF_MIN_VERSION} CONFIG)
+-  set_package_properties(KF6DBusAddons PROPERTIES DESCRIPTION "Support library to work with DBus"
+-                         PURPOSE "DBus session integration"
+-                         URL "https://inqlude.org/libraries/kdbusaddons.html"
+-                         TYPE OPTIONAL)
+-else()
+-  find_package(KF6DBusAddons ${KF_MIN_VERSION} CONFIG REQUIRED)
++if (NOT WIN32)
+   find_package(KF6Auth ${KF_MIN_VERSION} CONFIG REQUIRED)
+-  set(_gpgol_dbusaddons_libs KF6::DBusAddons)
+ endif()
+
+ if (BUILD_TESTING)
+diff --git a/client/CMakeLists.txt b/client/CMakeLists.txt
+index ea81f79..b047553 100644
+--- a/client/CMakeLists.txt
++++ b/client/CMakeLists.txt
+@@ -248,19 +248,10 @@ target_sources(gpgol-client-static PRIVATE
+     multiplyingline/multiplyinglineview_p.h
+
+     # Utils
+-    utils/kuniqueservice.h
+-    utils/kuniqueservice.cpp
+     utils/systemtrayicon.h
+     utils/systemtrayicon.cpp
+     utils/userinfo_win.cpp
+ )
+-if (WIN32)
+-    add_definitions(-DHAVE_QDBUS=false)
+-    target_sources(gpgol-client-static PRIVATE utils/kuniqueservice_win.cpp)
+-else()
+-    add_definitions(-DHAVE_QDBUS=true)
+-    target_sources(gpgol-client-static PRIVATE utils/kuniqueservice_dbus.cpp)
+-endif()
+
+ ki18n_wrap_ui(gpgol-client-static
+     editor/attachment/ui/attachmentpropertiesdialog.ui
+@@ -353,7 +344,7 @@ target_link_libraries(gpgol-client-static PUBLIC
+     KPim6::MimeTreeParserWidgets
+     KPim6::Libkleo
+
+-    ${_gpgol_dbusaddons_libs}
++    KDAB::kdsingleapplication
+ )
+
+ if(Gpgmepp_VERSION VERSION_GREATER_EQUAL "2.0.0")
+diff --git a/client/main.cpp b/client/main.cpp
+index 9050ec5..e307fce 100644
+--- a/client/main.cpp
++++ b/client/main.cpp
+@@ -23,6 +23,7 @@
+ #include <gpgme++/global.h>
+
+ #include <KAboutData>
++#include <KDSingleApplication>
+ #include <KLocalizedString>
+ #include <KMessageBox>
+
+@@ -34,7 +35,6 @@
+ #include "gpgolweb_version.h"
+ #include "setupdialogs.h"
+ #include "statusdialog.h"
+-#include "utils/kuniqueservice.h"
+ #include "utils/systemtrayicon.h"
+
+ using namespace Qt::Literals::StringLiterals;
+@@ -110,14 +110,21 @@ int main(int argc, char *argv[])
+         return 1;
+     }
+ #endif
+-    /* Create the unique service ASAP to prevent double starts if
+-     * the application is started twice very quickly. */
+-    KUniqueService service;
+-
+-    QObject::connect(&service, &KUniqueService::activateRequested, &service, [&service](const QStringList &arguments, const QString &workingDirectory) {
+-        Q_UNUSED(arguments);
+-        Q_UNUSED(workingDirectory);
+-        service.setExitValue(0);
++    auto singleApp = KDSingleApplication(u"com.gnupg.gpgolweb"_s, &app);
++    if (!singleApp.isPrimaryInstance()) {
++        QByteArray message("activate"_ba);
++        qCDebug(GPGOL_CLIENT_LOG) << "GpgOL/Web is already running. Switching to existing instance";
++        if (!singleApp.sendMessage(message)) {
++            qCWarning(GPGOL_CLIENT_LOG) << "KDSingleApplication - sending message to primary instance failed";
++            return 1;
++        }
++        return 0;
++    }
++    QObject::connect(&singleApp, &KDSingleApplication::messageReceived, &app, [&app](const QByteArray &) {
++        qCDebug(GPGOL_CLIENT_LOG) << "KDSingleApplication - requests activate";
++        // just show the status dialog as a sign that we are (already) running.
++        auto dialog = StatusDialog::getOrCreate();
++        dialog->show();
+     });
+
+     GpgME::initializeLibrary(); // This will probably also happen via libkleo, but
+diff --git a/client/utils/kuniqueservice.cpp b/client/utils/kuniqueservice.cpp
+deleted file mode 100644
+index bc455c0..0000000
+--- a/client/utils/kuniqueservice.cpp
++++ /dev/null
+@@ -1,20 +0,0 @@
+-/*
+-    kuniqueservice.cpp
+-
+-    This file is part of Kleopatra, the KDE keymanager
+-    SPDX-FileCopyrightText: 2016 Bundesamt für Sicherheit in der Informationstechnik
+-    SPDX-FileContributor: Intevation GmbH
+-
+-    SPDX-License-Identifier: GPL-2.0-or-later
+-*/
+-// Includes the real implementation
+-
+-#if !HAVE_QDBUS && defined(_WIN32)
+-#include "kuniqueservice_win.cpp"
+-#elif HAVE_QDBUS
+-#include "kuniqueservice_dbus.cpp"
+-#else
+-#error "Uniqueservice is only implemented for DBus and Windows."
+-#endif
+-
+-#include "moc_kuniqueservice.cpp"
+diff --git a/client/utils/kuniqueservice.h b/client/utils/kuniqueservice.h
+deleted file mode 100644
+index e4a4a37..0000000
+--- a/client/utils/kuniqueservice.h
++++ /dev/null
+@@ -1,66 +0,0 @@
+-#pragma once
+-/*
+-    kuniqueservice.h
+-
+-    This file is part of Kleopatra, the KDE keymanager
+-    SPDX-FileCopyrightText: 2016 Bundesamt für Sicherheit in der Informationstechnik
+-    SPDX-FileContributor: Intevation GmbH
+-
+-    SPDX-License-Identifier: GPL-2.0-or-later
+-*/
+-#include <QObject>
+-#include <QString>
+-#include <QStringList>
+-
+-/**
+- * This class can be used to create a unique service and redirect calls
+- * to this service similarly to KDBusService(KDBusService::Unique).
+- * @code
+- *   YourApplication app(argc, argv);
+- *
+- *   KUniqueService service;
+- *   QObject::connect(&service, &KUniqueService::activateRequested,
+- *                    &app, &YourApplication::slotActivateRequested);
+- *   QObject::connect(&app, &YourApplication::setExitValue,
+- *   &service, [&service](int i) {
+- *       service.setExitValue(i);
+- *   });
+- * @endcode
+- * This will redirect calls to running instances over the
+- * the slotActivateRequested. When you set the exit
+- * value the calling process will afterwards exit with the
+- * code provided.
+- * If you do not set the exit value the application will not
+- * be terminated.
+- * @author Andre Heinecke (aheinecke@intevation.org)
+- */
+-class KUniqueService : public QObject
+-{
+-    Q_OBJECT
+-public:
+-    /**
+-     * Default constructor
+-     */
+-    KUniqueService();
+-    ~KUniqueService() override;
+-
+-public Q_SLOTS:
+-    /**
+-     * Set the exit @p code the second app should use to terminate.
+-     * If unset it exits with 0.
+-     * @param code The exit code.
+-     */
+-    void setExitValue(int code);
+-
+-Q_SIGNALS:
+-    void activateRequested(const QStringList &arguments, const QString &workingDirectory);
+-
+-private:
+-    void emitActivateRequested(const QStringList &arguments, const QString &workingDirectory)
+-    {
+-        Q_EMIT activateRequested(arguments, workingDirectory);
+-    }
+-    class KUniqueServicePrivate;
+-    Q_DECLARE_PRIVATE(KUniqueService)
+-    KUniqueServicePrivate *d_ptr;
+-};
+diff --git a/client/utils/kuniqueservice_dbus.cpp b/client/utils/kuniqueservice_dbus.cpp
+deleted file mode 100644
+index 042f304..0000000
+--- a/client/utils/kuniqueservice_dbus.cpp
++++ /dev/null
+@@ -1,48 +0,0 @@
+-/*
+-    kuniqueservice_dbus.cpp
+-
+-    This file is part of Kleopatra, the KDE keymanager
+-    SPDX-FileCopyrightText: 2016 Bundesamt für Sicherheit in der Informationstechnik
+-    SPDX-FileContributor: Intevation GmbH
+-
+-    SPDX-License-Identifier: GPL-2.0-or-later
+-*/
+-
+-#include "kuniqueservice.h"
+-#include <KDBusService>
+-
+-class KUniqueService::KUniqueServicePrivate
+-{
+-    Q_DISABLE_COPY(KUniqueServicePrivate)
+-
+-public:
+-    KUniqueServicePrivate(KUniqueService *q)
+-        : mService(KDBusService::Unique)
+-    {
+-        QObject::connect(&mService, &KDBusService::activateRequested, q, &KUniqueService::activateRequested);
+-    }
+-
+-    void setExitValue(int code)
+-    {
+-        mService.setExitValue(code);
+-    }
+-
+-private:
+-    KDBusService mService;
+-};
+-
+-KUniqueService::KUniqueService()
+-    : d_ptr(new KUniqueServicePrivate(this))
+-{
+-}
+-
+-KUniqueService::~KUniqueService()
+-{
+-    delete d_ptr;
+-}
+-
+-void KUniqueService::setExitValue(int code)
+-{
+-    Q_D(KUniqueService);
+-    d->setExitValue(code);
+-}
+diff --git a/client/utils/kuniqueservice_win.cpp b/client/utils/kuniqueservice_win.cpp
+deleted file mode 100644
+index 848b8b2..0000000
+--- a/client/utils/kuniqueservice_win.cpp
++++ /dev/null
+@@ -1,200 +0,0 @@
+-/*
+-    kuniqueservice_win.cpp
+-
+-    This file is part of Kleopatra, the KDE keymanager
+-    SPDX-FileCopyrightText: 2016 Bundesamt für Sicherheit in der Informationstechnik
+-    SPDX-FileContributor: Intevation GmbH
+-
+-    SPDX-License-Identifier: GPL-2.0-or-later
+-*/
+-
+-#include "kuniqueservice.h"
+-
+-#include <QCoreApplication>
+-#include <QDataStream>
+-#include <QDir>
+-
+-#include <KLocalizedString>
+-#include <KMessageBox>
+-
+-#include "gpgol_client_debug.h"
+-#include <windows.h>
+-
+-#define MY_DATA_TYPE 12
+-
+-class KUniqueService::KUniqueServicePrivate
+-{
+-    Q_DECLARE_PUBLIC(KUniqueService)
+-    Q_DISABLE_COPY(KUniqueServicePrivate)
+-
+-private:
+-    KUniqueService *q_ptr;
+-    HWND mResponder;
+-    HANDLE mResponderProc;
+-
+-    const QString getWindowName() const
+-    {
+-        return QCoreApplication::applicationName() + QStringLiteral("Responder");
+-    }
+-
+-    HWND getForeignResponder() const
+-    {
+-        const QString qWndName = getWindowName();
+-        wchar_t *wndName = (wchar_t *)qWndName.utf16();
+-        HWND ret = FindWindow(wndName, wndName);
+-        qCDebug(GPGOL_CLIENT_LOG) << "Responder handle:" << ret;
+-        return ret;
+-    }
+-
+-    void createResponder()
+-    {
+-        WNDCLASS windowClass;
+-        const QString qWndName = getWindowName();
+-        wchar_t *wndName = (wchar_t *)qWndName.utf16();
+-        windowClass.style = CS_GLOBALCLASS | CS_DBLCLKS;
+-        windowClass.lpfnWndProc = windowProc;
+-        windowClass.hInstance = (HINSTANCE)GetModuleHandle(NULL);
+-        windowClass.lpszClassName = wndName;
+-        windowClass.hIcon = nullptr;
+-        windowClass.hCursor = nullptr;
+-        windowClass.hbrBackground = nullptr;
+-        windowClass.lpszMenuName = nullptr;
+-        windowClass.cbClsExtra = 0;
+-        windowClass.cbWndExtra = 0;
+-        RegisterClass(&windowClass);
+-        mResponder = CreateWindow(wndName, wndName, 0, 0, 0, 10, 10, nullptr, nullptr, (HINSTANCE)GetModuleHandle(NULL), nullptr);
+-        qCDebug(GPGOL_CLIENT_LOG) << "Created responder: " << qWndName << " with handle: " << mResponder;
+-    }
+-
+-    void handleRequest(const COPYDATASTRUCT *cds)
+-    {
+-        Q_Q(KUniqueService);
+-        if (cds->dwData != MY_DATA_TYPE) {
+-            qCDebug(GPGOL_CLIENT_LOG) << "Responder called with invalid data type:" << cds->dwData;
+-            return;
+-        }
+-        if (mResponderProc) {
+-            qCDebug(GPGOL_CLIENT_LOG) << "Already serving. Terminating process: " << mResponderProc;
+-            setExitValue(42);
+-        }
+-        const QByteArray serialized(static_cast<const char *>(cds->lpData), cds->cbData);
+-        QDataStream ds(serialized);
+-        intptr_t curProc;
+-        ds >> curProc;
+-        mResponderProc = reinterpret_cast<HANDLE>(curProc);
+-        QString workDir;
+-        ds >> workDir;
+-        QStringList args;
+-        ds >> args;
+-        qCDebug(GPGOL_CLIENT_LOG) << "Process handle: " << mResponderProc << " requests activate with args " << args;
+-        q->emitActivateRequested(args, workDir);
+-        return;
+-    }
+-
+-    KUniqueServicePrivate(KUniqueService *q)
+-        : q_ptr(q)
+-        , mResponder(nullptr)
+-        , mResponderProc(nullptr)
+-    {
+-        HWND responder = getForeignResponder();
+-        if (!responder) {
+-            // We are the responder
+-            createResponder();
+-            return;
+-        }
+-        // We are the client
+-        QByteArray serialized;
+-        QDataStream ds(&serialized, QIODevice::WriteOnly);
+-        DWORD responderId = 0;
+-        GetWindowThreadProcessId(responder, &responderId);
+-        if (!responderId) {
+-            qCDebug(GPGOL_CLIENT_LOG) << "No id of responder window";
+-            return;
+-        }
+-
+-        // To allow the other process to terminate the process
+-        // needs a handle to us with the required access.
+-        int err = 0;
+-        HANDLE responderHandle = OpenProcess(PROCESS_DUP_HANDLE, FALSE, responderId);
+-        if (!responderHandle) {
+-            qCDebug(GPGOL_CLIENT_LOG) << "Open process returned NULL. Err: " << GetLastError();
+-            err = 1;
+-        } else if (!DuplicateHandle(GetCurrentProcess(), GetCurrentProcess(), responderHandle, &mResponderProc, 0, FALSE, DUPLICATE_SAME_ACCESS)) {
+-            qCDebug(GPGOL_CLIENT_LOG) << "Duplicate Handle failed. Err: " << GetLastError();
+-            err = 2;
+-        }
+-        if (err) {
+-            KMessageBox::error(nullptr,
+-                               xi18nc("@info",
+-                                      "<para><application>GpgOL/Web</application> appears to be already running, but with different privileges.</para>"
+-                                      "<para>This usually happens if <application>GpgOL/Web</application> is accidentally run as Administrator.</para>"
+-                                      "<para>Please right-click the tray icon of <application>GpgOL/Web</application> and select 'Quit' to try again.</para>"),
+-                               xi18nc("@title", "<application>GpgOL/Web</application> failed to start"));
+-            exit(err);
+-        }
+-        CloseHandle(responderHandle);
+-
+-        ds << reinterpret_cast<intptr_t>(mResponderProc) << QDir::currentPath() << QCoreApplication::arguments();
+-        COPYDATASTRUCT cds;
+-        cds.dwData = MY_DATA_TYPE;
+-        cds.cbData = serialized.size();
+-        cds.lpData = serialized.data();
+-
+-        qCDebug(GPGOL_CLIENT_LOG) << "Sending message to existing Window.";
+-        SendMessage(responder, WM_COPYDATA, 0, (LPARAM)&cds);
+-        // Usually we should be terminated while sending the message.
+-        qCDebug(GPGOL_CLIENT_LOG) << "Send message returned.";
+-    }
+-
+-    static KUniqueServicePrivate *instance(KUniqueService *q)
+-    {
+-        static KUniqueServicePrivate *self;
+-        if (self) {
+-            return self;
+-        }
+-
+-        self = new KUniqueServicePrivate(q);
+-        return self;
+-    }
+-
+-    static LRESULT CALLBACK windowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+-    {
+-        if (message == WM_COPYDATA) {
+-            const COPYDATASTRUCT *cds = (COPYDATASTRUCT *)lParam;
+-            // windowProc must be static so the singleton pattern although
+-            // it doesn't make much sense in here.
+-            instance(nullptr)->handleRequest(cds);
+-            return 0;
+-        }
+-        return DefWindowProc(hWnd, message, wParam, lParam);
+-    }
+-
+-    ~KUniqueServicePrivate()
+-    {
+-        if (mResponder) {
+-            DestroyWindow(mResponder);
+-        }
+-    }
+-
+-    void setExitValue(int code)
+-    {
+-        TerminateProcess(mResponderProc, (unsigned int)code);
+-        mResponderProc = nullptr;
+-    }
+-};
+-
+-KUniqueService::KUniqueService()
+-    : d_ptr(KUniqueServicePrivate::instance(this))
+-{
+-}
+-
+-KUniqueService::~KUniqueService()
+-{
+-    delete d_ptr;
+-}
+-
+-void KUniqueService::setExitValue(int code)
+-{
+-    Q_D(KUniqueService);
+-    d->setExitValue(code);
+-}
+--
+2.54.0
