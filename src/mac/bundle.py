@@ -27,8 +27,8 @@
 #   - making sure all deps are either system provided or in the bundle
 #   - adjusting library paths (install_name_tool)
 # (- checking strings for mentions of build path?)
-# - signing / notarization
-# - creating dmg
+# - signing / notarization -> TODO
+# - creating dmg -> TODO: still very basic
 #
 # Some pointers to similar tools that do not quite meet our needs:
 # macdeployqt - https://doc.qt.io/qt-6/macos-deployment.html#macdeploy
@@ -52,10 +52,43 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 
 def error(message: str):
     print(message)
     exit(1)
+
+def createStagingSkeleton():
+    bundleDir.mkdir(parents=True)
+    (bundleDir / 'Frameworks').mkdir()
+    (bundleDir / 'MacOS').mkdir()
+    (bundleDir / 'Resources').mkdir()
+    (bundleDir / 'Plugins').mkdir()
+
+
+def moveFilesToDestination():
+    # Some packages (importantly kleopatra, okular) install (some of) their files to DESTDIR/Applications.
+    # We need to copy those, but also the files from DESTDIR/pkgs (we go through DESTDIR/pkgs rather than
+    # DESTIR/* to allow easier filtering by package -> see destination().
+    files = chain((srcPrefix / 'Applications').rglob('*'), (srcPrefix / "pkgs").rglob('*'))
+    for f in files:
+        dest = destination(f)
+        if (dest == None):
+            print(f"Skipping {f}")
+        else:
+            (bundleDir / dest).parent.mkdir(parents=True, exist_ok=True)
+            if f.is_symlink():
+                target = f.readlink()
+                if target.is_absolute():
+                    error(f"Cannot handle absolute symlink {f}->{target}")
+                print(f"symlink {f} -> {target}")
+                (bundleDir / dest).symlink_to(target)
+            elif f.is_file():
+                print(f"Copying {f} -> {dest}")
+                shutil.copy2(f, bundleDir / dest)
+                if isBinary(bundleDir / dest):
+                    checkAndPatchDependencies(bundleDir / dest, f)
+
 
 # map source filename to destination
 # input and output are relative to prefix
@@ -73,6 +106,8 @@ def destination(absFilePath: Path) -> str:
         fileName = str(filePath)
     if package in ["qttools"]:
         return None
+    elif package == "qtbase" and "objects-Release" in fileName:
+        return None # unused Qt cruft that makes codesign unhappy
     elif fileName.startswith(tuple(["cmake", "include", "mkspecs", "lib/cmake", "lib/pkgconfig"])):
         return None
     elif fileName.endswith(tuple([".a", ".la"])):
@@ -96,35 +131,6 @@ def destination(absFilePath: Path) -> str:
             if (fileName.startswith(src + '/')) and fileName != src:
                 return fileName.replace(src, dest, 1)
     return None
-
-
-def moveFilesToDestination():
-    files = chain((srcPrefix / 'Applications').rglob('*'), (srcPrefix / "pkgs").rglob('*'))
-    for f in files:
-        dest = destination(f)
-        if (dest == None):
-            print(f"Skipping {f}")
-        else:
-            (bundleDir / dest).parent.mkdir(parents=True, exist_ok=True)
-            if f.is_symlink():
-                target = f.readlink()
-                if target.is_absolute():
-                    error(f"Cannot handle absolute symlink {f}->{target}")
-                print(f"symlink {f} -> {target}")
-                (bundleDir / dest).symlink_to(target)
-            elif f.is_file():
-                print(f"Copying {f} -> {dest}")
-                shutil.copy2(f, bundleDir / dest)
-                if isBinary(bundleDir / dest):
-                    checkAndPatchDependencies(bundleDir / dest, f)
-
-
-def createStagingSkeleton():
-    bundleDir.mkdir(parents=True)
-    (bundleDir / 'Frameworks').mkdir()
-    (bundleDir / 'MacOS').mkdir()
-    (bundleDir / 'Resources').mkdir()
-    (bundleDir / 'Plugins').mkdir()
 
 
 # isBinary() copied (stripped down) from KDE craft:
@@ -221,9 +227,9 @@ def checkAndPatchDependencies(file: Path, origin: Path):
         subprocess.run(["install_name_tool", "-change", olddep, dep, file]).check_returncode()
 
 
-def createDMG(stagingFolder: Path, outfile: Path):
+def createDMG(stagingFolder: Path, imageName: str, outfile: Path):
    print("Creating dmg")
-   subprocess.run(["hdiutil", "create", "-srcfolder", str(stagingFolder), "-volname", "Kleopatra", str(outfile)])
+   subprocess.run(["hdiutil", "create", "-srcfolder", str(stagingFolder), "-volname", imageName, str(outfile)]).check_returncode()
 
 # Steps to do:
 # - copy the cmake created application bundle skeleton to the real staging destination
@@ -241,13 +247,20 @@ def createDMG(stagingFolder: Path, outfile: Path):
 # - notarize (for some hints see macdeployqt docs)
 
 srcPrefix = Path(sys.argv[1])
-destPrefix = Path(sys.argv[2])
-bundleDir = (destPrefix / 'Applications' / 'kleopatra.app' / 'Contents')
-#purgeUnusedLibs()
+imageName = sys.argv[2]
+outFile = Path(sys.argv[3])
+os.remove(outFile)
+
+stagingDir = tempfile.TemporaryDirectory()
+destPrefix = Path(stagingDir.name)
+bundleDir = (destPrefix / 'Applications' / (imageName + '.app') / 'Contents')
+
 createStagingSkeleton()
 moveFilesToDestination()
-# strip
-# sanity check
-# signandnotarize()
-createDMG(destPrefix, sys.argv[3])
-
+# purgeUnusedLibs()
+# stripBinaries()
+# sanityCheck()
+createDMG(destPrefix, imageName, outFile)
+stagingDir.cleanup()
+print(f"DMG created at {outFile}")
+# signAndNotarize()
