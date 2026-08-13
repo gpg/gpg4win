@@ -258,7 +258,7 @@ if test -n "$GPGEX_ADD_HOST"; then
 fi
 
 if test -z "$GPG4WIN_PARALLEL"; then
-    JOBS=$(nproc 2>/dev/null || echo 1)
+    JOBS=$(nproc 2>/dev/null || sysctl -n hw.logicalcpu || echo 1)
     GPG4WIN_PARALLEL=-j$JOBS
     AC_MSG_NOTICE([Using autodetected $JOBS make jobs. You can override this by setting GPG4WIN_PARALLEL.])
 fi
