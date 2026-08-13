@@ -222,7 +222,7 @@ if [ $opt_install = yes ]; then
             cmp -s "$t" "$t.old" && ${sudo_cmd} rm "$t.old"
             echo "done." >&2
         else
-            echo -n "initializing up ${t} ... " >&2
+            echo -n "initializing ${t} ... " >&2
             ${sudo_cmd} cp "$f" "$t" || error "failed!"
             ${sudo_cmd} chmod 0644 "$t" || error "failed!"
             echo "done." >&2
