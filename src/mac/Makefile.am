@@ -54,7 +54,7 @@ ipdir     := $(root)/install/pkgs
 appdir    := $(root)/AppDir
 # TODO: in some places we want the target installation directory. The value
 #       of that should be centrally configured and passed in from outside.
-targetbindir := /Applications/kleopatra.app/Contents/MacOS
+targetbindir := /Applications/$(TARGETIMAGENAME).app/Contents/MacOS
 targetlibexecdir := $(targetbindir)
 patdir    := $(tsdir)/patches-mac
 rsyncfilterdir := $(tsdir)/src/macimage/rsync-filters
