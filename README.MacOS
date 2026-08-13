@@ -39,10 +39,6 @@ Status / Hints / TODO list for MacOS builds
   echo "default" > packages/BUILDTYPE     # once
   ./autogen.sh                            # once, and after touching the build system
   ./build.sh --download --mac --builddir=/Some/casesensitive/Volume
-  src/mac/bundle.py
-
-- Running:
-  Many things will not work properly until bundled/installed
 
 - Running:
   Many things will not work properly until bundled/installed
@@ -55,18 +51,7 @@ Status / Hints / TODO list for MacOS builds
     MacOS arm64 on arm64, and is geared towards builder scenarios.
   - At a minimum, we should gather non-system build-deps in a ro volume
   - For the time being, several places assume fixed absolute paths for install locations.
-    This may actually be in line with common MacOS practices, but prevents a portable
-    install, ATM. Affected places:
-    - gnupg configure flags: So gnupgconf returns correct paths
-      - potential alternative: provide gpgconf.ctl
-    - gpgme configure flags: --enable-fixed-path, to allow finding gpg
-      - potential alternative: require PATH
-    - bundling script sets library locations using abs paths
-      - potential alternative: convert to @loader_path references
-
-- Further TODOs:
-  - For the time being, several places assume fixed absolute paths for install locations.
-    This may actually be in line with common MacOS practices, but prevents a portable
+    This may not be entirel uncommon on MacOS, but prevents a portable
     install, ATM. Affected places:
     - gnupg configure flags: So gnupgconf returns correct paths
       - potential alternative: provide gpgconf.ctl
@@ -77,7 +62,8 @@ Status / Hints / TODO list for MacOS builds
   - There are some extra patches in patches-mac which we should simply merge
     in the corresponding packages (gpgoljs/kleopatra). This is just to allow
     independent testing.
-  - -DCMAKE_MACOSX_BUNDLE=OFF in gpgoljs does not have the desired effect
+  - Creating a bundle is handled via a python script. python 3.9 is available
+    in MacOS 26.05
   - gpgol/web:
     - -DCMAKE_MACOSX_BUNDLE=OFF does not have the desired effect
     - Clicking on icon does not bring up status dialog
@@ -87,3 +73,5 @@ Status / Hints / TODO list for MacOS builds
   - entitlements?
   - There is no codesigning at all, yet
   - provide gpgconf.ctl
+  - provide signed version
+  - provision for gpd vs vsd-builds (later)
