@@ -61,9 +61,13 @@ Status / Hints / TODO list for MacOS builds
     - bundling script sets library locations using abs paths
       - potential alternative: convert to @loader_path references
   - There are some extra patches in patches-mac which we should simply merge
-    in the corresponding packages (gpgoljs). This is just to allow
+    in the corresponding packages (gpgoljs/kleopatra). This is just to allow
     independent testing.
-  - -DCMAKE_MACOSX_BUNDLE=OFF in gpgoljs does not have the desired effect
+  - gpgol/web:
+    - -DCMAKE_MACOSX_BUNDLE=OFF does not have the desired effect
+    - Clicking on icon does not bring up status dialog
+    - We get a menu bar on Mac. If we want to keep that, it should allow
+      access to settings, statusdialog, quit, about.
 
 - Further TODOs:
   - bundling should be complete, but lacks "installer" look

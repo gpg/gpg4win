@@ -1,0 +1,37 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 671dffaf1a91beed081daca4e7e123d97e0b82b2 Mon Sep 17 00:00:00 2001
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@kdemail.net>
+Date: Thu, 13 Aug 2026 09:59:36 +0200
+Subject: [PATCH] Avoid misdetection of columns menus as "Preferences" on MacOS
+
+Due to their name starting with "Configure", these are prone to
+misdetection by Qt's default QAction::TextHeuristicRole, and would then
+be placed in the wrong menu, while the main configure action would
+become inaccessible form the menu.
+---
+ src/mainwindow.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index 466f24f10..22ee184ac 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -685,11 +685,13 @@ void MainWindow::Private::setupActions()
+     ui.columnsVisibilityMenuAction = new KActionMenu(i18nc("@action:inmenu", "Configure columns"), q);
+     ui.columnsVisibilityMenuAction->setPopupMode(QToolButton::InstantPopup);
+     ui.columnsVisibilityMenuAction->setIcon(QIcon::fromTheme(u"show_table_column"_s));
++    ui.columnsVisibilityMenuAction->setMenuRole(QAction::NoRole); // avoid misdetection on MacOS
+     coll->addAction(QStringLiteral("columns_menu"), ui.columnsVisibilityMenuAction);
+
+     ui.columnsSortingMenuAction = new KActionMenu(i18nc("@action:inmenu", "Configure sorting"), q);
+     ui.columnsSortingMenuAction->setPopupMode(QToolButton::InstantPopup);
+     ui.columnsSortingMenuAction->setIcon(QIcon::fromTheme(u"view-sort"_s));
++    ui.columnsSortingMenuAction->setMenuRole(QAction::NoRole); // avoid misdetection on MacOS
+     coll->addAction(QStringLiteral("columns_sort_menu"), ui.columnsSortingMenuAction);
+
+     connect(
+--
+2.54.0
