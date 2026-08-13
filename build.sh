@@ -966,8 +966,8 @@ if [ "$err" = "0" ]; then
         results=$(find "${builddir}" -maxdepth 1 -iname \*.appimage \
                   -a -type f -printf '%p ')
     elif [ "$mac" = "yes" ]; then
-        results=$(find "${builddir}" -maxdepth 1 -iname \*.mac \
-                  -a -type f -printf '%p ')
+        results=$(find "${builddir}" -maxdepth 1 -iname \*.dmg \
+                  -a -type f)
     elif [ $withmsi = yes ]; then
         results=$(find "${builddir}/src/signed_installers" -type f -printf '%p ')
     else
@@ -976,7 +976,7 @@ if [ "$err" = "0" ]; then
     echo >&2 ""
     echo >&2 "$PGM: ############### Success 🥳 ####################"
     for result in $results; do
-        ln -sf -t "${builddir}/artifacts/" "$result"
+        ln -sf "$result" "${builddir}/artifacts/$(basename $result)"
         echo >&2 "$PGM: Created: ${builddir}/artifacts/$(basename $result)"
     done
 else
