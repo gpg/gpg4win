@@ -63,6 +63,7 @@ Status / Hints / TODO list for MacOS builds
   - There are some extra patches in patches-mac which we should simply merge
     in the corresponding packages (gpgoljs). This is just to allow
     independent testing.
+  - -DCMAKE_MACOSX_BUNDLE=OFF in gpgoljs does not have the desired effect
 
 - Further TODOs:
   - bundling should be complete, but lacks "installer" look
