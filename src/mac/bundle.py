@@ -189,15 +189,15 @@ def checkAndPatchDependencies(file: Path, origin: Path):
     for depline in deplines:
         dep = depline.strip().split(' (')[0]  # otool -L gives '     <filename> (<version info>)'
         olddep = dep
-        if dep == "" or dep == libid:
+        if dep == "" or dep == libid or dep == str(file) + ":":
             continue
-        if 'homebrew' in dep:
-            error(f"{file} depends on homebrew lib {dep}")
         if (dep.startswith('/')):
             if (Path(dep).is_relative_to(srcPrefix)):
                 dep = destination(Path(dep))
             else:
-                # Absolute external dep -> leave alone (TODO: but check if valid)
+                # Absolute external system dep -> leave alone
+                if not (dep.startswith('/usr/lib') or dep.startswith('/System/Library')):
+                    error(f"{file} depends on external library {dep}")
                 continue
         elif (dep.startswith('@executable_path')):
             # Probably we do not have this, anywhere?
@@ -228,8 +228,8 @@ def checkAndPatchDependencies(file: Path, origin: Path):
 
 
 def createDMG(stagingFolder: Path, imageName: str, outfile: Path):
-   print("Creating dmg")
-   subprocess.run(["hdiutil", "create", "-srcfolder", str(stagingFolder), "-volname", imageName, str(outfile)]).check_returncode()
+    print("Creating dmg")
+    subprocess.run(["hdiutil", "create", "-srcfolder", str(stagingFolder), "-volname", imageName, str(outfile)]).check_returncode()
 
 # Steps to do:
 # - copy the cmake created application bundle skeleton to the real staging destination
@@ -249,7 +249,8 @@ def createDMG(stagingFolder: Path, imageName: str, outfile: Path):
 srcPrefix = Path(sys.argv[1])
 imageName = sys.argv[2]
 outFile = Path(sys.argv[3])
-os.remove(outFile)
+if os.path.exists(outFile):
+    os.remove(outFile)
 
 stagingDir = tempfile.TemporaryDirectory()
 destPrefix = Path(stagingDir.name)
