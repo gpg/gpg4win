@@ -26,7 +26,7 @@ set -e
 BUILDROOT=/build
 SRCDIR=/src
 INSTDIR=${BUILDROOT}/install
-IMAGENAME=Kleopatra
+TARGETIMAGENAME=Kleopatra
 
 # Check for the buildtype and existence of required files
 # early
@@ -45,10 +45,10 @@ PATH=/opt/homebrew/opt/cmake/bin:$PATH
 PATH=/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
 ${SRCDIR}/configure --enable-macimage --with-playground=${BUILDROOT}
 cd ${BUILDROOT}
-make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT}
+make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT} TARGETIMAGENAME=${TARGETIMAGENAME}
 
 # TODO: write and sign version file (see appimage scripts)
-python3 ${SRCDIR}/src/mac/bundle.py "${INSTDIR}" ${IMAGENAME} "${BUILDROOT}/${IMAGENAME}.dmg"
+python3 ${SRCDIR}/src/mac/bundle.py "${INSTDIR}" ${IMAGENAME} "${BUILDROOT}/${TARGETIMAGENAME}.dmg"
 
 echo ready
 exit 0

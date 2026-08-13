@@ -34,12 +34,6 @@
 # macdeployqt - https://doc.qt.io/qt-6/macos-deployment.html#macdeploy
 # KDE craft - https://invent.kde.org/packaging/craft/-/blob/master/bin/Packager/MacBasePackager.py?ref_type=heads
 #
-# Regarding .dmg creation, possibly the most simple script is this:
-# https://github.com/remko/fancy-dmg/blob/master/Makefile
-# The idea is essentially to create a template dmg, once, then simply
-# copy in the new files. The template dmg can be styled, manually, which
-# is not too much worse than the osascript used elsewhere.
-#
 # This script is not yet complete
 #
 # Note: MacOS 26.05 comes with Python 3.9, so we definitely don't want to
@@ -113,7 +107,9 @@ def destination(absFilePath: Path) -> str:
     elif fileName.endswith(tuple([".a", ".la"])):
         return None
     elif fileName.startswith("Applications"):
-        return re.sub(r'Applications/[^/]*/Contents/', '', fileName) # strip Application/xyz/Contents
+        if '/Contents/' in fileName:
+            return re.sub(r'Applications/[^/]*/Contents/', '', fileName) # strip Application/xyz/Contents
+        return None
     else:
         # moveList essentially as in KDE craft
         moveList = [
@@ -228,23 +224,51 @@ def checkAndPatchDependencies(file: Path, origin: Path):
 
 
 def createDMG(stagingFolder: Path, imageName: str, outfile: Path):
+    # To avoid extra dependencies and / or osascript hacks, we use a very simple
+    # approach to DMG styling, borrowed from:
+    # https://github.com/remko/fancy-dmg/blob/master/Makefile
+    # The idea is essentially to create a template dmg, once, then simply
+    # copy in the new files. The template dmg can be styled, manually.
     print("Creating dmg")
-    subprocess.run(["hdiutil", "create", "-srcfolder", str(stagingFolder), "-volname", imageName, str(outfile)]).check_returncode()
+    sys.stdout.flush()
+    dirName = imageName + '.app'
+    templateFile = Path(str(outfile) + ".template.dmg")
+    if not os.path.exists(templateFile):
+        print(f"No DMG template found. For a fancier installer style {templateFile}, manually, and run again.")
+        dummy = tempfile.TemporaryDirectory()
+        (Path(dummy.name) / dirName).mkdir()
+        (Path(dummy.name) / "Applications").symlink_to(Path("/Applications"))
+        subprocess.run(["hdiutil", "create", "-fs", "HFSX", "-layout", "SPUD", "-size", "1000000k", templateFile, "-srcfolder", dummy.name, "-format", "UDRW", "-volname", imageName]).check_returncode()
+        dummy.cleanup()
+
+    # attach a copy of the template, and copy over files
+    wcFile = Path(str(templateFile) + ".wc.dmg")
+    shutil.copy2(templateFile, wcFile)
+    mountPoint = f"/Volumes/{imageName}.staging"
+    print(f"Attaching DMG template at {mountPoint}")
+    subprocess.run(["hdiutil", "attach", wcFile, "-noautoopen", "-mountpoint", mountPoint, "-quiet"]).check_returncode()
+    print(f"Copying Files")
+    subprocess.run(["cp", "-R", str(stagingFolder / 'Applications' / dirName), mountPoint]).check_returncode()
+    # umount is not good enough, we need to "hdiutil detach" the working image
+    lines = subprocess.run(["hdiutil", "info"], text=True, capture_output=True).stdout.split('\n')
+    for line in lines:
+        if mountPoint in line:
+            dev = line.split('\t')[0]
+            subprocess.run(["hdiutil", "detach", dev])
+
+    print(f"Converting to compressed image")
+    subprocess.run(["hdiutil", "convert", wcFile, "-format", "UDZO", "-imagekey", "zlib-level=9", "-o", outfile]).check_returncode()
+    os.remove(wcFile)
 
 # Steps to do:
-# - copy the cmake created application bundle skeleton to the real staging destination
-# - copy all further files to their destination. We might want to take those from the
-#   individual dirs in PREIFX/pkgs, for easier filtering by package. We'll have to special-case
-#   those that have cmake support for MacOS bundles (kleopatra, okular).
+# - Copy all files to their final destination (relative to a staging dir)
 # - Fix up all library ids
-# - Fix up all library references
-#   For both we'll be keeping track of the origin location and the target location.
-#   After / while moving, we just patch any occurence of the former to point to the latter.
 # - remove rpaths (mostly broken)
-# - strip
-# - codesign
+# - Fix up all library references
+# - strip -> TODO
+# - codesign -> TODO
 # - package into DMG
-# - notarize (for some hints see macdeployqt docs)
+# - notarize -> TODO (for some hints see macdeployqt docs)
 
 srcPrefix = Path(sys.argv[1])
 imageName = sys.argv[2]

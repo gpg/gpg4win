@@ -69,6 +69,10 @@ Status / Hints / TODO list for MacOS builds
     - Clicking on icon does not bring up status dialog
     - We get a menu bar on Mac. If we want to keep that, it should allow
       access to settings, statusdialog, quit, about.
+  - kleopatra:
+    - toolbar buttons do not work
+    - raising window does not work?
+    - secret keys not shown in bold -> apparently certificate category defs are not found
 
 - Further TODOs:
   - bundling should be complete, but lacks "installer" look
