@@ -268,12 +268,16 @@ else
     if [ $(id -u) -eq 0 ]; then
         error "the GUI may not be run by root"
     fi
-    if [ -x "${this_dir}/usr/bin/kleopatra" ];then
+    if [ -x "${this_dir}/usr/bin/ministart" ];then
+        pgm="${this_dir}/usr/bin/ministart"
+        pgmargs=
+        callerargs=yes
+    elif [ -x "${this_dir}/usr/bin/kleopatra" ];then
         pgm="${this_dir}/usr/bin/kleopatra"
         pgmargs=
         callerargs=yes
     else
-        echo "Kleopatra not found" >&2
+        echo "No GUI found" >&2
         exit 2
     fi
 fi
