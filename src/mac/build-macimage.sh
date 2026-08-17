@@ -48,7 +48,7 @@ cd ${BUILDROOT}
 make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT} TARGETIMAGENAME=${TARGETIMAGENAME}
 
 # TODO: write and sign version file (see appimage scripts)
-python3 ${SRCDIR}/src/mac/bundle.py "${INSTDIR}" ${IMAGENAME} "${BUILDROOT}/${TARGETIMAGENAME}.dmg"
+python3 ${SRCDIR}/src/mac/bundle.py "${INSTDIR}" ${TARGETIMAGENAME} "${BUILDROOT}/${TARGETIMAGENAME}.dmg"
 
 echo ready
 exit 0

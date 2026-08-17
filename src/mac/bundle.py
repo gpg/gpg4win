@@ -37,7 +37,7 @@
 # This script is not yet complete
 #
 # Note: MacOS 26.05 comes with Python 3.9, so we definitely don't want to
-#       target a later Python, for now.
+#       target a later Python, for now. That means, no Path.walk(), among other things.
 
 from itertools import chain
 from pathlib import Path
@@ -223,6 +223,19 @@ def checkAndPatchDependencies(file: Path, origin: Path):
         subprocess.run(["install_name_tool", "-change", olddep, dep, file]).check_returncode()
 
 
+def finalizeBundle():
+    # a non-empty CFBundleIdentifier is needed to make some things work - importantly native file dialogs
+    # in theory this could be set via cmake in kleopatra, but let's not assume that remains the primary executable.
+    infoPlist = Path(bundleDir / 'Info.Plist')
+    with infoPlist.open('r') as f:
+        lines = f.readlines()
+        for i, line in enumerate(lines):
+            if '<key>CFBundleIdentifier</key>' in line:
+                lines[i+1] = lines[i+1].replace('<string></string>', '<string>org.kde.kleopatra</string>')
+    with infoPlist.open('w') as f:
+        f.writelines(lines)
+
+
 def createDMG(stagingFolder: Path, imageName: str, outfile: Path):
     # To avoid extra dependencies and / or osascript hacks, we use a very simple
     # approach to DMG styling, borrowed from:
@@ -249,12 +262,7 @@ def createDMG(stagingFolder: Path, imageName: str, outfile: Path):
     subprocess.run(["hdiutil", "attach", wcFile, "-noautoopen", "-mountpoint", mountPoint, "-quiet"]).check_returncode()
     print(f"Copying Files")
     subprocess.run(["cp", "-R", str(stagingFolder / 'Applications' / dirName), mountPoint]).check_returncode()
-    # umount is not good enough, we need to "hdiutil detach" the working image
-    lines = subprocess.run(["hdiutil", "info"], text=True, capture_output=True).stdout.split('\n')
-    for line in lines:
-        if mountPoint in line:
-            dev = line.split('\t')[0]
-            subprocess.run(["hdiutil", "detach", dev])
+    subprocess.run(["hdiutil", "detach", mountPoint])
 
     print(f"Converting to compressed image")
     subprocess.run(["hdiutil", "convert", wcFile, "-format", "UDZO", "-imagekey", "zlib-level=9", "-o", outfile]).check_returncode()
@@ -285,6 +293,7 @@ moveFilesToDestination()
 # purgeUnusedLibs()
 # stripBinaries()
 # sanityCheck()
+finalizeBundle()
 createDMG(destPrefix, imageName, outFile)
 stagingDir.cleanup()
 print(f"DMG created at {outFile}")

@@ -65,19 +65,24 @@ Status / Hints / TODO list for MacOS builds
   - Creating a bundle is handled via a python script. python 3.9 is available
     in MacOS 26.05
   - gpgol/web:
-    - -DCMAKE_MACOSX_BUNDLE=OFF does not have the desired effect
+    - (internal) -DCMAKE_MACOSX_BUNDLE=OFF does not have the desired effect
     - Clicking on icon does not bring up status dialog
     - We get a menu bar on Mac. If we want to keep that, it should allow
       access to settings, statusdialog, quit, about.
   - kleopatra:
-    - toolbar buttons do not work
     - raising window does not work?
-    - secret keys not shown in bold -> apparently certificate category defs are not found
+    - secret keys not shown in bold -> problem finding libkleopatrarc
+    - The (wrong) app icon from breeze gets picked up at runtime. The reason appears to be
+      that we link against libKF6BreezeIcons. The best way around it may be to use
+      rsync filtering similar to appimage? Otherwise, we'll have to -USE_BREEZE_ICONS=OFF
+      for KIconThemes)
 
 - Further TODOs:
-  - bundling should be complete, but lacks "installer" look
+  - installer is still very basic
   - entitlements?
   - There is no codesigning at all, yet
   - provide gpgconf.ctl
   - provide signed version
   - provision for gpd vs vsd-builds (later)
+  - bundle identifier currently hardcoded as org.kde.kleopatra
+  - add wrapper to select kleo / gpgpol / okular ...
