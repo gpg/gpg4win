@@ -622,34 +622,30 @@ runner_cmd_gpg_authcode_sign() {
 }
 
 
-# Copy some files to the Windows host to prepare the MSI linking
-# Args are: See below
 runner_cmd_msibase() {
-    local version="$1" gnupgmsi="$2"
+    local version="$1" gnupgmsi="$2" linkdir="${builddir}/wix"
 
     set +e
     [ -n "$verbose" ] && set -x
-    ssh "$WINHOST" "mkdir AppData\\Local\\Temp\\gpg4win-$version" || true
-    scp "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version";
-    scp "$srcdir"/src/icons/shield.ico \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
-    scp "$srcdir"/doc/logo/gpg4win-msi-header_install-493x58.bmp \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/header.bmp
-    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
-    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
-    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/info.bmp
-    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/exclamation.bmp
-    scp "$srcdir"/po/gpg4win-en.wxl \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
-    scp "$srcdir"/po/gpg4win-de.wxl \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
-    scp WixUI_Gpg4win.wxs \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    mkdir -p "${linkdir}"
+    cp -a "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
+        "${linkdir}";
+    cp -a "$srcdir"/src/icons/shield.ico \
+        "${linkdir}"
+    cp -a "$srcdir"/doc/logo/gpg4win-msi-header_install-493x58.bmp \
+        "${linkdir}"/header.bmp
+    cp -a "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+        "${linkdir}"/dialog.bmp
+    cp -a "$srcdir"/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
+        "${linkdir}"/info.bmp
+    cp -a "$srcdir"/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
+        "${linkdir}"/exclamation.bmp
+    cp -a "$srcdir"/po/gpg4win-en.wxl \
+        "${linkdir}"
+    cp -a "$srcdir"/po/gpg4win-de.wxl \
+        "${linkdir}"
+    cp -a WixUI_Gpg4win.wxs \
+        "${linkdir}"
     rc=0
     [ -n "$verbose" ] && set +x
     set -e
@@ -660,7 +656,7 @@ runner_cmd_msibase() {
 # Copy files to the Windows host
 runner_cmd_cptowinhost() {
     local version="$1"
-    local target="$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    local target="${builddir}/wix"
     local files
 
     shift
@@ -670,8 +666,8 @@ runner_cmd_cptowinhost() {
         files="$files $(transform_dir "$f")"
     done
     set +e
-    echo >&2 "$PGM: running scp $files  $target"
-    scp $files  "$target"
+    echo >&2 "$PGM: running cp -a $files  $target"
+    cp -a $files  "$target"
     rc=$?
     set -e
 
@@ -681,10 +677,10 @@ runner_cmd_cptowinhost() {
 # Copy file from the Windows host
 runner_cmd_cpfromwinhost() {
     local version="$1" prefix="$2" name="$3" vsdvers="$4"
-    local mydir="$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    local mydir="${builddir}/wix"
 
     set +e
-    scp "$mydir/$prefix-$version-$name.msi" \
+    cp -a "$mydir/$prefix-$version-$name.msi" \
         "$builddir/src/installers/$prefix-$vsdvers-$name.msi"
     rc=$?
     set -e
@@ -698,15 +694,15 @@ runner_cmd_lightwinhost() {
 
     [ -n "$verbose" ] && set -x
     set +e
-    ssh "$WINHOST" "cd AppData/Local/Temp/gpg4win-$version \
-        && $WINLIGHT \
-        -cc . -reusecab -spdb \
+    cd "${builddir}/wix" \
+        && WINEDEBUG=warn+all $WINE "$WIXPREFIX/light.exe" \
+        -cc . -reusecab -spdb -sval \
         -ext WixUIExtension   \
         -ext WixUtilExtension \
         -out $prefix-$version-$name.msi \
         $(echo "$intlopt" | sed 's,%20, ,g') \
         -dcl:high -pedantic \
-        $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name-$version.wixlib" \
+        $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name-$version.wixlib \
       | grep -v "ICE80" | grep -v "ICE57"
     rc="${PIPESTATUS[0]}"
     set -e
@@ -717,7 +713,6 @@ runner_cmd_lightwinhost() {
 
     return 0
 }
-
 
 
 # Run the Wix tools under Wine.
