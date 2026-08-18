@@ -30,17 +30,19 @@ create_run_script () {
 
 this_dir="$(readlink -f "$(dirname "$0")")"
 if [ -f "${APPDIR}/GnuPG-VS-Desktop-VERSION" ]; then
-    _gnupg_appimage=vsd
+    _gnupg_appimage="vsd"
     _gnupg_appimage_name="GnuPG VS-Desktop"
     myname="$_gnupg_appimage_name "$(cat "${APPDIR}/GnuPG-VS-Desktop-VERSION")
 elif [ -f "${APPDIR}/GnuPG-Desktop-VERSION" ]; then
-    _gnupg_appimage=desktop
+    _gnupg_appimage="desktop"
     _gnupg_appimage_name="GnuPG Desktop"
     myname="$_gnupg_appimage_name "$(cat "${APPDIR}/GnuPG-Desktop-VERSION")
-else
-    _gnupg_appimage=generic
+elif [ -f "${APPDIR}/Gpg4win-VERSION" ]; then
+    _gnupg_appimage="generic"
     _gnupg_appimage_name="Gpg4win"
     myname="$_gnupg_appimage_name "$(cat "${APPDIR}/Gpg4win-VERSION")
+else
+    error "no valid *-VERSION file found!"
 fi
 
 opt_c=no
