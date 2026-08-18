@@ -225,6 +225,9 @@ if [ $opt_install = yes ]; then
     if [ $docopy = yes ]; then
         AI_TEMPDIR="$(mktemp -d --suffix=_gnuppg-vsd)"
         cp -R "${APPDIR}"/usr/share/gnupg/conf/gnupg-vsd "${AI_TEMPDIR}"
+        [ -f "${APPDIR}"/usr/etc/ministart.config ] \
+            && mkdir -p "${AI_TEMPDIR}"/gnupg-vsd/GUI \
+            && cp "${APPDIR}"/usr/etc/ministart.config "${AI_TEMPDIR}"/gnupg-vsd/GUI/ministart.config
         for f in "${AI_TEMPDIR}"/gnupg-vsd/* ; do
         t="/etc/gnupg-vsd/${f##*/}"
         if [ -d "$f" ]; then
