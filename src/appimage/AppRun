@@ -9,6 +9,25 @@ error () {
     fi
 }
 
+# Create a script so that external programs have a way to figure
+# out information on this AppImage instance.  We don't fail on
+# write error so that it is usable also in read-only environments.
+create_run_script () {
+    local FILE="$1"
+    local AUTHOR="$2"
+    local GNUPGHOME="$3"
+    local APPDIR="$4"
+    cat > "${FILE}" <<-EOF || true
+	#!/bin/sh
+	# Created by ${AUTHOR}
+	GNUPGHOME="${GNUPGHOME}"
+	APPDIR="${APPDIR}"
+	export GNUPGHOME APPDIR
+	exec ${APPDIR}/usr/bin/gpgconf "\$@"
+	EOF
+    chmod +x "${FILE}" || true
+}
+
 this_dir="$(readlink -f "$(dirname "$0")")"
 if [ -f "${APPDIR}/GnuPG-VS-Desktop-VERSION" ]; then
     _gnupg_appimage=vsd
@@ -297,35 +316,12 @@ fi
 if [ ${_gnupg_appimage} = vsd -a -z "$GNUPGHOME" ]; then
     GNUPGHOME="$HOME/.gnupg-vsd"
     export GNUPGHOME
-    if [ ! -d "$GNUPGHOME" ]; then
-        mkdir "$GNUPGHOME"
-        chmod 700 "$GNUPGHOME"
-    fi
-    # Create a script so that external programs have a way to figure
-    # out information on this AppImage instance.  We don't fail on
-    # write error so that it is usable also in read-only environments.
-    cat > "$GNUPGHOME"/run-gpgconf <<EOF || true
-#!/bin/sh
-# Created by $myname
-GNUPGHOME="$GNUPGHOME"
-APPDIR="$APPDIR"
-export GNUPGHOME APPDIR
-exec $APPDIR/usr/bin/gpgconf "\$@"
-EOF
-    chmod +x "$GNUPGHOME"/run-gpgconf || true
+    [ ! -d "$GNUPGHOME" ] && mkdir --mode=700 "$GNUPGHOME"
+    create_run_script "$GNUPGHOME"/run-gpgconf \
+        "$myname" "$GNUPGHOME" "$APPDIR"
 elif [ ${_gnupg_appimage} = desktop -a -w "${GNUPGHOME:-$HOME/.gnupg}" ]; then
-    # Create a script so that external programs have a way to figure
-    # out information on this AppImage instance.  We don't fail on
-    # write error so that it is usable also in read-only environments.
-    cat > "${GNUPGHOME:-$HOME/.gnupg}"/run-desktop-gpgconf <<EOF || true
-#!/bin/sh
-# Created by $myname
-GNUPGHOME="${GNUPGHOME:-$HOME/.gnupg}"
-APPDIR="$APPDIR"
-export GNUPGHOME APPDIR
-exec $APPDIR/usr/bin/gpgconf "\$@"
-EOF
-    chmod +x "${GNUPGHOME:-$HOME/.gnupg}"/run-desktop-gpgconf || true
+    create_run_script "${GNUPGHOME:-$HOME/.gnupg}"/run-desktop-gpgconf \
+        "$myname" "$GNUPGHOME" "$APPDIR"
 fi
 
 # Start gpg-agent launching a program.  gpg-agent will then watch for
