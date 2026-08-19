@@ -67,8 +67,9 @@ def moveFilesToDestination():
     files = chain((srcPrefix / 'Applications').rglob('*'), (srcPrefix / "pkgs").rglob('*'))
     for f in files:
         dest = destination(f)
-        if (dest == None):
-            print(f"Skipping {f}")
+        if dest == None:
+            if not f.is_dir():
+                print(f"Skipping {f}")
         else:
             (bundleDir / dest).parent.mkdir(parents=True, exist_ok=True)
             if f.is_symlink():
@@ -98,6 +99,7 @@ def destination(absFilePath: Path) -> str:
         filePath = absFilePath.relative_to(srcPrefix)
         package = ""
         fileName = str(filePath)
+
     if package in ["qttools"]:
         return None
     elif package == "qtbase" and "objects-Release" in fileName:
@@ -126,6 +128,9 @@ def destination(absFilePath: Path) -> str:
         for (src, dest) in moveList:
             if (fileName.startswith(src + '/')) and fileName != src:
                 return fileName.replace(src, dest, 1)
+        if fileName.startswith('etc/'):
+            # flatten subdirs in /etc; currently affects only libkleopatrarc
+            return "Resources/" + filePath.parts[-1]
     return None
 
 
@@ -234,6 +239,16 @@ def finalizeBundle():
                 lines[i+1] = lines[i+1].replace('<string></string>', '<string>org.kde.kleopatra</string>')
     with infoPlist.open('w') as f:
         f.writelines(lines)
+
+    # fix kleopatra icon
+    iconsDir = bundleDir / 'Resources' / 'icons'
+    goodIcon = iconsDir / 'hicolor' / 'scalable' / 'apps' / 'kleopatra.svg'
+    icons = chain(iconsDir.rglob('kleopatra.svg'), iconsDir.rglob('kleopatra-symbolic.svg'))
+    for icon in icons:
+        if icon != goodIcon:
+            print(f"Replacing {str(icon)}")
+            icon.unlink()
+            shutil.copy2(goodIcon, icon)
 
 
 def createDMG(stagingFolder: Path, imageName: str, outfile: Path):

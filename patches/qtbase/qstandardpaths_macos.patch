@@ -1,0 +1,27 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@gnupg.com>
+
+Several KDE frameworks (reasonably) assume GenericConfigLocation
+and GenericDataLocation will include (a) path(s) where installed
+files from other frameworks can be found. In vanilla Qt,
+QStandardPaths returns a user writable location, only, probably
+because there is not really a concept for system-wide shared files.
+
+Since the relevant files are installed inside our bundle, we can
+quite simply use add that location to the search path.
+
+This fixes problems finding libkleopatrarc, and installed icons.
+--- a/src/corelib/io/qstandardpaths_mac.mm	2026-08-17 16:53:36
++++ b/src/corelib/io/qstandardpaths_mac.mm	2026-08-19 08:36:28
+@@ -187,7 +187,7 @@
+         }
+     }
+
+-    if (type == AppDataLocation || type == AppLocalDataLocation) {
++    if (type == AppDataLocation || type == AppLocalDataLocation || type == GenericConfigLocation || type == GenericDataLocation) {
+         CFBundleRef mainBundle = CFBundleGetMainBundle();
+         if (mainBundle) {
+             if (QCFType<CFURLRef> resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle)) {

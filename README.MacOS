@@ -71,11 +71,9 @@ Status / Hints / TODO list for MacOS builds
       access to settings, statusdialog, quit, about.
   - kleopatra:
     - raising window does not work?
-    - secret keys not shown in bold -> problem finding libkleopatrarc
-    - The (wrong) app icon from breeze gets picked up at runtime. The reason appears to be
-      that we link against libKF6BreezeIcons. The best way around it may be to use
-      rsync filtering similar to appimage? Otherwise, we'll have to -USE_BREEZE_ICONS=OFF
-      for KIconThemes)
+  - general:
+    - the bundle still has quite a few unused files. Copy rsync filters from
+      AppImage, after all? Paths are not the same, however.
 
 - Further TODOs:
   - installer is still very basic
