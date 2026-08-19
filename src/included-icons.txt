@@ -14,12 +14,14 @@ application-pkcs7-signature
 application-vnd.oasis.opendocument.text
 applications-graphics
 applications-system
+arrow
 arrow-down
 arrow-left
 arrow-left-double
 arrow-right
 arrow-right-double
 arrow-up
+auth-sim
 auth-sim-locked
 bookmark-new
 bookmark-new-list
@@ -43,9 +45,11 @@ configure
 configure-shortcuts
 configure-symbolic
 configure-toolbars
+contact-new
 contact-new-symbolic
 cpu
 data-error
+data-information
 data-warning
 dialog-cancel
 dialog-close
@@ -83,6 +87,7 @@ document-save-symbolic
 document-share
 document-sign
 download
+draw-arrow
 draw-arrow-down
 draw-arrow-up
 draw-brush
@@ -95,8 +100,10 @@ draw-line
 draw-polyline
 draw-rectangle
 draw-text
+drive
 drive-removable-media
 dvipdf
+edit-clear
 edit-clear-history
 edit-clear-locationbar-ltr
 edit-clear-locationbar-rtl
@@ -133,6 +140,7 @@ expand
 expand-all
 expand-symbolic
 favorite
+fill-color
 folder
 folder-new
 folder-open
@@ -194,11 +202,13 @@ invertimage
 kde
 kleopatra
 kt-add-filters
+kt-remove
 kt-remove-filters
 ktip
 list-add
 list-add-symbolic
 list-remove
+lock
 mail-attachment
 mail-encrypted
 mail-send
@@ -227,11 +237,14 @@ pin
 plasma
 plasmadiscover
 player-time
+preferences
+preferences-desktop
 preferences-desktop-accessibility
 preferences-desktop-color
 preferences-desktop-icons
 preferences-desktop-locale
 preferences-desktop-text-to-speech
+preferences-system
 preferences-system-network
 preferences-system-performance
 preferences-web-browser-cookies
@@ -240,8 +253,10 @@ process-stop
 question
 rating
 rating-unrated
+resource-group
 resource-group-new
 run-build-configure
+search
 security-high
 security-low
 security-medium
@@ -249,6 +264,7 @@ select
 select-rectangular
 send-to-symbolic
 settings-configure
+show_table_column
 sidebar-show-symbolic
 snap
 snap-angle
@@ -258,6 +274,7 @@ system-lock-screen
 system-run
 tab-close
 tab-duplicate
+tab-new
 tab-new-background
 table
 tag
@@ -268,6 +285,7 @@ text-plain
 text-speak
 text-x-generic
 tool-text
+tools
 tools-check-spelling
 tools-report-bug
 transform-browse
@@ -314,6 +332,7 @@ view-sort
 view-split-left-right
 view-task
 visibility
+window
 window-close
 window-new
 x-office-address-book
