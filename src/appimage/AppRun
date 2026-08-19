@@ -128,9 +128,7 @@ EOF
             ;;
     esac
     shift
-    if [ $lastoption = yes ]; then
-        break;
-    fi
+    [ $lastoption = yes ] && break;
 done
 
 if [ $opt_debug = yes ]; then
@@ -190,12 +188,8 @@ fi
 
 
 mycleanup () {
-    if [ -n "${gnupg_SETUPINIFILE}" ]; then
-        rm -f "${gnupg_SETUPINIFILE}"
-    fi
-    if [ -n "${AI_TEMPDIR}" ]; then
-        rm -rf "${AI_TEMPDIR}"
-    fi
+    [ -n "${gnupg_SETUPINIFILE}" ] && rm -f "${gnupg_SETUPINIFILE}"
+    [ -n "${AI_TEMPDIR}" ] && rm -rf "${AI_TEMPDIR}"
 }
 
 gnupg_SETUPINIFILE=
@@ -267,9 +261,7 @@ fi
 
 callerargs=no
 if [ $opt_c = yes ]; then
-    if [ ! -x "$SHELL" ]; then
-        error "no shell found"
-    fi
+    [ ! -x "$SHELL" ] && error "no shell found"
     if [ -n "$1" ]; then
         pgm=/usr/bin/env
         pgmargs=
@@ -289,9 +281,7 @@ if [ $opt_c = yes ]; then
         echo "" >&2
     fi
 else
-    if [ $(id -u) -eq 0 ]; then
-        error "the GUI may not be run by root"
-    fi
+    [ $(id -u) -eq 0 ] && error "the GUI may not be run by root"
     if [ -x "${this_dir}/usr/bin/ministart" ];then
         pgm="${this_dir}/usr/bin/ministart"
         pgmargs=
