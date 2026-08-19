@@ -22,6 +22,17 @@
 # might be called from our UI apps. So anything that does QIcon::fromTheme
 # is included and for Pagedialogs also the addPage.
 
+if [ -z "$1" ]; then
+    echo "Usage: $(basename $0) TOP_BUILD_DIR"
+    exit 1
+fi
+
+BUILD_DIR="$1"
+if [ ! -d ${BUILD_DIR}/build ]; then
+    echo "Error: Directory does not exist: ${BUILD_DIR}/build"
+    exit 1
+fi
+
 # First we grab all the breeze icons
 ICONS=$(find /usr/share/icons/breeze -name \*.svg | \
         sed 's@/usr/share/icons/breeze/.*/@@' | sed 's@.svg@@' | \
@@ -61,9 +72,9 @@ PACKAGES="kleopatra
 
 
 for pkg in $PACKAGES; do
-    sdirs=$(ls playground/build | grep $pkg | grep -v build)
+    sdirs=$(ls ${BUILD_DIR}/build | grep $pkg | grep -v build)
     for dir in $sdirs; do
-        sdir=playground/build/$dir
+        sdir=${BUILD_DIR}/build/$dir
         if ! grep -r -m 1 -q QIcon $sdir; then
             echo "skipping $dir no QIcon"
             continue
