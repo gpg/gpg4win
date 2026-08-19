@@ -2,61 +2,252 @@
 patch -p1 -f -l $* < $0
 exit $?
 
-From b0337a88bb1950a0146fe9c6b625235768dfc58e Mon Sep 17 00:00:00 2001
+From e9a322eb283b6bb8c3eb69a27860109e8ba27ecc Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
 Date: Tue, 7 Jul 2026 15:25:57 +0200
-Subject: [PATCH] Make Vista style use correct text color for selected
- buttons
+Subject: [PATCH] Make Vista style use correct text color for selected buttons
 
 This fixes bad text/background contrast of buttons with Windows high
 contrast themes.
 
 GnuPG-bug-id: 7585
+Change-Id: I42941673917be0e91ca10679d6ad0a95ef8e6945
 ---
- src/widgets/styles/qcommonstyle.cpp | 19 ++++++++++++++++++-
- 1 file changed, 18 insertions(+), 1 deletion(-)
+ .../windowsvista/qwindowsvistastyle.cpp       |  92 ++++++++++++++++
+ .../styles/windowsvista/qwindowsxpstyle.cpp   | 104 ++++++++++++++++++
+ 2 files changed, 196 insertions(+)
 
-diff --git a/src/widgets/styles/qcommonstyle.cpp b/src/widgets/styles/qcommonstyle.cpp
-index a79c33005c6..469cbd31132 100644
---- a/src/widgets/styles/qcommonstyle.cpp
-+++ b/src/widgets/styles/qcommonstyle.cpp
-@@ -119,8 +119,23 @@
- #include <private/qtextengine_p.h>
- #include <private/qstylehelper_p.h>
+diff --git a/src/plugins/styles/windowsvista/qwindowsvistastyle.cpp b/src/plugins/styles/windowsvista/qwindowsvistastyle.cpp
+index 47225899bd6..d9896ef0e3d 100644
+--- a/src/plugins/styles/windowsvista/qwindowsvistastyle.cpp
++++ b/src/plugins/styles/windowsvista/qwindowsvistastyle.cpp
+@@ -77,6 +77,11 @@ static const int windowsRightBorder      = 15; // right border on windows
+ #  define CMDLGS_DISABLED 4
+ #endif
 
-+#ifdef Q_OS_WIN
-+#  include <qt_windows.h>
-+#endif
++static QWindow *qt_getWindow(const QWidget *widget)
++{
++    return widget ? widget->window()->windowHandle() : nullptr;
++}
 +
- QT_BEGIN_NAMESPACE
+ /* \internal
+     Checks if we should use Vista style , or if we should
+     fall back to Windows style.
+@@ -1003,6 +1008,93 @@ void QWindowsVistaStyle::drawControl(ControlElement element, const QStyleOption
+         }
+         break;
 
++    case CE_PushButtonLabel:
++        // copied from QCommonStyle to fix the textRole
++        if (const QStyleOptionButton *button = qstyleoption_cast<const QStyleOptionButton *>(option)) {
++            const auto opt = option; // alias, so that I don't have to patch copied code
++            const auto p = painter; // alias, so that I don't have to patch copied code
++            {
++            const QStyleOptionButton *btn = button; // alias, so that I don't have to patch copied code
++            // copied from case CE_PushButtonBevel
++            bool justFlat = (btn->features & QStyleOptionButton::Flat) && !(flags & (State_On|State_Sunken));
++            if (!(flags & State_Enabled) && !(btn->features & QStyleOptionButton::Flat))
++                stateId = PBS_DISABLED;
++            else if (justFlat)
++                ;
++            else if (flags & (State_Sunken | State_On))
++                stateId = PBS_PRESSED;
++            else if (flags & State_MouseOver)
++                stateId = PBS_HOT;
++            else if (btn->features & QStyleOptionButton::DefaultButton && (state & State_Active))
++                stateId = PBS_DEFAULTED;
++            else
++                stateId = PBS_NORMAL;
++            // end of copied from case CE_PushButtonBevel
++            }
++            QRect textRect = button->rect;
++            uint tf = Qt::AlignVCenter | Qt::TextShowMnemonic;
++            if (!proxy()->styleHint(SH_UnderlineShortcut, button, widget))
++                tf |= Qt::TextHideMnemonic;
++
++            if (!button->icon.isNull()) {
++                //Center both icon and text
++                QIcon::Mode mode = button->state & State_Enabled ? QIcon::Normal : QIcon::Disabled;
++                if (mode == QIcon::Normal && button->state & State_HasFocus)
++                    mode = QIcon::Active;
++                QIcon::State state = QIcon::Off;
++                if (button->state & State_On)
++                    state = QIcon::On;
++
++                QPixmap pixmap = button->icon.pixmap(qt_getWindow(widget), button->iconSize, mode, state);
++                int pixmapWidth = pixmap.width() / pixmap.devicePixelRatio();
++                int pixmapHeight = pixmap.height() / pixmap.devicePixelRatio();
++                int labelWidth = pixmapWidth;
++                int labelHeight = pixmapHeight;
++                int iconSpacing = 4;//### 4 is currently hardcoded in QPushButton::sizeHint()
++                if (!button->text.isEmpty()) {
++                    int textWidth = button->fontMetrics.boundingRect(opt->rect, tf, button->text).width();
++                    labelWidth += (textWidth + iconSpacing);
++                }
++
++                QRect iconRect = QRect(textRect.x() + (textRect.width() - labelWidth) / 2,
++                                       textRect.y() + (textRect.height() - labelHeight) / 2,
++                                       pixmapWidth, pixmapHeight);
++
++                iconRect = visualRect(button->direction, textRect, iconRect);
++
++                if (button->direction == Qt::RightToLeft) {
++                    tf |= Qt::AlignRight;
++                    textRect.setRight(iconRect.left() - iconSpacing / 2);
++                } else {
++                    tf |= Qt::AlignLeft; //left align, we adjust the text-rect instead
++                    textRect.setLeft(iconRect.left() + iconRect.width() + iconSpacing / 2);
++                }
++
++                if (button->state & (State_On | State_Sunken))
++                    iconRect.translate(proxy()->pixelMetric(PM_ButtonShiftHorizontal, opt, widget),
++                                       proxy()->pixelMetric(PM_ButtonShiftVertical, opt, widget));
++                p->drawPixmap(iconRect, pixmap);
++            } else {
++                tf |= Qt::AlignHCenter;
++            }
++            if (button->state & (State_On | State_Sunken))
++                textRect.translate(proxy()->pixelMetric(PM_ButtonShiftHorizontal, opt, widget),
++                             proxy()->pixelMetric(PM_ButtonShiftVertical, opt, widget));
++
++            if (button->features & QStyleOptionButton::HasMenu) {
++                int indicatorSize = proxy()->pixelMetric(PM_MenuButtonIndicator, button, widget);
++                if (button->direction == Qt::LeftToRight)
++                    textRect = textRect.adjusted(0, 0, -indicatorSize, 0);
++                else
++                    textRect = textRect.adjusted(indicatorSize, 0, 0, 0);
++            }
++            // HACK force correct text color for Windows Vista style with Windows high contrast theme
++            const auto textRole = (((stateId == PBS_HOT) || (stateId == PBS_DEFAULTED)) && queryHighContrast()) ? QPalette::HighlightedText : QPalette::ButtonText;
++            proxy()->drawItemText(p, textRect, tf, button->palette, (button->state & State_Enabled),
++                         button->text, textRole);
++        }
++        break;
++
+     case CE_ProgressBarContents:
+         if (const QStyleOptionProgressBar *bar
+                 = qstyleoption_cast<const QStyleOptionProgressBar *>(option)) {
+diff --git a/src/plugins/styles/windowsvista/qwindowsxpstyle.cpp b/src/plugins/styles/windowsvista/qwindowsxpstyle.cpp
+index 3148abf5677..ca91e1ad59c 100644
+--- a/src/plugins/styles/windowsvista/qwindowsxpstyle.cpp
++++ b/src/plugins/styles/windowsvista/qwindowsxpstyle.cpp
+@@ -219,6 +219,20 @@ static HRGN qt_hrgn_from_qregion(const QRegion &region)
+     return hRegion;
+ }
+
++static QWindow *qt_getWindow(const QWidget *widget)
++{
++    return widget ? widget->window()->windowHandle() : nullptr;
++}
++
 +static bool queryHighContrast()
 +{
-+#ifdef Q_OS_WIN
 +    HIGHCONTRAST hcf = {};
 +    hcf.cbSize = static_cast<UINT>(sizeof(HIGHCONTRAST));
 +    if (SystemParametersInfo(SPI_GETHIGHCONTRAST, hcf.cbSize, &hcf, FALSE))
 +        return hcf.dwFlags & HCF_HIGHCONTRASTON;
-+#endif
 +    return false;
 +}
 +
- static QWindow *qt_getWindow(const QWidget *widget)
- {
-     return widget ? widget->window()->windowHandle() : nullptr;
-@@ -1429,8 +1442,12 @@ void QCommonStyle::drawControl(ControlElement element, const QStyleOption *opt,
-                 else
-                     textRect = textRect.adjusted(indicatorSize, 0, 0, 0);
-             }
-+            // HACK force correct text color for Windows Vista style with Windows high contrast theme
-+            const bool hovered = button->state & State_MouseOver;
-+            const bool defaulted = (button->features & QStyleOptionButton::DefaultButton) && (button->state & State_Active);
-+            const auto textRole = ((hovered || defaulted) && queryHighContrast()) ? QPalette::HighlightedText : QPalette::ButtonText;
-             proxy()->drawItemText(p, textRect, tf, button->palette, (button->state & State_Enabled),
--                         button->text, QPalette::ButtonText);
-+                         button->text, textRole);
+ /* \internal
+     Checks if the theme engine can/should be used, or if we should
+     fall back to Windows style.
+@@ -2011,6 +2025,96 @@ void QWindowsXPStyle::drawControl(ControlElement element, const QStyleOption *op
+             return;
          }
          break;
-     case CE_RadioButton:
++
++    case CE_PushButtonLabel:
++        // copied from QCommonStyle to fix the textRole
++        if (const QStyleOptionButton *button = qstyleoption_cast<const QStyleOptionButton *>(option)) {
++            const auto opt = option; // alias, so that I don't have to patch copied code
++            {
++            const QStyleOptionButton *btn = button; // alias, so that I don't have to patch copied code
++            // copied from case CE_PushButtonBevel
++            bool justFlat = ((btn->features & QStyleOptionButton::Flat) && !(flags & (State_On|State_Sunken)))
++                || ((btn->features & QStyleOptionButton::CommandLinkButton)
++                    && !(flags & State_MouseOver)
++                    && !(btn->features & QStyleOptionButton::DefaultButton));
++            if (!(flags & State_Enabled) && !(btn->features & QStyleOptionButton::Flat))
++                stateId = PBS_DISABLED;
++            else if (justFlat)
++                ;
++            else if (flags & (State_Sunken | State_On))
++                stateId = PBS_PRESSED;
++            else if (flags & State_MouseOver)
++                stateId = PBS_HOT;
++            else if (btn->features & QStyleOptionButton::DefaultButton)
++                stateId = PBS_DEFAULTED;
++            else
++                stateId = PBS_NORMAL;
++            // end of copied from case CE_PushButtonBevel
++            }
++            QRect textRect = button->rect;
++            uint tf = Qt::AlignVCenter | Qt::TextShowMnemonic;
++            if (!proxy()->styleHint(SH_UnderlineShortcut, button, widget))
++                tf |= Qt::TextHideMnemonic;
++
++            if (!button->icon.isNull()) {
++                //Center both icon and text
++                QIcon::Mode mode = button->state & State_Enabled ? QIcon::Normal : QIcon::Disabled;
++                if (mode == QIcon::Normal && button->state & State_HasFocus)
++                    mode = QIcon::Active;
++                QIcon::State state = QIcon::Off;
++                if (button->state & State_On)
++                    state = QIcon::On;
++
++                QPixmap pixmap = button->icon.pixmap(qt_getWindow(widget), button->iconSize, mode, state);
++                int pixmapWidth = pixmap.width() / pixmap.devicePixelRatio();
++                int pixmapHeight = pixmap.height() / pixmap.devicePixelRatio();
++                int labelWidth = pixmapWidth;
++                int labelHeight = pixmapHeight;
++                int iconSpacing = 4;//### 4 is currently hardcoded in QPushButton::sizeHint()
++                if (!button->text.isEmpty()) {
++                    int textWidth = button->fontMetrics.boundingRect(opt->rect, tf, button->text).width();
++                    labelWidth += (textWidth + iconSpacing);
++                }
++
++                QRect iconRect = QRect(textRect.x() + (textRect.width() - labelWidth) / 2,
++                                       textRect.y() + (textRect.height() - labelHeight) / 2,
++                                       pixmapWidth, pixmapHeight);
++
++                iconRect = visualRect(button->direction, textRect, iconRect);
++
++                if (button->direction == Qt::RightToLeft) {
++                    tf |= Qt::AlignRight;
++                    textRect.setRight(iconRect.left() - iconSpacing / 2);
++                } else {
++                    tf |= Qt::AlignLeft; //left align, we adjust the text-rect instead
++                    textRect.setLeft(iconRect.left() + iconRect.width() + iconSpacing / 2);
++                }
++
++                if (button->state & (State_On | State_Sunken))
++                    iconRect.translate(proxy()->pixelMetric(PM_ButtonShiftHorizontal, opt, widget),
++                                       proxy()->pixelMetric(PM_ButtonShiftVertical, opt, widget));
++                p->drawPixmap(iconRect, pixmap);
++            } else {
++                tf |= Qt::AlignHCenter;
++            }
++            if (button->state & (State_On | State_Sunken))
++                textRect.translate(proxy()->pixelMetric(PM_ButtonShiftHorizontal, opt, widget),
++                             proxy()->pixelMetric(PM_ButtonShiftVertical, opt, widget));
++
++            if (button->features & QStyleOptionButton::HasMenu) {
++                int indicatorSize = proxy()->pixelMetric(PM_MenuButtonIndicator, button, widget);
++                if (button->direction == Qt::LeftToRight)
++                    textRect = textRect.adjusted(0, 0, -indicatorSize, 0);
++                else
++                    textRect = textRect.adjusted(indicatorSize, 0, 0, 0);
++            }
++            // HACK force correct text color for Windows Vista style with Windows high contrast theme
++            const auto textRole = (((stateId == PBS_HOT) || (stateId == PBS_DEFAULTED)) && queryHighContrast()) ? QPalette::HighlightedText : QPalette::ButtonText;
++            proxy()->drawItemText(p, textRect, tf, button->palette, (button->state & State_Enabled),
++                         button->text, textRole);
++        }
++        break;
++
+     case CE_TabBarTab:
+         if (const QStyleOptionTab *tab = qstyleoption_cast<const QStyleOptionTab *>(option))
+         {
 --
-2.54.0
+2.55.0
