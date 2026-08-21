@@ -655,6 +655,7 @@ runner_cmd_msibase() {
 
 # Copy files to the Windows host
 runner_cmd_cptowinhost() {
+    # TODO: remove obsolete version variable
     local version="$1"
     local target="${builddir}/wix"
     local files
@@ -668,6 +669,25 @@ runner_cmd_cptowinhost() {
     set +e
     echo >&2 "$PGM: running cp -a $files  $target"
     cp -a $files  "$target"
+    rc=$?
+    set -e
+
+    return 0
+}
+
+# Copy files to the Windows host and convert lineendings UNIX->WIN
+runner_cmd_cpconvert() {
+    local target="${builddir}/wix"
+    local files
+
+    files=
+    for f in "$@"; do
+        files="$files $(transform_dir "$f")"
+    done
+    set +e
+    full_target="$target/${files##*/}"
+    echo >&2 "$PGM: running perl -pe 's/(?<!\r)\n$/\r\n/' $files > $full_target"
+    perl -pe 's/(?<!\r)\n$/\r\n/' "$files" > "$full_target"
     rc=$?
     set -e
 
@@ -810,6 +830,7 @@ runner_exec_cmd() {
         gpg-authcode-sign) runner_cmd_gpg_authcode_sign "$line" ;;
         msibase) runner_cmd_msibase $line ;;
         cptowinhost)   runner_cmd_cptowinhost $line ;;
+        cpconvert)   runner_cmd_cpconvert $line ;;
         cpfromwinhost) runner_cmd_cpfromwinhost $line ;;
         lightwinhost)  runner_cmd_lightwinhost $line ;;
         litcandle) runner_cmd_litcandle $line ;;

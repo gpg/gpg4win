@@ -1094,8 +1094,8 @@ $(1)-package: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: \
      $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
      $(vsddir)/$(1)/license.rtf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
-	$(RUNCMD) cptowinhost $(VERSION) $(vsddir)/$(1)/license.rtf \
-                  $(idir)/$(1)-$(VERSION).wixlib \
+	$(RUNCMD) cpconvert $(vsddir)/$(1)/license.rtf
+	$(RUNCMD) cptowinhost $(VERSION) $(idir)/$(1)-$(VERSION).wixlib \
                   $(vsddir)/../$(call GETVAR,msi_target_$(1)_branding)/*.bmp \
                   $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
 	$(RUNCMD) lightwinhost $(VERSION) $(MSI_FNAME_PREFIX) $(1) \
