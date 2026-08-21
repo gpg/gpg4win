@@ -63,6 +63,11 @@ Section
   WriteRegStr SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp-encrypted" "Extension" ".gpg"
   WriteRegStr SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp-keys" "Extension" ".gpg"
 
+  # Make sure the etc direcory tree exists and is only writable with
+  # aministrator rights.
+  CreateDirectory "$%ALLUSERSPROFILE%\GNU\etc"
+  Exec '"$SYSDIR\icacls" "$%ALLUSERSPROFILE%\GNU\etc" /setintegritylevel h /c /q'
+
   call SetupExtensions
 SectionEnd
 
