@@ -1094,7 +1094,7 @@ $(1)-package: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi
 installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: \
      $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
      $(vsddir)/$(1)/license.rtf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
-	$(RUNCMD) cpconvert $(vsddir)/$(1)/license.rtf
+	$(RUNCMD) cpconvert $(VERSION) $(vsddir)/$(1)/license.rtf
 	$(RUNCMD) cptowinhost $(VERSION) $(idir)/$(1)-$(VERSION).wixlib \
                   $(vsddir)/../$(call GETVAR,msi_target_$(1)_branding)/*.bmp \
                   $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
@@ -1103,67 +1103,6 @@ installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1).msi: \
                   $(gpg4win_pkg_gnupg_msi_version)
 	$(RUNCMD) cpfromwinhost $(VERSION) $(MSI_FNAME_PREFIX) $(1) \
                   $(VSD_VERSION_FILE)
-
-
-# Running light.exe in WINE triggers the error:
-# 12627.235:0024:err:msidb:msi_commit_streams failed to write stream
-# L"\430b\4131\4735\443e\4336\41ac\47a8\43e7\482f" (hr = 0x80030102)
-#
-# Below code does not work with wine 9.14 and wixtools 3.11 / 3.14
-# See T7248 for details. The default MSI targets still require a
-# WINHOST this is only optional to assist in debugging.
-$(1)-wine: installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1)-wine.msi
-
-installers/$(MSI_FNAME_PREFIX)-$(VSD_VERSION_FILE)-$(1)-wine.msi: $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
-	$(vsddir)/$(1)/license.rtf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib
-	(
-	( set -x; set -e;\
-	workdir="$(idir)/$(1)-msi" || exit 1; \
-	mkdir -p $$$$workdir || exit 1; \
-	cp $(tsdir)/packages/gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
-	   $$$$workdir || exit 1; \
-	cp $(tsdir)/src/icons/shield.ico $$$$workdir || exit 1; \
-	cp $(tsdir)/doc/logo/gpg4win-msi-header_install-493x58.bmp \
-	   $$$$workdir/header.bmp || exit 1; \
-	cp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-	   $$$$workdir/dialog.bmp || exit 1; \
-	cp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-	   $$$$workdir/dialog.bmp || exit 1; \
-	cp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
-	   $$$$workdir/info.bmp || exit 1; \
-	cp $(tsdir)/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
-	   $$$$workdir/exclamation.bmp || exit 1; \
-	cp $(tsdir)/po/gpg4win-en.wxl $$$$workdir || exit 1; \
-	cp $(tsdir)/po/gpg4win-de.wxl $$$$workdir || exit 1; \
-	cp $(call GETVAR,msi_target_$(1)_branding)/*.bmp . || exit 1;\
-	cp WixUI_Gpg4win.wxs $$$$workdir || exit 1; \
-	ln -sf $$$$workdir $$$$WINEINST || exit 1; \
-	cd $$$$workdir || exit 1; \
-	ln -sf $(idir)/$(1).wixlib || exit 1; \
-	ln -sf $(vsddir)/$(1)/license.rtf || exit 1;\
-	ln -sf $(idir)/$(MSI_FNAME_PREFIX)-$(VERSION).wixlib || exit 1; \
-	LC_ALL=C WINEDEBUG=+timestamp,+loaddll,+debugstr,msi+all $(WINE) $$$$WIXPREFIX2/light.exe \
-	-cc . \
-	-ct 1 \
-	-reusecab \
-	-spdb \
-	-ext WixUIExtension \
-	-ext WixUtilExtension \
-	-out k:\\$(MSI_FNAME_PREFIX)-$(VERSION)-$(1).msi\
-	 $(call GETVAR,msi_target_$(1)_l10n) \
-	-dcl:none\
-	-pedantic \
-	 \
-	 k:\\$(MSI_FNAME_PREFIX)-$(VERSION).wixlib \
-	 k:\\gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
-	 k:\\$(1).wixlib | grep -v "ICE80" | grep -v "ICE57"  || exit 1; \
-	 cd $(abs_top_builddir)/src/installers || exit 1; \
-	 ln -sf $$$$workdir/$(MSI_FNAME_PREFIX)-$(VERSION)-$(1).msi || exit 1; \
-	) || ERR=1; rm -f $$$$WINEINST; \
-	if [ -n "$$$$ERR" ]; then \
-		exit 1; \
-	fi \
-	)
 
 $(idir)/$(1).wixlib: $(msidir)/$(1)/$(1).wxs
 	$(RUNCMD) litcandle ui $(VERSION) $(1) $(idir) $(ex_idir)

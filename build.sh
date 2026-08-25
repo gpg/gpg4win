@@ -47,6 +47,8 @@ Options:
         --update-image  Update the docker image before build
         --msi           Building MSI packages
                         Also assumes --w32 if BUILDTYPE is vsd3
+        --wine-only     Try using wixtools with Wine only
+                        Only relevant in combination with --msi
         --user=name     Use NAME as FTP server user
         --download      Download packages first
         --runcmd CMD    Run a command via a pair of FIFOs
@@ -100,6 +102,7 @@ download="no"
 runcmd="no"
 fromgit="no"
 withmsi="no"
+wineonly="no"
 force=no
 nosign=no
 ftpuser=
@@ -142,6 +145,7 @@ while [ $# -gt 0 ]; do
                                  custom_logfile="yes" ;;
         --user|--user=*)         ftpuser="${optarg}"  ;;
         --msi|--with-msi)        withmsi=yes          ;;
+        --wine-only)             wineonly=yes         ;;
         --verbose|-v)            verbose=yes          ;;
         --*) usage 1 1>&2; exit 1;;
         *) skipshift=1; break ;;
@@ -503,6 +507,7 @@ else
     [ $dist = yes ] && cmd="$cmd --dist"
     [ $force = yes ] && cmd="$cmd --force"
     [ $withmsi = yes -a $shell = no ] && cmd="$cmd --msi"
+    [ $wineonly = yes ] && cmd="$cmd --wine-only"
     docker_image=g10-build-gpg4win:trixie
     dockerfile=${srcdir}/docker/gpg4win-trixie
 fi
@@ -627,25 +632,49 @@ runner_cmd_msibase() {
 
     set +e
     [ -n "$verbose" ] && set -x
-    mkdir -p "${linkdir}"
-    cp -a "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
-        "${linkdir}";
-    cp -a "$srcdir"/src/icons/shield.ico \
-        "${linkdir}"
-    cp -a "$srcdir"/doc/logo/gpg4win-msi-header_install-493x58.bmp \
-        "${linkdir}"/header.bmp
-    cp -a "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-        "${linkdir}"/dialog.bmp
-    cp -a "$srcdir"/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
-        "${linkdir}"/info.bmp
-    cp -a "$srcdir"/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
-        "${linkdir}"/exclamation.bmp
-    cp -a "$srcdir"/po/gpg4win-en.wxl \
-        "${linkdir}"
-    cp -a "$srcdir"/po/gpg4win-de.wxl \
-        "${linkdir}"
-    cp -a WixUI_Gpg4win.wxs \
-        "${linkdir}"
+    if [ $wineonly = yes ] ; then
+        mkdir -p "${linkdir}"
+        cp -a "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
+            "${linkdir}";
+        cp -a "$srcdir"/src/icons/shield.ico \
+            "${linkdir}"
+        cp -a "$srcdir"/doc/logo/gpg4win-msi-header_install-493x58.bmp \
+            "${linkdir}"/header.bmp
+        cp -a "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+            "${linkdir}"/dialog.bmp
+        cp -a "$srcdir"/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
+            "${linkdir}"/info.bmp
+        cp -a "$srcdir"/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
+            "${linkdir}"/exclamation.bmp
+        cp -a "$srcdir"/po/gpg4win-en.wxl \
+            "${linkdir}"
+        cp -a "$srcdir"/po/gpg4win-de.wxl \
+            "${linkdir}"
+        cp -a WixUI_Gpg4win.wxs \
+            "${linkdir}"
+    else
+        ssh "$WINHOST" "mkdir AppData\\Local\\Temp\\gpg4win-$version" || true
+        scp "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version";
+        scp "$srcdir"/src/icons/shield.ico \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+        scp "$srcdir"/doc/logo/gpg4win-msi-header_install-493x58.bmp \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/header.bmp
+        scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
+        scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
+        scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/info.bmp
+        scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/exclamation.bmp
+        scp "$srcdir"/po/gpg4win-en.wxl \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+        scp "$srcdir"/po/gpg4win-de.wxl \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+        scp WixUI_Gpg4win.wxs \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    fi
     rc=0
     [ -n "$verbose" ] && set +x
     set -e
@@ -655,9 +684,12 @@ runner_cmd_msibase() {
 
 # Copy files to the Windows host
 runner_cmd_cptowinhost() {
-    # TODO: remove obsolete version variable
     local version="$1"
-    local target="${builddir}/wix"
+    if [ $wineonly = yes ] ; then
+        local target="${builddir}/wix"
+    else
+        local target="$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    fi
     local files
 
     shift
@@ -667,8 +699,13 @@ runner_cmd_cptowinhost() {
         files="$files $(transform_dir "$f")"
     done
     set +e
-    echo >&2 "$PGM: running cp -a $files  $target"
-    cp -a $files  "$target"
+    if [ $wineonly = yes ] ; then
+        echo >&2 "$PGM: running cp -a $files  $target"
+        cp -a $files  "$target"
+    else
+        echo >&2 "$PGM: running scp $files  $target"
+        scp $files  "$target"
+    fi
     rc=$?
     set -e
 
@@ -677,19 +714,29 @@ runner_cmd_cptowinhost() {
 
 # Copy files to the Windows host and convert lineendings UNIX->WIN
 runner_cmd_cpconvert() {
-    local target="${builddir}/wix"
-    local files
+    if [ $wineonly = yes ] ; then
+        # we don't use $version, but it's needed for
+        # runner_cmd_cptowinhost(), maybe
+        local version="$1"
+        local target="${builddir}/wix"
+        local files
 
-    files=
-    for f in "$@"; do
-        files="$files $(transform_dir "$f")"
-    done
-    set +e
-    full_target="$target/${files##*/}"
-    echo >&2 "$PGM: running perl -pe 's/(?<!\r)\n$/\r\n/' $files > $full_target"
-    perl -pe 's/(?<!\r)\n$/\r\n/' "$files" > "$full_target"
-    rc=$?
-    set -e
+        shift
+
+        files=
+        for f in "$@"; do
+            files="$files $(transform_dir "$f")"
+        done
+        set +e
+        full_target="$target/${files##*/}"
+        echo >&2 "$PGM: running perl -pe 's/(?<!\r)\n$/\r\n/' $files > $full_target"
+        perl -pe 's/(?<!\r)\n$/\r\n/' "$files" > "$full_target"
+        rc=$?
+        set -e
+    else
+        # if run on windows this conversion is done there on the fly
+        runner_cmd_cptowinhost "$@"
+    fi
 
     return 0
 }
@@ -697,11 +744,20 @@ runner_cmd_cpconvert() {
 # Copy file from the Windows host
 runner_cmd_cpfromwinhost() {
     local version="$1" prefix="$2" name="$3" vsdvers="$4"
-    local mydir="${builddir}/wix"
+    if [ $wineonly = yes ] ; then
+        local mydir="${builddir}/wix"
+    else
+        local mydir="$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    fi
 
     set +e
-    cp -a "$mydir/$prefix-$version-$name.msi" \
-        "$builddir/src/installers/$prefix-$vsdvers-$name.msi"
+    if [ $wineonly = yes ] ; then
+        cp -a "$mydir/$prefix-$version-$name.msi" \
+            "$builddir/src/installers/$prefix-$vsdvers-$name.msi"
+    else
+        scp "$mydir/$prefix-$version-$name.msi" \
+            "$builddir/src/installers/$prefix-$vsdvers-$name.msi"
+    fi
     rc=$?
     set -e
 
@@ -714,16 +770,29 @@ runner_cmd_lightwinhost() {
 
     [ -n "$verbose" ] && set -x
     set +e
-    cd "${builddir}/wix" \
-        && WINEDEBUG=warn+all $WINE "$WIXPREFIX/light.exe" \
-        -cc . -reusecab -spdb -sval \
-        -ext WixUIExtension   \
-        -ext WixUtilExtension \
-        -out $prefix-$version-$name.msi \
-        $(echo "$intlopt" | sed 's,%20, ,g') \
-        -dcl:high -pedantic \
-        $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name-$version.wixlib \
-      | grep -v "ICE80" | grep -v "ICE57"
+    if [ $wineonly = yes ] ; then
+        cd "${builddir}/wix" \
+            && WINEDEBUG=warn+all $WINE "$WIXPREFIX/light.exe" \
+            -cc . -reusecab -spdb -sval \
+            -ext WixUIExtension   \
+            -ext WixUtilExtension \
+            -out $prefix-$version-$name.msi \
+            $(echo "$intlopt" | sed 's,%20, ,g') \
+            -dcl:high -pedantic \
+            $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name-$version.wixlib \
+        | grep -v "ICE80" | grep -v "ICE57"
+    else
+        ssh "$WINHOST" "cd AppData/Local/Temp/gpg4win-$version \
+            && $WINLIGHT \
+            -cc . -reusecab -spdb \
+            -ext WixUIExtension   \
+            -ext WixUtilExtension \
+            -out $prefix-$version-$name.msi \
+            $(echo "$intlopt" | sed 's,%20, ,g') \
+            -dcl:high -pedantic \
+            $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name-$version.wixlib" \
+        | grep -v "ICE80" | grep -v "ICE57"
+    fi
     rc="${PIPESTATUS[0]}"
     set -e
     [ -n "$verbose" ] && set +x
@@ -825,16 +894,16 @@ runner_exec_cmd() {
     # The called functions need to set RC to the desired exit status
     rc=42
     case "$cmd" in
-        ping) echo pong; rc=0 ;;
-        gpg)  runner_cmd_gpg "gpg $line" ;;
-        gpg-authcode-sign) runner_cmd_gpg_authcode_sign "$line" ;;
-        msibase) runner_cmd_msibase $line ;;
-        cptowinhost)   runner_cmd_cptowinhost $line ;;
-        cpconvert)   runner_cmd_cpconvert $line ;;
-        cpfromwinhost) runner_cmd_cpfromwinhost $line ;;
-        lightwinhost)  runner_cmd_lightwinhost $line ;;
-        litcandle) runner_cmd_litcandle $line ;;
-        *)    echo "$PGM(runner): $cmd: no such command"; rc=4 ;;
+        ping)               echo pong; rc=0 ;;
+        gpg)                runner_cmd_gpg "gpg $line" ;;
+        gpg-authcode-sign)  runner_cmd_gpg_authcode_sign "$line" ;;
+        msibase)            runner_cmd_msibase $line ;;
+        cptowinhost)        runner_cmd_cptowinhost $line ;;
+        cpconvert)          runner_cmd_cpconvert $line ;;
+        cpfromwinhost)      runner_cmd_cpfromwinhost $line ;;
+        lightwinhost)       runner_cmd_lightwinhost $line ;;
+        litcandle)          runner_cmd_litcandle $line ;;
+        *)                  echo "$PGM(runner): $cmd: no such command"; rc=4 ;;
     esac
     echo >&2 "$PGM: runner cmd '$cmd' returned $rc"
     # Make sure that we have a final LF in the output and then write
