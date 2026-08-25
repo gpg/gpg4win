@@ -166,8 +166,8 @@ chk  8bd24b4f23a3065d6e5b26e98aba9ce783ea4fd781069c1b35d149694e90ca3e
 # last changed 2026-06-02
 # by wk
 # verified: swdb
-file libksba/libksba-1.8.0.tar.bz2
-chk  296b9db9095749f2aa104202d7ab7fd09ad10710e00780a709c9754b1a1d9292
+file libksba/libksba-1.8.1.tar.bz2
+chk  c2f84393011827219ae117131dba8e7684c2bed0961eed11b0642c2acba440b5
 
 
 # last changed 2024-01-12
