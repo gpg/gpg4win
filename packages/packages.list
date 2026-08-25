@@ -628,12 +628,12 @@ server https://gnupg.org/ftp/gcrypt
 # signature made by "Werner Koch (dist sig)" or one of the other
 # gnupg main contributors.
 
-# last changed 2026-04-15
+# last changed 2026-08-25
 # by wk
 # verified: [swdb]
 # (required for the appimage)
-file libgcrypt/libgcrypt-1.8.13.tar.bz2
-chk  7c6489ae102ebd6dcc09a40344f181ceb719653a4b56bf3c6e35606d4bbd30e8
+file libgcrypt/libgcrypt-1.8.14.tar.bz2
+chk  9608d222917e3747336993a24ef9e18bf5aa6b2d35c67a13219f9172b5b84a77
 
 # last changed 2026-04-20
 # by builder
