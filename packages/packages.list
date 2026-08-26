@@ -581,25 +581,25 @@ server https://gnupg.org/ftp/gcrypt/snapshots
 
 
 # mimetreeparser
-# last changed: 2025-01-22
-# by: builder
-# verified: Tarball created by builder.
-file mimetreeparser/mimetreeparser-202501221112.tar.xz
-chk 03f168008d9d8a7b37b23b8ce429fecd2c2798b41be571b699e536942029d8d3
+# last changed: 2026-08-26
+# by: ingo
+# verified: Tarball created by ingo.
+file mimetreeparser/mimetreeparser-202608261147.tar.xz
+chk 3a7ac054b0c08efbf075c456a96159b9a4afc00d8ea036c66918f22dfa09aa14
 
 # libkleo
-# last changed: 2026-08-03
+# last changed: 2026-08-26
 # by: ingo
 # verified: Tarball created by ingo.
-file libkleo/libkleo-202608031620.tar.xz
-chk 08ad30a9d1438f0add0f9de00665def5a1c473b02c0a300ac75f17fda033d386
+file libkleo/libkleo-202608261146.tar.xz
+chk 70d045ef65afe97f4d6d8a18a55027dbc7af5ac281e278f525eb42ea24d1fcbb
 
 # kleopatra
-# last changed: 2026-08-03
+# last changed: 2026-08-26
 # by: ingo
 # verified: Tarball created by ingo.
-file kleopatra/kleopatra-202608031620.tar.xz
-chk 56f3fc7ec68b70800922de29f4a5a204b5df935291e2e3707dbfce1df25b6b89
+file kleopatra/kleopatra-202608261147.tar.xz
+chk 21c18f7cb59cf7c8f86f80cb232df9b286792b51ddb289eaf3c957dcb23ff62a
 
 # Okular and dependencies
 
