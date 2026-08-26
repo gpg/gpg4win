@@ -389,10 +389,19 @@ fi
 # Check whether the --release target needs to clone the gnupg-vsd repo.
 buildtype="$(trim "$(cat "${buildtype_prefix}packages/BUILDTYPE" 2>/dev/null)")"
 case "${buildtype}" in
-    vsd3)       need_gnupg_vsd=yes
+    vsd3)       [ ! "$withmsi" = yes ] && [ ! "$appimage" = yes ] \
+                    && echo "BUILDTYPE ${buildtype} requires --msi or --appimage!" >&2 \
+                    && exit 1
+                need_gnupg_vsd=yes
                 w64=no              ;;
-    vsd|gpd)    need_gnupg_vsd=yes  ;;
+    vsd|gpd)    [ ! "$withmsi" = yes ] && [ ! "$appimage" = yes ] \
+                    && echo "BUILDTYPE ${buildtype} requires --msi or --appimage!" >&2 \
+                    && exit 1
+                need_gnupg_vsd=yes  ;;
     gpg4win|default)
+                [ "$withmsi" = yes ] \
+                    && echo "BUILDTYPE ${buildtype} is incompatible with --msi!" >&2 \
+                    && exit 1
                 need_gnupg_vsd=no   ;;
     *)          echo "Not a valid BUILDTYPE: ${buildtype}" >&2
                 echo "Put vsd3, vsd, gpd, gpg4win or default into packages/BUILDTYPE" >&2
