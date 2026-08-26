@@ -20,7 +20,7 @@
 #
 # SPDX-License-Identifier: GPL-2.0+
 
-EXTRA_DIST = build-macimage.sh
+EXTRA_DIST = build-macimage.sh bundle.py
 
 # Define macros for the various directories.  These directory names
 # must be absolute, as we switch pretty often between them and don't
@@ -38,11 +38,10 @@ EXTRA_DIST = build-macimage.sh
 # idir     :: The directory with the installed files from the packages.
 # ipdir    :: A subdir of the install directory to hold the installed
 #             packages which will be stowed to other subdirs of $(idir).
-# appdir   :: The directory for preparing the content of the AppImage.
 # patdir   :: The source directory patches-macimage/ below tsdir.
+# targetbindir / targetlibexecdir :: Final installation paths for binaries
 # rsyncfilterdir :: The source directory with the package-specific
-#                   rsync filters (rsync replaces stow in the AppImage
-#                   build).
+#                   rsync filters (this is currently unused on Mac).
 
 tsdir     := $(TOPSRCDIR)
 root      := $(PLAYGROUND)
@@ -51,7 +50,6 @@ logdir    := $(root)/logs
 bdir      := $(root)/build
 idir      := $(root)/install
 ipdir     := $(root)/install/pkgs
-appdir    := $(root)/AppDir
 # TODO: in some places we want the target installation directory. The value
 #       of that should be centrally configured and passed in from outside.
 targetbindir := /Applications/$(TARGETIMAGENAME).app/Contents/MacOS
@@ -84,11 +82,11 @@ macimage_kdepkgs = gpgmepp qgpgme \
 		   kjobwidgets libical kcalendarcore mimetreeparser \
 		   kcolorscheme sonnet ktextwidgets kauth kstatusnotifieritem \
 		   threadweaver kparts poppler okular \
-		   libqrencode openjpeg boost \
+		   libqrencode \
 		   prison gpgpass \
 		   qtbase qttools qtsvg qttranslations \
 		   qthttpserver qtwebsockets kcontacts gpgoljs \
-		   breeze tiff zstd pcre2
+		   breeze tiff zstd pcre2 openjpeg boost
 
 macimage_pkg_pkgconfig_configure = \
         --with-internal-glib \
