@@ -328,6 +328,8 @@ if [ "${autoupload}" = "yes" ]; then
 else
     echo "$PGM: info: To upload:" >&2
     echo "rsync -vP ${tarball} gnupg.net:/var/www/gnupg.net/snapshots/${package}/" >&2
+    echo "$PGM: info: Or to old location:" >&2
+    echo "rsync -vP ${tarball} trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/" >&2
 fi;
 rm -fr ${tmpdir}
 done
