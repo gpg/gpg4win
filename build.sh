@@ -616,13 +616,18 @@ runner_cmd_gpg() {
 # Run the gpg-authcode-sign command
 runner_cmd_gpg_authcode_sign() {
     local cmd="$1"
+    local subdir="install"
 
+    # Ugly hack to use a different subdir's when signing the installers.
+    [ "${cmd:0:11}" = "installers/" ] && subdir="src"
+
+    # Modify the command in --no-sign mode.
     [ $nosign = yes ] && cmd="--dry-run $cmd"
 
     printf >&2 -- "$PGM(runner): gpg-authcode-sign.sh --stamp $cmd\n"
     set +e
     [ -n "$verbose" ] && set -x
-    ( cd "$builddir"/install && gpg-authcode-sign.sh --stamp $cmd </dev/null )
+    ( cd "$builddir"/$subdir && gpg-authcode-sign.sh --stamp $cmd </dev/null )
     rc=$?
     [ -n "$verbose" ] && set +x
     set -e
