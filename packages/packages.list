@@ -635,24 +635,28 @@ server https://gnupg.org/ftp/gcrypt
 file libgcrypt/libgcrypt-1.8.14.tar.bz2
 chk  9608d222917e3747336993a24ef9e18bf5aa6b2d35c67a13219f9172b5b84a77
 
-# last changed 2026-04-20
+# last changed 2026-08-27
 # by builder
 # verified: [taken from buildtree]
-name gnupg-2.2.54.tar.bz2
-file gnupg/gnupg-2.2.54.tar.bz2
-chk  0430e60f5a6d63fdd80b69e7221b5da2a713091457262c4e87db1725232ad5dd
+if gnupg = gnupg22
 
-name gnupg-w32-2.2.54_20260420-bin.exe
-file binary/gnupg-w32-2.2.54_20260420.exe
-chk  018c5e0dde13b587044c932808731a874edfca80118530f1f7a3026d66ef5505
+name gnupg-2.2.55.tar.bz2
+file gnupg/gnupg-2.2.55.tar.bz2
+chk  8855bb67ce52946e6a9abc5c4828dbe0819ddf7087511c6d90ba82621f51f542
 
-name gnupg-w32-2.2.54_20260420-src.tar.xz
-file binary/gnupg-w32-2.2.54_20260420.tar.xz
-link gnupg-msi-2.2.54_20260420-src.tar.xz
-chk  4f9b4653110ee58ffad1a84171006b0a6f1b27a41059f20a17b7baac4ddc3f8b
+name gnupg-w32-2.2.55_20260827-bin.exe
+file binary/gnupg-w32-2.2.55_20260827.exe
+chk  d31535369fa592cab7e7a12604bd7f6d96cf5458f52ba0044c659f44c888074c
 
-name gnupg-msi-2.2.54_20260420-bin.wixlib
-file binary/gnupg-w32-2.2.54_20260420.wixlib
-chk  72a49782c8c02361c2b9e724bad9ed098755ecefa8be57a6c8976ae2a3432ee4
+name gnupg-w32-2.2.55_20260827-src.tar.xz
+file gnupg/gnupg-w32-2.2.55_20260827.tar.xz
+link gnupg-msi-2.2.55_20260827-src.tar.xz
+chk  a9a5aec4745a9e09d36b2bffe7be222e5d8a9739ad304d4dda2db1b595343dfd
+
+name gnupg-msi-2.2.55_20260827-bin.wixlib
+file binary/gnupg-w32-2.2.55_20260827.wixlib
+chk  6cfcc664dacf894619bcced23247c96119890e25306d468802cf77ca44f46f9a
+
+fi # gnupg22
 
 # eof
