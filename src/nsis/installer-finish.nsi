@@ -65,8 +65,11 @@ Section
 
   # Make sure the etc direcory tree exists and is only writable with
   # aministrator rights.
-  CreateDirectory "$%ALLUSERSPROFILE%\GNU\etc"
-  Exec '"$SYSDIR\icacls" "$%ALLUSERSPROFILE%\GNU\etc" /setintegritylevel h /c /q'
+  Push $0
+  ReadEnvStr $0 ALLUSERSPROFILE
+  CreateDirectory "$0\GNU\etc"
+  ExecShell "$SYSDIR\icacls" '"$0\GNU\etc" /setintegritylevel h /c /q' SW_HIDE
+  Pop $0
 
   call SetupExtensions
 SectionEnd
