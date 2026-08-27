@@ -447,9 +447,9 @@ if test "$build_gpg4win" = yes ; then
     fi
 
     # Qt related stuff.
-    GPG4WIN_SPKG([qttools], [qtbase])
     if test "$IS_VSD3_BUILD" = yes ; then
         GPG4WIN_QTPKG([qtbase], [jpeg zlib libpng freetype pcre2])
+        GPG4WIN_QTPKG([qttools], [qtbase])
         GPG4WIN_QTPKG([qttranslations], [qtsvg qttools native-qttools qtwinextras])
         GPG4WIN_QTPKG([qtwinextras], [qtbase])
         GPG4WIN_QTPKG([qtsvg], [qtbase])
@@ -475,7 +475,6 @@ if test "$build_gpg4win" = yes ; then
         GPG4WIN_KF5PKG([pcre2])
         GPG4WIN_KF5PKG([openjpeg], [tiff jpeg])
         GPG4WIN_KF5PKG([breeze-icons], [extra-cmake-modules qtbase])
-        GPG4WIN_KF5PKG([extra-cmake-modules])
         GPG4WIN_KF5PKG([kcompletion], [kwidgetsaddons])
         GPG4WIN_KF5PKG([kmime], [kcodecs ki18n])
         GPG4WIN_KF5PKG([kmbox], [kmime])
@@ -489,7 +488,6 @@ if test "$build_gpg4win" = yes ; then
         GPG4WIN_KF5PKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion qgpgme])
         GPG4WIN_KF5PKG([gpg4win-tools], [libkleo qgpgme])
         GPG4WIN_KF5PKG([threadweaver], [qtbase extra-cmake-modules])
-        GPG4WIN_KF5PKG([kcolorscheme], [kconfig kguiaddons ki18n])
         GPG4WIN_KF5PKG([freetype], [zlib bzip2])
         GPG4WIN_KF5PKG([ktextwidgets], [sonnet kcompletion kconfig kconfigwidgets ki18n kwidgetsaddons])
         GPG4WIN_KF5PKG([poppler], [libpng openjpeg tiff gpgmepp kio qtbase freetype])
@@ -500,6 +498,7 @@ if test "$build_gpg4win" = yes ; then
     else
         GPG4WIN_KDEPKG([zstd])
         GPG4WIN_KDEPKG([qtbase], [jpeg zlib zstd libpng freetype pcre2])
+        GPG4WIN_KDEPKG([qttools], [qtbase])
         GPG4WIN_KDEPKG([qttranslations], [qtsvg qttools native-qttools])
         GPG4WIN_KDEPKG([qthttpserver], [qtbase])
         GPG4WIN_KDEPKG([qtwebsockets], [qtbase])
