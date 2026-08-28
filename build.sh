@@ -386,22 +386,50 @@ if [ ! -e "${buildtype_prefix}packages/BUILDTYPE" ]; then
     exit 1
 fi
 
+# don't waste time on failing builds because we forgot to run autogen.sh
+# let's check for obvious misconfgurations
+check_autogen() {
+    local buildtype="$1"
+    local expected="$2"
+    local configured_as="$3"
+    [ "$expected" != "$configured_as" ] \
+        && echo "BUILDTYPE ${buildtype} is incompatible with configure's SHORTPRODUCT_NAME $configured_as, " >&2 \
+        && echo "did you forget to call autogen.sh?" >&2 \
+        && exit 1
+    return 0
+}
+
+check_flags() {
+    local buildtype="$1"
+    local withmsi="$2"
+    local appimage="$3"
+    if [ "${buildtype}" = "gpg4win" ] || [ "${buildtype}" = "default" ] ; then
+        [ "$withmsi" = yes ] \
+            && echo "BUILDTYPE ${buildtype} is incompatible with --msi!" >&2 \
+            && exit 1
+    else
+        [ ! "$withmsi" = yes ] && [ ! "$appimage" = yes ] \
+            && echo "BUILDTYPE ${buildtype} requires --msi or --appimage!" >&2 \
+            && exit 1
+    fi
+    return 0
+}
+
+
 # Check whether the --release target needs to clone the gnupg-vsd repo.
 buildtype="$(trim "$(cat "${buildtype_prefix}packages/BUILDTYPE" 2>/dev/null)")"
+conf_product_name="$(grep '^[[:blank:]]*SHORTPRODUCT_NAME[[:blank:]]*=' "${buildtype_prefix}configure"|cut -d= -f2|xargs)"
+check_flags "${buildtype}" "${withmsi}" "${appimage}"
 case "${buildtype}" in
-    vsd3)       [ ! "$withmsi" = yes ] && [ ! "$appimage" = yes ] \
-                    && echo "BUILDTYPE ${buildtype} requires --msi or --appimage!" >&2 \
-                    && exit 1
+    vsd3)       check_autogen "${buildtype}" "vsd" "${conf_product_name}"
                 need_gnupg_vsd=yes
                 w64=no              ;;
-    vsd|gpd)    [ ! "$withmsi" = yes ] && [ ! "$appimage" = yes ] \
-                    && echo "BUILDTYPE ${buildtype} requires --msi or --appimage!" >&2 \
-                    && exit 1
+    vsd)        check_autogen "${buildtype}" "vsd" "${conf_product_name}"
+                need_gnupg_vsd=yes  ;;
+    gpd)        check_autogen "${buildtype}" "gpd" "${conf_product_name}"
                 need_gnupg_vsd=yes  ;;
     gpg4win|default)
-                [ "$withmsi" = yes ] \
-                    && echo "BUILDTYPE ${buildtype} is incompatible with --msi!" >&2 \
-                    && exit 1
+                check_autogen "${buildtype}" "gpg4win" "${conf_product_name}"
                 need_gnupg_vsd=no   ;;
     *)          echo "Not a valid BUILDTYPE: ${buildtype}" >&2
                 echo "Put vsd3, vsd, gpd, gpg4win or default into packages/BUILDTYPE" >&2
