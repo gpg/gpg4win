@@ -93,6 +93,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/0010-Disable-animations-if-high-contrast-theme-is-used.patch \
              patches/qtbase/0011-Make-Vista-style-use-correct-text-color-for-selected-buttons.patch \
              patches/qtbase/0012-Make-Vista-style-use-correct-text-color-for-selected-menu-items.patch \
+             patches/qtbase/0013-QTabWidget-Bar-ignore-hidden-tabs-for-key-events.patch \
              patches/qttools/disable-most-tools.patch \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches-appimage/kcoreaddons/0001-Fix-MINGW-build.patch \
@@ -120,6 +121,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/qtbase/0010-Disable-animations-if-high-contrast-theme-is-used.patch \
              patches-appimage/qtbase/0011-Make-Vista-style-use-correct-text-color-for-selected-buttons.patch \
              patches-appimage/qtbase/0012-Make-Vista-style-use-correct-text-color-for-selected-menu-items.patch \
+             patches-appimage/qtbase/0013-QTabWidget-Bar-ignore-hidden-tabs-for-key-events.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch
 
 dist-hook: gen-ChangeLog pack_packages_tarballs

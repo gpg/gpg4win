@@ -1,0 +1,51 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 7598dd356848b9851ca12f6dfc93f76b5f11e259 Mon Sep 17 00:00:00 2001
+From: Christian Ehrlicher <ch.ehrlicher@gmx.de>
+Date: Mon, 6 Nov 2023 20:45:41 +0100
+Subject: [PATCH] QTabWidget/Bar: ignore hidden tabs for key events
+
+Even a tab was hidden it could be accessed with the key navigation or
+a scroll event which lead to painting artifacts.
+
+Pick-to: 6.6 6.5 5.15
+Fixes: QTBUG-101219
+Task-number: QTBUG-63038
+Change-Id: I58be694eef5f86cccecbe528891a39a4acdda15f
+Reviewed-by: Richard Moe Gustavsen <richard.gustavsen@qt.io>
+(cherry picked from commit 83e92e25573f98e7530a3dfcaf02910f3932107f)
+---
+ src/widgets/widgets/qtabbar.cpp    | 2 +-
+ src/widgets/widgets/qtabwidget.cpp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/widgets/widgets/qtabbar.cpp b/src/widgets/widgets/qtabbar.cpp
+index 7f80fcc2505..e1c8166ab47 100644
+--- a/src/widgets/widgets/qtabbar.cpp
++++ b/src/widgets/widgets/qtabbar.cpp
+@@ -2352,7 +2352,7 @@ void QTabBarPrivate::setCurrentNextEnabledIndex(int offset)
+ {
+     Q_Q(QTabBar);
+     for (int index = currentIndex + offset; validIndex(index); index += offset) {
+-        if (tabList.at(index).enabled) {
++        if (tabList.at(index).enabled && tabList.at(index).visible) {
+             q->setCurrentIndex(index);
+             break;
+         }
+diff --git a/src/widgets/widgets/qtabwidget.cpp b/src/widgets/widgets/qtabwidget.cpp
+index 5553c9a1a2f..fce54b18867 100644
+--- a/src/widgets/widgets/qtabwidget.cpp
++++ b/src/widgets/widgets/qtabwidget.cpp
+@@ -1178,7 +1178,7 @@ void QTabWidget::keyPressEvent(QKeyEvent *e)
+                       ) {
+                 page = 0;
+             }
+-            if (d->tabs->isTabEnabled(page)) {
++            if (d->tabs->isTabEnabled(page) && d->tabs->isTabVisible(page)) {
+                 setCurrentIndex(page);
+                 break;
+             }
+--
+2.55.0
