@@ -7,10 +7,11 @@ Noteworthy changes in Version 5.1.1 (unreleased)
 ------------------------------------------------
 
 ~~~~~~~~~~~~~~~
-GnuPG:
-Kleopatra:
-GpgOL:
-GpgEX:
+GnuPG:          2.5.22
+Kleopatra:      20260715
+GPGME:          2.2.0
+GpgOL:          2.7.4
+GpgEX:          1.1.2
 Libgcrypt:      1.12.3
 ~~~~~~~~~~~~~~~
 
