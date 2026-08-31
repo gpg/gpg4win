@@ -403,12 +403,13 @@ check_flags() {
     local buildtype="$1"
     local withmsi="$2"
     local appimage="$3"
+    local shell="$4"
     if [ "${buildtype}" = "gpg4win" ] || [ "${buildtype}" = "default" ] ; then
         [ "$withmsi" = yes ] \
             && echo "BUILDTYPE ${buildtype} is incompatible with --msi!" >&2 \
             && exit 1
     else
-        [ ! "$withmsi" = yes ] && [ ! "$appimage" = yes ] \
+        [ ! "$withmsi" = yes ] && [ ! "$appimage" = yes ] && [ ! "$shell" = yes ] \
             && echo "BUILDTYPE ${buildtype} requires --msi or --appimage!" >&2 \
             && exit 1
     fi
@@ -419,7 +420,7 @@ check_flags() {
 # Check whether the --release target needs to clone the gnupg-vsd repo.
 buildtype="$(trim "$(cat "${buildtype_prefix}packages/BUILDTYPE" 2>/dev/null)")"
 conf_product_name="$(grep '^[[:blank:]]*SHORTPRODUCT_NAME[[:blank:]]*=' "${buildtype_prefix}configure"|cut -d= -f2|xargs)"
-check_flags "${buildtype}" "${withmsi}" "${appimage}"
+check_flags "${buildtype}" "${withmsi}" "${appimage}" "${shell}"
 case "${buildtype}" in
     vsd3)       check_autogen "${buildtype}" "vsd" "${conf_product_name}"
                 need_gnupg_vsd=yes
