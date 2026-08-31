@@ -209,14 +209,14 @@ case ${package} in
     gpgol.js|gpgoljs)
         ;;
     mimetreeparser)
-        branch="gpg4win/gpd-5.2"
+		branch="gpg4win/gpd-5.1"
         ;;
     kleopatra)
-        branch="gpg4win/gpd-5.2"
+        branch="gpg4win/gpd-5.1"
         add_version_file="yes"
         ;;
     libkleo)
-        branch="gpg4win/gpd-5.2"
+        branch="gpg4win/gpd-5.1"
         ;;
     okular)
         branch="release/26.08"
