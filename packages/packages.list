@@ -820,26 +820,26 @@ fi # gnupg22
 #
 # This is the GnuPG used for gpg4win 5.x and vsd 4.x
 #
-# last changed 2026-07-02
+# last changed 2026-08-31
 # by builder
 # verified: [taken from buildtree]
 if gnupg = gnupg26
-name gnupg-2.5.21.tar.bz2
-file gnupg/gnupg-2.5.21.tar.bz2
-chk  e3af2c8caa46a66a9329fa7c6880af260451914d819595beabc2c26597b31352
+name gnupg-2.5.22.tar.bz2
+file gnupg/gnupg-2.5.22.tar.bz2
+chk  96e27b020ad26510388e06f5f07f3f70a4ed8916ee995f1b72b7a024e6d9d87e
 
-name gnupg-w32-2.5.21_20260702-bin.exe
-file binary/gnupg-w32-2.5.21_20260702.exe
-chk  6246c925a73167253444afc24a0deb83a3f43b7d636af84d6aaf48a98a62f024
+name gnupg-w32-2.5.22_20260831-bin.exe
+file binary/gnupg-w32-2.5.22_20260831.exe
+chk  2e5841e345d56f05199351bfcf585d28c6dc2326c8f76962f1e402f41f6d10e9
 
-name gnupg-w32-2.5.21_20260702-src.tar.xz
-file gnupg/gnupg-w32-2.5.21_20260702.tar.xz
-link gnupg-msi-2.5.21_20260702-src.tar.xz
-chk  7e12add431c74358c2f3a73fd2d4caccabb33950fa79307fce43600ff5b50b18
+name gnupg-w32-2.5.22_20260831-src.tar.xz
+file gnupg/gnupg-w32-2.5.22_20260831.tar.xz
+link gnupg-msi-2.5.22_20260831-src.tar.xz
+chk  507c34beb78242751b9576553506aa297407c1d1c3198177808cdc3fa6bb73e6
 
-name gnupg-msi-2.5.21_20260702-bin.wixlib
-file binary/gnupg-w32-2.5.21_20260702.wixlib
-chk  9ea2b84f4bcc1751d4a5e728acf622e95b72ae1c5717d026c87ed6129e955d4a
+name gnupg-msi-2.5.22_20260831-bin.wixlib
+file binary/gnupg-w32-2.5.22_20260831.wixlib
+chk  d4e3d0fe66a09567d40cf64071ea935c13175b03b5bb83556130040a927cc9e1
 
 fi # gnupg26
 
