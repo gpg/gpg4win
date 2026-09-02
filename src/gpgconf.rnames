@@ -10,11 +10,3 @@
 #  FooBar := The name of the item.  if a name is not given the default
 #            value is used.
 #
-
-\Software\GNU\GpgOL:syncDec
-\Software\GNU\GpgOL:syncEnc
-\Software\GNU\GpgOL:smimeNoCertSigErr
-\Software\GNU\GpgOL:alwaysShowApproval
-\Software\GNU\GpgOL:draftEnc
-\Software\GNU\GpgOL:draftKey
-\Software\GNU\GpgOL:smimeHtmlWarnShown
