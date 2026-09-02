@@ -200,11 +200,11 @@ file gpgme/gpgme-2.1.2.tar.bz2
 chk  7160e80e84dafd00d956c84891c533bb7ab16a6a54fbe1574b2f3acf0496977b
 
 # gpgmepp
-# last changed: 2026-05-18
+# last changed: 2026-09-02
 # by: wk
 # verified: swdb
-file gpgmepp/gpgmepp-2.1.0.tar.xz
-chk  57f804468f0204504b172c6b139cb05124b4263be7ad514932c7c4c5062a16e2
+file gpgmepp/gpgmepp-2.2.0.tar.xz
+chk  6651c5f7f801543d5b676719df9fec8053b0a6f5aba40b98ca0d2bee11136f30
 
 # qgpgme
 # last changed: 2026-06-21
