@@ -94,7 +94,6 @@ clean="no"
 dist="no"
 release="no"
 srcdir=$(cd $(dirname $0); pwd)
-is_tmpbuild="no"
 update_image="no"
 w64="yes"
 download="no"
