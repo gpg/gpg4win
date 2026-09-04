@@ -113,6 +113,8 @@ quiet=
 # Get UID for use by docker.
 userid=$(id -u)
 groupid=$(id -g)
+cabinet32sha1sum="1d9184eb342e25ecc588b84a2e49321ee5ef6a74"
+cabinet64sha1sum="f2b63a764817497286740034f439c0bf7cacdf8d"
 
 # Track whether we reset the tty to cooked mode.  docker sets it to raw mode
 # and we set it back via our runner process so that we are sure docker is
@@ -159,6 +161,10 @@ if [ "$appimage" = yes -a "$release" = yes ] ; then
 fi
 if [ "$custom_logfile" = yes -a "$release" = yes ] ; then
     echo "--release can't be used together with --logfile"
+    exit 1
+fi
+if [ "$withmsi" = no -a "$wineonly" = yes ] ; then
+    echo "--wine-only is only effective together with --msi"
     exit 1
 fi
 
@@ -457,6 +463,40 @@ if [ $withmsi = yes ]; then
                  " to an installation of wixtools"
         exit 1
     fi
+    fi
+    if [ $wineonly = yes ] ; then
+        # light.exe 3.* uses a compression for .cab files not implemented
+        # in Wine's cabinet.dll. You will have to install and configure
+        if [ ! $(grep "^\"cabinet\"=\"native" "$WINEPREFIX/user.reg") ] ; then
+            echo >&2 "$PGM: error: You must cofigure Wine to use a native cabinet.dll! " \
+                     "light.exe 3.* uses a compression for .cab files not implemented " \
+                     "in Wine's cabinet.dll."
+            exit 1
+        fi
+        # for the moment, assume we need both 32 and 64 bit native versions of cabinet.dll
+        [ ! -f "${WINEPREFIX}/drive_c/windows/system32/cabinet.dll" ] && {
+            echo >&2 "$PGM: error: Please install the native 32bit cabinet.dll to ${WINEPREFIX}/drive_c/windows/system32/"
+            exit 1
+        }
+        [ ! -f "${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll" ] && {
+            echo >&2 "$PGM: error: Please install the native 64bit cabinet.dll to ${WINEPREFIX}/drive_c/windows/syswow64/"
+            exit 1
+        }
+        echo "${cabinet32sha1sum}  ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll" \
+            | sha1sum --check --quiet - || {
+            echo >&2 "$PGM: error: sha1sum mismatch for ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll"
+            echo >&2 "  expected: ${cabinet32sha1sum}  ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll"
+            echo >&2 "  got:      $(sha1sum "${WINEPREFIX}/drive_c/windows/system32/cabinet.dll")"
+            exit 1
+        }
+        echo >&2 "$PGM: found native ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll"
+        echo "${cabinet64sha1sum}  ${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll" \
+            | sha1sum --check --quiet - || {
+            echo >&2 "$PGM: error: sha1sum mismatch for ${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll"
+            echo >&2 "  expected: ${cabinet64sha1sum}  ${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll"
+            echo >&2 "  got:      $(sha1sum "${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll")"
+            exit 1
+        }
     fi
     WINEINST="$WINEPREFIX/dosdevices/k:"
     WINESRC="$WINEPREFIX/dosdevices/i:"
