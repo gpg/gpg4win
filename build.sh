@@ -93,7 +93,6 @@ shell="no"
 clean="no"
 dist="no"
 release="no"
-branch="master"
 srcdir=$(cd $(dirname $0); pwd)
 is_tmpbuild="no"
 update_image="no"
