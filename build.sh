@@ -93,7 +93,7 @@ shell="no"
 clean="no"
 dist="no"
 release="no"
-srcdir=$(cd $(dirname $0); pwd)
+srcdir="$(cd "$(dirname "$0")"; pwd)"
 update_image="no"
 w64="yes"
 download="no"
@@ -123,7 +123,7 @@ recooked=
 skipshift=
 while [ $# -gt 0 ]; do
     case "$1" in
-        --*=*) optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'`;;
+        --*=*) optarg="${1//[-_a-zA-Z0-9]*=/}";;
         *) optarg="";;
     esac
 
@@ -264,7 +264,7 @@ build_from_tarball() {
     if [ $? != 0 ]; then
         ( echo "$PGM: *"
           echo "$PGM: * ERROR: creating tarball failed"
-          echo "$PGM: *" ) | tee -a ${logfile} >&2
+          echo "$PGM: *" ) | tee -a "${logfile}" >&2
         exit 2
     fi
 
@@ -275,7 +275,7 @@ build_from_tarball() {
     if [ $? != 0 ]; then
         ( echo "$PGM: *"
           echo "$PGM: * ERROR: failed to extract tarball"
-          echo "$PGM: *" ) | tee -a ${logfile} >&2
+          echo "$PGM: *" ) | tee -a "${logfile}" >&2
         exit 2
     fi
 
@@ -287,7 +287,7 @@ build_from_tarball() {
           echo "$PGM: * gnupg-vsd cloned"
           echo "$PGM: *   branch .. : $(git branch --show-current)"
           echo "$PGM: *   commitid .: $(git rev-parse HEAD)"
-          echo "$PGM: *" ) | tee -a ${logfile} >&2
+          echo "$PGM: *" ) | tee -a "${logfile}" >&2
         cd "$milldir/source"
     fi
 
@@ -299,7 +299,7 @@ build_from_tarball() {
     if [ $? != 0 ]; then
         ( echo "$PGM: *"
           echo "$PGM: * ERROR: building release failed"
-          echo "$PGM: *" ) | tee -a ${logfile} >&2
+          echo "$PGM: *" ) | tee -a "${logfile}" >&2
         exit 2
     fi
 
@@ -308,7 +308,7 @@ build_from_tarball() {
 
     ( echo "$PGM: *"
       echo "$PGM: * READY"
-      echo "$PGM: *"  ) | tee -a ${logfile} >&2
+      echo "$PGM: *"  ) | tee -a "${logfile}" >&2
     exit 0
 }
 
@@ -531,7 +531,7 @@ fi
 
 # Determine the needed docker image
 if [ "$appimage" = "yes" ]; then
-    version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' $HOME/.gnupg-autogen.rc|cut -d= -f2|xargs)"
+    version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' "${HOME}/.gnupg-autogen.rc"|cut -d= -f2|xargs)"
     cmd="/src/src/appimage/build-appimage.sh $version_signkey"
     docker_image=g10-build-appimage:almalinux810
     dockerfile=${srcdir}/docker/appimage
@@ -612,7 +612,7 @@ create_fifos
 # Function to stop our command runner
 runnerpid=
 stop_runner() {
-    printf >&2 -- "$PGM: stop-runner called\n"
+    printf >&2 -- "%s: stop-runner called\n" "$PGM"
     if [ -n "$runnerpid" ]; then
         echo >&2 "$PGM: stopping runner ..."
         killtree $runnerpid
@@ -638,12 +638,12 @@ runner_cmd_gpg() {
     local cmd="$1"
 
     cmd=$(transform_multi_dir "$cmd")
-    printf >&2 -- "$PGM(runner): invoking gpg\n"
+    printf >&2 -- "%s(runner): invoking gpg\n" "$PGM"
     set +e
     $cmd </dev/null
     rc=$?
     set -e
-    printf >&2 -- "$PGM(runner): gpg returned $rc\n"
+    printf >&2 -- "%s(runner): gpg returned $rc\n" "$PGM"
     return 0
 }
 
@@ -653,14 +653,14 @@ runner_cmd_gpg_authcode_sign() {
 
     [ $nosign = yes ] && cmd="--dry-run $cmd"
 
-    printf >&2 -- "$PGM(runner): gpg-authcode-sign.sh --stamp $cmd\n"
+    printf >&2 -- "%s(runner): gpg-authcode-sign.sh --stamp $cmd\n" "$PGM"
     set +e
     [ -n "$verbose" ] && set -x
     ( cd "$builddir"/install && gpg-authcode-sign.sh --stamp $cmd </dev/null )
     rc=$?
     [ -n "$verbose" ] && set +x
     set -e
-    printf >&2 -- "$PGM(runner): gpg-authcode-sign.sh returned $rc\n"
+    printf >&2 -- "%s(runner): gpg-authcode-sign.sh returned $rc\n" "$PGM"
     return 0
 }
 
@@ -815,7 +815,7 @@ runner_cmd_lightwinhost() {
             -ext WixUIExtension   \
             -ext WixUtilExtension \
             -out $prefix-$version-$name.msi \
-            $(echo "$intlopt" | sed 's,%20, ,g') \
+            ${intlopt//%20/ } \
             -dcl:high -pedantic \
             $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name-$version.wixlib \
         | grep -v "ICE80" | grep -v "ICE57"
@@ -826,7 +826,7 @@ runner_cmd_lightwinhost() {
             -ext WixUIExtension   \
             -ext WixUtilExtension \
             -out $prefix-$version-$name.msi \
-            $(echo "$intlopt" | sed 's,%20, ,g') \
+            ${intlopt//%20/ } \
             -dcl:high -pedantic \
             $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name-$version.wixlib" \
         | grep -v "ICE80" | grep -v "ICE57"
@@ -845,7 +845,7 @@ runner_cmd_lightwinhost() {
 # Run the Wix tools under Wine.
 runner_cmd_litcandle() {
     local mode="$1" version="$2" prefix="$3" idir="$4" exidir="$5"
-    local dwixobj fwxs
+    local fwixlib fwixobj fwxs fextraobj
 
     if [ $withmsi = no ]; then
         echo >&2 "$PGM(runner): litcandle requires --with-msi option"
