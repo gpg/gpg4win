@@ -1,0 +1,107 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@gnupg.com>
+Date: Mon, 07 Sep 2026 09:10:24 +0200
+Subject: [PATCH] Work around failure to accept custom root cert on MacOS
+
+---
+diff --git a/client/rootcagenerator/controller.cpp b/client/rootcagenerator/controller.cpp
+index 0f9dbcc..c521474 100644
+--- a/client/rootcagenerator/controller.cpp
++++ b/client/rootcagenerator/controller.cpp
+@@ -32,37 +32,46 @@ using namespace Qt::StringLiterals;
+ using namespace Kleo;
+ using namespace GpgME;
+
+-static KeyParameters createRootCaParms()
++static KeyParameters commonKeyParameters()
+ {
+     KeyParameters keyParameters(KeyParameters::CMS);
+
+     keyParameters.setKeyType(GpgME::Subkey::PubkeyAlgo::AlgoRSA);
+-    keyParameters.setKeyUsage(KeyUsage{KeyUsage::Sign | KeyUsage::Certify});
+-    keyParameters.setDN(u"CN=GnuPG Outlook Add-in Local Root CA"_s);
+     keyParameters.setEmail(u"localroot@gpgoljs.local"_s);
+     keyParameters.setKeyLength(3072);
++#if defined(Q_OS_MAC)
++    // Newer versions of MacOS do not accept TLS (root) certificates with too long expiration dates
++    // See https://support.apple.com/en-us/102028, except the rule is apparently _not_ limited to the system root CAs.
++    // Safari can be made to accept them, but e.g. Outlook App will not accept them, even if explicitly marked as trusted.
++    keyParameters.setExpirationDate(QDate::currentDate().addDays(397));
++#else
+     keyParameters.setExpirationDate(QDate(2060, 10, 10));
++#endif
+     keyParameters.setUseRandomSerial();
+     keyParameters.setControlStatements({u"%no-protection"_s});
+
+     return keyParameters;
+ }
+
++static KeyParameters createRootCaParms()
++{
++    auto keyParameters = commonKeyParameters();
++
++    keyParameters.setKeyUsage(KeyUsage{KeyUsage::Sign | KeyUsage::Certify});
++    keyParameters.setDN(u"CN=GnuPG Outlook Add-in Local Root CA"_s);
++
++    return keyParameters;
++}
++
+ static KeyParameters createTlsCertParms(QLatin1StringView keyGrip)
+ {
+-    KeyParameters keyParameters(KeyParameters::CMS);
++    auto keyParameters = commonKeyParameters();
+
+-    keyParameters.setKeyType(GpgME::Subkey::PubkeyAlgo::AlgoRSA);
+     keyParameters.setKeyUsage(KeyUsage{KeyUsage::Sign | KeyUsage::Encrypt});
+     keyParameters.setDN(u"CN=GnuPG Outlook Add-in Local Server Certificate"_s);
+-    keyParameters.setEmail(u"local@gpgoljs.local"_s);
+-    keyParameters.setKeyLength(3072);
+-    keyParameters.setExpirationDate(QDate(2060, 10, 10));
+     keyParameters.setIssuerDN(u"CN=GnuPG Outlook Add-in Local Root CA"_s);
+     keyParameters.setSigningKey(keyGrip);
+-    keyParameters.setUseRandomSerial();
+     keyParameters.addDomainName(u"localhost"_s);
+-    keyParameters.setControlStatements({u"%no-protection"_s});
+
+     return keyParameters;
+ }
+diff --git a/client/rootcagenerator/truststore.cpp b/client/rootcagenerator/truststore.cpp
+index faf2233..8489b93 100644
+--- a/client/rootcagenerator/truststore.cpp
++++ b/client/rootcagenerator/truststore.cpp
+@@ -60,7 +60,7 @@ void TrustStore::install(const Controller &controller)
+ #elif defined(Q_OS_MAC)
+ void TrustStore::install(const Controller &controller)
+ {
+-    QTemporaryFile file;
++    QTemporaryFile file(u"XXXXXX.pem");
+     if (!file.open()) {
+         Q_EMIT installComplete(false);
+     }
+@@ -68,11 +68,16 @@ void TrustStore::install(const Controller &controller)
+     file.write(controller.caCert());
+     file.close();
+
+-    // This does not quite work, yet, but allows us to proceed.
+-    auto args = QStringList(
+-        {u"-e"_s, u"do shell script \"security add-trusted-cert -p ssl -p basic -k /Library/Keychains/System.keychain %1 with administrator privileges\""_s});
+-    auto res = QProcess::execute(u"osasript"_s, args);
+-    Q_EMIT installComplete(res == 0);
++    QProcess p;
++    p.start(u"/usr/bin/osascript"_s, {u"-l"_s, u"AppleScript"_s});
++    // NOTE: Not quite good yet: cert is imported, but trust is not applied, because "no user interaction allowed"
++    p.write(u"do shell script \"security add-trusted-cert -p ssl -p basic -k /Library/Keychains/System.keychain %1\" with administrator privileges\n"_s
++                .arg(file.fileName())
++                .toUtf8());
++    p.closeWriteChannel();
++    p.waitForFinished();
++    qDebug() << "osascript output:" << p.readAll();
++    Q_EMIT(installComplete(true));
+ }
+
+ #else // Q_OS_WIN
+--
+2.54.0
