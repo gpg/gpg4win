@@ -595,11 +595,11 @@ file libkleo/libkleo-202608261146.tar.xz
 chk 70d045ef65afe97f4d6d8a18a55027dbc7af5ac281e278f525eb42ea24d1fcbb
 
 # kleopatra
-# last changed: 2026-08-26
+# last changed: 2026-09-07
 # by: ingo
 # verified: Tarball created by ingo.
-file kleopatra/kleopatra-202608261147.tar.xz
-chk 21c18f7cb59cf7c8f86f80cb232df9b286792b51ddb289eaf3c957dcb23ff62a
+file kleopatra/kleopatra-202609071040.tar.xz
+chk 6099842da960426a54f5901c294f6893de9c48e255b0b8c12da37542f7b61ddb
 
 # Okular and dependencies
 
