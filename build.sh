@@ -176,6 +176,11 @@ if [ -d /src/src -a -d /src/patches -a -d /build ]; then
     srcdir=/src
     builddir=/build
     echo >&2 "$PGM: running in docker"
+elif [ "$clean" = "yes" ] && [ -d "${builddir}" ] ; then
+    # if we're not inside docker, this is a good time
+    # to check if we need to purge an old build directory
+    echo >&2 "$PGM: Removing old build directory ${builddir}"
+    rm -rf "${builddir}"
 fi
 
 echo >&2 "$PGM: source directory: $srcdir"
