@@ -197,7 +197,7 @@ if [ "$indocker" != "yes" ] && [ "$clean" = "yes" ] && [ -d "${builddir}" ] ; th
     # if we're not inside docker, this is a good time
     # to check if we need to purge an old build directory
     echo >&2 "$PGM: Removing old build directory ${builddir}"
-    rm -rf "${builddir}"
+    rm -rf "${builddir}"/*
 fi
 
 echo >&2 "$PGM: source directory: $srcdir"
