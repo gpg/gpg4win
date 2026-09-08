@@ -97,11 +97,6 @@
 !define gpg4win_pkg_bzip2 @gpg4win_pkg_bzip2@
 !define gpg4win_pkg_bzip2_version @gpg4win_pkg_bzip2_version@
 
-@HAVE_PKG_PKGCONFIG@
-!define gpg4win_pkg_pkgconfig @gpg4win_pkg_pkgconfig@
-!define gpg4win_pkg_pkgconfig_version @gpg4win_pkg_pkgconfig_version@
-!define gpg4win_pkg_pkgconfig_src @gpg4win_pkg_pkgconfig_src@
-
 @HAVE_PKG_LIBICONV@
 !define gpg4win_pkg_libiconv @gpg4win_pkg_libiconv@
 !define gpg4win_pkg_libiconv_version @gpg4win_pkg_libiconv_version@

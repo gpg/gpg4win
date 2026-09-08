@@ -547,7 +547,7 @@ echo "libdir=\"$$$${pkgidir}/lib\"" >> lib/libz.la)
 endef
 
 # Supported binary packages.
-gpg4win_bpkgs = pkgconfig gnupg-w32
+gpg4win_bpkgs = gnupg-w32
 
 # Default to same version.
 VSD_VERSION=$(VERSION)

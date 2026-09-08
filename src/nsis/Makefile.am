@@ -80,7 +80,6 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-paperkey.nsi      uninst-paperkey.nsi                  \
              inst-pcre2.nsi             uninst-pcre2.nsi                 \
              inst-pinentry.nsi      uninst-pinentry.nsi                  \
-             inst-pkgconfig.nsi     uninst-pkgconfig.nsi                 \
              inst-poppler.nsi uninst-poppler.nsi                         \
              inst-prison.nsi uninst-prison.nsi                           \
              inst-libqrencode.nsi uninst-libqrencode.nsi                 \

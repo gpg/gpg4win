@@ -35,9 +35,6 @@
 !ifdef HAVE_PKG_BREEZE_ICONS
 !include "inst-breeze-icons.nsi"
 !endif
-!ifdef HAVE_PKG_PKGCONFIG
-!include "inst-pkgconfig.nsi"
-!endif
 !ifdef HAVE_PKG_ZLIB
 !include "inst-zlib.nsi"
 !endif
@@ -325,9 +322,6 @@
 !endif
 !ifdef HAVE_PKG_ZLIB
 !include "uninst-zlib.nsi"
-!endif
-!ifdef HAVE_PKG_PKGCONFIG
-!include "uninst-pkgconfig.nsi"
 !endif
 !ifdef HAVE_PKG_BREEZE_ICONS
 !include "uninst-breeze-icons.nsi"
@@ -638,9 +632,6 @@ Function CalcDepends
 !endif
 !ifdef HAVE_PKG_ZSTD
   !insertmacro UnselectSection ${SEC_zstd}
-!endif
-!ifdef HAVE_PKG_PKGCONFIG
-  !insertmacro UnselectSection ${SEC_pkgconfig}
 !endif
 !ifdef HAVE_PKG_BZIP2
   !insertmacro UnselectSection ${SEC_bzip2}
@@ -1108,8 +1099,6 @@ skip_gpgme_browser:
 !endif
 
   # Package "bzip2" has no dependencies.
-
-  # Package "pkgconfig" has no dependencies.
 
   # Package "zlib" has no dependencies.
 

@@ -384,8 +384,6 @@ if test "$build_gpg4win" = yes ; then
 
     GPG4WIN_SPKG([zlib])
 
-    GPG4WIN_BPKG_GTK([pkgconfig])
-
     GPG4WIN_SPKG([bzip2])
     GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
     GPG4WIN_SPKG([libassuan], [libgpg-error])
