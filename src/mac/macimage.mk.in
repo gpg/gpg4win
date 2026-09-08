@@ -359,7 +359,11 @@ $(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
 	  cd "$$$${pkgbdir}";				\
 	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
 	  export LD_LIBRARY_PATH=$(idir)/lib; \
-	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	  if test -d "$$$${pkgbdir}/$(1).xcodeproj"; then \
+	    xcodebuild clean build ${pkgmkargs} ; \
+	  else \
+	    $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} ; \
+	  fi)
 	touch $(stampdir)/stamp-$(1)-03-make
 
 # Note that post_install must come last because it may be empty and
@@ -368,7 +372,11 @@ $(stampdir)/stamp-$(1)-04-install: $(stampdir)/stamp-$(1)-03-make
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  cd "$$$${pkgmkdir_inst}";			\
-	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  if test -d "$$$${pkgbdir}/$(1).xcodeproj"; then \
+	    xcodebuild install INSTALL_PATH=/Applications DSTROOT=$$$${pkgidir} ${pkgmkargs_inst} ; \
+	  else \
+	    $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+          fi ; \
 	  $(call STRIP_macro,"$$$${pkgidir}");		\
 	  $(call macimage_pkg_$(call FROB_macro,$(1))_post_install))
 	touch $(stampdir)/stamp-$(1)-04-install

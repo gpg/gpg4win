@@ -675,6 +675,10 @@ if test "$build_macimage" = yes ; then
     # Gpgpass
     MACIMAGE_KDEPKG([prison], [qtbase extra-cmake-modules libqrencode])
     MACIMAGE_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n qgpgme])
+
+    # Mac specific
+    MACIMAGE_KDEPKG([gpgapplemail])
+
     MACIMAGE_FINALIZE
 fi
 

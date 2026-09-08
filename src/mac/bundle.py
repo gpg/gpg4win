@@ -110,7 +110,10 @@ def destination(absFilePath: Path) -> str:
         return None
     elif fileName.startswith("Applications"):
         if '/Contents/' in fileName:
-            return re.sub(r'Applications/[^/]*/Contents/', '', fileName) # strip Application/xyz/Contents
+            stripped = re.sub(r'Applications/[^/]*/Contents/', '', fileName) # strip Application/xyz/Contents
+            # crude temporary solution to make kleopatra's Info.plist the primary (only) one
+            if stripped != "Info.plist" or fileName.startswith("Applications/kleopatra"):
+                return stripped
         return None
     else:
         # moveList essentially as in KDE craft

@@ -86,7 +86,8 @@ macimage_kdepkgs = gpgmepp qgpgme \
 		   prison gpgpass \
 		   qtbase qttools qtsvg qttranslations \
 		   qthttpserver qtwebsockets kcontacts gpgoljs \
-		   breeze tiff zstd pcre2 openjpeg boost
+		   breeze tiff zstd pcre2 openjpeg boost \
+		   gpgapplemail
 
 macimage_pkg_pkgconfig_configure = \
         --with-internal-glib \
@@ -261,6 +262,12 @@ macimage_pkg_poppler_configure = \
 
 macimage_pkg_okular_configure = \
     -DFORCE_NOT_REQUIRED_DEPENDENCIES=\"PlasmaActivities;KF6Wallet;KF6Purpose;Qt6TextToSpeech;LibZip;KF6DocTools;Phonon4Qt6;LibSpectre;KExiv2Qt6;CHM;DjVuLibre;EPub;QMobipocket;Discount;Qt6Qml;Qt6DBus;KF6Pty\"
+
+macimage_pkg_gpgapplemail_configure = \
+    -G 'Xcode' \
+    -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGN_STYLE=Automatic \
+    -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY='$(CODESIGN_ID)' \
+    -DCMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM='$(CODESIGN_TEAMID)'
 
 macimage_pkg_libical_configure = \
     -DICAL_BUILD_DOCS=OFF \
