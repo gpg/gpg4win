@@ -9,7 +9,7 @@
 <String Id="T_File_Type_gpg_Name">Binär OpenPGP-fil</String>
 <String Id="T_File_Type_asc_Name">OpenPGP-textfil</String>
 <String Id="T_File_Type_sig_Name">OpenPGP-signatur</String>
-<String Id="T_File_Type_pgp_key_Name">OpenPGP-certfikatsfil</String>
+<String Id="T_File_Type_pgp_key_Name">OpenPGP-certifikatfil</String>
 <String Id="T_File_Type_pem_Name">CMS-fil (S/MIME)</String>
 <String Id="T_File_Type_x509_Name">X509-certifikatsfil</String>
 <String Id="T_File_Type_x509_info_tip">Certifikat för CMS (S/MIME)</String>
