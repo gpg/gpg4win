@@ -230,6 +230,10 @@ def checkAndPatchDependencies(file: Path, origin: Path):
         print(f"fixing dep {olddep} -> {dep}")
         subprocess.run(["install_name_tool", "-change", olddep, dep, file]).check_returncode()
 
+    # Check code signature: If the binary had one, and we made any modification, above, we'll have to re-sign
+    res = subprocess.run(["codesign", "-v", file])
+    if res.returncode != 0:
+        subprocess.run(["codesign", "-f", "--preserve-metadata=identifier,entitlements", "--verbose=10", "-s", os.getenv("CODESIGN_ID"), file]) #.check_returncode()
 
 def finalizeBundle():
     # a non-empty CFBundleIdentifier is needed to make some things work - importantly native file dialogs
