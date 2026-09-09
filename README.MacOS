@@ -66,11 +66,6 @@ Status / Hints / TODO list for MacOS builds
     in MacOS 26.05
   - gpgol/web:
     - (internal) -DCMAKE_MACOSX_BUNDLE=OFF does not have the desired effect
-    - Clicking on icon does not bring up status dialog
-    - We get a menu bar on Mac. If we want to keep that, it should allow
-      access to settings, statusdialog, quit, about.
-  - kleopatra:
-    - raising window does not work?
   - general:
     - the bundle still has quite a few unused files. Copy rsync filters from
       AppImage, after all? Paths are not the same, however.
@@ -82,7 +77,6 @@ Status / Hints / TODO list for MacOS builds
 
 - Further TODOs:
   - installer is still very basic
-  - entitlements?
   - There is no codesigning of the full package at all, yet
   - provide gpgconf.ctl
   - provide signed version
