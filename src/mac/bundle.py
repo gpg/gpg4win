@@ -111,7 +111,13 @@ def destination(absFilePath: Path) -> str:
     elif fileName.startswith("Applications"):
         if '/Contents/' in fileName:
             stripped = re.sub(r'Applications/[^/]*/Contents/', '', fileName) # strip Application/xyz/Contents
-            # crude temporary solution to make kleopatra's Info.plist the primary (only) one
+            # FIXME: Fix bundle location of apple mail plugin. It needs its own Info.plist, which would conflict with the main one
+            if fileName.startswith("Applications/GPGMail.app"): # and not 'LaunchAgents/' in fileName:
+               return "Helpers/GPGMail.app/Contents/" + stripped
+            # FIXME: apple mail plugin files are present twice in the install folder. Strip the copy
+            elif "GPGMail" in fileName:
+                return None
+            # FIXME: crude temporary solution to make kleopatra's Info.plist the primary (only) one
             if stripped != "Info.plist" or fileName.startswith("Applications/kleopatra"):
                 return stripped
         return None
