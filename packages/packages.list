@@ -635,26 +635,26 @@ server https://gnupg.org/ftp/gcrypt
 file libgcrypt/libgcrypt-1.8.14.tar.bz2
 chk  9608d222917e3747336993a24ef9e18bf5aa6b2d35c67a13219f9172b5b84a77
 
-# last changed 2026-09-03
+# last changed 2026-09-10
 # by builder
 # verified: [taken from buildtree]
 if gnupg = gnupg22
-name gnupg-2.2.56-beta5.tar.bz2
-file gnupg/gnupg-2.2.56-beta5.tar.bz2
-chk  3e527d8d0b7c42a7580effc1157ca7770ed8010f58bfe4be9146371cb525c7b7
+name gnupg-2.2.56.tar.bz2
+file gnupg/gnupg-2.2.56.tar.bz2
+chk  ff34297a92be4e9bbf21138e755432f37aa7ef9c68bfcdc8669e939809764cd1
 
-name gnupg-w32-2.2.56-beta5_20260902-bin.exe
-file binary/gnupg-w32-2.2.56-beta5_20260902.exe
-chk  9253e7c242a5e890369f6e5dd7c7ba11a6f42c440d02f2a088b33b107a0213f7
+name gnupg-w32-2.2.56_20260910-bin.exe
+file binary/gnupg-w32-2.2.56_20260910.exe
+chk  9577ecb533c1e85441cbcedc3f321e4c5cf4a379745161422051783710e2a6d2
 
-name gnupg-w32-2.2.56-beta5_20260902-src.tar.xz
-file gnupg/gnupg-w32-2.2.56-beta5_20260902.tar.xz
-link gnupg-msi-2.2.56-beta5_20260902-src.tar.xz
-chk  a6e1f606b9f54e9c98db1563e6d9cc60da8a27e3787004491623779e27e42b77
+name gnupg-w32-2.2.56_20260910-src.tar.xz
+file gnupg/gnupg-w32-2.2.56_20260910.tar.xz
+link gnupg-msi-2.2.56_20260910-src.tar.xz
+chk  589d6f7ae333448e4d995750215cd7bf949e050e181499d8efee90130aabb8a7
 
-name gnupg-msi-2.2.56-beta5_20260902-bin.wixlib
-file binary/gnupg-w32-2.2.56-beta5_20260902.wixlib
-chk  661c64eda6b2c49e6f4e886bfd958199fa00c510e1c52460bb126482b3d1af3e
+name gnupg-msi-2.2.56_20260910-bin.wixlib
+file binary/gnupg-w32-2.2.56_20260910.wixlib
+chk  552a485952f71bcdf78c97497754015bd99a1bd4d9732b8e63f1e655f856083b
 
 fi # gnupg22
 
