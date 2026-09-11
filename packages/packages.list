@@ -766,23 +766,23 @@ chk 0a47b28a04a086ccb5b4afb51d6677180006819d0d9302524721689bfa4ad13c
 
 server https://gnupg.org/ftp/gcrypt
 
-# last changed 2023-11-16
+# last changed 2026-09-11
 # by wk
 # verified: [taken from buildtree]
 if gnupg = gnupg22
 
-file libgcrypt/libgcrypt-1.8.11.tar.bz2
-chk  c98249fb5bb1f6017f5f9bf484327a940b59075bca7c46fa69ebb54098249860
+file libgcrypt/libgcrypt-1.8.14.tar.bz2
+chk  9608d222917e3747336993a24ef9e18bf5aa6b2d35c67a13219f9172b5b84a77
 
 fi
 
-# last changed 2026-06-08
+# last changed 2026-09-11
 # by wk
 # verified: swdb
 if gnupg != gnupg22
 
-file libgcrypt/libgcrypt-1.12.3.tar.bz2
-chk  98d1b0b3202d2b03fa754a35aa3cbbfcf526a3260d8d2ee213748001b1043006
+file libgcrypt/libgcrypt-1.12.4.tar.bz2
+chk  d77f68f48879510e79a2f65977ccc68981781ea0923e5bdffac2a193ea3d660e
 
 fi
 
@@ -800,6 +800,7 @@ server https://gnupg.org/ftp/gcrypt
 
 #
 # This is the GnuPG used for vsd 3.x
+# (We actually don't use that - please see the vsd-3 branch)
 #
 # last changed 2025-01-07
 # by builder
