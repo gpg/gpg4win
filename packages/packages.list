@@ -588,11 +588,11 @@ file mimetreeparser/mimetreeparser-202608261147.tar.xz
 chk 3a7ac054b0c08efbf075c456a96159b9a4afc00d8ea036c66918f22dfa09aa14
 
 # libkleo
-# last changed: 2026-08-26
+# last changed: 2026-09-14
 # by: ingo
 # verified: Tarball created by ingo.
-file libkleo/libkleo-202608261146.tar.xz
-chk 70d045ef65afe97f4d6d8a18a55027dbc7af5ac281e278f525eb42ea24d1fcbb
+file libkleo/libkleo-202609141638.tar.xz
+chk 090244cbf0e3392ed3d082ae755360841adcb95ee97776a566c04f96f7240615
 
 # kleopatra
 # last changed: 2026-09-07
