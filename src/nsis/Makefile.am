@@ -82,6 +82,7 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-qtsvg.nsi uninst-qtsvg.nsi                             \
              inst-qttools.nsi uninst-qttools.nsi                         \
              inst-qttranslations.nsi uninst-qttranslations.nsi           \
+             inst-qtwinextras.nsi    uninst-qtwinextras.nsi              \
              inst-scute.nsi uninst-scute.nsi                             \
              inst-solid.nsi uninst-solid.nsi                             \
              inst-sonnet.nsi uninst-sonnet.nsi                           \
