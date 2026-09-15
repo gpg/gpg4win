@@ -252,6 +252,7 @@ build_from_tarball() {
     extraopt="--logfile=$logfile"
     [ -n "$verbose" ] && extraopt="$extraopt --verbose"
     [ "$download" = yes ] && extraopt="$extraopt --download"
+    [ "$withmsi" = yes ] && extraopt="$extraopt --msi"
     $myself --builddir="$milldir/tarball" --dist $extraopt
     if [ $? != 0 ]; then
         ( echo "$PGM: *"
