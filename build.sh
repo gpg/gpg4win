@@ -253,6 +253,7 @@ build_from_tarball() {
     mkdir "$milldir/tarball"
     mkdir "$milldir/source"
     mkdir "$milldir/binary"
+    mkdir "$milldir/binary/artifacts"
 
     extraopt="--logfile=$logfile"
     [ -n "$verbose" ] && extraopt="$extraopt --verbose"
