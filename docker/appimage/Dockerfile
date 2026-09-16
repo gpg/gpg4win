@@ -59,7 +59,9 @@ RUN dnf install -y \
         git-lfs \
         glibc-gconv-extra \
         gnutls-devel \
+        gobject-introspection-devel \
         gperf \
+        gtk3-devel \
         hunspell-devel \
         iso-codes-devel \
         libX11-devel \
@@ -69,6 +71,7 @@ RUN dnf install -y \
         libXi-devel \
         libXrandr-devel \
         libXtst-devel \
+        libdbusmenu-gtk3-devel \
         libicu-devel \
         libjpeg-turbo-devel \
         libmount-devel \
@@ -91,6 +94,7 @@ RUN dnf install -y \
         readline-devel \
         rsync \
         systemd-devel \
+        vala-devel \
         vulkan-headers \
         wayland-devel \
         wget \

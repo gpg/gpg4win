@@ -1,0 +1,22 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+--- a/CMakeLists.txt 2026-09-16 11:32:50.988146575 +0200
++++ b/CMakeLists.txt 2026-09-16 11:34:16.225050729 +0200
+@@ -48,13 +48,13 @@
+     set (FLAVOUR_GTK2 OFF)
+ endif()
+
+-set(DEPS glib-2.0>=2.58)
++set(DEPS glib-2.0>=2.56)
+
+ if (FLAVOUR_GTK3)
+     set(DEPS
+         ${DEPS}
+         ayatana-indicator3-0.4>=0.8.4
+-        gtk+-3.0>=3.24
++        gtk+-3.0>=3.22
+         dbusmenu-gtk3-0.4
+     )
+ elseif (FLAVOUR_GTK2)

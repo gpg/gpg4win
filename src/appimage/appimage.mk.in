@@ -99,6 +99,8 @@ endef
 define DEFLATE_macro
 	rm -rf $$$${pkgsdir}; \
 	case "$(1)" in			\
+          */libayatana-ido*.*.tar.gz)          \
+            $(TAR) -xz --transform='s,^ayatana-ido,libayatana-ido,' -f "$(1)" ;; \
           */qtbase*.*.tar.xz)          \
             $(TAR) -xJ --transform='s,^qtbase-everywhere-src,qtbase,' -f "$(1)" ;; \
           */qttools*.*.tar.xz)          \
@@ -238,6 +240,85 @@ endef
 define SPKG_template
 $(if $(filter-out no, $(call GETVAR,appimage_pkg_$(1))),
   $(call SPKG_template_,$1))
+endef
+
+
+# Template for source packages using only make and no build
+# directory.
+
+define MPKG_template_
+
+pkg_files += $(call GETVAR,appimage_pkg_$(1))
+
+$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
+	(cd $(bdir);					\
+	 $(call SETVARS,$(1));				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch $(stampdir)/stamp-$(1)-00-unpack
+
+$(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
+	(shopt -s nullglob;				\
+	 $(call SETVARS,$(1));				\
+	 for pfile in "$$$${pkgpatbdir}"/*.patch "$$$${pkgpatdir}"/*.patch ; do  \
+		echo "applying $$$${pkgsdir}/$$$${pfile}"; \
+		(cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}")		\
+	 done)
+	touch $(stampdir)/stamp-$(1)-01-patch
+
+$(stampdir)/stamp-$(1)-02-make: $(stampdir)/stamp-$(1)-01-patch
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgsdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
+	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	touch $(stampdir)/stamp-$(1)-02-make
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+$(stampdir)/stamp-$(1)-03-install: $(stampdir)/stamp-$(1)-02-make
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgsdir}";				\
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(call STRIP_macro,"$$$${pkgidir}");		\
+	  rm -f "$$$${pkgidir}/share/info/dir";		\
+	  $(call appimage_pkg_$(call FROB_macro,$(1))_post_install))
+	touch $(stampdir)/stamp-$(1)-03-install
+
+$(stampdir)/stamp-$(1)-04-rsync: $(stampdir)/stamp-$(1)-03-install
+	($(call SETVARS,$(1));				\
+	 set -x;					\
+	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/"; \
+	 for pc in "$(idir)"/lib/pkgconfig/*.pc; do \
+	   sed -i "s;$$$${pkgidir};$(idir);" "$$$${pc}"; \
+	 done )
+	touch $(stampdir)/stamp-$(1)-04-rsync
+
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-04-rsync
+	touch $(stampdir)/stamp-final-$(1)
+
+$(1): $(stampdir)/stamp-final-$(1)
+
+$(stampdir)/stamp-prepare-appdir-$(1): $(stampdir)/stamp-final-$(1)
+	($(call SETVARS,$(1));				\
+	 set -x;					\
+	 if test -f "$$$${pkgrsyncfilter}"; then \
+	   cp "$$$${pkgrsyncfilter}" "$$$${pkgidir}/.rsync-filter"; \
+	   $(RSYNC) -av -FF --omit-dir-times "$$$${pkgidir}/" "$(appdir)/usr/"; \
+	 fi )
+	touch $(stampdir)/stamp-prepare-appdir-$(1)
+
+.PHONY : clean-$(1)
+clean-$(1):
+	($(call SETVARS,$(1));				\
+	 (cd $(ipdir) &&				\
+	  rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+
+endef
+
+define MPKG_template
+$(if $(filter-out no, $(call GETVAR,appimage_pkg_$(1))),
+  $(call MPKG_template_,$1))
 endef
 
 
@@ -403,6 +484,9 @@ endef
 
 # Insert the template for each source package.
 $(foreach spkg, $(appimage_spkgs), $(eval $(call SPKG_template,$(spkg))))
+
+# # Insert the template for each source package using only make.
+$(foreach mpkg, $(appimage_mpkgs), $(eval $(call MPKG_template,$(mpkg))))
 
 # Insert the template for each binary package.
 $(foreach bpkg, $(appimage_bpkgs), $(eval $(call BPKG_template,$(bpkg))))

@@ -267,6 +267,52 @@ AC_DEFUN([APPIMAGE_SPKG],
 ])
 
 
+APPIMAGE_MPKG([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
+# Set up the source package PKG.
+# It is provided in appimage_val.
+AC_DEFUN([APPIMAGE_MPKG],
+[
+  AC_REQUIRE([APPIMAGE_INIT])
+  _appimage_pkg=maybe
+  AC_ARG_ENABLE([pkg-$1],
+    AS_HELP_STRING([--enable-pkg-$1[=DIR]],
+                   [include package $1]),
+    _appimage_pkg=$enableval)
+  _appimage_mpkg=no
+  _appimage_version=
+  AS_IF([test "$_appimage_pkg" != no],
+        [APPIMAGE_FIND($1,,, $_appimage_pkg,
+	 _appimage_mpkg=$appimage_val
+	 _appimage_version=$appimage_version)])
+
+  # At this point, _appimage_mpkg is no, or the actual package source file.
+
+  # appimage_pkg_PKGNAME=FILENAME_OF_SOURCE
+  appimage_pkg_[]m4_translit([$1],[-+],[__])[]=$_appimage_mpkg
+  AC_SUBST(appimage_pkg_[]m4_translit([$1],[-+],[__]))
+
+  # appimage_pkg_PKGNAME_version=VERSION
+  appimage_pkg_[]m4_translit([$1],[-+],[__])[]_version=$_appimage_version
+  AC_SUBST(appimage_pkg_[]m4_translit([$1],[-+],[__])[]_version)
+
+  # appimage_pkg_PKGNAME_deps=DEPS
+  appimage_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
+  AC_SUBST(appimage_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
+
+  AS_IF([test "$_appimage_mpkg" != no],
+    _appimage_pkgs="$_appimage_pkgs $1"
+    APPIMAGE_DEFINE(HAVE_PKG_[]m4_translit([$1],[a-z+-],[A-Z__]))
+    # Record dependencies.  Also enter every package as node.
+    _appimage_deps="$_appimage_deps $1 $1"
+    AS_IF([test ! -z "$2"],
+          for _appimage_i in $2; do
+            _appimage_deps="$_appimage_deps $_appimage_i $1"
+          done)
+      [$3],
+      [$4])
+])
+
+
 # APPIMAGE_KDEPKG([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
 # Set up the KDE source package PKG.
 # It is provided in appimage_val.

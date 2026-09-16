@@ -74,6 +74,8 @@ appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
 		 freetype xcb-util-cursor
 
+# Source packages that use make directly without configure
+appimage_mpkgs = ministart
 
 appimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
 
@@ -91,7 +93,8 @@ appimage_kdepkgs = gpgmepp qgpgme \
 		   libqrencode \
 		   prison gpgpass \
 		   qtbase qttools qtsvg qttranslations qtwayland \
-		   plasma-wayland-protocols breeze tiff
+		   plasma-wayland-protocols breeze tiff\
+		   libayatana-ido libayatana-indicator libayatana-appindicator
 
 appimage_bpkgs = wayland-protocols
 
@@ -254,6 +257,20 @@ appimage_pkg_tiff_configure = \
 
 appimage_pkg_xcb_util_cursor_configure = --enable-static --disable-shared
 appimage_pkg_xcb_util_cursor_extracflags = -fPIC
+
+appimage_pkg_ministart_make_args = gnupg
+appimage_pkg_ministart_make_args_inst = \
+    TARGET=gnupg/ministart \
+    DESTDIR=$(ipdir)/ \
+    PREFIX=$$$${pkg_version}
+
+appimage_pkg_libayatana_indicator_extracflags= -DCMAKE_C_FLAGS="-L$(idir)/lib"
+
+appimage_pkg_libayatana_appindicator_extracflags= \
+    -DCMAKE_C_FLAGS="-L$(idir)/lib" \
+    -DENABLE_GTKDOC=OFF \
+    -DENABLE_BINDINGS_VALA=OFF \
+    -DENABLE_BINDINGS_MONO=OFF
 
 ########################################################################
 

@@ -1,0 +1,15 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+--- a/CMakeLists.txt 2026-09-15 16:22:28.321641957 +0200
++++ b/CMakeLists.txt 2026-09-15 16:23:12.480053821 +0200
+@@ -51,7 +51,7 @@
+ if (FLAVOUR_GTK3)
+     set(DEPS
+     ${DEPS}
+-    gtk+-3.0>=3.24
++    gtk+-3.0>=3.22
+     )
+ endif()
+ if (FLAVOUR_GTK2)
