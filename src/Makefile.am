@@ -27,7 +27,7 @@ EXTRA_DIST =  config.site                                      \
               gpgconf.rnames                                   \
               sha1sum.c                                        \
               vsd-gpgconf.ctl                                  \
-              potomo                                           \
+              potomo pkg-config                                \
               index.theme                                      \
               slideshow/slides.dat                             \
               slideshow/slide1-gpgol.png                       \
