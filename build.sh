@@ -502,7 +502,7 @@ do_upload() {
     local uploadfiles
 
     # FIXME: This is just for quick success
-    builddir=/home/builder/b/vsd-3-mill/binary
+    local buildbindir="${builddir}/binary"
 
     msi_signkey="$(getvar_from_autogenrc VERSION_SIGNKEY)"
     if [ -z "$msi_signkey" ]; then
@@ -526,7 +526,7 @@ do_upload() {
         fname_prefix="GnuPG-VS-Desktop"
     fi
 
-    cd $builddir/src/signed_installers
+    cd "${buildbindir}/src/signed_installers"
     for target in $msi_targets; do
         fname="${fname_prefix}-${vsd_version}-$target"
         targetdir="$(getvar_from_custom_mk msi_target_${target}_directory)"
