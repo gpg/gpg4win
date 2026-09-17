@@ -2,24 +2,10 @@ Status / Hints / TODO list for MacOS builds
 
 - Requirements:
   - system installs:
-    - need full xcode; command line tools is not enough (for qtbase)
-      (Xcode includes git and python3.9, but not too much else)
+    - need full xcode; command line tools are not enough building qtbase
   - Required tools not in MacOS/XCode (or not in a usable version)
-    We take these from homebrew, ATM (TODO)
-    Some bits have hardcoded paths to /opt/homebrew (TODO).
-      - autoconf, automake (only for running autogen.sh)
-      - cmake
-      - bison (version in macos is too old)
-  - Required libs not in the current AppImage build scripts.
-    - openjpeg, libzstd, libpng, jpg, libpcre2 -> done (already had Windows builds)
-    - pkgconf -> done (had to update package -> TODO: check if Windows build broke)
-    - boost -> done (poppler complains about some missing sub-lib; not sure if we
-                     should add that)
-  - Everything _can_ now be built without external (non-sytem) runtime deps,
-    however the build process is still prone to picking up some libs from homebrew
-    (hard to rule out, entirely, as long as we are using cmake from homebrew).
-    To make sure this did not happen, use src/mac/bundle.py to check for any
-    remaining bad dependencies.
+    Install these e.g. from homebrew:
+    - autoconf, automake (need to be in PATH only while running autogen.sh)
 
 - Setup:
   - We need a case sensitive filesystem for building, which is not the default:
@@ -36,12 +22,13 @@ Status / Hints / TODO list for MacOS builds
       or reboot to make /build and /src come up
 
 - Building (in gpg4win repo dir):
-  echo "default" > packages/BUILDTYPE     # once
-  ./autogen.sh                            # once, and after touching the build system
+  echo "default" > packages/BUILDTYPE              # once
+  PATH=/path/with/autotools:$PATH ./autogen.sh     # once, and after touching the build system
   ./build.sh --download --mac --builddir=/Some/casesensitive/Volume
 
 - Running:
-  Many things will not work properly until bundled/installed
+  Many things will not work properly until bundled/installed. Currently only an
+  installation in /Applications/ is supported.
 
 - Implementation Notes / TODO:
   - We cannot run MacOS as a docker guest, so need a different setup.
@@ -51,7 +38,7 @@ Status / Hints / TODO list for MacOS builds
     MacOS arm64 on arm64, and is geared towards builder scenarios.
   - At a minimum, we should gather non-system build-deps in a ro volume
   - For the time being, several places assume fixed absolute paths for install locations.
-    This may not be entirel uncommon on MacOS, but prevents a portable
+    This may not be entirely uncommon on MacOS, but prevents a portable
     install, ATM. Affected places:
     - gnupg configure flags: So gnupgconf returns correct paths
       - potential alternative: provide gpgconf.ctl
@@ -74,6 +61,11 @@ Status / Hints / TODO list for MacOS builds
   - gpgapplemail needs to be configured with cmake and built using Xcode. As it
     is the only package with that requirement, this is solved via an ugly hack in
     KDEPKG in macimage.mk.in
+  - Everything _can_ now be built without external (non-sytem) runtime deps.
+    To make sure the build system does not pick up non-system files, such as from a
+    homebrew installation, we check for remaining bad dependencies during bundling
+    (src/mac/bundle.py).
+    - Should a bad dependency get picked up, try trimming down the PATH!
 
 - Further TODOs:
   - installer is still very basic

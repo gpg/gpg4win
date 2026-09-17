@@ -264,12 +264,12 @@ if test -z "$GPG4WIN_PARALLEL"; then
 fi
 AC_SUBST(GPG4WIN_PARALLEL)
 
-required_tools="MAKE TAR MKDIR CP RM ZCAT SHA1SUM BUILD_CC CMAKE"
+required_tools="MAKE TAR MKDIR CP RM ZCAT SHA1SUM BUILD_CC"
 if test "$build_gpg4win" = yes ; then
-    required_tools="$required_tools DLLTOOL UNZIP STOW MAKENSIS TEXI2DVI DVIPDF CONVERT MSGFMT"
+    required_tools="$required_tools CMAKE DLLTOOL UNZIP STOW MAKENSIS TEXI2DVI DVIPDF CONVERT MSGFMT"
 fi
 if test "$build_appimage" = yes ; then
-    required_tools="$required_tools RSYNC MSGFMT"
+    required_tools="$required_tools CMAKE RSYNC MSGFMT"
 fi
 
 missing_tools=
@@ -580,6 +580,10 @@ fi
 if test "$build_macimage" = yes ; then
     macimage_dup_sources=""
 
+    # cmake not available in base system
+    MACIMAGE_SPKG([cmake], [bison])
+    # some packages need bison >= 3, but Xcode only has 2.3
+    MACIMAGE_SPKG([bison])
     # poppler requires freetype >= 2.11
     MACIMAGE_SPKG([freetype])
     MACIMAGE_SPKG([sqlite])
@@ -594,7 +598,7 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_KDEPKG([jpeg])
     MACIMAGE_KDEPKG([libpng])
 
-    MACIMAGE_SPKG([libiconv])
+    MACIMAGE_SPKG([libiconv bison])
     MACIMAGE_SPKG([gettext], [libiconv])
     MACIMAGE_SPKG([libgpg-error], [libiconv gettext])
     MACIMAGE_SPKG([libassuan], [libgpg-error])
@@ -634,7 +638,7 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_KDEPKG([kitemmodels], [qtbase qttools extra-cmake-modules])
     MACIMAGE_KDEPKG([kitemviews], [qtbase qttools extra-cmake-modules])
     MACIMAGE_KDEPKG([kwindowsystem], [qtbase extra-cmake-modules])
-    MACIMAGE_KDEPKG([solid], [qtbase extra-cmake-modules])
+    MACIMAGE_KDEPKG([solid], [qtbase extra-cmake-modules bison])
     MACIMAGE_KDEPKG([sonnet], [qtbase extra-cmake-modules])
     MACIMAGE_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
 

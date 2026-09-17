@@ -30,6 +30,13 @@ chk  8f74213b56238c85a50a5329f77e06198771e70dd9a739779f4c02f65d971313
 file gettext/gettext-0.22.5.tar.xz
 chk  fe10c37353213d78a5b83d48af231e005c4da84db5ce88037d88355938259640
 
+# bison built only on MacOS, and only a build-time dependency
+# last-changed: 2026-09-17
+# by: tfry
+# verified: Signed by 7DF84374B1EE1F9764BBE25D0DDCAA3278D5264E
+file bison/bison-3.8.2.tar.xz
+chk  9bba0214ccf7f1079c5d59210045227bcf619519840ebfa80cd3849cff5a5bf2
+
 # Required by XCB for qtbase and not available in all repos
 # last-changed: 2024-07-17
 # by: ah
@@ -88,6 +95,13 @@ chk  b44705dd71ca4538c86fb16248483ab4b48978524fb1da5097bd76aa2e0f0c33
 # verified: SIG 45F68D54BBE23FB3039B46E59766E084FB0F43D8
 file PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.bz2
 chk  8d36cd8cb6ea2a4c2bb358ff6411b0c788633a2a45dabbf1aeb4b701d1b5e840
+
+# cmake - used only on mac, where it is not available in base system
+# last-changed: 2026-09-17
+# by tfry
+# verified: cmake-4.4.3-SHA256.txt on same download page, homebrew formulaa
+file Kitware/CMake/releases/download/v4.4.3/cmake-4.4.3.tar.gz
+chk  c46400618b4f1f2b43507f24fb22f3ae830c3416cf23b776e16e1d413aa892f0
 
 # disabled by wk 2025-01-22 because prison is also disabled.
 ## libqrencode for prison

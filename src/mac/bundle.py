@@ -100,7 +100,7 @@ def destination(absFilePath: Path) -> str:
         package = ""
         fileName = str(filePath)
 
-    if package in ["qttools"]:
+    if package in ["bison", "cmake", "qttools"]:
         return None
     elif package == "qtbase" and "objects-Release" in fileName:
         return None # unused Qt cruft that makes codesign unhappy
