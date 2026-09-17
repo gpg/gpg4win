@@ -70,7 +70,7 @@ $(info -------------------------------------------------)
 macimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls \
 		 freetype libiconv gettext pkgconfig \
-                 libpng jpeg
+                 libpng jpeg cmake bison
 
 # KDE packages for the MacOS image
 macimage_kdepkgs = gpgmepp qgpgme \
@@ -290,7 +290,7 @@ macimage_pkg_kio_configure = -DWITH_WAYLAND=OFF
 
 macimage_pkg_kwindowsystem_configure = -DKWINDOWSYSTEM_QML=OFF
 
-macimage_pkg_solid_configure = -DBISON_EXECUTABLE=/opt/homebrew/opt/bison/bin/bison
+#macimage_pkg_solid_configure = -DBISON_EXECUTABLE=/opt/homebrew/opt/bison/bin/bison
 
 macimage_pkg_tiff_configure = \
     -Dtiff-tools=OFF \

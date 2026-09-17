@@ -40,12 +40,10 @@ fi
 
 # The actual build
 cd ${BUILDROOT}
-PATH=/opt/homebrew/opt/bison/bin:$PATH
-PATH=/opt/homebrew/opt/cmake/bin:$PATH
 PATH=/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
 ${SRCDIR}/configure --enable-macimage --with-playground=${BUILDROOT}
 cd ${BUILDROOT}
-make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT} TARGETIMAGENAME=${TARGETIMAGENAME}
+make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT} TARGETIMAGENAME=${TARGETIMAGENAME} CMAKE=${INSTDIR}/bin/cmake
 
 # TODO: write and sign version file (see appimage scripts)
 python3 ${SRCDIR}/src/mac/bundle.py "${INSTDIR}" ${TARGETIMAGENAME} "${BUILDROOT}/${TARGETIMAGENAME}.dmg"
