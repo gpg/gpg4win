@@ -518,7 +518,6 @@ do_upload() {
     local enckey
     local uploadfiles
 
-    # FIXME: This is just for quick success
     local buildbindir="${builddir}/binary"
 
     msi_signkey="$(getvar_from_autogenrc VERSION_SIGNKEY)"
