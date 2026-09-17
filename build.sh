@@ -100,6 +100,7 @@ download="no"
 runcmd="no"
 fromgit="no"
 withmsi="no"
+upload=no
 force=no
 nosign=no
 ftpuser=
@@ -107,6 +108,8 @@ verbose=
 logfile=
 custom_logfile="no"
 quiet=
+_cached_custom_mk=
+vsddir=
 # Get UID for use by docker.
 userid=$(id -u)
 groupid=$(id -g)
@@ -143,6 +146,7 @@ while [ $# -gt 0 ]; do
         --user|--user=*)         ftpuser="${optarg}"  ;;
         --msi|--with-msi)        withmsi=yes          ;;
         --verbose|-v)            verbose=yes          ;;
+        --upload)                upload=yes           ;;
         --*) usage 1 1>&2; exit 1;;
         *) skipshift=1; break ;;
     esac
@@ -183,7 +187,10 @@ elif [ "$clean" = "yes" ] && [ -d "${builddir}" ] ; then
     rm -rf "${builddir}"
 fi
 
+vsddir="${srcdir}/src/gnupg-vsd"
+
 echo >&2 "$PGM: source directory: $srcdir"
+echo >&2 "$PGM: vsddir directory: $vsddir"
 echo >&2 "$PGM: build  directory: $builddir"
 
 
@@ -214,6 +221,42 @@ getvar_from_autogenrc() {
              "HOME or $TOPSRCDIR" >&2
     fi
 }
+
+
+# Helper to get an AC_SUBST value from the (generated) Makefile
+# The argument is the name of the variable.
+getvar_from_makefile() {
+    local fname
+
+    fname="$builddir/Makefile"
+    if [ -f "$fname" ]; then
+        grep $1' = ' "$fname" | head -1 | cut -d= -f2 | xargs
+    fi
+}
+
+
+# Helper to get a variabale from custom.mk
+# The argument is the name of the variable.
+getvar_from_custom_mk() {
+    local tmpargs
+    local betanum
+    local name
+
+    if [ -z "${_cached_custom_mk}" ]; then
+        tmpargs="MSI_VERSIONSTRING=$(getvar_from_makefile MSI_VERSIONSTRING)"
+        if [ "${buildtype}" = vsd3 ]; then
+            tmpargs="$tmpargs IS_VSD3_BUILD=yes"
+        fi
+        if [ "$(getvar_from_makefile IS_BETA_BUILD)" = yes ]; then
+            betanum="$(getvar_from_makefile BUILD_BETANUM)"
+            tmpargs="$tmpargs IS_BETA_BUILD=yes BUILD_BETANUM=$betanum"
+        fi
+        _cached_custom_mk="$(make -qf ${vsddir}/custom.mk custom.mk-dump-all-vars  $tmpargs)"
+    fi
+    name=$(echo $1 | tr '+-' '__')
+    echo "${_cached_custom_mk}" | grep ^${name}=| cut -d= -f2|xargs
+}
+
 
 
 # First build  a tarball and then build from that tarball
@@ -310,8 +353,6 @@ build_from_tarball() {
       echo "$PGM: *"  ) | tee -a ${logfile} >&2
     exit 0
 }
-
-
 
 # The main GUI packages.  Check the gen-tarball script to see which
 # branches are used.
@@ -446,6 +487,111 @@ case "${buildtype}" in
 esac
 
 
+# Function to do the upload part: Create the detached signatture and
+# upload it to our download server.
+do_upload() {
+    local msi_signkey
+    local publish_host
+    local msi_targets
+    local vsd_version
+    local fname_prefix
+    local fname
+    local target
+    local targetdir
+    local enckey
+    local uploadfiles
+
+    # FIXME: This is just for quick success
+    builddir=/home/builder/b/vsd-3-mill/binary
+
+    msi_signkey="$(getvar_from_autogenrc VERSION_SIGNKEY)"
+    if [ -z "$msi_signkey" ]; then
+       echo >&2 "$PGM: error: VERSION_SIGNKEY not found in ~/.gnupg-autogen.rc"
+       exit 1
+    fi
+    publish_host="$(getvar_from_custom_mk VSD_PUBLISH_HOST)"
+    if [ -z "$publish_host" ]; then
+       echo >&2 "$PGM: error: VSD_PUBLISH_HOST not dound in custom.mk"
+       exit 1
+    fi
+
+    msi_targets="$(getvar_from_custom_mk msi_targets)"
+    vsd_version="$(getvar_from_custom_mk VSD_VERSION)"
+    if [ "$(getvar_from_custom_mk IS_BETA_BUILD)" ]; then
+        vsd_version="${vsd_version}-Beta"
+    fi
+    if [ "$(getvar_from_makefile IS_GPD_BUILD)" = yes ]; then
+        fname_prefix="GnuPG-Desktop"
+    else
+        fname_prefix="GnuPG-VS-Desktop"
+    fi
+
+    cd $builddir/src/signed_installers
+    for target in $msi_targets; do
+        fname="${fname_prefix}-${vsd_version}-$target"
+        targetdir="$(getvar_from_custom_mk msi_target_${target}_directory)"
+
+        if [ -z "$targetdir" ]; then
+            echo >&2 "$PGM: error: no upload directory for $target in custom.mk"
+            uploadfiles=""
+        elif [ -f "$vsddir/$target/customer-enc-key.asc" ]; then
+	    enckey="-f $vsddir/$target/customer-enc-key.asc"
+            for i in 2 3 4 5 6 7 8 9; do \
+	        if [ -f "$vsddir/$target/customer-enc-key$i.asc" ]; then
+                    enckey="$enckey -f $vsddir/$target/customer-enc-key$i.asc"
+                fi
+	    done
+            if [ -f "$fname.msi.gpg.sha256" ] \
+               && [ "$fname.msi.gpg.sha256" -nt "$fname.msi" ]; then
+                echo >&2 "$PGM: ${fname}.msi is already encrypted"
+            else
+                echo >&2 "$PGM: ${fname}.msi will be encrypted"
+	        gpg --no-options --batch --yes \
+                    -seu "$msi_signkey" $enckey \
+                    -f "$vsddir/general-enc-key.asc" \
+                    -o "$fname.msi.gpg" "$fname.msi"
+                sha256sum "$fname.msi.gpg" > "$fname.msi.gpg.sha256"
+            fi
+            uploadfiles="$fname.msi.gpg $fname.msi.gpg.sha256"
+        else
+            if [ -f "$fname.msi.sha256" ] \
+               && [ "$fname.msi.sha256" -nt "$fname.msi" ]; then
+                echo >&2 "$PGM: ${fname}.msi is already signed"
+            else
+                echo >&2 "$PGM: ${fname}.msi will be signed"
+	        gpg --yes --batch -bu $msi_signkey \
+                    -o "$fname.msi.sig" "$fname.msi"
+                sha256sum "$fname.msi" > "$fname.msi.sha256"
+            fi
+            uploadfiles="$fname.msi $fname.msi.sig $fname.msi.sha256"
+        fi
+
+        if [ -n "$uploadfiles" ]; then
+            echo >&2 "$PGM: uploading ${fname}.msi et al. to $targetdir/"
+            rsync -vt --progress $uploadfiles "$publish_host/$targetdir/"
+        fi
+    done
+
+    # FIXME: Upload the tarball
+
+    # We upload with just m.n.o and may create symlinks to this form
+    # the m.n.o.p files.  This is because the patch level gives just
+    # the configuration (vsddir) and not a code change.  We may not
+    # need to do it if we adjust the webpages accordingly.
+
+}
+
+
+
+if [ "$upload" = yes ]; then
+    echo >&2 "$PGM: preparing upload"
+    do_upload
+    echo >&2 "$PGM: upload finished"
+    exit 0
+fi
+
+
+
 # Check whether we are in the docker image and run appropriate commands.
 # Note that this script is used to start the docker container and also
 # within the docker container to run the desired commands.
@@ -512,7 +658,7 @@ if [ $withmsi = yes ]; then
     done
     # Also check that there is no cruft in the gnupg-vsd subdir.
     # For now we check only the standard configuration directories.
-    f="${srcdir}/src/gnupg-vsd/custom.mk"
+    f="${vsddir}/custom.mk"
     if [ "$release" = "yes" ]; then
         echo >&2 "$PGM: note: gnupg-vsd will be cloned later"
     elif [ ! -f "$f" ]; then
@@ -520,7 +666,7 @@ if [ $withmsi = yes ]; then
         die=yes
     else
         for x in Enterprise Standard Entry Testorg Desktop ; do
-            f="${srcdir}/src/gnupg-vsd/$x"
+            f="${vsddir}/$x"
             for y in VERSION VERSION.sig $x.wxs ; do
                 if [ -f "$f/$y" ]; then
                     echo >&2 "$PGM: error: file '$f/$y' should not exist."
