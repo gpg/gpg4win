@@ -334,7 +334,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	 done)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
-$(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
+$(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch $(stampdir)/stamp-final-cmake
 	(set -x;						\
 	 $(call SETVARS,$(1));				\
 	 mkdir -p "$$$${pkglogdir}"; \
