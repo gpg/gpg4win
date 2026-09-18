@@ -21,7 +21,6 @@
 # SPDX-License-Identifier: GPL-2.0+
 
 EXTRA_DIST = AppRun \
-             build-appimage.sh \
              start-shell \
              qt5/qt.conf \
              qt6/qt.conf \
