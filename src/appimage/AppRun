@@ -188,8 +188,10 @@ fi
 
 
 mycleanup () {
+    exit_code=$?
     [ -n "${gnupg_SETUPINIFILE}" ] && rm -f "${gnupg_SETUPINIFILE}"
     [ -n "${AI_TEMPDIR}" ] && rm -rf "${AI_TEMPDIR}"
+    exit ${exit_code}
 }
 
 gnupg_SETUPINIFILE=
