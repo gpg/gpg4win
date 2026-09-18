@@ -48,6 +48,8 @@ Options:
         --update-image  Update the docker image before build
         --msi           Building MSI packages
                         Also assumes --w32 if BUILDTYPE is vsd3
+        --wine-only     Try using wixtools with Wine only
+                        Only relevant in combination with --msi
         --user=name     Use NAME as FTP server user
         --download      Download packages first
         --runcmd CMD    Run a command via a pair of FIFOs
@@ -92,9 +94,7 @@ shell="no"
 clean="no"
 dist="no"
 release="no"
-branch="master"
-srcdir=$(cd $(dirname $0); pwd)
-is_tmpbuild="no"
+srcdir="$(cd "$(dirname "$0")"; pwd)"
 update_image="no"
 w64="yes"
 download="no"
@@ -104,6 +104,7 @@ withmsi="no"
 mac=
 nodocker=
 upload=no
+wineonly="no"
 force=no
 nosign=no
 ftpuser=
@@ -116,6 +117,8 @@ vsddir=
 # Get UID for use by docker.
 userid=$(id -u)
 groupid=$(id -g)
+cabinet32sha1sum="1d9184eb342e25ecc588b84a2e49321ee5ef6a74"
+cabinet64sha1sum="f2b63a764817497286740034f439c0bf7cacdf8d"
 
 # Track whether we reset the tty to cooked mode.  docker sets it to raw mode
 # and we set it back via our runner process so that we are sure docker is
@@ -126,7 +129,7 @@ recooked=
 skipshift=
 while [ $# -gt 0 ]; do
     case "$1" in
-        --*=*) optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'`;;
+        --*=*) optarg="${1//[-_a-zA-Z0-9]*=/}";;
         *) optarg="";;
     esac
 
@@ -150,6 +153,7 @@ while [ $# -gt 0 ]; do
                                  custom_logfile="yes" ;;
         --user|--user=*)         ftpuser="${optarg}"  ;;
         --msi|--with-msi)        withmsi=yes          ;;
+        --wine-only)             wineonly=yes         ;;
         --verbose|-v)            verbose=yes          ;;
         --upload)                upload=yes           ;;
         --*) usage 1 1>&2; exit 1;;
@@ -164,6 +168,10 @@ if [ "$appimage" = yes -a "$release" = yes ] ; then
 fi
 if [ "$custom_logfile" = yes -a "$release" = yes ] ; then
     echo "--release can't be used together with --logfile"
+    exit 1
+fi
+if [ "$withmsi" = no -a "$wineonly" = yes ] ; then
+    echo "--wine-only is only effective together with --msi"
     exit 1
 fi
 
@@ -323,7 +331,7 @@ build_from_tarball() {
     if [ $? != 0 ]; then
         ( echo "$PGM: *"
           echo "$PGM: * ERROR: creating tarball failed"
-          echo "$PGM: *" ) | tee -a ${logfile} >&2
+          echo "$PGM: *" ) | tee -a "${logfile}" >&2
         exit 2
     fi
 
@@ -334,7 +342,7 @@ build_from_tarball() {
     if [ $? != 0 ]; then
         ( echo "$PGM: *"
           echo "$PGM: * ERROR: failed to extract tarball"
-          echo "$PGM: *" ) | tee -a ${logfile} >&2
+          echo "$PGM: *" ) | tee -a "${logfile}" >&2
         exit 2
     fi
 
@@ -346,7 +354,7 @@ build_from_tarball() {
           echo "$PGM: * gnupg-vsd cloned"
           echo "$PGM: *   branch .. : $(git branch --show-current)"
           echo "$PGM: *   commitid .: $(git rev-parse HEAD)"
-          echo "$PGM: *" ) | tee -a ${logfile} >&2
+          echo "$PGM: *" ) | tee -a "${logfile}" >&2
         cd "$milldir/source"
     fi
 
@@ -358,7 +366,7 @@ build_from_tarball() {
     if [ $? != 0 ]; then
         ( echo "$PGM: *"
           echo "$PGM: * ERROR: building release failed"
-          echo "$PGM: *" ) | tee -a ${logfile} >&2
+          echo "$PGM: *" ) | tee -a "${logfile}" >&2
         exit 2
     fi
 
@@ -367,7 +375,7 @@ build_from_tarball() {
 
     ( echo "$PGM: *"
       echo "$PGM: * READY"
-      echo "$PGM: *"  ) | tee -a ${logfile} >&2
+      echo "$PGM: *"  ) | tee -a "${logfile}" >&2
     exit 0
 }
 
@@ -661,6 +669,40 @@ if [ $withmsi = yes ]; then
         exit 1
     fi
     fi
+    if [ $wineonly = yes ] ; then
+        # light.exe 3.* uses a compression for .cab files not implemented
+        # in Wine's cabinet.dll. You will have to install and configure
+        if [ ! $(grep "^\"cabinet\"=\"native" "$WINEPREFIX/user.reg") ] ; then
+            echo >&2 "$PGM: error: You must cofigure Wine to use a native cabinet.dll! " \
+                     "light.exe 3.* uses a compression for .cab files not implemented " \
+                     "in Wine's cabinet.dll."
+            exit 1
+        fi
+        # for the moment, assume we need both 32 and 64 bit native versions of cabinet.dll
+        [ ! -f "${WINEPREFIX}/drive_c/windows/system32/cabinet.dll" ] && {
+            echo >&2 "$PGM: error: Please install the native 32bit cabinet.dll to ${WINEPREFIX}/drive_c/windows/system32/"
+            exit 1
+        }
+        [ ! -f "${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll" ] && {
+            echo >&2 "$PGM: error: Please install the native 64bit cabinet.dll to ${WINEPREFIX}/drive_c/windows/syswow64/"
+            exit 1
+        }
+        echo "${cabinet32sha1sum}  ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll" \
+            | sha1sum --check --quiet - || {
+            echo >&2 "$PGM: error: sha1sum mismatch for ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll"
+            echo >&2 "  expected: ${cabinet32sha1sum}  ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll"
+            echo >&2 "  got:      $(sha1sum "${WINEPREFIX}/drive_c/windows/system32/cabinet.dll")"
+            exit 1
+        }
+        echo >&2 "$PGM: found native ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll"
+        echo "${cabinet64sha1sum}  ${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll" \
+            | sha1sum --check --quiet - || {
+            echo >&2 "$PGM: error: sha1sum mismatch for ${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll"
+            echo >&2 "  expected: ${cabinet64sha1sum}  ${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll"
+            echo >&2 "  got:      $(sha1sum "${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll")"
+            exit 1
+        }
+    fi
     WINEINST="$WINEPREFIX/dosdevices/k:"
     WINESRC="$WINEPREFIX/dosdevices/i:"
     WINEINSTEX="$WINEPREFIX/dosdevices/j:"
@@ -696,7 +738,7 @@ fi
 
 # Determine the needed docker image
 if [ "$appimage" = "yes" ]; then
-    version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' $HOME/.gnupg-autogen.rc|cut -d= -f2|xargs)"
+    version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' "${HOME}/.gnupg-autogen.rc"|cut -d= -f2|xargs)"
     cmd="/src/src/appimage/build-appimage.sh $version_signkey"
     docker_image=g10-build-appimage:almalinux810
     dockerfile=${srcdir}/docker/appimage
@@ -713,6 +755,7 @@ else
     [ $dist = yes ] && cmd="$cmd --dist"
     [ $force = yes ] && cmd="$cmd --force"
     [ $withmsi = yes -a $shell = no ] && cmd="$cmd --msi"
+    [ $wineonly = yes ] && cmd="$cmd --wine-only"
     docker_image=g10-build-gpg4win:trixie
     dockerfile=${srcdir}/docker/gpg4win-trixie
 fi
@@ -781,7 +824,7 @@ create_fifos
 # Function to stop our command runner
 runnerpid=
 stop_runner() {
-    printf >&2 -- "$PGM: stop-runner called\n"
+    printf >&2 -- "%s: stop-runner called\n" "$PGM"
     if [ -n "$runnerpid" ]; then
         echo >&2 "$PGM: stopping runner ..."
         killtree $runnerpid
@@ -807,12 +850,12 @@ runner_cmd_gpg() {
     local cmd="$1"
 
     cmd=$(transform_multi_dir "$cmd")
-    printf >&2 -- "$PGM(runner): invoking gpg\n"
+    printf >&2 -- "%s(runner): invoking gpg\n" "$PGM"
     set +e
     $cmd </dev/null
     rc=$?
     set -e
-    printf >&2 -- "$PGM(runner): gpg returned $rc\n"
+    printf >&2 -- "%s(runner): gpg returned $rc\n" "$PGM"
     return 0
 }
 
@@ -827,46 +870,66 @@ runner_cmd_gpg_authcode_sign() {
     # Modify the command in --no-sign mode.
     [ $nosign = yes ] && cmd="--dry-run $cmd"
 
-    printf >&2 -- "$PGM(runner): gpg-authcode-sign.sh --stamp $cmd\n"
+    printf >&2 -- "%s(runner): gpg-authcode-sign.sh --stamp $cmd\n" "$PGM"
     set +e
     [ -n "$verbose" ] && set -x
     ( cd "$builddir"/$subdir && gpg-authcode-sign.sh --stamp $cmd </dev/null )
     rc=$?
     [ -n "$verbose" ] && set +x
     set -e
-    printf >&2 -- "$PGM(runner): gpg-authcode-sign.sh returned $rc\n"
+    printf >&2 -- "%s(runner): gpg-authcode-sign.sh returned $rc\n" "$PGM"
     return 0
 }
 
 
-# Copy some files to the Windows host to prepare the MSI linking
-# Args are: See below
 runner_cmd_msibase() {
-    local version="$1" gnupgmsi="$2"
+    local version="$1" gnupgmsi="$2" linkdir="${builddir}/wix"
 
     set +e
     [ -n "$verbose" ] && set -x
-    ssh "$WINHOST" "mkdir AppData\\Local\\Temp\\gpg4win-$version" || true
-    scp "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version";
-    scp "$srcdir"/src/icons/shield.ico \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
-    scp "$srcdir"/doc/logo/gpg4win-msi-header_install-493x58.bmp \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/header.bmp
-    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
-    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
-    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/info.bmp
-    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/exclamation.bmp
-    scp "$srcdir"/po/gpg4win-en.wxl \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
-    scp "$srcdir"/po/gpg4win-de.wxl \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
-    scp WixUI_Gpg4win.wxs \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    if [ $wineonly = yes ] ; then
+        mkdir -p "${linkdir}"
+        cp -a "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
+            "${linkdir}";
+        cp -a "$srcdir"/src/icons/shield.ico \
+            "${linkdir}"
+        cp -a "$srcdir"/doc/logo/gpg4win-msi-header_install-493x58.bmp \
+            "${linkdir}"/header.bmp
+        cp -a "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+            "${linkdir}"/dialog.bmp
+        cp -a "$srcdir"/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
+            "${linkdir}"/info.bmp
+        cp -a "$srcdir"/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
+            "${linkdir}"/exclamation.bmp
+        cp -a "$srcdir"/po/gpg4win-en.wxl \
+            "${linkdir}"
+        cp -a "$srcdir"/po/gpg4win-de.wxl \
+            "${linkdir}"
+        cp -a WixUI_Gpg4win.wxs \
+            "${linkdir}"
+    else
+        ssh "$WINHOST" "mkdir AppData\\Local\\Temp\\gpg4win-$version" || true
+        scp "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version";
+        scp "$srcdir"/src/icons/shield.ico \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+        scp "$srcdir"/doc/logo/gpg4win-msi-header_install-493x58.bmp \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/header.bmp
+        scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
+        scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
+        scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/info.bmp
+        scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/exclamation.bmp
+        scp "$srcdir"/po/gpg4win-en.wxl \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+        scp "$srcdir"/po/gpg4win-de.wxl \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+        scp WixUI_Gpg4win.wxs \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    fi
     rc=0
     [ -n "$verbose" ] && set +x
     set -e
@@ -877,7 +940,11 @@ runner_cmd_msibase() {
 # Copy files to the Windows host
 runner_cmd_cptowinhost() {
     local version="$1"
-    local target="$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    if [ $wineonly = yes ] ; then
+        local target="${builddir}/wix"
+    else
+        local target="$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    fi
     local files
 
     shift
@@ -887,10 +954,44 @@ runner_cmd_cptowinhost() {
         files="$files $(transform_dir "$f")"
     done
     set +e
-    echo >&2 "$PGM: running scp $files  $target"
-    scp $files  "$target"
+    if [ $wineonly = yes ] ; then
+        echo >&2 "$PGM: running cp -a $files  $target"
+        cp -a $files  "$target"
+    else
+        echo >&2 "$PGM: running scp $files  $target"
+        scp $files  "$target"
+    fi
     rc=$?
     set -e
+
+    return 0
+}
+
+# Copy files to the Windows host and convert lineendings UNIX->WIN
+runner_cmd_cpconvert() {
+    if [ $wineonly = yes ] ; then
+        # we don't use $version, but it's needed for
+        # runner_cmd_cptowinhost(), maybe
+        local version="$1"
+        local target="${builddir}/wix"
+        local files
+
+        shift
+
+        files=
+        for f in "$@"; do
+            files="$files $(transform_dir "$f")"
+        done
+        set +e
+        full_target="$target/${files##*/}"
+        echo >&2 "$PGM: running perl -pe 's/(?<!\r)\n$/\r\n/' $files > $full_target"
+        perl -pe 's/(?<!\r)\n$/\r\n/' "$files" > "$full_target"
+        rc=$?
+        set -e
+    else
+        # if run on windows this conversion is done there on the fly
+        runner_cmd_cptowinhost "$@"
+    fi
 
     return 0
 }
@@ -898,11 +999,20 @@ runner_cmd_cptowinhost() {
 # Copy file from the Windows host
 runner_cmd_cpfromwinhost() {
     local version="$1" prefix="$2" name="$3" vsdvers="$4"
-    local mydir="$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    if [ $wineonly = yes ] ; then
+        local mydir="${builddir}/wix"
+    else
+        local mydir="$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    fi
 
     set +e
-    scp "$mydir/$prefix-$version-$name.msi" \
-        "$builddir/src/installers/$prefix-$vsdvers-$name.msi"
+    if [ $wineonly = yes ] ; then
+        cp -a "$mydir/$prefix-$version-$name.msi" \
+            "$builddir/src/installers/$prefix-$vsdvers-$name.msi"
+    else
+        scp "$mydir/$prefix-$version-$name.msi" \
+            "$builddir/src/installers/$prefix-$vsdvers-$name.msi"
+    fi
     rc=$?
     set -e
 
@@ -915,16 +1025,29 @@ runner_cmd_lightwinhost() {
 
     [ -n "$verbose" ] && set -x
     set +e
-    ssh "$WINHOST" "cd AppData/Local/Temp/gpg4win-$version \
-        && $WINLIGHT \
-        -cc . -reusecab -spdb \
-        -ext WixUIExtension   \
-        -ext WixUtilExtension \
-        -out $prefix-$version-$name.msi \
-        $(echo "$intlopt" | sed 's,%20, ,g') \
-        -dcl:high -pedantic \
-        $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name-$version.wixlib" \
-      | grep -v "ICE80" | grep -v "ICE57"
+    if [ $wineonly = yes ] ; then
+        cd "${builddir}/wix" \
+            && WINEDEBUG=warn+all $WINE "$WIXPREFIX/light.exe" \
+            -cc . -reusecab -spdb -sval \
+            -ext WixUIExtension   \
+            -ext WixUtilExtension \
+            -out $prefix-$version-$name.msi \
+            ${intlopt//%20/ } \
+            -dcl:high -pedantic \
+            $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name-$version.wixlib \
+        | grep -v "ICE80" | grep -v "ICE57"
+    else
+        ssh "$WINHOST" "cd AppData/Local/Temp/gpg4win-$version \
+            && $WINLIGHT \
+            -cc . -reusecab -spdb \
+            -ext WixUIExtension   \
+            -ext WixUtilExtension \
+            -out $prefix-$version-$name.msi \
+            ${intlopt//%20/ } \
+            -dcl:high -pedantic \
+            $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name-$version.wixlib" \
+        | grep -v "ICE80" | grep -v "ICE57"
+    fi
     rc="${PIPESTATUS[0]}"
     set -e
     [ -n "$verbose" ] && set +x
@@ -936,11 +1059,10 @@ runner_cmd_lightwinhost() {
 }
 
 
-
 # Run the Wix tools under Wine.
 runner_cmd_litcandle() {
     local mode="$1" version="$2" prefix="$3" idir="$4" exidir="$5"
-    local dwixobj fwxs
+    local fwixlib fwixobj fwxs fextraobj
 
     if [ $withmsi = no ]; then
         echo >&2 "$PGM(runner): litcandle requires --with-msi option"
@@ -1027,15 +1149,16 @@ runner_exec_cmd() {
     # The called functions need to set RC to the desired exit status
     rc=42
     case "$cmd" in
-        ping) echo pong; rc=0 ;;
-        gpg)  runner_cmd_gpg "gpg $line" ;;
-        gpg-authcode-sign) runner_cmd_gpg_authcode_sign "$line" ;;
-        msibase) runner_cmd_msibase $line ;;
-        cptowinhost)   runner_cmd_cptowinhost $line ;;
-        cpfromwinhost) runner_cmd_cpfromwinhost $line ;;
-        lightwinhost)  runner_cmd_lightwinhost $line ;;
-        litcandle) runner_cmd_litcandle $line ;;
-        *)    echo "$PGM(runner): $cmd: no such command"; rc=4 ;;
+        ping)               echo pong; rc=0 ;;
+        gpg)                runner_cmd_gpg "gpg $line" ;;
+        gpg-authcode-sign)  runner_cmd_gpg_authcode_sign "$line" ;;
+        msibase)            runner_cmd_msibase $line ;;
+        cptowinhost)        runner_cmd_cptowinhost $line ;;
+        cpconvert)          runner_cmd_cpconvert $line ;;
+        cpfromwinhost)      runner_cmd_cpfromwinhost $line ;;
+        lightwinhost)       runner_cmd_lightwinhost $line ;;
+        litcandle)          runner_cmd_litcandle $line ;;
+        *)                  echo "$PGM(runner): $cmd: no such command"; rc=4 ;;
     esac
     echo >&2 "$PGM: runner cmd '$cmd' returned $rc"
     # Make sure that we have a final LF in the output and then write
