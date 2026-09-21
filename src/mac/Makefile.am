@@ -109,6 +109,9 @@ macimage_pkg_pinentry_configure = \
 
 macimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
 
+# asm currently broken: https://dev.gnupg.org/T8463
+macimage_pkg_libgcrypt_configure = --disable-asm
+
 # To make gpgconf paths work, pass the final destinations to configure,
 # then prefix with DESTDIR during install
 macimage_pkg_gnupg_configure = --bindir=$(targetbindir) \
