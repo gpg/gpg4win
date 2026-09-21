@@ -87,7 +87,7 @@ macimage_kdepkgs = gpgmepp qgpgme \
 		   qtbase qttools qtsvg qttranslations \
 		   qthttpserver qtwebsockets kcontacts gpgoljs \
 		   breeze tiff zstd pcre2 openjpeg boost \
-		   gpgapplemail
+		   gpgapplemail ministart
 
 macimage_pkg_pkgconfig_configure = \
         --with-internal-glib \
