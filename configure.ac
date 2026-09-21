@@ -682,6 +682,7 @@ if test "$build_macimage" = yes ; then
 
     # Mac specific
     MACIMAGE_KDEPKG([gpgapplemail])
+    MACIMAGE_KDEPKG([ministart], [kiconthemes kwidgetsaddons kcoreaddons ki18n])
 
     MACIMAGE_FINALIZE
 fi
