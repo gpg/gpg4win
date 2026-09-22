@@ -681,7 +681,7 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n qgpgme])
 
     # Mac specific
-    MACIMAGE_KDEPKG([gpgapplemail])
+    MACIMAGE_KDEPKG([gpgapplemail], [gpgmepp])
     MACIMAGE_KDEPKG([ministart], [kiconthemes kwidgetsaddons kcoreaddons ki18n])
 
     MACIMAGE_FINALIZE
