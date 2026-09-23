@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# bundle.py - bundle MacOS kleopatra image for distribution
+# bundle.py - bundle MacOS GnuPG image for distribution
 # Copyright (C) 2026 g10 Code GmbH
 #
 # Software engineering by Thomas Friedrichsmeier <thomas.friedrichsmeier@gnupg.com>
@@ -249,7 +249,11 @@ def finalizeBundle():
         lines = f.readlines()
         for i, line in enumerate(lines):
             if '<key>CFBundleIdentifier</key>' in line:
-                lines[i+1] = lines[i+1].replace('<string></string>', '<string>org.kde.kleopatra</string>')
+                lines[i+1] = '\t<string>org.gnupg.gnupg4mac</string>'
+            elif '<key>CFBundleExecutable</key>' in line:
+                lines[i+1] = '\t<string>ministartqt</string>'
+            elif '<key>CFBundleName</key>' in line:
+                lines[i+1] = '\t<string>GnuPG 4 Mac</string>'
     with infoPlist.open('w') as f:
         f.writelines(lines)
 

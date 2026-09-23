@@ -26,7 +26,7 @@ set -e
 BUILDROOT=/build
 SRCDIR=/src
 INSTDIR=${BUILDROOT}/install
-TARGETIMAGENAME=Kleopatra
+TARGETIMAGENAME=GnuPG4Mac
 
 # Check for the buildtype and existence of required files
 # early
