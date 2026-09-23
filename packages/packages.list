@@ -670,6 +670,7 @@ file gpgoljs/gpgoljs-202608311555.tar.xz
 chk fb65ad8ed040abfae650f0f6dcbdfc897fe796874eddd182c9f08bfe7f31763c
 
 
+
 #
 # Gpgpass  - not stable enough for anyone
 #
@@ -822,26 +823,26 @@ fi # gnupg22
 #
 # This is the GnuPG used for gpg4win 5.x and vsd 4.x
 #
-# last changed 2026-09-22
+# last changed 2026-09-23
 # by builder
 # verified: [taken from buildtree]
 if gnupg = gnupg26
-name gnupg-2.5.23.tar.bz2
-file gnupg/gnupg-2.5.23.tar.bz2
-chk  97ebba329ed0aa1ed24395b6a485a3626680f4c19232c62a0c0f0433c726e2bd
+name gnupg-2.5.24.tar.bz2
+file gnupg/gnupg-2.5.24.tar.bz2
+chk  bf149d01a2b9fcc0e4589b8ae8697d3d5c557ea48ed95a3fa55dd3b1187e6039
 
-name gnupg-w32-2.5.23_20260922-bin.exe
-file binary/gnupg-w32-2.5.23_20260922.exe
-chk  7ee778c3ed3646450a3f62032dc3416e3b78d8805004b3557ea56c80d65c291d
+name gnupg-w32-2.5.24_20260923-bin.exe
+file binary/gnupg-w32-2.5.24_20260923.exe
+chk  ea6f9dee2cccd83287432625b8b399173805add81d27067fcaf019c0c4da1ad8
 
-name gnupg-w32-2.5.23_20260922-src.tar.xz
-file gnupg/gnupg-w32-2.5.23_20260922.tar.xz
-link gnupg-msi-2.5.23_20260922-src.tar.xz
-chk  6d3bc2563b2d0cd67bfcf6fa8a8e40158fb78ead9d73018acc425a2dfd78af05
+name gnupg-w32-2.5.24_20260923-src.tar.xz
+file gnupg/gnupg-w32-2.5.24_20260923.tar.xz
+link gnupg-msi-2.5.24_20260923-src.tar.xz
+chk  4d18ae79e3a787ceab011f27c1557f407f6ba45e467d483c01434f0dd5fa115a
 
-name gnupg-msi-2.5.23_20260922-bin.wixlib
-file binary/gnupg-w32-2.5.23_20260922.wixlib
-chk  9a75f4c89ee2ced41cf6f7f76ce5ca3738c85c0577ede46b6ac0d2122bdd556f
+name gnupg-msi-2.5.24_20260923-bin.wixlib
+file binary/gnupg-w32-2.5.24_20260923.wixlib
+chk  4e4600b3d28b6507e2433d59c69ba6c33d4da158f2c8da1e12f948b68a97ebda
 
 fi # gnupg26
 
