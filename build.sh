@@ -170,7 +170,7 @@ while [ $# -gt 0 ]; do
         --*)                     usage 1 1>&2; exit 1 ;;
         *)                       skipshift=1; break   ;;
     esac
-    [ -z "$skipshift" ] && shift
+    [ -n "$skipshift" ] || shift
 done
 
 if [ "$appimage" = yes -a "$release" = yes ] ; then
@@ -186,7 +186,7 @@ if [ "$withmsi" = no -a "$wineonly" = yes ] ; then
     exit 1
 fi
 
-[ -z "$verbose" ] && quiet="--quiet"
+[ -n "$verbose" ] || quiet="--quiet"
 
 if [ -z "$builddir" ]; then
     if [ "$release" = "yes" ]; then
@@ -250,7 +250,7 @@ trim() {
 
 # Make sure we have a BUILDTYPE file
 buildtype_prefix=""
-[ "$indocker" = yes ] && buildtype_prefix="/src/"
+[ "$indocker" != yes ] || buildtype_prefix="/src/"
 if [ -e "${buildtype_prefix}packages/BUILDTYPE" ]; then
     buildtype="$(trim "$(cat "${buildtype_prefix}packages/BUILDTYPE" 2>/dev/null)")"
 else
@@ -277,13 +277,13 @@ if [ "$runcmd" = yes ]; then
         echo >&2 "usage: /src/build.sh --runcmd COMMAND ARGS"
         exit 2
     fi
-    [ -f /build/S.build.sh-rc ] && rm /build/S.build.sh-rc
+    [ ! -f /build/S.build.sh-rc ] || rm /build/S.build.sh-rc
     echo "$@" >/build/S.build.sh-in
     cat /build/S.build.sh-out
     while [ ! -f /build/S.build.sh-rc ]; do sleep 0.05; done
     rc=$(sed -ne 's/EXITSTATUS=\([0-9]*\).*$/\1/p' \
              </build/S.build.sh-rc 2>/dev/null || true)
-    [ -z "$rc" ] && rc=0
+    [ -n "$rc" ] || rc=0
     exit $rc
 fi
 
@@ -363,7 +363,7 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
         local VERSION_FILE="$1"
         local SIGNKEY="$2"
 
-        [ -n "$verbose" ] && echo "$PGM (AppImage): signkey      : ${SIGNKEY}" | tee -a ${logfile} >&2
+        [ -z "$verbose" ] || echo "$PGM (AppImage): signkey      : ${SIGNKEY}" | tee -a ${logfile} >&2
 
         /src/build.sh --runcmd gpg --yes -o "${VERSION_FILE}.sig" -bau "${SIGNKEY}" "${VERSION_FILE}"
         chmod 0644 "${VERSION_FILE}.sig"
@@ -394,7 +394,7 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
     # The actual build
     cd ${builddir}
     if [ -f /opt/rh/gcc-toolset-14/enable ] ;then
-        [ -n "$verbose" ] && echo "$PGM (AppImage): found        : /opt/rh/gcc-toolset-14/enable" | tee -a ${logfile} >&2
+        [ -z "$verbose" ] || echo "$PGM (AppImage): found        : /opt/rh/gcc-toolset-14/enable" | tee -a ${logfile} >&2
     else
         echo "$PGM (AppImage): no found     : /opt/rh/gcc-toolset-14/enable" | tee -a ${logfile} >&2
         exit 1
@@ -661,9 +661,9 @@ build_from_tarball() {
     mkdir "$milldir/binary/artifacts"
 
     extraopt="--logfile=$logfile"
-    [ -n "$verbose" ] && extraopt="$extraopt --verbose"
-    [ "$download" = yes ] && extraopt="$extraopt --download"
-    [ "$withmsi" = yes ] && extraopt="$extraopt --msi"
+    [ -z "$verbose" ] || extraopt="$extraopt --verbose"
+    [ "$download" != yes ] || extraopt="$extraopt --download"
+    [ "$withmsi" != yes ] || extraopt="$extraopt --msi"
     $myself --builddir="$milldir/tarball" --dist $extraopt
     if [ $? != 0 ]; then
         ( echo "$PGM: *"
@@ -696,9 +696,9 @@ build_from_tarball() {
     fi
 
     extraopt="--logfile=$logfile"
-    [ -n "$verbose" ] && extraopt="$extraopt --verbose"
-    [ $withmsi = yes ] && extraopt="$extraopt --msi"
-    [ $nosign = yes ] && extraopt="$extraopt --no-sign"
+    [ -z "$verbose" ] || extraopt="$extraopt --verbose"
+    [ $withmsi != yes ] || extraopt="$extraopt --msi"
+    [ $nosign != yes ] || extraopt="$extraopt --no-sign"
     $myself --builddir="$milldir/binary" $extraopt
     if [ $? != 0 ]; then
         ( echo "$PGM: *"
@@ -777,20 +777,20 @@ if [ "$runcmd" = yes ]; then
         echo >&2 "usage: /src/build.sh --runcmd COMMAND ARGS"
         exit 2
     fi
-    [ -f /build/S.build.sh-rc ] && rm /build/S.build.sh-rc
+    [ ! -f /build/S.build.sh-rc ] || rm /build/S.build.sh-rc
     echo "$@" >/build/S.build.sh-in
     cat /build/S.build.sh-out
     while [ ! -f /build/S.build.sh-rc ]; do sleep 0.05; done
     rc=$(sed -ne 's/EXITSTATUS=\([0-9]*\).*$/\1/p' \
              </build/S.build.sh-rc 2>/dev/null || true)
-    [ -z "$rc" ] && rc=0
+    [ -n "$rc" ] || rc=0
     exit $rc
 fi
 
 
 # Make sure we have a BUILDTYPE file
 buildtype_prefix=""
-[ "$indocker" = yes ] && buildtype_prefix="src/"
+[ "$indocker" != yes ] || buildtype_prefix="src/"
 if [ ! -e "${buildtype_prefix}packages/BUILDTYPE" ]; then
     echo >&2 "PGM: ${buildtype_prefix}packages/BUILDTYPE not found - see README"
     exit 1
@@ -818,9 +818,8 @@ check_flags() {
         [ "$withmsi" = yes ] \
             && echo "BUILDTYPE ${buildtype} is incompatible with --msi!" >&2 \
             && exit 1
-    else
-        [ ! "$withmsi" = yes ] && [ ! "$appimage" = yes ] && [ ! "$shell" = yes ] \
-            && echo "BUILDTYPE ${buildtype} requires --msi or --appimage!" >&2 \
+    elif [ ! "$withmsi" = yes ] && [ ! "$appimage" = yes ] && [ ! "$shell" = yes ] ; then
+            echo "BUILDTYPE ${buildtype} requires --msi or --appimage!" >&2 \
             && exit 1
     fi
     return 0
@@ -990,7 +989,7 @@ if [ $withmsi = yes ]; then
        echo >&2 "$PGM: error: For MSI packaging Wine needs to be installed"
        exit 1
     fi
-    [ -z "$WINEPREFIX" ] && WINEPREFIX="$HOME/.wine"
+    [ -n "$WINEPREFIX" ] || WINEPREFIX="$HOME/.wine"
     if [ ! -e "$WINEPREFIX/dosdevices" ]; then
         echo >&2 "PGM: error: No value for WINEPREFIX found"
         exit 1
@@ -1016,11 +1015,11 @@ if [ $withmsi = yes ]; then
             exit 1
         fi
         # for the moment, assume we need both 32 and 64 bit native versions of cabinet.dll
-        [ ! -f "${WINEPREFIX}/drive_c/windows/system32/cabinet.dll" ] && {
+        [ -f "${WINEPREFIX}/drive_c/windows/system32/cabinet.dll" ] || {
             echo >&2 "$PGM: error: Please install the native 32bit cabinet.dll to ${WINEPREFIX}/drive_c/windows/system32/"
             exit 1
         }
-        [ ! -f "${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll" ] && {
+        [ -f "${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll" ] || {
             echo >&2 "$PGM: error: Please install the native 64bit cabinet.dll to ${WINEPREFIX}/drive_c/windows/syswow64/"
             exit 1
         }
@@ -1070,12 +1069,12 @@ if [ $withmsi = yes ]; then
             done
         done
     fi
-    [ $die = yes ] && exit 1
+    [ $die != yes ] || exit 1
 fi
 
 # Determine the needed docker image
 if [ "$appimage" = "yes" ]; then
-    [ -n "$verbose" ] && docker_cmd_extras="${docker_cmd_extras} --verbose"
+    [ -z "$verbose" ] || docker_cmd_extras="${docker_cmd_extras} --verbose"
     if [ "${buildtype}" = "vsd" ] || [ "${buildtype}" = "vsd3" ] || [ "${buildtype}" = "gpd" ] ; then
         if [ "$have_signkey" = "no" ] && [ -f "$HOME/.gnupg-autogen.rc" ] ; then
             version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' "$HOME/.gnupg-autogen.rc"|cut -d= -f2|xargs)"
@@ -1100,10 +1099,12 @@ else
     else
         cmd="/src/build.sh --w32 ${docker_cmd_extras}"
     fi
-    [ $dist = yes ] && cmd="$cmd --dist"
-    [ $force = yes ] && cmd="$cmd --force"
-    [ $withmsi = yes -a $shell = no ] && cmd="$cmd --msi"
-    [ $wineonly = yes ] && cmd="$cmd --wine-only"
+    [ $dist != yes ] || cmd="$cmd --dist"
+    [ $force != yes ] || cmd="$cmd --force"
+    if [ $withmsi = yes ] && [ $shell = no ] ; then
+        cmd="$cmd --msi"
+    fi
+    [ $wineonly != yes ] || cmd="$cmd --wine-only"
     docker_image=g10-build-gpg4win:trixie
     dockerfile=${srcdir}/docker/gpg4win-trixie
 fi
@@ -1133,7 +1134,7 @@ else
 fi
 
 start_time=$(date +"%s")
-[ -z "$logfile" ] && logfile="${builddir}/build-log.txt"
+[ -n "$logfile" ] || logfile="${builddir}/build-log.txt"
 
 # Kill the given process and all its descendants
 killtree() {
@@ -1213,17 +1214,17 @@ runner_cmd_gpg_authcode_sign() {
     local subdir="install"
 
     # Ugly hack to use a different subdir's when signing the installers.
-    [ "${cmd:0:11}" = "installers/" ] && subdir="src"
+    [ "${cmd:0:11}" != "installers/" ] || subdir="src"
 
     # Modify the command in --no-sign mode.
-    [ $nosign = yes ] && cmd="--dry-run $cmd"
+    [ $nosign != yes ] || cmd="--dry-run $cmd"
 
     printf >&2 -- "%s(runner): gpg-authcode-sign.sh --stamp $cmd\n" "$PGM"
     set +e
-    [ -n "$verbose" ] && set -x
+    [ -z "$verbose" ] || set -x
     ( cd "$builddir"/$subdir && gpg-authcode-sign.sh --stamp $cmd </dev/null )
     rc=$?
-    [ -n "$verbose" ] && set +x
+    [ -z "$verbose" ] || set +x
     set -e
     printf >&2 -- "%s(runner): gpg-authcode-sign.sh returned $rc\n" "$PGM"
     return 0
@@ -1234,7 +1235,7 @@ runner_cmd_msibase() {
     local version="$1" gnupgmsi="$2" linkdir="${builddir}/wix"
 
     set +e
-    [ -n "$verbose" ] && set -x
+    [ -z "$verbose" ] || set -x
     if [ $wineonly = yes ] ; then
         mkdir -p "${linkdir}"
         cp -a "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
@@ -1279,7 +1280,7 @@ runner_cmd_msibase() {
             "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
     fi
     rc=0
-    [ -n "$verbose" ] && set +x
+    [ -z "$verbose" ] || set +x
     set -e
     return 0
 }
@@ -1371,7 +1372,7 @@ runner_cmd_cpfromwinhost() {
 runner_cmd_lightwinhost() {
     local version="$1" prefix="$2" name="$3" intlopt="$4" msivers="$5"
 
-    [ -n "$verbose" ] && set -x
+    [ -z "$verbose" ] || set -x
     set +e
     if [ $wineonly = yes ] ; then
         cd "${builddir}/wix" \
@@ -1398,7 +1399,7 @@ runner_cmd_lightwinhost() {
     fi
     rc="${PIPESTATUS[0]}"
     set -e
-    [ -n "$verbose" ] && set +x
+    [ -z "$verbose" ] || set +x
     # FIXME:
     echo >&2 "$PGM(runner): cmd lightwinhost exited with $rc - forcing 0"
     rc=0
@@ -1444,7 +1445,7 @@ runner_cmd_litcandle() {
     ln -sf "$builddir" "$WINEBLD"
     # Run the tools
     rc=0
-    [ -n "$verbose" ] && set -x
+    [ -z "$verbose" ] || set -x
     set +e
     if [ $rc -eq 0 ]; then
         $WINE "$WIXPREFIX/candle.exe" \
@@ -1482,7 +1483,7 @@ runner_cmd_litcandle() {
         rc=$?
     fi
     set -e
-    [ -n "$verbose" ] && set +x
+    [ -z "$verbose" ] || set +x
     # Remove the symlinks
     rm "$WINEINST" "$WINESRC" "$WINEINSTEX" "$WINEBLD" || true
     return 0
@@ -1549,7 +1550,7 @@ if [ -z "$mac" ] ;then
     docker_cmdline="$docker_cmdline -v "${srcdir}":/src:ro"
     docker_cmdline="$docker_cmdline -v "${builddir}":/build:rw"
     # only add ~/.gnupg-autogen.rc if it actually exists
-    [ -f "$HOME/.gnupg-autogen.rc" ] && \
+    [ ! -f "$HOME/.gnupg-autogen.rc" ] || \
     docker_cmdline="$docker_cmdline -v "$HOME/.gnupg-autogen.rc":/.gnupg-autogen.rc:ro"
     docker_cmdline="$docker_cmdline $docker_image $cmd"
     echo >&2 "$PGM: running: docker $docker_cmdline"

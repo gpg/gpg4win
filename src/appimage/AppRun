@@ -111,8 +111,8 @@ Options:
   --gui         Run the GUI with optional arguments.
   --keep-socket Keep an existing gpg-agent socket.
 EOF
-            [ ${_gnupg_appimage} = vsd ] \
-                && echo "  --install     Install system-wide configuration (requires root permissions)"
+            [ ${_gnupg_appimage} != vsd ] \
+                || echo "  --install     Install system-wide configuration (requires root permissions)"
             cat <<EOF
   --debug       Enable debugging of the start script.
   --version     Print version and copyright info
@@ -128,7 +128,7 @@ EOF
             ;;
     esac
     shift
-    [ $lastoption = yes ] && break;
+    [ $lastoption != yes ] || break;
 done
 
 if [ $opt_debug = yes ]; then
@@ -223,9 +223,10 @@ if [ $opt_install = yes ]; then
     if [ $docopy = yes ]; then
         AI_TEMPDIR="$(mktemp -d --suffix=_gnuppg-vsd)"
         cp -R "${APPDIR}"/usr/share/gnupg/conf/gnupg-vsd "${AI_TEMPDIR}"
-        [ -f "${APPDIR}"/usr/etc/ministart.config ] \
-            && mkdir -p "${AI_TEMPDIR}"/gnupg-vsd/GUI \
+        if [ -f "${APPDIR}"/usr/etc/ministart.config ] ; then
+            mkdir -p "${AI_TEMPDIR}"/gnupg-vsd/GUI \
             && cp "${APPDIR}"/usr/etc/ministart.config "${AI_TEMPDIR}"/gnupg-vsd/GUI/ministart.config
+        fi
         for f in "${AI_TEMPDIR}"/gnupg-vsd/* ; do
         t="/etc/gnupg-vsd/${f##*/}"
         if [ -d "$f" ]; then
@@ -263,7 +264,7 @@ fi
 
 callerargs=no
 if [ $opt_c = yes ]; then
-    [ ! -x "$SHELL" ] && error "no shell found"
+    [ -x "$SHELL" ] || error "no shell found"
     if [ -n "$1" ]; then
         pgm=/usr/bin/env
         pgmargs=
@@ -283,7 +284,7 @@ if [ $opt_c = yes ]; then
         echo "" >&2
     fi
 else
-    [ $(id -u) -eq 0 ] && error "the GUI may not be run by root"
+    [ $(id -u) -ne 0 ] || error "the GUI may not be run by root"
     if [ -x "${this_dir}/usr/bin/ministart" ];then
         pgm="${this_dir}/usr/bin/ministart"
         pgmargs=
@@ -313,7 +314,7 @@ fi
 if [ ${_gnupg_appimage} = vsd -a -z "$GNUPGHOME" ]; then
     GNUPGHOME="$HOME/.gnupg-vsd"
     export GNUPGHOME
-    [ ! -d "$GNUPGHOME" ] && mkdir --mode=700 "$GNUPGHOME"
+    [ -d "$GNUPGHOME" ] || mkdir --mode=700 "$GNUPGHOME"
     create_run_script "$GNUPGHOME"/run-gpgconf \
         "$myname" "$GNUPGHOME" "$APPDIR"
 elif [ ${_gnupg_appimage} = desktop -a -w "${GNUPGHOME:-$HOME/.gnupg}" ]; then
