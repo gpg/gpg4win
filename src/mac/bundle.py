@@ -101,6 +101,12 @@ def destination(absFilePath: Path) -> str:
         fileName = str(filePath)
 
     if package in ["bison", "cmake", "qttools"]:
+        # purely build depends
+        return None
+    elif package in ["gettext", "qtbase", "jpeg", "pcre2", "iconv"] and fileName.startswith("bin"):
+        # additional tools we do not need
+        return None
+    elif fileName.startswith("libexec") and package != "gnupg":
         return None
     elif package == "qtbase" and "objects-Release" in fileName:
         return None # unused Qt cruft that makes codesign unhappy
