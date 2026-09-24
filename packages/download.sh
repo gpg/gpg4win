@@ -359,7 +359,7 @@ if [ -f '.#download.failed' ]; then
 fi
 
 # check for stale packages
-for p in $(ls *.xz *.gz *.bz2 *.wixlib *.exe *.zip); do
+for p in $(ls *.xz *.gz *.bz2 *.wixlib *.exe *.zip 2> /dev/null || true); do
     if ! grep -q $p '.#download.current_packages'; then
         echo "rm $p" >> '.#download.stale_packages'
     fi
