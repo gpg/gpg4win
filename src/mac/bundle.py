@@ -260,6 +260,8 @@ def finalizeBundle():
                 lines[i+1] = '\t<string>ministartqt</string>'
             elif '<key>CFBundleName</key>' in line:
                 lines[i+1] = '\t<string>GnuPG 4 Mac</string>'
+            elif '<key>CFBundleIconFile</key>' in line:
+                lines[i+1] = '\t<string>gnupg_stylized.icns</string>'
     with infoPlist.open('w') as f:
         f.writelines(lines)
 
