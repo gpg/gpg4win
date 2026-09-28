@@ -76,6 +76,7 @@ RUN dnf install -y \
         libjpeg-turbo-devel \
         libmount-devel \
         libpng-devel \
+        librsvg2 \
         libusbx-devel \
         libxcb-devel \
         libxkbcommon-devel \
