@@ -11,12 +11,23 @@ QStandardPaths returns a user writable location, only, probably
 because there is not really a concept for system-wide shared files.
 
 Since the relevant files are installed inside our bundle, we can
-quite simply use add that location to the search path.
+quite simply add that location to the search path. A follow up
+problem is we have to move some of our binaries into nested bundles,
+so we also need to add the (shared) resources folder of the main
+bundle.
 
 This fixes problems finding libkleopatrarc, and installed icons.
 --- a/src/corelib/io/qstandardpaths_mac.mm	2026-08-17 16:53:36
-+++ b/src/corelib/io/qstandardpaths_mac.mm	2026-08-19 08:36:28
-@@ -187,7 +187,7 @@
++++ b/src/corelib/io/qstandardpaths_mac.mm	2026-09-29 11:22:08
+@@ -8,6 +8,7 @@
+
+ #include <qdir.h>
+ #include <qurl.h>
++#include <qlibraryinfo.h>
+ #include <private/qcore_mac_p.h>
+
+ #ifndef QT_BOOTSTRAPPED
+@@ -187,7 +188,7 @@
          }
      }
 
@@ -25,3 +36,14 @@ This fixes problems finding libkleopatrarc, and installed icons.
          CFBundleRef mainBundle = CFBundleGetMainBundle();
          if (mainBundle) {
              if (QCFType<CFURLRef> resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle)) {
+@@ -199,6 +200,10 @@
+                 }
+             }
+         }
++        // Our apps may be nested within the bundle, but store their (shared) resources
++        // in the top level Resources folder. Since the qt framework also resides at the top level,
++        // we can use that for the lookup.
++        dirs.append(QLibraryInfo::path(QLibraryInfo::DataPath) + u"/Resources"_s);
+     }
+
+     const QString localDir = writableLocation(type);

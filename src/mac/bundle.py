@@ -106,6 +106,10 @@ def destination(absFilePath: Path) -> str:
     elif package in ["gettext", "qtbase", "jpeg", "pcre2", "iconv"] and fileName.startswith("bin"):
         # additional tools we do not need
         return None
+    # elif package in ["poppler"] and fileName.startswith("bin"):
+    # poppler tools (pdf*) are not used by anything in the package, but might be nice to have.
+    # Safe to move around, if needs be.
+    #    return None
     elif fileName.startswith("libexec") and package != "gnupg":
         return None
     elif package == "qtbase" and "objects-Release" in fileName:
@@ -119,12 +123,16 @@ def destination(absFilePath: Path) -> str:
             stripped = re.sub(r'Applications/[^/]*/Contents/', '', fileName) # strip Application/xyz/Contents
             # FIXME: Fix bundle location of apple mail plugin. It needs its own Info.plist, which would conflict with the main one
             if fileName.startswith("Applications/GPGMail.app"): # and not 'LaunchAgents/' in fileName:
-               return "Helpers/GPGMail.app/Contents/" + stripped
+                return "Helpers/GPGMail.app/Contents/" + stripped
             # FIXME: apple mail plugin files are present twice in the install folder. Strip the copy
             elif "GPGMail" in fileName:
                 return None
-            # FIXME: crude temporary solution to make kleopatra's Info.plist the primary (only) one
-            if stripped != "Info.plist" or fileName.startswith("Applications/kleopatra"):
+            elif fileName.startswith("Applications/okular.app"):
+                return "Helpers/Okular.app/Contents/" + stripped
+            elif fileName.startswith("Applications/kleopatra.app"):
+                return "Helpers/Kleopatra.app/Contents/" + stripped
+            # FIXME: crude temporary solution to make ministarts Info.plist the primary (only) one
+            if stripped != "Info.plist" or fileName.startswith("Applications/ministart"):
                 return stripped
         return None
     else:
