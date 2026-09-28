@@ -1009,7 +1009,7 @@ if [ $withmsi = yes ]; then
         # light.exe 3.* uses a compression for .cab files not implemented
         # in Wine's cabinet.dll. You will have to install and configure
         if [ ! $(grep "^\"cabinet\"=\"native" "$WINEPREFIX/user.reg") ] ; then
-            echo >&2 "$PGM: error: You must cofigure Wine to use a native cabinet.dll! " \
+            echo >&2 "$PGM: error: You must configure Wine to use a native cabinet.dll! " \
                      "light.exe 3.* uses a compression for .cab files not implemented " \
                      "in Wine's cabinet.dll."
             exit 1
