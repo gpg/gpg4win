@@ -131,6 +131,8 @@ macimage_pkg_gpgme_configure = \
     --disable-gpgsm-test \
     --enable-fixed-path=$(targetgpgbindir)
 
+macimage_pkg_gpgme_extracflags = "-Wl,-headerpad_max_install_names"
+
 macimage_pkg_qgpgme_configure = -DBUILD_WITH_QT5=OFF
 
 macimage_pkg_libpng_configure = \
