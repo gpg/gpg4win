@@ -91,8 +91,8 @@ define SETVARS
 	pkgrsyncfilter="$(rsyncfilterdir)/$(1).rsync-filter"; \
 	pkg_conf_subdir="$(call GETVAR,macimage_pkg_$(1)_conf_subdir)"; \
 	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig:$(idir)/lib64/pkgconfig";	\
-	export FREETYPE_DIR="$(idir)"					\
-	export PATH="$(idir)/bin:$${PATH}"
+	export FREETYPE_DIR="$(idir)";					\
+	export PATH="$(idir)/bin":$$$${PATH}
 endef
 
 # Support macro.  Unpack the archive $(1).
