@@ -39,7 +39,8 @@ EXTRA_DIST = build-macimage.sh bundle.py
 # ipdir    :: A subdir of the install directory to hold the installed
 #             packages which will be stowed to other subdirs of $(idir).
 # patdir   :: The source directory patches-macimage/ below tsdir.
-# targetbindir / targetlibexecdir :: Final installation paths for binaries
+# targetgpgbindir / targetgpglibexecdir :: Final installation paths for
+#             gpg binaries
 # rsyncfilterdir :: The source directory with the package-specific
 #                   rsync filters (this is currently unused on Mac).
 
@@ -50,10 +51,8 @@ logdir    := $(root)/logs
 bdir      := $(root)/build
 idir      := $(root)/install
 ipdir     := $(root)/install/pkgs
-# TODO: in some places we want the target installation directory. The value
-#       of that should be centrally configured and passed in from outside.
-targetbindir := /Applications/$(TARGETIMAGENAME).app/Contents/MacOS
-targetlibexecdir := $(targetbindir)
+targetgpgbindir := /Applications/$(TARGETIMAGENAME).app/Contents/Resources/bin
+targetgpglibexecdir := $(targetgpgbindir)
 patdir    := $(tsdir)/patches-mac
 rsyncfilterdir := $(tsdir)/src/macimage/rsync-filters
 
@@ -105,7 +104,10 @@ macimage_pkg_pinentry_configure = \
 	CXXFLAGS=\"-std=c++17 -F$(idir)/lib -Wl,-headerpad_max_install_names\" \
 	--disable-pinentry-fltk \
 	--disable-pinentry-curses \
-	--disable-fallback-curses
+	--disable-fallback-curses \
+        --bindir=$(targetgpgbindir)
+
+macimage_pkg_pinentry_make_args_inst = DESTDIR=$$$${pkgidir}
 
 macimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
 
@@ -114,8 +116,8 @@ macimage_pkg_libgcrypt_configure = --disable-asm
 
 # To make gpgconf paths work, pass the final destinations to configure,
 # then prefix with DESTDIR during install
-macimage_pkg_gnupg_configure = --bindir=$(targetbindir) \
-			       --libexecdir=$(targetlibexecdir) \
+macimage_pkg_gnupg_configure = --bindir=$(targetgpgbindir) \
+			       --libexecdir=$(targetgpglibexecdir) \
 			       --prefix=/ \
                                LDFLAGS="-headerpad_max_install_names"
 
@@ -127,7 +129,7 @@ macimage_pkg_gpgme_configure = \
     --enable-languages= \
     --disable-gpg-test \
     --disable-gpgsm-test \
-    --enable-fixed-path=$(targetbindir)
+    --enable-fixed-path=$(targetgpgbindir)
 
 macimage_pkg_qgpgme_configure = -DBUILD_WITH_QT5=OFF
 
