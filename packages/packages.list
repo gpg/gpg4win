@@ -152,6 +152,15 @@ name libayatana-appindicator-0.5.94.tar.gz
 file libayatana-appindicator/archive/refs/tags/0.5.94.tar.gz
 chk  884a6bc77994c0b58c961613ca4c4b974dc91aa0f804e70e92f38a542d0d0f90
 
+server https://gnupg.org/ftp/gcrypt
+# last-changed: 2026-09-29
+# by: m.
+# verified: sha256sum by alexk
+name  ministart-0.15.2.tar.gz
+file  ministart/ministart-0.15.2.tar.gz
+chk   99a9417c7238fb04aec23d85474cebc3f6dbb64537d0d9c0d2ac1cc03c0ddcf0
+
+
 #
 # SQLite
 #
