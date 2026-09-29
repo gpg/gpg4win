@@ -76,8 +76,13 @@ def moveFilesToDestination():
                 target = f.readlink()
                 if target.is_absolute():
                     error(f"Cannot handle absolute symlink {f}->{target}")
-                print(f"symlink {f} -> {target}")
-                (bundleDir / dest).symlink_to(target)
+                if (bundleDir / dest).is_symlink():
+                    if str(os.readlink(bundleDir / dest)) != str(target):
+                        print(f"conflicting symlink {f} -> {target} or {os.readlink(bundleDir / dest)}")
+                        exit(1)
+                else:
+                    print(f"symlink {f} -> {target}")
+                    (bundleDir / dest).symlink_to(target)
             elif f.is_file():
                 print(f"Copying {f} -> {dest}")
                 shutil.copy2(f, bundleDir / dest)
@@ -254,6 +259,7 @@ def checkAndPatchDependencies(file: Path, origin: Path):
     res = subprocess.run(["codesign", "-v", file])
     if res.returncode != 0 and os.getenv("CODESIGN_ID") != None:
         subprocess.run(["codesign", "-f", "--preserve-metadata=identifier,entitlements", "--verbose=10", "-s", os.getenv("CODESIGN_ID"), file]) #.check_returncode()
+
 
 def finalizeBundle():
     # a non-empty CFBundleIdentifier is needed to make some things work - importantly native file dialogs
