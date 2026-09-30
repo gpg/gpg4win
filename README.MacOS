@@ -24,7 +24,7 @@ Status / Hints / TODO list for MacOS builds
 - Building (in gpg4win repo dir):
   echo "default" > packages/BUILDTYPE              # once
   PATH=/path/with/autotools:$PATH ./autogen.sh     # once, and after touching the build system
-  ./build.sh --download --mac --builddir=/Some/casesensitive/Volume
+  ./build.sh --download --mac
 
 - Running:
   Many things will not work properly until bundled/installed. Currently only an
@@ -70,9 +70,7 @@ Status / Hints / TODO list for MacOS builds
 
 - Further TODOs:
   - installer is still very basic
-  - There is no codesigning of the full package at all, yet
   - provide gpgconf.ctl
   - provide signed version
   - provision for gpd vs vsd-builds (later)
   - bundle identifier currently hardcoded as org.kde.kleopatra
-  - add wrapper to select kleo / gpgpol / okular ...
