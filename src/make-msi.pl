@@ -2231,18 +2231,11 @@ print <<EOF;
 
     <Property Id="ApplicationFolderName" Value="$::product_name" />
     <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
-EOF
-
-# The following is according to
-# https://stackoverflow.com/questions/5479790/wix-how-to-override-c-program-files-x86-on-x64-machine-in-wixui-advanced-s
-#
-($::win64 eq 'yes') && print <<EOF;
+    <!-- The following is according to
+         https://stackoverflow.com/questions/5479790/wix-how-to-override-c-program-files-x86-on-x64-machine-in-wixui-advanced-s -->
     <SetDirectory Id="APPLICATIONFOLDER"
                Value="[$::pfilesfolder][ApplicationFolderName]"
                     >APPLICATIONFOLDER=""</SetDirectory>
-EOF
-
-print <<EOF;
     <Property Id="APPLICATIONFOLDER">
       <RegistrySearch Id='gpg4win_instdir_registry' Type='raw'
        Root='HKLM' Key="$::instdirkey" Name="$::instdirname" />
