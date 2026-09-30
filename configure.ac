@@ -570,6 +570,12 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff])
     APPIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
 
+    # ministart
+    APPIMAGE_KDEPKG([libayatana-ido])
+    APPIMAGE_KDEPKG([libayatana-indicator], [libayatana-ido])
+    APPIMAGE_KDEPKG([libayatana-appindicator], [libayatana-indicator])
+    APPIMAGE_MPKG([ministart], [freetype tiff libayatana-appindicator])
+
     # Gpgpass
     APPIMAGE_KDEPKG([prison], [qtbase extra-cmake-modules libqrencode])
     APPIMAGE_KDEPKG([gpgpass], [kio prison kconfigwidgets kiconthemes ki18n qgpgme])

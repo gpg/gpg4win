@@ -1,0 +1,15 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+--- a/CMakeLists.txt 2026-09-15 16:15:55.672214639 +0200
++++ b/CMakeLists.txt 2026-09-15 16:18:03.570531816 +0200
+@@ -44,7 +44,7 @@
+
+ # Check for prerequisites
+
+-set(DEPS glib-2.0>=2.58 gtk+-3.0>=3.24)
++set(DEPS glib-2.0>=2.56 gtk+-3.0>=3.22)
+
+ find_package (PkgConfig REQUIRED)
+ pkg_check_modules(PROJECT_DEPS REQUIRED ${DEPS})
