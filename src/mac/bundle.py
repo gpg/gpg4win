@@ -27,7 +27,7 @@
 #   - making sure all deps are either system provided or in the bundle
 #   - adjusting library paths (install_name_tool)
 # (- checking strings for mentions of build path?)
-# - signing / notarization -> TODO
+# - notarization -> TODO
 # - creating dmg -> TODO: still very basic
 #
 # Some pointers to similar tools that do not quite meet our needs:
@@ -256,12 +256,20 @@ def checkAndPatchDependencies(file: Path, origin: Path):
         subprocess.run(["install_name_tool", "-change", olddep, dep, file]).check_returncode()
 
     # Check code signature: If the binary had one, and we made any modification, above, we'll have to re-sign
+    checkResignBinary(file)
+
+
+def checkResignBinary(file: Path, deep=False):
     res = subprocess.run(["codesign", "-v", file])
     if res.returncode != 0 and os.getenv("CODESIGN_ID") != None:
-        subprocess.run(["codesign", "-f", "--preserve-metadata=identifier,entitlements", "--verbose=10", "-s", os.getenv("CODESIGN_ID"), file]) #.check_returncode()
+        print(f"Code signature no longer valid on {file} - updating.")
+        subprocess.run(["codesign", "-f", "--preserve-metadata=identifier,entitlements", "--verbose=10", "-s", os.getenv("CODESIGN_ID")] +
+                       (["--deep"] if deep else []) +
+                       [file]).check_returncode()
 
 
 def finalizeBundle():
+    primaryBin = 'ministartqt'
     # a non-empty CFBundleIdentifier is needed to make some things work - importantly native file dialogs
     # in theory this could be set via cmake in kleopatra, but let's not assume that remains the primary executable.
     infoPlist = Path(bundleDir / 'Info.Plist')
@@ -271,7 +279,7 @@ def finalizeBundle():
             if '<key>CFBundleIdentifier</key>' in line:
                 lines[i+1] = '\t<string>org.gnupg.gnupg4mac</string>'
             elif '<key>CFBundleExecutable</key>' in line:
-                lines[i+1] = '\t<string>ministartqt</string>'
+                lines[i+1] = f'\t<string>{primaryBin}</string>'
             elif '<key>CFBundleName</key>' in line:
                 lines[i+1] = '\t<string>GnuPG 4 Mac</string>'
             elif '<key>CFBundleIconFile</key>' in line:
@@ -288,6 +296,8 @@ def finalizeBundle():
             print(f"Replacing {str(icon)}")
             icon.unlink()
             shutil.copy2(goodIcon, icon)
+
+    checkResignBinary(Path(bundleDir / 'MacOS' / primaryBin), True)
 
 
 def createDMG(stagingFolder: Path, imageName: str, outfile: Path):
@@ -328,7 +338,6 @@ def createDMG(stagingFolder: Path, imageName: str, outfile: Path):
 # - remove rpaths (mostly broken)
 # - Fix up all library references
 # - strip -> TODO
-# - codesign -> TODO
 # - package into DMG
 # - notarize -> TODO (for some hints see macdeployqt docs)
 
