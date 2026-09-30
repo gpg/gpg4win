@@ -51,7 +51,8 @@ logdir    := $(root)/logs
 bdir      := $(root)/build
 idir      := $(root)/install
 ipdir     := $(root)/install/pkgs
-targetgpgbindir := /Applications/$(TARGETIMAGENAME).app/Contents/Resources/bin
+targetbundledir := /Applications/$(TARGETIMAGENAME).app
+targetgpgbindir := $(targetbundledir)/Contents/Resources/bin
 targetgpglibexecdir := $(targetgpgbindir)
 patdir    := $(tsdir)/patches-mac
 rsyncfilterdir := $(tsdir)/src/macimage/rsync-filters
@@ -105,25 +106,45 @@ macimage_pkg_pinentry_configure = \
 	--disable-pinentry-fltk \
 	--disable-pinentry-curses \
 	--disable-fallback-curses \
-        --bindir=$(targetgpgbindir)
+        --prefix=$(targetbundledir)/Contents/Resources
 
 macimage_pkg_pinentry_make_args_inst = DESTDIR=$$$${pkgidir}
 
-macimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
+# LOCALEDIR (--localedir) gets compiled into libgpg-error, with no fallback.
+# Therefore we need the final installation target, here, but since that is outside of
+# the buildroot, we need to prefix DESTDIR during make install, then strip the double
+# prefix at post install
+#
+# TODO: Since similar problems apply to several packages, we might want to move that
+#       logic to the templates, eventually
+macimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config \
+                                      --datarootdir=$(targetbundledir)/Contents/Resources \
+                                      --with-libintl-prefix=$(idir)
 
-# asm currently broken: https://dev.gnupg.org/T8463
-macimage_pkg_libgcrypt_configure = --disable-asm
+macimage_pkg_libgpg_error_make_args_inst = DESTDIR=$$$${pkgidir}
 
-# To make gpgconf paths work, pass the final destinations to configure,
-# then prefix with DESTDIR during install
-macimage_pkg_gnupg_configure = --bindir=$(targetgpgbindir) \
-			       --libexecdir=$(targetgpglibexecdir) \
-			       --prefix=/ \
-                               LDFLAGS="-headerpad_max_install_names"
+define macimage_pkg_libgpg_error_post_install
+(cp -a $$$${pkgidir}/$$$${pkgidir}/* $$$${pkgidir}/ ; \
+rm -r $$$${pkgidir}/$(idir) )
+endef
+
+# We want to supply final (bundle) install paths to be compiled into gpgconf.
+# A scratch install prefix is prefixed to that via DESTDIR. An exception is
+# includedir, which we do not need at runtime.
+#
+# As a side-effect of setting prefix, configure needs help finding libintl.
+macimage_pkg_gnupg_configure = LDFLAGS="-headerpad_max_install_names" \
+                               --prefix=$(targetbundledir)/Contents/Resources \
+                               --datarootdir=$(targetbundledir)/Contents/Resources \
+                               --includedir=$(idir) \
+                               --with-libintl-prefix=$(idir)
 
 macimage_pkg_gnupg_extracflags = "-Wl,-headerpad_max_install_names"
 
 macimage_pkg_gnupg_make_args_inst = DESTDIR=$$$${pkgidir}
+
+# asm currently broken: https://dev.gnupg.org/T8463
+macimage_pkg_libgcrypt_configure = --disable-asm
 
 macimage_pkg_gpgme_configure = \
     --enable-languages= \
