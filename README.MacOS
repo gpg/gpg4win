@@ -66,6 +66,7 @@ Status / Hints / TODO list for MacOS builds
     homebrew installation, we check for remaining bad dependencies during bundling
     (src/mac/bundle.py).
     - Should a bad dependency get picked up, try trimming down the PATH!
+  - gettext_noop strings do not yet work in gnupg
 
 - Further TODOs:
   - installer is still very basic
