@@ -55,8 +55,8 @@ AC_DEFUN([GPG4WIN_BASH],
 AC_DEFUN([GPG4WIN_PACKAGES],
 [
   AC_MSG_CHECKING(for packages directory)
-  AS_IF([test -f /src/packages/BUILDTYPE],
-        [_gpg4win_packages_default=/src/packages],
+  AS_IF([test -f ${TOPSRCDIR}/packages/BUILDTYPE],
+        [_gpg4win_packages_default=${TOPSRCDIR}/packages],
         [_gpg4win_packages_default=packages])
   AC_ARG_WITH([packages],
     AS_HELP_STRING([--with-packages=DIR],
