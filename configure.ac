@@ -360,7 +360,7 @@ AC_SUBST(PLAYGROUND)
 # NSIFILES := The to-be generated translation files in the NSI format.
 #             (w/o directory)
 #
-posrcdir=/src/po
+posrcdir=$TOPSRCDIR/po
 LINGUAS=$(sed -e "/^#/d" -e "s/#.*//" "$posrcdir/LINGUAS" | xargs -- )
 POTFILES=$(for f in $(sed -e "/^#/d" -e "s/#.*//" "$posrcdir/POTFILES");\
            do echo "$posrcdir/$f"; done | xargs -- )
@@ -703,7 +703,7 @@ fi
 # packages_dirpfx is set depending on whether we are running under
 # docker.  See also GPG4WIN_PACKAGES.
 packages_dirpfx=
-test -f /src/packages/BUILDTYPE && packages_dirpfx=/src/
+test -f ${TOPSRCDIR}/packages/BUILDTYPE && packages_dirpfx=${TOPSRCDIR}
 packages_files=${packages_dirpfx}packages/packages.list
 if test -n "$gpg4win_dup_sources"; then
     tmp=
