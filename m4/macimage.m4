@@ -50,7 +50,7 @@ AC_DEFUN([MACIMAGE_BASH],
 AC_DEFUN([MACIMAGE_PACKAGES],
 [
   AC_MSG_CHECKING(for packages directory)
-  _macimage_packages_default=/src/packages
+  _macimage_packages_default=${TOPSRCDIR}/packages
   AC_ARG_WITH([packages],
     AS_HELP_STRING([--with-packages=DIR],
                    [source and binary packages [[packages]]]),
