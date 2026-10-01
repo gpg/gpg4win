@@ -153,9 +153,9 @@ server https://gnupg.org/ftp/gcrypt
 # last-changed: 2026-09-29
 # by: m.
 # verified: sha256sum by alexk
-name ministart-0.15.3.tar.gz
-file ministart/ministart-0.15.3.tar.gz
-chk  7413eb834092ba7a6d64af06c9a5c1f7ad3cc3799522851bcdf571c2de9cdd58
+name ministart-0.15.4.tar.gz
+file ministart/ministart-0.15.4.tar.gz
+chk  4110de45ea34d3b23343dfc47f5a90d5e2f1642135aa2baccaaad0f6ff6526e3
 
 
 #
