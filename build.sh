@@ -222,8 +222,6 @@ if [ -z "$mac$nodocker" ]; then
 else
     if [ "$nodocker" = "yes" ]; then
         indocker="yes"
-        srcdir="/src"
-        builddir="/build"
     fi
 fi
 
@@ -282,12 +280,12 @@ if [ "$runcmd" = yes ]; then
         echo >&2 "usage: /src/build.sh --runcmd COMMAND ARGS"
         exit 2
     fi
-    [ ! -f /build/S.build.sh-rc ] || rm /build/S.build.sh-rc
-    echo "$@" >/build/S.build.sh-in
-    cat /build/S.build.sh-out
-    while [ ! -f /build/S.build.sh-rc ]; do sleep 0.05; done
+    [ ! -f ${builddir}/S.build.sh-rc ] || rm ${builddir}/S.build.sh-rc
+    echo "$@" >${builddir}/S.build.sh-in
+    cat ${builddir}/S.build.sh-out
+    while [ ! -f ${builddir}/S.build.sh-rc ]; do sleep 0.05; done
     rc=$(sed -ne 's/EXITSTATUS=\([0-9]*\).*$/\1/p' \
-             </build/S.build.sh-rc 2>/dev/null || true)
+             <${builddir}/S.build.sh-rc 2>/dev/null || true)
     [ -n "$rc" ] || rc=0
     exit $rc
 fi
@@ -370,7 +368,7 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
 
         [ -z "$verbose" ] || echo "$PGM (AppImage): signkey      : ${SIGNKEY}" | tee -a ${logfile} >&2
 
-        /src/build.sh --runcmd gpg --yes -o "${VERSION_FILE}.sig" -bau "${SIGNKEY}" "${VERSION_FILE}"
+        ${srcdir}/build.sh --runcmd gpg --yes -o "${VERSION_FILE}.sig" -bau "${SIGNKEY}" "${VERSION_FILE}"
         chmod 0644 "${VERSION_FILE}.sig"
     )
 
@@ -777,12 +775,12 @@ if [ "$runcmd" = yes ]; then
         echo >&2 "usage: /src/build.sh --runcmd COMMAND ARGS"
         exit 2
     fi
-    [ ! -f /build/S.build.sh-rc ] || rm /build/S.build.sh-rc
-    echo "$@" >/build/S.build.sh-in
-    cat /build/S.build.sh-out
-    while [ ! -f /build/S.build.sh-rc ]; do sleep 0.05; done
+    [ ! -f ${builddir}/S.build.sh-rc ] || rm ${builddir}/S.build.sh-rc
+    echo "$@" >${builddir}/S.build.sh-in
+    cat ${builddir}/S.build.sh-out
+    while [ ! -f ${builddir}/S.build.sh-rc ]; do sleep 0.05; done
     rc=$(sed -ne 's/EXITSTATUS=\([0-9]*\).*$/\1/p' \
-             </build/S.build.sh-rc 2>/dev/null || true)
+             <${builddir}/S.build.sh-rc 2>/dev/null || true)
     [ -n "$rc" ] || rc=0
     exit $rc
 fi
@@ -957,26 +955,26 @@ fi
 # within the docker container to run the desired commands.
 if [ "$indocker" = yes ]; then
     # NB: In docker the builddir is always /build and the source /src
-    cd /build
+    cd ${builddir}
     if [ ! -f config.status ]; then
         force=yes
-    elif [ /src/configure -nt config.status ]; then
+    elif [ ${srcdir}/configure TOPSRCDIR=${srcdir} -nt config.status ]; then
         force=yes
     fi
     if [ $force = no ]; then
          echo >&2 "$PGM: Not running configure (--force not used)"
     elif [ "$w64" = "yes" ]; then
-        /src/autogen.sh --build-w64
+        ${srcdir}/autogen.sh --build-w64
     else
-        /src/autogen.sh --build-w32
+        ${srcdir}/autogen.sh --build-w32
     fi
     export CMAKE_COLOR_DIAGNOSTICS=OFF
     if [ $dist = yes ]; then
-        make dist XZ_OPT=-2 TOPSRCDIR=/src PLAYGROUND=/build
+        make dist XZ_OPT=-2 TOPSRCDIR=${srcdir} PLAYGROUND=${builddir}
     else
-        make TOPSRCDIR=/src PLAYGROUND=/build VERBOSE=1
+        make TOPSRCDIR=${srcdir} PLAYGROUND=${builddir} VERBOSE=1
         if [ $? = 0 ] && [ $withmsi = yes ]; then
-            make TOPSRCDIR=/src PLAYGROUND=/build msi-signed
+            make TOPSRCDIR=${srcdir} PLAYGROUND=${builddir} msi-signed
         fi
     fi
     exit $?
@@ -1085,21 +1083,21 @@ if [ "$appimage" = "yes" ]; then
             echo "No signing key defined, which is mandatory for buildtypes vsd, vsd3 and gpd!"
             exit 1
         fi
-        cmd="/src/build.sh --appimage --signkey=${version_signkey} ${docker_cmd_extras}"
+        cmd="${srcdir}/build.sh --appimage --signkey=${version_signkey} ${docker_cmd_extras}"
     else
-        cmd="/src/build.sh --appimage ${docker_cmd_extras}"
+        cmd="${srcdir}/build.sh --appimage ${docker_cmd_extras}"
     fi
     docker_image=g10-build-appimage:almalinux810
     dockerfile=${srcdir}/docker/appimage
 elif [ "$mac" = "yes" ]; then
     version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' $HOME/.gnupg-autogen.rc|cut -d= -f2|xargs)"
-    cmd="/src/src/mac/build-macimage.sh $version_signkey"
+    cmd="${srcdir}/src/mac/build-macimage.sh $version_signkey"
 else
     # We will run our self again in the docker image.
     if [ "$w64" = "yes" ]; then
-        cmd="/src/build.sh ${docker_cmd_extras}"
+        cmd="${srcdir}/build.sh ${docker_cmd_extras}"
     else
-        cmd="/src/build.sh --w32 ${docker_cmd_extras}"
+        cmd="${srcdir}/build.sh --w32 ${docker_cmd_extras}"
     fi
     [ $dist != yes ] || cmd="$cmd --dist"
     [ $force != yes ] || cmd="$cmd --force"
@@ -1561,7 +1559,7 @@ if [ -z "$mac" ] ;then
     echo >&2 "$PGM: docker finished. rc=$err" | tee -a ${logfile} >&2
 else
     echo >&2 "$PGM: building on MacOS (without docker): $cmd"
-    $cmd --mac --nodocker 2>&1 | tee -a ${logfile}
+    TOPSRCDIR=${srcdir} PLAYGROUND=${builddir} $cmd --mac --nodocker 2>&1 | tee -a ${logfile}
     err="${PIPESTATUS[0]}"
     echo >&2 "$PGM: mac build finished. rc=$err" | tee -a ${logfile} >&2
 fi
