@@ -12,19 +12,11 @@ Status / Hints / TODO list for MacOS builds
     sudo diskutil apfs addVolume disk3 APFSX BuildFS
     (assuming disk3 is the "synthesized" disk as given by `diskutil list`)
     This creates and mounts /Volumes/BuildFS . The important spec is "APFSX".
-  - Next point /build and /src to the correct dirs. This can only be done
-    via /etc/synthetic.conf . Edit that file to have the following contents
-      build Volumes/BuildFS
-      src   abs/path/to/gpg4win/repo/
-    (no space on the left; the space in the middle _must_ be a single _tab_; note
-     the missing initial slashes in all paths)
-    - run: sudo /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t
-      or reboot to make /build and /src come up
 
 - Building (in gpg4win repo dir):
   echo "default" > packages/BUILDTYPE              # once
   PATH=/path/with/autotools:$PATH ./autogen.sh     # once, and after touching the build system
-  ./build.sh --download --mac
+  ./build.sh --download --mac --builddir=/Volumes/BuildFS
 
 - Running:
   Many things will not work properly until bundled/installed. Currently only an
