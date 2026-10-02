@@ -125,8 +125,10 @@ have_signkey="no"
 # Get UID for use by docker.
 userid=$(id -u)
 groupid=$(id -g)
-cabinet32sha1sum="1d9184eb342e25ecc588b84a2e49321ee5ef6a74"
-cabinet64sha1sum="f2b63a764817497286740034f439c0bf7cacdf8d"
+# the PE32 binary SysWOW64\cabinet.dll
+cabinet32sha1sum="f2b63a764817497286740034f439c0bf7cacdf8d"
+# the PE32+ binary System32\cabinet.dll
+cabinet64sha1sum="1d9184eb342e25ecc588b84a2e49321ee5ef6a74"
 
 # Track whether we reset the tty to cooked mode.  docker sets it to raw mode
 # and we set it back via our runner process so that we are sure docker is
@@ -1007,38 +1009,40 @@ if [ $withmsi = yes ]; then
     fi
     fi
     if [ $wineonly = yes ] ; then
-        # light.exe 3.* uses a compression for .cab files not implemented
-        # in Wine's cabinet.dll. You will have to install and configure
+        # both "native" and "native,builtin" should be acceptable here
         if [ ! $(grep "^\"cabinet\"=\"native" "$WINEPREFIX/user.reg") ] ; then
             echo >&2 "$PGM: error: You must configure Wine to use a native cabinet.dll! " \
                      "light.exe 3.* uses a compression for .cab files not implemented " \
                      "in Wine's cabinet.dll."
             exit 1
         fi
-        # for the moment, assume we need both 32 and 64 bit native versions of cabinet.dll
+        # we need the native versions of cabinet.dll. however, it depends on the wine
+        # version whether it can use a 32 bit PE32 binary or an emulating PE32+ one.
+        # should one run into "error c000035a" during linking, chances are you're
+        # trying the PE32+ cabinet.dll with an ancient wine installation.
         [ -f "${WINEPREFIX}/drive_c/windows/system32/cabinet.dll" ] || {
-            echo >&2 "$PGM: error: Please install the native 32bit cabinet.dll to ${WINEPREFIX}/drive_c/windows/system32/"
+            echo >&2 "$PGM: error: Please install the native cabinet.dll to ${WINEPREFIX}/drive_c/windows/system32/"
             exit 1
         }
-        [ -f "${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll" ] || {
-            echo >&2 "$PGM: error: Please install the native 64bit cabinet.dll to ${WINEPREFIX}/drive_c/windows/syswow64/"
-            exit 1
-        }
-        echo "${cabinet32sha1sum}  ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll" \
-            | sha1sum --check --quiet - || {
+        # run file on wine's system32/msi.dll to see if it's PE32 or PE32+
+        WINEISPE32=true
+        file "${WINEPREFIX}/drive_c/windows/system32/msi.dll" | grep -q " PE32+ " && WINEISPE32=false
+        CAB32DLLFOUND=false
+        if ${WINEISPE32} ; then
+            CABSHA1SUM="${cabinet32sha1sum}"
+        else
+            CABSHA1SUM="${cabinet64sha1sum}"
+        fi
+        echo "${CABSHA1SUM}  ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll" \
+            | sha1sum --check --quiet - && CAB32DLLFOUND=true
+        if ${CAB32DLLFOUND} ; then
+            echo >&2 "$PGM: found native ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll"
+        else
             echo >&2 "$PGM: error: sha1sum mismatch for ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll"
-            echo >&2 "  expected: ${cabinet32sha1sum}  ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll"
+            echo >&2 "  expected: ${CABSHA1SUM}  ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll"
             echo >&2 "  got:      $(sha1sum "${WINEPREFIX}/drive_c/windows/system32/cabinet.dll")"
             exit 1
-        }
-        echo >&2 "$PGM: found native ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll"
-        echo "${cabinet64sha1sum}  ${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll" \
-            | sha1sum --check --quiet - || {
-            echo >&2 "$PGM: error: sha1sum mismatch for ${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll"
-            echo >&2 "  expected: ${cabinet64sha1sum}  ${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll"
-            echo >&2 "  got:      $(sha1sum "${WINEPREFIX}/drive_c/windows/syswow64/cabinet.dll")"
-            exit 1
-        }
+        fi
     fi
     WINEINST="$WINEPREFIX/dosdevices/k:"
     WINESRC="$WINEPREFIX/dosdevices/i:"
