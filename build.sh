@@ -408,7 +408,7 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
     cd ${builddir}
     make TOPSRCDIR=${srcdir} PLAYGROUND=${builddir}
 
-    echo 'rootdir = $appdir/usr' >${appdir}/usr/bin/gpgconf.ctl
+    echo 'rootdir = $APPDIR/usr' >${appdir}/usr/bin/gpgconf.ctl
     if [ ${buildtype} = vsd -o ${buildtype} = vsd3 ]; then
         echo 'sysconfdir = /etc/gnupg-vsd' >>${appdir}/usr/bin/gpgconf.ctl
     else
