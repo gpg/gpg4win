@@ -136,6 +136,7 @@ endef
 macimage_pkg_gnupg_configure = LDFLAGS="-headerpad_max_install_names" \
                                --prefix=$(targetbundledir)/Contents/Resources \
                                --datarootdir=$(targetbundledir)/Contents/Resources \
+                               --sysconfdir=/etc \
                                --includedir=$(idir) \
                                --with-libintl-prefix=$(idir)
 
