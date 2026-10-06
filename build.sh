@@ -449,12 +449,12 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
     # linuxdeploy copies the dependencies of the plugins to ${appdir} so that
     # we don't have to take care of this ourselves
     mkdir -p ${appdir}/usr/lib/plugins
-    if [ ${buildtype} = vsd ]; then
+    if [ ${buildtype} != vsd3 ]; then
         for d in kf6 kiconthemes6 styles; do
             rsync -av --delete --omit-dir-times ${instdir}/lib/plugins/${d}/ ${appdir}/usr/lib/plugins/${d}/
         done
         rsync -av --delete --omit-dir-times ${instdir}/lib/plugins/okular_generators/okularGenerator_poppler.so ${appdir}/usr/lib/plugins/okular_generators/
-    elif [ ${buildtype} = vsd3 ]; then
+    else
         for d in iconengines kauth kf5 okular plasma; do
             rsync -av --delete --omit-dir-times ${instdir}/lib/plugins/${d}/ ${appdir}/usr/lib/plugins/${d}/
         done
