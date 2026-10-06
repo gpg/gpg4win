@@ -268,28 +268,36 @@ def checkResignBinary(file: Path, deep=False):
                        [file]).check_returncode()
 
 
+# shorthand to check for existence of given path, and return it
+def requiredPath(path: Path):
+    if not path.exists():
+        print(f"Required path {path} does not exist")
+        exit(1)
+    return path
+
+
 def finalizeBundle():
-    primaryBin = 'ministartqt'
+    primaryBin = requiredPath(bundleDir / 'MacOS/ministartqt')
     # a non-empty CFBundleIdentifier is needed to make some things work - importantly native file dialogs
     # in theory this could be set via cmake in kleopatra, but let's not assume that remains the primary executable.
-    infoPlist = Path(bundleDir / 'Info.Plist')
+    infoPlist = requiredPath(bundleDir / 'Info.Plist')
     with infoPlist.open('r') as f:
         lines = f.readlines()
         for i, line in enumerate(lines):
             if '<key>CFBundleIdentifier</key>' in line:
                 lines[i+1] = '\t<string>org.gnupg.gnupg4mac</string>'
             elif '<key>CFBundleExecutable</key>' in line:
-                lines[i+1] = f'\t<string>{primaryBin}</string>'
+                lines[i+1] = f'\t<string>{primaryBin.name}</string>'
             elif '<key>CFBundleName</key>' in line:
                 lines[i+1] = '\t<string>GnuPG 4 Mac</string>'
             elif '<key>CFBundleIconFile</key>' in line:
-                lines[i+1] = '\t<string>gnupg_stylized.icns</string>'
+                lines[i+1] = f"\t<string>{requiredPath(bundleDir / 'Resources/sc-apps-gnupg_stylized.icns').name}</string>"
     with infoPlist.open('w') as f:
         f.writelines(lines)
 
     # fix kleopatra icon
-    iconsDir = bundleDir / 'Resources' / 'icons'
-    goodIcon = iconsDir / 'hicolor' / 'scalable' / 'apps' / 'kleopatra.svg'
+    iconsDir = requiredPath(bundleDir / 'Resources/icons')
+    goodIcon = requiredPath(iconsDir / 'hicolor/scalable/apps/kleopatra.svg')
     icons = chain(iconsDir.rglob('kleopatra.svg'), iconsDir.rglob('kleopatra-symbolic.svg'))
     for icon in icons:
         if icon != goodIcon:
@@ -297,7 +305,7 @@ def finalizeBundle():
             icon.unlink()
             shutil.copy2(goodIcon, icon)
 
-    checkResignBinary(Path(bundleDir / 'MacOS' / primaryBin), True)
+    checkResignBinary(primaryBin, True)
 
 
 def createDMG(stagingFolder: Path, imageName: str, outfile: Path):
@@ -355,7 +363,6 @@ createStagingSkeleton()
 moveFilesToDestination()
 # purgeUnusedLibs()
 # stripBinaries()
-# sanityCheck()
 finalizeBundle()
 createDMG(destPrefix, imageName, outFile)
 stagingDir.cleanup()
