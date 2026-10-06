@@ -276,24 +276,37 @@ def requiredPath(path: Path):
     return path
 
 
+def modifyPlist(file: Path, values: dict):
+    with file.open('r') as f:
+        lines = f.readlines()
+        for key, value in values.items():
+            found = False
+            for i, line in enumerate(lines):
+                if ('<key>' + key + '</key>') in line:
+                    lines[i+1] = '\t' + value + '\n'
+                    found = True
+                    break
+            if not found:
+                print(f"No key {key} in {str(path)}")
+                exit(1)
+    with file.open('w') as f:
+        f.writelines(lines)
+
+
 def finalizeBundle():
     primaryBin = requiredPath(bundleDir / 'MacOS/ministartqt')
     # a non-empty CFBundleIdentifier is needed to make some things work - importantly native file dialogs
-    # in theory this could be set via cmake in kleopatra, but let's not assume that remains the primary executable.
-    infoPlist = requiredPath(bundleDir / 'Info.Plist')
-    with infoPlist.open('r') as f:
-        lines = f.readlines()
-        for i, line in enumerate(lines):
-            if '<key>CFBundleIdentifier</key>' in line:
-                lines[i+1] = '\t<string>org.gnupg.gnupg4mac</string>'
-            elif '<key>CFBundleExecutable</key>' in line:
-                lines[i+1] = f'\t<string>{primaryBin.name}</string>'
-            elif '<key>CFBundleName</key>' in line:
-                lines[i+1] = '\t<string>GnuPG 4 Mac</string>'
-            elif '<key>CFBundleIconFile</key>' in line:
-                lines[i+1] = f"\t<string>{requiredPath(bundleDir / 'Resources/sc-apps-gnupg_stylized.icns').name}</string>"
-    with infoPlist.open('w') as f:
-        f.writelines(lines)
+    # in theory this could also be set via cmake in kleopatra/okular etc.
+    modifyPlist(requiredPath(bundleDir / 'Info.Plist'), {
+                "CFBundleIdentifier": "<string>org.gnupg.gnupg4mac</string>",
+                "CFBundleExecutable": f"<string>{primaryBin.name}</string>",
+                "CFBundleName": "<string>Gpg4Mac</string>",
+                "CFBundleIconFile": f"<string>{requiredPath(bundleDir / 'Resources/sc-apps-gnupg_stylized.icns').name}</string>"
+                })
+    modifyPlist(requiredPath(bundleDir / 'Helpers/Kleopatra.app/Contents/Info.Plist'), {
+                "CFBundleIdentifier": "<string>org.gnupg.gnupg4mac.kleopatra</string>"})
+    modifyPlist(requiredPath(bundleDir / 'Helpers/Okular.app/Contents/Info.Plist'), {
+                "CFBundleIdentifier": "<string>org.gnupg.gnupg4mac.okular</string>"})
 
     # fix kleopatra icon
     iconsDir = requiredPath(bundleDir / 'Resources/icons')
