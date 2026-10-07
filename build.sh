@@ -229,13 +229,14 @@ getvar_from_makefile() {
     local fname
 
     fname="$builddir/Makefile"
+    [ -f "$fname" ] || fname="$builddir/binary/Makefile"
     if [ -f "$fname" ]; then
         grep $1' = ' "$fname" | head -1 | cut -d= -f2 | xargs
     fi
 }
 
 
-# Helper to get a variabale from custom.mk
+# Helper to get a variable from custom.mk
 # The argument is the name of the variable.
 getvar_from_custom_mk() {
     local tmpargs
@@ -501,7 +502,9 @@ do_upload() {
     local enckey
     local uploadfiles
 
-    local buildbindir="${builddir}/binary"
+    local buildbindir="${builddir}"
+
+    [ -d "$buildbindir/binary" ] && buildbindir="${builddir}/binary"
 
     msi_signkey="$(getvar_from_autogenrc VERSION_SIGNKEY)"
     if [ -z "$msi_signkey" ]; then
@@ -510,7 +513,7 @@ do_upload() {
     fi
     publish_host="$(getvar_from_custom_mk VSD_PUBLISH_HOST)"
     if [ -z "$publish_host" ]; then
-       echo >&2 "$PGM: error: VSD_PUBLISH_HOST not dound in custom.mk"
+       echo >&2 "$PGM: error: VSD_PUBLISH_HOST not found in custom.mk"
        exit 1
     fi
 
