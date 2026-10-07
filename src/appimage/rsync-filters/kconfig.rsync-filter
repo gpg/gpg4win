@@ -2,6 +2,12 @@
 + /bin/kreadconfig6
 - /bin/*
 
++ /lib/
++ /lib/libexec/
++ /lib/libexec/kf6/kconf_update
+- /lib/libexec/kf6/*
+- /lib/*
+
 + /share/
 
 # exclude any other top-level folders (and files)
