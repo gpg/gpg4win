@@ -1,4 +1,7 @@
 + /share/
++ /share/locale/
+# exclude any other folders (and files) in share/ (e.g. share/qlogging-categories6)
+- /share/*
 
 # exclude any other top-level folders (and files)
 - /*

@@ -1,6 +1,7 @@
 + /bin/
 + /etc/
 + /share/
+- /share/qlogging-categories6/
 
 - kwatchgnupg.mo
 

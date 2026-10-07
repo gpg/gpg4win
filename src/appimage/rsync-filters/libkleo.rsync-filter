@@ -1,5 +1,6 @@
 + /etc/
 + /share/
+- /share/qlogging-categories6/
 
 # exclude any other top-level folders (and files)
 - /*
