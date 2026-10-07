@@ -24,7 +24,48 @@ EXTRA_DIST = AppRun \
              start-shell \
              qt5/qt.conf \
              qt6/qt.conf \
-             rsync-filters
+             rsync-filters/breeze-icons.rsync-filter \
+             rsync-filters/freetype.rsync-filter \
+             rsync-filters/gnupg.rsync-filter \
+             rsync-filters/karchive.rsync-filter \
+             rsync-filters/kauth.rsync-filter \
+             rsync-filters/kbookmarks.rsync-filter \
+             rsync-filters/kcalendarcore.rsync-filter \
+             rsync-filters/kcodecs.rsync-filter \
+             rsync-filters/kcolorscheme.rsync-filter \
+             rsync-filters/kcompletion.rsync-filter \
+             rsync-filters/kconfig.rsync-filter \
+             rsync-filters/kconfigwidgets.rsync-filter \
+             rsync-filters/kcoreaddons.rsync-filter \
+             rsync-filters/kcrash.rsync-filter \
+             rsync-filters/kdbusaddons.rsync-filter \
+             rsync-filters/kguiaddons.rsync-filter \
+             rsync-filters/ki18n.rsync-filter \
+             rsync-filters/kiconthemes.rsync-filter \
+             rsync-filters/kio.rsync-filter \
+             rsync-filters/kitemmodels.rsync-filter \
+             rsync-filters/kitemviews.rsync-filter \
+             rsync-filters/kjobwidgets.rsync-filter \
+             rsync-filters/kleopatra.rsync-filter \
+             rsync-filters/kmbox.rsync-filter \
+             rsync-filters/kmime.rsync-filter \
+             rsync-filters/kparts.rsync-filter \
+             rsync-filters/kservice.rsync-filter \
+             rsync-filters/kstatusnotifieritem.rsync-filter \
+             rsync-filters/ktextwidgets.rsync-filter \
+             rsync-filters/kwidgetsaddons.rsync-filter \
+             rsync-filters/kwindowsystem.rsync-filter \
+             rsync-filters/kxmlgui.rsync-filter \
+             rsync-filters/libgpg-error.rsync-filter \
+             rsync-filters/libical.rsync-filter \
+             rsync-filters/libkleo.rsync-filter \
+             rsync-filters/mimetreeparser.rsync-filter \
+             rsync-filters/ministart.rsync-filter \
+             rsync-filters/okular.rsync-filter \
+             rsync-filters/paperkey.rsync-filter \
+             rsync-filters/pinentry.rsync-filter \
+             rsync-filters/poppler.rsync-filter \
+             rsync-filters/threadweaver.rsync-filter
 
 # Define macros for the various directories.  These directory names
 # must be absolute, as we switch pretty often between them and don't
