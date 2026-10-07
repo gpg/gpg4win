@@ -452,7 +452,6 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
         for d in kf6 kiconthemes6 styles; do
             rsync -av --delete --omit-dir-times ${instdir}/lib/plugins/${d}/ ${appdir}/usr/lib/plugins/${d}/
         done
-        rsync -av --delete --omit-dir-times ${instdir}/lib/plugins/okular_generators/okularGenerator_poppler.so ${appdir}/usr/lib/plugins/okular_generators/
     else
         for d in iconengines kauth kf5 okular plasma; do
             rsync -av --delete --omit-dir-times ${instdir}/lib/plugins/${d}/ ${appdir}/usr/lib/plugins/${d}/

@@ -1,5 +1,35 @@
 + /bin/
+
++ /lib/
++ /lib/plugins/
++ /lib/plugins/kf6/parts/okularpart.so
++ /lib/plugins/okular_generators/okularGenerator_poppler.so
+# exclude generators for other files than PDFs
+- /lib/plugins/okular_generators/*
+# exclude any other folders (and files) in lib/ (e.g. lib/cmake)
+- /lib/*
+
 + /share/
++ /share/applications/
++ /share/applications/okularApplication_pdf.desktop
++ /share/applications/org.kde.okular.desktop
+# exclude desktop files for other files than PDFs
+- /share/applications/*
++ /share/config.kcfg/
++ /share/icons/
++ /share/locale/
++ /share/locale/*/LC_MESSAGES/okular.mo
++ /share/locale/*/LC_MESSAGES/okular_poppler.mo
+# exclude translations for other files than PDFs (and for okular for mobile)
+- /share/locale/*/LC_MESSAGES/*
++ /share/metainfo/
++ /share/metainfo/org.kde.okular.appdata.xml
++ /share/metainfo/org.kde.okular-poppler.metainfo.xml
+# exclude metainfo files for other files than PDFs
+- /share/metainfo/*
++ /share/okular/
+# exclude any other folders (and files) in share/ (e.g. share/qlogging-categories6)
+- /share/*
 
 # exclude any other top-level folders (and files)
 - /*
