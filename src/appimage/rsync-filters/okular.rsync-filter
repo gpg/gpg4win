@@ -1,4 +1,5 @@
 + /bin/
-- /include/
-- /lib64/
 + /share/
+
+# exclude any other top-level folders (and files)
+- /*

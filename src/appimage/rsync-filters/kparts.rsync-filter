@@ -1,8 +1,7 @@
-- /include/
-- /lib64/
-- /mkspecs/
-
-- /share/kdevappwizard/
++ /share/
 + /share/kservicetypes5/
 + /share/locale/
-- /share/qlogging-categories5/
+- /share/*
+
+# exclude any other top-level folders (and files)
+- /*

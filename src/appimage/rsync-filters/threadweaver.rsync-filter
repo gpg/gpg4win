@@ -1,3 +1,2 @@
-- /include/
-- /lib64/
-- /mkspecs/
+# exclude any other top-level folders (and files)
+- /*
