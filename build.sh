@@ -93,6 +93,7 @@ commandline="$0 $@"
 
 # Preset variables.
 indocker="no"
+targetplatform="windows"
 appimage="no"
 appimage_docker_build="no"
 shell="no"
@@ -144,8 +145,10 @@ while [ $# -gt 0 ]; do
     esac
 
     case "$1" in
-        --appimage)              appimage="yes"       ;;
-        --mac)                   mac="yes"            ;;
+        --appimage)              appimage="yes"
+                                 targetplatform="appimage" ;;
+        --mac)                   mac="yes"
+                                 targetplatform="mac" ;;
         --nodocker)              nodocker="yes"       ;;
         --shell)                 shell="yes"          ;;
         --clean|-c)              clean="yes"          ;;
@@ -749,7 +752,7 @@ download_packages() {
     fi
 
     echo "$PGM: Downloading packages"
-    ./download.sh $quiet --update
+    ./download.sh $quiet --update --target=$targetplatform
     echo >&2 "$PGM: downloading done"
 
     cd ..
