@@ -178,7 +178,7 @@ case ${package} in
         repo=https://invent.kde.org/graphics/${package}.git
         ;;
     poppler)
-        repo=https://anongit.freedesktop.org/git/poppler/poppler.git
+        repo=https://gitlab.freedesktop.org/poppler/poppler.git
         #repo=https://gitlab.freedesktop.org/svuorela/${package}.git
         ;;
     breeze)
@@ -219,7 +219,7 @@ case ${package} in
         branch="gpg4win/gpd-5.2"
         ;;
     okular)
-        branch="release/26.08"
+        branch="master"
         ;;
     poppler)
         #branch="WORK"

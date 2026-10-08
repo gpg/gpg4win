@@ -155,8 +155,8 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 		paperkey regex libiconv gettext scute
 
 # Source packages following the KDE pattern
-gpg4win_kdepkgs = qtbase qttools qtsvg qttranslations qthttpserver \
-                  gpgmepp qgpgme libqrencode \
+gpg4win_kdepkgs = harfbuzz qtbase qttools qtsvg qttranslations qthttpserver \
+                  brotli gpgmepp qgpgme libqrencode \
                   kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
                   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
@@ -385,7 +385,7 @@ gpg4win_pkg_qtbase_configure = \
         -DFEATURE_system_zstd=ON \
         -DFEATURE_system_pcre=ON \
         -DFEATURE_system_freetype=ON \
-        -DFEATURE_system_harfbuzz=OFF \
+        -DFEATURE_system_harfbuzz=ON \
         -DFEATURE_schannel=ON \
         -DFEATURE_use_gold_linker_alias=OFF \
         -DFEATURE_stack_clash_protection=OFF \
@@ -511,7 +511,8 @@ gpg4win_pkg_poppler_configure = \
     -DENABLE_GOBJECT_INTROSPECTION=OFF \
     -DENABLE_QT5=OFF \
     -DENABLE_LCMS=OFF \
-    -DENABLE_LIBCURL=OFF
+    -DENABLE_LIBCURL=OFF \
+    -DENABLE_HARFBUZZ=ON
 
 gpg4win_pkg_kcontacts_configure = \
     -DKCONTACTS_USE_QML=OFF

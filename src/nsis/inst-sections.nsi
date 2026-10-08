@@ -153,6 +153,12 @@
 !ifdef HAVE_PKG_THREADWEAVER
 !include "inst-threadweaver.nsi"
 !endif
+!ifdef HAVE_PKG_BROTLI
+!include "inst-brotli.nsi"
+!endif
+!ifdef HAVE_PKG_HARFBUZZ
+!include "inst-harfbuzz.nsi"
+!endif
 !ifdef HAVE_PKG_POPPLER
 !include "inst-poppler.nsi"
 !endif
@@ -409,6 +415,12 @@
 !endif
 !ifdef HAVE_PKG_POPPLER
 !include "uninst-poppler.nsi"
+!endif
+!ifdef HAVE_PKG_HARFBUZZ
+!include "uninst-harfbuzz.nsi"
+!endif
+!ifdef HAVE_PKG_BROTLI
+!include "uninst-brotli.nsi"
 !endif
 !ifdef HAVE_PKG_KPARTS
 !include "uninst-kparts.nsi"
@@ -870,6 +882,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gpgme}
   !insertmacro SelectSection ${SEC_gpgmepp}
   !insertmacro SelectSection ${SEC_qtbase}
+  !insertmacro SelectSection ${SEC_harfbuzz}
   !insertmacro SelectSection ${SEC_breeze_icons}
   !insertmacro SelectSection ${SEC_kconfig}
   !insertmacro SelectSection ${SEC_ki18n}
@@ -892,6 +905,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kservice}
   !insertmacro SelectSection ${SEC_kbookmarks}
   !insertmacro SelectSection ${SEC_poppler}
+  !insertmacro SelectSection ${SEC_brotli}
   !insertmacro SelectSection ${SEC_threadweaver}
   !insertmacro SelectSection ${SEC_kparts}
   !insertmacro SelectSection ${SEC_kcrash}
@@ -918,6 +932,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gpgme}
   !insertmacro SelectSection ${SEC_gpgmepp}
   !insertmacro SelectSection ${SEC_qgpgme}
+  !insertmacro SelectSection ${SEC_harfbuzz}
   !insertmacro SelectSection ${SEC_qtbase}
   !insertmacro SelectSection ${SEC_breeze_icons}
   !insertmacro SelectSection ${SEC_kconfig}
@@ -936,6 +951,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kde_l10n}
 
   !insertmacro SelectSection ${SEC_gpgme}
+  !insertmacro SelectSection ${SEC_harfbuzz}
   !insertmacro SelectSection ${SEC_qtbase}
   !insertmacro SelectSection ${SEC_breeze_icons}
   !insertmacro SelectSection ${SEC_kconfig}
@@ -962,6 +978,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gpgmepp}
   !insertmacro SelectSection ${SEC_qgpgme}
   !insertmacro SelectSection ${SEC_compendium}
+  !insertmacro SelectSection ${SEC_harfbuzz}
   !insertmacro SelectSection ${SEC_qtbase}
   !insertmacro SelectSection ${SEC_breeze_icons}
   !insertmacro SelectSection ${SEC_kconfig}
@@ -1039,6 +1056,7 @@ skip_gpgme_browser:
 		${SF_SELECTED} have_qgpgme skip_qgpgme
   have_qgpgme:
   !insertmacro SelectSection ${SEC_qgpgme}
+  !insertmacro SelectSection ${SEC_harfbuzz}
   !insertmacro SelectSection ${SEC_qtbase}
    skip_qgpgme:
 !endif
@@ -1051,6 +1069,7 @@ skip_gpgme_browser:
   !insertmacro SelectSection ${SEC_libgpg_error}
   !insertmacro SelectSection ${SEC_libassuan}
 !ifdef HAVE_PKG_QTBASE
+  !insertmacro SelectSection ${SEC_harfbuzz}
   !insertmacro SelectSection ${SEC_qtbase}
 !endif
 # BEGIN MSI IGNORE
@@ -1080,6 +1099,7 @@ skip_gpgme_browser:
   !insertmacro SelectSection ${SEC_pcre2}
   !insertmacro SelectSection ${SEC_qtsvg}
   !insertmacro SelectSection ${SEC_qttools}
+  !insertmacro SelectSection ${SEC_harfbuzz}
   skip_qtbase:
 !endif
 
