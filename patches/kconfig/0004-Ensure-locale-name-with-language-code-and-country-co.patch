@@ -1,0 +1,44 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+See https://invent.kde.org/frameworks/kconfig/-/merge_requests/484
+
+From 98f2320a64d31b3aa79358ebbae8a88def16e66d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Thu, 8 Oct 2026 14:12:35 +0200
+Subject: [PATCH] Ensure locale name with language code and country code
+
+This fixes the problem that on Windows (and Mac) a config value with
+language specifier [de_DE] was not read if the language override was
+configured as "German (de)" because in this case our language override
+code sets LANGUAGE to "de:...", i.e. a language code without country code.
+
+While this problem could be avoided by only using KDE language override
+compatible language specifiers in config files, e.g. [de] instead of
+[de_DE], this is surprising behavior because it only shows on Windows (and
+Mac) with the language overrides. In all other cases we always get a
+locale name with language code and country code of the system or user
+locale (either from QLocale::system().uiLanguages() or from
+QLocale().name()).
+---
+ autotests/kconfigtest.cpp | 4 ++--
+ src/core/kconfig.cpp      | 3 ++-
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/core/kconfig.cpp b/src/core/kconfig.cpp
+index 84f9d515..ab12b39d 100644
+--- a/src/core/kconfig.cpp
++++ b/src/core/kconfig.cpp
+@@ -76,7 +76,8 @@ static QString getDefaultLocaleName()
+         // On Windows and Apple OSs, we cannot use QLocale::system() if an application-specific
+         // language was set by kxmlgui because Qt ignores LANGUAGE on Windows and Apple OSs.
+         if (const auto languages = qEnvironmentVariable("LANGUAGE").split(u':', Qt::SkipEmptyParts); !languages.isEmpty()) {
+-            return languages.front();
++            // ensure a locale name with language code and country code (as in all other cases)
++            return QLocale(languages.front()).name();
+         }
+         // Also prefer the configured display language over the system language
+         if (const auto languages = QLocale::system().uiLanguages(); !languages.isEmpty()) {
+--
+2.55.0

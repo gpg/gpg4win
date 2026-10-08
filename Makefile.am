@@ -55,6 +55,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
              patches/kconfig/0002-Fix-reading-of-localized-config-values-on-Windows-an.patch \
              patches/kconfig/0003-Use-QStandardPaths-GenericStateLocation-on-all-platf.patch \
+             patches/kconfig/0004-Ensure-locale-name-with-language-code-and-country-co.patch \
              patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
              patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
