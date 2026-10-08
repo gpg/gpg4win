@@ -71,6 +71,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kconfig-6.20.0/0004-kreadconfig-Add-flag-to-dump-all-entries.patch \
              patches/kconfig-6.20.0/0005-kreadconfig-Add-flag-to-include-globals.patch \
              patches/kconfig-6.20.0/0006-kreadconfig-Dump-entries-sorted-by-group-name-entry-.patch \
+             patches/kconfig-6.20.0/0007-Ensure-locale-name-with-language-code-and-country-co.patch \
              patches/kconfig/0001-g10-Set-organization-name-of-kreadconfig-for-Windows.patch \
              patches/kf5/breeze-icons/subset-crossbuild.patch \
              patches/kf5/kconfig/0001-Read-defaults-from-Windows-registry.patch \
