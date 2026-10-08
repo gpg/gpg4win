@@ -115,6 +115,9 @@ def destination(absFilePath: Path) -> str:
     # poppler tools (pdf*) are not used by anything in the package, but might be nice to have.
     # Safe to move around, if needs be.
     #    return None
+    elif package == "okular" and re.search(r"okularGenerator_(?!poppler).*so$", fileName) != None:
+        # in okular strip anything not strictly PDF related
+        return None
     elif fileName.startswith("libexec") and package != "gnupg":
         return None
     elif package == "qtbase" and "objects-Release" in fileName:
