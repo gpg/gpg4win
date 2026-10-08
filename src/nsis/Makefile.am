@@ -22,6 +22,7 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-gpg4win.nsi       uninst-gpg4win.nsi                   \
              inst-breeze.nsi             uninst-breeze.nsi               \
              inst-breeze-icons.nsi uninst-breeze-icons.nsi               \
+	     inst brotli.nsi       uninst-brotli.nsi                     \
              inst-bzip2.nsi             uninst-bzip2.nsi                 \
              inst-compendium.nsi    uninst-compendium.nsi                \
              inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
@@ -37,6 +38,7 @@ EXTRA_DIST = g4wihelp.nsi gpg4win.nsi gpg4win-src.nsi config.nsi.in      \
              inst-gpgoljs.nsi uninst-gpgoljs.nsi                         \
              inst-gpgol.nsi         uninst-gpgol.nsi                     \
              inst-gpgpass.nsi uninst-gpgpass.nsi                         \
+	     inst-harfbuzz.nsi uninst-harfbuzz.nsi                       \
              inst-jpeg.nsi uninst-jpeg.nsi                               \
              inst-karchive.nsi uninst-karchive.nsi                       \
              inst-kbookmarks.nsi uninst-kbookmarks.nsi                   \

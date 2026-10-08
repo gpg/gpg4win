@@ -293,7 +293,21 @@ server https://github.com
 file KDAB/KDSingleApplication/releases/download/v1.2.0/kdsingleapplication-1.2.0.tar.gz
 chk ff4ae6a4620beed1cdb3e6a9b78a17d7d1dae7139c3d4746d4856b7547d42c38
 
+# brotli
+#
+name brotli-1.2.0.tar.gz
+file google/brotli/archive/refs/tags/v1.2.0.tar.gz
+chk 816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec
+
+# harfbuzz
+file harfbuzz/harfbuzz/releases/download/14.4.0/harfbuzz-14.4.0.tar.xz
+chk 2357ed966c6ced7bfa720b0640c0231065af01158fbea215093ffa15aed44371
+
+
+
 server https://download.qt.io/archive/qt/
+
+
 
 # qtbase
 # last changed: 2025-12-02
@@ -736,20 +750,20 @@ if gnupg != gnupg22
 server https://poppler.freedesktop.org
 
 # poppler
-# last changed: 2026-06-05
-# by: m.
-# verified: SIG CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
-file poppler-26.07.0.tar.xz
-chk 304832f48f8a47fdca90c6b6d1f684e68f37c10c9a0726f345f4ca9df4ca01e2
+# last changed: 2026-10-07
+# by: sune
+# verified: upstream signature
+file poppler-26.10.0.tar.xz
+chk 6792cb7c69205007ad87d2e936cecc5b3a31fac29ab54ffc3175fdb6b2a6ce35
 
 server https://gnupg.net/snapshots
 
 # okular
-# last changed: 2026-07-10
+# last changed: 2026-10-08
 # by: sune
 # verified: Tarball created by sune.
-file okular/okular-202607101015.tar.xz
-chk a349de8e9257731be3f88f5fc73dd92d2398516dfd4239c7996f6e727cd91de6
+file okular/okular-202610081029.tar.xz
+chk 949ffbcf8b0e84d32fcee0617afcd436d23c69d04e2626209e66bd0f91e0c64a
 
 fi
 

@@ -18,15 +18,15 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/poppler-${gpg4win_pkg_poppler_version}
+!define prefix ${ipdir}/harfbuzz-${gpg4win_pkg_harfbuzz_version}
 
 !ifdef DEBUG
-Section "poppler" SEC_poppler
+Section "harfbuzz" SEC_harfbuzz
 !else
-Section "-poppler" SEC_poppler
+Section "-harfbuzz" SEC_harfbuzz
 !endif
   SetOutPath "$INSTDIR"
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libpoppler-165.dll
-  File ${prefix}/bin/libpoppler-qt6-3.dll
+  File ${prefix}/bin/libharfbuzz.dll
+  File ${prefix}/bin/libharfbuzz-subset.dll
 SectionEnd

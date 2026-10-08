@@ -240,6 +240,14 @@
 !define gpg4win_pkg_freetype @gpg4win_pkg_freetype@
 !define gpg4win_pkg_freetype_version @gpg4win_pkg_freetype_version@
 
+@HAVE_PKG_HARFBUZZ@
+!define gpg4win_pkg_harfbuzz @gpg4win_pkg_harfbuzz@
+!define gpg4win_pkg_harfbuzz_version @gpg4win_pkg_harfbuzz_version@
+
+@HAVE_PKG_BROTLI@
+!define gpg4win_pkg_brotli @gpg4win_pkg_brotli@
+!define gpg4win_pkg_brotli_version @gpg4win_pkg_brotli_version@
+
 @HAVE_PKG_POPPLER@
 !define gpg4win_pkg_poppler @gpg4win_pkg_poppler@
 !define gpg4win_pkg_poppler_version @gpg4win_pkg_poppler_version@

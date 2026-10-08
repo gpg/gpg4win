@@ -1,4 +1,4 @@
-# Copyright (C) 2023 g10 Code GmbH
+# Copyright (C) 2026 g10 Code GmbH
 #
 # This file is part of GPG4Win.
 #
@@ -18,15 +18,15 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/poppler-${gpg4win_pkg_poppler_version}
+!define prefix ${ipdir}/brotli-${gpg4win_pkg_brotli_version}
 
 !ifdef DEBUG
-Section "poppler" SEC_poppler
+Section "brotli" SEC_brotli
 !else
-Section "-poppler" SEC_poppler
+Section "-brotli" SEC_brotli
 !endif
   SetOutPath "$INSTDIR"
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libpoppler-165.dll
-  File ${prefix}/bin/libpoppler-qt6-3.dll
+  File ${prefix}/bin/libbrotlidec.dll
+  File ${prefix}/bin/libbrotlicommon.dll
 SectionEnd

@@ -424,13 +424,15 @@ if test "$build_gpg4win" = yes ; then
 
     # Qt related stuff.
     GPG4WIN_KDEPKG([zstd])
-    GPG4WIN_KDEPKG([qtbase], [jpeg zlib zstd libpng freetype pcre2])
+    GPG4WIN_KDEPKG([qtbase], [jpeg zlib zstd libpng freetype pcre2 harfbuzz])
     GPG4WIN_KDEPKG([qttools], [qtbase])
     GPG4WIN_KDEPKG([qttranslations], [qtsvg qttools native-qttools])
     GPG4WIN_KDEPKG([qtsvg], [qtbase])
     GPG4WIN_KDEPKG([qthttpserver], [qtbase])
     GPG4WIN_KDEPKG([qtwebsockets], [qtbase])
     GPG4WIN_KDEPKG([tiff])
+    GPG4WIN_KDEPKG([brotli])
+    GPG4WIN_KDEPKG([harfbuzz])
     GPG4WIN_KDEPKG([pcre2])
     GPG4WIN_KDEPKG([breeze], [qtbase kcoreaddons kconfig kconfigwidgets kguiaddons kiconthemes kwindowsystem native-kconfig])
 #   GPG4WIN_KDEPKG([snoretoast])
@@ -468,7 +470,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([freetype], [zlib bzip2])
     GPG4WIN_KDEPKG([sonnet], [qtbase native-qttools])
     GPG4WIN_KDEPKG([ktextwidgets], [sonnet kcompletion kconfig kconfigwidgets ki18n kwidgetsaddons])
-    GPG4WIN_KDEPKG([poppler], [libpng openjpeg tiff gpgmepp kio qtbase freetype])
+    GPG4WIN_KDEPKG([poppler], [libpng openjpeg tiff gpgmepp kio qtbase freetype brotli harfbuzz])
     GPG4WIN_KDEPKG([kparts], [kio kservice kxmlgui kconfigwidgets kwidgetsaddons ktextwidgets])
     GPG4WIN_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg native-kconfig])
     GPG4WIN_KDEPKG([libical])
@@ -493,6 +495,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([libqrencode])
     # poppler requires tiff >= 4.3
     APPIMAGE_KDEPKG([tiff])
+    APPIMAGE_KDEPKG([brotli])
     APPIMAGE_SPKG([xcb-util-cursor])
 
     APPIMAGE_SPKG([libgpg-error])
@@ -567,7 +570,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([kleopatra], [mimetreeparser qgpgme breeze-icons kdsingleapplication kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
 
     # Okular/Poppler
-    APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff])
+    APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff brotli])
     APPIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
 
     # ministart

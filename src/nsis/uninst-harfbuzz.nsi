@@ -18,15 +18,11 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/poppler-${gpg4win_pkg_poppler_version}
+!define prefix ${ipdir}/harfbuzz-${gpg4win_pkg_harfbuzz_version}
 
-!ifdef DEBUG
-Section "poppler" SEC_poppler
-!else
-Section "-poppler" SEC_poppler
-!endif
-  SetOutPath "$INSTDIR"
-  SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libpoppler-165.dll
-  File ${prefix}/bin/libpoppler-qt6-3.dll
+; Uninstaller section.
+Section "-un.harfbuzz"
+  Delete "$INSTDIR\bin\libharfbuzz.dll"
+  Delete "$INSTDIR\bin\libharfbuzz-subset.dll"
+  RmDir "$INSTDIR\bin"
 SectionEnd
