@@ -171,6 +171,9 @@ name libayatana-appindicator-0.5.94.tar.gz
 file libayatana-appindicator/archive/refs/tags/0.5.94.tar.gz
 chk  884a6bc77994c0b58c961613ca4c4b974dc91aa0f804e70e92f38a542d0d0f90
 
+
+if target = appimage
+
 server https://gnupg.org/ftp/gcrypt
 # last-changed: 2026-09-29
 # by: m.
@@ -179,6 +182,19 @@ name ministart-0.15.4.tar.gz
 file ministart/ministart-0.15.4.tar.gz
 chk  4110de45ea34d3b23343dfc47f5a90d5e2f1642135aa2baccaaad0f6ff6526e3
 
+fi # appimage - ministart
+
+if target = mac
+
+server https://gnupg.net/snapshots
+# last-changed: 2026-10-12
+# by: tfry
+# verified: tarball created by tfry
+name ministartqt-0.1.0.tar.xz
+file ministartqt/ministartqt-0.1.0.tar.xz
+chk  7c396cd0b6c3d2d14ee75ec55048e4d9c80a9ab808101469b5dcd7579a1fca7f
+
+fi # mac - ministart
 
 #
 # SQLite
