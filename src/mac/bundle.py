@@ -307,7 +307,8 @@ def finalizeBundle():
                 "CFBundleIconFile": f"<string>{requiredPath(bundleDir / 'Resources/sc-apps-gnupg_stylized.icns').name}</string>"
                 })
     modifyPlist(requiredPath(bundleDir / 'Helpers/Kleopatra.app/Contents/Info.Plist'), {
-                "CFBundleIdentifier": "<string>org.gnupg.gnupg4mac.kleopatra</string>"})
+                "CFBundleIdentifier": "<string>org.gnupg.gnupg4mac.kleopatra</string>",
+                "CFBundleName": "<string>Kleopatra</string>"}) # FIXME: This should be set upstream in Kleopatra
     modifyPlist(requiredPath(bundleDir / 'Helpers/Okular.app/Contents/Info.Plist'), {
                 "CFBundleIdentifier": "<string>org.gnupg.gnupg4mac.okular</string>"})
 
