@@ -500,9 +500,9 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
         fi
         kleopatra_icon=${srcdir}/src/icons/gpd/sc-apps-kleopatra.svg
     else
-        appimage_name=gpg4win-${myversion}-x86_64.AppImage
-        echo "Packaging Gpg4win Appimage: $myversion" | tee -a ${logfile} >&2
-        echo $myversion >${appdir}/Gpg4win-VERSION
+        appimage_name=gpg4linux-${myversion}-x86_64.AppImage
+        echo "Packaging Gpg4linux Appimage: $myversion" | tee -a ${logfile} >&2
+        echo $myversion >${appdir}/Gpg4linux-VERSION
         kleopatra_icon=${srcdir}/src/icons/gpd/sc-apps-kleopatra.svg
     fi
 

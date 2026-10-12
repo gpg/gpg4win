@@ -37,10 +37,10 @@ elif [ -f "${APPDIR}/GnuPG-Desktop-VERSION" ]; then
     _gnupg_appimage="desktop"
     _gnupg_appimage_name="GnuPG Desktop"
     myname="$_gnupg_appimage_name "$(cat "${APPDIR}/GnuPG-Desktop-VERSION")
-elif [ -f "${APPDIR}/Gpg4win-VERSION" ]; then
+elif [ -f "${APPDIR}/Gpg4linux-VERSION" ]; then
     _gnupg_appimage="generic"
-    _gnupg_appimage_name="Gpg4win"
-    myname="$_gnupg_appimage_name "$(cat "${APPDIR}/Gpg4win-VERSION")
+    _gnupg_appimage_name="Gpg4linux"
+    myname="$_gnupg_appimage_name "$(cat "${APPDIR}/Gpg4linux-VERSION")
 else
     error "no valid *-VERSION file found!"
 fi
