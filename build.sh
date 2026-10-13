@@ -563,7 +563,13 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
     rm -rf ${appdir}/usr/lib/plugins
 
     # Finally, create the AppImage
-    /opt/linuxdeploy/plugins/linuxdeploy-plugin-appimage/usr/bin/appimagetool ${appdir} ${appimage_name}
+    # we must extend $PATH so appimagetool can find mksquashfs
+    export PATH="/opt/appimagetool/usr/bin:${PATH}"
+    appimagetool \
+        --runtime-file "/opt/appimagetool/runtime/runtime-x86_64" \
+        --no-appstream \
+        ${appdir} \
+        ${appimage_name}
 
     echo ready
     exit 0
