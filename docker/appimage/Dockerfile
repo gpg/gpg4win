@@ -121,18 +121,29 @@ RUN set -x \
     && wget --no-verbose https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20240109-1/linuxdeploy-x86_64.AppImage \
     && wget --no-verbose https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/1-alpha-20240109-1/linuxdeploy-plugin-qt-x86_64.AppImage \
     && wget --no-verbose https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/7a3fbc31a9e5075073ff8790f26effbac5f84453/linuxdeploy-plugin-gtk.sh \
+    && wget --no-verbose https://github.com/AppImage/appimagetool/releases/download/1.9.1/appimagetool-x86_64.AppImage \
+    && wget --no-verbose https://github.com/AppImage/type2-runtime/releases/download/20251108/runtime-x86_64 \
     && echo "f53349093d333a6558c560844c1a0f64a3b6bd077bf02740af3ad3dbb8827433  linuxdeploy-plugin-qt-x86_64.AppImage" > chk \
     && echo "c86d6540f1df31061f02f539a2d3445f8d7f85cc3994eee1e74cd1ac97b76df0  linuxdeploy-x86_64.AppImage" >> chk \
     && echo "b0f4cbc684a0103a9651f0955b635eaea0096b3a66c0f5a2c2aa337960375171  linuxdeploy-plugin-gtk.sh" >> chk \
+    && echo "ed4ce84f0d9caff66f50bcca6ff6f35aae54ce8135408b3fa33abfc3cb384eb0  appimagetool-x86_64.AppImage" >> chk \
+    && echo "2fca8b443c92510f1483a883f60061ad09b46b978b2631c807cd873a47ec260d  runtime-x86_64" >> chk \
     && sha256sum -c chk \
     && chmod +x linuxdeploy-* \
-    && cd /tmp \
-    && download/linuxdeploy-plugin-qt-x86_64.AppImage --appimage-extract \
-    && download/linuxdeploy-x86_64.AppImage --appimage-extract \
+    && chmod +x appimagetool-x86_64.AppImage \
+    && mkdir -p /tmp/linuxdeploy \
+    && mkdir -p /tmp/appimagetool \
+    && cd /tmp/linuxdeploy \
+    && /tmp/download/linuxdeploy-plugin-qt-x86_64.AppImage --appimage-extract \
+    && /tmp/download/linuxdeploy-x86_64.AppImage --appimage-extract \
+    && cd /tmp/appimagetool \
+    && /tmp/download/appimagetool-x86_64.AppImage --appimage-extract \
+    && mv /tmp/linuxdeploy/squashfs-root /opt/linuxdeploy \
+    && mv /tmp/appimagetool/squashfs-root /opt/appimagetool \
+    && mkdir -p /opt/appimagetool/runtime \
     && mv /tmp/download/linuxdeploy-plugin-gtk.sh /usr/local/bin/linuxdeploy-plugin-gtk.sh \
-    && rm -rf /tmp/download \
-    && mkdir -p /opt \
-    && mv /tmp/squashfs-root /opt/linuxdeploy
+    && mv /tmp/download/runtime-x86_64 /opt/appimagetool/runtime/runtime-x86_64 \
+    && rm -rf /tmp/download
 
 ENV LANG=C.UTF-8
 ENV LC_ALL=C.UTF-8
