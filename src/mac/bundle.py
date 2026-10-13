@@ -44,6 +44,7 @@ from pathlib import Path
 import os
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
@@ -296,6 +297,23 @@ def modifyPlist(file: Path, values: dict):
         f.writelines(lines)
 
 
+def createStub(target: Path, stubname: Path):
+    target = requiredPath(target)
+    # NOTE: Python 3.9 -> no walk_up parameter in Path.relative_to()
+    relpath = "";
+    stubdir = stubname.parent
+    while not target.is_relative_to(stubdir):
+        stubdir = stubdir.parent
+        relpath += "../"
+    relpath = Path(relpath) / target.relative_to(stubdir)
+
+    print(f"Creating stub for {relpath} at {target}")
+    with stubname.open('w') as stub:
+        stub.write("#!/bin/sh\n")
+        stub.write(f'`dirname "$0"`/{relpath} "$@"\n')
+    stubname.chmod(stubname.stat().st_mode | stat.S_IEXEC)
+
+
 def finalizeBundle():
     primaryBin = requiredPath(bundleDir / 'MacOS/ministartqt')
     # a non-empty CFBundleIdentifier is needed to make some things work - importantly native file dialogs
@@ -311,6 +329,10 @@ def finalizeBundle():
                 "CFBundleName": "<string>Kleopatra</string>"}) # FIXME: This should be set upstream in Kleopatra
     modifyPlist(requiredPath(bundleDir / 'Helpers/Okular.app/Contents/Info.Plist'), {
                 "CFBundleIdentifier": "<string>org.gnupg.gnupg4mac.okular</string>"})
+
+    # non-gpg binaries used by kleopatra/okular (the gpg ones are found via libkleo -> compiled in paths)
+    createStub(bundleDir / 'MacOS/paperkey', bundleDir / 'Helpers/Kleopatra.app/Contents/MacOS/paperkey')
+    createStub(bundleDir / 'Helpers/Kleopatra.app/Contents/MacOS/kleopatra', bundleDir / 'Helpers/Okular.app/Contents/MacOS/kleopatra')
 
     # fix kleopatra icon
     iconsDir = requiredPath(bundleDir / 'Resources/icons')
