@@ -1,0 +1,33 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 60fd9fbcf5315c7d931d60f7d5270e7d1c0cc7b9 Mon Sep 17 00:00:00 2001
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@gnupg.com>
+Date: Tue, 13 Oct 2026 09:42:05 +0200
+Subject: [PATCH] MacOS: Look for kleopatra in applicationDirPath(), too
+
+In a bundle installation, similar to Windows, kleopatra will not be in
+the PATH, but may be expected in the same folder as okular.
+---
+ part/kleopatraintegration.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/part/kleopatraintegration.cpp b/part/kleopatraintegration.cpp
+index 2d523fb73..b2539e5db 100644
+--- a/part/kleopatraintegration.cpp
++++ b/part/kleopatraintegration.cpp
+@@ -25,6 +25,11 @@ public:
+         if (m_kleopatraPath.isEmpty()) {
+             m_kleopatraPath = QStandardPaths::findExecutable(QStringLiteral("kleopatra.exe"));
+         }
++#elif defined(Q_OS_MACOS)
++        m_kleopatraPath = QStandardPaths::findExecutable(QStringLiteral("kleopatra"), {QCoreApplication::applicationDirPath()});
++        if (m_kleopatraPath.isEmpty()) {
++            m_kleopatraPath = QStandardPaths::findExecutable(QStringLiteral("kleopatra"));
++        }
+ #else
+         m_kleopatraPath = QStandardPaths::findExecutable(QStringLiteral("kleopatra"));
+ #endif
+--
+2.56.0

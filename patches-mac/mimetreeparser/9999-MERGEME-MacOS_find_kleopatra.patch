@@ -1,0 +1,34 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 9a53794bdbb1cd007eaa05236ca083f3b308ee90 Mon Sep 17 00:00:00 2001
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@kdemail.net>
+Date: Tue, 13 Oct 2026 09:50:20 +0200
+Subject: [PATCH] MacOS: Look for kleopatra in applicationDirPath(), too
+
+In a bundle installation, similar to Windows, kleopatra will not be in
+the PATH, but may be expected in the same folder as the calling
+application.
+---
+ src/core/urlhandler.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/core/urlhandler.cpp b/src/core/urlhandler.cpp
+index 22759c1b..383b9a1c 100644
+--- a/src/core/urlhandler.cpp
++++ b/src/core/urlhandler.cpp
+@@ -43,6 +43,11 @@ bool UrlHandler::handleClick(const QUrl &url, QWindow *window)
+     if (exec.isEmpty()) {
+         exec = QStandardPaths::findExecutable(u"kleopatra.exe"_s);
+     }
++#elif defined(Q_OS_MACOS)
++    QString exec = QStandardPaths::findExecutable(u"kleopatra"_s, {QCoreApplication::applicationDirPath()});
++    if (exec.isEmpty()) {
++        exec = QStandardPaths::findExecutable(u"kleopatra"_s);
++    }
+ #else
+     const QString exec = QStandardPaths::findExecutable(u"kleopatra"_s);
+ #endif
+--
+2.56.0
