@@ -485,6 +485,9 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
             cp ${vsddir}/Standard/kleopatrarc ${appdir}/usr/etc/xdg
         fi
         kleopatra_icon=${srcdir}/src/icons/kleopatra-vsd.svg
+        # TODO: different .desktop and icon files for VSD/GPD
+        appimage_desktop=${srcdir}/src/appimage/com.gnupg.gpg4linux.desktop
+        appimage_icon=${srcdir}/src/icons/256x256/icon_gnupg-com_logo-open_blue-orange.png
     elif [ ${buildtype} = gpd ]; then
         appimage_name=gnupg-desktop-${myversion}-x86_64.AppImage
         echo "Packaging GnuPG Desktop Appimage: $myversion" | tee -a ${logfile} >&2
@@ -499,11 +502,16 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
             cp ${vsddir}/Desktop/kleopatrarc ${appdir}/usr/etc/xdg
         fi
         kleopatra_icon=${srcdir}/src/icons/gpd/sc-apps-kleopatra.svg
+        # TODO: different .desktop and icon files for VSD/GPD
+        appimage_desktop=${srcdir}/src/appimage/com.gnupg.gpg4linux.desktop
+        appimage_icon=${srcdir}/src/icons/256x256/icon_gnupg-com_logo-open_blue-orange.png
     else
         appimage_name=gpg4linux-${myversion}-x86_64.AppImage
         echo "Packaging Gpg4linux Appimage: $myversion" | tee -a ${logfile} >&2
         echo $myversion >${appdir}/Gpg4linux-VERSION
         kleopatra_icon=${srcdir}/src/icons/gpd/sc-apps-kleopatra.svg
+        appimage_desktop=${srcdir}/src/appimage/com.gnupg.gpg4linux.desktop
+        appimage_icon=${srcdir}/src/icons/256x256/icon_gnupg-com_logo-open_blue-orange.png
     fi
 
     if [ -n "${kleopatra_icon}" ]; then
@@ -523,7 +531,8 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
                 || cp -av ${instdir}/share/icons/$f ${appdir}/usr/share/icons/$f
         done
     fi
-
+    cp -av ${appimage_desktop} ${appdir}/usr/share/applications/com.gnupg.gpg4linux.desktop
+    cp -av ${appimage_icon} ${appdir}/usr/share/icons/hicolor/256x256/apps/gpg4linux.png
     # Hack around that linuxdeploy does not know libexec
     for f in dirmngr_ldap gpg-check-pattern \
             gpg-preset-passphrase gpg-protect-tool \
@@ -537,8 +546,8 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
 
     # Fix up everything and build the file system
     linuxdeploy --appdir ${appdir} \
-                --desktop-file ${appdir}/usr/share/applications/org.kde.kleopatra.desktop \
-                --icon-file ${appdir}/usr/share/icons/hicolor/256x256/apps/kleopatra.png \
+                --desktop-file ${appdir}/usr/share/applications/com.gnupg.gpg4linux.desktop \
+                --icon-file ${appdir}/usr/share/icons/hicolor/256x256/apps/gpg4linux.png \
                 --custom-apprun ${srcdir}/src/appimage/AppRun \
                 --plugin qt \
                 --plugin gtk \
