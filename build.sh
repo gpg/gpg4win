@@ -485,7 +485,6 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
             cp ${vsddir}/Standard/kleopatrarc ${appdir}/usr/etc/xdg
         fi
         kleopatra_icon=${srcdir}/src/icons/kleopatra-vsd.svg
-        # TODO: different .desktop and icon files for VSD/GPD
         appimage_desktop=${srcdir}/src/appimage/com.gnupg.gnupg-vs-desktop.desktop
         appimage_icon=${srcdir}/src/icons/256x256/icon_gnupg-com_logo-open_blue-orange.png
     elif [ ${buildtype} = gpd ]; then
@@ -502,7 +501,6 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
             cp ${vsddir}/Desktop/kleopatrarc ${appdir}/usr/etc/xdg
         fi
         kleopatra_icon=${srcdir}/src/icons/gpd/sc-apps-kleopatra.svg
-        # TODO: different .desktop and icon files for VSD/GPD
         appimage_desktop=${srcdir}/src/appimage/com.gnupg.gnupg-desktop.desktop
         appimage_icon=${srcdir}/src/icons/256x256/icon_gnupg-com_logo-open_orange-blue.png
     else
