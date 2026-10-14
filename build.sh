@@ -486,7 +486,7 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
         fi
         kleopatra_icon=${srcdir}/src/icons/kleopatra-vsd.svg
         # TODO: different .desktop and icon files for VSD/GPD
-        appimage_desktop=${srcdir}/src/appimage/com.gnupg.gpg4linux.desktop
+        appimage_desktop=${srcdir}/src/appimage/com.gnupg.gnupg-vs-desktop.desktop
         appimage_icon=${srcdir}/src/icons/256x256/icon_gnupg-com_logo-open_blue-orange.png
     elif [ ${buildtype} = gpd ]; then
         appimage_name=gnupg-desktop-${myversion}-x86_64.AppImage
@@ -503,15 +503,15 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
         fi
         kleopatra_icon=${srcdir}/src/icons/gpd/sc-apps-kleopatra.svg
         # TODO: different .desktop and icon files for VSD/GPD
-        appimage_desktop=${srcdir}/src/appimage/com.gnupg.gpg4linux.desktop
-        appimage_icon=${srcdir}/src/icons/256x256/icon_gnupg-com_logo-open_blue-orange.png
+        appimage_desktop=${srcdir}/src/appimage/com.gnupg.gnupg-desktop.desktop
+        appimage_icon=${srcdir}/src/icons/256x256/icon_gnupg-com_logo-open_orange-blue.png
     else
         appimage_name=gpg4linux-${myversion}-x86_64.AppImage
         echo "Packaging Gpg4linux Appimage: $myversion" | tee -a ${logfile} >&2
         echo $myversion >${appdir}/Gpg4linux-VERSION
         kleopatra_icon=${srcdir}/src/icons/gpd/sc-apps-kleopatra.svg
         appimage_desktop=${srcdir}/src/appimage/com.gnupg.gpg4linux.desktop
-        appimage_icon=${srcdir}/src/icons/256x256/icon_gnupg-com_logo-open_blue-orange.png
+        appimage_icon=${srcdir}/src/icons/256x256/icon_gnupg-com_logo-open_orange-blue.png
     fi
 
     if [ -n "${kleopatra_icon}" ]; then
