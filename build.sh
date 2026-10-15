@@ -486,6 +486,7 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
         fi
         kleopatra_icon=${srcdir}/src/icons/kleopatra-vsd.svg
         appimage_desktop=${srcdir}/src/appimage/com.gnupg.gnupg-vs-desktop.desktop
+        appimage_appstream=${srcdir}/src/appimage/com.gnupg.gnupg-vs-desktop.appdata.xml
         appimage_icon=${srcdir}/src/icons/256x256/icon_gnupg-com_logo-open_blue-orange.png
     elif [ ${buildtype} = gpd ]; then
         appimage_name=gnupg-desktop-${myversion}-x86_64.AppImage
@@ -502,6 +503,7 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
         fi
         kleopatra_icon=${srcdir}/src/icons/gpd/sc-apps-kleopatra.svg
         appimage_desktop=${srcdir}/src/appimage/com.gnupg.gnupg-desktop.desktop
+        appimage_appstream=${srcdir}/src/appimage/com.gnupg.gnupg-desktop.appdata.xml
         appimage_icon=${srcdir}/src/icons/256x256/icon_gnupg-com_logo-open_orange-blue.png
     else
         appimage_name=gpg4linux-${myversion}-x86_64.AppImage
@@ -509,6 +511,7 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
         echo $myversion >${appdir}/Gpg4linux-VERSION
         kleopatra_icon=${srcdir}/src/icons/gpd/sc-apps-kleopatra.svg
         appimage_desktop=${srcdir}/src/appimage/com.gnupg.gpg4linux.desktop
+        appimage_appstream=${srcdir}/src/appimage/com.gnupg.gpg4linux.appdata.xml
         appimage_icon=${srcdir}/src/icons/256x256/icon_gnupg-com_logo-open_orange-blue.png
     fi
 
@@ -530,6 +533,7 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
         done
     fi
     cp -av ${appimage_desktop} ${appdir}/usr/share/applications/com.gnupg.gpg4linux.desktop
+    cp -av ${appimage_appstream} ${appdir}/usr/share/metainfo/com.gnupg.gpg4linux.appdata.xml
     cp -av ${appimage_icon} ${appdir}/usr/share/icons/hicolor/256x256/apps/gpg4linux.png
     # Hack around that linuxdeploy does not know libexec
     for f in dirmngr_ldap gpg-check-pattern \

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>com.gnupg.gpg4linux</id>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-2.0+</project_license>
+    <name>Gpg4linux</name>
+    <summary>Cryptography toolkit for encrypting and signing under GNU/Linux</summary>
+    <description>
+        <p>Easily encrypt and decrypt emails, files and folders and verify their integrity (that they have not been altered) and origin (authenticity) using digital signatures.
+
+Supports the two relevant cryptographic standards, OpenPGP and S/MIME (X.509). Also includes hardened version of the document viewer Okular which supports signing and verifying PDF documents using both standards. This AppImage is the official GnuPG distribution for GNU/Linux and is maintained by the GnuPG developers.</p>
+    </description>
+    <launchable type="desktop-id">com.gnupg.gpg4linux.desktop</launchable>
+    <url type="homepage">https://gnupg.org/</url>
+    <!-- <screenshots>
+        <screenshot type="default">
+            <image>https://myapp.org/img.png</image>
+    </screenshot>
+    </screenshots> -->
+    <provides>
+        <id>com.gnupg.gpg4linux.desktop</id>
+    </provides>
+</component>
