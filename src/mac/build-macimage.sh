@@ -26,7 +26,7 @@ set -e
 BUILDROOT=/build
 SRCDIR=/src
 INSTDIR=${BUILDROOT}/install
-TARGETIMAGENAME=GnuPG4Mac
+TARGETIMAGENAME=Gpg4mac
 
 # Check for the buildtype and existence of required files
 # early

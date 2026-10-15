@@ -280,6 +280,9 @@ macimage_pkg_kleopatra_configure = \
     -DKLEOPATRA_ICON_DIR=$(KLEOPATRA_ICON_DIR) \
     -DDISABLE_KWATCHGNUPG=ON
 
+macimage_pkg_ministartqt_configure = \
+    -DMINISTART_DEFAULT_APP_TITLE="$(TARGETIMAGENAME)"
+
 macimage_pkg_poppler_configure = \
     -DENABLE_BOOST=OFF \
     -DENABLE_NSS3=OFF \
