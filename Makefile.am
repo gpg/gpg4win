@@ -145,6 +145,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/kconfig-6.20.0/0006-kreadconfig-Dump-entries-sorted-by-group-name-entry-.patch \
              patches-appimage/kconfig-6.20.0/0007-g10-Set-organization-name-of-kreadconfig-for-Windows.patch \
              patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
+             patches-appimage/kleopatra/0001-rename-icons.patch \
              patches-appimage/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches-appimage/okular/pgp-default-true.patch \
              patches-appimage/poppler/downgrade-min-boost.patch \

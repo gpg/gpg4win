@@ -1,0 +1,14 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+--- a/src/icons/icons.qrc.in    2026-10-16 09:20:37.552061556 +0200
++++ b/src/icons/icons.qrc.in    2026-10-16 09:19:39.585745743 +0200
+@@ -1,6 +1,6 @@
+ <!DOCTYPE RCC>
+ <RCC version="1.0">
+     <qresource prefix="/icons/breeze">
+-        <file alias="apps/48/kleopatra.svg">@app_icon_svg@</file>
++        <file alias="apps/48/kleopatra-gpg4linux.svg">@app_icon_svg@</file>
+     </qresource>
+ </RCC>

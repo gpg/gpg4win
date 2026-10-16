@@ -519,10 +519,17 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
         # Replace Breeze icons for kleopatra with our icon
         find ${appdir}/usr/share/icons/breeze -name 'kleopatra*.svg' -delete
         find ${appdir}/usr/share/icons/breeze-dark -name 'kleopatra*.svg' -delete
-        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze/apps/22/kleopatra-symbolic.svg
-        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze/apps/48/kleopatra.svg
-        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze-dark/apps/22/kleopatra-symbolic.svg
-        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze-dark/apps/48/kleopatra.svg
+        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze/apps/22/kleopatra-gpg4linux-symbolic.svg
+        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze/apps/48/kleopatra-gpg4linux.svg
+        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze-dark/apps/22/kleopatra-gpg4linux-symbolic.svg
+        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze-dark/apps/48/kleopatra-gpg4linux.svg
+        # Replace icons in .desktop files
+        for f in org.kde.kleopatra kleopatra_import ; do
+            sed -i \
+                -e "s/Icon=kleopatra/Icon=kleopatra-gpg4linux/g" \
+                -e "s/Name=Kleopatra/Name=Kleopatra-gpg4linux/g" \
+                ${appdir}/usr/share/applications/${f}.desktop
+        done
     else
         # Restore the Breeze icons that may have been replaced in a previous build
         for f in breeze/apps/22/kleopatra-symbolic.svg breeze/apps/48/kleopatra.svg \
