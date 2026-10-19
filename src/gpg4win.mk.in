@@ -62,6 +62,7 @@ AUTHENTICODE_FILES = \
 	 bin/libKF6KIOCore.dll \
 	 bin/libKF6KIOGui.dll \
 	 bin/libKF6KIOWidgets.dll \
+	 bin/libKF6Mime.dll \
 	 bin/libKF6Parts.dll \
 	 bin/libKF6Service.dll \
 	 bin/libKF6Solid.dll \
@@ -75,7 +76,6 @@ AUTHENTICODE_FILES = \
 	 bin/libKF6XmlGui.dll \
 	 bin/libKPim6Libkleo.dll \
 	 bin/libKPim6Mbox.dll \
-	 bin/libKPim6Mime.dll \
 	 bin/libKPim6MimeTreeParserCore.dll \
 	 bin/libKPim6MimeTreeParserWidgets.dll \
 	 bin/libOkular6Core.dll \
@@ -809,11 +809,9 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	if [ ! -L "$$$${pkgsdir}" ]; then \
 		cd "$$$${pkgsdir}"; \
 		if [ -e "CMakeLists.txt" ]; then \
-			sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "6.19.0")/' CMakeLists.txt; \
-			sed -i 's/find_package(ECM .* NO_MODULE)/find_package(ECM 6.19.0 NO_MODULE)/' CMakeLists.txt; \
-			sed -i 's/set(KF_DEP_VERSION.*)/set(KF_DEP_VERSION "6.19.0")/' CMakeLists.txt; \
-			sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "6.4.0")/' CMakeLists.txt; \
-			sed -i 's/set(KPIM_MIME_VERSION.*)/set(KPIM_MIME_VERSION "6.4.0")/' CMakeLists.txt; \
+			sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "6.31.0")/' CMakeLists.txt; \
+			sed -i 's/find_package(ECM .* NO_MODULE)/find_package(ECM 6.31.0 NO_MODULE)/' CMakeLists.txt; \
+			sed -i 's/set(KF_DEP_VERSION.*)/set(KF_DEP_VERSION "6.31.0")/' CMakeLists.txt; \
 			sed -i 's/set(KPIM_MBOX_VERSION.*)/set(KPIM_MBOX_VERSION "6.4.0")/' CMakeLists.txt; \
 			sed -i 's/set(MIMETREEPARSER_VERSION.*)/set(MIMETREEPARSER_VERSION "6.4.0")/' CMakeLists.txt; \
 		fi; \

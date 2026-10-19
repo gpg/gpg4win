@@ -53,6 +53,7 @@ FRAMEWORKS="extra-cmake-modules
     kio
     kbookmarks
     kservice
+    kmime
     solid
     kjobwidgets
     threadweaver
