@@ -647,11 +647,11 @@ chk a4b08915584d0b7ec5fa28adae1eb3d0bc63a1d95f15e40bfae529505d0307a5
 server https://gnupg.net/snapshots
 
 # mimetreeparser
-# last changed: 2026-07-09
-# by: m
-# verified: Tarball created by m.
-file mimetreeparser/mimetreeparser-202607091157.tar.xz
-chk 3c9883e5a81a277838cb4c23dcf7d64464416635277cc56f9ea0f76788bdc04d
+# last changed: 2026-10-19
+# by: ingo
+# verified: Tarball created by ingo.
+file mimetreeparser/mimetreeparser-202610191635.tar.xz
+chk 8278a89f9ee21b68471cab9eb883444976de5c3eba99a897773f93e58f4c5fa8
 
 #
 # GPGME is stored on the GnuPG server
@@ -712,18 +712,18 @@ file gpg4win-tools/gpg4win-tools-202607211459.tar.xz
 chk 4527eb101cad9fcd5f5c3a57b31e6e35fa1a0b42f6fd0683f43ffaa1f00c52d1
 
 # libkleo
-# last changed: 2026-07-15
+# last changed: 2026-10-19
 # by: ingo
 # verified: Tarball created by ingo.
-file libkleo/libkleo-202607151600.tar.xz
-chk 662327c85688105a65475c6cb7681b4ea25d22e4152fffca368b7986952fc6d7
+file libkleo/libkleo-202610191635.tar.xz
+chk e2912f1db02656f54a9eb812e99712071b012bda086a6331e26298e8ff99baf9
 
 # kleopatra
-# last changed: 2026-07-15
+# last changed: 2026-10-19
 # by: ingo
 # verified: Tarball created by ingo.
-file kleopatra/kleopatra-202607151600.tar.xz
-chk 239ab570064ff4907351415dcd748b886a5d0b9d1f00b91796f6b1eba2aeabee
+file kleopatra/kleopatra-202610191635.tar.xz
+chk 47e95dd216154f8ce3d7698a0cef4b02cfc5f54470739707c5a3a374eb9bfa75
 
 # gpgoljs
 # last changed: 2026-10-20
