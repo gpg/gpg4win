@@ -546,13 +546,18 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
                 --set-rpath '$ORIGIN/../lib' ${appdir}/usr/libexec/$f || true
     done
 
+    linuxdeploy_plugins="--plugin qt"
+    # we'll only need the gtk plugin if the image includes a gtk application
+    if [ -f  "${appdir}/usr/bin/ministart" ] ; then
+        linuxdeploy_plugins="${linuxdeploy_plugins} --plugin gtk"
+    fi
+
     # Fix up everything and build the file system
     linuxdeploy --appdir ${appdir} \
                 --desktop-file ${appdir}/usr/share/applications/com.gnupg.gpg4linux.desktop \
                 --icon-file ${appdir}/usr/share/icons/hicolor/256x256/apps/gpg4linux.png \
                 --custom-apprun ${srcdir}/src/appimage/AppRun \
-                --plugin qt \
-                --plugin gtk \
+                ${linuxdeploy_plugins} \
         2>&1 | tee ${builddir}/logs/linuxdeploy-gnupg-desktop.log
 
     # Fix the rpath of KDE plugins
