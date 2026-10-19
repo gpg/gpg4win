@@ -46,10 +46,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/breeze-6.5.4-g10/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
              patches/breeze-6.5.4-g10/0001-Do-not-pass-QIcon-Selected-mode-to-icon-painter.patch \
              patches/breeze-6.5.4-g10/0001-kstyle-Draw-hovered-menu-bar-items-like-selected-ite.patch \
-             patches/breeze-icons-6.20.0/0001-Allow-to-disable-building-of-the-icon-library-native.patch \
-             patches/breeze-icons-6.20.0/0001-Draft-Handle-cross-compiling-for-tools-native.patch \
-             patches/breeze-icons-6.20.0/0002-Add-nicer-16x16-variant-of-dialog-question.patch \
-             patches/breeze-icons-6.20.0/0003-Add-data-question-status-icon-similar-to-other-data-.patch \
              patches/breeze-icons/0001-Add-16x16-variant-of-data-success.patch \
              patches/breeze-icons/0004-Add-symbolic-variants-of-status-icons-for-usage-with.patch \
              patches/breeze-icons/0005-Disable-recoloring-of-status-icons.patch \
@@ -65,14 +61,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/gpgoljs/0001-Switch-to-KDSingleApplication-for-handling-unique-in.patch \
              patches/gpgoljs/0002-Work-around-failure-to-accept-custom-root-cert-on-Ma.patch \
              patches/jpeg/fix-redefine.patch \
-             patches/kcalendarcore-6.20.0/0001-Add-option-to-build-without-QML.patch \
-             patches/kconfig-6.20.0/00-kf625-0001-Avoid-creation-of-not-already-existing-registry-keys.patch \
-             patches/kconfig-6.20.0/00-kf625-0002-Do-not-try-to-read-registry-entries-for-absolute-con.patch \
-             patches/kconfig-6.20.0/00-kf625-0003-kreadconfig-Add-flag-to-dump-all-entries.patch \
-             patches/kconfig-6.20.0/00-kf625-0004-kreadconfig-Add-flag-to-include-globals.patch \
-             patches/kconfig-6.20.0/00-kf629-0001-kreadconfig-Dump-entries-sorted-by-group-name-entry-.patch \
-             patches/kconfig-6.20.0/00-kf629-0002-Read-config-files-in-system-locations-before-user-wr.patch \
-             patches/kconfig-6.20.0/00-kf632-0001-Ensure-locale-name-with-language-code-and-country-co.patch \
+             patches/kconfig-6.31.0/00-kf632-0001-Ensure-locale-name-with-language-code-and-country-co.patch \
              patches/kconfig/0001-g10-Set-organization-name-of-kreadconfig-for-Windows.patch \
              patches/kf5/breeze-icons/subset-crossbuild.patch \
              patches/kf5/kconfig/0001-Read-defaults-from-Windows-registry.patch \
@@ -92,15 +81,12 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kf5/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
              patches/kf5/qttools/disable-most-tools.patch \
              patches/kf5/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
-             patches/kguiaddons-6.20.0/0002-DRAFT-There-is-no-dark-mode-on-old-Windows.patch \
+             patches/kguiaddons/0002-DRAFT-There-is-no-dark-mode-on-old-Windows.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/ki18n/0001-gpg4win-fix-language-issues.patch \
              patches/kiconthemes/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
              patches/kiconthemes/0002-Use-symbolic-icons-if-high-contrast-color-scheme-is-.patch \
              patches/kjobwidgets/0001-Remove-knotification.patch \
-             patches/kwidgetsaddons-6.20.0/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
-             patches/kwidgetsaddons-6.20.0/0002-KPageView-Use-correct-icon-mode-if-high-contrast-col.patch \
-             patches/kwidgetsaddons-6.20.0/0003-KDateTable-Don-t-paint-days-in-dark-red-if-high-cont.patch \
              patches/kwidgetsaddons/0002-KMessageWidget-Don-t-draw-background-if-high-contras.patch \
              patches/kxmlgui/0001-Store-kxmlgui-rc-file-in-config-location.patch \
              patches/libayatana-appindicator/downpatch_requirements.patch \

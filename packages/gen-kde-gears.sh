@@ -27,13 +27,16 @@
 set -e
 
 if [ -z "$1" ]; then
-    echo "Usage $0 <Version> > snippet"
+    echo "Usage $0 <Version> [package] > snippet"
     exit 1
 fi
 
-GEARS="kmime
-    kmbox
+GEARS="kmbox
     mimetreeparser"
+
+if [ -n "$2" ]; then
+    GEARS="$2"
+fi
 
 fullversion=$1
 case ${fullversion} in
