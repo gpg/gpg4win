@@ -179,16 +179,16 @@ while [ $# -gt 0 ]; do
 done
 
 if [ "$appimage" = yes -a "$release" = yes ] ; then
-    echo "--release can't be used together with --appimage"
-    exit 1
+    echo >&2 "$PGM: --release can't be used together with --appimage"
+    exit 2
 fi
 if [ "$custom_logfile" = yes -a "$release" = yes ] ; then
-    echo "--release can't be used together with --logfile"
-    exit 1
+    echo >&2 "$PGM: --release can't be used together with --logfile"
+    exit 2
 fi
 if [ "$withmsi" = no -a "$wineonly" = yes ] ; then
-    echo "--wine-only is only effective together with --msi"
-    exit 1
+    echo >&2 "$PGM: --wine-only is only effective together with --msi"
+    exit 2
 fi
 
 [ -n "$verbose" ] || quiet="--quiet"
@@ -259,10 +259,14 @@ buildtype_prefix=""
 if [ -e "${buildtype_prefix}packages/BUILDTYPE" ]; then
     buildtype="$(trim "$(cat "${buildtype_prefix}packages/BUILDTYPE" 2>/dev/null)")"
 else
-    echo >&2 "PGM: ${buildtype_prefix}packages/BUILDTYPE not found - see README"
-    exit 1
+    echo >&2 "$PGM: ${buildtype_prefix}packages/BUILDTYPE not found - see README"
+    exit 2
 fi
 
+if [ "$buildtype" = vsd3 ] && [ "$mac" = yes ] ; then
+    echo >&2 "$PGM: --mac is not available for VSD 3.*"
+    exit 2
+fi
 
 # Run a command using the FIFOs.  This needs to be called via a FIFO
 # from the docker.  Note that we don't explicit serialize access to the
@@ -849,7 +853,6 @@ check_flags() {
 
 
 # Check whether the --release target needs to clone the gnupg-vsd repo.
-buildtype="$(trim "$(cat "${buildtype_prefix}packages/BUILDTYPE" 2>/dev/null)")"
 conf_product_name="$(grep '^[[:blank:]]*SHORTPRODUCT_NAME[[:blank:]]*=' "${buildtype_prefix}configure"|cut -d= -f2|xargs)"
 check_flags "${buildtype}" "${withmsi}" "${appimage}" "${shell}"
 case "${buildtype}" in
