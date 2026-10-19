@@ -31,6 +31,7 @@ Build Gpg4win in a docker containter.
 
 Options:
         --appimage      Build the AppImage instead of the NSIS installer.
+        --mac           Build the MacOS image
         --w32           Use 32 bit Windows as primary host arch
         --clean         Remove a pre-existing build directory
         --dist          Create a distributable tarball
@@ -47,6 +48,8 @@ Options:
         --update-image  Update the docker image before build
         --msi           Building MSI packages
                         Also assumes --w32 if BUILDTYPE is vsd3
+        --wine-only     Try using wixtools with Wine only
+                        Only relevant in combination with --msi
         --user=name     Use NAME as FTP server user
         --download      Download packages first
         --runcmd CMD    Run a command via a pair of FIFOs
@@ -54,10 +57,13 @@ Options:
                         packages:
                         libkleo kleopatra gpgol gpgol.js
                         gpgpass gpg4win-tools mimetreeparser
+        --signkey       OpenPGP key ID for signing an AppImage
+                        Overwrites VERSION_SIGNKEY of ~/.gnupg-autogen.rc
+                        Only used if BUILDTYPE is vsd, vsd3 or gpd
         --verbose       Get more verbose output
 
 
-This script is used to build either the Appimage or the Windows
+This script is used to build either the Appimage, MacOS image or the Windows
 installer.  The build is done in a suffixed build directory (see above
 for the defaults).  Use the option --builddir to use a non-default build
 directory.  Take care not to use the source directory for building.
@@ -87,22 +93,26 @@ commandline="$0 $@"
 
 # Preset variables.
 indocker="no"
+targetplatform="windows"
+appimage="no"
+appimage_docker_build="no"
 shell="no"
 clean="no"
 dist="no"
 release="no"
-branch="master"
-srcdir=$(cd $(dirname $0); pwd)
-is_tmpbuild="no"
+srcdir="$(cd "$(dirname "$0")"; pwd)"
 update_image="no"
 w64="yes"
 download="no"
 runcmd="no"
 fromgit="no"
 withmsi="no"
+mac=
+nodocker=
 upload=no
-force=no
-nosign=no
+wineonly="no"
+force="no"
+nosign="no"
 ftpuser=
 verbose=
 logfile=
@@ -110,9 +120,16 @@ custom_logfile="no"
 quiet=
 _cached_custom_mk=
 vsddir=
+docker_cmd_extras=
+version_signkey=
+have_signkey="no"
 # Get UID for use by docker.
 userid=$(id -u)
 groupid=$(id -g)
+# the PE32 binary SysWOW64\cabinet.dll
+cabinet32sha1sum="f2b63a764817497286740034f439c0bf7cacdf8d"
+# the PE32+ binary System32\cabinet.dll
+cabinet64sha1sum="1d9184eb342e25ecc588b84a2e49321ee5ef6a74"
 
 # Track whether we reset the tty to cooked mode.  docker sets it to raw mode
 # and we set it back via our runner process so that we are sure docker is
@@ -123,34 +140,42 @@ recooked=
 skipshift=
 while [ $# -gt 0 ]; do
     case "$1" in
-        --*=*) optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'`;;
+        --*=*) optarg="${1//[-_a-zA-Z0-9]*=/}";;
         *) optarg="";;
     esac
 
     case "$1" in
-        --appimage) appimage="yes";;
-        --shell) shell="yes";;
-        --clean|-c) clean="yes";;
-        --dist) dist="yes";;
-        --release) release="yes";;
-        --update-image|--update-img|-u) update_image="yes";;
-        --w32) w64="no";;
-        --force) force="yes";;
-        --no-sign) nosign="yes" ;;
-        --download) download="yes";;
-        --runcmd)   runcmd="yes";;
-        --git|-g|--git-pkgs)     fromgit="yes";;
+        --appimage)              appimage="yes"
+                                 targetplatform="appimage" ;;
+        --mac)                   mac="yes"
+                                 targetplatform="mac" ;;
+        --nodocker)              nodocker="yes"       ;;
+        --shell)                 shell="yes"          ;;
+        --clean|-c)              clean="yes"          ;;
+        --dist)                  dist="yes"           ;;
+        --release)               release="yes"        ;;
+        --update-image|--update-img|-u)
+                                 update_image="yes"   ;;
+        --w32)                   w64="no"             ;;
+        --force)                 force="yes"          ;;
+        --no-sign)               nosign="yes"         ;;
+        --download)              download="yes"       ;;
+        --runcmd)                runcmd="yes"         ;;
+        --git|-g|--git-pkgs)     fromgit="yes"        ;;
         --builddir|--builddir=*) builddir="${optarg}" ;;
         --logfile|--logfile=*)   logfile="${optarg}"
                                  custom_logfile="yes" ;;
         --user|--user=*)         ftpuser="${optarg}"  ;;
-        --msi|--with-msi)        withmsi=yes          ;;
-        --verbose|-v)            verbose=yes          ;;
-        --upload)                upload=yes           ;;
-        --*) usage 1 1>&2; exit 1;;
-        *) skipshift=1; break ;;
+        --msi|--with-msi)        withmsi="yes"        ;;
+        --wine-only)             wineonly="yes"       ;;
+        --signkey|--signkey=*)   version_signkey="${optarg}"
+                                 have_signkey="yes"   ;;
+        --verbose|-v)            verbose="yes"        ;;
+        --upload)                upload="yes"         ;;
+        --*)                     usage 1 1>&2; exit 1 ;;
+        *)                       skipshift=1; break   ;;
     esac
-    [ -z "$skipshift" ] && shift
+    [ -n "$skipshift" ] || shift
 done
 
 if [ "$appimage" = yes -a "$release" = yes ] ; then
@@ -161,30 +186,52 @@ if [ "$custom_logfile" = yes -a "$release" = yes ] ; then
     echo "--release can't be used together with --logfile"
     exit 1
 fi
+if [ "$withmsi" = no -a "$wineonly" = yes ] ; then
+    echo "--wine-only is only effective together with --msi"
+    exit 1
+fi
 
-[ -z "$verbose" ] && quiet="--quiet"
+[ -n "$verbose" ] || quiet="--quiet"
 
 if [ -z "$builddir" ]; then
     if [ "$release" = "yes" ]; then
         builddir="${HOME}/b/$(basename "$srcdir")-mill"
     elif [ "$appimage" = "yes" ]; then
         builddir="${HOME}/b/$(basename "$srcdir")-appimage"
+    elif [ "$mac" = "yes" ]; then
+        builddir="${HOME}/b/$(basename "$srcdir")-mac"
     else
         builddir="${HOME}/b/$(basename "$srcdir")-playground"
     fi
 fi
 
-# Check whether we are running in the docker container.
-if [ -d /src/src -a -d /src/patches -a -d /build ]; then
-    indocker="yes"
-    srcdir=/src
-    builddir=/build
-    echo >&2 "$PGM: running in docker"
-elif [ "$clean" = "yes" ] && [ -d "${builddir}" ] ; then
+if [ -z "$mac$nodocker" ]; then
+    # Check whether we are running in the docker container.
+    if [ -d /src/src -a -d /src/patches -a -d /build ]; then
+        indocker="yes"
+        srcdir="/src"
+        builddir="/build"
+        instdir="${builddir}/install"
+        vsddir="${srcdir}/src/gnupg-vsd"
+        if [ "$appimage" = "yes" ] ; then
+            appimage_docker_build="yes"
+            appdir="${builddir}/AppDir"
+        fi
+        echo >&2 "$PGM: running in docker"
+    fi
+else
+    if [ "$nodocker" = "yes" ]; then
+        indocker="yes"
+        srcdir="/src"
+        builddir="/build"
+    fi
+fi
+
+if [ "$indocker" != "yes" ] && [ "$clean" = "yes" ] && [ -d "${builddir}" ] ; then
     # if we're not inside docker, this is a good time
     # to check if we need to purge an old build directory
     echo >&2 "$PGM: Removing old build directory ${builddir}"
-    rm -rf "${builddir}"
+    rm -rf "${builddir}"/*
 fi
 
 vsddir="${srcdir}/src/gnupg-vsd"
@@ -192,7 +239,6 @@ vsddir="${srcdir}/src/gnupg-vsd"
 echo >&2 "$PGM: source directory: $srcdir"
 echo >&2 "$PGM: vsddir directory: $vsddir"
 echo >&2 "$PGM: build  directory: $builddir"
-
 
 # Remove leading an trailing whitespace
 trim() {
@@ -206,6 +252,339 @@ trim() {
     printf '%s' "$var"
 }
 
+
+# Make sure we have a BUILDTYPE file
+buildtype_prefix=""
+[ "$indocker" != yes ] || buildtype_prefix="/src/"
+if [ -e "${buildtype_prefix}packages/BUILDTYPE" ]; then
+    buildtype="$(trim "$(cat "${buildtype_prefix}packages/BUILDTYPE" 2>/dev/null)")"
+else
+    echo >&2 "PGM: ${buildtype_prefix}packages/BUILDTYPE not found - see README"
+    exit 1
+fi
+
+
+# Run a command using the FIFOs.  This needs to be called via a FIFO
+# from the docker.  Note that we don't explicit serialize access to the
+# FIFO, hopefully no parallel make rules are run.
+if [ "$runcmd" = yes ]; then
+    if [ "$indocker" != yes ]; then
+        echo >&2 "$PGM: Option --runcmd must be called from docker"
+        echo >&2 "$PGM: Available commands are:"
+        echo >&2 "$PGM:   ping      - Wait for a pong"
+        echo >&2 "$PGM:   gpg       - Run a gpg command"
+        echo >&2 "$PGM:   msibase   - Prepare MSI linking"
+        echo >&2 "$PGM:   litcandle - Run candle.exe"
+        exit 2
+    fi
+    # Running in docker
+    if [ -z "$1" ]; then
+        echo >&2 "usage: /src/build.sh --runcmd COMMAND ARGS"
+        exit 2
+    fi
+    [ ! -f /build/S.build.sh-rc ] || rm /build/S.build.sh-rc
+    echo "$@" >/build/S.build.sh-in
+    cat /build/S.build.sh-out
+    while [ ! -f /build/S.build.sh-rc ]; do sleep 0.05; done
+    rc=$(sed -ne 's/EXITSTATUS=\([0-9]*\).*$/\1/p' \
+             </build/S.build.sh-rc 2>/dev/null || true)
+    [ -n "$rc" ] || rc=0
+    exit $rc
+fi
+
+
+# The following condition does the whole AppImage building stuff
+# It must not be placed earlier in the script so that neccessary
+# checks and actions have already taken place!
+if  [ "$appimage_docker_build" = "yes" ] ; then
+    echo "run appimage build" | tee -a ${logfile} >&2
+
+    write_version_file () (
+        # TODO: add uidcomment and read content from config files
+        echo "Writing VERSION file" | tee -a ${logfile} >&2
+        local VERSION_FILE="$1"
+        local FLAVOUR="$2"
+        local LANG="$3"
+        local VSD_VERSION="$4"
+        local BUILD_CID_INSTALLER="$(cd "${srcdir}" && git rev-parse --verify HEAD)"
+        local BUILD_CID_CONFIG="$(cd "${srcdir}/src/gnupg-vsd" && git rev-parse --verify HEAD)"
+        local YEAR="$(date +%Y)"
+
+        if [ "${FLAVOUR}" = "vsd" ] ; then
+            local KLEO_VERSION="VS-Desktop-${VSD_VERSION}"
+            local KLEO_BUG_ADDRESS="https://gnupg.com/vsd/report.html"
+            local KLEO_HOMEPAGE="https://www.gnupg.com/vsd/release-notes.html"
+            if [ "${LANG}" = "de" ] ; then
+                local KLEO_SHORT_DESC="<h1>GnuPG VS-Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>Die GnuPG.com Unterstützung ist verfügbar unter:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Stichwort: VSD AppImage<br/><br/>"
+                local KLEO_OTHER_TEXT="<b>GnuPG VS-Desktop</b><sup>®</sup> ist Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>Eine vollständige Liste der Lizenzen findet sich in der beiliegenden pkg-licenses.txt Datei."
+            else
+                local KLEO_SHORT_DESC="<h1>GnuPG VS-Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>The GnuPG.com vendor support is available at:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Keyword: VSD AppImage English<br/><br/>"
+                local KLEO_OTHER_TEXT="<b>GnuPG VS-Desktop</b><sup>®</sup> is Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>For a full list of licenses see the installed pkg-licenses.txt file."
+            fi
+        elif [ "${FLAVOUR}" = "gpd" ] ; then
+            local KLEO_VERSION="Desktop-${VSD_VERSION}"
+            local KLEO_BUG_ADDRESS="https://gnupg.com/gpd/report.html"
+            local KLEO_HOMEPAGE="https://www.gnupg.com/gpd/release-notes.html"
+            if [ "${LANG}" = "de" ] ; then
+                local KLEO_SHORT_DESC="<h1>GnuPG Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>Die GnuPG.com Unterstützung ist verfügbar unter:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Stichwort: GPD AppImage<br/><br/>"
+                local KLEO_OTHER_TEXT="<b>GnuPG Desktop</b><sup>®</sup> ist Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>Eine vollständige Liste der Lizenzen findet sich in der beiliegenden pkg-licenses.txt Datei."
+            else
+                local KLEO_SHORT_DESC="<h1>GnuPG Desktop<sup>®</sup></h1><br/><b>AppImage</b><br/><br/>The GnuPG.com vendor support is available at:<br/><br/>+49-2104-4938-797<br/><a href=\"mailto:support@gnupg.com\">support@gnupg.com</a><br/>Keyword: GPD AppImage English<br/><br/>"
+                KLEO_OTHER_TEXT="<b>GnuPG Desktop</b><sup>®</sup> is Copyright (c) 2005-${YEAR} g10 Code GmbH<br/>For a full list of licenses see the installed pkg-licenses.txt file."
+            fi
+        fi
+
+        local OKULAR_VERSION="${KLEO_VERSION}"
+        local OKULAR_SHORT_DESC="${KLEO_SHORT_DESC}"
+        local OKULAR_OTHER_TEXT="${KLEO_OTHER_TEXT}"
+        local OKULAR_BUG_ADDRESS="${KLEO_BUG_ADDRESS}"
+        local OKULAR_HOMEPAGE="${KLEO_HOMEPAGE}"
+
+        cat <<- EOF > ${VERSION_FILE}
+		[Kleopatra]
+		version=${KLEO_VERSION}
+		shortDescription=${KLEO_SHORT_DESC}
+		otherText=${KLEO_OTHER_TEXT}
+		bugAddress=${KLEO_BUG_ADDRESS}
+		homepage=${KLEO_HOMEPAGE}
+		copyrightStatement=<pre></pre>
+		statusline=${VSD_VERSION}
+
+		[Okular]
+		version=${OKULAR_VERSION}
+		shortDescription=${OKULAR_SHORT_DESC}
+		otherText=${OKULAR_OTHER_TEXT}
+		bugAddress=${OKULAR_BUG_ADDRESS}
+		homepage=${OKULAR_HOMEPAGE}
+		displayName=Okular - GnuPG Edition
+
+		[Build]
+		cidInstaller=${BUILD_CID_INSTALLER}
+		cidConfig=${BUILD_CID_CONFIG}
+		EOF
+    )
+
+    sign_version_file () (
+        local VERSION_FILE="$1"
+        local SIGNKEY="$2"
+
+        [ -z "$verbose" ] || echo "$PGM (AppImage): signkey      : ${SIGNKEY}" | tee -a ${logfile} >&2
+
+        /src/build.sh --runcmd gpg --yes -o "${VERSION_FILE}.sig" -bau "${SIGNKEY}" "${VERSION_FILE}"
+        chmod 0644 "${VERSION_FILE}.sig"
+    )
+
+    # Check for the buildtype and existence of required files
+    # early
+    if [ "${buildtype}" = "vsd" -o "${buildtype}" = "vsd3" -o "${buildtype}" = "gpd" ] && [ ! -f ${vsddir}/custom.mk ]; then
+        (   echo "ERROR: Non default build without custom file."
+            echo "Check that ${vsddir}/custom.mk exists or "
+            echo "change the BUILDTYPE in ${srcdir}/packages/BUILDTYPE" ) | tee -a ${logfile} >&2
+        exit 2
+    fi
+
+    if [ -n "$verbose" ] ; then
+        (   echo "$PGM (AppImage): printenv     : $(printenv)"
+            echo "$PGM (AppImage): version      : $(cat /proc/version)"
+            echo "$PGM (AppImage): buildtype    : ${buildtype}"
+            echo "$PGM (AppImage): vsddir       : ${vsddir}"
+            echo "$PGM (AppImage): builddir     : ${builddir}"
+            echo "$PGM (AppImage): srcdir       : ${srcdir}"
+            echo "$PGM (AppImage): appdir       : ${appdir}"
+            echo "$PGM (AppImage): instdir      : ${instdir}"
+            echo "$PGM (AppImage): signkey      : ${version_signkey}" ) | tee -a ${logfile} >&2
+        # echo "$PGM (AppImage): : ${}"
+    fi
+
+    # The actual build
+    cd ${builddir}
+    if [ -f /opt/rh/gcc-toolset-14/enable ] ;then
+        [ -z "$verbose" ] || echo "$PGM (AppImage): found        : /opt/rh/gcc-toolset-14/enable" | tee -a ${logfile} >&2
+    else
+        echo "$PGM (AppImage): no found     : /opt/rh/gcc-toolset-14/enable" | tee -a ${logfile} >&2
+        exit 1
+    fi
+    source /opt/rh/gcc-toolset-14/enable
+    echo "${srcdir}/configure --enable-appimage --with-playground=${builddir}" | tee -a ${logfile} >&2
+    ${srcdir}/configure --enable-appimage --with-playground=${builddir}
+    # Nuke the AppDir to make sure we get everything nice and clean
+    cd ${builddir}/src/appimage
+    make TOPSRCDIR=${srcdir} PLAYGROUND=${builddir} clean-appdir
+    cd ${builddir}
+    make TOPSRCDIR=${srcdir} PLAYGROUND=${builddir}
+
+    echo 'rootdir = $APPDIR/usr' >${appdir}/usr/bin/gpgconf.ctl
+    if [ ${buildtype} = vsd -o ${buildtype} = vsd3 ]; then
+        echo 'sysconfdir = /etc/gnupg-vsd' >>${appdir}/usr/bin/gpgconf.ctl
+    else
+        echo 'sysconfdir = /etc/gnupg' >>${appdir}/usr/bin/gpgconf.ctl
+    fi
+
+    # Copy the start-shell helper for use AppRun
+    cp ${srcdir}/src/appimage/start-shell ${appdir}/
+    chmod +x ${appdir}/start-shell
+
+    # Copy standard global configuration
+    if [ ${buildtype} = vsd -o ${buildtype} = vsd3 ]; then
+        mkdir -p ${appdir}/usr/share/gnupg/conf/gnupg-vsd
+        rsync -aLv --delete --omit-dir-times \
+            --perms --chmod=D0755,F0644 \
+            ${vsddir}/Standard/etc/gnupg/ \
+            ${appdir}/usr/share/gnupg/conf/gnupg-vsd/
+    fi
+
+    export PATH=/opt/linuxdeploy/usr/bin:$PATH
+    export LD_LIBRARY_PATH=${instdir}/lib
+
+    # tell the linuxdeploy qt-plugin where to find qmake
+    export QMAKE=${instdir}/bin/qmake
+
+    # create plugin directories expected by linuxdeploy qt-plugin
+    # workaround for
+    # [qt/stdout] Deploy[qt/stderr] terminate called after throwing an instance of 'boost::filesystem::filesystem_error'
+    # [qt/stderr]   what():  boost::filesystem::directory_iterator::construct: No such file or directory: "/build/AppDir/usr/plugins/sqldrivers"
+    # ERROR: Failed to run plugin: qt (exit code: 6)
+    mkdir -p ${instdir}/plugins/sqldrivers
+
+    # Copy KDE plugins to ${appdir}/usr/lib/plugins/ (i.e. below usr/lib) to make linuxdeploy copy the dependencies
+    # of the plugins to ${appdir} so that we don't have to take care of this ourselves;
+    # after linuxdeploy has done its work we move the KDE plugins to ${appdir}/usr/plugins/ so that Qt
+    # finds the plugins out-of-the-box
+    mkdir -p ${appdir}/usr/lib/plugins
+    if [ ${buildtype} != vsd3 ]; then
+        for d in kf6 kiconthemes6 styles; do
+            rsync -av --delete --omit-dir-times ${instdir}/lib/plugins/${d}/ ${appdir}/usr/lib/plugins/${d}/
+        done
+    else
+        for d in iconengines kauth kf5 okular plasma; do
+            rsync -av --delete --omit-dir-times ${instdir}/lib/plugins/${d}/ ${appdir}/usr/lib/plugins/${d}/
+        done
+        rsync -av --delete --omit-dir-times ${instdir}/lib/plugins/okularpart.so ${appdir}/usr/lib/plugins/
+
+        mkdir -p ${appdir}/usr/lib
+        # copy dependencies of the plugins
+        # okularGenerator_*.so
+        for f in libfreetype* libpoppler* libtiff.so* libOkular5Core.so* ; do
+            rsync -av --delete --omit-dir-times ${instdir}/lib/${f} ${appdir}/usr/lib/
+        done
+    fi
+
+    cd ${builddir}
+    myversion=$(grep PACKAGE_VERSION ${builddir}/config.h|sed -n 's/.*"\(.*\)"$/\1/p')
+    if [ ${buildtype} = vsd -o ${buildtype} = vsd3 ]; then
+        appimage_name=gnupg-vs-desktop-${myversion}-x86_64.AppImage
+        echo "Packaging GnuPG VS-Desktop Appimage: ${myversion}" | tee -a ${logfile} >&2
+        echo $myversion >${appdir}/GnuPG-VS-Desktop-VERSION
+        write_version_file "${appdir}/usr/VERSION" "vsd" "en" "${myversion}" && sign_version_file "${appdir}/usr/VERSION" "${version_signkey}"
+        echo "Packaging help files" | tee -a ${logfile} >&2
+        mkdir -p ${appdir}/usr/share/doc/gnupg-vsd
+        cp ${vsddir}/help/*.pdf ${appdir}/usr/share/doc/gnupg-vsd
+        if [ -f ${vsddir}/Standard/kleopatrarc ]; then
+            echo "Packaging kleopatrarc" | tee -a ${logfile} >&2
+            mkdir -p ${appdir}/usr/etc/xdg
+            cp ${vsddir}/Standard/kleopatrarc ${appdir}/usr/etc/xdg
+        fi
+        kleopatra_icon=${srcdir}/src/icons/kleopatra-vsd.svg
+        appimage_desktop=${srcdir}/src/appimage/com.gnupg.gnupg-vs-desktop.desktop
+        appimage_appstream=${srcdir}/src/appimage/com.gnupg.gnupg-vs-desktop.appdata.xml
+        appimage_icon=${srcdir}/src/icons/256x256/gnupg-vs-desktop.png
+    elif [ ${buildtype} = gpd ]; then
+        appimage_name=gnupg-desktop-${myversion}-x86_64.AppImage
+        echo "Packaging GnuPG Desktop Appimage: $myversion" | tee -a ${logfile} >&2
+        echo $myversion >${appdir}/GnuPG-Desktop-VERSION
+        write_version_file "${appdir}/usr/VERSION" "gpd" "en" "${myversion}" && sign_version_file "${appdir}/usr/VERSION" "${version_signkey}"
+        echo "Packaging help files" | tee -a ${logfile} >&2
+        mkdir -p ${appdir}/usr/share/doc/gnupg-vsd
+        cp ${vsddir}/help/*.pdf ${appdir}/usr/share/doc/gnupg-vsd
+        if [ -f ${vsddir}/Desktop/kleopatrarc ]; then
+            echo "Packaging kleopatrarc" | tee -a ${logfile} >&2
+            mkdir -p ${appdir}/usr/etc/xdg
+            cp ${vsddir}/Desktop/kleopatrarc ${appdir}/usr/etc/xdg
+        fi
+        kleopatra_icon=${srcdir}/src/icons/gpd/sc-apps-kleopatra.svg
+        appimage_desktop=${srcdir}/src/appimage/com.gnupg.gnupg-desktop.desktop
+        appimage_appstream=${srcdir}/src/appimage/com.gnupg.gnupg-desktop.appdata.xml
+        appimage_icon=${srcdir}/src/icons/256x256/gnupg-desktop.png
+    else
+        appimage_name=gpg4linux-${myversion}-x86_64.AppImage
+        echo "Packaging Gpg4linux Appimage: $myversion" | tee -a ${logfile} >&2
+        echo $myversion >${appdir}/Gpg4linux-VERSION
+        kleopatra_icon=${srcdir}/src/icons/gpd/sc-apps-kleopatra.svg
+        appimage_desktop=${srcdir}/src/appimage/com.gnupg.gpg4linux.desktop
+        appimage_appstream=${srcdir}/src/appimage/com.gnupg.gpg4linux.appdata.xml
+        appimage_icon=${srcdir}/src/icons/256x256/gpg4linux.png
+    fi
+
+    if [ -n "${kleopatra_icon}" ]; then
+        # Replace Breeze icons for kleopatra with our icon
+        find ${appdir}/usr/share/icons/breeze -name 'kleopatra*.svg' -delete
+        find ${appdir}/usr/share/icons/breeze-dark -name 'kleopatra*.svg' -delete
+        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze/apps/22/kleopatra-symbolic.svg
+        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze/apps/48/kleopatra.svg
+        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze-dark/apps/22/kleopatra-symbolic.svg
+        cp -av ${kleopatra_icon} ${appdir}/usr/share/icons/breeze-dark/apps/48/kleopatra.svg
+    else
+        # Restore the Breeze icons that may have been replaced in a previous build
+        for f in breeze/apps/22/kleopatra-symbolic.svg breeze/apps/48/kleopatra.svg \
+                breeze-dark/apps/22/kleopatra-symbolic.svg breeze-dark/apps/48/kleopatra.svg; do
+            # copy files only if they are not hard-linked; otherwise, cp complains that the files are the same file
+            test ${instdir}/share/icons/$f -ef ${appdir}/usr/share/icons/$f \
+                || cp -av ${instdir}/share/icons/$f ${appdir}/usr/share/icons/$f
+        done
+    fi
+    cp -av ${appimage_desktop} ${appdir}/usr/share/applications/com.gnupg.gpg4linux.desktop
+    cp -av ${appimage_appstream} ${appdir}/usr/share/metainfo/com.gnupg.gpg4linux.appdata.xml
+    cp -av ${appimage_icon} ${appdir}/usr/share/icons/hicolor/256x256/apps/gpg4linux.png
+    # Hack around that linuxdeploy does not know libexec
+    for f in dirmngr_ldap gpg-check-pattern \
+            gpg-preset-passphrase gpg-protect-tool \
+            gpg-wks-client scdaemon \
+            keyboxd gpg-pair-tool; do
+    # Ignore errors because some files might not exist depending
+    # on GnuPG Version
+        /opt/linuxdeploy/usr/bin/patchelf --debug \
+                --set-rpath '$ORIGIN/../lib' ${appdir}/usr/libexec/$f || true
+    done
+
+    # Fix up everything and build the file system
+    linuxdeploy --appdir ${appdir} \
+                --desktop-file ${appdir}/usr/share/applications/com.gnupg.gpg4linux.desktop \
+                --icon-file ${appdir}/usr/share/icons/hicolor/256x256/apps/gpg4linux.png \
+                --custom-apprun ${srcdir}/src/appimage/AppRun \
+                --plugin qt \
+                --plugin gtk \
+        2>&1 | tee ${builddir}/logs/linuxdeploy-gnupg-desktop.log
+
+    # Fix the rpath of KDE plugins
+    for f in $(find ${appdir}/usr/lib/plugins/ -mindepth 1 -maxdepth 1 -type f); do
+        # this is only needed for the Qt 5 version of okularpart.so because it's installed in /usr/lib/plugins
+        /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../lib' $f
+    done
+    for f in $(find ${appdir}/usr/lib/plugins/ -mindepth 2 -maxdepth 2 -type f); do
+        /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../../lib' $f
+    done
+    for f in $(find ${appdir}/usr/lib/plugins/ -mindepth 3 -maxdepth 3 -type f); do
+        /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../../../lib' $f
+    done
+    for f in $(find ${appdir}/usr/lib/plugins/ -mindepth 4 -maxdepth 4 -type f); do
+        /opt/linuxdeploy/usr/bin/patchelf --debug --set-rpath '$ORIGIN/../../../../lib' $f
+    done
+    # Merge the KDE plugins into their final destination next to the Qt-provided plugins
+    rsync -av --omit-dir-times ${appdir}/usr/lib/plugins/ ${appdir}/usr/plugins/
+    rm -rf ${appdir}/usr/lib/plugins
+
+    # Finally, create the AppImage
+    # we must extend $PATH so appimagetool can find mksquashfs
+    export PATH="/opt/appimagetool/usr/bin:${PATH}"
+    appimagetool \
+        --runtime-file "/opt/appimagetool/runtime/runtime-x86_64" \
+        --no-appstream \
+        ${appdir} \
+        ${appimage_name}
+
+    echo ready
+    exit 0
+fi
 
 # Helper to get the value of a variable from the ~/.gnupg-autogen.rc file
 # Argument is the name of the variable.
@@ -229,14 +608,13 @@ getvar_from_makefile() {
     local fname
 
     fname="$builddir/Makefile"
-    [ -f "$fname" ] || fname="$builddir/binary/Makefile"
     if [ -f "$fname" ]; then
         grep $1' = ' "$fname" | head -1 | cut -d= -f2 | xargs
     fi
 }
 
 
-# Helper to get a variable from custom.mk
+# Helper to get a variabale from custom.mk
 # The argument is the name of the variable.
 getvar_from_custom_mk() {
     local tmpargs
@@ -300,14 +678,14 @@ build_from_tarball() {
     mkdir "$milldir/binary/artifacts"
 
     extraopt="--logfile=$logfile"
-    [ -n "$verbose" ] && extraopt="$extraopt --verbose"
-    [ "$download" = yes ] && extraopt="$extraopt --download"
-    [ "$withmsi" = yes ] && extraopt="$extraopt --msi"
+    [ -z "$verbose" ] || extraopt="$extraopt --verbose"
+    [ "$download" != yes ] || extraopt="$extraopt --download"
+    [ "$withmsi" != yes ] || extraopt="$extraopt --msi"
     $myself --builddir="$milldir/tarball" --dist $extraopt
     if [ $? != 0 ]; then
         ( echo "$PGM: *"
           echo "$PGM: * ERROR: creating tarball failed"
-          echo "$PGM: *" ) | tee -a ${logfile} >&2
+          echo "$PGM: *" ) | tee -a "${logfile}" >&2
         exit 2
     fi
 
@@ -318,7 +696,7 @@ build_from_tarball() {
     if [ $? != 0 ]; then
         ( echo "$PGM: *"
           echo "$PGM: * ERROR: failed to extract tarball"
-          echo "$PGM: *" ) | tee -a ${logfile} >&2
+          echo "$PGM: *" ) | tee -a "${logfile}" >&2
         exit 2
     fi
 
@@ -330,19 +708,19 @@ build_from_tarball() {
           echo "$PGM: * gnupg-vsd cloned"
           echo "$PGM: *   branch .. : $(git branch --show-current)"
           echo "$PGM: *   commitid .: $(git rev-parse HEAD)"
-          echo "$PGM: *" ) | tee -a ${logfile} >&2
+          echo "$PGM: *" ) | tee -a "${logfile}" >&2
         cd "$milldir/source"
     fi
 
     extraopt="--logfile=$logfile"
-    [ -n "$verbose" ] && extraopt="$extraopt --verbose"
-    [ $withmsi = yes ] && extraopt="$extraopt --msi"
-    [ $nosign = yes ] && extraopt="$extraopt --no-sign"
+    [ -z "$verbose" ] || extraopt="$extraopt --verbose"
+    [ $withmsi != yes ] || extraopt="$extraopt --msi"
+    [ $nosign != yes ] || extraopt="$extraopt --no-sign"
     $myself --builddir="$milldir/binary" $extraopt
     if [ $? != 0 ]; then
         ( echo "$PGM: *"
           echo "$PGM: * ERROR: building release failed"
-          echo "$PGM: *" ) | tee -a ${logfile} >&2
+          echo "$PGM: *" ) | tee -a "${logfile}" >&2
         exit 2
     fi
 
@@ -351,7 +729,7 @@ build_from_tarball() {
 
     ( echo "$PGM: *"
       echo "$PGM: * READY"
-      echo "$PGM: *"  ) | tee -a ${logfile} >&2
+      echo "$PGM: *"  ) | tee -a "${logfile}" >&2
     exit 0
 }
 
@@ -391,7 +769,7 @@ download_packages() {
     fi
 
     echo "$PGM: Downloading packages"
-    ./download.sh $quiet --update
+    ./download.sh $quiet --update --target=$targetplatform
     echo >&2 "$PGM: downloading done"
 
     cd ..
@@ -416,20 +794,20 @@ if [ "$runcmd" = yes ]; then
         echo >&2 "usage: /src/build.sh --runcmd COMMAND ARGS"
         exit 2
     fi
-    [ -f /build/S.build.sh-rc ] && rm /build/S.build.sh-rc
+    [ ! -f /build/S.build.sh-rc ] || rm /build/S.build.sh-rc
     echo "$@" >/build/S.build.sh-in
     cat /build/S.build.sh-out
     while [ ! -f /build/S.build.sh-rc ]; do sleep 0.05; done
     rc=$(sed -ne 's/EXITSTATUS=\([0-9]*\).*$/\1/p' \
              </build/S.build.sh-rc 2>/dev/null || true)
-    [ -z "$rc" ] && rc=0
+    [ -n "$rc" ] || rc=0
     exit $rc
 fi
 
 
 # Make sure we have a BUILDTYPE file
 buildtype_prefix=""
-[ "$indocker" = yes ] && buildtype_prefix="src/"
+[ "$indocker" != yes ] || buildtype_prefix="src/"
 if [ ! -e "${buildtype_prefix}packages/BUILDTYPE" ]; then
     echo >&2 "PGM: ${buildtype_prefix}packages/BUILDTYPE not found - see README"
     exit 1
@@ -457,9 +835,8 @@ check_flags() {
         [ "$withmsi" = yes ] \
             && echo "BUILDTYPE ${buildtype} is incompatible with --msi!" >&2 \
             && exit 1
-    else
-        [ ! "$withmsi" = yes ] && [ ! "$appimage" = yes ] && [ ! "$shell" = yes ] \
-            && echo "BUILDTYPE ${buildtype} requires --msi or --appimage!" >&2 \
+    elif [ ! "$withmsi" = yes ] && [ ! "$appimage" = yes ] && [ ! "$shell" = yes ] ; then
+            echo "BUILDTYPE ${buildtype} requires --msi or --appimage!" >&2 \
             && exit 1
     fi
     return 0
@@ -502,9 +879,7 @@ do_upload() {
     local enckey
     local uploadfiles
 
-    local buildbindir="${builddir}"
-
-    [ -d "$buildbindir/binary" ] && buildbindir="${builddir}/binary"
+    local buildbindir="${builddir}/binary"
 
     msi_signkey="$(getvar_from_autogenrc VERSION_SIGNKEY)"
     if [ -z "$msi_signkey" ]; then
@@ -513,7 +888,7 @@ do_upload() {
     fi
     publish_host="$(getvar_from_custom_mk VSD_PUBLISH_HOST)"
     if [ -z "$publish_host" ]; then
-       echo >&2 "$PGM: error: VSD_PUBLISH_HOST not found in custom.mk"
+       echo >&2 "$PGM: error: VSD_PUBLISH_HOST not dound in custom.mk"
        exit 1
     fi
 
@@ -631,7 +1006,7 @@ if [ $withmsi = yes ]; then
        echo >&2 "$PGM: error: For MSI packaging Wine needs to be installed"
        exit 1
     fi
-    [ -z "$WINEPREFIX" ] && WINEPREFIX="$HOME/.wine"
+    [ -n "$WINEPREFIX" ] || WINEPREFIX="$HOME/.wine"
     if [ ! -e "$WINEPREFIX/dosdevices" ]; then
         echo >&2 "PGM: error: No value for WINEPREFIX found"
         exit 1
@@ -646,6 +1021,42 @@ if [ $withmsi = yes ]; then
                  " to an installation of wixtools"
         exit 1
     fi
+    fi
+    if [ $wineonly = yes ] ; then
+        # both "native" and "native,builtin" should be acceptable here
+        if [ ! $(grep "^\"cabinet\"=\"native" "$WINEPREFIX/user.reg") ] ; then
+            echo >&2 "$PGM: error: You must configure Wine to use a native cabinet.dll! " \
+                     "light.exe 3.* uses a compression for .cab files not implemented " \
+                     "in Wine's cabinet.dll."
+            exit 1
+        fi
+        # we need the native versions of cabinet.dll. however, it depends on the wine
+        # version whether it can use a 32 bit PE32 binary or an emulating PE32+ one.
+        # should one run into "error c000035a" during linking, chances are you're
+        # trying the PE32+ cabinet.dll with an ancient wine installation.
+        [ -f "${WINEPREFIX}/drive_c/windows/system32/cabinet.dll" ] || {
+            echo >&2 "$PGM: error: Please install the native cabinet.dll to ${WINEPREFIX}/drive_c/windows/system32/"
+            exit 1
+        }
+        # run file on wine's system32/msi.dll to see if it's PE32 or PE32+
+        WINEISPE32=true
+        file "${WINEPREFIX}/drive_c/windows/system32/msi.dll" | grep -q " PE32+ " && WINEISPE32=false
+        CAB32DLLFOUND=false
+        if ${WINEISPE32} ; then
+            CABSHA1SUM="${cabinet32sha1sum}"
+        else
+            CABSHA1SUM="${cabinet64sha1sum}"
+        fi
+        echo "${CABSHA1SUM}  ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll" \
+            | sha1sum --check --quiet - && CAB32DLLFOUND=true
+        if ${CAB32DLLFOUND} ; then
+            echo >&2 "$PGM: found native ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll"
+        else
+            echo >&2 "$PGM: error: sha1sum mismatch for ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll"
+            echo >&2 "  expected: ${CABSHA1SUM}  ${WINEPREFIX}/drive_c/windows/system32/cabinet.dll"
+            echo >&2 "  got:      $(sha1sum "${WINEPREFIX}/drive_c/windows/system32/cabinet.dll")"
+            exit 1
+        fi
     fi
     WINEINST="$WINEPREFIX/dosdevices/k:"
     WINESRC="$WINEPREFIX/dosdevices/i:"
@@ -677,37 +1088,56 @@ if [ $withmsi = yes ]; then
             done
         done
     fi
-    [ $die = yes ] && exit 1
+    [ $die != yes ] || exit 1
 fi
 
 # Determine the needed docker image
 if [ "$appimage" = "yes" ]; then
-    version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' $HOME/.gnupg-autogen.rc|cut -d= -f2|xargs)"
-    cmd="/src/src/appimage/build-appimage.sh $version_signkey"
+    [ -z "$verbose" ] || docker_cmd_extras="${docker_cmd_extras} --verbose"
+    if [ "${buildtype}" = "vsd" ] || [ "${buildtype}" = "vsd3" ] || [ "${buildtype}" = "gpd" ] ; then
+        if [ "$have_signkey" = "no" ] && [ -f "$HOME/.gnupg-autogen.rc" ] ; then
+            version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' "$HOME/.gnupg-autogen.rc"|cut -d= -f2|xargs)"
+        fi
+        if  [ -z "${version_signkey}" ] ; then
+            echo "No signing key defined, which is mandatory for buildtypes vsd, vsd3 and gpd!"
+            exit 1
+        fi
+        cmd="/src/build.sh --appimage --signkey=${version_signkey} ${docker_cmd_extras}"
+    else
+        cmd="/src/build.sh --appimage ${docker_cmd_extras}"
+    fi
     docker_image=g10-build-appimage:almalinux810
     dockerfile=${srcdir}/docker/appimage
+elif [ "$mac" = "yes" ]; then
+    version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' $HOME/.gnupg-autogen.rc|cut -d= -f2|xargs)"
+    cmd="/src/src/mac/build-macimage.sh $version_signkey"
 else
     # We will run our self again in the docker image.
     if [ "$w64" = "yes" ]; then
-        cmd="/src/build.sh"
+        cmd="/src/build.sh ${docker_cmd_extras}"
     else
-        cmd="/src/build.sh --w32"
+        cmd="/src/build.sh --w32 ${docker_cmd_extras}"
     fi
-    [ $dist = yes ] && cmd="$cmd --dist"
-    [ $force = yes ] && cmd="$cmd --force"
-    [ $withmsi = yes -a $shell = no ] && cmd="$cmd --msi"
+    [ $dist != yes ] || cmd="$cmd --dist"
+    [ $force != yes ] || cmd="$cmd --force"
+    if [ $withmsi = yes ] && [ $shell = no ] ; then
+        cmd="$cmd --msi"
+    fi
+    [ $wineonly != yes ] || cmd="$cmd --wine-only"
     docker_image=g10-build-gpg4win:trixie
     dockerfile=${srcdir}/docker/gpg4win-trixie
 fi
 
-# Update the docker image if requested or if it does not exist.
-drep=$(echo $docker_image | cut -d : -f 1)
-dtag=$(echo $docker_image | cut -d : -f 2)
-if [ -z "$(docker images | grep $drep | grep $dtag)" \
-     -o "$update_image" = "yes" ]; then
-    echo >&2 "$PGM: Local image $docker_image not found"
-    echo >&2 "$PGM: Building docker image"
-    docker build --pull -t $docker_image $dockerfile 2>&1
+if [ -z "$mac" ]; then
+    # Update the docker image if requested or if it does not exist.
+    drep=$(echo $docker_image | cut -d : -f 1)
+    dtag=$(echo $docker_image | cut -d : -f 2)
+    if [ -z "$(docker images | grep $drep | grep $dtag)" \
+        -o "$update_image" = "yes" ]; then
+        echo >&2 "$PGM: Local image $docker_image not found"
+        echo >&2 "$PGM: Building docker image"
+        docker build --pull -t $docker_image $dockerfile 2>&1
+    fi
 fi
 
 # If --shell was used override the command for docker.
@@ -723,7 +1153,7 @@ else
 fi
 
 start_time=$(date +"%s")
-[ -z "$logfile" ] && logfile="${builddir}/build-log.txt"
+[ -n "$logfile" ] || logfile="${builddir}/build-log.txt"
 
 # Kill the given process and all its descendants
 killtree() {
@@ -762,7 +1192,7 @@ create_fifos
 # Function to stop our command runner
 runnerpid=
 stop_runner() {
-    printf >&2 -- "$PGM: stop-runner called\n"
+    printf >&2 -- "%s: stop-runner called\n" "$PGM"
     if [ -n "$runnerpid" ]; then
         echo >&2 "$PGM: stopping runner ..."
         killtree $runnerpid
@@ -788,12 +1218,12 @@ runner_cmd_gpg() {
     local cmd="$1"
 
     cmd=$(transform_multi_dir "$cmd")
-    printf >&2 -- "$PGM(runner): invoking gpg\n"
+    printf >&2 -- "%s(runner): invoking gpg\n" "$PGM"
     set +e
     $cmd </dev/null
     rc=$?
     set -e
-    printf >&2 -- "$PGM(runner): gpg returned $rc\n"
+    printf >&2 -- "%s(runner): gpg returned $rc\n" "$PGM"
     return 0
 }
 
@@ -803,53 +1233,73 @@ runner_cmd_gpg_authcode_sign() {
     local subdir="install"
 
     # Ugly hack to use a different subdir's when signing the installers.
-    [ "${cmd:0:11}" = "installers/" ] && subdir="src"
+    [ "${cmd:0:11}" != "installers/" ] || subdir="src"
 
     # Modify the command in --no-sign mode.
-    [ $nosign = yes ] && cmd="--dry-run $cmd"
+    [ $nosign != yes ] || cmd="--dry-run $cmd"
 
-    printf >&2 -- "$PGM(runner): gpg-authcode-sign.sh --stamp $cmd\n"
+    printf >&2 -- "%s(runner): gpg-authcode-sign.sh --stamp $cmd\n" "$PGM"
     set +e
-    [ -n "$verbose" ] && set -x
+    [ -z "$verbose" ] || set -x
     ( cd "$builddir"/$subdir && gpg-authcode-sign.sh --stamp $cmd </dev/null )
     rc=$?
-    [ -n "$verbose" ] && set +x
+    [ -z "$verbose" ] || set +x
     set -e
-    printf >&2 -- "$PGM(runner): gpg-authcode-sign.sh returned $rc\n"
+    printf >&2 -- "%s(runner): gpg-authcode-sign.sh returned $rc\n" "$PGM"
     return 0
 }
 
 
-# Copy some files to the Windows host to prepare the MSI linking
-# Args are: See below
 runner_cmd_msibase() {
-    local version="$1" gnupgmsi="$2"
+    local version="$1" gnupgmsi="$2" linkdir="${builddir}/wix"
 
     set +e
-    [ -n "$verbose" ] && set -x
-    ssh "$WINHOST" "mkdir AppData\\Local\\Temp\\gpg4win-$version" || true
-    scp "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version";
-    scp "$srcdir"/src/icons/shield.ico \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
-    scp "$srcdir"/doc/logo/gpg4win-msi-header_install-493x58.bmp \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/header.bmp
-    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
-    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
-    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/info.bmp
-    scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/exclamation.bmp
-    scp "$srcdir"/po/gpg4win-en.wxl \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
-    scp "$srcdir"/po/gpg4win-de.wxl \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
-    scp WixUI_Gpg4win.wxs \
-        "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    [ -z "$verbose" ] || set -x
+    if [ $wineonly = yes ] ; then
+        mkdir -p "${linkdir}"
+        cp -a "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
+            "${linkdir}";
+        cp -a "$srcdir"/src/icons/shield.ico \
+            "${linkdir}"
+        cp -a "$srcdir"/doc/logo/gpg4win-msi-header_install-493x58.bmp \
+            "${linkdir}"/header.bmp
+        cp -a "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+            "${linkdir}"/dialog.bmp
+        cp -a "$srcdir"/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
+            "${linkdir}"/info.bmp
+        cp -a "$srcdir"/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
+            "${linkdir}"/exclamation.bmp
+        cp -a "$srcdir"/po/gpg4win-en.wxl \
+            "${linkdir}"
+        cp -a "$srcdir"/po/gpg4win-de.wxl \
+            "${linkdir}"
+        cp -a WixUI_Gpg4win.wxs \
+            "${linkdir}"
+    else
+        ssh "$WINHOST" "mkdir AppData\\Local\\Temp\\gpg4win-$version" || true
+        scp "$srcdir"/packages/gnupg-msi-${gnupgmsi}-bin.wixlib \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version";
+        scp "$srcdir"/src/icons/shield.ico \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+        scp "$srcdir"/doc/logo/gpg4win-msi-header_install-493x58.bmp \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/header.bmp
+        scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
+        scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/dialog.bmp
+        scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/info.bmp
+        scp "$srcdir"/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"/exclamation.bmp
+        scp "$srcdir"/po/gpg4win-en.wxl \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+        scp "$srcdir"/po/gpg4win-de.wxl \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+        scp WixUI_Gpg4win.wxs \
+            "$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    fi
     rc=0
-    [ -n "$verbose" ] && set +x
+    [ -z "$verbose" ] || set +x
     set -e
     return 0
 }
@@ -858,7 +1308,11 @@ runner_cmd_msibase() {
 # Copy files to the Windows host
 runner_cmd_cptowinhost() {
     local version="$1"
-    local target="$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    if [ $wineonly = yes ] ; then
+        local target="${builddir}/wix"
+    else
+        local target="$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    fi
     local files
 
     shift
@@ -868,10 +1322,44 @@ runner_cmd_cptowinhost() {
         files="$files $(transform_dir "$f")"
     done
     set +e
-    echo >&2 "$PGM: running scp $files  $target"
-    scp $files  "$target"
+    if [ $wineonly = yes ] ; then
+        echo >&2 "$PGM: running cp -a $files  $target"
+        cp -a $files  "$target"
+    else
+        echo >&2 "$PGM: running scp $files  $target"
+        scp $files  "$target"
+    fi
     rc=$?
     set -e
+
+    return 0
+}
+
+# Copy files to the Windows host and convert lineendings UNIX->WIN
+runner_cmd_cpconvert() {
+    if [ $wineonly = yes ] ; then
+        # we don't use $version, but it's needed for
+        # runner_cmd_cptowinhost(), maybe
+        local version="$1"
+        local target="${builddir}/wix"
+        local files
+
+        shift
+
+        files=
+        for f in "$@"; do
+            files="$files $(transform_dir "$f")"
+        done
+        set +e
+        full_target="$target/${files##*/}"
+        echo >&2 "$PGM: running perl -pe 's/(?<!\r)\n$/\r\n/' $files > $full_target"
+        perl -pe 's/(?<!\r)\n$/\r\n/' "$files" > "$full_target"
+        rc=$?
+        set -e
+    else
+        # if run on windows this conversion is done there on the fly
+        runner_cmd_cptowinhost "$@"
+    fi
 
     return 0
 }
@@ -879,11 +1367,20 @@ runner_cmd_cptowinhost() {
 # Copy file from the Windows host
 runner_cmd_cpfromwinhost() {
     local version="$1" prefix="$2" name="$3" vsdvers="$4"
-    local mydir="$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    if [ $wineonly = yes ] ; then
+        local mydir="${builddir}/wix"
+    else
+        local mydir="$WINHOST":AppData/Local/Temp/gpg4win-"$version"
+    fi
 
     set +e
-    scp "$mydir/$prefix-$version-$name.msi" \
-        "$builddir/src/installers/$prefix-$vsdvers-$name.msi"
+    if [ $wineonly = yes ] ; then
+        cp -a "$mydir/$prefix-$version-$name.msi" \
+            "$builddir/src/installers/$prefix-$vsdvers-$name.msi"
+    else
+        scp "$mydir/$prefix-$version-$name.msi" \
+            "$builddir/src/installers/$prefix-$vsdvers-$name.msi"
+    fi
     rc=$?
     set -e
 
@@ -894,21 +1391,34 @@ runner_cmd_cpfromwinhost() {
 runner_cmd_lightwinhost() {
     local version="$1" prefix="$2" name="$3" intlopt="$4" msivers="$5"
 
-    [ -n "$verbose" ] && set -x
+    [ -z "$verbose" ] || set -x
     set +e
-    ssh "$WINHOST" "cd AppData/Local/Temp/gpg4win-$version \
-        && $WINLIGHT \
-        -cc . -reusecab -spdb \
-        -ext WixUIExtension   \
-        -ext WixUtilExtension \
-        -out $prefix-$version-$name.msi \
-        $(echo "$intlopt" | sed 's,%20, ,g') \
-        -dcl:high -pedantic \
-        $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name-$version.wixlib" \
-      | grep -v "ICE80" | grep -v "ICE57"
+    if [ $wineonly = yes ] ; then
+        cd "${builddir}/wix" \
+            && WINEDEBUG=warn+all $WINE "$WIXPREFIX/light.exe" \
+            -cc . -reusecab -spdb -sval \
+            -ext WixUIExtension   \
+            -ext WixUtilExtension \
+            -out $prefix-$version-$name.msi \
+            ${intlopt//%20/ } \
+            -dcl:high -pedantic \
+            $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name-$version.wixlib \
+        | grep -v "ICE80" | grep -v "ICE57"
+    else
+        ssh "$WINHOST" "cd AppData/Local/Temp/gpg4win-$version \
+            && $WINLIGHT \
+            -cc . -reusecab -spdb \
+            -ext WixUIExtension   \
+            -ext WixUtilExtension \
+            -out $prefix-$version-$name.msi \
+            ${intlopt//%20/ } \
+            -dcl:high -pedantic \
+            $prefix-$version.wixlib gnupg-msi-$msivers-bin.wixlib $name-$version.wixlib" \
+        | grep -v "ICE80" | grep -v "ICE57"
+    fi
     rc="${PIPESTATUS[0]}"
     set -e
-    [ -n "$verbose" ] && set +x
+    [ -z "$verbose" ] || set +x
     # FIXME:
     echo >&2 "$PGM(runner): cmd lightwinhost exited with $rc - forcing 0"
     rc=0
@@ -917,11 +1427,10 @@ runner_cmd_lightwinhost() {
 }
 
 
-
 # Run the Wix tools under Wine.
 runner_cmd_litcandle() {
     local mode="$1" version="$2" prefix="$3" idir="$4" exidir="$5"
-    local dwixobj fwxs
+    local fwixlib fwixobj fwxs fextraobj
 
     if [ $withmsi = no ]; then
         echo >&2 "$PGM(runner): litcandle requires --with-msi option"
@@ -944,10 +1453,10 @@ runner_cmd_litcandle() {
 
     # Create symlinks into the Wine dosdevices directory
     if [ -n "$verbose" ]; then
-        echo >&2 "$PGM(runner): idir    : $WINEINST"
-        echo >&2 "$PGM(runner): exidir  : $WINEINSTEX"
-        echo >&2 "$PGM(runner): srcdir  : $WINESRC"
-        echo >&2 "$PGM(runner): builddir: $WINEBLD"
+        (   echo "$PGM(runner): idir    : $WINEINST"
+            echo "$PGM(runner): exidir  : $WINEINSTEX"
+            echo "$PGM(runner): srcdir  : $WINESRC"
+            echo "$PGM(runner): builddir: $WINEBLD" ) | tee -a ${logfile} >&2
     fi
     ln -sf "$idir"   "$WINEINST"
     ln -sf "$exidir" "$WINEINSTEX"
@@ -955,7 +1464,7 @@ runner_cmd_litcandle() {
     ln -sf "$builddir" "$WINEBLD"
     # Run the tools
     rc=0
-    [ -n "$verbose" ] && set -x
+    [ -z "$verbose" ] || set -x
     set +e
     if [ $rc -eq 0 ]; then
         $WINE "$WIXPREFIX/candle.exe" \
@@ -993,7 +1502,7 @@ runner_cmd_litcandle() {
         rc=$?
     fi
     set -e
-    [ -n "$verbose" ] && set +x
+    [ -z "$verbose" ] || set +x
     # Remove the symlinks
     rm "$WINEINST" "$WINESRC" "$WINEINSTEX" "$WINEBLD" || true
     return 0
@@ -1008,17 +1517,18 @@ runner_exec_cmd() {
     # The called functions need to set RC to the desired exit status
     rc=42
     case "$cmd" in
-        ping) echo pong; rc=0 ;;
-        gpg)  runner_cmd_gpg "gpg $line" ;;
-        gpg-authcode-sign) runner_cmd_gpg_authcode_sign "$line" ;;
-        msibase) runner_cmd_msibase $line ;;
-        cptowinhost)   runner_cmd_cptowinhost $line ;;
-        cpfromwinhost) runner_cmd_cpfromwinhost $line ;;
-        lightwinhost)  runner_cmd_lightwinhost $line ;;
-        litcandle) runner_cmd_litcandle $line ;;
-        *)    echo "$PGM(runner): $cmd: no such command"; rc=4 ;;
+        ping)               echo pong; rc=0 ;;
+        gpg)                runner_cmd_gpg "gpg $line" ;;
+        gpg-authcode-sign)  runner_cmd_gpg_authcode_sign "$line" ;;
+        msibase)            runner_cmd_msibase $line ;;
+        cptowinhost)        runner_cmd_cptowinhost $line ;;
+        cpconvert)          runner_cmd_cpconvert $line ;;
+        cpfromwinhost)      runner_cmd_cpfromwinhost $line ;;
+        lightwinhost)       runner_cmd_lightwinhost $line ;;
+        litcandle)          runner_cmd_litcandle $line ;;
+        *)                  echo "$PGM(runner): $cmd: no such command"; rc=4 ;;
     esac
-    echo >&2 "$PGM: runner cmd '$cmd' returned $rc"
+    echo "$PGM: runner cmd '$cmd' returned $rc" | tee -a ${logfile} >&2
     # Make sure that we have a final LF in the output and then write
     # the error line
     echo
@@ -1029,21 +1539,21 @@ runner_exec_cmd() {
 
 # Start our FIFO command runner.
 runner_loop() {
-   echo >&2 "$PGM: command runner started pid=$$"
+   echo "$PGM: command runner started pid=$$" | tee -a ${logfile} >&2
    while : ; do
        if read -r cmd line < "${builddir}/S.build.sh-in" ; then
             if [ -z "$recooked" ]; then
                 stty cooked </dev/tty
                 recooked=yes
             fi
-            echo >&2 "$PGM(runner): executing cmd"
+            echo "$PGM(runner): executing cmd" | tee -a ${logfile} >&2
             runner_exec_cmd "$cmd" "$line" >"${builddir}/S.build.sh-out" &
-            echo >&2 "$PGM(runner): waiting for cmd"
+            echo "$PGM(runner): waiting for cmd" | tee -a ${logfile} >&2
             wait
-            echo >&2 "$PGM(runner): cmd finished"
+            echo "$PGM(runner): cmd finished" | tee -a ${logfile} >&2
        fi
    done
-   echo >&2 "$PGM: command runner stopped"
+   echo "$PGM: command runner stopped" | tee -a ${logfile} >&2
    exit 0
 }
 
@@ -1053,19 +1563,25 @@ runner_loop &
 runnerpid=$!
 echo >&2 "$PGM: command runner pid is $runnerpid"
 
-
-# Run docker
-docker_cmdline="run -it --rm --user $userid:$groupid"
-docker_cmdline="$docker_cmdline -v "${srcdir}":/src:ro"
-docker_cmdline="$docker_cmdline -v "${builddir}":/build:rw"
-# only add ~/.gnupg-autogen.rc if it actually exists
-[ -f "$HOME/.gnupg-autogen.rc" ] && \
+if [ -z "$mac" ] ;then
+    # Run docker
+    docker_cmdline="run -it --rm --user $userid:$groupid"
+    docker_cmdline="$docker_cmdline -v "${srcdir}":/src:ro"
+    docker_cmdline="$docker_cmdline -v "${builddir}":/build:rw"
+    # only add ~/.gnupg-autogen.rc if it actually exists
+    [ ! -f "$HOME/.gnupg-autogen.rc" ] || \
     docker_cmdline="$docker_cmdline -v "$HOME/.gnupg-autogen.rc":/.gnupg-autogen.rc:ro"
-docker_cmdline="$docker_cmdline $docker_image $cmd"
-echo >&2 "$PGM: running: docker $docker_cmdline"
-docker $docker_cmdline 2>&1 | tee -a ${logfile}
-err="${PIPESTATUS[0]}"
-echo >&2 "$PGM: docker finished. rc=$err"
+    docker_cmdline="$docker_cmdline $docker_image $cmd"
+    echo >&2 "$PGM: running: docker $docker_cmdline"
+    docker $docker_cmdline 2>&1 | tee -a ${logfile}
+    err="${PIPESTATUS[0]}"
+    echo >&2 "$PGM: docker finished. rc=$err" | tee -a ${logfile} >&2
+else
+    echo >&2 "$PGM: building on MacOS (without docker): $cmd"
+    $cmd --mac --nodocker 2>&1 | tee -a ${logfile}
+    err="${PIPESTATUS[0]}"
+    echo >&2 "$PGM: mac build finished. rc=$err" | tee -a ${logfile} >&2
+fi
 
 end_time=$(date +"%s")
 duration=$((end_time - start_time))
@@ -1075,7 +1591,7 @@ seconds=$((duration % 60))
 buildtime=$(printf "%02d:%02d:%02d\n" "$hours" "$minutes" "$seconds")
 
 if [ "$err" = "1" -a "$appimage" = "yes" ]; then
-    echo >&2 "$PGM: Return code 1 on AppImage build.  Treating as success."
+    echo "$PGM: Return code 1 on AppImage build.  Treating as success." | tee -a ${logfile} >&2
     err=0
 fi
 
@@ -1083,10 +1599,13 @@ if [ "$err" = "0" ]; then
     mkdir -p "${builddir}/artifacts"
     if [ "$dist" = "yes" ]; then
         results=$(find "${builddir}" -maxdepth 1 -name \*.tar.xz \
-                  -a -type f -printf '%p ')
+                -a -type f -printf '%p ')
     elif [ "$appimage" = "yes" ]; then
         results=$(find "${builddir}" -maxdepth 1 -iname \*.appimage \
                   -a -type f -printf '%p ')
+    elif [ "$mac" = "yes" ]; then
+        results=$(find "${builddir}" -maxdepth 1 -iname \*.dmg \
+                  -a -type f)
     elif [ $withmsi = yes ]; then
         results=$(find "${builddir}/src/signed_installers" -type f -printf '%p ')
     else
@@ -1095,7 +1614,7 @@ if [ "$err" = "0" ]; then
     echo >&2 ""
     echo >&2 "$PGM: ############### Success 🥳 ####################"
     for result in $results; do
-        ln -sf -t "${builddir}/artifacts/" "$result"
+        ln -sf "$result" "${builddir}/artifacts/$(basename $result)"
         echo >&2 "$PGM: Created: ${builddir}/artifacts/$(basename $result)"
     done
 else
