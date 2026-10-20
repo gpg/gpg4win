@@ -223,10 +223,12 @@ if [ $opt_install = yes ]; then
     if [ $docopy = yes ]; then
         AI_TEMPDIR="$(mktemp -d --suffix=_gnuppg-vsd)"
         cp -R "${APPDIR}"/usr/share/gnupg/conf/gnupg-vsd "${AI_TEMPDIR}"
-        if [ -f "${APPDIR}"/usr/etc/ministart.config ] ; then
-            mkdir -p "${AI_TEMPDIR}"/gnupg-vsd/GUI \
-            && cp "${APPDIR}"/usr/etc/ministart.config "${AI_TEMPDIR}"/gnupg-vsd/GUI/ministart.config
-        fi
+        for f in ministart.config ministart-late.config ; do
+            if [ -f "${APPDIR}"/usr/etc/${f}_admin_template ] ; then
+                mkdir -p "${AI_TEMPDIR}"/gnupg-vsd/GUI \
+                && cp "${APPDIR}"/usr/etc/${f}_admin_template "${AI_TEMPDIR}"/gnupg-vsd/GUI/${f}_template
+            fi
+        done
         for f in "${AI_TEMPDIR}"/gnupg-vsd/* ; do
         t="/etc/gnupg-vsd/${f##*/}"
         if [ -d "$f" ]; then

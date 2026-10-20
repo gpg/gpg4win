@@ -172,12 +172,12 @@ file libayatana-appindicator/archive/refs/tags/0.5.94.tar.gz
 chk  884a6bc77994c0b58c961613ca4c4b974dc91aa0f804e70e92f38a542d0d0f90
 
 server https://gnupg.org/ftp/gcrypt
-# last-changed: 2026-10-19
+# last-changed: 2026-10-20
 # by: m.
 # verified: sha256sum by alexk
-name ministart-0.17.0.tar.gz
-file ministart/ministart-0.17.0.tar.gz
-chk  b14f15174957e8aa7a68858df28e8e70a2f2b629e1c85162b5f5c8b6cbda56de
+name ministart-0.17.1.tar.gz
+file ministart/ministart-0.17.1.tar.gz
+chk  4e88f86a8f9c8ec16e35bf6391be04aead1615aa0ce72557c6e2118c56215601
 
 
 #
