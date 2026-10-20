@@ -101,13 +101,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/pcre2/cross-build-cmake.patch \
              patches/poppler/downgrade-min-boost.patch \
              patches/poppler/downgrade-min-fontconfig.patch \
-             patches/qtbase-6.10.1/0001-Don-t-report-active-windows-as-having-focus-unless-t.patch \
-             patches/qtbase/00-qt611-0001-a11y-Let-QAccessibleTable-subclass-QAccessibleWidget.patch \
-             patches/qtbase/00-qt611-0002-a11y-Return-correct-string-information-for-item-view.patch \
-             patches/qtbase/00-qt611-0003-a11y-Unify-item-view-to-a11y-child-index-mapping.patch \
-             patches/qtbase/00-qt611-0004-a11y-Notify-about-property-state-changes-of-focused-.patch \
-             patches/qtbase/00-qt611-0005-a11y-uia-Notify-about-state-changes-of-checkable-ite.patch \
-             patches/qtbase/00-qt611-2-0001-Windows-QLocalServer-explicitly-reject-remotes.patch \
              patches/qtbase/00-qt6xx-0001-Fix-a11y-window-activation-events.patch \
              patches/qtbase/0001-Don-t-report-tabname-as-name-of-tabbar.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \

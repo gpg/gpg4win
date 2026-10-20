@@ -322,60 +322,60 @@ chk ff4ae6a4620beed1cdb3e6a9b78a17d7d1dae7139c3d4746d4856b7547d42c38
 server https://download.qt.io/archive/qt/
 
 # qtbase
-# last changed: 2025-12-02
-# by: sune
+# last changed: 2026-10-20
+# by: ingo
 # verified: mirror sha256sum (created by gen-qt.sh)"
-name qtbase-6.10.1.tar.xz
-file 6.10/6.10.1/submodules/qtbase-everywhere-src-6.10.1.tar.xz
-chk 5a6226f7e23db51fdc3223121eba53f3f5447cf0cc4d6cb82a3a2df7a65d265d
+name qtbase-6.12.0.tar.xz
+file 6.12/6.12.0/submodules/qtbase-everywhere-src-6.12.0.tar.xz
+chk a951bd163c7b80fc6b8c88d7668fb56abf91c152373e13c10666763238131307
 
 # qttools
-# last changed: 2025-12-02
-# by: sune
+# last changed: 2026-10-20
+# by: ingo
 # verified: mirror sha256sum (created by gen-qt.sh)"
-name qttools-6.10.1.tar.xz
-file 6.10/6.10.1/submodules/qttools-everywhere-src-6.10.1.tar.xz
-chk 8148408380ffea03101a26305c812b612ea30dbc07121e58707601522404d49b
+name qttools-6.12.0.tar.xz
+file 6.12/6.12.0/submodules/qttools-everywhere-src-6.12.0.tar.xz
+chk 8dab8f3611496486a470ad5f115ceea584f36bc22a2b8b6f6ebdbafbb8160693
 
 # qtsvg
-# last changed: 2025-12-02
-# by: sune
+# last changed: 2026-10-20
+# by: ingo
 # verified: mirror sha256sum (created by gen-qt.sh)"
-name qtsvg-6.10.1.tar.xz
-file 6.10/6.10.1/submodules/qtsvg-everywhere-src-6.10.1.tar.xz
-chk c02f355a58f3bbcf404a628bf488b6aeb2d84a94c269afdb86f6e529343ab01f
+name qtsvg-6.12.0.tar.xz
+file 6.12/6.12.0/submodules/qtsvg-everywhere-src-6.12.0.tar.xz
+chk e4ab39534ec97987b1b9b60ef7f4d3253d5912a69f8c713a01753174a4029331
 
 # qttranslations
-# last changed: 2025-12-02
-# by: sune
+# last changed: 2026-10-20
+# by: ingo
 # verified: mirror sha256sum (created by gen-qt.sh)"
-name qttranslations-6.10.1.tar.xz
-file 6.10/6.10.1/submodules/qttranslations-everywhere-src-6.10.1.tar.xz
-chk 8e49a2df88a12c376a479ae7bd272a91cf57ebb4e7c0cf7341b3565df99d2314
+name qttranslations-6.12.0.tar.xz
+file 6.12/6.12.0/submodules/qttranslations-everywhere-src-6.12.0.tar.xz
+chk 85929c0c30d6f273f23bd879bb69803ea17b010ab73cab2f8abf95357f6f6bbb
 
 # qthttpserver
-# last changed: 2025-12-02
-# by: sune
+# last changed: 2026-10-20
+# by: ingo
 # verified: mirror sha256sum (created by gen-qt.sh)"
-name qthttpserver-6.10.1.tar.xz
-file 6.10/6.10.1/submodules/qthttpserver-everywhere-src-6.10.1.tar.xz
-chk a26c8d96d34bb4d4e2455e2c5df6e684aafb530927763eab84794ef71944e93b
+name qthttpserver-6.12.0.tar.xz
+file 6.12/6.12.0/submodules/qthttpserver-everywhere-src-6.12.0.tar.xz
+chk ede040264551d0930ea5f6c1a4c18a7a3dea59d635e71cd2e81f02567d7814a4
 
 # qtwebsockets
-# last changed: 2025-12-02
-# by: sune
+# last changed: 2026-10-20
+# by: ingo
 # verified: mirror sha256sum (created by gen-qt.sh)"
-name qtwebsockets-6.10.1.tar.xz
-file 6.10/6.10.1/submodules/qtwebsockets-everywhere-src-6.10.1.tar.xz
-chk 272ac7e94418e2b13b3384d73ba89dbd6b746d7661b44dce906f8bfc0795bd01
+name qtwebsockets-6.12.0.tar.xz
+file 6.12/6.12.0/submodules/qtwebsockets-everywhere-src-6.12.0.tar.xz
+chk 21690a365cd5fbfa8dea051473e98968df9f4eca0121fed7481d1215b7455a31
 
 # qtwayland
-# last changed: 2026-01-27
-# by: ik
-# verified: sha256 in *.mirrorlist file
-name qtwayland-6.10.1.tar.xz
-file 6.10/6.10.1/submodules/qtwayland-everywhere-src-6.10.1.tar.xz
-chk 49bf6db800227a6b2c971f4c5d03dd1e81297e7ffb296ce4a96437304f27cb13
+# last changed: 2026-10-20
+# by: ingo
+# verified: mirror sha256sum (created by gen-qt.sh)"
+name qtwayland-6.12.0.tar.xz
+file 6.12/6.12.0/submodules/qtwayland-everywhere-src-6.12.0.tar.xz
+chk ae14d9bcf1bb3c300a3ab2e6a53f50284e5c6c966a4ac4cc5aedcb1bc74e4d02
 
 # wayland-protocols
 # last changed: 2025-02-14
