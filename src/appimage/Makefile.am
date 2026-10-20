@@ -21,9 +21,12 @@
 # SPDX-License-Identifier: GPL-2.0+
 
 EXTRA_DIST = AppRun \
-             start-shell \
-             qt5/qt.conf \
-             qt6/qt.conf \
+             com.gnupg.gnupg-desktop.appdata.xml \
+             com.gnupg.gnupg-desktop.desktop \
+             com.gnupg.gnupg-vs-desktop.appdata.xml \
+             com.gnupg.gnupg-vs-desktop.desktop \
+             com.gnupg.gpg4linux.appdata.xml \
+             com.gnupg.gpg4linux.desktop \
              rsync-filters/breeze-icons.rsync-filter \
              rsync-filters/freetype.rsync-filter \
              rsync-filters/gnupg.rsync-filter \
@@ -65,7 +68,8 @@ EXTRA_DIST = AppRun \
              rsync-filters/paperkey.rsync-filter \
              rsync-filters/pinentry.rsync-filter \
              rsync-filters/poppler.rsync-filter \
-             rsync-filters/threadweaver.rsync-filter
+             rsync-filters/threadweaver.rsync-filter\
+             start-shell
 
 # Define macros for the various directories.  These directory names
 # must be absolute, as we switch pretty often between them and don't

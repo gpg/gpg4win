@@ -34,7 +34,9 @@ EXTRA_DIST =  config.site                                      \
               slideshow/slide2-gpgex.png                       \
               slideshow/slide3-kleopatra.png                   \
               slideshow/slide4-summary.png                     \
-              icons/256x256/icon_gnupg-com_logo-open_blue-orange.png \
+              icons/256x256/gnupg-desktop.png                  \
+              icons/256x256/gnupg-vs-desktop.png               \
+              icons/256x256/gpg4linux.png                      \
               icons/file-ext.ico                               \
               icons/gpd/16-apps-kleopatra.png                  \
               icons/gpd/22-apps-kleopatra.png                  \
