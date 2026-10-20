@@ -43,13 +43,14 @@ chk  9bba0214ccf7f1079c5d59210045227bcf619519840ebfa80cd3849cff5a5bf2
 
 fi # mac
 
-# Required by XCB for qtbase and not available in all repos
-# last-changed: 2024-07-17
-# by: ah
-# verified: Mutltiple sources for checksum
 server https://xcb.freedesktop.org/dist/
-file xcb-util-cursor-0.1.4.tar.xz
-chk 28dcfe90bcab7b3561abe0dd58eb6832aa9cc77cfe42fcdfa4ebe20d605231fb
+# Required by XCB for qtbase and not available in all repos
+# xcb-util-cursor
+# last changed: 2026-10-20
+# by: ingo
+# verified: PGP signed by xcb-util-cursor-alan-coopersmith.gpg (created by gen-package.sh)
+file xcb-util-cursor-0.1.6.tar.xz
+chk  fdeb8bd127873519be5cc70dcd0d3b5d33b667877200f9925a59fdcad8f7a933
 
 # last-changed: 2026-04-15
 # by wk
