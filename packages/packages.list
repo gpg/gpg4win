@@ -25,11 +25,12 @@ server https://ftp.gnu.org/pub/gnu
 file libiconv/libiconv-1.19.tar.gz
 chk  88dd96a8c0464eca144fc791ae60cd31cd8ee78321e67397e25fc095c4a19aa6
 
-# last-changed: 2024-07-16
-# by: ah
-# verified: Sig 9001 B85A F9E1 B83D F1BD A942 F5BE 8B26 7C6A 406D
-file gettext/gettext-0.22.5.tar.xz
-chk  fe10c37353213d78a5b83d48af231e005c4da84db5ce88037d88355938259640
+# gettext
+# last changed: 2026-10-20
+# by: ingo
+# verified: PGP signed by gnu-keyring.gpg (created by gen-package.sh)
+file gettext/gettext-1.0.tar.gz
+chk  85d99b79c981a404874c02e0342176cf75c7698e2b51fe41031cf6526d974f1a
 
 if target = mac
 
