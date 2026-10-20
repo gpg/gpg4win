@@ -18,11 +18,12 @@
 #
 
 server https://ftp.gnu.org/pub/gnu
-# last-changed: 2024-07-16
-# by: ah
-# verified: Sig 9001 B85A F9E1 B83D F1BD  A942 F5BE 8B26 7C6A 406D
-file libiconv/libiconv-1.17.tar.gz
-chk  8f74213b56238c85a50a5329f77e06198771e70dd9a739779f4c02f65d971313
+# libiconv
+# last changed: 2026-10-20
+# by: ingo
+# verified: PGP signed by gnu-keyring.gpg (created by gen-package.sh)
+file libiconv/libiconv-1.19.tar.gz
+chk  88dd96a8c0464eca144fc791ae60cd31cd8ee78321e67397e25fc095c4a19aa6
 
 # last-changed: 2024-07-16
 # by: ah
