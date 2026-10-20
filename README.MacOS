@@ -46,7 +46,7 @@ Status / Hints / TODO list for MacOS builds
       - potential alternative: require PATH
     - bundling script sets library locations using abs paths
       - potential alternative: convert to @loader_path references
-  - There are some extra patches in patches-mac which we should simply merge
+  - There are some extra patches in patches which we should simply merge
     in the corresponding packages (gpgoljs/kleopatra). This is just to allow
     independent testing.
   - Creating a bundle is handled via a python script. python 3.9 is available

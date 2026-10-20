@@ -88,7 +88,7 @@ EXTRA_DIST = AppRun \
 # ipdir    :: A subdir of the install directory to hold the installed
 #             packages which will be stowed to other subdirs of $(idir).
 # appdir   :: The directory for preparing the content of the AppImage.
-# patdir   :: The source directory patches-appimage/ below tsdir.
+# patdir   :: The source directory patches/ below tsdir.
 # rsyncfilterdir :: The source directory with the package-specific
 #                   rsync filters (rsync replaces stow in the AppImage
 #                   build).
@@ -101,7 +101,7 @@ bdir      := $(root)/build
 idir      := $(root)/install
 ipdir     := $(root)/install/pkgs
 appdir    := $(root)/AppDir
-patdir    := $(tsdir)/patches-appimage
+patdir    := $(tsdir)/patches
 rsyncfilterdir := $(tsdir)/src/appimage/rsync-filters
 
 $(info -------------------------------------------------)

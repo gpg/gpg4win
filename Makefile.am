@@ -33,10 +33,8 @@ endif
 
 SUBDIRS = ${po} packages ${doc} src
 
-# Use these commands to update the list of patches; the commands are different because in
-# patches-appimage we use symbolic links to folders in patches:
+# Use this command to update the list of patches
 # git ls-files patches | sed 's/$/ \\/' | sed 's/^/             /'
-# find -L patches-appimage -name *.patch | sort | sed 's/$/ \\/' | sed 's/^/             /'
 
 EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              doc/license-page doc/GPLv3 build.sh \
@@ -63,6 +61,9 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/extra-cmake-modules/0001-Revert-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/extra-cmake-modules/0001-Use-preferred-display-language-instead-of-locale-on-.patch \
              patches/gpgol-2.7.2/0001-Require-C-17.patch \
+             patches/gpgoljs/0001-Allow-to-compile-on-Mac.patch \
+             patches/gpgoljs/0001-Switch-to-KDSingleApplication-for-handling-unique-in.patch \
+             patches/gpgoljs/0002-Work-around-failure-to-accept-custom-root-cert-on-Ma.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kcalendarcore-6.20.0/0001-Add-option-to-build-without-QML.patch \
              patches/kconfig-6.20.0/00-kf625-0001-Avoid-creation-of-not-already-existing-registry-keys.patch \
@@ -102,6 +103,9 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/kwidgetsaddons-6.20.0/0003-KDateTable-Don-t-paint-days-in-dark-red-if-high-cont.patch \
              patches/kwidgetsaddons/0002-KMessageWidget-Don-t-draw-background-if-high-contras.patch \
              patches/kxmlgui/0001-Store-kxmlgui-rc-file-in-config-location.patch \
+             patches/libayatana-appindicator/downpatch_requirements.patch \
+             patches/libayatana-ido/downpatch_requirements.patch \
+             patches/libayatana-indicator/downpatch_requirements.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
              patches/libqrencode/0001-fix-cmake-install-paths.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
@@ -127,48 +131,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/fix_macos_26_5_build.patch \
              patches/qtbase/qstandardpaths_macos.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
-             patches/qthttpserver/originAuthenticationRequired.patch \
-             patches-appimage/breeze/0000-Remove-references-to-wallpapers-and-cursors.patch \
-             patches-appimage/breeze/0001-Add-helper-for-checking-if-high-contrast-color-schem.patch \
-             patches-appimage/breeze/0001-Don-t-use-mixed-colors-for-frames-if-high-contrast-i.patch \
-             patches-appimage/breeze/0005-For-high-contrast-draw-hovered-menu-items-like-selec.patch \
-             patches-appimage/breeze-6.5.4-g10/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
-             patches-appimage/breeze-6.5.4-g10/0001-Do-not-pass-QIcon-Selected-mode-to-icon-painter.patch \
-             patches-appimage/breeze-6.5.4-g10/0001-kstyle-Draw-hovered-menu-bar-items-like-selected-ite.patch \
-             patches-appimage/extra-cmake-modules/0001-Revert-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
-             patches-appimage/extra-cmake-modules/0001-Use-preferred-display-language-instead-of-locale-on-.patch \
-             patches-appimage/kcalendarcore-6.20.0/0001-Add-option-to-build-without-QML.patch \
-             patches-appimage/kconfig-6.20.0/00-kf625-0001-Avoid-creation-of-not-already-existing-registry-keys.patch \
-             patches-appimage/kconfig-6.20.0/00-kf625-0002-Do-not-try-to-read-registry-entries-for-absolute-con.patch \
-             patches-appimage/kconfig-6.20.0/00-kf625-0003-kreadconfig-Add-flag-to-dump-all-entries.patch \
-             patches-appimage/kconfig-6.20.0/00-kf625-0004-kreadconfig-Add-flag-to-include-globals.patch \
-             patches-appimage/kconfig-6.20.0/00-kf629-0001-kreadconfig-Dump-entries-sorted-by-group-name-entry-.patch \
-             patches-appimage/kconfig-6.20.0/00-kf629-0002-Read-config-files-in-system-locations-before-user-wr.patch \
-             patches-appimage/kconfig-6.20.0/00-kf632-0001-Ensure-locale-name-with-language-code-and-country-co.patch \
-             patches-appimage/kjobwidgets/0001-Remove-knotification.patch \
-             patches-appimage/libayatana-appindicator/downpatch_requirements.patch \
-             patches-appimage/libayatana-ido/downpatch_requirements.patch \
-             patches-appimage/libayatana-indicator/downpatch_requirements.patch \
-             patches-appimage/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
-             patches-appimage/okular/0002-hide_finish_signing_banner_on_document_reload.patch \
-             patches-appimage/okular/pgp-default-true.patch \
-             patches-appimage/poppler/downgrade-min-boost.patch \
-             patches-appimage/poppler/downgrade-min-fontconfig.patch \
-             patches-appimage/qtbase/0001-Don-t-report-tabname-as-name-of-tabbar.patch \
-             patches-appimage/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
-             patches-appimage/qtbase/0002-no-dark-mode-on-old-windows-10.patch \
-             patches-appimage/qtbase/00-qt611-0001-a11y-Let-QAccessibleTable-subclass-QAccessibleWidget.patch \
-             patches-appimage/qtbase/00-qt611-0002-a11y-Return-correct-string-information-for-item-view.patch \
-             patches-appimage/qtbase/00-qt611-0003-a11y-Unify-item-view-to-a11y-child-index-mapping.patch \
-             patches-appimage/qtbase/00-qt611-0004-a11y-Notify-about-property-state-changes-of-focused-.patch \
-             patches-appimage/qtbase/00-qt611-0005-a11y-uia-Notify-about-state-changes-of-checkable-ite.patch \
-             patches-appimage/qtbase/00-qt611-2-0001-Windows-QLocalServer-explicitly-reject-remotes.patch \
-             patches-appimage/qtbase/00-qt6xx-0001-Fix-a11y-window-activation-events.patch \
-             patches-appimage/qtbase/add-kleopatras-mime-types.patch \
-             patches-appimage/qtbase/configurable-windowstheme.patch \
-             patches-appimage/qtbase/fix_macos_26_5_build.patch \
-             patches-appimage/qtbase/qstandardpaths_macos.patch \
-             patches-appimage/qtbase/qt_use_share_instead_of_data.patch
+             patches/qthttpserver/originAuthenticationRequired.patch
 
 dist-hook: gen-ChangeLog pack_packages_tarballs
 

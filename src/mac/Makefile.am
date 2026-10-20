@@ -38,7 +38,7 @@ EXTRA_DIST = build-macimage.sh bundle.py
 # idir     :: The directory with the installed files from the packages.
 # ipdir    :: A subdir of the install directory to hold the installed
 #             packages which will be stowed to other subdirs of $(idir).
-# patdir   :: The source directory patches-macimage/ below tsdir.
+# patdir   :: The source directory patches/ below tsdir.
 # targetgpgbindir / targetgpglibexecdir :: Final installation paths for
 #             gpg binaries
 # rsyncfilterdir :: The source directory with the package-specific
@@ -54,7 +54,7 @@ ipdir     := $(root)/install/pkgs
 targetbundledir := /Applications/$(TARGETIMAGENAME).app
 targetgpgbindir := $(targetbundledir)/Contents/Resources/bin
 targetgpglibexecdir := $(targetgpgbindir)
-patdir    := $(tsdir)/patches-mac
+patdir    := $(tsdir)/patches
 rsyncfilterdir := $(tsdir)/src/macimage/rsync-filters
 
 $(info -------------------------------------------------)
