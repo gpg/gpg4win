@@ -52,16 +52,17 @@ server https://xcb.freedesktop.org/dist/
 file xcb-util-cursor-0.1.6.tar.xz
 chk  fdeb8bd127873519be5cc70dcd0d3b5d33b667877200f9925a59fdcad8f7a933
 
-# last-changed: 2026-04-15
-# by wk
+# last-changed: 2026-10-20
+# by ingo
 # verified: Downloaded tar.gz from
-#   https://github.com/pnggroup/libpng/archive/refs/tags/v1.6.57.tar.gz
+#   https://github.com/pnggroup/libpng/archive/refs/tags/v1.6.59.tar.gz
 #   which should refer to commit
-#   95ab3fdca83ea294efd3b092e9a53c5a39886444 .  Then compared the
-#   unpacked tarball with the tarball downloaded from sourceforge.net
-server https://sourceforge.net
-file projects/libpng/files/libpng16/1.6.57/libpng-1.6.57.tar.xz
-chk  d10c20d7171569804cae8dfc13ba6dcd0662c41ed39d43d4d429314aafb10a80
+#   cd952f49f95bb27154ae77dbb103032d95f6e580 .  Then compared the
+#   unpacked tarball with the tarball downloaded from sourceforge.net.
+#   Moreover, verified SHA-256 checksum from https://libpng.org/pub/png/libpng.html
+server https://download.sourceforge.net/
+file libpng/libpng-1.6.59.tar.xz
+chk  d80dd2a38a37f803cb9b6ac7b14bd6e74ddc3b654780a8380bdf93523fdb4389
 
 # last-changed: 2023-05-03
 # by ah
