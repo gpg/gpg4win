@@ -215,7 +215,7 @@ while read key value valuetwo valuethree; do
            condfalse=yes
        elif [ "$value" = "target" -a "$valuetwo" = "=" -a "$valuethree" != "$target" ]; then
            condfalse=yes
-       elif [ "$value" = "target" -a "$valuetwo" = "!=" -a "$valuethree" == "$target" ]; then
+       elif [ "$value" = "target" -a "$valuetwo" = "!=" -a "$valuethree" = "$target" ]; then
            condfalse=yes
        fi
        ;;
