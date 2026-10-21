@@ -690,6 +690,7 @@ build_from_tarball() {
     [ -z "$verbose" ] || extraopt="$extraopt --verbose"
     [ "$download" != yes ] || extraopt="$extraopt --download"
     [ "$withmsi" != yes ] || extraopt="$extraopt --msi"
+    [ "$wineonly" != yes ] || extraopt="$extraopt --wine-only"
     $myself --builddir="$milldir/tarball" --dist $extraopt
     if [ $? != 0 ]; then
         ( echo "$PGM: *"
@@ -723,8 +724,9 @@ build_from_tarball() {
 
     extraopt="--logfile=$logfile"
     [ -z "$verbose" ] || extraopt="$extraopt --verbose"
-    [ $withmsi != yes ] || extraopt="$extraopt --msi"
-    [ $nosign != yes ] || extraopt="$extraopt --no-sign"
+    [ "$withmsi" != yes ] || extraopt="$extraopt --msi"
+    [ "$nosign" != yes ] || extraopt="$extraopt --no-sign"
+    [ "$wineonly" != yes ] || extraopt="$extraopt --wine-only"
     $myself --builddir="$milldir/binary" $extraopt
     if [ $? != 0 ]; then
         ( echo "$PGM: *"
