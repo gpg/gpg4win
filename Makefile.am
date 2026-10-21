@@ -81,6 +81,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/okular/0002-formfields-and-pdfsignatureutils-with-poppler-26-06.patch \
              patches/okular/0003-signing-only-set-NSS-callback-if-NSS-is-active.patch \
              patches/poppler/downgrade-min-boost.patch \
+             patches/qtbase/00-0001-CVE-2025-14575-qtbase-5.15.patch \
              patches/qtbase/0001-Add-StateLocation-GenericStateLocation-to-StandardLo.patch \
              patches/qtbase/0001-Don-t-report-active-windows-as-having-focus-unless-t.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
@@ -109,6 +110,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/poppler/downgrade-min-boost.patch \
              patches-appimage/poppler/downgrade-min-cmake.patch \
              patches-appimage/poppler/downgrade-min-fontconfig.patch \
+             patches-appimage/qtbase/00-0001-CVE-2025-14575-qtbase-5.15.patch \
              patches-appimage/qtbase/0001-Add-StateLocation-GenericStateLocation-to-StandardLo.patch \
              patches-appimage/qtbase/0001-Don-t-report-active-windows-as-having-focus-unless-t.patch \
              patches-appimage/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
