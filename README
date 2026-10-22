@@ -45,9 +45,9 @@ version using a dedicated build directory.
 If you want to build from a Git repository or using modified sources
 you should do this in the source directory.
 
-1. If you don't have a ~/.gnupg-autogen.sh file use
+1. If you don't have a ~/.gnupg-autogen.rc file use
 
-     build-aux/gpg-authcode-sign.sh --template >~/.gnupg-autogen.sh
+     build-aux/gpg-authcode-sign.sh --template >~/.gnupg-autogen.rc
 
    and adjust the file for your setup.
 
