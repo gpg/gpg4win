@@ -83,6 +83,8 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/poppler/downgrade-min-boost.patch \
              patches/qtbase/00-0001-CVE-2025-14575-qtbase-5.15.patch \
              patches/qtbase/00-0002-CVE-2026-9499-qtbase-5.15.patch \
+             patches/qtbase/00-0003-CVE-2026-15037-qtbase-5.15-0001.patch \
+             patches/qtbase/00-0003-CVE-2026-15037-qtbase-5.15-0002.patch \
              patches/qtbase/0001-Add-StateLocation-GenericStateLocation-to-StandardLo.patch \
              patches/qtbase/0001-Don-t-report-active-windows-as-having-focus-unless-t.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
@@ -113,6 +115,8 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches-appimage/poppler/downgrade-min-fontconfig.patch \
              patches-appimage/qtbase/00-0001-CVE-2025-14575-qtbase-5.15.patch \
              patches-appimage/qtbase/00-0002-CVE-2026-9499-qtbase-5.15.patch \
+             patches-appimage/qtbase/00-0003-CVE-2026-15037-qtbase-5.15-0001.patch \
+             patches-appimage/qtbase/00-0003-CVE-2026-15037-qtbase-5.15-0002.patch \
              patches-appimage/qtbase/0001-Add-StateLocation-GenericStateLocation-to-StandardLo.patch \
              patches-appimage/qtbase/0001-Don-t-report-active-windows-as-having-focus-unless-t.patch \
              patches-appimage/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
