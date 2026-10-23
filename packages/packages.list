@@ -359,9 +359,9 @@ chk ff4ae6a4620beed1cdb3e6a9b78a17d7d1dae7139c3d4746d4856b7547d42c38
 
 # brotli
 #
-name brotli-1.2.0.tar.gz
-file google/brotli/archive/refs/tags/v1.2.0.tar.gz
-chk 816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec
+name brotli-1.2.1.tar.gz
+file google/brotli/archive/refs/tags/v1.2.1.tar.gz
+chk 98d35d11a78dc453aebb7d10c3748f3f73ff78c8267c0dc697b8631f67bf7e8f
 
 # harfbuzz
 file harfbuzz/harfbuzz/releases/download/14.4.0/harfbuzz-14.4.0.tar.xz
