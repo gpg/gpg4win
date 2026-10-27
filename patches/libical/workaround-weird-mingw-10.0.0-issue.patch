@@ -20,7 +20,7 @@ index eecf22e4..4b84273c 100644
      char *str;
 
 -#if defined(HAVE_DIRENT_H)
-+#if defined(HAVE_DIRENT_H) && 0
++#if defined(HAVE_DIRENT_H) && !defined(_WIN32)
      struct dirent *de;
      DIR *dp;
 
