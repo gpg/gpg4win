@@ -89,6 +89,11 @@ macimage_kdepkgs = gpgmepp qgpgme \
 		   breeze tiff zstd pcre2 openjpeg boost \
 		   gpgapplemail ministartqt
 
+# Somehow, gettext 1.0 needs help finding our libiconv. This was not needed
+# with gettext 0.22.5, and may again become obsolete, one day.
+macimage_pkg_gettext_configure = \
+	--with-libiconv-prefix=$(idir)
+
 macimage_pkg_pkgconfig_configure = \
         --with-internal-glib \
         --exec-prefix=$(idir)
