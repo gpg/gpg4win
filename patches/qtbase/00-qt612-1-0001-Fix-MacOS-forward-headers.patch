@@ -1,0 +1,422 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 8c260a771ab1ed7d6cdb5f221854ee470e5790a6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tor=20Arne=20Vestb=C3=B8?= <tor.arne.vestbo@qt.io>
+Date: Mon, 21 Sep 2026 16:02:34 +0200
+Subject: [PATCH] Apple: Make framework forwarding headers include path
+ agnostic
+
+In 8d4d1c58cd37939f906edcffd22c93c479d90ce9 we stopped pointing the
+include paths into the framework Header directories, as doing so broke
+Clang modules.
+
+But we still needed a mechanism for users to include plain <qfoo.h>,
+so we started generating forwarding headers for framework modules,
+that redirected to the framework header via #include_next.
+
+However the #include_next mechanism relies on the framework path being
+available in the include path list _after_ the forwarding header. If
+it's ahead of the forwarding header, the forwarded header is not found.
+
+For qmake we always put framework paths last in the include path,
+but for CMake it worked purely by accident, since CMake itself only
+turns our targets into -isystem/-iframework, which will interleave
+if the app depends on multiple Qt frameworks. The only reason it
+worked was because clang itself parses -isystem as a separate pass
+before -iframework. Which it does not do for -I/-F, so if the user
+sets the CMake NO_SYSTEM_FROM_IMPORTED we'd surface a real issue.
+
+And for pkg-config files, we generate them with a leading -F
+before the -I, which again breaks include_next.
+
+To solve this, we could try to re-order flags in the right order,
+but even then we don't control the interleaving of flags that
+the build system (pkg-config, CMake) might do when the app depends
+on multiple Qt modules.
+
+Instead, we make the forwarding-headers themselves agnostic to
+where the framework include path lives in relation to the forwarding
+header.
+
+In the common case, where the framework comes after, we'll find
+the framework header via #has_include_next, and #include_next it.
+But when the framework path comes ahead of the header, we'll fail
+the #has_include_next, and instead restart the lookup via a plain
+include.
+
+It would be tempting to always use a plain #include, but we also
+need to account for the naked Qt `include` dir being somewhere in
+the build flags. We try to put it last, via -idirafter for CMake,
+but we can't guarantee it, so we need to avoid the situation that
+a plain #include in the forwarding header hits the naked include
+path first, before the framework, ending up with a recursive include
+of the forwarding header again.
+
+The framework_forwarding_headers CMake test has been extended to
+cover the various permutations of flags, and tst_moc has been
+extended to cover the new forwarding header format.
+
+Change-Id: Ieb97f14146da5ed326016e9712ff1fb2851dacd6
+Reviewed-by: Alexandru Croitor <alexandru.croitor@qt.io>
+(cherry picked from commit 763e0cf5bf6e8ef4bc024d30f5e4220c4be7404d)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ src/tools/syncqt/main.cpp                     |  41 +++--
+ .../CMakeLists.txt                            | 164 +++++++++++++++---
+ .../include-next/forwarder/testinterface.h    |  12 +-
+ tests/auto/tools/moc/tst_moc.cpp              |  39 ++++-
+ 4 files changed, 202 insertions(+), 54 deletions(-)
+
+diff --git a/src/tools/syncqt/main.cpp b/src/tools/syncqt/main.cpp
+index e27f5f0f6a7d..bb30c0a103f9 100644
+--- a/src/tools/syncqt/main.cpp
++++ b/src/tools/syncqt/main.cpp
+@@ -838,7 +838,7 @@ class SyncScanner
+             if (m_commandLineArgs->isFramework()) {
+                 for (const auto &header : m_publicHeaders) {
+                     if (!generateForwardingHeader(m_commandLineArgs->stagingDir() + '/' + header,
+-                                                  header, /*useIncludeNext=*/true)) {
++                                                  header, /*frameworkForwarder=*/true)) {
+                         error = SyncFailed;
+                     }
+                 }
+@@ -1647,7 +1647,7 @@ class SyncScanner
+ 
+     [[nodiscard]] bool generateForwardingHeader(const std::string &outputFilePath,
+                                                 const std::string &aliasedFilePath,
+-                                                bool useIncludeNext = false);
++                                                bool frameworkForwarder = false);
+ 
+     [[nodiscard]] bool generateAliasedHeaderFileIfTimestampChanged(
+             const std::string &outputFilePath, const std::string &aliasedFilePath,
+@@ -1865,16 +1865,9 @@ bool SyncScanner::updateOrCopy(const std::filesystem::path &src,
+ 
+ // The function generates a forwarding header at outputFilePath that includes aliasedFilePath
+ // from the current module (that is, <Module/aliasedFilePath>).
+-//
+-// With useIncludeNext the forwarder uses #include_next instead of a plain #include. This is
+-// needed when the forwarder itself is found under the same spelling as it forwards to,
+-// as is the case for the lowercase framework forwarders that re-expose a framework's own
+-// headers via a plain include path: a plain #include would resolve back to the forwarder
+-// itself and recurse, whereas #include_next continues the include search past the forwarder
+-// into the framework.
+ bool SyncScanner::generateForwardingHeader(const std::string &outputFilePath,
+                                            const std::string &aliasedFilePath,
+-                                           bool useIncludeNext)
++                                           bool frameworkForwarder)
+ {
+     if (m_commandLineArgs->showOnly())
+         return true;
+@@ -1885,15 +1878,27 @@ bool SyncScanner::generateForwardingHeader(const std::string &outputFilePath,
+         return false;
+     }
+ 
+-    std::string buffer;
+-    if (useIncludeNext)
+-        buffer += "#include_next <";
+-    else
+-        buffer += "#include <";
++    const std::string include = "<"
++        + m_commandLineArgs->moduleName() + "/" + aliasedFilePath
++        + ">";
+ 
+-    buffer += m_commandLineArgs->moduleName() + "/";
+-    buffer += aliasedFilePath;
+-    buffer += "> // IWYU pragma: export\n";
++    std::string buffer;
++    if (frameworkForwarder) {
++        // We're forwarding from include/QtFoo/qfoo.h into the framework,
++        // based on someone including <qfoo.h>. But we can't guarantee that
++        // the framework path comes after the forwarding-path in the build
++        // flags, nor its relation to a possible naked Qt include/ path in
++        // the build flags. So we play it safe, and try to first include the
++        // framework header via the remaining include paths, and otherwise
++        // restart the header lookup from the start of the include paths.
++        buffer += "#if __has_include_next(" + include + ")\n";
++        buffer += "#  include_next " + include + " // IWYU pragma: export\n";
++        buffer += "#else\n";
++        buffer += "#  include " + include + " // IWYU pragma: export\n";
++        buffer += "#endif\n";
++    } else {
++        buffer += "#include " + include + " // IWYU pragma: export\n";
++    }
+ 
+     return writeIfDifferent(outputFilePath, buffer);
+ }
+diff --git a/tests/auto/cmake/test_framework_forwarding_headers/CMakeLists.txt b/tests/auto/cmake/test_framework_forwarding_headers/CMakeLists.txt
+index 468142bedff5..81190b6b7091 100644
+--- a/tests/auto/cmake/test_framework_forwarding_headers/CMakeLists.txt
++++ b/tests/auto/cmake/test_framework_forwarding_headers/CMakeLists.txt
+@@ -1,46 +1,160 @@
+ # Copyright (C) 2026 The Qt Company Ltd.
+ # SPDX-License-Identifier: BSD-3-Clause
+ 
+-# Check that we can include all framework module <Module>Depends and qt<module>exports.h headers
+-# using bare includes, thus testing that the forwarders are correctly created.
++# Check that a framework module's <Module>Depends and qt<module>exports.h headers
++# resolve through the generated forwarders when included with a bare include.
++#
++# A forwarder has to resolve no matter how the consuming build system spells the
++# include flags. The framework can arrive as -F (Clang's angled group) or as
++# -iframework (system group), and the forwarder dirs as -I or -isystem, in any
++# mix; the framework flag can sit anywhere among the forwarder dirs; and the naked
++# include dir may or may not be on the line (it is when the consumer also pulls in
++# a header-only module). The tests below drive the compiler directly with each of
++# those flag shapes.
+ 
+ find_package(Qt6 COMPONENTS ALL_QT_MODULES)
+ set(framework_dir "${QT6_INSTALL_PREFIX}/${QT6_INSTALL_LIBS}")
+-set(include_dir "${QT6_INSTALL_PREFIX}/${QT6_INSTALL_HEADERS}")
+ 
+-foreach(module_target IN LISTS QT_ALL_MODULES_VERSIONED_FOUND_VIA_FIND_PACKAGE)
+-    qt_internal_module_info(module "${module_target}")
+-    qt_internal_get_framework_info(fw "${module_target}")
++# The naked include dir: <prefix>/include, parent of every per-module include dir.
++set(naked_include_dir "${QT6_INSTALL_PREFIX}/${QT6_INSTALL_HEADERS}")
+ 
+-    set(module_framework_headers_dir "${framework_dir}/${fw_header_dir}")
+-    set(module_include_dir "${include_dir}/${module_include_name}")
++# The two axes we permute over.
++set(include_flags "-I" "-isystem")
++set(framework_flags "-F" "-iframework")
+ 
+-    set(source_content "")
++# Compile a source with a given set of include flags, syntax-only.
++function(add_forwarding_header_test name source)
++    add_test(NAME test_framework_forwarding_headers_${name}
++        COMMAND "${CMAKE_CXX_COMPILER}"
++            -x c++
++            -std=c++17
++            -fsyntax-only
++            ${ARGN}
++            "${source}"
++    )
++endfunction()
+ 
+-    if(EXISTS "${module_framework_headers_dir}/${module_include_name}Depends")
+-        string(APPEND source_content "#include <${module_include_name}Depends>\n")
++# Set ${out} in the caller to the bare-include lines for a module, or empty if the
++# module ships no forwardable headers in its framework Headers dir.
++function(module_bare_includes out include_name lower headers_dir)
++    set(content "")
++    if(EXISTS "${headers_dir}/${include_name}Depends")
++        string(APPEND content "#include <${include_name}Depends>\n")
+     endif()
+-
+-    if(EXISTS "${module_framework_headers_dir}/qt${module_lower}exports.h")
+-        string(APPEND source_content "#include <qt${module_lower}exports.h>\n")
++    if(EXISTS "${headers_dir}/qt${lower}exports.h")
++        string(APPEND content "#include <qt${lower}exports.h>\n")
+     endif()
++    set(${out} "${content}" PARENT_SCOPE)
++endfunction()
++
++# For every include-flag family (-I/-isystem) crossed with every framework-flag
++# family (-F/-iframework), add a test for each position the single framework flag
++# can take among the given include dirs (before all, between each pair, after all).
++# ARGN is the list of include dirs, in order.
++function(add_flag_shape_tests name_prefix source)
++    set(incdirs ${ARGN})
++    list(LENGTH incdirs dir_count)
++    foreach(iflag IN LISTS include_flags)
++        foreach(fflag IN LISTS framework_flags)
++            string(REGEX REPLACE "^-+" "" ilabel "${iflag}")
++            string(REGEX REPLACE "^-+" "" flabel "${fflag}")
++            foreach(fw_pos RANGE ${dir_count})
++                set(flags "")
++                set(pos 0)
++                foreach(dir IN LISTS incdirs)
++                    if(pos EQUAL fw_pos)
++                        list(APPEND flags "${fflag}" "${framework_dir}")
++                    endif()
++                    list(APPEND flags "${iflag}" "${dir}")
++                    math(EXPR pos "${pos} + 1")
++                endforeach()
++                if(fw_pos EQUAL dir_count)
++                    list(APPEND flags "${fflag}" "${framework_dir}")
++                endif()
++                add_forwarding_header_test(
++                    "${name_prefix}_${ilabel}_${flabel}_fwpos${fw_pos}"
++                    "${source}" ${flags})
++            endforeach()
++        endforeach()
++    endforeach()
++endfunction()
++
++# Collected in module order, for the single- and multi-module matrices below.
++# collected_includes holds each module's bare-include lines (no semicolons, so a
++# list preserves them); the combined multi-module source is built from those.
++set(collected_lower "")
++set(collected_include_dir "")
++set(collected_source "")
++set(collected_includes "")
++
++foreach(module_target IN LISTS QT_ALL_MODULES_VERSIONED_FOUND_VIA_FIND_PACKAGE)
++    qt_internal_module_info(module "${module_target}")
++    qt_internal_get_framework_info(fw "${module_target}")
++
++    set(module_headers_dir "${framework_dir}/${fw_header_dir}")
++    set(module_include_dir "${naked_include_dir}/${module_include_name}")
++
++    module_bare_includes(includes
++        "${module_include_name}" "${module_lower}" "${module_headers_dir}")
+ 
+     # Skip frameworks that don't have the headers in their Headers dir.
+-    if(NOT source_content)
++    if(NOT includes)
+         continue()
+     endif()
+-    string(APPEND source_content "int main() { return 0; }\n")
+ 
+     set(source_file "${CMAKE_CURRENT_BINARY_DIR}/bare_include_${module_lower}.cpp")
+-    file(GENERATE OUTPUT "${source_file}" CONTENT "${source_content}")
++    file(GENERATE OUTPUT "${source_file}" CONTENT "${includes}int main() { return 0; }\n")
+ 
+-    add_test(NAME test_framework_forwarding_headers_${module_lower}
+-        COMMAND "${CMAKE_CXX_COMPILER}"
+-            -x c++
+-            -std=c++17
+-            -fsyntax-only
+-            -iframework "${framework_dir}"
+-            -isystem "${module_include_dir}"
+-            "${source_file}"
++    # Baseline, every module: the shape CMake's Ninja and Makefile generators
++    # emit, which resolves today. The flag-shape matrix below runs on one module.
++    # The naked include dir goes in via -idirafter (Clang's last-searched group,
++    # as Qt6::Platform passes it on framework builds), so a module that pulls in a
++    # header-only module still finds that module's umbrella header without the naked
++    # dir disturbing the forwarder-vs-framework order.
++    add_forwarding_header_test(${module_lower} "${source_file}"
++        -iframework "${framework_dir}"
++        -isystem "${module_include_dir}"
++        -idirafter "${naked_include_dir}"
+     )
++
++    list(APPEND collected_lower "${module_lower}")
++    list(APPEND collected_include_dir "${module_include_dir}")
++    list(APPEND collected_source "${source_file}")
++    list(APPEND collected_includes "${includes}")
+ endforeach()
++
++# Single-module matrix, on the first module that has forwarders. The behaviour is
++# a property of the flag shape, not of the module, so one module exercises every
++# combination, with and without the naked include dir.
++list(LENGTH collected_lower module_count)
++if(module_count GREATER_EQUAL 1)
++    list(GET collected_lower 0 m)
++    list(GET collected_include_dir 0 m_inc)
++    list(GET collected_source 0 m_src)
++
++    add_flag_shape_tests(${m} "${m_src}" "${m_inc}")
++    add_flag_shape_tests(${m}_naked "${m_src}" "${m_inc}" "${naked_include_dir}")
++endif()
++
++# Multi-module matrix, on the first two modules that have forwarders. Two modules
++# share one framework dir (a single framework flag after the build system dedups
++# it) but keep their own forwarder include dirs, so the interesting variable is
++# where that one framework flag sits among the two forwarder dirs. A bare include
++# from each module has to resolve in every position, with and without the naked dir.
++if(module_count GREATER_EQUAL 2)
++    list(GET collected_lower 0 a)
++    list(GET collected_lower 1 b)
++    list(GET collected_include_dir 0 a_inc)
++    list(GET collected_include_dir 1 b_inc)
++    list(GET collected_includes 0 a_includes)
++    list(GET collected_includes 1 b_includes)
++
++    # Combined source with the bare includes of both modules.
++    set(multi_src "${CMAKE_CURRENT_BINARY_DIR}/bare_include_${a}_${b}.cpp")
++    file(GENERATE OUTPUT "${multi_src}"
++        CONTENT "${a_includes}${b_includes}int main() { return 0; }\n")
++
++    add_flag_shape_tests(multi_${a}_${b} "${multi_src}" "${a_inc}" "${b_inc}")
++    add_flag_shape_tests(multi_${a}_${b}_naked "${multi_src}"
++        "${a_inc}" "${b_inc}" "${naked_include_dir}")
++endif()
+diff --git a/tests/auto/tools/moc/include-next/forwarder/testinterface.h b/tests/auto/tools/moc/include-next/forwarder/testinterface.h
+index bdb15ff6a4d1..772f83d0ab31 100644
+--- a/tests/auto/tools/moc/include-next/forwarder/testinterface.h
++++ b/tests/auto/tools/moc/include-next/forwarder/testinterface.h
+@@ -2,6 +2,12 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
+ 
+ // Bare-include forwarder in a plain -I directory, mirroring Qt's framework
+-// build layout (include/QtFoo/qfoo.h -> #include_next <QtFoo/qfoo.h>). The
+-// #include_next must continue past this directory into the -F framework path.
+-#include_next <Test/testinterface.h>
++// build layout (include/QtFoo/qfoo.h -> <QtFoo/qfoo.h>). The forwarder can't
++// assume the framework path sits after it, so it probes with
++// __has_include_next and continues into the framework when it does, and
++// otherwise restarts the search with a plain #include.
++#if __has_include_next(<Test/testinterface.h>)
++#  include_next <Test/testinterface.h> // IWYU pragma: export
++#else
++#  include <Test/testinterface.h> // IWYU pragma: export
++#endif
+diff --git a/tests/auto/tools/moc/tst_moc.cpp b/tests/auto/tools/moc/tst_moc.cpp
+index cfc7bb9c21c7..26ad715904b1 100644
+--- a/tests/auto/tools/moc/tst_moc.cpp
++++ b/tests/auto/tools/moc/tst_moc.cpp
+@@ -864,6 +864,7 @@ private slots:
+     void includeNextFeatureGuard();
+     void includeNextInPrimarySourceFile();
+     void includeNextRelativeForwarder();
++    void includeNextFramework_data();
+     void includeNextFramework();
+     void hasIncludeNext();
+     void cstyleEnums();
+@@ -1881,22 +1882,44 @@ void tst_Moc::includeNextRelativeForwarder()
+ #endif
+ }
+ 
++void tst_Moc::includeNextFramework_data()
++{
++    QTest::addColumn<QStringList>("includeArgs");
++
++    const QString forwarder = m_sourceDirectory + QStringLiteral("/include-next/forwarder");
++
++    // The Qt framework build reaches a bare <qfoo.h> through a forwarder in a
++    // plain -I directory that redirects to <QtFoo/qfoo.h>. The forwarder must
++    // land on the framework header whether the framework path comes before or
++    // after it, since we can't control where the build system puts it.
++
++    // Framework path after the forwarder: __has_include_next finds the framework
++    // and #include_next continues into it. moc always appends -F paths after -I
++    // paths, so a -F framework only ever exercises this ordering.
++    QTest::newRow("framework after forwarder")
++        << (QStringList() << "-I" << forwarder << "-F" << m_sourceDirectory);
++
++    // Framework path before the forwarder: __has_include_next fails, so the
++    // forwarder falls back to a plain #include that restarts the search and
++    // reaches the framework ahead of it. Only -I $DIR/Test.framework can put the
++    // framework first, since moc keeps those in -I order; this is the ordering
++    // CMake's AUTOMOC produces.
++    QTest::newRow("framework before forwarder")
++        << (QStringList() << "-I" << m_sourceDirectory + QStringLiteral("/Test.framework")
++                          << "-I" << forwarder);
++}
++
+ void tst_Moc::includeNextFramework()
+ {
+ #ifdef MOC_CROSS_COMPILED
+     QSKIP("Not tested when cross-compiled");
+ #endif
+ #if defined(Q_OS_DARWIN) && QT_CONFIG(process)
+-    // The Qt framework build reaches a bare <qfoo.h> through a forwarder in a
+-    // plain -I directory that does #include_next <QtFoo/qfoo.h>, continuing into
+-    // the -F framework path. moc appends -F paths after -I paths, so the
+-    // forwarder is always found first; #include_next must continue into the
+-    // framework.
++    QFETCH(QStringList, includeArgs);
++
+     const QString base = m_sourceDirectory + QStringLiteral("/include-next");
+     QStringList args;
+-    args << "-E"
+-         << "-I" << base + QStringLiteral("/forwarder")
+-         << "-F" << m_sourceDirectory
++    args << "-E" << includeArgs
+          << base + QStringLiteral("/framework-consumer.h");
+ 
+     QProcess proc;

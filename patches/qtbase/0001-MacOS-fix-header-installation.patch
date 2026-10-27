@@ -1,0 +1,37 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@gnupg.com>
+
+Details of handling includes on MacOS have changed with Qt 6.12.0. Even
+with 8c260a771ab1ed7d6cdb5f221854ee470e5790a6 applied, header installation
+only works for Ninja. With Makefiles, forwarding headers overwrite the real
+headers. The Ninja install logic seems to just work for Makefiles, too,
+however, at least in our usecase.
+
+diff -ru qtbase-6.12.0/cmake/QtFrameworkHelpers.cmake qtbase-6.12.0-patched/cmake/QtFrameworkHelpers.cmake
+--- qtbase-6.12.0/cmake/QtFrameworkHelpers.cmake	2026-06-04 18:29:11
++++ qtbase-6.12.0-patched/cmake/QtFrameworkHelpers.cmake	2026-10-27 17:36:18
+@@ -185,7 +185,6 @@
+         endif()
+     endif()
+
+-    if(CMAKE_GENERATOR MATCHES "^Ninja")
+         add_custom_command(
+             OUTPUT
+                 "${output_dir}/${fw_versioned_header_dir}"
+@@ -197,13 +196,6 @@
+         )
+         add_custom_target(${target}_copy_fw_sync_headers
+             DEPENDS "${output_dir}/${fw_versioned_header_dir}")
+-    else()
+-        add_custom_target(${target}_copy_fw_sync_headers
+-            COMMAND ${copy_fw_sync_headers_command}
+-            COMMAND ${copy_fw_sync_headers_marker_file_command}
+-            DEPENDS ${target}_sync_headers
+-        )
+-    endif()
+
+     if(out_files)
+         add_custom_command(
