@@ -43,7 +43,7 @@ This fixes problems finding libkleopatrarc, and installed icons.
 +        // Our apps may be nested within the bundle, but store their (shared) resources
 +        // in the top level Resources folder. Since the qt framework also resides at the top level,
 +        // we can use that for the lookup.
-+        dirs.append(QLibraryInfo::path(QLibraryInfo::DataPath) + u"/Resources"_s);
++        dirs.append(QLibraryInfo::path(QLibraryInfo::DataPath));
      }
 
      const QString localDir = writableLocation(type);
