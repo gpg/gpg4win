@@ -310,10 +310,9 @@ AC_DEFUN([MACIMAGE_KDEPKG],
       [$4])
 ])
 
-# MACIMAGE_BPKG_BINSRC([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
-# Set up package PKG which is expected to be delivered as two ZIP files
-# with a "-(src|source)" and a "-(bin|noinstaller)" suffix.
-AC_DEFUN([MACIMAGE_BPKG_BINSRC],
+# MACIMAGE_CUSTOMPKG([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
+# Set up package PKG with a custom build procedure
+AC_DEFUN([MACIMAGE_CUSTOMPKG],
 [
   AC_REQUIRE([MACIMAGE_INIT])
   _macimage_pkg=maybe
@@ -321,58 +320,34 @@ AC_DEFUN([MACIMAGE_BPKG_BINSRC],
     AS_HELP_STRING([--enable-pkg-$1[=DIR]],
                    [include package $1]),
     _macimage_pkg=$enableval)
-  _macimage_bpkg=no
+  _macimage_custompkg=no
   _macimage_version=
   AS_IF([test "$_macimage_pkg" != no],
-        [MACIMAGE_FIND($1-bin, [$1-\(.*\)-bin],,
-         $_macimage_pkg,
-         _macimage_bpkg=$macimage_val
-	 _macimage_version=$macimage_version)])
-  AS_IF([test "$_macimage_pkg" != no -a "$_macimage_bpkg" = no],
-        [MACIMAGE_FIND($1-noinstaller, [$1-\(.*\)-noinstaller],,
-         $_macimage_pkg,
-         _macimage_bpkg=$macimage_val
-	 _macimage_version=$macimage_version)])
+        [MACIMAGE_FIND($1,,, $_macimage_pkg,
+        _macimage_custompkg=$macimage_val
+        _macimage_version=$macimage_version)])
 
-  # At this point, _macimage_bpkg is no, or the actual package binary file.
-
-  # macimage_pkg_PKGNAME=FILENAME_OF_BINARY
-  macimage_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]=$_macimage_bpkg
-  AC_SUBST(macimage_pkg_[]m4_translit([$1],[A-Z+-],[a-z__]))
+  # macimage_pkg_PKGNAME=FILENAME_OF_SOURCE
+  macimage_pkg_[]m4_translit([$1],[-+],[__])[]=$_macimage_custompkg
+  AC_SUBST(macimage_pkg_[]m4_translit([$1],[-+],[__]))
 
   # macimage_pkg_PKGNAME_version=VERSION
-  macimage_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_version=$_macimage_version
-  AC_SUBST(macimage_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_version)
+  macimage_pkg_[]m4_translit([$1],[-+],[__])[]_version=$_macimage_version
+  AC_SUBST(macimage_pkg_[]m4_translit([$1],[-+],[__])[]_version)
 
   # macimage_pkg_PKGNAME_deps=DEPS
   macimage_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
   AC_SUBST(macimage_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
 
-  AS_IF([test "$_macimage_bpkg" != no],
-    tmp_binsrc=yes
-    MACIMAGE_FIND($1-src, [$1-\(.*\)-src],,
-                 $_macimage_pkg, _macimage_bpkg=$macimage_val, tmp_binsrc=no)
-    if test $tmp_binsrc = no ; then
-       MACIMAGE_FIND($1-source, [$1-\(.*\)-source],,
-                    $_macimage_pkg, _macimage_bpkg=$macimage_val,
-                    AC_MSG_ERROR(can not find sources for package $1))
-    fi
-    # macimage_pkg_PKGNAME_src=FILENAME_OF_SOURCE
-    macimage_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_src=$_macimage_bpkg
-    AC_SUBST(macimage_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_src)
-
-    # FIXME: Add a version consistency check here.  Both packages
-    # must match!
-
+  AS_IF([test "$_macimage_custompkg" != no],
+    _macimage_pkgs="$_macimage_pkgs $1"
     MACIMAGE_DEFINE(HAVE_PKG_[]m4_translit([$1],[a-z+-],[A-Z__]))
-
-    _macimage_pkgs="$_macimage_pkgs []m4_translit([$1],[A-Z],[a-z])"
     # Record dependencies.  Also enter every package as node.
-    _macimage_deps="$_macimage_deps []m4_translit([$1],[A-Z],[a-z]) []m4_translit([$1],[A-Z],[a-z])"
+    _macimage_deps="$_macimage_deps $1 $1"
     AS_IF([test ! -z "$2"],
           for _macimage_i in $2; do
-            _macimage_deps="$_macimage_deps $_macimage_i []m4_translit([$1],[A-Z],[a-z])"
+            _macimage_deps="$_macimage_deps $_macimage_i $1"
           done)
-          [$3],
-          [$4])
+      [$3],
+      [$4])
 ])

@@ -72,7 +72,7 @@ macimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 freetype libiconv gettext pkgconfig \
                  libpng jpeg cmake bison
 
-# KDE packages for the MacOS image
+# cmake based packages for the MacOS image
 macimage_kdepkgs = gpgmepp qgpgme \
 		   kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
@@ -87,7 +87,34 @@ macimage_kdepkgs = gpgmepp qgpgme \
 		   qtbase qttools qtsvg qttranslations \
 		   qthttpserver qtwebsockets kcontacts gpgoljs \
 		   breeze tiff zstd pcre2 openjpeg boost \
-		   gpgapplemail ministartqt
+		   gpgapplemail ministartqt ninja
+
+# Packages with custom / other build system
+macimage_custompkgs = meson fontconfig
+
+macimage_pkg_meson_configure = \
+        echo 'No configuration available / needed'
+
+macimage_pkg_meson_make_args = \
+        mkdir -p $$$${pkgidir}/meson/ && cp -r $$$${pkgsdir}/* $$$${pkgidir}/meson/
+
+# --wrap-mode=nofallback: Do not try to download missing deps from the net
+# *-fonts-dirs: https://gitlab.freedesktop.org/fontconfig/fontconfig/-/work_items/547 (Fixed for 2.19)
+macimage_pkg_fontconfig_configure = \
+        $(idir)/meson/meson.py setup $$$${pkgsdir} --wrap-mode=nofallback --prefix=$(idir) \
+        -Ddoc=disabled \
+        -Dtests=disabled \
+        -Dtools=enabled \
+        -Dcache-build=disabled \
+        -Dadditional-fonts-dirs=no \
+        -Ddefault-fonts-dirs=/System/Library/Fonts,/Library/Fonts,~/Library/Fonts
+
+# We need --prefix=$(idir) in configure to find deps, but we actually want to install to
+# $$$${pkgidir}, thus install to staging with --destdir, then cp from that.
+macimage_pkg_fontconfig_make_args = \
+        $(idir)/meson/meson.py compile && \
+        $(idir)/meson/meson.py install --destdir=$$$${pkgbdir}/install_staging && \
+        cp -a $$$${pkgbdir}/install_staging/$(idir)/ $$$${pkgidir}/
 
 # Somehow, gettext 1.0 needs help finding our libiconv. This was not needed
 # with gettext 0.22.5, and may again become obsolete, one day.
@@ -295,7 +322,7 @@ macimage_pkg_poppler_configure = \
     -DENABLE_QT5=OFF \
     -DENABLE_LCMS=OFF \
     -DENABLE_LIBCURL=OFF \
-    -DFONT_CONFIGURATION=generic
+    -DFONT_CONFIGURATION=fontconfig
 
 macimage_pkg_okular_configure = \
     -DFORCE_NOT_REQUIRED_DEPENDENCIES=\"PlasmaActivities;KF6Wallet;KF6Purpose;Qt6TextToSpeech;LibZip;KF6DocTools;Phonon4Qt6;LibSpectre;KExiv2Qt6;CHM;DjVuLibre;EPub;QMobipocket;Discount;Qt6Qml;Qt6DBus;KF6Pty\"

@@ -106,7 +106,7 @@ def destination(absFilePath: Path) -> str:
         package = ""
         fileName = str(filePath)
 
-    if package in ["bison", "cmake", "qttools"]:
+    if package in ["bison", "cmake", "meson", "ninja", "qttools"]:
         # purely build depends
         return None
     elif package in ["gettext", "qtbase", "jpeg", "pcre2", "iconv"] and fileName.startswith("bin"):

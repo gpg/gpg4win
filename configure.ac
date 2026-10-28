@@ -603,6 +603,9 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_KDEPKG([pcre2])
     MACIMAGE_KDEPKG([jpeg])
     MACIMAGE_KDEPKG([libpng])
+    MACIMAGE_KDEPKG([ninja])
+    MACIMAGE_CUSTOMPKG([meson])
+    MACIMAGE_CUSTOMPKG([fontconfig], [meson ninja freetype])
 
     MACIMAGE_SPKG([libiconv], [bison])
     MACIMAGE_SPKG([gettext], [libiconv])
@@ -679,7 +682,7 @@ if test "$build_macimage" = yes ; then
     MACIMAGE_KDEPKG([gpgoljs], [mimetreeparser qtwebsockets qthttpserver libkleo sonnet kcontacts kcompletion ki18n kwidgetsaddons kio kdsingleapplication])
 
     # Okular/Poppler
-    MACIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff openjpeg libpng])
+    MACIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff openjpeg libpng fontconfig])
     MACIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
 
     # Gpgpass

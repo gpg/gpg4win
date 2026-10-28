@@ -250,28 +250,56 @@ $(if $(filter-out no, $(call GETVAR,macimage_pkg_$(1))),
 endef
 
 
-# Template for binary packages.
+# Template for packages with custom build
 
-define BPKG_template_
+define CUSTOMPKG_template_
 
 pkg_files += $(call GETVAR,macimage_pkg_$(1))
 
-$(stampdir)/stamp-$(1)-00-install: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
-	($(call SETVARS,$(1));				\
-	 set -x; \
-	 test -d "$$$${pkgidir}" || $(MKDIR) "$$$${pkgidir}";\
-	 cd $$$${pkgidir};				\
-	 $(call DEFLATE_macro,$$$${pkg}); \
-	 $(call macimage_pkg_$(call FROB_macro,$(1))_post_install))
-	touch $(stampdir)/stamp-$(1)-00-install
+$$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
+	(cd $(bdir);					\
+	 $(call SETVARS,$(1));				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch $(stampdir)/stamp-$(1)-00-unpack
 
-$(stampdir)/stamp-$(1)-01-rsync: $(stampdir)/stamp-$(1)-00-install
+$(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
+	(shopt -s nullglob;				\
+	 $(call SETVARS,$(1));				\
+	 for pfile in "$$$${pkgpatbdir}"/*.patch "$$$${pkgpatdir}"/*.patch ; do  \
+	   (cd "$$$${pkgsdir}"; /bin/sh "$$$${pfile}")		\
+	 done)
+	touch $(stampdir)/stamp-$(1)-01-patch
+
+$(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
+	($(call SETVARS,$(1)); \
+	 set -x; \
+	 mkdir -p "$$$${pkglogdir}"; \
+	 mkdir -p "$$$${pkgbdir}"; \
+	 cd "$$$${pkgbdir}"; \
+	 eval "$$$${pkgcfg}" | \
+		tee "$$$${pkglogdir}/configure.log"; \
+	 shopt -s nullglob;)
+	touch $(stampdir)/stamp-$(1)-02-configure
+
+$(stampdir)/stamp-$(1)-03-makeinstall: $(stampdir)/stamp-$(1)-02-configure
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
+	  eval "$$$${pkgmkargs}")
+	touch $(stampdir)/stamp-$(1)-03-makeinstall
+
+$(stampdir)/stamp-$(1)-04-rsync: $(stampdir)/stamp-$(1)-03-makeinstall
 	($(call SETVARS,$(1));				\
 	 set -x;					\
-	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/" )
-	touch $(stampdir)/stamp-$(1)-01-rsync
+	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/"; \
+	 for pc in $(idir)/lib/pkgconfig/*.pc; do \
+	   if test -f "$$$${pc}"; then              \
+	     test -L "$$$${pc}" || sed -i '' "s;$$$${pkgidir};$(idir);" "$$$${pc}"; \
+	   fi \
+	 done )
+	touch $(stampdir)/stamp-$(1)-04-rsync
 
-$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-01-rsync
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-04-rsync
 	touch $(stampdir)/stamp-final-$(1)
 
 $(1): $(stampdir)/stamp-final-$(1)
@@ -294,9 +322,9 @@ clean-$(1):
 
 endef
 
-define BPKG_template
+define CUSTOMPKG_template
 $(if $(filter-out no, $(call GETVAR,macimage_pkg_$(1))),
-  $(call BPKG_template_,$1))
+  $(call CUSTOMPKG_template_,$1))
 endef
 
 
@@ -425,10 +453,7 @@ endef
 $(foreach spkg, $(macimage_spkgs), $(eval $(call SPKG_template,$(spkg))))
 
 # Insert the template for each binary package.
-$(foreach bpkg, $(macimage_bpkgs), $(eval $(call BPKG_template,$(bpkg))))
-
-# Insert the template for Qt packages.
-$(foreach qtpkg, $(macimage_qtpkgs), $(eval $(call QTPKG_template,$(qtpkg))))
+$(foreach custompkg, $(macimage_custompkgs), $(eval $(call CUSTOMPKG_template,$(custompkg))))
 
 # Insert the template for KDE packages.
 $(foreach kdepkg, $(macimage_kdepkgs), $(eval $(call KDEPKG_template,$(kdepkg))))

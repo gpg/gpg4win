@@ -41,6 +41,31 @@ if target = mac
 file bison/bison-3.8.2.tar.xz
 chk  9bba0214ccf7f1079c5d59210045227bcf619519840ebfa80cd3849cff5a5bf2
 
+# Required for sane fonts handling in annotations/signatures by poppler
+# Windows uses own mechanism, AppImage uses system fontconfig
+# last-changed: 2026-10-26
+# by: tfry
+# Verified: official download page, homebrew
+server https://gitlab.freedesktop.org/
+file fontconfig/fontconfig/-/archive/2.18.3/fontconfig-2.18.3.tar.gz
+chk  9ae01e1d53acdef56010c5451cd34aa41d325b2faccd8606448d8fa01b2496b3
+
+# Build dependency for fontconfig; latest release not to require python >= 3.10
+# last-changed: 2026-10-26
+# by: tfry
+# Verified: github; homebrew
+server https://github.com/
+file   mesonbuild/meson/releases/download/1.11.2/meson-1.11.2.tar.gz
+chk    698feae069cef3ecd4d7aaf281d7df359bdfcf555a9a1564383d3b913fa8a736
+
+# Used by the fontconfig meson build
+# last-changed: 2026-10-26
+# by: tfry
+# Verified: github created snapshot; homebrew
+name    ninja-1.13.2.tar.gz
+file    ninja-build/ninja/archive/refs/tags/v1.13.2.tar.gz
+chk     974d6b2f4eeefa25625d34da3cb36bdcebe7fbce40f4c16ac0835fd1c0cbae17
+
 fi # mac
 
 server https://xcb.freedesktop.org/dist/
