@@ -46,16 +46,10 @@ Status / Hints / TODO list for MacOS builds
       - potential alternative: require PATH
     - bundling script sets library locations using abs paths
       - potential alternative: convert to @loader_path references
-  - There are some extra patches in patches which we should simply merge
-    in the corresponding packages (gpgoljs/kleopatra). This is just to allow
-    independent testing.
   - Creating a bundle is handled via a python script. python 3.9 is available
     in MacOS 26.05
-  - gpgol/web:
-    - (internal) -DCMAKE_MACOSX_BUNDLE=OFF does not have the desired effect
-  - general:
-    - the bundle still has quite a few unused files. Copy rsync filters from
-      AppImage, after all? Paths are not the same, however.
+  - the bundle still has quite a few unused files. Copy rsync filters from
+    AppImage, after all? Paths are not the same, however.
   - gpgapplemail needs codesigning to work codesignin ids are taken from env:
     CODESIGN_ID="Apple Development" CODESIGN_TEAMID="XYZ" ./build.sh --mac ...
   - gpgapplemail needs to be configured with cmake and built using Xcode. As it
@@ -66,7 +60,6 @@ Status / Hints / TODO list for MacOS builds
     homebrew installation, we check for remaining bad dependencies during bundling
     (src/mac/bundle.py).
     - Should a bad dependency get picked up, try trimming down the PATH!
-  - gettext_noop strings do not yet work in gnupg
 
 - Further TODOs:
   - installer is still very basic
