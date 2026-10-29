@@ -1,0 +1,28 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@gnupg.com>
+
+For unknown reasons, Qt special-cases MacOS wrt enter/return key presses, and does
+not emit activated(), there. Comparison with Apple-native apps shows that activate
+on enter really is the expected behavior on MacOS, as everywhere else.
+
+Reported as QTBUG-94062, but that does not seem to get much attention.
+
+diff -ru qtbase-6.12.0-base/src/widgets/itemviews/qabstractitemview.cpp qtbase-6.12.0/src/widgets/itemviews/qabstractitemview.cpp
+--- qtbase-6.12.0-base/src/widgets/itemviews/qabstractitemview.cpp	2026-06-04 18:29:11
++++ qtbase-6.12.0/src/widgets/itemviews/qabstractitemview.cpp	2026-10-29 13:56:11
+@@ -2494,8 +2494,11 @@
+     case Qt::Key_Return:
+         // Propagate the enter if you couldn't edit the item and there are no
+         // current editors (if there are editors, the event was most likely propagated from it).
+-        if (!edit(currentIndex(), EditKeyPressed, event) && d->editorIndexHash.isEmpty())
++        if (!edit(currentIndex(), EditKeyPressed, event) && d->editorIndexHash.isEmpty()) {
++            if (currentIndex().isValid())
++                emit activated(currentIndex());
+             event->ignore();
++        }
+         break;
+ #else
+     case Qt::Key_F2:
