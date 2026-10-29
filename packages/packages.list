@@ -216,12 +216,12 @@ fi # appimage - ministart
 if target = mac
 
 server https://gnupg.net/snapshots
-# last-changed: 2026-10-12
+# last-changed: 2026-10-29
 # by: tfry
 # verified: tarball created by tfry
-name ministartqt-0.1.0.tar.xz
-file ministartqt/ministartqt-0.1.0.tar.xz
-chk  7c396cd0b6c3d2d14ee75ec55048e4d9c80a9ab808101469b5dcd7579a1fca7f
+name ministartqt-0.1.1.tar.xz
+file ministartqt/ministartqt-0.1.1.tar.xz
+chk  038f6418127ea607438ff73f398f1b2a00fc75459869f5860ff1cd099e845e44
 
 fi # mac - ministart
 
