@@ -21,11 +21,12 @@
 #
 # SPDX-License-Identifier: GPL-2.0+
 
-FROM almalinux:8.10
+FROM almalinux:9.2
 
-# Enable the PowerTools repo (needed at least for gperf)
-RUN dnf install -y 'dnf-command(config-manager)' \
-    && dnf config-manager --set-enabled powertools \
+# Enable the EPEL and CRB repos (needed at least for gperf, libdbusmenu-gtk3-develmesa-vulkan-devel)
+RUN dnf install -y epel-release \
+    && dnf install -y 'dnf-command(config-manager)' \
+    && dnf config-manager --enable crb \
     && dnf update -y \
     && dnf clean all
 
@@ -78,24 +79,26 @@ RUN dnf install -y \
         libpng-devel \
         librsvg2 \
         libusbx-devel \
+        libvala-devel \
         libxcb-devel \
         libxkbcommon-devel \
         libxkbcommon-x11-devel \
         libzstd-devel \
         mesa-libEGL-devel \
         mesa-libGL-devel \
-        mesa-vulkan-devel \
+        mesa-vulkan-drivers \
         meson \
         openjpeg2-devel \
         openldap-devel \
         openssl-devel \
         patch \
         pcre2-devel \
+        perl-lib \
         python3.12-lxml \
         readline-devel \
         rsync \
         systemd-devel \
-        vala-devel \
+        vala \
         vulkan-headers \
         wayland-devel \
         wget \

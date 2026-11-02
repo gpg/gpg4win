@@ -1116,7 +1116,7 @@ if [ "$appimage" = "yes" ]; then
     else
         cmd="/src/build.sh --appimage ${docker_cmd_extras}"
     fi
-    docker_image=g10-build-appimage:almalinux810
+    docker_image=g10-build-appimage:almalinux902
     dockerfile=${srcdir}/docker/appimage
 elif [ "$mac" = "yes" ]; then
     version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' $HOME/.gnupg-autogen.rc|cut -d= -f2|xargs)"
