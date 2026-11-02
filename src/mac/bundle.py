@@ -79,11 +79,13 @@ def moveFilesToDestination():
                     error(f"Cannot handle absolute symlink {f}->{target}")
                 if (bundleDir / dest).is_symlink():
                     if str(os.readlink(bundleDir / dest)) != str(target):
-                        print(f"conflicting symlink {f} -> {target} or {os.readlink(bundleDir / dest)}")
-                        exit(1)
+                        error(f"conflicting symlink {f} -> {target} or {os.readlink(bundleDir / dest)}")
                 else:
-                    print(f"symlink {f} -> {target}")
-                    (bundleDir / dest).symlink_to(target)
+                    destdir = Path(dest).parent
+                    origresolved = (Path(f.parent) / target).resolve()
+                    dest2 = Path(destination(origresolved))
+                    print(f"symlink {dest} -> {dest2} (was: {f} -> {target} aka {origresolved})")
+                    (bundleDir / dest).symlink_to(relativeTo(dest2, destdir))
             elif f.is_file():
                 print(f"Copying {f} -> {dest}")
                 shutil.copy2(f, bundleDir / dest)
@@ -155,14 +157,13 @@ def destination(absFilePath: Path) -> str:
             ("bin", "MacOS"),
             ("libexec", "MacOS"),
             ("lib/libexec", "MacOS"),
-            ("lib", "Frameworks")
+            ("lib", "Frameworks"),
+            ("etc/xdg", "Resources"), # libkleopatrarc
+            ("etc", "Resources")
         ]
         for (src, dest) in moveList:
             if (fileName.startswith(src + '/')) and fileName != src:
                 return fileName.replace(src, dest, 1)
-        if fileName.startswith('etc/'):
-            # flatten subdirs in /etc; currently affects only libkleopatrarc
-            return "Resources/" + filePath.parts[-1]
     return None
 
 
@@ -297,15 +298,18 @@ def modifyPlist(file: Path, values: dict):
         f.writelines(lines)
 
 
+# NOTE: Python 3.9 -> no walk_up parameter in Path.relative_to()
+def relativeTo(target: Path, base: Path):
+    relpath = ""
+    while not target.is_relative_to(base):
+        base = base.parent
+        relpath += "../"
+    return Path(relpath) / target.relative_to(base)
+
+
 def createStub(target: Path, stubname: Path):
     target = requiredPath(target)
-    # NOTE: Python 3.9 -> no walk_up parameter in Path.relative_to()
-    relpath = "";
-    stubdir = stubname.parent
-    while not target.is_relative_to(stubdir):
-        stubdir = stubdir.parent
-        relpath += "../"
-    relpath = Path(relpath) / target.relative_to(stubdir)
+    relpath = relativeTo(target, stubname.parent)
 
     print(f"Creating stub for {relpath} at {target}")
     with stubname.open('w') as stub:
@@ -345,6 +349,9 @@ def finalizeBundle():
             shutil.copy2(goodIcon, icon)
 
     checkResignBinary(primaryBin, True)
+    # This always fails in staging path due to absolute paths pointing to /Applications.
+    # However, it is a good idea to run this manually, after installation. We should consider some auto-check, here.
+    # subprocess.run(["codesign", "verify", "strict", "deep", "verbose=20", str(bundleDir.parent)]).check_returncode()
 
 
 def createDMG(stagingFolder: Path, imageName: str, outfile: Path):
