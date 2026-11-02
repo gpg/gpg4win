@@ -57,9 +57,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/extra-cmake-modules/0001-Revert-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/extra-cmake-modules/0001-Use-preferred-display-language-instead-of-locale-on-.patch \
              patches/gpgol-2.7.2/0001-Require-C-17.patch \
-             patches/gpgoljs/0001-Allow-to-compile-on-Mac.patch \
-             patches/gpgoljs/0001-Switch-to-KDSingleApplication-for-handling-unique-in.patch \
-             patches/gpgoljs/0002-Work-around-failure-to-accept-custom-root-cert-on-Ma.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kconfig-6.31.0/00-kf632-0001-Ensure-locale-name-with-language-code-and-country-co.patch \
              patches/kconfig/0001-g10-Set-organization-name-of-kreadconfig-for-Windows.patch \
@@ -101,14 +98,15 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/pcre2/cross-build-cmake.patch \
              patches/poppler/downgrade-min-boost.patch \
              patches/poppler/downgrade-min-fontconfig.patch \
+             patches/qtbase/00-qt612-1-0001-Fix-MacOS-forward-headers.patch \
              patches/qtbase/00-qt612-1-0002-CVE-2026-105924-qtbase-6.12.patch \
              patches/qtbase/00-qt6xx-0001-Fix-a11y-window-activation-events.patch \
              patches/qtbase/0001-Don-t-report-tabname-as-name-of-tabbar.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
+             patches/qtbase/0001-MacOS-fix-header-installation.patch \
              patches/qtbase/0002-no-dark-mode-on-old-windows-10.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/configurable-windowstheme.patch \
-             patches/qtbase/fix_macos_26_5_build.patch \
              patches/qtbase/qstandardpaths_macos.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
              patches/qthttpserver/originAuthenticationRequired.patch
