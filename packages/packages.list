@@ -418,13 +418,14 @@ name qtwayland-6.12.0.tar.xz
 file 6.12/6.12.0/submodules/qtwayland-everywhere-src-6.12.0.tar.xz
 chk ae14d9bcf1bb3c300a3ab2e6a53f50284e5c6c966a4ac4cc5aedcb1bc74e4d02
 
+server https://gitlab.freedesktop.org
+
 # wayland-protocols
-# last changed: 2025-02-14
-# by: carl
-# verified: Sig: 8307C0A224BABDA1BABD0EB9A6EEEC9E0136164A
-server https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/
-file 1.40/downloads/wayland-protocols-1.40.tar.xz
-chk b21711793247c2c42763914392dfa9fcb9e3728ca4b4aa110adb8d915fc00689
+# last changed: 2026-11-02
+# by: ingo
+# verified: PGP signed by keyring-wayland-protocols.gpg (created by gen-package.sh)
+file wayland/wayland-protocols/-/releases/1.50/downloads/wayland-protocols-1.50.tar.xz
+chk  4460c20cfcf68b994a5ee206ed15fc19ad312f16c96075186e83b0e3f4aa48a5
 
 # plasma-wayland-protocols
 # last changed: 2025-02-14
