@@ -112,7 +112,6 @@ runcmd="no"
 fromgit="no"
 withmsi="no"
 mac=
-nodocker=
 upload=no
 wineonly="no"
 force="no"
@@ -153,7 +152,6 @@ while [ $# -gt 0 ]; do
                                  targetplatform="appimage" ;;
         --mac)                   mac="yes"
                                  targetplatform="mac" ;;
-        --nodocker)              nodocker="yes"       ;;
         --shell)                 shell="yes"          ;;
         --clean|-c)              clean="yes"          ;;
         --dist)                  dist="yes"           ;;
@@ -219,24 +217,18 @@ if [ -z "$builddir" ]; then
     fi
 fi
 
-if [ -z "$mac$nodocker" ]; then
-    # Check whether we are running in the docker container.
-    if [ -d /src/src -a -d /src/patches -a -d /build ]; then
-        indocker="yes"
-        srcdir="/src"
-        builddir="/build"
-        instdir="${builddir}/install"
-        vsddir="${srcdir}/src/gnupg-vsd"
-        if [ "$appimage" = "yes" ] ; then
-            appimage_docker_build="yes"
-            appdir="${builddir}/AppDir"
-        fi
-        echo >&2 "$PGM: running in docker"
+# Check whether we are running in the docker container.
+if [ -z "$mac" -a -d /src/src -a -d /src/patches -a -d /build ]; then
+    indocker="yes"
+    srcdir="/src"
+    builddir="/build"
+    instdir="${builddir}/install"
+    vsddir="${srcdir}/src/gnupg-vsd"
+    if [ "$appimage" = "yes" ] ; then
+        appimage_docker_build="yes"
+        appdir="${builddir}/AppDir"
     fi
-else
-    if [ "$nodocker" = "yes" ]; then
-        indocker="yes"
-    fi
+    echo >&2 "$PGM: running in docker"
 fi
 
 if [ "$indocker" != "yes" ] && [ "$clean" = "yes" ] && [ -d "${builddir}" ] ; then
@@ -1608,7 +1600,7 @@ if [ -z "$mac" ] ;then
     echo >&2 "$PGM: docker finished. rc=$err" | tee -a ${logfile} >&2
 else
     echo >&2 "$PGM: building on MacOS (without docker): $cmd"
-    TOPSRCDIR=${srcdir} PLAYGROUND=${builddir} $cmd --mac --nodocker 2>&1 | tee -a ${logfile}
+    TOPSRCDIR=${srcdir} PLAYGROUND=${builddir} $cmd 2>&1 | tee -a ${logfile}
     err="${PIPESTATUS[0]}"
     echo >&2 "$PGM: mac build finished. rc=$err" | tee -a ${logfile} >&2
 fi
