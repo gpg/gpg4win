@@ -71,6 +71,15 @@ case ${package} in
         sig=yes
         keyring=$(dirname $0)/gnu-keyring.gpg
         ;;
+    wayland-protocols)
+        server=https://gitlab.freedesktop.org
+        filepathonserver=wayland/${package}/-/releases/${version}/downloads/${package}-${version}.tar.xz
+        sig=yes
+        # Keys of Daniel Stone and Simon Ser (owners of wayland-protocols) downloaded from gitlab.freedesktop.org;
+        # imported in temporary keyring and then exported with --export-options export-minimal to remove packages
+        # that confuse gpgv
+        keyring=$(dirname $0)/keyring-wayland-protocols.gpg
+        ;;
     xcb-util-cursor)
         server=https://xcb.freedesktop.org/dist
         filepathonserver=${package}-${version}.tar.xz
