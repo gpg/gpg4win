@@ -101,6 +101,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/pcre2/cross-build-cmake.patch \
              patches/poppler/downgrade-min-boost.patch \
              patches/poppler/downgrade-min-fontconfig.patch \
+             patches/qtbase/00-qt612-1-0002-CVE-2026-105924-qtbase-6.12.patch \
              patches/qtbase/00-qt6xx-0001-Fix-a11y-window-activation-events.patch \
              patches/qtbase/0001-Don-t-report-tabname-as-name-of-tabbar.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
