@@ -125,7 +125,7 @@ appimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
 
 
 # KDE packages for the AppImage
-appimage_kdepkgs = gpgmepp qgpgme \
+appimage_kdepkgs = cmake gpgmepp qgpgme \
 		   kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
 		   kmime kmbox kconfigwidgets kxmlgui kguiaddons kitemviews \
@@ -153,6 +153,9 @@ define appimage_pkg_wayland_protocols_post_install
 	cd $$$${pkgidir}; \
 )
 endef
+
+appimage_pkg_cmake_configure = \
+        -DCMAKE_USE_OPENSSL=OFF
 
 appimage_pkg_gpgme_configure = \
     --enable-languages= \

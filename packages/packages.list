@@ -129,16 +129,12 @@ chk  b44705dd71ca4538c86fb16248483ab4b48978524fb1da5097bd76aa2e0f0c33
 file PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.bz2
 chk  8d36cd8cb6ea2a4c2bb358ff6411b0c788633a2a45dabbf1aeb4b701d1b5e840
 
-if target = mac
-
-# cmake - used only on mac, where it is not available in base system
+# cmake
 # last-changed: 2026-09-17
 # by tfry
 # verified: cmake-4.4.3-SHA256.txt on same download page, homebrew formulaa
 file Kitware/CMake/releases/download/v4.4.3/cmake-4.4.3.tar.gz
 chk  c46400618b4f1f2b43507f24fb22f3ae830c3416cf23b776e16e1d413aa892f0
-
-fi # mac
 
 # disabled by wk 2025-01-22 because prison is also disabled.
 ## libqrencode for prison

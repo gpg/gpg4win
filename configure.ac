@@ -238,7 +238,12 @@ AC_CHECK_PROGS(MSGFMT, msgmerge)
 AC_CHECK_PROGS(GITLOG_TO_CHANGELOG, gitlog-to-changelog,
                [build-aux/gitlog-to-changelog])
 AC_CHECK_PROGS(BUILD_CC, gcc cc)
-AC_CHECK_PROGS(CMAKE, cmake3 cmake)
+if test "$build_gpg4win" = yes ; then
+    AC_CHECK_PROGS(CMAKE, cmake3 cmake)
+fi
+if test "$build_appimage" = yes ; then
+    AC_CHECK_PROGS(CMAKE, cmake)
+fi
 AC_CHECK_PROGS(RSYNC, rsync)
 if test "${use_ninja}" = "yes"; then
     AC_CHECK_PROGS(NINJA, ninja)
@@ -487,12 +492,15 @@ fi
 if test "$build_appimage" = yes ; then
     appimage_dup_sources=""
 
+    # we need a newer cmake (>= 3.30) than the one provided by AlmaLinux 8.10
+    APPIMAGE_KDEPKG([cmake])
+
     # poppler requires freetype >= 2.11
     APPIMAGE_SPKG([freetype])
     APPIMAGE_SPKG([sqlite])
-    APPIMAGE_KDEPKG([libqrencode])
+    APPIMAGE_KDEPKG([libqrencode], [cmake])
     # poppler requires tiff >= 4.3
-    APPIMAGE_KDEPKG([tiff])
+    APPIMAGE_KDEPKG([tiff], [cmake])
     APPIMAGE_SPKG([xcb-util-cursor])
 
     APPIMAGE_SPKG([libgpg-error])
@@ -505,17 +513,17 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([pinentry], [qtbase kguiaddons kwindowsystem libassuan])
 
     APPIMAGE_SPKG([gpgme], [libgpg-error libassuan])
-    APPIMAGE_KDEPKG([gpgmepp], [gpgme])
+    APPIMAGE_KDEPKG([gpgmepp], [cmake gpgme])
     APPIMAGE_KDEPKG([qgpgme], [gpgmepp qtbase])
     APPIMAGE_SPKG([paperkey])
 
     # Qt related stuff.
-    APPIMAGE_KDEPKG([qtbase], [freetype xcb-util-cursor])
+    APPIMAGE_KDEPKG([qtbase], [cmake freetype xcb-util-cursor])
     APPIMAGE_KDEPKG([qttools], [qtbase])
     APPIMAGE_KDEPKG([qttranslations], [qtsvg qttools])
     APPIMAGE_KDEPKG([qtsvg], [qtbase])
     APPIMAGE_KDEPKG([qtwayland], [qtbase])
-    APPIMAGE_KDEPKG([wayland-protocols])
+    APPIMAGE_KDEPKG([wayland-protocols], [cmake])
     APPIMAGE_KDEPKG([plasma-wayland-protocols], [wayland-protocols extra-cmake-modules])
     APPIMAGE_KDEPKG([breeze], [qtbase kcoreaddons kconfig kconfigwidgets kguiaddons kiconthemes kwindowsystem])
 
@@ -556,7 +564,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([kparts], [kio kservice kxmlgui kconfigwidgets kwidgetsaddons ktextwidgets])
 
     # KDE PIM
-    APPIMAGE_KDEPKG([libical])
+    APPIMAGE_KDEPKG([libical], [cmake])
     APPIMAGE_KDEPKG([kcalendarcore], [qtbase libical extra-cmake-modules])
     APPIMAGE_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmime kcodecs kcalendarcore kmbox])
     APPIMAGE_KDEPKG([kmime], [kcodecs ki18n])
@@ -571,7 +579,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
 
     # ministart
-    APPIMAGE_KDEPKG([libayatana-ido])
+    APPIMAGE_KDEPKG([libayatana-ido], [cmake])
     APPIMAGE_KDEPKG([libayatana-indicator], [libayatana-ido])
     APPIMAGE_KDEPKG([libayatana-appindicator], [libayatana-indicator])
     APPIMAGE_MPKG([ministart], [freetype tiff libayatana-appindicator])
