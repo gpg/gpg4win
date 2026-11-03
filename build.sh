@@ -45,6 +45,9 @@ Options:
                         Unavailabe for --release builds
         --force         Force configure run
         --no-sign       Do not authenticode sign packages
+        --build-image   Select a docker image for the build
+                        Only affects the AppImage build
+                        Choices are alma-8.10 (default) and alma-9.8
         --update-image  Update the docker image before build
         --msi           Building MSI packages
                         Also assumes --w32 if BUILDTYPE is vsd3
@@ -96,6 +99,7 @@ indocker="no"
 targetplatform="windows"
 appimage="no"
 appimage_docker_build="no"
+build_image="alma-8.10"
 shell="no"
 clean="no"
 dist="no"
@@ -154,6 +158,8 @@ while [ $# -gt 0 ]; do
         --clean|-c)              clean="yes"          ;;
         --dist)                  dist="yes"           ;;
         --release)               release="yes"        ;;
+        --build-image|--build-image=*)
+                                 build_image="${optarg}" ;;
         --update-image|--update-img|-u)
                                  update_image="yes"   ;;
         --w32)                   w64="no"             ;;
@@ -1116,8 +1122,18 @@ if [ "$appimage" = "yes" ]; then
     else
         cmd="/src/build.sh --appimage ${docker_cmd_extras}"
     fi
-    docker_image=g10-build-appimage:almalinux902
-    dockerfile=${srcdir}/docker/appimage
+    case "${build_image}" in
+        alma-8.10)  docker_image=g10-build-appimage:almalinux810
+                    dockerfile=${srcdir}/docker/appimage-alma810
+                    ;;
+        alma-9.8)   docker_image=g10-build-appimage:almalinux908
+                    dockerfile=${srcdir}/docker/appimage-alma908
+                    ;;
+        *)          echo "$PGM: ${build_image}: unknown build image"
+                    exit 2
+                    ;;
+    esac
+
 elif [ "$mac" = "yes" ]; then
     version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' $HOME/.gnupg-autogen.rc|cut -d= -f2|xargs)"
     cmd="/src/src/mac/build-macimage.sh $version_signkey"

@@ -1,0 +1,152 @@
+# Dockerfile - docker/appimage
+# Copyright (C) 2024 g10 Code GmbH
+#
+# Software engineering by Ingo Klöcker <dev@ingo-kloecker.de>
+#                         Andre Heinecke <aheinecke@gnupg.org>
+#
+# This file is part of Gpg4win.
+#
+# Gpg4win is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# Gpg4win is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, see <https://www.gnu.org/licenses/>.
+#
+# SPDX-License-Identifier: GPL-2.0+
+
+FROM almalinux:9.8
+
+# Enable the EPEL and CRB repos (needed at least for gperf, libdbusmenu-gtk3-develmesa-vulkan-devel)
+RUN dnf install -y epel-release \
+    && dnf install -y 'dnf-command(config-manager)' \
+    && dnf config-manager --enable crb \
+    && dnf update -y \
+    && dnf clean all
+
+# Package                    Needed by
+# boost-devel                libkleo
+# file                       appimagetool
+# glibc-gconv-extra          iconv.m4 (when checking for working iconv which needs the eucJP codec)
+# hunspell-devel             sonnet
+# libmount-devel             solid
+# meson                      wayland-protocols
+# openjpeg2-devel            poppler
+# python3.11-lxml            breeze-icons
+# wget                       docker build to download linuxdeploy (see below)
+# xz-devel                   karchive
+RUN dnf install -y \
+        at-spi2-core-devel \
+        bison \
+        boost-devel \
+        brotli-devel \
+        bzip2 \
+        bzip2-devel \
+        cmake \
+        cups-devel \
+        dbus-devel \
+        file \
+        flex \
+        fontconfig-devel \
+        gcc-toolset-14 \
+        gettext \
+        git-core \
+        git-lfs \
+        glibc-gconv-extra \
+        gnutls-devel \
+        gobject-introspection-devel \
+        gperf \
+        gtk3-devel \
+        hunspell-devel \
+        iso-codes-devel \
+        libX11-devel \
+        libX11-xcb \
+        libXcomposite-devel \
+        libXcursor-devel \
+        libXi-devel \
+        libXrandr-devel \
+        libXtst-devel \
+        libdbusmenu-gtk3-devel \
+        libicu-devel \
+        libjpeg-turbo-devel \
+        libmount-devel \
+        libpng-devel \
+        librsvg2 \
+        libusbx-devel \
+        libvala-devel \
+        libxcb-devel \
+        libxkbcommon-devel \
+        libxkbcommon-x11-devel \
+        libzstd-devel \
+        mesa-libEGL-devel \
+        mesa-libGL-devel \
+        mesa-vulkan-drivers \
+        meson \
+        openjpeg2-devel \
+        openldap-devel \
+        openssl-devel \
+        patch \
+        pcre2-devel \
+        perl-lib \
+        python3.12-lxml \
+        readline-devel \
+        rsync \
+        systemd-devel \
+        vala \
+        vulkan-headers \
+        wayland-devel \
+        wget \
+        xcb-util-devel \
+        xcb-util-image \
+        xcb-util-image-devel \
+        xcb-util-keysyms \
+        xcb-util-keysyms-devel \
+        xcb-util-renderutil \
+        xcb-util-renderutil-devel \
+        xcb-util-wm \
+        xcb-util-wm-devel \
+        xorg-x11-util-macros \
+        xz-devel \
+        zlib \
+        zlib-devel \
+    && dnf clean all
+
+# download the necessary linuxdeploy AppImages and extract them because we have no fuse in the container
+RUN set -x \
+    && mkdir -p /tmp/download \
+    && cd /tmp/download \
+    && wget --no-verbose https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20240109-1/linuxdeploy-x86_64.AppImage \
+    && wget --no-verbose https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/1-alpha-20240109-1/linuxdeploy-plugin-qt-x86_64.AppImage \
+    && wget --no-verbose https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/7a3fbc31a9e5075073ff8790f26effbac5f84453/linuxdeploy-plugin-gtk.sh \
+    && wget --no-verbose https://github.com/AppImage/appimagetool/releases/download/1.9.1/appimagetool-x86_64.AppImage \
+    && wget --no-verbose https://github.com/AppImage/type2-runtime/releases/download/20251108/runtime-x86_64 \
+    && echo "f53349093d333a6558c560844c1a0f64a3b6bd077bf02740af3ad3dbb8827433  linuxdeploy-plugin-qt-x86_64.AppImage" > chk \
+    && echo "c86d6540f1df31061f02f539a2d3445f8d7f85cc3994eee1e74cd1ac97b76df0  linuxdeploy-x86_64.AppImage" >> chk \
+    && echo "b0f4cbc684a0103a9651f0955b635eaea0096b3a66c0f5a2c2aa337960375171  linuxdeploy-plugin-gtk.sh" >> chk \
+    && echo "ed4ce84f0d9caff66f50bcca6ff6f35aae54ce8135408b3fa33abfc3cb384eb0  appimagetool-x86_64.AppImage" >> chk \
+    && echo "2fca8b443c92510f1483a883f60061ad09b46b978b2631c807cd873a47ec260d  runtime-x86_64" >> chk \
+    && sha256sum -c chk \
+    && chmod +x linuxdeploy-* \
+    && chmod +x appimagetool-x86_64.AppImage \
+    && mkdir -p /tmp/linuxdeploy \
+    && mkdir -p /tmp/appimagetool \
+    && cd /tmp/linuxdeploy \
+    && /tmp/download/linuxdeploy-plugin-qt-x86_64.AppImage --appimage-extract \
+    && /tmp/download/linuxdeploy-x86_64.AppImage --appimage-extract \
+    && cd /tmp/appimagetool \
+    && /tmp/download/appimagetool-x86_64.AppImage --appimage-extract \
+    && mv /tmp/linuxdeploy/squashfs-root /opt/linuxdeploy \
+    && mv /tmp/appimagetool/squashfs-root /opt/appimagetool \
+    && mkdir -p /opt/appimagetool/runtime \
+    && mv /tmp/download/linuxdeploy-plugin-gtk.sh /usr/local/bin/linuxdeploy-plugin-gtk.sh \
+    && mv /tmp/download/runtime-x86_64 /opt/appimagetool/runtime/runtime-x86_64 \
+    && rm -rf /tmp/download
+
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
