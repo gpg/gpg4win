@@ -1,0 +1,40 @@
+patch -p1 -l -f $* < $0
+exit $?
+
+From 269cc29ef0a97dc4a26807fc48f39c754f57fb9e Mon Sep 17 00:00:00 2001
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@gnupg.com>
+Date: Tue, 3 Nov 2026 15:58:22 +0100
+Subject: [PATCH] Provide help:/-protocol fallback without require .kde.org
+ domain
+
+We build kleopatra with a customized organization domain, and this would
+disable the standard KF6 fallback handling for help:/-urls (if
+khelpcenter is not available, open the online documentation at
+docs.kde.org in a browser). This patch removes that check, to reinstate
+the fallback.
+
+See T8455, T8508
+---
+ src/util/kurlhandler_p.cpp | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/src/util/kurlhandler_p.cpp b/src/util/kurlhandler_p.cpp
+index b556b18..2eec348 100644
+--- a/src/util/kurlhandler_p.cpp
++++ b/src/util/kurlhandler_p.cpp
+@@ -62,13 +62,6 @@ void KUrlHandler::openHelp(const QUrl &url) const
+
+ QUrl KUrlHandler::concatDocsUrl(const QUrl &url) const
+ {
+-    if (QCoreApplication::organizationDomain() != QLatin1String("kde.org")) {
+-        return {};
+-    }
+-
+-    // KHelpCenter is not available and it's a KDE application, open the docs at docs.kde.org
+-    // with the default web browser on the system
+-
+     QString path = url.path();
+     // KHelpClient::invokeHelp() passes the anchor as an "anchor" query item
+     const QString fragment = url.hasFragment() ? url.fragment() : QUrlQuery(url).queryItemValue(QStringLiteral("anchor"));
+--
+2.56.0
