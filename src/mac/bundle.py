@@ -82,7 +82,8 @@ def moveFilesToDestination():
                         error(f"conflicting symlink {f} -> {target} or {os.readlink(bundleDir / dest)}")
                 else:
                     destdir = Path(dest).parent
-                    origresolved = (Path(f.parent) / target).resolve()
+                    # not using Path.resolve(): We don't want to resolve symlinks / drive aliases, here, only simplify ../
+                    origresolved = Path(os.path.normpath(str(f.parent / target)))
                     dest2 = Path(destination(origresolved))
                     print(f"symlink {dest} -> {dest2} (was: {f} -> {target} aka {origresolved})")
                     (bundleDir / dest).symlink_to(relativeTo(dest2, destdir))
