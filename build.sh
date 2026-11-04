@@ -203,7 +203,15 @@ if [ -z "$builddir" ]; then
     if [ "$release" = "yes" ]; then
         builddir="${HOME}/b/$(basename "$srcdir")-mill"
     elif [ "$appimage" = "yes" ]; then
-        builddir="${HOME}/b/$(basename "$srcdir")-appimage"
+        case "${build_image}" in
+            alma-8.10)  builddir="${HOME}/b/$(basename "$srcdir")-appimage-alma810"
+                        ;;
+            alma-9.8)   builddir="${HOME}/b/$(basename "$srcdir")-appimage-alma908"
+                        ;;
+            *)          echo "$PGM: ${build_image}: unknown build image, valid are 'alma-8.10' or 'alma-9.8'"
+                        exit 2
+                        ;;
+        esac
     elif [ "$mac" = "yes" ]; then
         builddir="${HOME}/b/$(basename "$srcdir")-mac"
     else
@@ -1124,16 +1132,14 @@ if [ "$appimage" = "yes" ]; then
     fi
     case "${build_image}" in
         alma-8.10)  docker_image=g10-build-appimage:almalinux810
-                    dockerfile=${srcdir}/docker/appimage-alma810
+                    dockerfile="${srcdir}/docker/appimage-alma810"
                     ;;
         alma-9.8)   docker_image=g10-build-appimage:almalinux908
-                    dockerfile=${srcdir}/docker/appimage-alma908
+                    dockerfile="${srcdir}/docker/appimage-alma908"
                     ;;
-        *)          echo "$PGM: ${build_image}: unknown build image"
-                    exit 2
+        *)          exit 2 # we should never get here after $builddir was defined
                     ;;
     esac
-
 elif [ "$mac" = "yes" ]; then
     version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' $HOME/.gnupg-autogen.rc|cut -d= -f2|xargs)"
     cmd="/src/src/mac/build-macimage.sh $version_signkey"
