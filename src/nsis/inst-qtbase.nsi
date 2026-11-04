@@ -34,6 +34,7 @@ Section "-qtbase" SEC_qtbase
   File "${gpg4win_pkg_qtbase}"
 !else
   SetOutPath "$INSTDIR\bin"
+  File ${prefix}/bin/Qt6Concurrent.dll
   File ${prefix}/bin/Qt6Core.dll
   File ${prefix}/bin/Qt6Gui.dll
   File ${prefix}/bin/Qt6Widgets.dll

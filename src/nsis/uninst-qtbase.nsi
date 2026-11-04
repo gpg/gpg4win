@@ -31,6 +31,7 @@ Section "-un.qtbase"
   Push "${gpg4win_pkg_qtbase_src}"
   Call un.SourceDelete
 !else
+  Delete "$INSTDIR\bin\Qt6Concurrent.dll"
   Delete "$INSTDIR\bin\Qt6Core.dll"
   Delete "$INSTDIR\bin\Qt6Gui.dll"
   Delete "$INSTDIR\bin\Qt6Widgets.dll"
