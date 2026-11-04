@@ -101,7 +101,7 @@ a checksum besides HTTPS, at least confirm the checksum from a second
 source and note that in the comment.  e.g.:
 
 ```
-  # last-changed: 2023-05-03
+  # last changed: 2023-05-03
   # by ah
   # verified: verification of checksum from both sf and freebsd.org
   #           server https://downloads.sourceforge.net
