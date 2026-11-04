@@ -30,7 +30,7 @@ set -e
 usage()
 {
     cat <<EOF
-Usage: $PGM [OPTIONS] PACKAGE VERSION
+Usage: $PGM [OPTIONS] PACKAGE VERSION [SHA256]
 Options:
         [--help]       Show usage information
 EOF
@@ -52,17 +52,20 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-if [ $# -ne 2 ]; then
+if [ $# -lt 2 -o $# -gt 3 ]; then
     usage 1 1>&2
 fi
 
 package=$1
 version=$2
+checksum=$3
 
 curdate=$(date +%Y-%m-%d)
 
+user=$(echo ${EMAIL-$USER}|sed 's/@.*//')
 sig=no
 keyring=no-keyring-set
+verification=
 
 case ${package} in
     gettext | libiconv)
@@ -70,6 +73,10 @@ case ${package} in
         filepathonserver=${package}/${package}-${version}.tar.gz
         sig=yes
         keyring=$(dirname $0)/gnu-keyring.gpg
+        ;;
+    libical)
+        server=https://github.com
+        filepathonserver=libical/libical/releases/download/v${version}/libical-${version}.tar.gz
         ;;
     wayland-protocols)
         server=https://gitlab.freedesktop.org
@@ -92,6 +99,11 @@ case ${package} in
         ;;
 esac
 
+if [ "${sig}" == "no" -a -z "${checksum}" ]; then
+    echo "$PGM: error: The package '${package}' is not signed. You have to provide the SHA-256 checksum." >&2
+    usage 1 1>&2
+fi
+
 tmpdir=$(mktemp -d -t gen-package.XXXXXXXXXX)
 
 tarfileurl=${server}/${filepathonserver}
@@ -102,6 +114,19 @@ if ! curl -L --silent --show-error --fail "${tarfileurl}" > "$tmpdir/${tarfile}"
     exit 1
 fi
 
+if [ -n ${checksum} ]; then
+    sha256filepath=${tmpdir}/${tarfile}.sha256
+    echo "Verifying checksum..." >&2
+    echo "${checksum}  ${tarfile}" > ${sha256filepath}
+    curdir=$(pwd)
+    cd ${tmpdir}
+    if ! sha256sum --check ${sha256filepath} >&2; then
+        echo "Checksum for ${tmpdir}/${tarfile} is not valid!" >&2
+        exit 1
+    fi
+    cd ${curdir}
+    verification="verification of checksum provided by ${user}"
+fi
 if [ "${sig}" == "yes" ]; then
     sigfileurl=${tarfileurl}.sig
     sigfile=$(basename ${sigfileurl})
@@ -115,17 +140,20 @@ if [ "${sig}" == "yes" ]; then
         echo "Signature for $tmpdir/${tarfile} is not valid!" >&2
         exit 1
     fi
+    if [ -n ${checksum} ]; then
+        echo "Calculating checksum..." >&2
+        checksum=$(sha256sum $tmpdir/${tarfile} | cut -d ' ' -f 1)
+    fi
+    verification="PGP signed by ${keyring##*/} (created by gen-package.sh)"
 fi
-
-sha2=$(sha256sum $tmpdir/${tarfile} | cut -d ' ' -f 1)
 
 cat > ${tmpdir}/snippet <<EOF
 # ${package}
 # last changed: ${curdate}
-# by $(echo ${EMAIL-$USER}|sed 's/@.*//')
-# verified: PGP signed by ${keyring##*/} (created by gen-package.sh)
+# by ${user}
+# verified: ${verification}
 file ${filepathonserver}
-chk  $sha2
+chk  ${checksum}
 
 EOF
 
