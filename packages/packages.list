@@ -118,11 +118,11 @@ chk a695fbe19c0165f295a8531b1e4e855cd94d0875d2f88ec4b61080677e27188a
 #chk  0333806d6adecc6f7a91243b2b839ff4d2053823634d4f6ed7a59bc87409122a
 
 # libical
-# last changed: 2023-07-31
-# by ah
-# verified: verification of checksum from multiple sources e.g. homebrew
-file libical/libical/releases/download/v3.0.16/libical-3.0.16.tar.gz
-chk  b44705dd71ca4538c86fb16248483ab4b48978524fb1da5097bd76aa2e0f0c33
+# last changed: 2026-11-04
+# by ingo
+# verified: verification of checksum provided by ingo
+file libical/libical/releases/download/v3.0.20/libical-3.0.20.tar.gz
+chk  e73de92f5a6ce84c1b00306446b290a2b08cdf0a80988eca0a2c9d5c3510b4c2
 
 # last changed: 2023-09-29
 # by ah
