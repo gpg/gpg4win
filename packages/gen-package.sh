@@ -30,7 +30,7 @@ set -e
 usage()
 {
     cat <<EOF
-Usage: $PGM [OPTIONS] VERSION PACKAGE
+Usage: $PGM [OPTIONS] PACKAGE VERSION
 Options:
         [--help]       Show usage information
 EOF
@@ -56,8 +56,8 @@ if [ $# -ne 2 ]; then
     usage 1 1>&2
 fi
 
-version=$1
-package=$2
+package=$1
+version=$2
 
 curdate=$(date +%Y-%m-%d)
 
