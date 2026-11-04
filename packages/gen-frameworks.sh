@@ -120,14 +120,14 @@ for fw in $FRAMEWORKS; do
     cat > ${tmpdir}/snippet <<EOF
 # ${fw}
 # last changed: ${curdate}
-# by: $USER
+# by $USER
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
 file ${majorversion}/${tarfile}
 chk ${sha2}
 
 EOF
 
-perl -i -p0e "s@# ${fw}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
+perl -i -p0e "s@# ${fw}\n# last changed:.*?\n# by.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
 '@se" packages.list
 done
 

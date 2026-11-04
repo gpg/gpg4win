@@ -88,14 +88,14 @@ for package in $GEARS; do
     cat > ${tmpdir}/snippet <<EOF
 # ${package}
 # last changed: ${curdate}
-# by: $(echo ${EMAIL-$USER}|sed 's/@.*//')
+# by $(echo ${EMAIL-$USER}|sed 's/@.*//')
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)
 file ${fullversion}/src/${tarfile}
 chk $sha2
 
 EOF
 
-perl -i -p0e "s@# ${package}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
+perl -i -p0e "s@# ${package}\n# last changed:.*?\n# by.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
 '@se" packages.list
 done
 

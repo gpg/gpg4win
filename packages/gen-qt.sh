@@ -113,7 +113,7 @@ for module in $packages; do
     cat > ${tmpdir}/snippet <<EOF
 # ${module}
 # last changed: ${curdate}
-# by: $USER
+# by $USER
 # verified: mirror sha256sum (created by gen-qt.sh)"
 name ${resultingtarfile}
 file ${majorversion}/${fullversion}/submodules/${tarfile}
@@ -121,7 +121,7 @@ chk ${sha2}
 
 EOF
 
-perl -i -p0e "s@# ${module}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nname.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
+perl -i -p0e "s@# ${module}\n# last changed:.*?\n# by.*?\n# verified:.*?\nname.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
 '@se" packages.list
 done
 
