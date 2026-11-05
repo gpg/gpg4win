@@ -820,11 +820,11 @@ chk 6792cb7c69205007ad87d2e936cecc5b3a31fac29ab54ffc3175fdb6b2a6ce35
 server https://gnupg.net/snapshots
 
 # okular
-# last changed: 2026-10-08
-# by sune
-# verified: Tarball created by sune.
-file okular/okular-202610081029.tar.xz
-chk 949ffbcf8b0e84d32fcee0617afcd436d23c69d04e2626209e66bd0f91e0c64a
+# last changed: 2026-11-02
+# by: sunedocker
+# verified: Tarball created by sunedocker.
+file okular/okular-202611021005.tar.xz
+chk d834843c851a5c94d6e9c1705e8634e5424aaf6a96226c7f4cd80fdab9174116
 
 fi
 
