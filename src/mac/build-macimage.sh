@@ -23,10 +23,11 @@
 
 set -e
 
-BUILDROOT=/build
-SRCDIR=/src
+BUILDROOT=${PLAYGROUND}
+SRCDIR=${TOPSRCDIR}
 INSTDIR=${BUILDROOT}/install
 TARGETIMAGENAME=Gpg4mac
+VERSIONSTRING=$(grep PACKAGE_VERSION ${BUILDROOT}/config.h|sed -n 's/.*"\(.*\)"$/\1/p')
 
 # Check for the buildtype and existence of required files
 # early
@@ -46,7 +47,7 @@ cd ${BUILDROOT}
 make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT} TARGETIMAGENAME=${TARGETIMAGENAME} CMAKE=${INSTDIR}/bin/cmake
 
 # TODO: write and sign version file (see appimage scripts)
-python3 ${SRCDIR}/src/mac/bundle.py "${INSTDIR}" ${TARGETIMAGENAME} "${BUILDROOT}/${TARGETIMAGENAME}.dmg"
+python3 ${SRCDIR}/src/mac/bundle.py "${INSTDIR}" "${TARGETIMAGENAME}" "$VERSIONSTRING" "${BUILDROOT}"
 
 echo ready
 exit 0

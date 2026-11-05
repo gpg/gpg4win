@@ -355,7 +355,7 @@ def finalizeBundle():
     # subprocess.run(["codesign", "verify", "strict", "deep", "verbose=20", str(bundleDir.parent)]).check_returncode()
 
 
-def createDMG(stagingFolder: Path, imageName: str, outfile: Path):
+def createDMG(stagingFolder: Path, imageName: str, versionString: str, outdir: Path):
     # To avoid extra dependencies and / or osascript hacks, we use a very simple
     # approach to DMG styling, borrowed from:
     # https://github.com/remko/fancy-dmg/blob/master/Makefile
@@ -364,7 +364,10 @@ def createDMG(stagingFolder: Path, imageName: str, outfile: Path):
     print("Creating dmg")
     sys.stdout.flush()
     dirName = imageName + '.app'
-    templateFile = Path(str(outfile) + ".template.dmg")
+    outfile = Path(outdir / (imageName + "-" + versionString + ".dmg"))
+    templateFile = Path(outdir / (imageName + ".template.dmg"))
+    if os.path.exists(outfile):
+        os.remove(outfile)
     if not os.path.exists(templateFile):
         print(f"No DMG template found. For a fancier installer style {templateFile}, manually, and run again.")
         dummy = tempfile.TemporaryDirectory()
@@ -386,6 +389,7 @@ def createDMG(stagingFolder: Path, imageName: str, outfile: Path):
     print(f"Converting to compressed image")
     subprocess.run(["hdiutil", "convert", wcFile, "-format", "UDZO", "-imagekey", "zlib-level=9", "-o", outfile]).check_returncode()
     os.remove(wcFile)
+    return outfile
 
 # Steps to do:
 # - Copy all files to their final destination (relative to a staging dir)
@@ -398,9 +402,8 @@ def createDMG(stagingFolder: Path, imageName: str, outfile: Path):
 
 srcPrefix = Path(sys.argv[1])
 imageName = sys.argv[2]
-outFile = Path(sys.argv[3])
-if os.path.exists(outFile):
-    os.remove(outFile)
+versionString = sys.argv[3]
+outDir = Path(sys.argv[4])
 
 stagingDir = tempfile.TemporaryDirectory()
 destPrefix = Path(stagingDir.name)
@@ -411,7 +414,7 @@ moveFilesToDestination()
 # purgeUnusedLibs()
 # stripBinaries()
 finalizeBundle()
-createDMG(destPrefix, imageName, outFile)
+outFile = createDMG(destPrefix, imageName, versionString, outDir)
 stagingDir.cleanup()
 print(f"DMG created at {outFile}")
 # signAndNotarize()
