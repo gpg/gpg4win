@@ -135,7 +135,7 @@ appimage_kdepkgs = cmake gpgmepp qgpgme \
 		   kcolorscheme sonnet ktextwidgets kauth kstatusnotifieritem \
 		   threadweaver kparts poppler okular \
 		   libqrencode \
-		   prison gpgpass \
+		   prison gpgpass brotli \
 		   qtbase qttools qtsvg qttranslations qtwayland \
 		   plasma-wayland-protocols breeze tiff\
 		   libayatana-ido libayatana-indicator libayatana-appindicator
