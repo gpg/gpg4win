@@ -135,10 +135,11 @@ appimage_kdepkgs = cmake gpgmepp qgpgme \
 		   kcolorscheme sonnet ktextwidgets kauth kstatusnotifieritem \
 		   threadweaver kparts poppler okular \
 		   libqrencode \
-		   prison gpgpass brotli \
+		   prison gpgpass harfbuzz brotli \
 		   qtbase qttools qtsvg qttranslations qtwayland \
 		   plasma-wayland-protocols breeze tiff\
-		   libayatana-ido libayatana-indicator libayatana-appindicator
+		   libayatana-ido libayatana-indicator libayatana-appindicator \
+		   set_target_properties(harfbuzz-subset PROPERTIES VISIBILITY_INLINES_HIDDEN TRUE)
 
 appimage_bpkgs = wayland-protocols
 
@@ -184,7 +185,8 @@ appimage_pkg_qtbase_configure = \
         -DFEATURE_system_freetype=ON \
         -DFEATURE_system_pcre2=ON \
         -DFEATURE_system_jpeg=ON \
-        -DFEATURE_system_zlib=ON \
+        -DFEATURE_system_zlib=ON \ \
+        -DFEATURE_system_harfbuzz=ON \
         -DFEATURE_xcb=ON \
         -DFEATURE_use_gold_linker_alias=OFF \
         -DFEATURE_wayland_server=OFF \
@@ -270,6 +272,7 @@ appimage_pkg_poppler_configure = \
     -DENABLE_QT5=OFF \
     -DENABLE_LCMS=OFF \
     -DENABLE_LIBCURL=OFF \
+    -DENABLE_HARFBUZZ=ON \
     -DBUILD_QT6_TESTS=OFF
 
 appimage_pkg_okular_configure = \

@@ -504,6 +504,7 @@ if test "$build_appimage" = yes ; then
     # poppler requires tiff >= 4.3
     APPIMAGE_KDEPKG([tiff], [cmake])
     APPIMAGE_KDEPKG([brotli])
+    APPIMAGE_KDEPKG([harfbuzz])
     APPIMAGE_SPKG([xcb-util-cursor])
 
     APPIMAGE_SPKG([libgpg-error])
@@ -521,7 +522,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([paperkey])
 
     # Qt related stuff.
-    APPIMAGE_KDEPKG([qtbase], [cmake freetype xcb-util-cursor])
+    APPIMAGE_KDEPKG([qtbase], [cmake freetype xcb-util-cursor harfbuzz])
     APPIMAGE_KDEPKG([qttools], [qtbase])
     APPIMAGE_KDEPKG([qttranslations], [qtsvg qttools])
     APPIMAGE_KDEPKG([qtsvg], [qtbase])
@@ -578,7 +579,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([kleopatra], [mimetreeparser qgpgme breeze-icons kdsingleapplication kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons kstatusnotifieritem])
 
     # Okular/Poppler
-    APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff brotli])
+    APPIMAGE_KDEPKG([poppler], [gpgmepp kio qtbase freetype tiff brotli harfbuzz])
     APPIMAGE_KDEPKG([okular], [kparts gpgmepp kio poppler threadweaver qtsvg])
 
     # ministart
