@@ -138,8 +138,7 @@ appimage_kdepkgs = cmake gpgmepp qgpgme \
 		   prison gpgpass harfbuzz brotli \
 		   qtbase qttools qtsvg qttranslations qtwayland \
 		   plasma-wayland-protocols breeze tiff\
-		   libayatana-ido libayatana-indicator libayatana-appindicator \
-		   set_target_properties(harfbuzz-subset PROPERTIES VISIBILITY_INLINES_HIDDEN TRUE)
+		   libayatana-ido libayatana-indicator libayatana-appindicator
 
 appimage_bpkgs = wayland-protocols
 
@@ -157,6 +156,9 @@ endef
 
 appimage_pkg_cmake_configure = \
         -DCMAKE_USE_OPENSSL=OFF
+
+appimage_pkg_harfbuzz_configure = \
+        -DBUILD_SHARED_LIBS=ON
 
 appimage_pkg_gpgme_configure = \
     --enable-languages= \
