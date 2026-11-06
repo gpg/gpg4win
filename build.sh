@@ -378,7 +378,7 @@ if  [ "$appimage_docker_build" = "yes" ] ; then
 
         [ -z "$verbose" ] || echo "$PGM (AppImage): signkey      : ${SIGNKEY}" | tee -a ${logfile} >&2
 
-        ${srcdir}/build.sh --runcmd gpg --yes -o "${VERSION_FILE}.sig" -bau "${SIGNKEY}" "${VERSION_FILE}"
+        /src/build.sh --runcmd gpg --yes -o "${VERSION_FILE}.sig" -bau "${SIGNKEY}" "${VERSION_FILE}"
         chmod 0644 "${VERSION_FILE}.sig"
     )
 
@@ -1116,9 +1116,9 @@ if [ "$appimage" = "yes" ]; then
             echo "No signing key defined, which is mandatory for buildtypes vsd, vsd3 and gpd!"
             exit 1
         fi
-        cmd="${srcdir}/build.sh --appimage --signkey=${version_signkey} ${docker_cmd_extras}"
+        cmd="/src/build.sh --appimage --signkey=${version_signkey} ${docker_cmd_extras}"
     else
-        cmd="${srcdir}/build.sh --appimage ${docker_cmd_extras}"
+        cmd="/src/build.sh --appimage ${docker_cmd_extras}"
     fi
     case "${build_image}" in
         alma-8.10)  docker_image=g10-build-appimage:almalinux810
@@ -1136,9 +1136,9 @@ elif [ "$mac" = "yes" ]; then
 else
     # We will run our self again in the docker image.
     if [ "$w64" = "yes" ]; then
-        cmd="${srcdir}/build.sh ${docker_cmd_extras}"
+        cmd="/src/build.sh ${docker_cmd_extras}"
     else
-        cmd="${srcdir}/build.sh --w32 ${docker_cmd_extras}"
+        cmd="/src/build.sh --w32 ${docker_cmd_extras}"
     fi
     [ $dist != yes ] || cmd="$cmd --dist"
     [ $force != yes ] || cmd="$cmd --force"
