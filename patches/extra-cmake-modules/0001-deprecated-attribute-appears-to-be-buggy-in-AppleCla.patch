@@ -1,0 +1,29 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 5cf5c20771d53ff59bbaa7e45e9e256b24b315e3 Mon Sep 17 00:00:00 2001
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@gnupg.com>
+Date: Fri, 6 Nov 2026 08:42:05 +0100
+Subject: [PATCH] [[deprecated]] attribute appears to be buggy in AppleClang
+ 21.0
+
+---
+ modules/ECMGenerateExportHeader.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/ECMGenerateExportHeader.cmake b/modules/ECMGenerateExportHeader.cmake
+index dbd36200..f90fb4d4 100644
+--- a/modules/ECMGenerateExportHeader.cmake
++++ b/modules/ECMGenerateExportHeader.cmake
+@@ -620,7 +620,7 @@ function(ecm_generate_export_header target)
+     elseif (ARGS_DEPRECATED_ATTRIBUTE_TYPE)
+         message(FATAL_ERROR "DEPRECATED_ATTRIBUTE_TYPE has to be one of STANDARD and COMPILER, was \"${ARGS_DEPRECATED_ATTRIBUTE_TYPE}\".")
+     else()
+-        if (ECM_GLOBAL_FIND_VERSION VERSION_LESS 6.28)
++        if (ECM_GLOBAL_FIND_VERSION VERSION_LESS 6.28 OR CMAKE_C_COMPILER_ID MATCHES "Clang")
+             set(_use_std_attribute FALSE)
+         else()
+             set(_use_std_attribute TRUE)
+--
+2.56.0
