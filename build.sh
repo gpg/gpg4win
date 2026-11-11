@@ -1132,7 +1132,7 @@ if [ "$appimage" = "yes" ]; then
     esac
 elif [ "$mac" = "yes" ]; then
     version_signkey="$(grep '^[[:blank:]]*VERSION_SIGNKEY[[:blank:]]*=' $HOME/.gnupg-autogen.rc|cut -d= -f2|xargs)"
-    cmd="${srcdir}/src/mac/build-macimage.sh $version_signkey"
+    cmd="./src/mac/build-macimage.sh $version_signkey"
 else
     # We will run our self again in the docker image.
     if [ "$w64" = "yes" ]; then
@@ -1599,8 +1599,12 @@ if [ -z "$mac" ] ;then
     err="${PIPESTATUS[0]}"
     echo >&2 "$PGM: docker finished. rc=$err" | tee -a ${logfile} >&2
 else
+    if [ "$clean" = "yes" ] ; then
+        echo >&2 "$PGM: Cleaning build dir on builder"
+        ${srcdir}/src/mac/run_on_builder.sh --srcdir=${srcdir} --builddir=${builddir} --nosync -- "rm -rf \$PLAYGROUND" 2>&1 | tee -a ${logfile}
+    fi
     echo >&2 "$PGM: building on MacOS (without docker): $cmd"
-    TOPSRCDIR=${srcdir} PLAYGROUND=${builddir} $cmd 2>&1 | tee -a ${logfile}
+    ${srcdir}/src/mac/run_on_builder.sh --srcdir=${srcdir} --builddir=${builddir} -- $cmd 2>&1 | tee -a ${logfile}
     err="${PIPESTATUS[0]}"
     echo >&2 "$PGM: mac build finished. rc=$err" | tee -a ${logfile} >&2
 fi

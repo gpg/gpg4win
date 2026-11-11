@@ -1,34 +1,31 @@
 Status / Hints / TODO list for MacOS builds
 
 - Requirements:
-  - system installs:
-    - need full xcode; command line tools are not enough building qtbase
-  - Required tools not in MacOS/XCode (or not in a usable version)
-    Install these e.g. from homebrew:
-    - autoconf, automake (need to be in PATH only while running autogen.sh)
+  - full Xcode; command line tools are not enough for some packages
+    (only required on the (virtual) machine *doing* the actual build)
+  - autoconf / automake (only for running ./autogen.sh); e.g. from homebrew
+    (only required on the machine *controlling* the build)
 
 - Setup:
-  - We need a case sensitive filesystem for building, which is not the default:
+  - Optionally create src/mac/vmconfig to build on a distinct (virtual) machine
+    See src/mac/vmconfig.example.
+  - On the builder, you need a case sensitive filesystem, which is not the default:
     sudo diskutil apfs addVolume disk3 APFSX BuildFS
     (assuming disk3 is the "synthesized" disk as given by `diskutil list`)
     This creates and mounts /Volumes/BuildFS . The important spec is "APFSX".
 
 - Building (in gpg4win repo dir):
   echo "default" > packages/BUILDTYPE              # once
-  PATH=/path/with/autotools:$PATH ./autogen.sh     # once, and after touching the build system
-  ./build.sh --download --mac --builddir=/Volumes/BuildFS
+  ./autogen.sh                                     # once, and after touching the build system
+  ./build.sh --download --mac
 
 - Running:
   Many things will not work properly until bundled/installed. Currently only an
   installation in /Applications/ is supported.
 
 - Implementation Notes / TODO:
-  - We cannot run MacOS as a docker guest, so need a different setup.
-    For now we just bypass that (internal --nodocker option), but that's
-    just a temporary hack. We probably want to run in a VM.
-    https://github.com/s-u/macosvm looks like a good candidate that supports
-    MacOS arm64 on arm64, and is geared towards builder scenarios.
-  - At a minimum, we should gather non-system build-deps in a ro volume
+  - MacOS cannot run as a docker guest, so we support building in a VM, instead
+  - We should write a setup script for that, and/or archive snapshots
   - For the time being, several places assume fixed absolute paths for install locations.
     This may not be entirely uncommon on MacOS, but prevents a portable
     install, ATM. Affected places:
@@ -42,20 +39,14 @@ Status / Hints / TODO list for MacOS builds
     in MacOS 26.05
   - the bundle still has quite a few unused files. Copy rsync filters from
     AppImage, after all? Paths are not the same, however.
-  - gpgapplemail needs codesigning to work codesignin ids are taken from env:
-    CODESIGN_ID="Apple Development" CODESIGN_TEAMID="XYZ" ./build.sh --mac ...
+  - gpgapplemail needs codesigning to work. codesigning ids are configured in src/mac/vmconfig
   - gpgapplemail needs to be configured with cmake and built using Xcode. As it
     is the only package with that requirement, this is solved via an ugly hack in
     KDEPKG in macimage.mk.in
-  - Everything _can_ now be built without external (non-sytem) runtime deps.
-    To make sure the build system does not pick up non-system files, such as from a
-    homebrew installation, we check for remaining bad dependencies during bundling
-    (src/mac/bundle.py).
-    - Should a bad dependency get picked up, try trimming down the PATH!
 
 - Further TODOs:
   - installer is still very basic
   - provide gpgconf.ctl
   - provide signed version
   - provision for gpd vs vsd-builds (later)
-  - bundle identifier currently hardcoded as org.kde.kleopatra
+  - bundle identifiers currently hardcoded in src/mac/bundle.py

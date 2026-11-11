@@ -1,0 +1,26 @@
+# Example config file for building in a VM. Customize this to your needs.
+# Note that you will have to set up the VM manually. Including:
+# - Install MacOS
+# - Install Xcode, accept licence agreement
+# - Create a case sensitive volume for building
+# - Optionally create non-privileged user for builds
+# - Enable remote log-in (ssh)
+# - Optionally ssh-copy-id (from host to VM)
+# - Optionally disable password-based ssh-login in VM
+#
+# Note: The build VM does not necessarily need to live on the host machine.
+#
+# This file may include commands needed to ensure the VM is up and running,
+# but it's also ok to do so manually.
+
+# The script must set the following variables:
+user=builder
+host=192.168.64.2
+vmsrcdir=/Users/${user}/gpg4winvm/src       # where to keep sources
+vmbuilddir=/Volumes/BuildFS                 # where to build
+
+# The script may optionally set the following variables:
+codesign_id="Apple Development"             # Alternatively, set to "-" for local signing. Default (empty) means no signing
+codesign_teamid=                            # For selection of the correct provisioning profile
+sync="no"                                   # If the source dir is already mapped to vmsrcdir in your VM
+                                            # you can shave a few seconds of the build time by setting this.

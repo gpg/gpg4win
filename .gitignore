@@ -64,6 +64,7 @@ src/signed_installers
 /VERSION
 /src/gccwrap.sh
 /src/gpg4win.w32-manifest.in
+/src/mac/vmconfig
 /src/nsis/config.nsi
 /src/toolchain-native.cmake
 /src/versioninfo.rc.in

@@ -39,15 +39,29 @@ if [ "${BUILDTYPE}" = "vsd" -o "${BUILDTYPE}" = "vsd3" -o "${BUILDTYPE}" = "gpd"
     exit 2
 fi
 
+# Avoid failing midway through the build, particularly on MacOS
+check_case_sensitive_fs() {
+    rm -f "$1/CaseSensitivityTest*"
+    touch "$1/CaseSensitivityTestA"
+    if test -f "$1/CaseSensitivityTesta" ; then
+        rm -f "$1/CaseSensitivityTestA"
+        echo "ERROR: Build dir must be on a case sensitive file system ($1 is not)."
+        exit 1
+    fi
+    rm -f "$1/CaseSensitivityTestA"
+}
+check_case_sensitive_fs "${BUILDROOT}"
+
 # The actual build
 cd ${BUILDROOT}
 PATH=/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
+echo "Running ${SRCDIR}/configure --enable-macimage --with-playground=${BUILDROOT}"
 ${SRCDIR}/configure --enable-macimage --with-playground=${BUILDROOT}
 cd ${BUILDROOT}
 make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT} TARGETIMAGENAME=${TARGETIMAGENAME} CMAKE=${INSTDIR}/bin/cmake
 
 # TODO: write and sign version file (see appimage scripts)
-python3 ${SRCDIR}/src/mac/bundle.py "${INSTDIR}" "${TARGETIMAGENAME}" "$VERSIONSTRING" "${BUILDROOT}"
+python3 ${SRCDIR}/src/mac/bundle.py "${INSTDIR}" "${TARGETIMAGENAME}" "$VERSIONSTRING" "${BUILDROOT}/artifacts"
 
 echo ready
 exit 0

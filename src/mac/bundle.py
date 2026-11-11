@@ -367,6 +367,8 @@ def createDMG(stagingFolder: Path, imageName: str, versionString: str, outdir: P
     # copy in the new files. The template dmg can be styled, manually.
     print("Creating dmg")
     sys.stdout.flush()
+    if not os.path.exists(outdir):
+        outdir.mkdir(parents=True)
     dirName = imageName + '.app'
     outfile = Path(outdir / (imageName + "-" + versionString + ".dmg"))
     templateFile = Path(outdir / (imageName + ".template.dmg"))
