@@ -328,10 +328,11 @@ AC_CHECK_PROGS(WGET, wget)
 #
 # Set source and build directory.
 #
-# They are always set to the directories seen outside of the
-# container.
+# TOPSRCDIR and PLAYGROUND are paths as seen outside the container.
+# CTOPSRCDIR is the path to TOPSCRDIR as seen in the current environment.
 #
 TOPSRCDIR="mym4_tsdir"
+CTOPSRCDIR="$(cd "$(dirname "$0")"; pwd)"
 AC_ARG_WITH([playground],
        AS_HELP_STRING([--with-playground=DIR],
                       [Use DIR as the build directory]),
@@ -365,7 +366,7 @@ AC_SUBST(PLAYGROUND)
 # NSIFILES := The to-be generated translation files in the NSI format.
 #             (w/o directory)
 #
-posrcdir=$TOPSRCDIR/po
+posrcdir=$CTOPSRCDIR/po
 LINGUAS=$(sed -e "/^#/d" -e "s/#.*//" "$posrcdir/LINGUAS" | xargs -- )
 POTFILES=$(for f in $(sed -e "/^#/d" -e "s/#.*//" "$posrcdir/POTFILES");\
            do echo "$posrcdir/$f"; done | xargs -- )
@@ -726,8 +727,8 @@ fi
 # packages_dirpfx is set depending on whether we are running under
 # docker.  See also GPG4WIN_PACKAGES.
 packages_dirpfx=
-test -f ${TOPSRCDIR}/packages/BUILDTYPE && packages_dirpfx=${TOPSRCDIR}
-packages_files=${packages_dirpfx}packages/packages.list
+test -f ${CTOPSRCDIR}/packages/BUILDTYPE && packages_dirpfx=${CTOPSRCDIR}
+packages_files=${packages_dirpfx}/packages/packages.list
 if test -n "$gpg4win_dup_sources"; then
     tmp=
     for i in $gpg4win_dup_sources; do
@@ -739,7 +740,7 @@ You might remove them with:"
     for i in $gpg4win_rm_candidates; do
         if ! grep -q $(basename $i) $packages_files; then
             tmp2="$tmp2
-rm $i"
+rm $(echo $i | sed s@$CTOPSRCDIR@$TOPSRCDIR@)"
         fi
     done
     AC_MSG_ERROR([Packages with more that one source version:$tmp$tmp2])
@@ -756,7 +757,7 @@ You might remove them with:"
     for i in $appimage_rm_candidates; do
         if ! grep -q $(basename $i) $packages_files; then
             tmp2="$tmp2
-rm $i"
+rm $(echo $i | sed s@$CTOPSRCDIR@$TOPSRCDIR@)"
         fi
     done
     AC_MSG_ERROR([Packages with more that one source version:$tmp$tmp2])
@@ -773,7 +774,7 @@ You might remove them with:"
     for i in $macimage_rm_candidates; do
         if ! grep -q $(basename $i) $packages_files; then
             tmp2="$tmp2
-rm $i"
+rm $(echo $i | sed s@$CTOPSRCDIR@$TOPSRCDIR@)"
         fi
     done
     AC_MSG_ERROR([Packages with more that one source version:$tmp$tmp2])
@@ -823,7 +824,7 @@ echo -n "
         Main platform : $host
         Extra platform: ${GPGEX_ADD_HOST}
         Distribution .: ${PRODUCT_NAME} (mym4_buildtype)
-        Source dir ...: ${TOPSRCDIR}
+        Source dir ...: ${TOPSRCDIR} -> ${CTOPSRCDIR}
         Build dir ....: ${PLAYGROUND}
 "
 if test -n "$JOBS"; then
