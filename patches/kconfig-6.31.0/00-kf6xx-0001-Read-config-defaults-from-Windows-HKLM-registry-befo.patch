@@ -1,0 +1,145 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From f34f58ecd4bcc8fc90e0f2427f0aeac35f067a37 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 11 Nov 2026 14:11:01 +0100
+Subject: [PATCH] Read config defaults from Windows HKLM registry before system
+ files
+
+This allows Windows admins to overrule immutable defaults defined in
+(installed) system files.
+---
+ src/core/kconfig.cpp      | 15 +++++++++++----
+ src/core/kconfig_p.h      |  9 ++++++++-
+ src/core/registry_win.cpp | 15 ++-------------
+ src/core/registry_win_p.h |  7 ++++++-
+ 4 files changed, 27 insertions(+), 19 deletions(-)
+
+diff --git a/src/core/kconfig.cpp b/src/core/kconfig.cpp
+index ab12b39d..f346e23b 100644
+--- a/src/core/kconfig.cpp
++++ b/src/core/kconfig.cpp
+@@ -710,6 +710,13 @@ void KConfig::reparseConfiguration()
+         s_globalFilesAreInitialized = false;
+     }
+
++#ifdef Q_OS_WIN
++    // Parse the Windows registry defaults for the local machine if desired
++    if (d->openFlags & ~KConfig::SimpleConfig) {
++        d->parseWindowsDefaults(WindowsRegistry::Root::HKLM);
++    }
++#endif
++
+     // Parse all desired files from the least to the most specific.
+     bool globalConfigFileIsImmutable = false;
+     if (d->wantGlobals()) {
+@@ -720,9 +727,9 @@ void KConfig::reparseConfiguration()
+     }
+
+ #ifdef Q_OS_WIN
+-    // Parse the windows registry defaults if desired
++    // Parse the Windows registry defaults for the current user if desired
+     if (d->openFlags & ~KConfig::SimpleConfig) {
+-        d->parseWindowsDefaults();
++        d->parseWindowsDefaults(WindowsRegistry::Root::HKCU);
+     }
+ #endif
+
+@@ -843,13 +850,13 @@ void KConfigPrivate::parseGlobalUserFiles()
+ }
+
+ #ifdef Q_OS_WIN
+-void KConfigPrivate::parseWindowsDefaults()
++void KConfigPrivate::parseWindowsDefaults(WindowsRegistry::Root root)
+ {
+     if (QCoreApplication::organizationName().isEmpty() || fileName.isEmpty() || QFileInfo(fileName).isAbsolute()) {
+         return;
+     }
+     const QString registryKey = QCoreApplication::organizationName() + u'/' + (fileName.endsWith(QStringLiteral("rc")) ? fileName.chopped(2) : fileName);
+-    WindowsRegistry::parse(registryKey, entryMap);
++    WindowsRegistry::parse(registryKey, entryMap, root);
+ }
+ #endif
+
+diff --git a/src/core/kconfig_p.h b/src/core/kconfig_p.h
+index c36f574c..a0b8a349 100644
+--- a/src/core/kconfig_p.h
++++ b/src/core/kconfig_p.h
+@@ -21,6 +21,13 @@
+ #include <QStack>
+ #include <QStringList>
+
++#ifdef Q_OS_WIN
++namespace WindowsRegistry
++{
++enum class Root;
++}
++#endif
++
+ class KConfigPrivate
+ {
+     friend class KConfig;
+@@ -121,7 +128,7 @@ private:
+     void parseGlobalUserFiles();
+     void parseSystemConfigFiles();
+ #ifdef Q_OS_WIN
+-    void parseWindowsDefaults();
++    void parseWindowsDefaults(WindowsRegistry::Root root);
+ #endif
+     void parseUserConfigFiles();
+     void initCustomized(KConfig *);
+diff --git a/src/core/registry_win.cpp b/src/core/registry_win.cpp
+index dac5c0d1..b3b37777 100644
+--- a/src/core/registry_win.cpp
++++ b/src/core/registry_win.cpp
+@@ -12,11 +12,6 @@
+
+ #include <QSettings>
+
+-enum Registry {
+-    HKLM,
+-    HKCU,
+-};
+-
+ static void parseRegValues(const QString &groupName, QSettings &settings, KEntryMap &entryMap, bool groupImmutable)
+ {
+     for (auto &key : settings.childKeys()) {
+@@ -59,16 +54,10 @@ static void parseRegSubkeys(const QString &baseGroup, QSettings &settings, KEntr
+     }
+ }
+
+-static void parseRegistry(const QString &regKey, KEntryMap &entryMap, Registry registry)
++void WindowsRegistry::parse(const QString &regKey, KEntryMap &entryMap, Root root)
+ {
+-    QSettings settings((registry == HKCU ? QStringLiteral("HKEY_CURRENT_USER\\SOFTWARE") : QStringLiteral("HKEY_LOCAL_MACHINE\\SOFTWARE")),
++    QSettings settings((root == Root::HKCU ? QStringLiteral("HKEY_CURRENT_USER\\SOFTWARE") : QStringLiteral("HKEY_LOCAL_MACHINE\\SOFTWARE")),
+                        QSettings::NativeFormat);
+     settings.beginGroup(regKey);
+     parseRegSubkeys(QStringLiteral("<default>"), settings, entryMap, false);
+ }
+-
+-void WindowsRegistry::parse(const QString &regKey, KEntryMap &entryMap)
+-{
+-    parseRegistry(regKey, entryMap, HKLM);
+-    parseRegistry(regKey, entryMap, HKCU);
+-}
+diff --git a/src/core/registry_win_p.h b/src/core/registry_win_p.h
+index ab4ba97b..268d8370 100644
+--- a/src/core/registry_win_p.h
++++ b/src/core/registry_win_p.h
+@@ -9,5 +9,10 @@
+
+ namespace WindowsRegistry
+ {
+-void parse(const QString &regKey, KEntryMap &entryMap);
++enum class Root {
++    HKLM,
++    HKCU,
++};
++
++void parse(const QString &regKey, KEntryMap &entryMap, Root rootkey);
+ }
+--
+2.56.0

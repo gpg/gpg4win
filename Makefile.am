@@ -59,6 +59,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/gpgol-2.7.2/0001-Require-C-17.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kconfig-6.31.0/00-kf632-0001-Ensure-locale-name-with-language-code-and-country-co.patch \
+             patches/kconfig-6.31.0/00-kf6xx-0001-Read-config-defaults-from-Windows-HKLM-registry-befo.patch \
              patches/kconfig/0001-g10-Set-organization-name-of-kreadconfig-for-Windows.patch \
              patches/kf5/breeze-icons/subset-crossbuild.patch \
              patches/kf5/kconfig/0001-Read-defaults-from-Windows-registry.patch \
