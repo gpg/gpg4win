@@ -1,0 +1,31 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@gnupg.com>
+
+Qt applies a default activation policy of NSApplicationActivationPolicyRegular,
+which makes the app appear like a regular GUI application, including automatic
+addition to the Dock while running, and as a recently used item.
+
+Using NSApplicationActivationPolicyAccessory for helper applications, instead,
+hides those from the Dock, and makes them appear modal to the spawing app.
+
+The latter is exactly what we want for pinentry-qt. For this, we patch Qt
+itself, as this might be applicable to further helper apps, but also because
+we do not have solid control over when activation policy gets applied,
+otherwise.
+--- a/src/plugins/platforms/cocoa/qcocoahelpers.mm	2026-06-04 18:29:11
++++ b/src/plugins/platforms/cocoa/qcocoahelpers.mm	2026-11-11 12:03:34
+@@ -175,7 +175,11 @@
+     }
+
+     if (forceTransform) {
+-        [[NSApplication sharedApplication] setActivationPolicy:NSApplicationActivationPolicyRegular];
++        if (qApp->applicationDirPath().endsWith(QStringLiteral("/MacOS"))) {
++            [[NSApplication sharedApplication] setActivationPolicy:NSApplicationActivationPolicyRegular];
++        } else {
++            [[NSApplication sharedApplication] setActivationPolicy:NSApplicationActivationPolicyAccessory];
++        }
+     }
+ }
