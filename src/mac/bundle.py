@@ -270,7 +270,7 @@ def checkAndPatchDependencies(file: Path, origin: Path):
 
 def checkResignBinary(file: Path, deep=False):
     res = subprocess.run(["codesign", "-v", file])
-    if res.returncode != 0 and os.getenv("CODESIGN_ID") != None:
+    if res.returncode != 0 and os.getenv("CODESIGN_ID"):
         print(f"Code signature no longer valid on {file} - updating.")
         subprocess.run(["codesign", "-f", "--preserve-metadata=identifier,entitlements", "--verbose=10", "-s", os.getenv("CODESIGN_ID")] +
                        (["--deep"] if deep else []) +
