@@ -216,9 +216,9 @@ server https://gnupg.net/snapshots
 # last changed: 2026-10-29
 # by tfry
 # verified: tarball created by tfry
-name ministartqt-0.1.1.tar.xz
-file ministartqt/ministartqt-0.1.1.tar.xz
-chk  038f6418127ea607438ff73f398f1b2a00fc75459869f5860ff1cd099e845e44
+name ministartqt-0.1.2.tar.xz
+file ministartqt/ministartqt-0.1.2.tar.xz
+chk  9cb875f0248b24a920c644bbd3e4f60dd4e538e9b7214c61ab473f9026e750f8
 
 fi # mac - ministart
 

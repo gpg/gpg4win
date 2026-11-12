@@ -143,9 +143,12 @@ def destination(absFilePath: Path) -> str:
                 return "Helpers/Okular.app/Contents/" + stripped
             elif fileName.startswith("Applications/kleopatra.app"):
                 return "Helpers/Kleopatra.app/Contents/" + stripped
+            elif fileName.startswith("Applications/gpgol-client.app"):
+                return "Helpers/GpgOLweb.app/Contents/" + stripped
             # FIXME: crude temporary solution to make ministarts Info.plist the primary (only) one
-            if stripped != "Info.plist" or fileName.startswith("Applications/ministart"):
-                return stripped
+            if stripped == "Info.plist" and not fileName.startswith("Applications/ministart"):
+                error(f"{fileName} should be moved to a dedicated sub-bundle!")
+            return stripped
         return None
     else:
         # moveList essentially as in KDE craft
@@ -338,6 +341,7 @@ def finalizeBundle():
     # non-gpg binaries used by kleopatra/okular (the gpg ones are found via libkleo -> compiled in paths)
     createStub(bundleDir / 'MacOS/paperkey', bundleDir / 'Helpers/Kleopatra.app/Contents/MacOS/paperkey')
     createStub(bundleDir / 'Helpers/Kleopatra.app/Contents/MacOS/kleopatra', bundleDir / 'Helpers/Okular.app/Contents/MacOS/kleopatra')
+    createStub(bundleDir / 'Helpers/Kleopatra.app/Contents/MacOS/kleopatra', bundleDir / 'Helpers/GpgOLweb.app/Contents/MacOS/kleopatra')
 
     # fix kleopatra icon
     iconsDir = requiredPath(bundleDir / 'Resources/icons')
