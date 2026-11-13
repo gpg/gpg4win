@@ -326,16 +326,16 @@ def finalizeBundle():
     primaryBin = requiredPath(bundleDir / 'MacOS/ministartqt')
     # a non-empty CFBundleIdentifier is needed to make some things work - importantly native file dialogs
     # in theory this could also be set via cmake in kleopatra/okular etc.
-    modifyPlist(requiredPath(bundleDir / 'Info.Plist'), {
+    modifyPlist(requiredPath(bundleDir / 'Info.plist'), {
                 "CFBundleIdentifier": "<string>org.gnupg.gnupg4mac</string>",
                 "CFBundleExecutable": f"<string>{primaryBin.name}</string>",
                 "CFBundleName": "<string>Gpg4Mac</string>",
                 "CFBundleIconFile": f"<string>{requiredPath(bundleDir / 'Resources/sc-apps-gnupg_stylized.icns').name}</string>"
                 })
-    modifyPlist(requiredPath(bundleDir / 'Helpers/Kleopatra.app/Contents/Info.Plist'), {
+    modifyPlist(requiredPath(bundleDir / 'Helpers/Kleopatra.app/Contents/Info.plist'), {
                 "CFBundleIdentifier": "<string>org.gnupg.gnupg4mac.kleopatra</string>",
                 "CFBundleName": "<string>Kleopatra</string>"}) # FIXME: This should be set upstream in Kleopatra
-    modifyPlist(requiredPath(bundleDir / 'Helpers/Okular.app/Contents/Info.Plist'), {
+    modifyPlist(requiredPath(bundleDir / 'Helpers/Okular.app/Contents/Info.plist'), {
                 "CFBundleIdentifier": "<string>org.gnupg.gnupg4mac.okular</string>"})
 
     # non-gpg binaries used by kleopatra/okular (the gpg ones are found via libkleo -> compiled in paths)
