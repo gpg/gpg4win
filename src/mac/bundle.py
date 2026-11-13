@@ -58,7 +58,7 @@ def createStagingSkeleton():
     (bundleDir / 'Frameworks').mkdir()
     (bundleDir / 'MacOS').mkdir()
     (bundleDir / 'Resources').mkdir()
-    (bundleDir / 'Plugins').mkdir()
+    (bundleDir / 'PlugIns').mkdir()
 
 
 def moveFilesToDestination():
@@ -411,7 +411,7 @@ imageName = sys.argv[2]
 versionString = sys.argv[3]
 outDir = Path(sys.argv[4])
 
-stagingDir = tempfile.TemporaryDirectory()
+stagingDir = tempfile.TemporaryDirectory(prefix="tmp_staging", dir=srcPrefix)
 destPrefix = Path(stagingDir.name)
 bundleDir = (destPrefix / 'Applications' / (imageName + '.app') / 'Contents')
 
