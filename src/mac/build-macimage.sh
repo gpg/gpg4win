@@ -61,6 +61,11 @@ cd ${BUILDROOT}
 make TOPSRCDIR=${SRCDIR} PLAYGROUND=${BUILDROOT} TARGETIMAGENAME=${TARGETIMAGENAME} CMAKE=${INSTDIR}/bin/cmake
 
 # TODO: write and sign version file (see appimage scripts)
+INSTALLER_TEMPLATE="${SRCDIR}/src/mac/${TARGETIMAGENAME}.template.dmg"
+if [ -f "${INSTALLER_TEMPLATE}" ] ; then
+    mkdir -p "${BUILDROOT}/artifacts"
+    cp ${INSTALLER_TEMPLATE} "${BUILDROOT}/artifacts/"
+fi
 python3 ${SRCDIR}/src/mac/bundle.py "${INSTDIR}" "${TARGETIMAGENAME}" "$VERSIONSTRING" "${BUILDROOT}/artifacts"
 
 echo ready

@@ -53,13 +53,6 @@ def error(message: str):
     print(message)
     exit(1)
 
-def createStagingSkeleton():
-    bundleDir.mkdir(parents=True)
-    (bundleDir / 'Frameworks').mkdir()
-    (bundleDir / 'MacOS').mkdir()
-    (bundleDir / 'Resources').mkdir()
-    (bundleDir / 'PlugIns').mkdir()
-
 
 def moveFilesToDestination():
     # Some packages (importantly kleopatra, okular) install (some of) their files to DESTDIR/Applications.
@@ -375,25 +368,29 @@ def createDMG(stagingFolder: Path, imageName: str, versionString: str, outdir: P
     if os.path.exists(outfile):
         os.remove(outfile)
     if not os.path.exists(templateFile):
-        print(f"No DMG template found. For a fancier installer style {templateFile}, manually, and run again.")
+        print(f"No DMG template found at {templateFile}. For a fancier installer, run create_installer_template.sh in a graphical session.")
         dummy = tempfile.TemporaryDirectory()
         (Path(dummy.name) / dirName).mkdir()
         (Path(dummy.name) / "Applications").symlink_to(Path("/Applications"))
-        subprocess.run(["hdiutil", "create", "-fs", "HFSX", "-layout", "SPUD", "-size", "1000000k", templateFile, "-srcfolder", dummy.name, "-format", "UDRW", "-volname", imageName]).check_returncode()
+        subprocess.run(["hdiutil", "create", "-fs", "HFSX", "-layout", "SPUD", "-size", "1000000k", templateFile, "-srcfolder", dummy.name, "-format", "UDZO", "-volname", imageName]).check_returncode()
         dummy.cleanup()
 
-    # attach a copy of the template, and copy over files
+    # attach a RW copy of the template, and copy over files
     wcFile = Path(str(templateFile) + ".wc.dmg")
     shutil.copy2(templateFile, wcFile)
     mountPoint = f"/Volumes/{imageName}.staging"
     print(f"Attaching DMG template at {mountPoint}")
-    subprocess.run(["hdiutil", "attach", wcFile, "-noautoopen", "-mountpoint", mountPoint, "-quiet"]).check_returncode()
+    subprocess.run(["hdiutil", "attach", wcFile, "-noautoopen", "-shadow", "-mountpoint", mountPoint, "-quiet"]).check_returncode()
     print(f"Copying Files")
     subprocess.run(["cp", "-R", str(stagingFolder / 'Applications' / dirName), mountPoint]).check_returncode()
+    print(f"Setting volume icon")
+    subprocess.run(["cp", "-R", str(requiredPath(bundleDir / 'Resources/sc-apps-gnupg_stylized.icns')), str(Path(mountPoint) / '.VolumeIcon.icns')]).check_returncode()
+    subprocess.run(["SetFile", "-c", "icnC", str(Path(mountPoint) / '.VolumeIcon.icns')]).check_returncode()
+    subprocess.run(["SetFile", "-a", "C", mountPoint]).check_returncode()
     subprocess.run(["hdiutil", "detach", mountPoint])
 
     print(f"Converting to compressed image")
-    subprocess.run(["hdiutil", "convert", wcFile, "-format", "UDZO", "-imagekey", "zlib-level=9", "-o", outfile]).check_returncode()
+    subprocess.run(["hdiutil", "convert", wcFile, "-shadow", "-format", "UDZO", "-imagekey", "zlib-level=9", "-o", outfile]).check_returncode()
     os.remove(wcFile)
     return outfile
 
@@ -415,7 +412,6 @@ stagingDir = tempfile.TemporaryDirectory(prefix="tmp_staging", dir=srcPrefix)
 destPrefix = Path(stagingDir.name)
 bundleDir = (destPrefix / 'Applications' / (imageName + '.app') / 'Contents')
 
-createStagingSkeleton()
 moveFilesToDestination()
 # purgeUnusedLibs()
 # stripBinaries()
