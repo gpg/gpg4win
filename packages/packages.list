@@ -163,11 +163,11 @@ file npth/npth-1.8.tar.bz2
 chk  8bd24b4f23a3065d6e5b26e98aba9ce783ea4fd781069c1b35d149694e90ca3e
 
 
-# last changed 2026-06-02
+# last changed 2026-11-17
 # by wk
 # verified: swdb
-file libksba/libksba-1.8.1.tar.bz2
-chk  c2f84393011827219ae117131dba8e7684c2bed0961eed11b0642c2acba440b5
+file libksba/libksba-1.9.0.tar.bz2
+chk  b070f3da9113df3804379f55e10cd00f0bc4993d5392157fecb5fd174a5d58ce
 
 
 # last changed 2024-01-12
