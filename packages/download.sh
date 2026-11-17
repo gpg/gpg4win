@@ -76,7 +76,8 @@ Options:
         [--dry-run]  Do not download - just check
         [--clean]    Do not download but remove downloaded files.
         [--update]   Remove old files with the same name.
-        [--target=(windows|appimage|mac)]  Only download files needed to build for target platform. Default: windows
+        [--target=(windows|appimage|mac)]  Only download files needed to build for target platform.
+                     Default: all targets
 EOF
     exit $1
 }
@@ -88,7 +89,7 @@ ipvx=
 clean=no
 dryrun=no
 update=no
-target=windows
+target=
 gnupgtag=
 #keep_list=no
 #sig_check=yes
@@ -213,9 +214,9 @@ while read key value valuetwo valuethree; do
            condfalse=yes
        elif [ "$value" = "gnupg" -a "$valuetwo" = "!=" -a "$valuethree" = "$gnupgtag" ]; then
            condfalse=yes
-       elif [ "$value" = "target" -a "$valuetwo" = "=" -a "$valuethree" != "$target" ]; then
+       elif [ "$value" = "target" -a "$valuetwo" = "=" -a "$valuethree" != "$target" -a "$target" != "" ]; then
            condfalse=yes
-       elif [ "$value" = "target" -a "$valuetwo" = "!=" -a "$valuethree" = "$target" ]; then
+       elif [ "$value" = "target" -a "$valuetwo" = "!=" -a "$valuethree" = "$target" -a "$target" != "" ]; then
            condfalse=yes
        fi
        ;;
