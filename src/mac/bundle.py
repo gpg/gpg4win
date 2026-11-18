@@ -53,6 +53,13 @@ def error(message: str):
     print(message)
     exit(1)
 
+# wrapper around subprocess.run().check_returncode() to print useful info in case of error
+def runCommand(processAndArgs: list):
+    result = subprocess.run(processAndArgs, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    if result.returncode:
+        print(f"Error: {' '.join(list(map(str, processAndArgs)))} exited with code {result.returncode}. Output:")
+        print(result.stdout)
+        exit(1)
 
 def moveFilesToDestination():
     # Some packages (importantly kleopatra, okular) install (some of) their files to DESTDIR/Applications.
@@ -201,7 +208,7 @@ def checkAndPatchDependencies(file: Path, origin: Path):
     # (which we'll then reference without resorting to rpath)
     rpaths = getRPaths(origin)
     for rpath in rpaths:
-        subprocess.run(["install_name_tool", "-delete_rpath", rpath, file]).check_returncode()
+        runCommand(["install_name_tool", "-delete_rpath", rpath, file])
     rpaths.append(srcPrefix / 'lib')
 
     # If this is a library, fix its library id, otherwise consumers may
@@ -212,7 +219,7 @@ def checkAndPatchDependencies(file: Path, origin: Path):
         libid = lines[1].strip()
         if libid != "":
             print(f"Adjusting libid on {file} from {libid} to {os.path.basename(libid)}")
-            subprocess.run(["install_name_tool", "-id", os.path.basename(libid), file]).check_returncode()
+            runCommand(["install_name_tool", "-id", os.path.basename(libid), file])
             libid = os.path.basename(libid)
 
     # find and fix all references to libs this binary depends on
@@ -255,7 +262,7 @@ def checkAndPatchDependencies(file: Path, origin: Path):
         # a movable installation, anyway (so far)
         dep = str((bundleDir / dep).absolute()).replace(str(destPrefix), '')
         print(f"fixing dep {olddep} -> {dep}")
-        subprocess.run(["install_name_tool", "-change", olddep, dep, file]).check_returncode()
+        runCommand(["install_name_tool", "-change", olddep, dep, file])
 
     # Check code signature: If the binary had one, and we made any modification, above, we'll have to re-sign
     checkResignBinary(file)
@@ -265,9 +272,7 @@ def checkResignBinary(file: Path, deep=False):
     res = subprocess.run(["codesign", "-v", file])
     if res.returncode != 0 and os.getenv("CODESIGN_ID"):
         print(f"Code signature no longer valid on {file} - updating.")
-        subprocess.run(["codesign", "-f", "--preserve-metadata=identifier,entitlements", "--verbose=10", "-s", os.getenv("CODESIGN_ID")] +
-                       (["--deep"] if deep else []) +
-                       [file]).check_returncode()
+        runCommand(["codesign", "-f", "--preserve-metadata=identifier,entitlements", "--verbose=10", "-s", os.getenv("CODESIGN_ID")] + (["--deep"] if deep else []) + [file])
 
 
 # shorthand to check for existence of given path, and return it
@@ -349,7 +354,7 @@ def finalizeBundle():
     checkResignBinary(primaryBin, True)
     # This always fails in staging path due to absolute paths pointing to /Applications.
     # However, it is a good idea to run this manually, after installation. We should consider some auto-check, here.
-    # subprocess.run(["codesign", "verify", "strict", "deep", "verbose=20", str(bundleDir.parent)]).check_returncode()
+    # runCommand(["codesign", "verify", "strict", "deep", "verbose=20", str(bundleDir.parent)])
 
 
 def createDMG(stagingFolder: Path, imageName: str, versionString: str, outdir: Path):
@@ -372,26 +377,24 @@ def createDMG(stagingFolder: Path, imageName: str, versionString: str, outdir: P
         dummy = tempfile.TemporaryDirectory()
         (Path(dummy.name) / dirName).mkdir()
         (Path(dummy.name) / "Applications").symlink_to(Path("/Applications"))
-        subprocess.run(["hdiutil", "create", "-fs", "HFSX", "-layout", "SPUD", "-size", "1000000k", templateFile, "-srcfolder", dummy.name, "-format", "UDZO", "-volname", imageName]).check_returncode()
+        runCommand(["hdiutil", "create", "-fs", "HFSX", "-layout", "SPUD", "-size", "1000000k", templateFile, "-srcfolder", dummy.name, "-format", "UDZO", "-volname", imageName])
         dummy.cleanup()
 
-    # attach a RW copy of the template, and copy over files
-    wcFile = Path(str(templateFile) + ".wc.dmg")
-    shutil.copy2(templateFile, wcFile)
+    # attach a RW shadow copy of the template, and copy over files
     mountPoint = f"/Volumes/{imageName}.staging"
     print(f"Attaching DMG template at {mountPoint}")
-    subprocess.run(["hdiutil", "attach", wcFile, "-noautoopen", "-shadow", "-mountpoint", mountPoint, "-quiet"]).check_returncode()
+    runCommand(["hdiutil", "attach", templateFile, "-noautoopen", "-shadow", "-mountpoint", mountPoint, "-quiet"])
     print(f"Copying Files")
-    subprocess.run(["cp", "-R", str(stagingFolder / 'Applications' / dirName), mountPoint]).check_returncode()
+    runCommand(["cp", "-R", str(stagingFolder / 'Applications' / dirName), mountPoint])
     print(f"Setting volume icon")
-    subprocess.run(["cp", "-R", str(requiredPath(bundleDir / 'Resources/sc-apps-gnupg_stylized.icns')), str(Path(mountPoint) / '.VolumeIcon.icns')]).check_returncode()
-    subprocess.run(["SetFile", "-c", "icnC", str(Path(mountPoint) / '.VolumeIcon.icns')]).check_returncode()
-    subprocess.run(["SetFile", "-a", "C", mountPoint]).check_returncode()
-    subprocess.run(["hdiutil", "detach", mountPoint])
+    runCommand(["cp", "-R", str(requiredPath(bundleDir / 'Resources/sc-apps-gnupg_stylized.icns')), str(Path(mountPoint) / '.VolumeIcon.icns')])
+    runCommand(["SetFile", "-c", "icnC", str(Path(mountPoint) / '.VolumeIcon.icns')])
+    runCommand(["SetFile", "-a", "C", mountPoint])
+    runCommand(["hdiutil", "detach", mountPoint])
 
     print(f"Converting to compressed image")
-    subprocess.run(["hdiutil", "convert", wcFile, "-shadow", "-format", "UDZO", "-imagekey", "zlib-level=9", "-o", outfile]).check_returncode()
-    os.remove(wcFile)
+    runCommand(["hdiutil", "convert", templateFile, "-shadow", "-format", "UDZO", "-imagekey", "zlib-level=9", "-o", outfile])
+    os.remove(Path(str(templateFile) + ".shadow"))
     return outfile
 
 # Steps to do:
