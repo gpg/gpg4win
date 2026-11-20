@@ -183,10 +183,10 @@ file npth/npth-1.8.tar.bz2
 chk  8bd24b4f23a3065d6e5b26e98aba9ce783ea4fd781069c1b35d149694e90ca3e
 
 
-# last changed 2026-11-10
+# last changed 2026-11-20
 # by wk
 # verified: swdb
-file libksba/libksba-1.9.0.tar.bz2
+file libksba/libksba-1.9.1.tar.bz2
 chk  9afdd398b4a076735e1e7fd29c7f6e7670b6c382aee2d3a55aa937b283f43e5b
 
 
@@ -597,11 +597,11 @@ server https://gnupg.org/ftp/gcrypt
 
 
 # gpgme
-# last changed: 2026-08-31
-# by: wk
+# last changed: 2026-11-20
+# by wk
 # verified: swdb
-file gpgme/gpgme-2.2.0.tar.bz2
-chk  7160e80e84dafd00d956c84891c533bb7ab16a6a54fbe1574b2f3acf0496977b
+file gpgme/gpgme-2.3.1.tar.bz2
+chk  2bf94e0e677e5a8fc31f79dd323f91c5416b36fb851058bc1e8bce39f2642434
 
 # gpgmepp
 # last changed: 2026-09-01
