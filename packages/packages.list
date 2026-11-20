@@ -713,10 +713,10 @@ server https://gnupg.org/ftp/gcrypt
 
 
 # gpgme
-# last changed: 2026-08-31
+# last changed: 2026-11-20
 # by wk
 # verified: swdb
-file gpgme/gpgme-2.2.0.tar.bz2
+file gpgme/gpgme-2.3.1.tar.bz2
 chk  7160e80e84dafd00d956c84891c533bb7ab16a6a54fbe1574b2f3acf0496977b
 
 # gpgmepp
