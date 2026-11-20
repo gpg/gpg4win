@@ -24,7 +24,13 @@ EXTRA_DIST = AppRun \
              start-shell \
              qt5/qt.conf \
              qt6/qt.conf \
-             rsync-filters
+             rsync-filters \
+             com.gnupg.gnupg-desktop.appdata.xml \
+             com.gnupg.gnupg-desktop.desktop \
+             com.gnupg.gnupg-vs-desktop.appdata.xml \
+             com.gnupg.gnupg-vs-desktop.desktop \
+             com.gnupg.gpg4linux.appdata.xml \
+             com.gnupg.gpg4linux.desktop
 
 # Define macros for the various directories.  These directory names
 # must be absolute, as we switch pretty often between them and don't

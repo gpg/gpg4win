@@ -45,6 +45,9 @@ EXTRA_DIST =  config.site                                      \
               icons/gpd/256-apps-kleopatra.png                 \
               icons/gpd/1024-apps-kleopatra.png                \
               icons/gpd/sc-apps-kleopatra.svg                  \
+              icons/256x256/gnupg-desktop.png                  \
+              icons/256x256/gnupg-vs-desktop.png               \
+              icons/256x256/gpg4linux.png                      \
               icons/kleopatra-vsd.svg                          \
               icons/mail-ext.ico                               \
               icons/shield.ico                                 \
