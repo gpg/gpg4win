@@ -50,7 +50,7 @@ m4_if(mym4_buildtype,[vsd3],[m4_define([mym4_isvsd],[yes])
 m4_if(mym4_buildtype,[vsd3],
       [m4_define([mym4_major],[3])
        m4_define([mym4_minor],[4])
-       m4_define([mym4_micro],[0])],
+       m4_define([mym4_micro],[1])],
       mym4_buildtype,[vsd],
       [m4_define([mym4_major],[4])
        m4_define([mym4_minor],[0])
