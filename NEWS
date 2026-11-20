@@ -3,6 +3,19 @@
 # The version numbers given are used by gpg4win and GnuPG [VS-]Desktop
 
 
+Noteworthy changes in Version 5.1.2 (2026-11-20)
+------------------------------------------------
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.5.24
+Kleopatra:      20260715
+GPGME:          2.3.1
+GpgOL:          2.7.6
+GpgEX:          1.1.2
+Libgcrypt:      1.12.4
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in Version 5.1.1 (2026-09-23)
 ------------------------------------------------
 
