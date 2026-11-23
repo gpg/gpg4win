@@ -40,7 +40,8 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              doc/license-page doc/GPLv3 build.sh \
              build-aux/git-log-footer build-aux/git-log-fix \
              build-aux/gpg-authcode-sign.sh \
-             docker/appimage/Dockerfile \
+             docker/appimage-alma810/Dockerfile \
+             docker/appimage-alma908/Dockerfile \
              docker/gpg4win-trixie/Dockerfile \
              docker/gpg4win-trixie/mingw-pthread-run-reverse-order.patch \
              patches/breeze-6.5.4-g10/0001-Do-not-alias-QtOpenGL-and-QtNetwork.patch \
@@ -95,7 +96,6 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/libqrencode/0001-fix-cmake-install-paths.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Add-support-to-customize-about-data.sik \
-             patches/okular/0002-hide_finish_signing_banner_on_document_reload.patch \
              patches/okular/pgp-default-true.patch \
              patches/pcre2/cross-build-cmake.patch \
              patches/poppler/downgrade-min-boost.patch \
