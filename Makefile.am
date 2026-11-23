@@ -58,6 +58,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/extra-cmake-modules/0001-Revert-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/extra-cmake-modules/0001-Use-preferred-display-language-instead-of-locale-on-.patch \
              patches/gpgol-2.7.2/0001-Require-C-17.patch \
+             patches/harfbuzz/harfbuzz-fix-install.patch \
              patches/jpeg/fix-redefine.patch \
              patches/kconfig-6.31.0/00-kf632-0001-Ensure-locale-name-with-language-code-and-country-co.patch \
              patches/kconfig-6.31.0/00-kf6xx-0001-Read-config-defaults-from-Windows-HKLM-registry-befo.patch \
