@@ -616,7 +616,13 @@ getvar_from_autogenrc() {
 getvar_from_makefile() {
     local fname
 
-    fname="$builddir/Makefile"
+    # First try from a release build mill.
+    fname="$builddir/binary/Makefile"
+    if [ ! -f "$fname" ]; then
+        # and fallback to the regular makefile
+        fname="$builddir/Makefile"
+    fi
+
     if [ -f "$fname" ]; then
         grep $1' = ' "$fname" | head -1 | cut -d= -f2 | xargs
     fi
