@@ -997,7 +997,7 @@ if [ "$indocker" = yes ]; then
     cd ${builddir}
     if [ ! -f config.status ]; then
         force=yes
-    elif [ ${srcdir}/configure TOPSRCDIR=${srcdir} -nt config.status ]; then
+    elif [ ${srcdir}/configure -nt config.status ]; then
         force=yes
     fi
     if [ $force = no ]; then
