@@ -717,7 +717,7 @@ server https://gnupg.org/ftp/gcrypt
 # by wk
 # verified: swdb
 file gpgme/gpgme-2.3.1.tar.bz2
-chk  7160e80e84dafd00d956c84891c533bb7ab16a6a54fbe1574b2f3acf0496977b
+chk  2bf94e0e677e5a8fc31f79dd323f91c5416b36fb851058bc1e8bce39f2642434
 
 # gpgmepp
 # last changed: 2026-09-01
