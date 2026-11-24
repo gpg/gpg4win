@@ -107,9 +107,11 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/0001-Don-t-report-tabname-as-name-of-tabbar.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/0001-MacOS-fix-header-installation.patch \
+             patches/qtbase/0001-MacOS-listview-activate-on-enter.patch \
              patches/qtbase/0002-no-dark-mode-on-old-windows-10.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/configurable-windowstheme.patch \
+             patches/qtbase/macos-gui-helper-application-activation.patch \
              patches/qtbase/qstandardpaths_macos.patch \
              patches/qtbase/qt_use_share_instead_of_data.patch \
              patches/qthttpserver/originAuthenticationRequired.patch
