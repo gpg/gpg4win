@@ -1,0 +1,20 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From: Christian Fischbach <cf@badgersystems.de>
+
+Swift compiler does not understand the option -idirafter.
+
+diff -ru qtbase-6.12.0/cmake/QtPlatformTargetHelpers.cmake qtbase-6.12.0-patched/cmake/QtPlatformTargetHelpers.cmake
+--- qtbase-6.12.0/cmake/QtPlatformTargetHelpers.cmake	2026-06-04 18:29:11
++++ qtbase-6.12.0-patched/cmake/QtPlatformTargetHelpers.cmake	2026-11-20 16:50:56
+@@ -27,7 +27,7 @@
+         # "after" group) which is guaranteed to be searched last, while still being considered
+         # a system include directory.
+         target_compile_options(Platform INTERFACE
+-            "$<INSTALL_INTERFACE:SHELL:-idirafter $<INSTALL_PREFIX>/${INSTALL_INCLUDEDIR}>")
++            "$<INSTALL_INTERFACE:$<$<COMPILE_LANGUAGE:C,CXX>:SHELL:-idirafter $<INSTALL_PREFIX>/${INSTALL_INCLUDEDIR}>>")
+     else()
+         target_include_directories(Platform INTERFACE
+             $<INSTALL_INTERFACE:${INSTALL_INCLUDEDIR}>)

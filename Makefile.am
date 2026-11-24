@@ -109,6 +109,7 @@ EXTRA_DIST = build.sh autogen.rc autogen.sh VERSION README.GIT ONEWS \
              patches/qtbase/0001-MacOS-fix-header-installation.patch \
              patches/qtbase/0001-MacOS-listview-activate-on-enter.patch \
              patches/qtbase/0002-no-dark-mode-on-old-windows-10.patch \
+             patches/qtbase/0003-MacOS-fix-header-include-path-swift.patch \
              patches/qtbase/add-kleopatras-mime-types.patch \
              patches/qtbase/configurable-windowstheme.patch \
              patches/qtbase/macos-gui-helper-application-activation.patch \
