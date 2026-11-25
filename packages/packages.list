@@ -814,8 +814,8 @@ server https://poppler.freedesktop.org
 # last changed: 2026-10-07
 # by: sune
 # verified: upstream signature
-file poppler-26.10.0.tar.xz
-chk 6792cb7c69205007ad87d2e936cecc5b3a31fac29ab54ffc3175fdb6b2a6ce35
+file poppler-26.11.0.tar.xz
+chk 41c32680160addf5a8dd7a830e4869c01e9f6bee1abb91e44fabd1ba9d7828fb
 
 server https://gnupg.net/snapshots
 
